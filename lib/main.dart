@@ -6,7 +6,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-
+  {print(JoinOrLogin..isjoin);}
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ChangeNotifierProvider<JoinOrLogin>.value(
