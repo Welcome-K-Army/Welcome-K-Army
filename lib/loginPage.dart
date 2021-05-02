@@ -128,7 +128,7 @@ Widget get _LogoImage => Expanded(
       ),//CircleAvatar
     ),//FittedBox
   ),//Padding
-),//Expanded
+);//Expanded
 // FadeInImage.assetNetwork(
 //   placeholder:"image/Loading.gif",
 //   image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
