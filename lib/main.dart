@@ -64,7 +64,7 @@ class BottomBar extends StatelessWidget {
               labelStyle: TextStyle(
                 fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik'), 
             
-            tabs: [
+            tabs: new [
               Tab(
                 icon: Icon(
                   Icons.home,
