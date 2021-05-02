@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'data/join_or_login.dart';
+import 'joinOrLogin.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -40,7 +40,6 @@ class LoginPage extends StatelessWidget {
                   builder:(BuildContext context, JoinOrLogin joinOrLogin, Widget child)=>
                     GestureDetector(
                     onTap: (){
-                      print(joinOrLogin.isJoin);
                       //joinOrLogin.toggle();
                     },
                     child:Text(joinOrLogin.isJoin?"Sign in":"Don't you have an Account?",

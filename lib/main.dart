@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'loginPage.dart';
 import 'package:provider/provider.dart';
-import 'data/join_or_login.dart';
+import 'loginPage.dart';
+import 'joinOrLogin.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  print(JoinOrLogin..isjoin);
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ChangeNotifierProvider<JoinOrLogin>.value(
