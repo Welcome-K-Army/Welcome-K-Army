@@ -55,7 +55,16 @@ class BottomBar extends StatelessWidget {
         child: Container(
             height: 70,
             padding: EdgeInsets.only(bottom: 10, top: 5),
-            child: TabBar(indicatorSize: TabBarIndicatorSize.label, indicatorColor: Colors.red, indicatorWeight: 4, labelColor: Colors.white, unselectedLabelColor: Colors.black38, labelStyle: TextStyle(fontSize: 17, fontFamilyFallback: fontFamilyName(GoogleFonts.Rubik()), tabs: [
+            child: TabBar(
+              indicatorSize: TabBarIndicatorSize.label, 
+              indicatorColor: Colors.red, 
+              indicatorWeight: 4, 
+              labelColor: Colors.white, 
+              unselectedLabelColor: Colors.black38, 
+              labelStyle: TextStyle(
+                fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik'), 
+            
+            tabs: [
               Tab(
                 icon: Icon(
                   Icons.home,
