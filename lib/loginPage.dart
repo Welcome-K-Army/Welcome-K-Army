@@ -89,8 +89,8 @@ class LoginPage extends StatelessWidget {
     child:RaisedButton(
       child: Text("Login"),
       color: Colors.green,
+      height:20
       shape: RoundedRectangleBorder(
-        height:20,
         borderRadius:BorderRadius.circular(15)
       ),
       onPressed:(){
