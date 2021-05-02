@@ -7,9 +7,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size=MediaQuery.of(context).size;
+
     final TextEditingController _emailController=TextEditingController();
     final TextEditingController _passwordController=TextEditingController();
+
     return MaterialApp(
       home: Scaffold(
         body: Stack(
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
                 ), ////<Widget>[], Stack
                 Text("Don't Have an Account?"),
                 Container(
-                  height: size.height*0.05,
+                  height: 12,
                 )
               ], //<Widget>[]
             ), //Column
