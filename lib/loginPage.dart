@@ -29,26 +29,13 @@ class LoginPage extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     _inputForm(),
-                    Positioned(
-                      left: 32,
-                      right:32,
-                      bottom:0,
-                      child:RaisedButton(
-                          child: Text("Login"),
-                          color: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:BorderRadius.circular(15)
-                          ),
-                          onPressed:(){
-                          }
-                        ),//RaisedButton
-                      ),//Positioned
+                    _buttonLogin(),
                   ],//<Widget>
                 ), //, Stack
           //하단 회원가입 연결 부
                 Container(
                   height: 40,
-                )
+                ),
                 Text("Don't Have an Account?"),
                 Container(
                   height: 20,
@@ -95,4 +82,19 @@ class LoginPage extends StatelessWidget {
       ),//Card
     );//Padding
   }
+
+  Widget _buttonLogin => Positioned(
+    left: 32,
+    right:32,
+    bottom:0,
+    child:RaisedButton(
+        child: Text("Login"),
+        color: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius:BorderRadius.circular(15)
+        ),
+        onPressed:(){
+        }
+      ),//RaisedButton
+    );//Positioned
 }
