@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget {
                 Container(
                   height: size.height*0.1,
                 ),
-                Consumer<JoinOrLogin>{
+                Consumer<JoinOrLogin>(
                   builder:(context, joinorlogin, child)=>
                   GestureDetector(
                     onTap: (){
@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                   child:Text("Don't you have an Account?",
                     style: TextStyle(color:joinorlogin.isJoin?Colors.red:Colors.green,))
                   ),
-                },
+                ),
                 Container(
                   height: size.height*0.05,
                 ),
