@@ -6,7 +6,7 @@ class JoinOrLogin extends ChangeNotifier{
 
   bool get isJoin => _isJoin;
 
-  void toggle(isJoin){
+  void toggle(){
     _isJoin=!_isJoin;
     notifyListeners();
   }
