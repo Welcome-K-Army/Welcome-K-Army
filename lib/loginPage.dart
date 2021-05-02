@@ -53,7 +53,7 @@ class LoginPage extends StatelessWidget {
         ),
         elevation:6,
         child:Padding(
-          padding: EdgeInsets.only(left:12,right:12,top:12,bottom:40 ),
+          padding: EdgeInsets.only(left:12,right:12,top:12,bottom:32 ),
           child:Form(
             key: _formkey,
             child: Column(
