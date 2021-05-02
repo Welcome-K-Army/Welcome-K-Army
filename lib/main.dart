@@ -12,14 +12,14 @@ class MyAppState extends State<MyApp> {
   bool checkBoxValue = false;
   String actionText = "Default";
   @override
-  Widget build(BuildContext ctxt) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: "Welcome K-Army",
       theme: ThemeData(primaryColor: Colors.blue),
       home: DefaultTabController(
           length: 3,
           child: Scaffold(
-            appbar: AppBar(
+            appBar: AppBar(
               title: Text('welcome k-army'),
             ),
             body: TabBarView(
@@ -38,7 +38,9 @@ class MyAppState extends State<MyApp> {
                 icon: Icon(Icons.search),
                 text: 'Search',
               ),
-              Tab(icon: Icon(Icons.people), text: 'My')
+              Tab(
+                icon: Icon(Icons.people), 
+                text: 'My')
             ]),
           )),
     );
