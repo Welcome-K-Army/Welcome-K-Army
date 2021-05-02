@@ -75,7 +75,8 @@ class BottomBar extends StatelessWidget {
                     Icons.people,
                     size: 20,
                   ),
-                  text: 'My')
+                  text: 'My'
+              ),
             ])));
   }
 }
