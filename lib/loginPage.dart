@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'data/join_or_login.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -33,10 +35,19 @@ class LoginPage extends StatelessWidget {
                 Container(
                   height: size.height*0.1,
                 ),
-                Text("Don't Have an Account?"),
+                Consumer<JoinOrLogin>{
+                  builder:(context, joinorlogin, child)=>
+                  GestureDetector(
+                    onTap: (){
+                      joinorlogin.toggle();
+                    },
+                  child:Text("Don't you have an Account?",
+                    style: TextStyle(color:joinorlogin.isJoin?Colors.red:Colors.green,))
+                  ),
+                },
                 Container(
                   height: size.height*0.05,
-                )
+                ),
               ], //<Widget>[]
             ), //Column
           ], //<Widget>[]
