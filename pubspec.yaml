@@ -59,8 +59,8 @@ flutter:
   fonts:
    - family: Rubik
      fonts:
-       - asset: fonts/static/Rubik-Regular.ttf
-       - asset: fonts/static/Rubik-Bold.ttf
+       - asset: assets/fonts/static/Rubik-Regular.ttf
+       - asset: assets/fonts/static/Rubik-Bold.ttf
          weight: 700
   #         style: italic
   #   - family: Trajan Pro
