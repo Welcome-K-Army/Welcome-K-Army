@@ -83,18 +83,19 @@ class LoginPage extends StatelessWidget {
     );//Padding
   }
 
-  Widget _buttonLogin => Positioned(
+  Widget _buttonLogin() => Positioned(
     left: 32,
     right:32,
     bottom:0,
     child:RaisedButton(
-        child: Text("Login"),
-        color: Colors.blue,
-        shape: RoundedRectangleBorder(
-          borderRadius:BorderRadius.circular(15)
-        ),
-        onPressed:(){
-        }
-      ),//RaisedButton
-    );//Positioned
+      child: Text("Login"),
+      color: Colors.blue,
+      shape: RoundedRectangleBorder(
+        borderRadius:BorderRadius.circular(15)
+      ),
+      onPressed:(){
+
+      }
+    ),//RaisedButton
+  );//Positioned
 }
