@@ -20,21 +20,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
           //상단 이미지 부
-                Expanded(
-                  child:Padding(
-                    padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child:CircleAvatar(
-                        backgroundImage : NetworkImage("https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i"),
-                      ),//CircleAvatar
-                    ),//FittedBox
-                  ),//Padding
-                ),//Expanded
-                // FadeInImage.assetNetwork(
-                //   placeholder:"image/Loading.gif",
-                //   image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
-                // ),
+                _LogoImage,
           //로그인 부
                 Stack(
                   children: <Widget>[
@@ -131,3 +117,19 @@ class LoginPage extends StatelessWidget {
     ),//SizedBox
   );//Positioned
 }
+
+Widget get _LogoImage => Expanded(
+  child:Padding(
+    padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+    child: FittedBox(
+      fit: BoxFit.contain,
+      child:CircleAvatar(
+        backgroundImage : NetworkImage("https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i"),
+      ),//CircleAvatar
+    ),//FittedBox
+  ),//Padding
+),//Expanded
+// FadeInImage.assetNetwork(
+//   placeholder:"image/Loading.gif",
+//   image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
+// ),
