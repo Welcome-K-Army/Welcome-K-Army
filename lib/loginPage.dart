@@ -34,11 +34,15 @@ class LoginPage extends StatelessWidget {
                         children: <Widget>[
                         TextFormField(
                           controller: _emailController,
-                          decoration: InputDecoration(icon:Icon(Icons.account_circle)),
+                          decoration: InputDecoration(icon:Icon(Icons.account_circle),
+                          labelText:"Email",
+                          ),
                         ),//TextFormField 이메일 바
                         TextFormField(
                           controller: _passwordController,
-                          decoration: InputDecoration(icon:Icon(Icons.vpn_key)),
+                          decoration: InputDecoration(icon:Icon(Icons.vpn_key),
+                          labelText:"Password",
+                          ),
                         ),//TextFormField 패스워드 바
                         Text("Forgot Password"),
                         ]//Widget
