@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                 ), ////<Widget>[], Stack
                 Text("Don't Have an Account?"),
                 Container(
-                  height: 12,
+                  height: 20,
                 )
               ], //<Widget>[]
             ), //Column
