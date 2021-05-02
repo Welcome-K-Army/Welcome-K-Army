@@ -77,12 +77,24 @@ class LoginPage extends StatelessWidget {
                 decoration: InputDecoration(icon:Icon(Icons.account_circle),
                 labelText:"Email",
                 ),
+                validator: (String value){
+                  if (value.isEmpty){
+                    return "Please input correct Email!";
+                  }
+                  return null;
+                }
               ),//TextFormField 이메일 바
               TextFormField(
                 controller: _passwordController,
                 decoration: InputDecoration(icon:Icon(Icons.vpn_key),
                 labelText:"Password",
-                ),
+                ),//InputDecoration
+                validator: (String value){
+                  if (value.isEmpty){
+                    return "Please input correct Password!";
+                  }
+                  return null;
+                }
               ),//TextFormField 패스워드 바
               Text("Forgot Password"),
               ]//Widget
@@ -100,13 +112,15 @@ class LoginPage extends StatelessWidget {
     child:SizedBox(
       height:50,
       child:RaisedButton(
-        child: Text("Login", style:TextStyle(fontSize:20,color:Colors.white)),
+        child: Text("Login", style:TextStyle(fontSize:20,color:Colors.white),),
         color: Colors.green,
         shape: RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(15)
         ),
         onPressed:(){
-
+          if(_formkey.currentState.validate()){
+            
+          }
         }
       ),//RaisedButton
     ),//SizedBox
