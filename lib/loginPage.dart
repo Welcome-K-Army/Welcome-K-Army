@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
     bottom:0,
     child:SizedBox(
       width:200,
-      height:70,
+      height:40,
       child:RaisedButton(
         child: Text("Login"),
         color: Colors.green,
