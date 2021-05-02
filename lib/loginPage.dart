@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
           //상단 이미지 부
                 FadeInImage.assetNetwork(
                   placeholder:"assets/Loding.gif",
-                  image: "https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.newdaily.co.kr%2Fsite%2Fdata%2Fhtml%2F2021%2F04%2F30%2F2021043000115.html&psig=AOvVaw1WL-E5dEybcOOuklN7APR1&ust=1620037570596000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiTyrPkqvACFQAAAAAdAAAAABAD"
+                  image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
                 ),
           //로그인 부
                 Stack(
@@ -90,6 +90,7 @@ class LoginPage extends StatelessWidget {
       child: Text("Login"),
       color: Colors.green,
       shape: RoundedRectangleBorder(
+        height:20,
         borderRadius:BorderRadius.circular(15)
       ),
       onPressed:(){
