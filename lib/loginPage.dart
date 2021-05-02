@@ -33,10 +33,11 @@ class LoginPage extends StatelessWidget {
                       child:Card(
                         elevation:6,
                         child:Padding(
-                          padding:const EdgeInsets.symmetric(horizontal: 12,top:12,bottom:32 ),
+                          padding: EdgeInsets.symmetric(horizontal: 12,top:12,bottom:32 ),
                           child:Form(
                             key: _formkey,
                             child: Column(
+                              crossAxisAlignment:CrossAxisAlignment.start,
                               children: <Widget>[
                               TextFormField(
                                 controller: _emailController,
