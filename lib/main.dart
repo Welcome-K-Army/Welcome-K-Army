@@ -47,12 +47,12 @@ class MyApp extends StatelessWidget {
                                     icon: Icon(Icons.account_circle),
                                     labelText: "Email",
                                   ), //InputDecoration
-                                  validator: (String value) {
-                                    if (value.isEmtpy) {
-                                      return "Please input correct Email";
-                                    }
-                                    return null;
-                                  },
+                                  // validator: (String value) {
+                                  //   if (value.isEmtpy) {
+                                  //     return "Please input correct Email";
+                                  //   }
+                                  //   return null;
+                                  // },
                                 ), //TextFormField
                                 TextFormField(
                                   controller: _passwordController,
@@ -60,12 +60,12 @@ class MyApp extends StatelessWidget {
                                     icon: Icon(Icons.vpn_key),
                                     labelText: "Password",
                                   ), //InputDecoration
-                                  validator: (String value) {
-                                    if (value.isEmpty) {
-                                      return "Please input correct Password";
-                                    }
-                                    return null;
-                                  },
+                                  // validator: (String value) {
+                                  //   if (value.isEmpty) {
+                                  //     return "Please input correct Password";
+                                  //   }
+                                  //   return null;
+                                  // },
                                 ), //TextFormField
                                 Text("Forgot Password"),
                               ], //<Widget>[]
