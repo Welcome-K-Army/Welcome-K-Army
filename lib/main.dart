@@ -62,7 +62,7 @@ class BottomBar extends StatelessWidget {
               labelColor: Colors.white, 
               unselectedLabelColor: Colors.black38, 
               labelStyle: TextStyle(
-                fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik'), 
+                fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik')), 
             
               tabs: [
                 Tab(
