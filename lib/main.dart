@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatefulWidget {
+  MyApp({this.TextInput});
+  final Widget TextInput;
   MyAppState createState() => new MyAppState();
 }
 
