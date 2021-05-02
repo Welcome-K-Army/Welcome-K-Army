@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
                   builder:(BuildContext context, JoinOrLogin joinOrLogin, Widget child)=>
                     GestureDetector(
                     onTap: (){
-                      joinOrLogin.toggle();
+                      joinOrLogin.toggle;
                     },
                     child:Text(joinOrLogin.isJoin?"Sign in":"Don't you have an Account?",
                     style: TextStyle(color:joinOrLogin.isJoin?Colors.red:Colors.green,))
