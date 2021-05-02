@@ -31,11 +31,11 @@ class LoginPage extends StatelessWidget {
                 ), //, Stack
           //하단 회원가입 연결 부
                 Container(
-                  height: 40,
+                  height: size.height*0.1,
                 ),
                 Text("Don't Have an Account?"),
                 Container(
-                  height: 20,
+                  height: size.height*0.05,
                 )
               ], //<Widget>[]
             ), //Column
@@ -98,8 +98,8 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _buttonLogin(Size size) => Positioned(
-    left: 32,
-    right:32,
+    left: size.width*0.15,
+    right:size.width*0.15,
     bottom:0,
     child:SizedBox(
       height:50,
