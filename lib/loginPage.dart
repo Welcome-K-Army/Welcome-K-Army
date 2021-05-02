@@ -29,12 +29,28 @@ class LoginPage extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     _inputForm(),
+                    Positioned(
+                      left: 16,
+                      right:16,
+                      bottom:0,
+                      child:RaisedButton(
+                          child: Text("Login"),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius:BorderRadius.circular(15)
+                          ),
+                          onPressed:(){
+
+                          }
+                        ),//RaisedButton
+                      ),
+                    ),//Positioned
                   ],//Widget
                 ), ////<Widget>[], Stack
           //하단 회원가입 연결 부
                 Text("Don't Have an Account?"),
                 Container(
-                  height: 12,
+                  height: 20,
                 )
               ], //<Widget>[]
             ), //Column
@@ -42,6 +58,7 @@ class LoginPage extends StatelessWidget {
         ), //Stack
       ); //Scaffold
   }
+
   Widget _inputForm(){
     return  Padding(
       padding: EdgeInsets.all(12),
@@ -51,7 +68,7 @@ class LoginPage extends StatelessWidget {
         ),
         elevation:6,
         child:Padding(
-          padding: EdgeInsets.only(left:12,right:12,top:12,bottom:0 ),
+          padding: EdgeInsets.only(left:12,right:12,top:12,bottom:32 ),
           child:Form(
             key: _formkey,
             child: Column(
