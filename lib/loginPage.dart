@@ -25,8 +25,8 @@ class LoginPage extends StatelessWidget {
           //로그인 부
                 Stack(
                   children: <Widget>[
-                    _inputForm(),
-                    _buttonLogin(),
+                    _inputForm(size),
+                    _buttonLogin(size),
                   ],//<Widget>
                 ), //, Stack
           //하단 회원가입 연결 부
@@ -44,9 +44,9 @@ class LoginPage extends StatelessWidget {
       ); //Scaffold
   }
 
-  Widget _inputForm(){
+  Widget _inputForm(Size size){
     return  Padding(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(size.width*0.05),
       child:Card(
         shape:RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(16)
@@ -97,7 +97,7 @@ class LoginPage extends StatelessWidget {
     );//Padding
   }
 
-  Widget _buttonLogin() => Positioned(
+  Widget _buttonLogin(Size size) => Positioned(
     left: 32,
     right:32,
     bottom:0,
