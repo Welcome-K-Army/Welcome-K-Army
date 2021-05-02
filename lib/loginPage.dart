@@ -72,19 +72,21 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment:CrossAxisAlignment.start,
               children: <Widget>[
-              TextFormField(
+              TextFormField(//이메일
                 controller: _emailController,
                 decoration: InputDecoration(icon:Icon(Icons.account_circle),
                 labelText:"Email",
-                ),
+                ),//InputDecoration
                 validator: (String value){
                   if (value.isEmpty){
                     return "Please input correct Email!";
                   }
                   return null;
                 }
-              ),//TextFormField 이메일 바
-              TextFormField(
+              ),//TextFormField 이메일
+
+              TextFormField(//패스워드
+                obscureText:true;
                 controller: _passwordController,
                 decoration: InputDecoration(icon:Icon(Icons.vpn_key),
                 labelText:"Password",
@@ -95,7 +97,10 @@ class LoginPage extends StatelessWidget {
                   }
                   return null;
                 }
-              ),//TextFormField 패스워드 바
+              ),//TextFormField 패스워드
+              Container(
+                height:10,
+              ),
               Text("Forgot Password"),
               ]//Widget
             )//Column
