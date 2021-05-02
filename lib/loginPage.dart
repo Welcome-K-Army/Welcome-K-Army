@@ -30,8 +30,8 @@ class LoginPage extends StatelessWidget {
                   children: <Widget>[
                     _inputForm(),
                     Positioned(
-                      left: 16,
-                      right:16,
+                      left: 32,
+                      right:32,
                       bottom:0,
                       child:RaisedButton(
                           child: Text("Login"),
@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _inputForm(){
     return  Padding(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(16),
       child:Card(
         shape:RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(16)
