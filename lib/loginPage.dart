@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
               children: <Widget>[
           //상단 이미지 부
                 FadeInImage.assetNetwork(
-                  placeholder:"image/Loding.gif",
+                  placeholder:"image/Loading.gif",
                   image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
                 ),
           //로그인 부
