@@ -17,33 +17,30 @@ class MyAppState extends State<MyApp> {
       title: "Welcome K-Army",
       theme: ThemeData(primaryColor: Colors.blue),
       home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appbar: AppBar(
-            title: Text('welcome k-army'),
-          ),
-          body: TabBarView(
-            children: [
-              Text('홈 스크린'),
-              Text('검색 스크린'),
-              Text('마이 스크린'),
-            ],
-          ),
-          bottomNavigationBar: TabBar(tabs: [
-            Tab(
-              icon: Icon(Icons.home),
-              text: 'Home',
+          length: 3,
+          child: Scaffold(
+            appbar: AppBar(
+              title: Text('welcome k-army'),
             ),
-            Tab(
-              icon: Icon(Icons.search),
-              text: 'Search',
+            body: TabBarView(
+              children: [
+                Text('홈 스크린'),
+                Text('검색 스크린'),
+                Text('마이 스크린'),
+              ],
             ),
-            Tab(
-              icon: Icon(,),
-              text: 'My'
-            )
-          ]),
-        )),
+            bottomNavigationBar: TabBar(tabs: [
+              Tab(
+                icon: Icon(Icons.home),
+                text: 'Home',
+              ),
+              Tab(
+                icon: Icon(Icons.search),
+                text: 'Search',
+              ),
+              Tab(icon: Icon(Icons.people), text: 'My')
+            ]),
+          )),
     );
   }
 }
