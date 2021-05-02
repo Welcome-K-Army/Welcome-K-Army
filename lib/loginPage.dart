@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                   height: size.height*0.1,
                 ),
                 Consumer<JoinOrLogin>(
-                  builder:(context, joinOrLogin, child)=>
+                  builder:(BuildContext context, JoinOrLogin joinOrLogin, Widget child)=>
                     GestureDetector(
                     onTap: (){
                       joinOrLogin.toggle();
