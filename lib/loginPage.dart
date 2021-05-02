@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'data/join_or_login.dart';
 
+
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -36,13 +37,13 @@ class LoginPage extends StatelessWidget {
                   height: size.height*0.1,
                 ),
                 Consumer<JoinOrLogin>(
-                  builder:(context, joinorlogin, child)=>
-                  GestureDetector(
+                  builder:(context, joinOrLogin, child)=>
+                    GestureDetector(
                     onTap: (){
-                      joinorlogin.toggle();
+                      joinOrLogin.toggle();
                     },
-                  child:Text("Don't you have an Account?",
-                    style: TextStyle(color:joinorlogin.isJoin?Colors.red:Colors.green,))
+                    child:Text(joinOrLogin.isJoin?"Sign in":"Don't you have an Account?",
+                    style: TextStyle(color:joinOrLogin.isJoin?Colors.red:Colors.green,))
                   ),
                 ),
                 Container(
