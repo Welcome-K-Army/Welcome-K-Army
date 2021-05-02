@@ -75,6 +75,6 @@ class LoginPage extends StatelessWidget {
           ),//Form
         ),//Padding
       ),//Card
-    ),//Padding
+    );//Padding
   }
 }
