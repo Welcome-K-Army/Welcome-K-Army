@@ -46,6 +46,9 @@ class LoginPage extends StatelessWidget {
                   ],//<Widget>
                 ), //, Stack
           //하단 회원가입 연결 부
+                Container(
+                  height: 40,
+                )
                 Text("Don't Have an Account?"),
                 Container(
                   height: 20,
@@ -59,7 +62,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _inputForm(){
     return  Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(12),
       child:Card(
         shape:RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(16)
