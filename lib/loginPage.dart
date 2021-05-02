@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                           }
                         ),//RaisedButton
                       ),
-                    ),//Positioned
+                    )//Positioned
                   ],//Widget
                 ), ////<Widget>[], Stack
           //하단 회원가입 연결 부
