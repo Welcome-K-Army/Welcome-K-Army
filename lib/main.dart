@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                                     labelText: "Email",
                                   ), //InputDecoration
                                   validator: (String value) {
-                                    if (value.IsEmtpy) {
+                                    if (value.isEmtpy) {
                                       return "Please input correct Email";
                                     }
                                     return null;
