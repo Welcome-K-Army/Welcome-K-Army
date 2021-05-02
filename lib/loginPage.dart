@@ -33,11 +33,11 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                         TextFormField(
-                          controller: _emailController;
+                          controller: _emailController,
                           decoration: InputDecoration(icon:Icons.account_circle),
                         ),//TextFormField 이메일 바
                         TextFormField(
-                          controller: _passwordController;
+                          controller: _passwordController,
                           decoration: InputDecoration(icon:Icons.vpn_key),
                         ),//TextFormField 패스워드 바
                         Text("Forgot Password"),
