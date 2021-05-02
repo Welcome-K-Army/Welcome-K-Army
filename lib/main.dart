@@ -76,7 +76,10 @@ class BottomBar extends StatelessWidget {
                     size: 20,
                   ),
                   text: 'My'
-              ),
-            ])));
+              )
+            ],
+          ),
+        ),
+      );
   }
 }
