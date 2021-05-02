@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatefulWidget {
-  MyApp({this.TextInput});
-  final Widget TextInput;
   MyAppState createState() => new MyAppState();
 }
 
@@ -29,7 +28,9 @@ class MyAppState extends State<MyApp> {
                 Text('마이 스크린'),
               ],
             ),
-            bottomNavigationBar: TabBar(tabs: [
+            bottomNavigationBar: BottomBar(),
+            /*
+            TabBar(tabs: [
               Tab(
                 icon: Icon(Icons.home),
                 text: 'Home',
@@ -38,10 +39,9 @@ class MyAppState extends State<MyApp> {
                 icon: Icon(Icons.search),
                 text: 'Search',
               ),
-              Tab(
-                icon: Icon(Icons.people), 
-                text: 'My')
+              Tab(icon: Icon(Icons.people), text: 'My')
             ]),
+            */
           )),
     );
   }
@@ -51,44 +51,31 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: colorThemeYellow(),
-      child: Container(
-        height: 70,
-        padding: EdgeInsets.only(bottom: 10, top: 5),
-        child: TabBar(
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: colorThemeRed(),
-          indicatorWeight: 4,
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.black38,
-          labelStyle: TextStyle(
-            fontSize: 17, fontFamilyFallback: fontFamilyName('Yanolja')
-          ),
-
-          tabs: [
-            Tab(
+        color: Colors.yellow,
+        child: Container(
+            height: 70,
+            padding: EdgeInsets.only(bottom: 10, top: 5),
+            child: TabBar(indicatorSize: TabBarIndicatorSize.label, indicatorColor: Colors.red, indicatorWeight: 4, labelColor: Colors.white, unselectedLabelColor: Colors.black38, labelStyle: TextStyle(fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik')), tabs: [
+              Tab(
                 icon: Icon(
                   Icons.home,
                   size: 20,
-                  ),
+                ),
                 text: 'Home',
               ),
               Tab(
                 icon: Icon(
                   Icons.search,
                   size: 20,
-                  ),
+                ),
                 text: 'Search',
               ),
               Tab(
-                icon: Icon(
-                  Icons.people,
-                  size: 20,
+                  icon: Icon(
+                    Icons.people,
+                    size: 20,
                   ),
-                text: 'My')
-          ]
-        )
-      )
-    )
+                  text: 'My')
+            ])));
   }
 }
