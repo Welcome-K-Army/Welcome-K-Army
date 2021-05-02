@@ -28,26 +28,35 @@ class LoginPage extends StatelessWidget {
           //로그인 부
                 Stack(
                   children: <Widget>[
-                    Form(
-                      key: _formkey,
-                      child: Column(
-                        children: <Widget>[
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(icon:Icon(Icons.account_circle),
-                          labelText:"Email",
-                          ),
-                        ),//TextFormField 이메일 바
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(icon:Icon(Icons.vpn_key),
-                          labelText:"Password",
-                          ),
-                        ),//TextFormField 패스워드 바
-                        Text("Forgot Password"),
-                        ]//Widget
-                      )//Column
-                    ),//Form
+                    Padding(
+                      padding: EdgeInsets.all(12),
+                      child:Card(
+                        elevation:6,
+                        child:Padding(
+                          padding:const EdgeInsets.symmetric(horizontal: 12,top:12,bottom:32 ),
+                          child:Form(
+                            key: _formkey,
+                            child: Column(
+                              children: <Widget>[
+                              TextFormField(
+                                controller: _emailController,
+                                decoration: InputDecoration(icon:Icon(Icons.account_circle),
+                                labelText:"Email",
+                                ),
+                              ),//TextFormField 이메일 바
+                              TextFormField(
+                                controller: _passwordController,
+                                decoration: InputDecoration(icon:Icon(Icons.vpn_key),
+                                labelText:"Password",
+                                ),
+                              ),//TextFormField 패스워드 바
+                              Text("Forgot Password"),
+                              ]//Widget
+                            )//Column
+                          ),//Form
+                        ),//Padding
+                      ),//Card
+                    ),
                   ],//Widget
                 ), ////<Widget>[], Stack
           //하단 회원가입 연결 부
