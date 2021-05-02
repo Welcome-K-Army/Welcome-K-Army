@@ -13,33 +13,37 @@ class MyAppState extends State<MyApp> {
   String actionText = "Default";
   @override
   Widget build(BuildContext ctxt) {
-    return new MaterialApp(
+    return MaterialApp(
       title: "Welcome K-Army",
-      home: new Scaffold(
-          appBar: new AppBar(title: new Text("Hello Flutter App"), actions: <Widget>[
-            new IconButton(
-                icon: new Icon(Icons.add_comment),
-                onPressed: () {
-                  setState(() {
-                    actionText = "New Text";
-                  });
-                })
-          ]),
-          body: new Center(
-            child: new Column(
-              children: <Widget>[
-                widget.TextInput,
-                new Text(actionText),
-                new Checkbox(
-                    value: checkBoxValue,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        checkBoxValue = newValue;
-                      });
-                    })
-              ],
+      theme: ThemeData(primaryColor: Colors.blue),
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appbar: AppBar(
+            title: Text('welcome k-army'),
+          ),
+          body: TabBarView(
+            children: [
+              Text('홈 스크린'),
+              Text('검색 스크린'),
+              Text('마이 스크린'),
+            ],
+          ),
+          bottomNavigationBar: TabBar(tabs: [
+            Tab(
+              icon: Icon(Icons.home),
+              text: 'Home',
             ),
-          )),
+            Tab(
+              icon: Icon(Icons.search),
+              text: 'Search',
+            ),
+            Tab(
+              icon: Icon(,),
+              text: 'My'
+            )
+          ]),
+        )),
     );
   }
 }
