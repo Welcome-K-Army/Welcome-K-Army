@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'loginPage.dart';
 import 'package:provider/provider.dart';
 import 'data/join_or_login.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
