@@ -97,8 +97,9 @@ class LoginPage extends StatelessWidget {
     left: 32,
     right:32,
     bottom:0,
+    Padding(
+      padding:EdgeInsets.symmetric(vertical: 20, )
     child:RaisedButton(
-      height: 20,
       child: Text("Login"),
       color: Colors.green,
       shape: RoundedRectangleBorder(
@@ -108,5 +109,6 @@ class LoginPage extends StatelessWidget {
 
       }
     ),//RaisedButton
+    ),//Padding
   );//Positioned
 }
