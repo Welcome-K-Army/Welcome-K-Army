@@ -9,7 +9,5 @@ class JoinOrLogin extends ChangeNotifier{
   void toggle(isJoin){
     _isJoin=!_isJoin;
     notifyListeners();
-    
   }
-
 }
