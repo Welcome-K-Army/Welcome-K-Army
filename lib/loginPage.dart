@@ -31,6 +31,9 @@ class LoginPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(12),
                       child:Card(
+                        shpae:RoundedRectangleBorder(
+                          borderRadius:BorderRadius.circular(16)
+                        ),
                         elevation:6,
                         child:Padding(
                           padding: const EdgeInsets.only(left:12,right:12,top:12,bottom:32 ),
