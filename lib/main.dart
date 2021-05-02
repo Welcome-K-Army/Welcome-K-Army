@@ -46,3 +46,49 @@ class MyAppState extends State<MyApp> {
     );
   }
 }
+
+class BottomBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: colorThemeYellow(),
+      child: Container(
+        height: 70,
+        padding: EdgeInsets.only(bottom: 10, top: 5),
+        child: TabBar(
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: colorThemeRed(),
+          indicatorWeight: 4,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.black38,
+          labelStyle: TextStyle(
+            fontSize: 17, fontFamilyFallback: fontFamilyName('Yanolja')
+          ),
+
+          tabs: [
+            Tab(
+                icon: Icon(
+                  Icons.home,
+                  size: 20,
+                  ),
+                text: 'Home',
+              ),
+              Tab(
+                icon: Icon(
+                  Icons.search,
+                  size: 20,
+                  ),
+                text: 'Search',
+              ),
+              Tab(
+                icon: Icon(
+                  Icons.people,
+                  size: 20,
+                  ),
+                text: 'My')
+          ]
+        )
+      )
+    )
+  }
+}
