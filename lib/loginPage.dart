@@ -100,7 +100,11 @@ class LoginPage extends StatelessWidget {
               Container(
                 height:10,
               ),
-              Text("Forgot Password"),
+              Consumer<JoinOrLogin>(
+                builder: (context,value,child)=>Opacity(
+                    opacity:value.isJoin ?0:1,
+                    child:Text("Forgot Password")),
+                ),
               ]//Widget
             )//Column
           ),//Form
@@ -116,18 +120,20 @@ class LoginPage extends StatelessWidget {
     bottom:0,
     child:SizedBox(
       height:50,
-      child:RaisedButton(
-        child: Text("Login", style:TextStyle(fontSize:20,color:Colors.white),),
-        color: Colors.green,
-        shape: RoundedRectangleBorder(
-          borderRadius:BorderRadius.circular(15)
-        ),
-        onPressed:(){
-          if(_formkey.currentState.validate()){
-            
-          }
-        }
-      ),//RaisedButton
+      child:Consumer<JoinOrLogin>(
+        builder:(context,joinOrLogin,child)=>RaisedButton(
+            child: Text(joinOrLogin.isJoin?"Join":"Login", style:TextStyle(fontSize:20,color:Colors.white),),
+            color: joinOrLogin.isJoin?Colors.red:Colors.green,
+            shape: RoundedRectangleBorder(
+              borderRadius:BorderRadius.circular(15)
+            ),
+            onPressed:(){
+              if(_formkey.currentState.validate()){
+                
+              }
+            }
+          ),//RaisedButton
+      ),
     ),//SizedBox
   );//Positioned
 }
