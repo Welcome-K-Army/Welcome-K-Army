@@ -64,29 +64,29 @@ class BottomBar extends StatelessWidget {
               labelStyle: TextStyle(
                 fontSize: 17, fontFamilyFallback: fontFamilyName('Rubik'), 
             
-            tabs: new [
-              Tab(
-                icon: Icon(
-                  Icons.home,
-                  size: 20,
-                ),
-                text: 'Home',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.search,
-                  size: 20,
-                ),
-                text: 'Search',
-              ),
-              Tab(
+              tabs: [
+                Tab(
                   icon: Icon(
-                    Icons.people,
+                    Icons.home,
                     size: 20,
                   ),
-                  text: 'My'
-              )
-            ],
+                  text: 'Home',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.search,
+                    size: 20,
+                  ),
+                  text: 'Search',
+                ),
+                Tab(
+                    icon: Icon(
+                      Icons.people,
+                      size: 20,
+                    ),
+                    text: 'My'
+                )
+              ],
           ),
         ),
       ),
