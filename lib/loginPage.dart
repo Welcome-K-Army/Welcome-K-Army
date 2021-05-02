@@ -40,13 +40,11 @@ class LoginPage extends StatelessWidget {
                             borderRadius:BorderRadius.circular(15)
                           ),
                           onPressed:(){
-
                           }
                         ),//RaisedButton
-                      ),
-                    )//Positioned
-                  ],//Widget
-                ), ////<Widget>[], Stack
+                      ),//Positioned
+                  ],//<Widget>
+                ), //, Stack
           //하단 회원가입 연결 부
                 Text("Don't Have an Account?"),
                 Container(
