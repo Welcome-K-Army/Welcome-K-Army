@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
         ), //Stack
       ); //Scaffold
   }
-
+  //로그인 폼
   Widget _inputForm(Size size){
     return  Padding(
       padding: EdgeInsets.all(size.width*0.05),
@@ -97,6 +97,7 @@ class LoginPage extends StatelessWidget {
     );//Padding
   }
 
+  //로그인 버튼
   Widget _buttonLogin(Size size) => Positioned(
     left: size.width*0.15,
     right:size.width*0.15,
@@ -119,6 +120,8 @@ class LoginPage extends StatelessWidget {
   );//Positioned
 }
 
+
+//상단부 이미지
 Widget get _LogoImage => Expanded(
   child:Padding(
     padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
