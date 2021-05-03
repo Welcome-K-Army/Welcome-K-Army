@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
+import 'Home.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -57,6 +58,8 @@ class LoginPage extends StatelessWidget {
         ), //Stack
       ); //Scaffold
   }
+
+
   //로그인 폼
   Widget _inputForm(Size size){
     return  Padding(
@@ -131,7 +134,7 @@ class LoginPage extends StatelessWidget {
             ),
             onPressed:(){
               if(_formkey.currentState.validate()){
-                
+                joinOrLogin.isJoin?_register(context):_login(context);
               }
             }
           ),//RaisedButton
@@ -157,3 +160,26 @@ Widget get _LogoImage => Expanded(
 //   placeholder:"image/Loading.gif",
 //   image: "https://lh3.googleusercontent.com/proxy/w1P2JMIYg4J5bSkZ594flSX5dvIxDkQ9rO8dgcGNzgOPxkOkJACiHXplqzmrVX584Uqnr6QX0IVqWK83DaB4LMsxzGNm_c8nKublP_uKmxgqmSPS9QZzs8z8-30uHa1i",
 // ),
+
+
+void _login(BuildContext context) async{// 계정생성 메서드
+  final AuthResult result =await FirebaseAuth.instance.signInUWithEmailAndPassword(email:_emailController.text,password:_passwordController.text)
+  final FirebaseUser user = result.user;
+
+  if(user==null){
+    final snacBar = SnackBar(content : Text("Please try again later."),);
+    Scaffold.of(context).showSnackBar(snacBar);
+  }
+
+
+void _register(BuildContext context) async{// 계정생성 메서드
+  final AuthResult result =await FirebaseAuth.instance.createUserWithEmailAndPassword(email:_emailController.text,password:_passwordController.text)
+  final FirebaseUser user = result.user;
+
+  if(user==null){
+    final snacBar = SnackBar(content : Text("Please try again later."),);
+    Scaffold.of(context).showSnackBar(snacBar);
+  }
+
+  //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
+}
