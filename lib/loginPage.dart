@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 
 
@@ -43,7 +44,7 @@ class LoginPage extends StatelessWidget {
                     onTap: (){
                       joinOrLogin.toggle();
                     },
-                    child:Text(joinOrLogin.isJoin?"Sign in":"Don't you have an Account?",
+                    child:Text(joinOrLogin.isJoin?"Already have an Account?":"Don't you have an Account?",
                     style: TextStyle(color:joinOrLogin.isJoin?Colors.red:Colors.green,))
                   ),
                 ),
@@ -98,17 +99,6 @@ class LoginPage extends StatelessWidget {
                   return null;
                 }
               ),//TextFormField 패스워드
-              Consumer<JoinOrLogin>(
-                builder: (context,value,child)=>
-                  if (value.isjoin) {
-                    return Widget(
-                    TextFormField(),
-                    TextFormField(),
-                    TextFormField(),
-                    TextFormField(),
-                    )
-                  }
-              ),
               Container(
                 height:10,
               ),
@@ -134,7 +124,7 @@ class LoginPage extends StatelessWidget {
       height:50,
       child:Consumer<JoinOrLogin>(
         builder:(context,joinOrLogin,child)=>RaisedButton(
-            child: Text(joinOrLogin.isJoin?"Join":"Login", style:TextStyle(fontSize:20,color:Colors.white),),
+            child: Text(joinOrLogin.isJoin?"Sign Up":"Sign In", style:TextStyle(fontSize:20,color:Colors.white),),
             color: joinOrLogin.isJoin?Colors.red:Colors.green,
             shape: RoundedRectangleBorder(
               borderRadius:BorderRadius.circular(15)
