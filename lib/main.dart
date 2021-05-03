@@ -29,19 +29,6 @@ class MyAppState extends State<MyApp> {
               ],
             ),
             bottomNavigationBar: BottomBar(),
-            /*
-            TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-                text: 'Home',
-              ),
-              Tab(
-                icon: Icon(Icons.search),
-                text: 'Search',
-              ),
-              Tab(icon: Icon(Icons.people), text: 'My')
-            ]),
-            */
           )),
     );
   }
@@ -51,42 +38,41 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.yellow,
-        child: Container(
-            height: 70,
-            padding: EdgeInsets.only(bottom: 10, top: 5),
-            child: TabBar(
-              indicatorSize: TabBarIndicatorSize.label, 
-              indicatorColor: Colors.red, 
-              indicatorWeight: 4, 
-              labelColor: Colors.white, 
-              unselectedLabelColor: Colors.black38, 
-              labelStyle: TextStyle(
-                fontSize: 17, /*fontFamilyFallback: fontFamilyName('Rubik')*/), 
-            
-              tabs: [
-                Tab(
-                  icon: Icon(
-                    Icons.home,
-                    size: 20,
-                  ),
-                  text: 'Home',
+      color: Colors.yellow,
+      child: Container(
+        height: 70,
+        padding: EdgeInsets.only(bottom: 10, top: 5),
+        child: TabBar(
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: Colors.red,
+          indicatorWeight: 4,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.black38,
+          labelStyle: TextStyle(
+            fontSize: 17, /*fontFamilyFallback: fontFamilyName('Rubik')*/
+          ),
+          tabs: [
+            Tab(
+              icon: Icon(
+                Icons.home,
+                size: 20,
+              ),
+              text: 'Home',
+            ),
+            Tab(
+              icon: Icon(
+                Icons.search,
+                size: 20,
+              ),
+              text: 'Search',
+            ),
+            Tab(
+                icon: Icon(
+                  Icons.people,
+                  size: 20,
                 ),
-                Tab(
-                  icon: Icon(
-                    Icons.search,
-                    size: 20,
-                  ),
-                  text: 'Search',
-                ),
-                Tab(
-                    icon: Icon(
-                      Icons.people,
-                      size: 20,
-                    ),
-                    text: 'My'
-                )
-              ],
+                text: 'My')
+          ],
         ),
       ),
     );
