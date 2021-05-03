@@ -162,7 +162,7 @@ Widget get _LogoImage => Expanded(
 // ),
 
 
-void _login(BuildContext context) async{// 계정생성 메서드
+void _login(BuildContext context) async{// 로그인 메서드
   final AuthResult result =await FirebaseAuth.instance.signInUWithEmailAndPassword(email:_emailController.text,password:_passwordController.text)
   final FirebaseUser user = result.user;
 
@@ -170,7 +170,7 @@ void _login(BuildContext context) async{// 계정생성 메서드
     final snacBar = SnackBar(content : Text("Please try again later."),);
     Scaffold.of(context).showSnackBar(snacBar);
   }
-
+}
 
 void _register(BuildContext context) async{// 계정생성 메서드
   final AuthResult result =await FirebaseAuth.instance.createUserWithEmailAndPassword(email:_emailController.text,password:_passwordController.text)
