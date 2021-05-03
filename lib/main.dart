@@ -49,13 +49,13 @@ class BottomBar extends StatelessWidget {
           labelColor: Colors.white,
           unselectedLabelColor: Colors.black38,
           labelStyle: TextStyle(
-            fontSize: 17, /*fontFamilyFallback: fontFamilyName('Rubik')*/
+            fontSize: 14, /*fontFamilyFallback: fontFamilyName('Rubik')*/
           ),
           tabs: [
             Tab(
               icon: Icon(
                 Icons.home,
-                size: 10,
+                size: 20,
               ),
               text: 'Home',
             ),
