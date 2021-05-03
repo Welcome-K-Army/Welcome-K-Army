@@ -98,11 +98,17 @@ class LoginPage extends StatelessWidget {
                   return null;
                 }
               ),//TextFormField 패스워드
-              TextFormField(),
-              TextFormField(),
-              TextFormField(),
-              TextFormField(),
-              
+              Consumer<JoinOrLogin>(
+                builder: (context,value,child)=>
+                  if (value.isjoin) {
+                    return Widget(
+                    TextFormField(),
+                    TextFormField(),
+                    TextFormField(),
+                    TextFormField(),
+                    )
+                  }
+              ),
               Container(
                 height:10,
               ),
