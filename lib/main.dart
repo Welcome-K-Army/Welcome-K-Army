@@ -55,7 +55,7 @@ class BottomBar extends StatelessWidget {
             Tab(
               icon: Icon(
                 Icons.home,
-                size: 20,
+                size: 10,
               ),
               text: 'Home',
             ),
