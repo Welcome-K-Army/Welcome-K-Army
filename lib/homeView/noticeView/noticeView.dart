@@ -31,7 +31,20 @@ class NoticeViewState extends State<NoticeView> {
                 ),
               ], // Row children
             ), // Row
-            Image.network(imgList[0]),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: ListView(
+                children: <Widget>[
+                    title: Column(
+                      children: <Widget>[
+                        Text(data),
+                        Text(data),
+                      ], // ListTile Column children
+                    ), // ListTile Column
+                  ), // ListTile
+                ], // ListView children 
+              ), // ListView
+            ), // Padding
           ], // Column children
         ), // Column
       ), // Padding
