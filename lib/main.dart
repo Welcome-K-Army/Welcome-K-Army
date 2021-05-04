@@ -10,10 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ChangeNotifierProvider<JoinOrLogin>.value(
-          value: JoinOrLogin(), 
-          child: LoginPage())//ChangeNotifierProvider
-      //Splash(),
+      home: Splash(),
     ); //MaterialApp
   }
 }
