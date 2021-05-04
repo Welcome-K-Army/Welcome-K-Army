@@ -13,7 +13,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'welcome k-army',
-      theme: ThemeDate(primarycolor: Colors.blue),
+      theme: ThemeData(primarycolor: Colors.blue),
       home: MainView(),
     );
   }
