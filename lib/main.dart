@@ -15,7 +15,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp()(
       title: 'welcome k army',
-      theme: ThemeData(primarycolor: Colors.blue),
+      theme: ThemeData(primaryColor: Colors.blue),
       home: MainView(),
     );
   }
