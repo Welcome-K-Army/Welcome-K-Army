@@ -22,7 +22,7 @@ class NoticeState extends State<Notice> {
             Row(
               children: <Widget>[
                 Icon(Icons.star, size: 20),
-                Text("Notice"),
+                Text("  Notice"),
               ], // Row children
             ), // Row
             Image.network(imgList[0]),
