@@ -16,11 +16,14 @@ class SildeBannerState extends State<SlideBanner> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      color: Color(0xFFEDF0F4),
+      height: 280,
       child: Padding(
           padding: EdgeInsets.all(10),
           child: Swiper(
-              control: SwiperControl(),
+              autoplay: true,
+              scale: 0.9,
+              viewportFraction: 0.8,
               pagination: SwiperPagination(),
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
