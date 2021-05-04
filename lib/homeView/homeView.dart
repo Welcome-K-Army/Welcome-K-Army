@@ -14,12 +14,11 @@ class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-            child: Column(children: [
+        child: Column(children: [
       SlideBanner(),
       Notice(),
     ] // Column children
-                ) // Column
-            ) // Scaffold
+            ) // Column
         ); // Return Widget
   } // Wdiget
 } // Class
