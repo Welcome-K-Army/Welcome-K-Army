@@ -12,7 +12,7 @@ class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      home: SlideBanner(),
+      body: SlideBanner(),
     );
   }
 }
