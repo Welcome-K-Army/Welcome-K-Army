@@ -13,18 +13,22 @@ class NoticeState extends State<Notice> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color(0xFFEDF0F4),
-        height: 280,
-        child: Column(children: <Widget>[
-          Row(
-            children: <Widget>[
-              Icon(Icons.star, size: 20),
-              Text("Notice"),
-            ], // Row children
-          ), // Row
-          Image.network(imgList[0]),
-        ] // Column children
-            ) // Column
-        ); // Container
+      color: Color(0xFFEDF0F4),
+      height: 280,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.star, size: 20),
+                Text("Notice"),
+              ], // Row children
+            ), // Row
+            Image.network(imgList[0]),
+          ], // Column children
+        ), // Column
+      ), // Padding
+    ); // Container
   }
 }
