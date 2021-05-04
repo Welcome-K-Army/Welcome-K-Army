@@ -13,8 +13,8 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return <Widget>(Scaffold(
-            body: Column(children: [
+    return Container(
+            child: Column(children: [
       SlideBanner(),
       Notice(),
     ] // Column children
