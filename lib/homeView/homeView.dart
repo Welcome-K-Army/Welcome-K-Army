@@ -14,7 +14,7 @@ class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(children: [
+        child: ListView(children: [
       SlideBanner(),
       Notice(),
     ] // Column children
