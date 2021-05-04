@@ -1,41 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
+import 'mainView/mainView.dart';
 
-class BottomBar extends StatelessWidget {
+//bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
+class MyApp extends StatefulWidget {
+  MyAppState createState() => new MyAppState();
+}
+
+//Bottom Tab으로 구성된 MainView, View 추가시 length 값 변경 및 body의 TabBarView에 생성자 추가할 것
+class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-      child: Container(
-        height: 70,
-        padding: EdgeInsets.only(bottom: 10, top: 5),
-        child: TabBar(
-          //indicator는 현재 선택된 Tab에 대한 정보, 추후 디자인 수정 요망
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: Colors.red,
-          indicatorWeight: 4,
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.black38,
-          labelStyle: TextStyle(
-            fontSize: 14,
-          ),
-
-          tabs: [
-            Tab(
-              icon: Icon(Icons.home, size: 20),
-              text: 'Home',
-            ),
-            Tab(
-              icon: Icon(Icons.search, size: 20),
-              text: 'Search',
-            ),
-            Tab(
-              icon: Icon(Icons.people, size: 20),
-              text: 'My',
-            ),
-          ],
-        ),
-      ),
+    return MaterialApp()(
+      title: 'welcome k army',
+      theme: ThemeData(primarycolor: Colors.blue),
+      home: MainView(),
     );
   }
 }
