@@ -5,6 +5,7 @@ import 'bottomBar.dart';
 
 import '../homeView/homeView.dart';
 import '../homeView/slideBanner.dart';
+import '../homeView/notice.dart';
 
 //bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
 class MainView extends StatefulWidget {
@@ -24,7 +25,8 @@ class MainViewState extends State<MainView> {
         body: TabBarView(
           children: [
             SlideBanner(),
-            Text('검색 스크린'),
+            Notice(),
+            // Text('검색 스크린'),
             Text('마이 스크린'),
           ],
         ),
