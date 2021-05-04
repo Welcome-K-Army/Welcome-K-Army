@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'bottomBar.dart';
 
-import 'homeView/homeView.dart';
+import 'lib/homeView/homeView.dart';
 
 //bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
 class MainView extends StatefulWidget {
