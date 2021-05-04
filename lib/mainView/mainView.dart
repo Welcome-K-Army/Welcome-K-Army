@@ -24,7 +24,7 @@ class MainViewState extends State<MainView> {
         ),
         body: TabBarView(
           children: [
-            SlideBanner(),
+            HomeView(),
             Notice(),
             // Text('검색 스크린'),
             Text('마이 스크린'),

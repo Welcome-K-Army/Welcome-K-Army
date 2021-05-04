@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
+
 import 'slideBanner.dart';
+import 'notice.dart';
 
 //bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
 class HomeView extends StatefulWidget {
@@ -11,8 +13,13 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlideBanner(),
-    );
-  }
-}
+    return Widget(Scaffold(
+            body: Column(children: [
+      SlideBanner(),
+      Notice(),
+    ] // Column children
+                ) // Column
+            ) // Scaffold
+        ); // Return Widget
+  } // Wdiget
+} // Class
