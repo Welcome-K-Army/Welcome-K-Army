@@ -14,7 +14,7 @@ class SlideBanner extends StatefulWidget {
 
 class SildeBannerState extends State<SlideBanner> {
   @override
-  Widget builder(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         height: 250,
