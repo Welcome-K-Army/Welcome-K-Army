@@ -26,7 +26,7 @@ class NoticeState extends State<Notice> {
                   child: Icon(Icons.star, size: 20),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 5, bottom: 5),
+                  padding: EdgeInsets.only(bottom: 5),
                   child: Text("Notice"),
                 ),
               ], // Row children
