@@ -9,7 +9,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      appBar: AppBar(
+      child: AppBar(
         title: Text(email),
       ),
       body: Container(

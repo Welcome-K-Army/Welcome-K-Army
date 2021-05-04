@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SteamBuilder<User>(
-      steam :FirebaseAuth.instance.authStateChanges(),
+    return StreamBuilder<User>(
+      stream :FirebaseAuth.instance.authStateChanges(),
       builder: (context , snapshot){
         if(snapshot.data==null){
         return ChangeNotifierProvider<JoinOrLogin>.value(
