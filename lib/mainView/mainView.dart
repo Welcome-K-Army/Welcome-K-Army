@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'bottomBar.dart';
 
 import '../homeView/homeView.dart';
+import '../homeView/slideBanner.dart';
 
 //bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
 class MainView extends StatefulWidget {
@@ -22,7 +23,7 @@ class MainViewState extends State<MainView> {
         ),
         body: TabBarView(
           children: [
-            HomeView(),
+            SlideBanner(),
             Text('검색 스크린'),
             Text('마이 스크린'),
           ],
