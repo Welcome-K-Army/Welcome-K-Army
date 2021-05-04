@@ -22,12 +22,9 @@ class SildeBannerState extends State<SlideBanner> {
           padding: EdgeInsets.all(10),
           child: Swiper(
               autoplay: true,
-              scale: 0.9,
+              scale: 0.8,
               viewportFraction: 1,
-              Padding(
-                padding: EdgeInsets.only(top: 5),
-                child: pagination: SwiperPagination(),
-              )
+              pagination: SwiperPagination(),
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Image.network(imgList[index]);
