@@ -24,7 +24,10 @@ class SildeBannerState extends State<SlideBanner> {
               autoplay: true,
               scale: 0.9,
               viewportFraction: 1,
-              pagination: SwiperPagination(),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: pagination: SwiperPagination(),
+              )
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Image.network(imgList[index]);
