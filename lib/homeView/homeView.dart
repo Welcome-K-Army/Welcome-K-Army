@@ -11,7 +11,7 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Scaffold(
       home: SlideBanner(),
     );
   }

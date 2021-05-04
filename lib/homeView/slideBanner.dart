@@ -15,20 +15,18 @@ class SlideBanner extends StatefulWidget {
 class SildeBannerState extends State<SlideBanner> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: 250,
-        child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Swiper(
-                control: SwiperControl(),
-                pagination: SwiperPagination(),
-                itemCount: imgList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Image.network(imgList[index]);
-                }) // Swiper
-            ), // Padding
-      ), // Container
-    ); // Scaffold
+    return Container(
+      height: 250,
+      child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Swiper(
+              control: SwiperControl(),
+              pagination: SwiperPagination(),
+              itemCount: imgList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Image.network(imgList[index]);
+              }) // Swiper
+          ), // Padding
+    ); // Container
   }
 }
