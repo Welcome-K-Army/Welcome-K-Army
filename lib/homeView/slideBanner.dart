@@ -4,7 +4,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 
 final List<String> imgList = [
   'https://reasley.com/wp-content/uploads/2020/04/one.jpg',
-  'https://reasley.com/wp-content/uploads/2020/04/twojpg',
+  'https://reasley.com/wp-content/uploads/2020/04/two.jpg',
   'https://reasley.com/wp-content/uploads/2020/04/three.jpg'
 ];
 
