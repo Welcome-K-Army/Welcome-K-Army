@@ -4,8 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'loginPage.dart';
 import 'joinOrLogin.dart';
 import 'Home.dart';
-void main() => runApp(MyApp());
-
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,8 +21,8 @@ class MyApp extends StatelessWidget {
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SteamBuilder<FirebaseUser>(
-      steam :FirebaseAuth.instance.onAuthStateChanged,
+    return SteamBuilder<User>(
+      steam :FirebaseAuth.instance.authStateChanges(),
       builder: (context , snapshot){
         if(snapshot.data==null){
         return ChangeNotifierProvider<JoinOrLogin>.value(
@@ -32,3 +35,17 @@ class Splash extends StatelessWidget {
     );//SteamBuilder
   }
 }
+
+// 2021년 2월 23일 기준
+// Authresult -> UserCredential
+// FirebaseUser -> User
+
+// main.dart  파일 수정
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(MyApp());
+// }
+
+// StreamBuilder 부분
+// stream: FirebaseAuth.instance.authStateChanges()
