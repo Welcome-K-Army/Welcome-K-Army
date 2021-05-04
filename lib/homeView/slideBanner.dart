@@ -23,7 +23,7 @@ class SildeBannerState extends State<SlideBanner> {
           child: Swiper(
               autoplay: true,
               scale: 0.9,
-              viewportFraction: 0.9,
+              viewportFraction: 1,
               pagination: SwiperPagination(),
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
