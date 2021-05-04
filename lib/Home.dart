@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:flutter/foundation.dart';
 class MainPage extends StatelessWidget {
   MainPage(this.email);
 
@@ -8,8 +8,8 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text(email),
       ),
       body: Container(
