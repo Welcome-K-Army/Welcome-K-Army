@@ -14,7 +14,7 @@ class HomeViewState extends State<HomeView> {
     return Container(
         child: ListView(children: [
       SlideBanner(),
-      Notice(),
+      NoticeView(),
     ] // Column children
             ) // Column
         ); // Return Widget

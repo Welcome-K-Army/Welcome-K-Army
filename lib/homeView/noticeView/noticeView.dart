@@ -5,11 +5,11 @@ final List<String> imgList = [
   'https://reasley.com/wp-content/uploads/2020/04/one.jpg',
 ];
 
-class Notice extends StatefulWidget {
-  NoticeState createState() => new NoticeState();
+class NoticeView extends StatefulWidget {
+  NoticeViewState createState() => new NoticeViewState();
 }
 
-class NoticeState extends State<Notice> {
+class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
