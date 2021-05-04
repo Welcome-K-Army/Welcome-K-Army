@@ -18,7 +18,8 @@ class SildeBannerState extends State<SlideBanner> {
     return Scaffold(
       body: Container(
         height: 250,
-        child: Padding(EdgesInsets.all(10),
+        child: Padding(
+            padding: EdgesInsets.all(10),
             child: Swiper(
                 control: SwiperControl(),
                 pagination: SwiperPagination(),
