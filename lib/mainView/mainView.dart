@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'slideBanner.dart';
-import './noticeView/noticeView.dart';
+import 'bottomBar.dart';
 
-class HomeView extends StatefulWidget {
-  HomeViewState createState() => new HomeViewState();
+import '../homeView/homeView.dart';
+import '../homeView/slideBanner.dart';
+
+//bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
+class MainView extends StatefulWidget {
+  MainViewState createState() => new MainViewState();
 }
 
-class HomeViewState extends State<HomeView> {
+//Bottom Tab으로 구성된 MainView, View 추가시 length 값 변경 및 body의 TabBarView에 생성자 추가할 것
+class MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ListView(children: [
-      SlideBanner(),
-      NoticeView(),
-    ] // Column children
-            ) // Column
-        ); // Return Widget
-  } // Wdiget
-} // Class
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('welcome k-army'),
+        ),
+        body: TabBarView(
+          children: [
+            HomeView(),
+            Text('검색 스크린'),
+            Text('마이 스크린'),
+          ],
+        ),
+        bottomNavigationBar: BottomBar(),
+      ),
+    );
+  }
+}
