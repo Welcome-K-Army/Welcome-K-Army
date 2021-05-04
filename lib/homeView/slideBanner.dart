@@ -9,7 +9,7 @@ final List<String> imgList = [
 ];
 
 class SlideBanner extends StatefulWidget {
-  SildeBannerState createState() => new SlideBannerState();
+  SildeBannerState createState() => new SildeBannerState();
 }
 
 class SildeBannerState extends State<SlideBanner> {
