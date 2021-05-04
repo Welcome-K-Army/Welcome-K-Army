@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp()(
+    return MaterialApp(
       title: 'welcome k army',
       theme: ThemeData(primaryColor: Colors.blue),
       home: MainView(),
