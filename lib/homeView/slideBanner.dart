@@ -19,7 +19,7 @@ class SildeBannerState extends State<SlideBanner> {
       body: Container(
         height: 250,
         child: Padding(
-            padding: EdgesInsets.all(10),
+            padding: EdgeInsets.all(10),
             child: Swiper(
                 control: SwiperControl(),
                 pagination: SwiperPagination(),
