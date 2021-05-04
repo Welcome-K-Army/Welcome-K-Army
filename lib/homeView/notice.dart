@@ -22,10 +22,13 @@ class NoticeState extends State<Notice> {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(0,0,5,5),
+                  padding: EdgeInsets.only(0, 0, 5, 5),
                   child: Icon(Icons.star, size: 20),
-                )
-                Text("Notice"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(5, 0, 0, 5),
+                  child: Text("Notice"),
+                ),
               ], // Row children
             ), // Row
             Image.network(imgList[0]),
