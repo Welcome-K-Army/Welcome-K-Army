@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 import 'slideBanner.dart';
-import 'notice.dart';
+import './noticeView/noticeView.dart';
 
 class HomeView extends StatefulWidget {
   HomeViewState createState() => new HomeViewState();
