@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MainPage extends StatelessWidget {
-  MainPage({this.email});
+  MainPage(this.email);
 
   final String email;
 
