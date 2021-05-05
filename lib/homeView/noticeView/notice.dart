@@ -19,13 +19,10 @@ class NoticeTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: Column(
-      children: <Widget>[
-        Text(_notice.title),
-        Text(_notice.context),
-        Text(_notice.date),
-      ], // ListTile Column children
-    ));
+        title: _notice.title;
+        subtitle: _notice.date;
+      ], 
+    ); // ListTile
   }
 }
 
