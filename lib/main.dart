@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     ); //MaterialApp
   }
 }
-
+ 
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

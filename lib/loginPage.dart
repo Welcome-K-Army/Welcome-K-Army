@@ -177,6 +177,8 @@ class LoginPage extends StatelessWidget {
           content: Text("Wrong password provided for that user."),
         );
       }
+    }
+    catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
