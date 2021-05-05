@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'joinOrLogin.dart';
-import 'Home.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -168,8 +166,8 @@ class LoginPage extends StatelessWidget {
     final User user = result.user;
 
     if(user==null){
-      final snacBar = SnackBar(content : Text("Please try again later."),);
-      Scaffold.of(context).showSnackBar(snacBar);
+      final snackBar = SnackBar(content : Text("Please try again later."),);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
@@ -179,8 +177,8 @@ class LoginPage extends StatelessWidget {
     final User user = result.user;
 
     if(user==null){
-      final snacBar = SnackBar(content : Text("Please try again later."),);
-      Scaffold.of(context).showSnackBar(snacBar);
+      final snackBar = SnackBar(content : Text("Please try again later."),);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
 
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
