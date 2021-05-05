@@ -38,7 +38,7 @@ class HeaderTile {
                 borderRadius: BorderRadius.circular(36.0),
                 child: Container(
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(color: Color.black38, offset: Offset(3.0, 6.0), blurRadius: 10.0),
+                  BoxShadow(color: Colors.black12, offset: Offset(3.0, 6.0), blurRadius: 10.0),
                 ] // boxShadw
                         ) // BoxDecoration
                     ) // Container
