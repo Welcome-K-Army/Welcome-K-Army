@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
-class MyStatelessWidget extends StatefulWidget {
+class ForgetPw extends StatefulWidget {
   @override
   _ForgetPwState createState() => _ForgetPwState();
 }
 
-class _ForgetPwState extends State<ForgetPw< {
+class _ForgetPwState extends State<> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
 
