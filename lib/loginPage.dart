@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                   height: 10,
                 ),
                 Consumer<JoinOrLogin>(
-                  builder: (context, value, child) => Opacity(opacity: value.isJoin ? 0 : 1, child: Text("Forgot Password")),
+                  builder: (context, value, child) => Opacity(opacity: value.isJoin ? 0 : 1, child: GestureDetector(onTap: isJoin ? null : goToForgetPw(context), child: Text("Forgot Password"))),
                 ),
               ] //Widget
                   ) //Column
@@ -108,6 +108,10 @@ class LoginPage extends StatelessWidget {
         ), //Padding
       ), //Card
     ); //Padding
+  }
+
+  void goToForgetPw(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
 
   //로그인 버튼
@@ -141,7 +145,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              backgroundImage: NetworkImage("https://previews.123rf.com/images/phanuchat/phanuchat1604/phanuchat160400014/55601666-%EA%B5%B0%EC%82%AC-%EB%82%A8%EC%84%B1%EA%B3%BC-%EC%97%AC%EC%84%B1-%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD-%EA%B7%80%EC%97%AC%EC%9A%B4-%ED%94%8C%EB%9E%AB-%EB%A7%8C%ED%99%94-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B2%A9%EB%A6%AC-%EB%90%9C-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%8F%89%EB%A9%B4-%EB%A7%8C%ED%99%94-%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%94%94%EC%9E%90%EC%9D%B8%EC%97%90-%EC%9C%84%EC%9E%A5-%EC%A0%9C%EB%B3%B5%EC%9D%84-%EC%9E%85%EC%9D%80-%EA%B5%B0%EC%9D%B8.jpg"),
+              backgroundImage: "image/Loading.gif",
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding
