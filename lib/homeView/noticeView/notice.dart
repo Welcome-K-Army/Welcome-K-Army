@@ -20,8 +20,7 @@ class NoticeTile {
   Widget build(BuildContext context) {
     return ListTile(
         title: _notice.title,
-        subtitle: _notice.date,
-      ], 
+        subtitle: _notice.date, 
     ); // ListTile
   }
 }
