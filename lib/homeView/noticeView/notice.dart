@@ -31,6 +31,9 @@ class NoticeTile extends StatelessWidget {
     return ListTile(
       title: Text(_notice.title),
       subtitle: Text(_notice.date_yMd),
+      onTab: () {
+        
+      },
     ); // ListTile
   }
 }
