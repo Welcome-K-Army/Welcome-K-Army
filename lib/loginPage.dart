@@ -100,7 +100,9 @@ class LoginPage extends StatelessWidget {
                   height: 10,
                 ),
                 Consumer<JoinOrLogin>(
-                  builder: (context, value, child) => Opacity(opacity: value.isJoin ? 0 : 1, child: GestureDetector(onTap: isJoin ? null : (){goToForgetPw(context);}, child: Text("Forgot Password"))),
+                  builder: (context, value, child) => Opacity(
+                    opacity: value.isJoin ? 0 : 1,
+                    child: GestureDetector(onTap: value.isJoin ? null : (){goToForgetPw(context);}, child: Text("Forgot Password"))),
                 ),
               ] //Widget
                   ) //Column
@@ -145,7 +147,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              backgroundImage: "image/Loading.gif",
+              backgroundImage: NetworkImage("image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding

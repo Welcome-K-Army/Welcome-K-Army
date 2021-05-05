@@ -19,7 +19,7 @@ class _ForgetPwState extends State<ForgetPw> {
       ),
       body: Form(
         key: _formkey,
-        Column(
+        child :Column(
           children:<Widget>[
             TextFormField(
             //이메일
