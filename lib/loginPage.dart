@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import "joinOrLogin.dart";
+import 'joinOrLogin.dart';
 
 
-class LoginPage "xtends StatelessWidget {
+class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();//email 컨트롤러
   final TextEditingController _passwordController = TextEditingController();//password 컨트롤러
