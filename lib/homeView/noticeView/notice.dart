@@ -19,8 +19,8 @@ class NoticeTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: _notice.title,
-        subtitle: _notice.date, 
+      title: Text(_notice.title),
+      subtitle: Text(_notice.date),
     ); // ListTile
   }
 }
