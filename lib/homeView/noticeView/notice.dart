@@ -3,12 +3,22 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'package:intl/intl.dart';
 
+import 'person.dart';
+
+final List<Notice> noticeList = [
+  new Notice(title: "Intro", context: 'Hello World', person: personList[0]),
+  new Notice(title: 'App Info', context: 'Welcome K Army', person: personList[1]),
+  new Notice(title: 'Outtro', context: 'Good Bye', person: personList[2]),
+];
+
 class Notice {
-  var date = DateFormat.yMd().format(new DateTime.now());
+  var date_yMd = DateFormat.yMd().format(new DateTime.now());
+  var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
   String title;
   String context;
+  Person person;
 
-  Notice({this.title, this.context});
+  Notice({this.title, this.context, this.person});
 }
 
 class NoticeTile extends StatelessWidget {
@@ -20,7 +30,7 @@ class NoticeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(_notice.title),
-      subtitle: Text(_notice.date),
+      subtitle: Text(_notice.date_yMd),
     ); // ListTile
   }
 }
