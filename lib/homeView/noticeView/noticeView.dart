@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import 'notice.dart';
+
 final List<String> noticeList = [
-  
+  Notice('Intro', 'Hello World'),
+  Notice('App Info', 'Welcome K Army'),
+  Notice('Outtro', 'Good Bye'),
 ];
 
 class NoticeView extends StatefulWidget {
@@ -31,20 +35,16 @@ class NoticeViewState extends State<NoticeView> {
                 ),
               ], // Row children
             ), // Row
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: ListView(
-                children: <Widget>[
-                    title: Column(
-                      children: <Widget>[
-                        Text(data),
-                        Text(data),
-                      ], // ListTile Column children
-                    ), // ListTile Column
-                  ), // ListTile
-                ], // ListView children 
-              ), // ListView
-            ), // Padding
+            ListView.separated(
+                itemCount: noticeList.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) return HeaderTile();
+                  return NoticeTile(noticeList[index - 1]);
+                },
+                separatorBuilder: (context, header) {
+                  if (index == 0) return SizedBox.shrink();
+                  return const Divider();
+                }), // ListView
           ], // Column children
         ), // Column
       ), // Padding
