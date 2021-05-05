@@ -30,10 +30,10 @@ class HeaderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: SizedBox(
-            width: 36.0,
-            height: 25.0,
+            width: 6.0,
+            height: 3.0,
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(36.0),
+                borderRadius: BorderRadius.circular(6.0),
                 child: Container(
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
                   BoxShadow(color: Colors.black12, offset: Offset(3.0, 6.0), blurRadius: 10.0),
