@@ -7,7 +7,7 @@ class ForgetPw extends StatefulWidget {
   _ForgetPwState createState() => _ForgetPwState();
 }
 
-class _ForgetPwState extends State<> {
+class _ForgetPwState extends State<ForgetPw> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
 
