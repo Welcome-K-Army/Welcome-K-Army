@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-final List<String> imgList = [
-  'https://reasley.com/wp-content/uploads/2020/04/one.jpg',
+final List<String> noticeList = [
+  
 ];
 
 class NoticeView extends StatefulWidget {
