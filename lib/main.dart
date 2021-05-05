@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_web_plugins/flutter-web_plugins.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'loginPage.dart';
 import 'joinOrLogin.dart';
 import 'Home.dart';
