@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_web_plugins';
+import 'package:flutter_web_plugins/flutter-web_plugins.dart';
 import 'loginPage.dart';
 import 'joinOrLogin.dart';
 import 'Home.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -27,17 +26,14 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User>(
-      stream :FirebaseAuth.instance.authStateChanges(),
-      builder: (context , snapshot){
-        if(snapshot.data==null){
-          return ChangeNotifierProvider<JoinOrLogin>.value(
-            value: JoinOrLogin(), 
-            child: LoginPage());//ChangeNotifierProvider
-        }else{
-          return MainPage(email:snapshot.data.email);
-        }
-      }
-    );//SteamBuilder
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return ChangeNotifierProvider<JoinOrLogin>.value(value: JoinOrLogin(), child: LoginPage()); //ChangeNotifierProvider
+          } else {
+            return MainPage(email: snapshot.data.email);
+          }
+        }); //SteamBuilder
   }
 }
 
