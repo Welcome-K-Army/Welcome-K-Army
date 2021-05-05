@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                   height: 10,
                 ),
                 Consumer<JoinOrLogin>(
-                  builder: (context, value, child) => Opacity(opacity: value.isJoin ? 0 : 1, child: GestureDetector(onTap: isJoin ? null : goToForgetPw(context), child: Text("Forgot Password"))),
+                  builder: (context, value, child) => Opacity(opacity: value.isJoin ? 0 : 1, child: GestureDetector(onTap: isJoin ? null : (){goToForgetPw(context);}, child: Text("Forgot Password"))),
                 ),
               ] //Widget
                   ) //Column
