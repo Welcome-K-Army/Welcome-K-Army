@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 class Notice {
-  var date = DateTime.now();
+  var date = DateFormat.ymd().format(new DateTime.now());
   String title;
   String context;
 
@@ -35,10 +35,10 @@ class HeaderTile {
             width: 36.0,
             height: 25.0,
             child: ClipRRect(
-                borderRadius: BorderRadius.circula(36.0),
+                borderRadius: BorderRadius.circular(36.0),
                 child: Container(
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(color: Color.black12, offset: Offset(3.0, 6.0), blurRadius: 10.0),
+                  BoxShadow(color: Color.black38, offset: Offset(3.0, 6.0), blurRadius: 10.0),
                 ] // boxShadw
                         ) // BoxDecoration
                     ) // Container
