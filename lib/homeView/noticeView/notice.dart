@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 class Notice {
-  var date = DateTime().now;
+  var date = DateTime.now();
   String title;
   String context;
 
