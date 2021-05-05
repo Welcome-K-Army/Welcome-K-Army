@@ -13,5 +13,5 @@ final List<Person> personList = [
 class Person {
   String name;
 
-  Notice({this.name});
+  Person({this.name});
 }
