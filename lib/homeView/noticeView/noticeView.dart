@@ -36,6 +36,7 @@ class NoticeViewState extends State<NoticeView> {
               ], // Row children
             ), // Row
             ListView.separated(
+                shrinkWrap: treu,
                 itemCount: noticeList.length,
                 itemBuilder: (context, index) {
                   if (index == 0) return HeaderTile();
