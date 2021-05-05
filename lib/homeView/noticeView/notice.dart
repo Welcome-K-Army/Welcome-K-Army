@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:intl/intl.dart';
 
 class Notice {
-  var date = DateFormat.ymd().format(new DateTime.now());
+  var date = DateFormat.yMd().format(new DateTime.now());
   String title;
   String context;
 
