@@ -14,6 +14,7 @@ import 'Home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseAuth.instance.useEmulator('http://localhost:9099');
   runApp(MyApp());
 }
 
