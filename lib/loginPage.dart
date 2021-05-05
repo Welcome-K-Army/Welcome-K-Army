@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
+import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -153,7 +154,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              backgroundImage: NetworkImage("image/Loading.gif"),
+              backgroundImage: Image.asset("image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding
@@ -165,18 +166,37 @@ class LoginPage extends StatelessWidget {
 
   // 로그인 메서드
   void _login(BuildContext context) async {
-    final UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
-    final User user = result.user;
-
-    if (user == null) {
-      final snackBar = SnackBar(
-        content: Text("Please try again later."),
-      );
+    try{ UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+    } on FirebaseAuthExceptionatch (e) {
+      if (e.code == 'user-not-found') {
+        final snackBar = SnackBar(
+        content: Text("No user found for that email."),
+        );
+      } else if (e.code == 'wrong-password') {
+        final snackBar = SnackBar(
+          content: Text("Wrong password provided for that user."),
+        );
+      }
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+  
+
+  // void _login(BuildContext context) async {
+  //   final UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+  //   final User user = result.user;
+
+  //   if (user == null) {
+  //     final snackBar = SnackBar(
+  //       content: Text("Please try again later."),
+  //     );
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //   }
+  // }
 
   // 계정생성 메서드
+
+  
   void _register(BuildContext context) async {
     final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     final User user = result.user;
