@@ -8,7 +8,7 @@ class Notice {
   String title;
   String context;
 
-  Notice(this.title, this.context);
+  Notice({this.title, this.context});
 }
 
 class NoticeTile {
