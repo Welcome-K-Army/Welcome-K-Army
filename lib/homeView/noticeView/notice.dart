@@ -19,7 +19,7 @@ class NoticeTile {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: _notice.title;
+        title: _notice.title,
         subtitle: _notice.date;
       ], 
     ); // ListTile
