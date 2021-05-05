@@ -4,9 +4,9 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'notice.dart';
 
 final List<String> noticeList = [
-  new Notice(title: "Intro", context: 'Hello World'),
-  new Notice(title: 'App Info', context: 'Welcome K Army'),
-  new Notice(title: 'Outtro', context: 'Good Bye'),
+  new Notice(title: "Intro", context: 'Hello World');
+  new Notice(title: 'App Info', context: 'Welcome K Army');
+  new Notice(title: 'Outtro', context: 'Good Bye');
 ];
 
 class NoticeView extends StatefulWidget {
