@@ -11,7 +11,7 @@ class Notice {
   Notice({this.title, this.context});
 }
 
-class NoticeTile {
+class NoticeTile extends StatelessWidget {
   NoticeTile(this._notice);
 
   final Notice _notice;
@@ -25,7 +25,7 @@ class NoticeTile {
   }
 }
 
-class HeaderTile {
+class HeaderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
