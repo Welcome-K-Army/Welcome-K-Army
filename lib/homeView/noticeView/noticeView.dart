@@ -4,9 +4,9 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'notice.dart';
 
 final List<String> noticeList = [
-  Notice(title: 'Intro', context: 'Hello World'),
-  Notice(title: 'App Info', context: 'Welcome K Army'),
-  Notice(title: 'Outtro', context: 'Good Bye'),
+  new Notice(title: 'Intro', context: 'Hello World'),
+  new Notice(title: 'App Info', context: 'Welcome K Army'),
+  new Notice(title: 'Outtro', context: 'Good Bye'),
 ];
 
 class NoticeView extends StatefulWidget {
@@ -36,10 +36,10 @@ class NoticeViewState extends State<NoticeView> {
               ], // Row children
             ), // Row
             ListView.separated(
-                itemCount: noticeList.lenght,
+                itemCount: noticeList.length,
                 itemBuilder: (context, index) {
                   if (index == 0) return HeaderTile();
-                  return NoticeTile(noticeList[length - 1]);
+                  return NoticeTile(noticeList[index - 1]);
                 },
                 separatorBuilder: (context, index) {
                   if (index == 0) return SizedBox.shrink();
