@@ -17,12 +17,12 @@ class NoticeContextViewState extends State<NoticeContextView> {
       appBar: AppBar(),
       body: ListView(children: <Widget>[
         Row(children: <Widget>[
-          Text(noticeContextNumber),
+          Text(noticeContextNumber.toString()),
           Text(noticeList[noticeContextNumber].title),
           Text(noticeList[noticeContextNumber].date_yMMMd),
         ]),
         Column(children: <Widget>[
-          Text(noticeList[noticeContextNumber]),
+          Text(noticeList[noticeContextNumber].context),
           Text(noticeList[noticeContextNumber].person.name),
         ])
     ]));
