@@ -25,7 +25,7 @@ class Notice {
 
   Notice({this.title, this.context, this.person}) {
     noticeNumber++;
-  };
+  }
 }
 
 class NoticeTile extends StatelessWidget {
