@@ -12,7 +12,7 @@ class NoticeView extends StatefulWidget {
 class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
         appBar: AppBar('k army notice'),
         child: ListView.separated(
             shrinkWrap: true,
