@@ -31,8 +31,12 @@ class NoticeTile extends StatelessWidget {
     return ListTile(
       title: Text(_notice.title),
       subtitle: Text(_notice.date_yMd),
-      onTab: () {
-        
+      onTap: () {
+        // 공지 제목을 누르면 공지 게시글로 이동
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => noticeContextView()),
+        );
       },
     ); // ListTile
   }

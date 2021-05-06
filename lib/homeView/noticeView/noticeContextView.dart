@@ -7,14 +7,11 @@ class NoticeContextView extends StatefulWidget {
   NoticeContextViewState createState() => new NoticeContextViewState();
 }
 
-class NoticeContextViewState extends State<NoticeContextView> (
+class NoticeContextViewState extends State<NoticeContextView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue(),
-      child: ListView(
-        
-      ) // ListView
+    return AlertDialog(
+      title: Text('선택 완료'),
     ); // Container
   }
-)
+}
