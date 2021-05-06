@@ -12,10 +12,8 @@ class NoticeView extends StatefulWidget {
 class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(title: Text('k army notice')),
-        ),
+    return Scaffold(
+        appBar: AppBar(title: Text('k army notice')),
         body: ListView.separated(
             shrinkWrap: true,
             itemCount: noticeList.length,
