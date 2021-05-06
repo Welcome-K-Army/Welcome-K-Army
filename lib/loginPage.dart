@@ -179,21 +179,9 @@ class LoginPage extends StatelessWidget {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
-    } 
+    }
   }
   
-
-  // void _login(BuildContext context) async {
-  //   final UserCredential result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
-  //   final User user = result.user;
-
-  //   if (user == null) {
-  //     final snackBar = SnackBar(
-  //       content: Text("Please try again later."),
-  //     );
-  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //   }
-  // }
 
   // 계정생성 메서드
 
