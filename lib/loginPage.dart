@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              placeholder:"image/Loading.gif",
+              backgroundImage: ExactAssetImage("image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding
