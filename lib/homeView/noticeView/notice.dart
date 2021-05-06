@@ -7,6 +7,8 @@ import 'noticeContextView.dart';
 
 import 'person.dart';
 
+int noticeNumber = 0;
+
 final List<Notice> noticeList = [
   new Notice(title: "Intro", context: 'Hello World', person: personList[0]),
   new Notice(title: 'App Info', context: 'Welcome K Army', person: personList[1]),
@@ -17,14 +19,12 @@ class Notice {
   var date_yMd = DateFormat.yMd().format(new DateTime.now());
   var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
 
-  var number = 0;
-
   String title;
   String context;
   Person person;
 
   Notice({this.title, this.context, this.person}) {
-    number++;
+    noticeNumber++;
   }
 }
 
@@ -42,7 +42,7 @@ class NoticeTile extends StatelessWidget {
         // 공지 제목을 누르면 공지 게시글로 이동
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NoticeContextView(_notice.number)),
+          MaterialPageRoute(builder: (context) => NoticeContextView(noticeNumber)),
         );
       },
     ); // ListTile
