@@ -14,6 +14,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
       appBar: AppBar(),
       body: ListView(
         children: 
+          <Widget> [
           Row(children: <Widget>[
             Text(noticeList.number),
             Text(noticeList.title),
@@ -23,6 +24,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
             Text(noticeList.context),
             Text(noticeList.person),
           ]), // Column
+          ]
       ), // Container
     ); // Scaffold
   }
