@@ -17,7 +17,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView.separated(children: <Widget>[
+      body: ListView(children: <Widget>[
         Row(children: <Widget>[
           Text(noticeList[noticeNumber].number),
           Text(noticeList[noticeNumber].title),
