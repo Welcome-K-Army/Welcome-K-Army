@@ -5,7 +5,7 @@ import 'notice.dart';
 
 class NoticeContextView extends StatefulWidget {
   int noticeNumber;
-  NoticeContextViewState createState() => new NoticeContextViewState(noticeNumber));
+  NoticeContextViewState createState() => new NoticeContextViewState(noticeNumber);
 }
 
 class NoticeContextViewState extends State<NoticeContextView> {
