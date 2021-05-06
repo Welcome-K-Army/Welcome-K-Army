@@ -14,7 +14,6 @@ import 'Home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseAuth.instance.useEmulator('https://flutlab.io/ide');
   runApp(MyApp());
 }
 
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
     ); //MaterialApp
   }
 }
- 
+
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
