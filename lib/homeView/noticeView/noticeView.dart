@@ -12,16 +12,19 @@ class NoticeView extends StatefulWidget {
 class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        shrinkWrap: true,
-        itemCount: noticeList.length,
-        itemBuilder: (context, index) {
-          if (index == 0) return HeaderTile();
-          return NoticeTile(noticeList[index - 1]);
-        },
-        separatorBuilder: (context, index) {
-          if (index == 0) return SizedBox.shrink();
-          return const Divider();
-        }); // ListView
+    return MaterialApp(
+        title: 'k army notice',
+        home: ListView.separated(
+            shrinkWrap: true,
+            itemCount: noticeList.length,
+            itemBuilder: (context, index) {
+              if (index == 0) return HeaderTile();
+              return NoticeTile(noticeList[index - 1]);
+            },
+            separatorBuilder: (context, index) {
+              if (index == 0) return SizedBox.shrink();
+              return const Divider();
+            }) // ListView
+        );
   }
 }
