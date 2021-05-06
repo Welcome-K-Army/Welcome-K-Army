@@ -21,8 +21,10 @@ class NoticeContextViewState extends State<NoticeContextView> {
             ]
           ),
           Column(
-            Text(noticeList.context),
-            Text(noticeList.person),
+            children: <Widget> [
+              Text(noticeList.context),
+              Text(noticeList.person),
+            ]
           )
     );
   }
