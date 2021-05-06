@@ -172,15 +172,14 @@ class LoginPage extends StatelessWidget {
         final snackBar = SnackBar(
         content: Text("No user found for that email."),
         );
-        //ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e.code == 'wrong-password') {
         final snackBar = SnackBar(
           content: Text("Wrong password provided for that user."),
         );
-
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
-    }
-    catch (e) {        ScaffoldMessenger.of(context).showSnackBar(snackBar);  }
+    } 
   }
   
 
