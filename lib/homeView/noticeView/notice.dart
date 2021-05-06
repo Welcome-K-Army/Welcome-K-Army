@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'package:intl/intl.dart';
 
+import 'noticeContextView.dart';
+
 import 'person.dart';
 
 final List<Notice> noticeList = [
