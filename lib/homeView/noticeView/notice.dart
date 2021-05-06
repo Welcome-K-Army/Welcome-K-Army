@@ -16,11 +16,16 @@ final List<Notice> noticeList = [
 class Notice {
   var date_yMd = DateFormat.yMd().format(new DateTime.now());
   var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
+
+  var noticeNumber = 0;
+
   String title;
   String context;
   Person person;
 
-  Notice({this.title, this.context, this.person});
+  Notice({this.title, this.context, this.person}) {
+    noticeNumber++;
+  };
 }
 
 class NoticeTile extends StatelessWidget {
