@@ -5,6 +5,7 @@ import 'notice.dart';
 
 class NoticeContextView extends StatefulWidget {
   int noticeNumber;
+  NoticeContextView(this.noticeNumber);
   NoticeContextViewState createState() => new NoticeContextViewState(noticeNumber);
 }
 
@@ -16,20 +17,17 @@ class NoticeContextViewState extends State<NoticeContextView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView.separated(
-        children: 
-          <Widget> [
-          Row(children: <Widget>[
-            Text(noticeList[noticeNumber].number),
-            Text(noticeList[noticeNumber].title),
-            Text(noticeList[noticeNumber].date_yMMMd),
-          ]), // Row
-          Column(children: <Widget>[
-            Text(noticeList[noticeNumber].context),
-            Text(noticeList[noticeNumber].person),
-          ]), // Column
-          ]
-      ), // Container
+      body: ListView.separated(children: <Widget>[
+        Row(children: <Widget>[
+          Text(noticeList[noticeNumber].number),
+          Text(noticeList[noticeNumber].title),
+          Text(noticeList[noticeNumber].date_yMMMd),
+        ]), // Row
+        Column(children: <Widget>[
+          Text(noticeList[noticeNumber].context),
+          Text(noticeList[noticeNumber].person),
+        ]), // Column
+      ]), // Container
     ); // Scaffold
   }
 }
