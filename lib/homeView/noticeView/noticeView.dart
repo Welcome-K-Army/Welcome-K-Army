@@ -24,9 +24,13 @@ class NoticeViewState extends State<NoticeView> {
                   child: Icon(Icons.star, size: 20),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 5),
+                  padding: EdgeInsets.only(right: 5, bottom: 5),
                   child: Text("Notice"),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5),
+                  child: Icon(Icons.add, size: 20),
+                ),               
               ], // Row children
             ), // Row
             ListView.separated(
