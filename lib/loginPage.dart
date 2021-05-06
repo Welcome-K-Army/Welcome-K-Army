@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
         child: Padding(
-          padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 20),
+          padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
               key: _formkey,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
@@ -105,7 +105,7 @@ class LoginPage extends StatelessWidget {
                       return null;
                     }), //TextFormField 패스워드
                 Container(
-                  height: 10,
+                  height: size*0.05,
                 ),
                 Consumer<JoinOrLogin>(
                   builder: (context, value, child) => Opacity(
