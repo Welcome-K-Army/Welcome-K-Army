@@ -10,8 +10,20 @@ class NoticeContextView extends StatefulWidget {
 class NoticeContextViewState extends State<NoticeContextView> {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('선택 완료'),
-    ); // Container
+    return Scaffold(
+        appBar: AppBar(),
+        body: 
+          Row(
+            children: <Widget> [
+              Text(noticeList.number),
+              Text(noticeList.title),
+              Text(noticeList.date_yMMMd),
+            ]
+          ),
+          Column(
+            Text(noticeList.context),
+            Text(noticeList.person),
+          )
+    );
   }
 }
