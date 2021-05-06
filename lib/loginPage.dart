@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
         child: Padding(
-          padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
+          padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 20),
           child: Form(
               key: _formkey,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
@@ -201,19 +201,9 @@ class LoginPage extends StatelessWidget {
           content: Text("An account already exists for that email"),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      } else if (e.code == 'invalid-email') {
-        final snackBar = SnackBar(
-          content: Text("The email format is incorrect"),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      }else if (e.code == 'operation-not-allowed') {
+      } else if (e.code == 'operation-not-allowed') {
         final snackBar = SnackBar(
           content: Text("You cannot use this account"),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      }else if (e.code == 'weak-password') {
-        final snackBar = SnackBar(
-          content: Text("The password you entered is week."),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
