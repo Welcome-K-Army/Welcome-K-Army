@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import 'noticeListView.dart';
 import 'notice.dart';
 
-class NoticeView extends StatefulWidget {
-  NoticeViewState createState() => new NoticeViewState();
+class NoticeHomeView extends StatefulWidget {
+  NoticeHomeViewState createState() => new NoticeHomeViewState();
 }
 
-class NoticeViewState extends State<NoticeView> {
+class NoticeHomeViewState extends State<NoticeHomeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,8 +30,16 @@ class NoticeViewState extends State<NoticeView> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5),
-                  child: Icon(Icons.add, size: 20),
-                ),               
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NoticeListView()),
+                        );
+                      },
+                      icon: Icons.add,
+                      size: 20),
+                ),
               ], // Row children
             ), // Row
             ListView.separated(

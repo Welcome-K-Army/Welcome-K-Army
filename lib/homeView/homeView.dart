@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 import 'slideBanner.dart';
-import './noticeView/noticeView.dart';
+import './noticeView/noticeHomeView.dart';
 
 class HomeView extends StatefulWidget {
   HomeViewState createState() => new HomeViewState();
@@ -14,7 +14,7 @@ class HomeViewState extends State<HomeView> {
     return Container(
         child: ListView(children: [
       SlideBanner(),
-      NoticeView(),
+      NoticeHomeView(),
     ] // Column children
             ) // Column
         ); // Return Widget
