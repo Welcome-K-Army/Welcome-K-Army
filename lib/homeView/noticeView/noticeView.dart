@@ -5,11 +5,11 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'notice.dart';
 
-class NoticeListView extends StatefulWidget {
-  NoticeListViewState createState() => new NoticeListViewState();
+class NoticeView extends StatefulWidget {
+  NoticeViewState createState() => new NoticeViewState();
 }
 
-class NoticeListViewState extends State<NoticeListView> {
+class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

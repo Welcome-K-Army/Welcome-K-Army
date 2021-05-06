@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'noticeListView.dart';
+import 'noticeView.dart';
 import 'notice.dart';
 
 class NoticeHomeView extends StatefulWidget {
@@ -36,7 +36,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => NoticeListView()),
+                          MaterialPageRoute(builder: (context) => NoticeView()),
                         );
                       },
                       icon: Icon(Icons.add, size: 20),
