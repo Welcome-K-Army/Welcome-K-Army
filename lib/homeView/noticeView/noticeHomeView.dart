@@ -1,3 +1,5 @@
+// HomeView에 보여지는 Notice
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
@@ -37,8 +39,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
                           MaterialPageRoute(builder: (context) => NoticeListView()),
                         );
                       },
-                      icon: Icons.add,
-                      size: 20),
+                      icon: Icon(Icons.add, size: 20),
                 ),
               ], // Row children
             ), // Row
