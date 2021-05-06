@@ -21,12 +21,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 
-
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 28
 

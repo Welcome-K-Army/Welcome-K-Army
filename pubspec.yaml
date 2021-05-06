@@ -26,8 +26,6 @@ dependencies:
   provider: #^5.0.0
   firebase_auth: #^0.20.1
   firebase_core: #^1.1.0
-  firebase_auth_web:
-  firebase_core_web:
 
 
 dev_dependencies:
