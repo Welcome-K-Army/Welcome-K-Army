@@ -15,7 +15,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xFFEDF0F4),
-      height: 280,
+      height: 360,
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
