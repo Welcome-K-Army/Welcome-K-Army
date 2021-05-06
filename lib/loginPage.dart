@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
+import 'dart:core';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -79,7 +80,11 @@ class LoginPage extends StatelessWidget {
                     validator: (String value) {
                       if (value.isEmpty) {
                         return "Please input correct Email!";
+                      } else if(!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString()))
+                      {
+                        return "Not correct Email format";
                       }
+                      
                       return null;
                     }), //TextFormField 이메일
 
@@ -166,11 +171,12 @@ class LoginPage extends StatelessWidget {
 
   // 로그인 메서드
   void _login(BuildContext context) async {
-    try{ await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         final snackBar = SnackBar(
-        content: Text("No user found for that email."),
+          content: Text("No user found for that email."),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e.code == 'wrong-password') {
@@ -181,23 +187,24 @@ class LoginPage extends StatelessWidget {
       }
     }
   }
-  
 
   // 계정생성 메서드
 
-  
   void _register(BuildContext context) async {
-    final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
-    final User user = result.user;
-
-    if (user == null) {
-      final snackBar = SnackBar(
-        content: Text("Please try again later."),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    try{final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        final snackBar = SnackBar(
+          content: Text("No user found for that email."),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else if (e.code == 'wrong-password') {
+        final snackBar = SnackBar(
+          content: Text("Wrong password provided for that user."),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
     }
-
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
-    //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
+    //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));  
   }
-}
