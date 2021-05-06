@@ -45,7 +45,7 @@ class NoticeTile extends StatelessWidget {
         // 공지 제목을 누르면 공지 게시글로 이동
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NoticeContextView()),
+          MaterialPageRoute(builder: (context) => NoticeContextView(_notice.number)),
         );
       },
     ); // ListTile
