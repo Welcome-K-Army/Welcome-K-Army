@@ -80,11 +80,11 @@ class LoginPage extends StatelessWidget {
                     validator: (String value) {
                       if (value.isEmpty) {
                         return "Please input correct Email!";
-                      } else if(!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString()))
-                      {
+                      } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+                        //이메일 정규 표현식
                         return "Not correct Email format";
                       }
-                      
+
                       return null;
                     }), //TextFormField 이메일
 
@@ -99,6 +99,8 @@ class LoginPage extends StatelessWidget {
                     validator: (String value) {
                       if (value.isEmpty) {
                         return "Please input correct Password!";
+                      } else if (value.length < 8) {
+                        return "Please enter a password of at least 8 digits!";
                       }
                       return null;
                     }), //TextFormField 패스워드
@@ -191,7 +193,8 @@ class LoginPage extends StatelessWidget {
   // 계정생성 메서드
 
   void _register(BuildContext context) async {
-    try{final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+    try {
+      final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         final snackBar = SnackBar(
@@ -206,6 +209,6 @@ class LoginPage extends StatelessWidget {
       }
     }
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
-    //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));  
+    //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
 }
