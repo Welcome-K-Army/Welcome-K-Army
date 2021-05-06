@@ -196,14 +196,24 @@ class LoginPage extends StatelessWidget {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.code == 'email-already-in-use') {
         final snackBar = SnackBar(
-          content: Text("No user found for that email."),
+          content: Text("An account already exists for that email"),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      } else if (e.code == 'wrong-password') {
+      } else if (e.code == 'invalid-email') {
         final snackBar = SnackBar(
-          content: Text("Wrong password provided for that user."),
+          content: Text("The email format is incorrect"),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }else if (e.code == 'operation-not-allowed') {
+        final snackBar = SnackBar(
+          content: Text("You cannot use this account"),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }else if (e.code == 'weak-password') {
+        final snackBar = SnackBar(
+          content: Text("The password you entered is week."),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
