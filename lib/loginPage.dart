@@ -105,7 +105,7 @@ class LoginPage extends StatelessWidget {
                       return null;
                     }), //TextFormField 패스워드
                 Container(
-                  height: size.height*0.05,
+                  height: size.height*0.01,
                 ),
                 Consumer<JoinOrLogin>(
                   builder: (context, value, child) => Opacity(
@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              backgroundImage: NetworkImage("image/Loading.gif"),
+              backgroundImage: image(placeholder:"image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding
