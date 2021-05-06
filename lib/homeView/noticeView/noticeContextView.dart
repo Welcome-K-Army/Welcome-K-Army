@@ -33,14 +33,3 @@ class NoticeContextViewState extends State<NoticeContextView> {
     ); // Scaffold
   }
 }
-ListView.separated(
-                shrinkWrap: true,
-                itemCount: noticeList.length+1,
-                itemBuilder: (context, index) {
-                  if (index == 0) return HeaderTile();
-                  return NoticeTile(noticeList[index - 1]);
-                },
-                separatorBuilder: (context, index) {
-                  if (index == 0) return SizedBox.shrink();
-                  return const Divider();
-                }) // ListView
