@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
               ), //, Stack
               //하단 회원가입 연결 부
               Container(
-                height: size.height * 0.1,
+                height: size.height * 0.05,
               ),
               Consumer<JoinOrLogin>(
                 builder: (BuildContext context, JoinOrLogin joinOrLogin, Widget child) => GestureDetector(
@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              backgroundImage: FadeInImage.assetNetwork(placeholder:"image/Loading.gif"),
+              placeholder:"image/Loading.gif",
             ), //CircleAvatar
           ), //FittedBox
         ), //Padding
