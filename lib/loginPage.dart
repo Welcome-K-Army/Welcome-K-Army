@@ -194,7 +194,7 @@ class LoginPage extends StatelessWidget {
 
   void _register(BuildContext context) async {
     try {
-      final UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         final snackBar = SnackBar(
