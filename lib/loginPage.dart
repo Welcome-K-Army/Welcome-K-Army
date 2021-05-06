@@ -208,3 +208,4 @@ class LoginPage extends StatelessWidget {
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));  
   }
+}
