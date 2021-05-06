@@ -33,14 +33,15 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 5),
                   child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NoticeView()),
-                        );
-                      },
-                      icon: Icon(Icons.add, size: 20),
-                ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NoticeView()),
+                      );
+                    },
+                    icon: Icon(Icons.add, size: 20),
+                  ), // IconButton
+                ), // Padding
               ], // Row children
             ), // Row
             ListView.separated(
