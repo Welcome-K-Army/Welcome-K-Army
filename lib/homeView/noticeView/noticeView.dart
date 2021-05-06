@@ -12,7 +12,7 @@ class NoticeView extends StatefulWidget {
 class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return MateriallApp(
+    return MaterialApp(
         home: Scaffold(
           appBar: AppBar(title: Text('k army notice')),
         ),
