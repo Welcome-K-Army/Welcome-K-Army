@@ -12,9 +12,9 @@ class NoticeView extends StatefulWidget {
 class NoticeViewState extends State<NoticeView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'k army notice',
-        home: ListView.separated(
+    return Container(
+        appBar: AppBar('k army notice'),
+        child: ListView.separated(
             shrinkWrap: true,
             itemCount: noticeList.length,
             itemBuilder: (context, index) {
