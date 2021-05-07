@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
 
   //로그인 폼
   Widget _inputForm(Size size) {
-    return SingleChildScrollView(
+    return Padding(
       padding: EdgeInsets.all(size.width * 0.05),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -69,8 +69,16 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
             key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: 
+            _textFormLogin(size),
+                    ) //Column
+          ), //Form
+        ), //Padding
+      ), //Card
+    ); //Padding
+  }
+  Widget _textFormLogin(Size size){
+      return <Widget>[
               TextFormField(
                   //이메일
                   controller: _emailController,
@@ -104,39 +112,6 @@ class LoginPage extends StatelessWidget {
                     }
                     return null;
                   }), //TextFormField 패스워드
-              
-              TextFormField(
-                  //패스워드
-                  obscureText: true,
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.vpn_key),
-                    labelText: "Password",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Password!";
-                    } else if (value.length < 8) {
-                      return "Please enter a password of at least 8 digits!";
-                    }
-                    return null;
-                  }), //TextFormField 패스워드
-              TextFormField(
-                  //패스워드
-                  obscureText: true,
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.vpn_key),
-                    labelText: "Password",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Password!";
-                    } else if (value.length < 8) {
-                      return "Please enter a password of at least 8 digits!";
-                    }
-                    return null;
-                  }), //TextFormField 패스워드
               Container(
                 height: 10,
               ),
@@ -151,14 +126,8 @@ class LoginPage extends StatelessWidget {
                               },
                         child: Text("Forgot Password"))),
               ),
-            ] //Widget
-                    ) //Column
-          ), //Form
-        ), //Padding
-      ), //Card
-    ); //Padding
+            ]; //Widget
   }
-
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
