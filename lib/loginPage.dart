@@ -87,7 +87,7 @@ class LoginPage extends StatelessWidget {
 
                       return null;
                     }), //TextFormField 이메일
-
+                    
                 TextFormField(
                     //패스워드
                     obscureText: true,
