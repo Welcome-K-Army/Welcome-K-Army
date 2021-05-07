@@ -62,17 +62,15 @@ class LoginPage extends StatelessWidget {
   Widget _inputForm(Size size) {
     return Padding(
       padding: EdgeInsets.all(size.width * 0.05),
-      child: ListView(
-        shrinkWrap:true,
-        padding:EdgeInset.all(1),
-      children:Card(
+      child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
         child: Padding(
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
               key: _formkey,
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+              child: SingleChildScrollView(
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
                 TextFormField(
                     //이메일
                     controller: _emailController,
@@ -90,7 +88,6 @@ class LoginPage extends StatelessWidget {
 
                       return null;
                     }), //TextFormField 이메일
-                    
                 TextFormField(
                     //패스워드
                     obscureText: true,
@@ -123,10 +120,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ] //Widget
                   ) //Column
+              ),//SingleChildScrollView
               ), //Form
         ), //Padding
       ), //Card
-      ),//ListView
     ); //Padding
   }
 
