@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
       child: ListView(
         shrinkWrap:true,
         padding:EdgeInset.all(1),
-      child:Card(
+      children:Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
         child: Padding(
