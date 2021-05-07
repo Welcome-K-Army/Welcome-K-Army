@@ -76,6 +76,7 @@ class LoginPage extends StatelessWidget {
       ), //Card
     ); //Padding
   }
+  //로그인 텍스트 폼
   Widget _textFormLogin(Size size){
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               TextFormField(
@@ -94,6 +95,27 @@ class LoginPage extends StatelessWidget {
                     }
                     return null;
                   }), //TextFormField 이메일
+              Consumer<JoinOrLogin>(
+                builder: (context, value, child) => (){
+                  return value.isJoin? TextFormField(
+                  //이메일
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.account_circle),
+                    labelText: "Email",
+                  ), //InputDecoration
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please input correct Email!";
+                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+                      //이메일 정규 표현식
+                      return "Not correct Email format";
+                    }
+                    return null;
+                  }), //TextFormField 이메일 
+                  :null;
+                }
+              ),
               TextFormField(
                   //패스워드
                   obscureText: true,
