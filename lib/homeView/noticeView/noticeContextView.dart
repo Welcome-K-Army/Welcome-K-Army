@@ -30,8 +30,11 @@ class NoticeContextViewState extends State<NoticeContextView> {
               scrollDirection: Axis.horizontal,
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
-                return Image.network(imgList[index]);
-              }), // Swiper
+                return Container(
+                  height: 50,
+                  child: Image.network(imgList[index]),
+                ); // Container
+              }), // ListView
         ]));
   }
 }
