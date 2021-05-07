@@ -75,6 +75,8 @@ class LoginPage extends StatelessWidget {
                       joinOrLogin.toggle();
                     },
                     child:joinOrLogin.isJoin ? _textFormLogin(size):_textFormLogin(size),
+                )
+            ),
           ), //Form
         ), //Padding
       ), //Card
