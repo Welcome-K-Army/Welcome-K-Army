@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
 
   //로그인 폼
   Widget _inputForm(Size size) {
-    return Padding(
+    return SingleChildScrollView(
       padding: EdgeInsets.all(size.width * 0.05),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -69,9 +69,8 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
             key: _formkey,
-            child: ListView(
-              children:<Widget>[Column(
-                        mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               TextFormField(
                   //이메일
                   controller: _emailController,
@@ -121,8 +120,6 @@ class LoginPage extends StatelessWidget {
               ),
             ] //Widget
                     ) //Column
-              ]
-            )
           ), //Form
         ), //Padding
       ), //Card
