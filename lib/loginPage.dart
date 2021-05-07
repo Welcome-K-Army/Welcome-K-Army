@@ -104,6 +104,39 @@ class LoginPage extends StatelessWidget {
                     }
                     return null;
                   }), //TextFormField 패스워드
+              
+              TextFormField(
+                  //패스워드
+                  obscureText: true,
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.vpn_key),
+                    labelText: "Password",
+                  ), //InputDecoration
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please input correct Password!";
+                    } else if (value.length < 8) {
+                      return "Please enter a password of at least 8 digits!";
+                    }
+                    return null;
+                  }), //TextFormField 패스워드
+              TextFormField(
+                  //패스워드
+                  obscureText: true,
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.vpn_key),
+                    labelText: "Password",
+                  ), //InputDecoration
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please input correct Password!";
+                    } else if (value.length < 8) {
+                      return "Please enter a password of at least 8 digits!";
+                    }
+                    return null;
+                  }), //TextFormField 패스워드
               Container(
                 height: 10,
               ),
