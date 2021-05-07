@@ -148,6 +148,38 @@ class LoginPage extends StatelessWidget {
                     }
                     return null;
                   }), //TextFormField 이메일
+                                TextFormField(
+                  //이메일
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.account_circle),
+                    labelText: "Email",
+                  ), //InputDecoration
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please input correct Email!";
+                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+                      //이메일 정규 표현식
+                      return "Not correct Email format";
+                    }
+                    return null;
+                  }), //TextFormField 이메일
+                                TextFormField(
+                  //이메일
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.account_circle),
+                    labelText: "Email",
+                  ), //InputDecoration
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please input correct Email!";
+                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+                      //이메일 정규 표현식
+                      return "Not correct Email format";
+                    }
+                    return null;
+                  }), //TextFormField 이메일
               TextFormField(
                   //패스워드
                   obscureText: true,
