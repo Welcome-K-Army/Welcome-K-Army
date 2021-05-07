@@ -10,7 +10,6 @@ class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
-  final loginOr
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
