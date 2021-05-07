@@ -69,16 +69,15 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
             key: _formkey,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: 
-            _textFormLogin(size),
-                    ) //Column
+            child:_textFormLogin(size),
+
           ), //Form
         ), //Padding
       ), //Card
     ); //Padding
   }
   Widget _textFormLogin(Size size){
-      return [
+      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               TextFormField(
                   //이메일
                   controller: _emailController,
@@ -126,6 +125,7 @@ class LoginPage extends StatelessWidget {
                         child: Text("Forgot Password"))),
               ),
             ]; //Widget
+                                ) //Column
   }
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
