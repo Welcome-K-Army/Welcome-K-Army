@@ -66,17 +66,12 @@ class LoginPage extends StatelessWidget {
         elevation: 6,
         child: Padding(
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
-          child: Form(
-            key: _formkey,
-            child:Consumer<JoinOrLogin>(
-                builder: (context, joinOrLogin, child) => GestureDetector(
-                    onTap: () {
-                      joinOrLogin.toggle();
-                    },
-                    child:joinOrLogin.isJoin ? _textFormLogin(size):_textFormLogin(size),
-                )
-            ),
-          ), //Form
+          child: Consumer<JoinOrLogin>(
+                builder: (context, joinOrLogin, child) => Form(
+                  key: _formkey,
+                  child:joinOrLogin.isJoin ? _textFormLogin(size):_textFormLogin(size),
+                )//Form
+          ), 
         ), //Padding
       ), //Card
     ); //Padding
