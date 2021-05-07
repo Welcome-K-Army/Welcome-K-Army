@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
     ); //Padding
   }
   Widget _textFormLogin(Size size){
-      return <Widget>[
+      return [
               TextFormField(
                   //이메일
                   controller: _emailController,
@@ -93,7 +93,6 @@ class LoginPage extends StatelessWidget {
                       //이메일 정규 표현식
                       return "Not correct Email format";
                     }
-
                     return null;
                   }), //TextFormField 이메일
               TextFormField(
