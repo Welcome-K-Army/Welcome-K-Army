@@ -69,76 +69,8 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
             key: _formkey,
-            child: SingleChildScrollView(
-              child:Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-              TextFormField(
-                  //이메일
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle),
-                    labelText: "Email",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Email!";
-                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                      //이메일 정규 표현식
-                      return "Not correct Email format";
-                    }
-
-                    return null;
-                  }), //TextFormField 이메일
-              TextFormField(
-                  //이메일
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle),
-                    labelText: "Email",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Email!";
-                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                      //이메일 정규 표현식
-                      return "Not correct Email format";
-                    }
-
-                    return null;
-                  }), //TextFormField 이메일
-              TextFormField(
-                  //이메일
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle),
-                    labelText: "Email",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Email!";
-                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                      //이메일 정규 표현식
-                      return "Not correct Email format";
-                    }
-
-                    return null;
-                  }), //TextFormField 이메일
-              TextFormField(
-                  //이메일
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.account_circle),
-                    labelText: "Email",
-                  ), //InputDecoration
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return "Please input correct Email!";
-                    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                      //이메일 정규 표현식
-                      return "Not correct Email format";
-                    }
-
-                    return null;
-                  }), //TextFormField 이메일
+            child: ListVeiw(
+              children:<Widget>[Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               TextFormField(
                   //이메일
                   controller: _emailController,
@@ -188,7 +120,8 @@ class LoginPage extends StatelessWidget {
               ),
             ] //Widget
                     ) //Column
-                ), //SingleChildScrollView
+              ]
+            )
           ), //Form
         ), //Padding
       ), //Card
