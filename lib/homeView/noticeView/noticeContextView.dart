@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 import 'notice.dart';
+import '../slideBanner.dart';
 
 class NoticeContextView extends StatefulWidget {
   int noticeContextNumber;
@@ -18,14 +19,17 @@ class NoticeContextViewState extends State<NoticeContextView> {
         appBar: AppBar(),
         body: ListView(children: <Widget>[
           ListTile(
-            leading: Icon(Icons.person, size: 20),
+            leading: Icon(Icons.person, size: 40),
             title: Text(noticeList[noticeContextNumber].person.name),
             subtitle: Text(noticeList[noticeContextNumber].date_yMMMd),
           ),
-          Column(children: <Widget>[
-            Text(noticeList[noticeContextNumber].context),
-            Text(noticeList[noticeContextNumber].person.name),
-          ])
+          Text(noticeList[noticeContextNumber].context),
+          ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: imgList.length,
+            itemBuilder: (BuildContext context, int index) {
+                return Image.network(imgList[index]);
+            }), // Swiper
         ]));
   }
 }
