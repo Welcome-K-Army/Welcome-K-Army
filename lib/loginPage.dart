@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
           child: Consumer<JoinOrLogin>(
               builder: (context, joinOrLogin, child) => Form(
                     key: _formkey,
-                    child: joinOrLogin.isJoin ? _textFormLogin(size) : _textFormLogin(size),
+                    child: joinOrLogin.isJoin ? _textFormLogin(size) : _textFormJoin(size),
                   ) //Form
               ),
         ), //Padding
