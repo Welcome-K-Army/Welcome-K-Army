@@ -112,7 +112,7 @@ class LoginPage extends StatelessWidget {
                       return "Not correct Email format";
                     }
                     return null;
-                  }), //TextFormField 이메일 
+                  }); //TextFormField 이메일 
                   :null;
                 }
               ),
