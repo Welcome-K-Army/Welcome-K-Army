@@ -62,7 +62,10 @@ class LoginPage extends StatelessWidget {
   Widget _inputForm(Size size) {
     return Padding(
       padding: EdgeInsets.all(size.width * 0.05),
-      child: Card(
+      child: ListView(
+        shrinkWrap:true,
+        padding:EdgeInset.all(1),
+      child:Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
         child: Padding(
@@ -123,6 +126,7 @@ class LoginPage extends StatelessWidget {
               ), //Form
         ), //Padding
       ), //Card
+      ),//ListView
     ); //Padding
   }
 
