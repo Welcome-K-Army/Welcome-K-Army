@@ -124,8 +124,8 @@ class LoginPage extends StatelessWidget {
                               },
                         child: Text("Forgot Password"))),
               ),
-            ]; //Widget
-                                ) //Column
+            ], //Widget
+                                ); //Column
   }
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
