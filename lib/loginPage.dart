@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 6,
-        mainAxisSize: MainAxisSize.min
+        mainAxisSize: MainAxisSize.min,
         child: Padding(
           padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 32),
           child: Form(
