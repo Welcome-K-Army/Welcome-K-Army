@@ -97,7 +97,7 @@ class LoginPage extends StatelessWidget {
                   }), //TextFormField 이메일
               Consumer<JoinOrLogin>(
                 builder: (context, value, child) =>{
-                  return value.isJoin? TextFormField(
+                  value.isJoin? TextFormField(
                   //이메일
                   controller: _emailController,
                   decoration: InputDecoration(
