@@ -25,6 +25,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
           ),
           Text(noticeList[noticeContextNumber].context),
           ListView.builder(
+              // 높이 설정 안 됌 -> 수정하기
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemCount: imgList.length,
