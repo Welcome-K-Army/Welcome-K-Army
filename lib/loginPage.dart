@@ -141,11 +141,11 @@ class LoginPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         TextFormField(
-            //이메일
+            //닉네임
             controller: _emailController,
             decoration: InputDecoration(
               icon: Icon(Icons.account_circle),
-              labelText: "Email",
+              labelText: "NickName",
             ), //InputDecoration
             validator: (String value) {
               if (value.isEmpty) {
@@ -172,7 +172,7 @@ class LoginPage extends StatelessWidget {
               }
               return null;
             }), //TextFormField 이메일
-        RadioListTile(
+        RadioListTile<Gender>(
           title: Text("Male"),
           value:Gender.WOMEN,
           groupValue: _gender,
@@ -182,7 +182,7 @@ class LoginPage extends StatelessWidget {
             });
           },
         ),
-        RadioListTile(
+        RadioListTile<Gender>(
         title: Text("Female"),
           value:Gender.MAN,
           groupValue: _gender,
