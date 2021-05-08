@@ -186,7 +186,7 @@ class _LoginPage extends State<LoginPage> {
           child: Row(
             children: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(right:10), child:Icon(Icons.wc),
+                  padding: EdgeInsets.only(right:10), child:Icon(Icons.wc)),
               SizedBox(
                 height: 20,
                 width: 20,
