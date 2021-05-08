@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
+class Menu {
+  String name;
+  String iconName;
 
+  Menu({this.name, this.iconName});
+}
 final List<Menu> menuList = [
   new Menu(name: '공지사항', iconName: 'star'),
   new Menu(name: '지도검색', iconName: 'location_pin'),
@@ -8,29 +13,21 @@ final List<Menu> menuList = [
   new Menu(name: '일정', iconName: 'calendar_today')
 ];
 
-class Menu {
-  String name;
-  String iconName;
 
-  Menu({this.name, this.iconName});
-}
 
 class MenuIconButton extends StatelessWidget {
   MenuIconButton(this._Menu);
 
-  final Menu _Menu;
+  Menu _Menu;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget> [
-          Icon(Icons.($_Menu.iconName), size: 10),
-          Text(_Menu.name)
-        ]
-      ), // Column
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+        Icon(Icons.menuList.iconName, size: 10),
+        Text(_Menu.name)
+      ]), // Column
     ); // ListTile
   }
 }
