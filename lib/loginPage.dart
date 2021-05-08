@@ -213,7 +213,7 @@ class _LoginPage extends State<LoginPage> {
             GestureDetector(
               onTap: (_gender.value) {
                   setState(() {
-                    _gender = value;
+                    _gender = _gender.value;
                   });
             child:Text("Female"),
             ),
