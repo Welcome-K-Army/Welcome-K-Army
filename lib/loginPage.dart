@@ -188,57 +188,56 @@ class _LoginPage extends State<LoginPage> {
             children: <Widget>[
               Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
               Container(
-              child:SizedBox(
-                height: 20,
-                width: 20,
-                child: Radio(
-                  value: Gender.MAN,
-                  groupValue: _gender,
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
+                child:SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Radio(
+                    value: Gender.MAN,
+                    groupValue: _gender,
+                    onChanged: (value) {
+                      setState(() {
+                        _gender = value;
+                      });
+                    },
+                  ),
                 ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.MAN;
-                    });
-                  },
-                  child: Text("Male"),
+                Padding(
+                  padding: EdgeInsets.only(right: 10, left: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _gender = Gender.MAN;
+                      });
+                    },
+                    child: Text("Male"),
+                  ),
                 ),
-              ),
               ),
               Container(
-              child:SizedBox(
-                height: 20,
-                width: 20,
-                child: Radio(
-                  value: Gender.WOMEN,
-                  groupValue: _gender,
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
+                child:SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Radio(
+                    value: Gender.WOMEN,
+                    groupValue: _gender,
+                    onChanged: (value) {
+                      setState(() {
+                        _gender = value;
+                      });
+                    },
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.WOMEN;
-                    });
-                  },
-                  child: Text("Female"),
+                Padding(
+                  padding: EdgeInsets.only(right: 10, left: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _gender = Gender.WOMEN;
+                      });
+                    },
+                    child: Text("Female"),
+                  ),
                 ),
-              ),
               ),
             ],
           ),
