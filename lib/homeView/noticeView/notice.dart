@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'package:intl/intl.dart';
 
-import 'noticeContextView.dart';
+import 'noticeContentView.dart';
 
 import 'person.dart';
 
