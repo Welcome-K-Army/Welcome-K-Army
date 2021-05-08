@@ -184,8 +184,8 @@ class _LoginPage extends State<LoginPage> {
             ListTile(
               title: Text("Male"),
               leading: SizedBox(
-                height: 10,
-                width: 10,
+                height: 20,
+                width: 40,
                 child: Radio(
                   value: Gender.MAN,
                   groupValue: _gender,
@@ -197,12 +197,11 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
-            Text("Male"),
             ListTile(
                 title: Text("Female"),
                 leading:SizedBox(
-                  height: 10,
-                  width: 10,
+                  height: 20,
+                  width: 40,
                   child: Radio(
                   value: Gender.WOMEN,
                   groupValue: _gender,
@@ -214,7 +213,6 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
-            Text("Female"),
         TextFormField(
             //패스워드
             obscureText: true,
