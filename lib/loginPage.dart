@@ -183,7 +183,6 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.wc),
             Flexible(
-              fit: FlexFit.loose,
               child: RadioListTile<Gender>(
                 title: Text("Male"),
                 value: Gender.MAN,
