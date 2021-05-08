@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
           child: Consumer<JoinOrLogin>(
               builder: (context, joinOrLogin, child) => Form(
                     key: _formkey,
-                    child: joinOrLogin.isJoin ? _textFormLogin(size) : _textFormJoin(size),
+                    child: joinOrLogin.isJoin ? _textFormJoin(size) : _textFormLogin(size),
                   ) //Form
               ),
         ), //Padding
@@ -251,7 +251,7 @@ class LoginPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
           child: FittedBox(
-            fit: BoxFit.contain,
+            //fit: BoxFit.contain,
             child: CircleAvatar(
               backgroundImage: AssetImage("lib/image/Loading.gif"),
             ), //CircleAvatar
