@@ -144,7 +144,7 @@ class _LoginPage extends State<LoginPage> {
       ], //Widget
     ); //Column
   }
- 
+
   //회원가입 텍스트 폼
   Widget _textFormJoin(Size size) {
     return Column(
@@ -237,15 +237,11 @@ class _LoginPage extends State<LoginPage> {
           ),
         ),
         DropdownButtonHideUnderline(
-            child: DropdownButton(
-                value: dropdownValue,
-                isExpanded: true,
-                items: _dropdownMenuItems,
-                onChanged: (value) {
-                  setState(() {
-                    dropdownValue = value;
-                  });
-                }),
+          child: DropdownButton(
+          value: selected,
+          onChanged: (val) => setState(() => selected = val),
+          items: menuItemList,
+          ),
         ),
         TextFormField(
             //패스워드
@@ -296,6 +292,12 @@ class _LoginPage extends State<LoginPage> {
       ], //Widget
     ); //Column
   }
+
+  List<String> doubleList =
+    List<String>.generate(393, (int index) => '${index * .25 + 1}');
+  List<DropdownMenuItem> menuItemList = doubleList
+    .map((val) => DropdownMenuItem(value: val, child: Text(val)))
+    .toList();
 
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
