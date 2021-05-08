@@ -187,34 +187,33 @@ class _LoginPage extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
-              Container(
-                child:SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: Radio(
-                    value: Gender.MAN,
-                    groupValue: _gender,
-                    onChanged: (value) {
-                      setState(() {
-                        _gender = value;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 10, left: 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _gender = Gender.MAN;
-                      });
-                    },
-                    child: Text("Male"),
-                  ),
+              SizedBox(
+                height: 20,
+                width: 20,
+                child: Radio(
+                  value: Gender.MAN,
+                  groupValue: _gender,
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
                 ),
               ),
-              Container(
-                child:SizedBox(
+              Padding(
+                padding: EdgeInsets.only(right: 10, left: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.MAN;
+                    });
+                  },
+                  child: Text("Male"),
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SizedBox(
                   height: 20,
                   width: 20,
                   child: Radio(
@@ -227,7 +226,10 @@ class _LoginPage extends State<LoginPage> {
                     },
                   ),
                 ),
-                Padding(
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
                   padding: EdgeInsets.only(right: 10, left: 10),
                   child: GestureDetector(
                     onTap: () {
