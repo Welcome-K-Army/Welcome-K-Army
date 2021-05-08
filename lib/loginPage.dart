@@ -180,43 +180,49 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
-          Row(
-            children:<Widget>[
-            Padding(padding:EdgeInsets.all(5),child:Icon(Icons.wc)),
-            ListTile(
-              title: Text("Male"),
-              leading: SizedBox(
-                height: 20,
-                //width: ,
-                child: Radio(
-                  value: Gender.MAN,
-                  groupValue: _gender,
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
+        Row(
+          children: <Widget>[
+            Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
+            Flexiable(
+              fit: FlexFit.loose,
+              child: ListTile(
+                title: Text("Male"),
+                leading: SizedBox(
+                  height: 20,
+                  //width: ,
+                  child: Radio(
+                    value: Gender.MAN,
+                    groupValue: _gender,
+                    onChanged: (value) {
+                      setState(() {
+                        _gender = value;
+                      });
+                    },
+                  ),
                 ),
               ),
             ),
-            ListTile(
+            Flexiable(
+              fit: FlexFit.loose,
+              child: ListTile(
                 title: Text("Female"),
-                leading:SizedBox(
+                leading: SizedBox(
                   height: 20,
                   //width: size.width*0.3,
                   child: Radio(
-                  value: Gender.WOMEN,
-                  groupValue: _gender,
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
+                    value: Gender.WOMEN,
+                    groupValue: _gender,
+                    onChanged: (value) {
+                      setState(() {
+                        _gender = value;
+                      });
+                    },
+                  ),
                 ),
               ),
             ),
-            ],
-          ),
+          ],
+        ),
         TextFormField(
             //패스워드
             obscureText: true,
