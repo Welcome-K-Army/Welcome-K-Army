@@ -183,8 +183,9 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.wc),
             Flexible(
+              fit: FlexFit.loose,
               child: RadioListTile<Gender>(
-                title: Text("Male"),
+                title: Text(" Male "),
                 value: Gender.MAN,
                 groupValue: _gender,
                 onChanged: (value) {
@@ -210,21 +211,21 @@ class _LoginPage extends State<LoginPage> {
           ],
         ),
         TextFormField(
-            //이메일
-            controller: _emailController,
+            //패스워드
+            obscureText: true,
+            controller: _passwordController,
             decoration: InputDecoration(
-              icon: Icon(Icons.account_circle),
-              labelText: "Email",
+              icon: Icon(Icons.vpn_key),
+              labelText: "Password Check",
             ), //InputDecoration
             validator: (String value) {
               if (value.isEmpty) {
-                return "Please input correct Email!";
-              } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                //이메일 정규 표현식
-                return "Not correct Email format";
+                return "Please input correct Password!";
+              } else if (value.length < 8) {
+                return "Please enter a password of at least 8 digits!";
               }
               return null;
-            }), //TextFormField 이메일
+            }), //TextFormField 패스워드
         TextFormField(
             //패스워드
             obscureText: true,
