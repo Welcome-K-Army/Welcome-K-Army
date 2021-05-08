@@ -210,7 +210,6 @@ class _LoginPage extends State<LoginPage> {
               ),
               Container(),
               Container(),
-              Container(),
               SizedBox(
                 height: 20,
                 width: 20,
@@ -232,6 +231,8 @@ class _LoginPage extends State<LoginPage> {
                 },
                 child: Text("Female"),
               ),
+              Container(),
+              Container(),
             ],
           ),
         ),
