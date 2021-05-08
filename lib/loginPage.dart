@@ -253,7 +253,7 @@ class LoginPage extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              minRadius:8,
+              minRadius:40,
               backgroundImage: AssetImage("lib/image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
