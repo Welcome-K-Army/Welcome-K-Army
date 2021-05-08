@@ -182,7 +182,7 @@ class _LoginPage extends State<LoginPage> {
               return null;
             }), //TextFormField 이메일
         Padding(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.only(top:5,bottom:5),
           child: Row(
             children: <Widget>[
               Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
