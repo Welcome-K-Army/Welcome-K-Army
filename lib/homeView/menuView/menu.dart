@@ -27,7 +27,7 @@ class MenuIconButton extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget> [
-          Icon(Icons.$_Menu.iconName, size: 10),
+          Icon(Icons.($_Menu.iconName), size: 10),
           Text(_Menu.name)
         ]
       ), // Column
