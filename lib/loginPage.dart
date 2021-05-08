@@ -184,54 +184,57 @@ class _LoginPage extends State<LoginPage> {
         Padding(
           padding: EdgeInsets.only(top: 10, bottom: 5),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
-              Row(children: <Widget>[
-                SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: Radio(
-                    value: Gender.MAN,
-                    groupValue: _gender,
-                    onChanged: (value) {
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                Row(children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Radio(
+                      value: Gender.MAN,
+                      groupValue: _gender,
+                      onChanged: (value) {
+                        setState(() {
+                          _gender = value;
+                        });
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
                       setState(() {
-                        _gender = value;
+                        _gender = Gender.MAN;
                       });
                     },
+                    child: Text("Male"),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.MAN;
-                    });
-                  },
-                  child: Text("Male"),
-                ),
-              ]),
-              Row(children: <Widget>[
-                SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: Radio(
-                    value: Gender.WOMEN,
-                    groupValue: _gender,
-                    onChanged: (value) {
+                ]),
+                Row(children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Radio(
+                      value: Gender.WOMEN,
+                      groupValue: _gender,
+                      onChanged: (value) {
+                        setState(() {
+                          _gender = value;
+                        });
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
                       setState(() {
-                        _gender = value;
+                        _gender = Gender.WOMEN;
                       });
                     },
+                    child: Text("Female"),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.WOMEN;
-                    });
-                  },
-                  child: Text("Female"),
-                ),
+                ]),
               ]),
             ],
           ),
