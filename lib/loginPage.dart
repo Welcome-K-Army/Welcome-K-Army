@@ -7,7 +7,7 @@ import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dar
 import 'dart:core';
 enum Gender {MAN,WOMEN}
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //email 컨트롤러
@@ -149,10 +149,9 @@ class LoginPage extends StatelessWidget {
             ), //InputDecoration
             validator: (String value) {
               if (value.isEmpty) {
-                return "Please input correct Email!";
-              } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
-                //이메일 정규 표현식
-                return "Not correct Email format";
+                return "Please input correct NickName!";
+              } else if ()
+                return "Not correct NickName format";
               }
               return null;
             }), //TextFormField 이메일
@@ -176,21 +175,13 @@ class LoginPage extends StatelessWidget {
           title: Text("Male"),
           value:Gender.WOMEN,
           groupValue: _gender,
-          onChanged:(value){
-            setState((){
-              _gender=value;
-            });
-          },
+          onChanged:(Gender.value){setState((){ _gender=value;});},
         ),
         RadioListTile<Gender>(
         title: Text("Female"),
           value:Gender.MAN,
           groupValue: _gender,
-          onChanged:(value){
-            setState((){
-              _gender=value;
-            });
-          },
+          onChanged:(value){setState((){ _gender=value;});},
         ),
         TextFormField(
             //이메일
