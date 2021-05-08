@@ -12,7 +12,7 @@ class MenuViewState extends State<MenuView> {
   Widget build(BuildContext context) {
     return Card(
         child: Column(
-          children:: <Widget>[
+          children: <Widget>[
             Row(
               children: <Widget> [
                 Icon(Icons.star, size: 5),
