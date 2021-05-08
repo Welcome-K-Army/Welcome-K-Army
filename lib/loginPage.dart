@@ -186,7 +186,7 @@ class _LoginPage extends State<LoginPage> {
             SizedBox(
               height: 20,
               width: 20,
-              child: ListTile(
+              children: <Widget>[ListTile(
                 title: Text("Male"),
                 leading: Radio(
                   value: Gender.MAN,
@@ -199,11 +199,12 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               Text("Male"),
+              ]
             ),
             SizedBox(
               height: 20,
               width: 20,
-              child: ListTile(
+              children: <Widget>[ListTile(
                 title: Text("Female"),
                 leading: Radio(
                   value: Gender.WOMEN,
@@ -215,7 +216,8 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              Text("Female"),
+              Text("Female")
+              ]
             ),
           ],
         ),
