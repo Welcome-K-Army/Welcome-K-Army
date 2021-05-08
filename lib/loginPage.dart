@@ -182,7 +182,7 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
         Row(
           children: <Widget>[
-            Icon(Icons.wc)
+            Icon(Icons.wc),
             ListTile(
               title: Text("Male"),
               leading: SizedBox(
