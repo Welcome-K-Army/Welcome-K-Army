@@ -3,9 +3,9 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 final List<String> imgList = [
-  'https://reasley.com/wp-content/uploads/2020/04/one.jpg',
-  'https://reasley.com/wp-content/uploads/2020/04/two.jpg',
-  'https://reasley.com/wp-content/uploads/2020/04/three.jpg'
+  'images/1.jpg',
+  'images/2.jpg',
+  'images/3.jpg',
 ];
 
 class SlideBanner extends StatefulWidget {
@@ -27,7 +27,7 @@ class SildeBannerState extends State<SlideBanner> {
               pagination: SwiperPagination(),
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
-                return Image.network(imgList[index]);
+                return Image.asset(imgList[index]);
               }) // Swiper
           ), // Padding
     ); // Container

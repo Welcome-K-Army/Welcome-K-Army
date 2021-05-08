@@ -32,7 +32,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   height: 50,
-                  child: Image.network(imgList[index]),
+                  child: Image.asset(imgList[index]),
                 ); // Container
               }), // ListView
         ]));
