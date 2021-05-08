@@ -245,6 +245,9 @@ class _LoginPage extends State<LoginPage> {
             ],
           ),
         ),
+        Row(
+          children:<Widget>[
+            Icon(Icons.portrait),
         DropdownButtonHideUnderline(
           child: DropdownButton(
             hint:Text("Age"),
@@ -259,6 +262,8 @@ class _LoginPage extends State<LoginPage> {
             ],
           ),
         ),
+      ],
+        )
         TextFormField(
             //패스워드
             obscureText: true,
