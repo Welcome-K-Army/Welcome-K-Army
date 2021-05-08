@@ -177,18 +177,18 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
-        // RadioListTile<Gender>(
-        //   title: Text("Male"),
-        //   value:Gender.WOMEN,
-        //   groupValue: _gender,
-        //   onChanged:(Gender.value){setState((){ _gender=value;});},
-        // ),
-        // RadioListTile<Gender>(
-        // title: Text("Female"),
-        //   value:Gender.MAN,
-        //   groupValue: _gender,
-        //   onChanged:(value){setState((){ _gender=value;});},
-        // ),
+        RadioListTile<Gender>(
+          title: Text("Male"),
+          value:Gender.WOMEN,
+          groupValue: _gender,
+          onChanged:(Gender.value){setState((){ _gender=value;});},
+        ),
+        RadioListTile<Gender>(
+        title: Text("Female"),
+          value:Gender.MAN,
+          groupValue: _gender,
+          onChanged:(value){setState((){ _gender=value;});},
+        ),
         TextFormField(
             //이메일
             controller: _emailController,
