@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/basic.dart';
-import 'mainView/mainView.dart';
+import 'package:./constants.dart'
 
-void main() => runApp(new MyApp());
+import './mainView/mainView.dart';
 
-//bottomNavigationBar는 항상 내용 재구성 해야되서 Stateful로 구성
+void main() { runApp(MyApp()); }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
-        visualDensity: VisualDensity.adaptivePlatformDensity(),
-      ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ), // ThemeData
       home: MainView(),
-    );
+    ); // MaterialApp
   }
 }
