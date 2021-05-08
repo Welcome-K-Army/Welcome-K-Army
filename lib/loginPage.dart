@@ -187,7 +187,8 @@ class _LoginPage extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
-              SizedBox(
+              Container(
+              child:SizedBox(
                 height: 20,
                 width: 20,
                 child: Radio(
@@ -200,6 +201,7 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
+
               Padding(
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: GestureDetector(
@@ -211,7 +213,9 @@ class _LoginPage extends State<LoginPage> {
                   child: Text("Male"),
                 ),
               ),
-              SizedBox(
+              ),
+              Container(
+              child:SizedBox(
                 height: 20,
                 width: 20,
                 child: Radio(
@@ -234,6 +238,7 @@ class _LoginPage extends State<LoginPage> {
                   },
                   child: Text("Female"),
                 ),
+              ),
               ),
             ],
           ),
