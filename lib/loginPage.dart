@@ -182,12 +182,11 @@ class _LoginPage extends State<LoginPage> {
               return null;
             }), //TextFormField 이메일
         Padding(
-          padding: EdgeInsets.only(top:10,bottom:5),
+          padding: EdgeInsets.only(top: 10, bottom: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.only(right:10), child:Icon(Icons.wc)),
+              Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
               SizedBox(
                 height: 20,
                 width: 20,
@@ -201,18 +200,15 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              SizedBox(
-                width: size.width * 0.25,
-                child: Padding(
-                  padding: EdgeInsets.only(right:10,left:10),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _gender = Gender.MAN;
-                      });
-                    },
-                    child: Text("Male"),
-                  ),
+              Padding(
+                padding: EdgeInsets.only(right: 10, left: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.MAN;
+                    });
+                  },
+                  child: Text("Male"),
                 ),
               ),
               SizedBox(
@@ -228,18 +224,15 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              SizedBox(
-                width: size.width * 0.35,
-                child: Padding(
-                  padding: EdgeInsets.only(right:10,left:10),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _gender = Gender.WOMEN;
-                      });
-                    },
-                    child: Text("Female"),
-                  ),
+              Padding(
+                padding: EdgeInsets.only(right: 10, left: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.WOMEN;
+                    });
+                  },
+                  child: Text("Female"),
                 ),
               ),
             ],
