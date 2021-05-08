@@ -203,11 +203,11 @@ class _LoginPage extends State<LoginPage> {
               child: Radio(
                 value: Gender.WOMEN,
                 groupValue: _gender,
-                onChanged: changeGender(value),
+                onChanged: changeGender,
               ),
             ),
             GestureDetector(
-              onTap: changeGender(value),
+              onTap: changeGender(Gender.WOMEN),
               child: Text("Female"),
             ),
           ],
