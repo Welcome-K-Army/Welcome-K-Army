@@ -6,7 +6,7 @@ import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
-enum Gender{MAN,WOOMEN}
+enum Gender{MAN,WOMEN}
 
 class LoginPage extends StatefulWidget { //UI변경은 StatefulWidget으로 설정
   @override
@@ -181,7 +181,7 @@ class _LoginPage extends State<LoginPage> {
           title: Text("Male"),
           value:Gender.WOMEN,
           groupValue: _gender,
-          onChanged(value){setState((){ _gender=value;});},
+          onChanged:(value){setState((){ _gender=value;});},
         ),
         RadioListTile<Gender>(
         title: Text("Female"),
