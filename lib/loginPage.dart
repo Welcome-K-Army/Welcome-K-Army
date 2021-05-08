@@ -196,7 +196,7 @@ class _LoginPage extends State<LoginPage> {
                 },
               ),
             ),
-            Text("Male",style:),
+            Text("Male"),
             SizedBox(
               height: 20,
               width: 20,
