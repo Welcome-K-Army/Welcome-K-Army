@@ -199,8 +199,8 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(10),
+              SizedBox(
+                width: size.width*0.25,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -223,8 +223,8 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(10),
+              SizedBox(
+                width: size.width*0.25,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
