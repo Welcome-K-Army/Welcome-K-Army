@@ -182,7 +182,7 @@ class _LoginPage extends State<LoginPage> {
               return null;
             }), //TextFormField 이메일
         Padding(
-          padding: EdgeInsets.only(top:5,bottom:5),
+          padding: EdgeInsets.only(top:10,bottom:5),
           child: Row(
             children: <Widget>[
               Padding(
@@ -201,7 +201,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                width: size.width * 0.25,
+                width: size.width * 0.35,
                 child: Padding(
                   padding: EdgeInsets.only(right:10,left:10),
                   child: GestureDetector(
@@ -228,7 +228,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                width: size.width * 0.25,
+                width: size.width * 0.35,
                 child: Padding(
                   padding: EdgeInsets.only(right:10,left:10),
                   child: GestureDetector(
