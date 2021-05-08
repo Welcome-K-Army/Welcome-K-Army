@@ -182,32 +182,39 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
         Row(
           children: <Widget>[
-            Padding(
-              padding:EdgeInsets.only(right:10),
-              child:Icon(Icons.wc)
-            ),
-            ListTile(
-              title: Text("Male"),
-              leading: Radio(
-                value: Gender.MAN,
-                groupValue: _gender,
-                onChanged: (value) {
-                  setState(() {
-                    _gender = value;
-                  });
-                },
+            Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
+            SizedBox(
+              height: 20,
+              width: 20,
+              child: ListTile(
+                title: Text("Male"),
+                leading: Radio(
+                  value: Gender.MAN,
+                  groupValue: _gender,
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
               ),
             ),
-            ListTile(
-              title: Text("Female",),
-              leading: Radio(
-                value: Gender.WOMEN,
-                groupValue: _gender,
-                onChanged: (value) {
-                  setState(() {
-                    _gender = value;
-                  });
-                },
+            SizedBox(
+              height: 20,
+              width: 20,
+              child: ListTile(
+                title: Text(
+                  "Female",
+                ),
+                leading: Radio(
+                  value: Gender.WOMEN,
+                  groupValue: _gender,
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
               ),
             ),
           ],
