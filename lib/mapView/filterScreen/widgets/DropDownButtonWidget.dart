@@ -2,42 +2,50 @@ import 'package:flutter/material.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class DropDownButtonWidget extends StatefulWidget {
-  const DropDownButtonWidget({key}) : super(key: key);
+  final String hint;
+  final List<String> dropDownItems;
+
+  const DropDownButtonWidget({Key key, this.hint, this.dropDownItems}) : super(key: key);
 
   @override
   _DropDownButtonWidgetState createState() => _DropDownButtonWidgetState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
 class _DropDownButtonWidgetState extends State<DropDownButtonWidget> {
-  String dropdownValue = 'One';
+  String dropdownValue;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: DropdownButton<String>(
-          value: dropdownValue,
-          icon: const Icon(Icons.arrow_downward),
-          iconSize: 24,
-          style: const TextStyle(color: Colors.deepPurple),
-          underline: Container(
-            height: 2,
-            color: Colors.deepPurpleAccent,
-          ),
-          onChanged: (newValue) {
-            setState(() {
-              dropdownValue = newValue;
-            });
-          },
-          items: <String>['One', 'Two', 'Free', 'Four']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        ));
+      width: MediaQuery.of(context).size.width * 0.42,
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      margin: EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey[300]),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+        hint: Text(
+          widget.hint,
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.black87),
+        ),
+        value: dropdownValue,
+        style: const TextStyle(color: Colors.black87),
+        onChanged: (newValue) {
+          setState(() {
+            dropdownValue = newValue;
+          });
+          
+        },
+        items: widget.dropDownItems.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      )),
+    );
   }
 }

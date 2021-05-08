@@ -12,7 +12,7 @@ class DecoratedInputField extends StatelessWidget {
             color: Colors.grey[300], borderRadius: BorderRadius.circular(10)),
         child: TextField(
           decoration: InputDecoration.collapsed(
-            hintText: 'Enter your reference number',
+            hintText: '이름으로 검색하기',
           ),
         ));
   }

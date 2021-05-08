@@ -21,6 +21,7 @@ class MyFloatingActionButton extends StatefulWidget {
 
 class _MyFloatingActionButtonState extends State<MyFloatingActionButton> {
   bool showFab = true;
+
   @override
   Widget build(BuildContext context) {
     return showFab
