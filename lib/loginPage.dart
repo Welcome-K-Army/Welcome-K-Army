@@ -10,6 +10,7 @@ import 'package:flutter/src/painting/edge_insets.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/material/dropdown.dart';
 import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/rendering/table.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -266,7 +267,7 @@ class _LoginPage extends State<LoginPage> {
                       DropdownMenuItem(
                         value: age,
                         child: SizedBox(
-                          width:100,
+                          width:MaxColumnWidth,
                           child:Text(age.toString() ,textAlign: TextAlign.center),
                         ),
                       ),
