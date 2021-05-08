@@ -22,7 +22,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   int selected;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-  //List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
 
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
@@ -251,24 +250,24 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.portrait),
             Container(
-  height: 50.0,
-  width: 200.0,
-            child:DropdownButtonHideUnderline(
-              child: DropdownButton(
-                iconSize: 24,
-                elevation: 16,
-                hint: Text("Age"),
-                value: selected,
-                onChanged: (val) => setState(() => selected = val),
-                items: [
-                  for (var age in ageList)
-                    DropdownMenuItem(
-                      value: age,
-                      child: Text(age.toString()),
-                    ),
-                ],
+              height: 50.0,
+              width: 200.0,
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  iconSize: 24,
+                  elevation: 16,
+                  hint: Text("Age"),
+                  value: selected,
+                  onChanged: (val) => setState(() => selected = val),
+                  items: [
+                    for (var age in ageList)
+                      DropdownMenuItem(
+                        value: age,
+                        child: Text(age.toString() ,textAlign: TextAlign.center),
+                      ),
+                  ],
+                ),
               ),
-            ),
             ),
             Container(),
           ],
