@@ -183,13 +183,13 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
-            Flexiable(
+            Flexible(
               fit: FlexFit.loose,
               child: ListTile(
                 title: Text("Male"),
                 leading: SizedBox(
                   height: 20,
-                  //width: ,
+                  width: 20,
                   child: Radio(
                     value: Gender.MAN,
                     groupValue: _gender,
@@ -202,7 +202,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
-            Flexiable(
+            Flexible(
               fit: FlexFit.loose,
               child: ListTile(
                 title: Text("Female"),
