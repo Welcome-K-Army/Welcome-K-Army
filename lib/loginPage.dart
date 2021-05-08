@@ -184,6 +184,7 @@ class _LoginPage extends State<LoginPage> {
         Padding(
           padding: EdgeInsets.only(top:10,bottom:5),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right:10), child:Icon(Icons.wc)),
@@ -201,7 +202,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                width: size.width * 0.35,
+                width: size.width * 0.25,
                 child: Padding(
                   padding: EdgeInsets.only(right:10,left:10),
                   child: GestureDetector(
