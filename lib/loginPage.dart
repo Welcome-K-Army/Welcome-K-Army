@@ -199,6 +199,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
+            Text("Male"),
             SizedBox(
               height: 20,
               width: 20,
@@ -215,6 +216,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
+            Text("Female"),
           ],
         ),
         TextFormField(
