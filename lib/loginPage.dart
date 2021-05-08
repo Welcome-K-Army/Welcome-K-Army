@@ -202,8 +202,8 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
-            Flexible(
-              fit: FlexFit.loose,
+            Expanded(
+              flex: 1,
               child: ListTile(
                 title: Text("Female"),
                 leading: SizedBox(
