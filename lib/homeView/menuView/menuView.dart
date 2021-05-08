@@ -14,8 +14,8 @@ class MenuViewState extends State<MenuView> {
       itemCount: menuList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 2,
       ),
       itemBuilder: (context, index) {
         return MenuIconButton(menuList[index]);
