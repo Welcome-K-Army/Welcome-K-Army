@@ -3,16 +3,16 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'package:intl/intl.dart';
 
-import 'noticeContextView.dart';
+import 'noticeContentView.dart';
 
 import 'person.dart';
 
 int noticeNumber = 0;
 
 final List<Notice> noticeList = [
-  new Notice(title: "Intro", context: 'Hello World', person: personList[0]),
-  new Notice(title: 'App Info', context: 'Welcome K Army', person: personList[1]),
-  new Notice(title: 'Outtro', context: 'Good Bye', person: personList[2]),
+  new Notice(title: "Intro", content: 'Hello World', person: personList[0]),
+  new Notice(title: 'App Info', content: 'Welcome K Army', person: personList[1]),
+  new Notice(title: 'Outtro', content: 'Good Bye', person: personList[2]),
 ];
 
 class Notice {
@@ -22,10 +22,10 @@ class Notice {
   int number;
 
   String title;
-  String context;
+  String content;
   Person person;
 
-  Notice({this.title, this.context, this.person}) {
+  Notice({this.title, this.content, this.person}) {
     this.number = noticeNumber;
     noticeNumber++;
   }
@@ -45,7 +45,7 @@ class NoticeTile extends StatelessWidget {
         // 공지 제목을 누르면 공지 게시글로 이동
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NoticeContextView(_notice.number)),
+          MaterialPageRoute(builder: (context) => NoticeContentView(_notice.number)),
         );
       },
     ); // ListTile
