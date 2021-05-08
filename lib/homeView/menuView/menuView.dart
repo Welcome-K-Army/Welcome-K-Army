@@ -16,9 +16,9 @@ class MenuViewState extends State<MenuView> {
         crossAxisCount: 3,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-      )
+      ),
       itemBuilder: (context, index) {
-            return MenuIconButton(menuList[index]);
+        return MenuIconButton(menuList[index]);
       },
     ); // GridView
   } // Widget
