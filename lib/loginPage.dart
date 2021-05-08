@@ -19,7 +19,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  String selected;
+  int selected;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
   //List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
 
@@ -247,13 +247,13 @@ class _LoginPage extends State<LoginPage> {
         ),
         DropdownButtonHideUnderline(
           child: DropdownButton(
-            value: age,
+            value: selected,
             onChanged: (val) => setState(() => selected = val),
             items: [
               for (var age in ageList)
                 DropdownMenuItem(
-                  value: String(age),
-                  child: Text("$age"),
+                  value: age,
+                  child: Text(age.toString),
                 ),
             ],
           ),
