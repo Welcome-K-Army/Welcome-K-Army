@@ -24,7 +24,9 @@ class NoticeContextViewState extends State<NoticeContextView> {
             subtitle: Text(noticeList[noticeContextNumber].date_yMMMd),
           ),
           Text(noticeList[noticeContextNumber].context),
-          ListView.builder(
+          Container(
+            height: 60,
+            child: ListView.builder(
               // 높이 설정 안 됌 -> 수정하기
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -35,6 +37,7 @@ class NoticeContextViewState extends State<NoticeContextView> {
                   child: Image.asset(imgList[index]),
                 ); // Container
               }), // ListView
+          )
         ]));
   }
 }
