@@ -7,6 +7,7 @@ import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dar
 import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
 import 'package:flutter/src/painting/edge_insets.dart';
+import 'package:flutter/src/widgets/basic.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -196,7 +197,16 @@ class _LoginPage extends State<LoginPage> {
                 },
               ),
             ),
-            Text("Male"),
+            Padding(
+              padding:EdgeInsets.all(10),
+            child:GestureDetector(
+              onTap:(){
+                setState(() {
+                  _gender = Gender.MAN;
+                });
+              },
+              child:Text("Male"),
+            ),
             SizedBox(
               height: 20,
               width: 20,
@@ -216,7 +226,7 @@ class _LoginPage extends State<LoginPage> {
                   _gender = Gender.WOMEN;
                 });
               },
-            child:Text("Female"),
+              child:Text("Female"),
             ),
           ],
         ),
