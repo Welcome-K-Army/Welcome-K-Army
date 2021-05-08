@@ -14,7 +14,7 @@ class NoticeContentViewState extends State<NoticeContentView> {
   int noticeContentNumber;
   NoticeContentViewState(this.noticeContentNumber);
   @override
-  Widget build(BuildContent context) {
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
         body: ListView(children: <Widget>[
