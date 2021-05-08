@@ -19,8 +19,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   String selected;
-  List ageList = List.generate(60, (int index) => '${index  + 15}');
-  List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
+  List<String> ageList = List<String>.generate(60, (int index) => print('${index  + 15}'));
+  //List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
   
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
