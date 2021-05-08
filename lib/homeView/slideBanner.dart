@@ -3,9 +3,9 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 final List<String> imgList = [
-  'images/1.jpg',
-  'images/2.jpg',
-  'images/3.jpg',
+  'assets/images/1.jpg',
+  'assets/images/2.jpg',
+  'assets/images/3.jpg',
 ];
 
 class SlideBanner extends StatefulWidget {
