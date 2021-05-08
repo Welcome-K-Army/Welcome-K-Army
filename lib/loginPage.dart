@@ -252,6 +252,10 @@ class _LoginPage extends State<LoginPage> {
             Icon(Icons.portrait),
             DropdownButtonHideUnderline(
               child: DropdownButton(
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                isExpanded: true,
                 hint: Text("Age"),
                 value: selected,
                 onChanged: (val) => setState(() => selected = val),
