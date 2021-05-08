@@ -223,14 +223,14 @@ class _LoginPage extends State<LoginPage> {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.WOMEN;
-                    });
-                  },
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _gender = Gender.WOMEN;
+                  });
+                },
+                child: Align(
+                  alignment: Alignment.centerRight,
                   child: Text("Female"),
                 ),
               ),
