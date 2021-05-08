@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import '../constants.dart';
 import 'menu.dart';
 
 class MenuView extends StatefulWidget {
