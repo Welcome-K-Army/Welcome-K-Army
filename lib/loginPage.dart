@@ -144,7 +144,7 @@ class _LoginPage extends State<LoginPage> {
       ], //Widget
     ); //Column
   }
-
+ 
   //회원가입 텍스트 폼
   Widget _textFormJoin(Size size) {
     return Column(
@@ -235,6 +235,17 @@ class _LoginPage extends State<LoginPage> {
               Container(),
             ],
           ),
+        ),
+        DropdownButtonHideUnderline(
+            child: DropdownButton(
+                value: dropdownValue,
+                isExpanded: true,
+                items: _dropdownMenuItems,
+                onChanged: (value) {
+                  setState(() {
+                    dropdownValue = value;
+                  });
+                }),
         ),
         TextFormField(
             //패스워드
