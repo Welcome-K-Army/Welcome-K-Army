@@ -250,9 +250,11 @@ class _LoginPage extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Icon(Icons.portrait),
-            DropdownButtonHideUnderline(
+            Container(
+  height: 50.0,
+  width: 200.0,
+            child:DropdownButtonHideUnderline(
               child: DropdownButton(
-                icon: Icon(Icons.arrow_downward),
                 iconSize: 24,
                 elevation: 16,
                 hint: Text("Age"),
@@ -267,6 +269,7 @@ class _LoginPage extends State<LoginPage> {
                 ],
               ),
             ),
+            )
             Container(),
           ],
         ),
