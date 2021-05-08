@@ -185,7 +185,8 @@ class _LoginPage extends State<LoginPage> {
           padding: EdgeInsets.only(top:5,bottom:5),
           child: Row(
             children: <Widget>[
-               Icon(Icons.wc),
+              Padding(
+                  padding: EdgeInsets.only(right:10), child:Icon(Icons.wc),
               SizedBox(
                 height: 20,
                 width: 20,
@@ -202,7 +203,7 @@ class _LoginPage extends State<LoginPage> {
               SizedBox(
                 width: size.width * 0.25,
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(right:10,left:10),
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
@@ -229,7 +230,7 @@ class _LoginPage extends State<LoginPage> {
               SizedBox(
                 width: size.width * 0.25,
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(right:10,left:10),
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
