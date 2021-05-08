@@ -6,15 +6,17 @@ import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
-enum Gender{MAN,WOMEN}
 
-class LoginPage extends StatefulWidget { //UI변경은 StatefulWidget으로 설정
+enum Gender { MAN, WOMEN }
+
+class LoginPage extends StatefulWidget {
+  //UI변경은 StatefulWidget으로 설정
   @override
   _LoginPage createState() => _LoginPage();
 }
 
 class _LoginPage extends State<LoginPage> {
-  Gender _gender=Gender.MAN;
+  Gender _gender = Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
@@ -156,7 +158,7 @@ class _LoginPage extends State<LoginPage> {
             validator: (String value) {
               if (value.isEmpty) {
                 return "Please input correct NickName!";
-              } else if (value==0){
+              } else if (value == 0) {
                 return "Not correct NickName format";
               }
               return null;
@@ -177,17 +179,31 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
-        RadioListTile<Gender>(
-          title: Text("Male"),
-          value:Gender.WOMEN,
-          groupValue: _gender,
-          onChanged:(value){setState((){ _gender=value;print(value);});},
-        ),
-        RadioListTile<Gender>(
-        title: Text("Female"),
-          value:Gender.MAN,
-          groupValue: _gender,
-          onChanged:(value){setState((){ _gender=value;print(value);});},
+        Row(
+          children: <Widget>[
+            RadioListTile<Gender>(
+              title: Text("Male"),
+              value: Gender.MAN,
+              groupValue: _gender,
+              onChanged: (value) {
+                setState(() {
+                  _gender = value;
+                  print(value);
+                });
+              },
+            ),
+            RadioListTile<Gender>(
+              title: Text("Female"),
+              value: Gender.WOMEN,
+              groupValue: _gender,
+              onChanged: (value) {
+                setState(() {
+                  _gender = value;
+                  print(value);
+                });
+              },
+            ),
+          ],
         ),
         TextFormField(
             //이메일
@@ -274,7 +290,7 @@ class _LoginPage extends State<LoginPage> {
           child: FittedBox(
             fit: BoxFit.contain,
             child: CircleAvatar(
-              minRadius:40,
+              minRadius: 40,
               backgroundImage: AssetImage("lib/image/Loading.gif"),
             ), //CircleAvatar
           ), //FittedBox
@@ -326,4 +342,3 @@ class _LoginPage extends State<LoginPage> {
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
 }
-
