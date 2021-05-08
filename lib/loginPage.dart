@@ -253,7 +253,7 @@ class _LoginPage extends State<LoginPage> {
               for (var age in ageList)
                 DropdownMenuItem(
                   value: age,
-                  child: Text(age.toString),
+                  child: Text(age),
                 ),
             ],
           ),
