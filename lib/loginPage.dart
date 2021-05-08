@@ -182,7 +182,7 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
           Row(
             children:<Widget>[
-            Icon(Icons.wc),
+            Padding(padding:EdgeInsets.all(5),child:Icon(Icons.wc)),
             ListTile(
               title: Text("Male"),
               leading: SizedBox(
@@ -216,7 +216,7 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             ],
-          )
+          ),
         TextFormField(
             //패스워드
             obscureText: true,
