@@ -5,9 +5,10 @@ import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
-enum Gender {MAN,WOMEN}
+import 'package:flutter/src/material/icons.dart';
+OMEN}
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //email 컨트롤러
@@ -142,9 +143,9 @@ class LoginPage extends StatefulWidget {
       children: <Widget>[
         TextFormField(
             //닉네임
-            controller: _emailController,
+            controller: _nickNameController,
             decoration: InputDecoration(
-              icon: Icon(Icons.account_circle),
+              icon: Icon(Icons.person_add),
               labelText: "NickName",
             ), //InputDecoration
             validator: (String value) {
@@ -159,7 +160,7 @@ class LoginPage extends StatefulWidget {
             //이메일
             controller: _emailController,
             decoration: InputDecoration(
-              icon: Icon(Icons.account_circle),
+              icon: Icon(Icons.email),
               labelText: "Email",
             ), //InputDecoration
             validator: (String value) {
