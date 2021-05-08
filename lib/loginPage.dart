@@ -211,9 +211,8 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             GestureDetector(
-              value: Gender.WOMEN,
-              onTap: (value) {
-                _gender = value;
+              onTap: () {
+                _gender = Gender.WOMEN;
               },
             child:Text("Female"),
             ),
