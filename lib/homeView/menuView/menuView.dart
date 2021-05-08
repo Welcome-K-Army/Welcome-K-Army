@@ -12,7 +12,6 @@ class MenuViewState extends State<MenuView> {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: ClampingScrollPhysics(), 
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 2,
