@@ -255,7 +255,6 @@ class _LoginPage extends State<LoginPage> {
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 24,
                 elevation: 16,
-                isExpanded: true,
                 hint: Text("Age"),
                 value: selected,
                 onChanged: (val) => setState(() => selected = val),
