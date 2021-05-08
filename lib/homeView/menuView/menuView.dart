@@ -11,7 +11,9 @@ class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Column(
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
           children: <Widget>[
             Row(
               children: <Widget> [
@@ -33,7 +35,7 @@ class MenuViewState extends State<MenuView> {
               },
             )
           ]
-      )
+      ))
     ); // GridView
   } // Widget
 } // Class
