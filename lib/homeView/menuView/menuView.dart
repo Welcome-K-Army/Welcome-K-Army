@@ -71,7 +71,8 @@ class MenuTitleWithCustomUnderLine extends StatelessWidget {
 class MenuTitleWithMoreBtn extends StatelessWidget {
   const MenuTitleWithMoreBtn({
     Key key,
-    this.text,
+    this.title,
+    this.press,
   }) : super(key: key);
 
   final String title;
