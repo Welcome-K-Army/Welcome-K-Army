@@ -183,7 +183,7 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Padding(
-              padding:EdgeInsets.only(right:2),
+              padding:EdgeInsets.only(right:10),
               child:Icon(Icons.wc)
             ),
             Flexible(
