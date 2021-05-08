@@ -10,6 +10,7 @@ enum Gender {MAN,WOMEN}
 class LoginPage extends StatelessWidget {
   Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final TextEditingController _nickNameController = TextEditingController(); //email 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   @override
@@ -173,27 +174,23 @@ class LoginPage extends StatelessWidget {
             }), //TextFormField 이메일
         RadioListTile(
           title: Text("Male"),
-          leading:Radio(
-            value:Gender.WOMEN,
-            groupValue: _gender,
-            onChanged:(value){
-              setState((){
-                _gender=value;
-              });
-            },
-          ),
+          value:Gender.WOMEN,
+          groupValue: _gender,
+          onChanged:(value){
+            setState((){
+              _gender=value;
+            });
+          },
         ),
         RadioListTile(
-          title: Text("Female"),
-          leading:Radio(
-            value:Gender.MAN,
-            groupValue: _gender,
-            onChanged:(value){
-              setState((){
-                _gender=value;
-              });
-            },
-          ),
+        title: Text("Female"),
+          value:Gender.MAN,
+          groupValue: _gender,
+          onChanged:(value){
+            setState((){
+              _gender=value;
+            });
+          },
         ),
         TextFormField(
             //이메일
