@@ -8,10 +8,10 @@ import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
 enum Gender{MAN,WOOMEN}
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  final TextEditingController _nickNameController = TextEditingController(); //email 컨트롤러
+  final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   @override
