@@ -181,27 +181,31 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
         Row(
           children: <Widget>[
-            RadioListTile<Gender>(
-              title: Text("Male"),
-              value: Gender.MAN,
-              groupValue: _gender,
-              onChanged: (value) {
-                setState(() {
-                  _gender = value;
-                  print(value);
-                });
-              },
+            Flexible(
+              fit: FlexFit.loose,
+              child: RadioListTile<Gender>(
+                title: Text("Male"),
+                value: Gender.MAN,
+                groupValue: _gender,
+                onChanged: (value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
+              ),
             ),
-            RadioListTile<Gender>(
-              title: Text("Female"),
-              value: Gender.WOMEN,
-              groupValue: _gender,
-              onChanged: (value) {
-                setState(() {
-                  _gender = value;
-                  print(value);
-                });
-              },
+            Flexible(
+              fit: FlexFit.loose,
+              child: RadioListTile<Gender>(
+                title: Text("Female"),
+                value: Gender.WOMEN,
+                groupValue: _gender,
+                onChanged: (value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
+              ),
             ),
           ],
         ),
