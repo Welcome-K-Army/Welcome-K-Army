@@ -181,7 +181,7 @@ class _LoginPage extends State<LoginPage> {
           title: Text("Male"),
           value:Gender.WOMEN,
           groupValue: _gender,
-          onChanged:(Gender.value){setState((){ _gender=value;});},
+          onChanged(value){setState((){ _gender=value;});},
         ),
         RadioListTile<Gender>(
         title: Text("Female"),
