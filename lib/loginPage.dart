@@ -200,7 +200,7 @@ class _LoginPage extends State<LoginPage> {
             ),
             ListTile(
               title: Text("Female",),
-              child: Radio(
+              leading: Radio(
                 value: Gender.WOMEN,
                 groupValue: _gender,
                 onChanged: (value) {
