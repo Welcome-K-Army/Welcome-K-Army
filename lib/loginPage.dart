@@ -183,29 +183,29 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Padding(padding: EdgeInsets.only(right: 10), child: Icon(Icons.wc)),
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: ListTile(
-                title: Text("Male"),
-                leading: Radio(
-                  value: Gender.MAN,
-                  groupValue: _gender,
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
-                  },
+            ListTile(
+              title: Text("Male"),
+              leading: SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Radio(
+                    value: Gender.MAN,
+                    groupValue: _gender,
+                      onChanged: (value) {
+                      setState(() {
+                        _gender = value;
+                      });
+                    },
+                  ),
                 ),
               ),
-            ),
             Text("Male"),
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: ListTile(
+            ListTile(
                 title: Text("Female"),
-                leading: Radio(
+                leading:SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Radio(
                   value: Gender.WOMEN,
                   groupValue: _gender,
                   onChanged: (value) {
