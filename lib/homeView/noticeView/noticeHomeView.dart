@@ -27,7 +27,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
                   child: Icon(Icons.star, size: 20),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: 5, bottom: 5),
+                  padding: EdgeInsets.only(bottom: 5),
                   child: Text("Notice"),
                 ),
                 Padding(
