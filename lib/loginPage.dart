@@ -180,6 +180,8 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
+          Row(
+            children:<Widget>[
             Icon(Icons.wc),
             ListTile(
               title: Text("Male"),
@@ -213,13 +215,15 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
+            ],
+          )
         TextFormField(
             //패스워드
             obscureText: true,
             controller: _passwordController,
             decoration: InputDecoration(
               icon: Icon(Icons.vpn_key),
-              labelText: "Password Check",
+              labelText: "Password",
             ), //InputDecoration
             validator: (String value) {
               if (value.isEmpty) {
@@ -235,7 +239,7 @@ class _LoginPage extends State<LoginPage> {
             controller: _passwordController,
             decoration: InputDecoration(
               icon: Icon(Icons.vpn_key),
-              labelText: "Password",
+              labelText: "Password Check",
             ), //InputDecoration
             validator: (String value) {
               if (value.isEmpty) {
