@@ -181,11 +181,14 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
         Row(
           children: <Widget>[
-            Icon(Icons.wc),
+            Flexible(
+              fit: FlexFit.loose,
+              child:Icon(Icons.wc)
+            ),
             Flexible(
               fit: FlexFit.loose,
               child: RadioListTile<Gender>(
-                title: Text(" Male "),
+                title: Text("Male"),
                 value: Gender.MAN,
                 groupValue: _gender,
                 onChanged: (value) {
