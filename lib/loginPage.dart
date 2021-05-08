@@ -186,10 +186,9 @@ class _LoginPage extends State<LoginPage> {
               padding:EdgeInsets.only(right:10),
               child:Icon(Icons.wc)
             ),
-            Flexible(
-              fit: FlexFit.loose,
-              child: RadioListTile<Gender>(
-                title: Text("Male"),
+            ListTile(
+              title: Text("Male"),
+              leading: Radio(
                 value: Gender.MAN,
                 groupValue: _gender,
                 onChanged: (value) {
@@ -199,10 +198,9 @@ class _LoginPage extends State<LoginPage> {
                 },
               ),
             ),
-            Flexible(
-              fit: FlexFit.loose,
-              child: RadioListTile<Gender>(
-                title: Text("Female"),
+            ListTile(
+              title: Text("Female",),
+              child: Radio(
                 value: Gender.WOMEN,
                 groupValue: _gender,
                 onChanged: (value) {
