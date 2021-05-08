@@ -183,10 +183,7 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
-             Expanded(
-              flex: 1,
-              child: ListTile(
-                title: Text("Male"),
+             ListTile(
                 leading: SizedBox(
                   height: 20,
                   //width: 20,
@@ -201,11 +198,9 @@ class _LoginPage extends State<LoginPage> {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: ListTile(
-                title: Text("Female"),
+            
+            Text("Male"),
+            ListTile(
                 leading: SizedBox(
                   height: 20,
                   //width: size.width*0.3,
@@ -220,7 +215,8 @@ class _LoginPage extends State<LoginPage> {
                   ),
                 ),
               ),
-            ),
+
+            Text("Female"),
           ],
         ),
         TextFormField(
