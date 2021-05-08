@@ -181,55 +181,61 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
-        Row(
-          children: <Widget>[
-            Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: Radio(
-                value: Gender.MAN,
-                groupValue: _gender,
-                onChanged: (value) {
-                  setState(() {
-                    _gender = value;
-                  });
-                },
+        Padding(
+          padding: EdgeInsets.all(5),
+          child: Row(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
+              SizedBox(
+                height: 20,
+                width: 20,
+                child: Radio(
+                  value: Gender.MAN,
+                  groupValue: _gender,
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _gender = Gender.MAN;
-                  });
-                },
-                child: Text("Male"),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.MAN;
+                    });
+                  },
+                  child: Text("Male"),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: Radio(
-                value: Gender.WOMEN,
-                groupValue: _gender,
-                onChanged: (value) {
-                  setState(() {
-                    _gender = value;
-                  });
-                },
+              SizedBox(
+                height: 20,
+                width: 20,
+                child: Radio(
+                  value: Gender.WOMEN,
+                  groupValue: _gender,
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  _gender = Gender.WOMEN;
-                });
-              },
-              child: Text("Female"),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.WOMEN;
+                    });
+                  },
+                  child: Text("Female"),
+                ),
+              ),
+            ],
+          ),
         ),
         TextFormField(
             //패스워드
