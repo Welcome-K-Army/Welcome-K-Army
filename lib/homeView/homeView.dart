@@ -14,9 +14,10 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         child: ListView(children: [
-      Header(),
+      Header(size: size),
       SlideBanner(),
       MenuView(),
       NoticeHomeView(),

@@ -1,3 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
+
+import '../constants.dart';
+
 class Header extends StatelessWidget {
   const Header({
     Key key,
