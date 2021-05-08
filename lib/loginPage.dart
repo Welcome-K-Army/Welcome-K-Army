@@ -151,7 +151,7 @@ class LoginPage extends StatelessWidget {
             validator: (String value) {
               if (value.isEmpty) {
                 return "Please input correct NickName!";
-              } else if ()
+              } else if (){
                 return "Not correct NickName format";
               }
               return null;
