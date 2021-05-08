@@ -9,6 +9,7 @@ import 'package:flutter/src/material/icons.dart';
 import 'package:flutter/src/painting/edge_insets.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/material/dropdown.dart';
+import 'package:flutter/src/widgets/container.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -246,23 +247,25 @@ class _LoginPage extends State<LoginPage> {
           ),
         ),
         Row(
-          children:<Widget>[
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
             Icon(Icons.portrait),
-        DropdownButtonHideUnderline(
-          child: DropdownButton(
-            hint:Text("Age"),
-            value: selected,
-            onChanged: (val) => setState(() => selected = val),
-            items: [
-              for (var age in ageList)
-                DropdownMenuItem(
-                  value: age,
-                  child: Text(age.toString()),
-                ),
-            ],
-          ),
-        ),
-      ],
+            DropdownButtonHideUnderline(
+              child: DropdownButton(
+                hint: Text("Age"),
+                value: selected,
+                onChanged: (val) => setState(() => selected = val),
+                items: [
+                  for (var age in ageList)
+                    DropdownMenuItem(
+                      value: age,
+                      child: Text(age.toString()),
+                    ),
+                ],
+              ),
+            ),
+            Container(),
+          ],
         ),
         TextFormField(
             //패스워드
