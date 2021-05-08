@@ -10,13 +10,16 @@ class MenuView extends StatefulWidget {
 class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      children: ListView.builder(
-          itemCount: menuList.length,
-          itemBuilder: (context, index) {
+    return GridView.builder(
+      itemCount: menuList.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      )
+      itemBuilder: (context, index) {
             return MenuIconButton(menuList[index]);
-          }), // ListView.builder
+      },
     ); // GridView
   } // Widget
 } // Class
