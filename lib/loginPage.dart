@@ -269,7 +269,7 @@ class _LoginPage extends State<LoginPage> {
                 ],
               ),
             ),
-            )
+            ),
             Container(),
           ],
         ),
