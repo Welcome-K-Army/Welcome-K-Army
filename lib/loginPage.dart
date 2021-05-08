@@ -203,12 +203,19 @@ class _LoginPage extends State<LoginPage> {
               child: Radio(
                 value: Gender.WOMEN,
                 groupValue: _gender,
-                onChanged: changeGender,
+                onChanged: (value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
               ),
             ),
             GestureDetector(
-              onTap: changeGender(Gender.WOMEN),
-              child: Text("Female"),
+              onTap:(){
+                  setState(() {
+                    _gender = value;
+                  })},
+            Text("Female"),
             ),
           ],
         ),
@@ -260,12 +267,6 @@ class _LoginPage extends State<LoginPage> {
         ),
       ], //Widget
     ); //Column
-  }
-
-  void changeGender(Gender value) {
-    setState(() {
-      _gender = value;
-    });
   }
 
   void goToForgetPw(BuildContext context) {
