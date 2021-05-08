@@ -209,7 +209,7 @@ class _LoginPage extends State<LoginPage> {
                 child: Text("Male"),
               ),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.centerRight,
                 child: SizedBox(
                   height: 20,
                   width: 20,
@@ -225,7 +225,7 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
