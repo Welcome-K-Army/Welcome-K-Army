@@ -17,7 +17,7 @@ class MenuViewState extends State<MenuView> {
               children: <Widget> [
                 Icon(Icons.star, size: 5),
                 Text('자주 찾는 메뉴'),
-                Icon(Icons.plus, size: 5),
+                Icon(Icons.add, size: 5),
               ]
             ),
             GridView.builder(
