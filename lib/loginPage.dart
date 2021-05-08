@@ -250,6 +250,7 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.portrait),
             Container(
+              alignment:Alignment.center,
               height: 50.0,
               width: 200.0,
               child: DropdownButtonHideUnderline(
