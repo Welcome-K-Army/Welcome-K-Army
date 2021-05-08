@@ -250,7 +250,7 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.portrait),
             Container(
-              alignment:Alignment.center,
+              alignment: Alignment.center,
               height: 50.0,
               width: 200.0,
               child: DropdownButtonHideUnderline(
@@ -264,8 +264,11 @@ class _LoginPage extends State<LoginPage> {
                   items: [
                     for (var age in ageList)
                       DropdownMenuItem(
-                        value: age,
-                        child: Text(age.toString() ,textAlign: TextAlign.center),
+                        child: SizedBox(
+                          width: 100,
+                          value: age,
+                          child: Text(age.toString(), textAlign: TextAlign.center),
+                        ),
                       ),
                   ],
                 ),
