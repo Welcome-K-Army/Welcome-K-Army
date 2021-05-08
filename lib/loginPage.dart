@@ -20,9 +20,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   String selected;
-  List<String> ageList = List<String>.generate(60, (int index) => '${index  + 15}');
+  List<int> ageList = List<int>.generate(60, (int index) => index + 15);
   //List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
-  
+
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
@@ -246,11 +246,16 @@ class _LoginPage extends State<LoginPage> {
           ),
         ),
         DropdownButtonHideUnderline(
-          child: [for (var age in ageList) DropdownButton(
-            value: age,
-            onChanged: (val) => setState(() => selected = val),
-            items: DropdownMenuItem(value: "$age",child: Text("$age"),),
-          ),
+          child: [
+            for (var age in ageList)
+              DropdownButton(
+                value: age,
+                onChanged: (val) => setState(() => selected = val),
+                items: DropdownMenuItem(
+                  value: String(age),
+                  child: Text("$age"),
+                ),
+              ),
           ],
         ),
         TextFormField(
