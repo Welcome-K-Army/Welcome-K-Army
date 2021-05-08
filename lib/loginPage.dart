@@ -6,7 +6,7 @@ import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
-OMEN}
+enum Gender{MAN,WOOMEN};
 
 class LoginPage extends StatelessWidget {
   Gender _gender=Gender.MAN;
