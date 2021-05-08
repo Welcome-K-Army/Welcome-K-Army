@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:./constants.dart'
+
+import 'constants.dart'
 
 import './mainView/mainView.dart';
 
