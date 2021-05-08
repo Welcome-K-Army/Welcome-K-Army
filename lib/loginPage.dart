@@ -214,7 +214,7 @@ class _LoginPage extends State<LoginPage> {
               onTap:(){
                 setState(() {
                   _gender = Gender.WOMEN;
-                })
+                });
               },
             child:Text("Female"),
             ),
