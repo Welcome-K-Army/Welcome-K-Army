@@ -200,16 +200,13 @@ class _LoginPage extends State<LoginPage> {
                   },
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.MAN;
-                    });
-                  },
-                  child: Text("Male"),
-                ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _gender = Gender.MAN;
+                  });
+                },
+                child: Text("Male"),
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -229,16 +226,13 @@ class _LoginPage extends State<LoginPage> {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 10, left: 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _gender = Gender.WOMEN;
-                      });
-                    },
-                    child: Text("Female"),
-                  ),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _gender = Gender.WOMEN;
+                    });
+                  },
+                  child: Text("Female"),
                 ),
               ),
             ],
