@@ -203,9 +203,7 @@ class _LoginPage extends State<LoginPage> {
               height: 20,
               width: 20,
               child: ListTile(
-                title: Text(
-                  "Female",
-                ),
+                title: Text("Female"),
                 leading: Radio(
                   value: Gender.WOMEN,
                   groupValue: _gender,
