@@ -182,7 +182,6 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Flexible(
-              fit: FlexFit.loose,
               child:Icon(Icons.wc)
             ),
             Flexible(
