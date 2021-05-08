@@ -180,8 +180,6 @@ class _LoginPage extends State<LoginPage> {
               }
               return null;
             }), //TextFormField 이메일
-        Row(
-          children: <Widget>[
             Icon(Icons.wc),
             ListTile(
               title: Text("Male"),
@@ -217,8 +215,6 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             Text("Female"),
-          ],
-        ),
         TextFormField(
             //패스워드
             obscureText: true,
