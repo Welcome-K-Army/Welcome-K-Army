@@ -181,13 +181,13 @@ class _LoginPage extends State<LoginPage> {
           title: Text("Male"),
           value:Gender.WOMEN,
           groupValue: _gender,
-          onChanged:(value){setState((){ _gender=value;});},
+          onChanged:(value){setState((){ _gender=value;print(value);});},
         ),
         RadioListTile<Gender>(
         title: Text("Female"),
           value:Gender.MAN,
           groupValue: _gender,
-          onChanged:(value){setState((){ _gender=value;});},
+          onChanged:(value){setState((){ _gender=value;print(value);});},
         ),
         TextFormField(
             //이메일
