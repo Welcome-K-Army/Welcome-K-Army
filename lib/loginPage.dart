@@ -6,6 +6,7 @@ import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
+import 'package:flutter/src/painting/edge_insets.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -181,7 +182,8 @@ class _LoginPage extends State<LoginPage> {
             }), //TextFormField 이메일
         Row(
           children: <Widget>[
-            Flexible(
+            Padding(
+              padding:EdgeInsets.only(right:2),
               child:Icon(Icons.wc)
             ),
             Flexible(
