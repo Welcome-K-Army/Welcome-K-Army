@@ -187,7 +187,7 @@ class _LoginPage extends State<LoginPage> {
               title: Text("Male"),
               leading: SizedBox(
                 height: 20,
-                width: 40,
+                //width: ,
                 child: Radio(
                   value: Gender.MAN,
                   groupValue: _gender,
@@ -203,7 +203,7 @@ class _LoginPage extends State<LoginPage> {
                 title: Text("Female"),
                 leading:SizedBox(
                   height: 20,
-                  width: 40,
+                  //width: size.width*0.3,
                   child: Radio(
                   value: Gender.WOMEN,
                   groupValue: _gender,
