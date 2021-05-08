@@ -267,7 +267,7 @@ class _LoginPage extends State<LoginPage> {
                       DropdownMenuItem(
                         value: age,
                         child: SizedBox(
-                          width:MaxColumnWidth,
+                          width:200,
                           child:Text(age.toString() ,textAlign: TextAlign.center),
                         ),
                       ),
