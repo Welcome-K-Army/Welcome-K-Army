@@ -8,7 +8,12 @@ import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
 enum Gender{MAN,WOOMEN}
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget { //UI변경은 StatefulWidget으로 설정
+  @override
+  _LoginPage createState() => _LoginPage();
+}
+
+class _LoginPage extends State<LoginPage> {
   Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
