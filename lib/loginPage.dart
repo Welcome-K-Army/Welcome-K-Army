@@ -198,14 +198,15 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             Padding(
-              padding:EdgeInsets.all(10),
-            child:GestureDetector(
-              onTap:(){
-                setState(() {
-                  _gender = Gender.MAN;
-                });
-              },
-              child:Text("Male"),
+              padding: EdgeInsets.all(10),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _gender = Gender.MAN;
+                  });
+                },
+                child: Text("Male"),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -221,12 +222,12 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             GestureDetector(
-              onTap:(){
+              onTap: () {
                 setState(() {
                   _gender = Gender.WOMEN;
                 });
               },
-              child:Text("Female"),
+              child: Text("Female"),
             ),
           ],
         ),
