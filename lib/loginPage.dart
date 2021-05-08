@@ -8,6 +8,7 @@ import 'dart:core';
 import 'package:flutter/src/material/icons.dart';
 import 'package:flutter/src/painting/edge_insets.dart';
 import 'package:flutter/src/widgets/basic.dart';
+import 'package:flutter/src/material/dropdown.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -20,9 +21,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   String selected;
   List<String> ageList = List<String>.generate(60, (int index) => '${index  + 15}');
-  for i in ageList{
-    print(i);
-  }
   //List<DropdownMenuItem> menuItemList = ageList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
   
   void goToForgetPw(BuildContext context) {
@@ -247,13 +245,14 @@ class _LoginPage extends State<LoginPage> {
             ],
           ),
         ),
-        // DropdownButtonHideUnderline(
-        //   child: DropdownButton(
-        //     value: selected,
-        //     onChanged: (val) => setState(() => selected = val),
-        //     items: menuItemList,
-        //   ),
-        // ),
+        DropdownButtonHideUnderline(
+          child: [for (var age in ageList) DropdownButton(
+            value: age,
+            onChanged: (val) => setState(() => selected = val),
+            items: DropdownMenuItem(value: "$age",child: Text("$age"),),
+          ),
+          ],
+        ),
         TextFormField(
             //패스워드
             obscureText: true,
