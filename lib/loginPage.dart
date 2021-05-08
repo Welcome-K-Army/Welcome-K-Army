@@ -5,8 +5,10 @@ import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'dart:core';
+enum Gender {MAN,WOMEN}
 
 class LoginPage extends StatelessWidget {
+  Gender _gender=Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
@@ -132,6 +134,7 @@ class LoginPage extends StatelessWidget {
     ); //Column
   }
 
+  //회원가입 텍스트 폼
   Widget _textFormJoin(Size size) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,6 +171,30 @@ class LoginPage extends StatelessWidget {
               }
               return null;
             }), //TextFormField 이메일
+        RadioListTile(
+          title: Text("Male"),
+          leading:Radio(
+            value:Gender.WOMEN,
+            groupValue: _gender,
+            onChanged:(value){
+              setState((){
+                _gender=value;
+              });
+            },
+          ),
+        ),
+        RadioListTile(
+          title: Text("Female"),
+          leading:Radio(
+            value:Gender.MAN,
+            groupValue: _gender,
+            onChanged:(value){
+              setState((){
+                _gender=value;
+              });
+            },
+          ),
+        ),
         TextFormField(
             //이메일
             controller: _emailController,
@@ -305,3 +332,4 @@ class LoginPage extends StatelessWidget {
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
 }
+
