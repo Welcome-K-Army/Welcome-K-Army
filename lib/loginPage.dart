@@ -263,7 +263,7 @@ class _LoginPage extends State<LoginPage> {
           ),
         ),
       ],
-        )
+        ),
         TextFormField(
             //패스워드
             obscureText: true,
