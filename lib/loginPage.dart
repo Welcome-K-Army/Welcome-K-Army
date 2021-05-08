@@ -200,14 +200,17 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                width: size.width*0.25,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.MAN;
-                    });
-                  },
-                  child: Text("Male"),
+                width: size.width * 0.25,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _gender = Gender.MAN;
+                      });
+                    },
+                    child: Text("Male"),
+                  ),
                 ),
               ),
               SizedBox(
@@ -224,14 +227,17 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                width: size.width*0.25,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _gender = Gender.WOMEN;
-                    });
-                  },
-                  child: Text("Female"),
+                width: size.width * 0.25,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _gender = Gender.WOMEN;
+                      });
+                    },
+                    child: Text("Female"),
+                  ),
                 ),
               ),
             ],
