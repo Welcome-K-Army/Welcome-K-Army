@@ -183,9 +183,8 @@ class _LoginPage extends State<LoginPage> {
         Row(
           children: <Widget>[
             Padding(padding: EdgeInsets.all(5), child: Icon(Icons.wc)),
-            Flexible(
-              fit: FlexFit.loose,
-              flex:1,
+             Expanded(
+              flex: 1,
               child: ListTile(
                 title: Text("Male"),
                 leading: SizedBox(
@@ -204,7 +203,7 @@ class _LoginPage extends State<LoginPage> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 1,
               child: ListTile(
                 title: Text("Female"),
                 leading: SizedBox(
