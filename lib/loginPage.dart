@@ -246,17 +246,17 @@ class _LoginPage extends State<LoginPage> {
           ),
         ),
         DropdownButtonHideUnderline(
-          child: [
-            for (var age in ageList)
-              DropdownButton(
-                value: age,
-                onChanged: (val) => setState(() => selected = val),
-                items: DropdownMenuItem(
+          child: DropdownButton(
+            value: age,
+            onChanged: (val) => setState(() => selected = val),
+            items: [
+              for (var age in ageList)
+                DropdownMenuItem(
                   value: String(age),
                   child: Text("$age"),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
         TextFormField(
             //패스워드
