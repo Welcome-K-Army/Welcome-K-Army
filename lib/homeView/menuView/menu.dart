@@ -25,7 +25,7 @@ class MenuIconButton extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-        Icon(Icons.(_Menu.iconName), size: 10),
+        Icon(Icons.{_Menu.iconName}, size: 10),
         Text(_Menu.name)
       ]), // Column
     ); // ListTile
