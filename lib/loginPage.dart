@@ -18,6 +18,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
+  String selected;
+  List<String> doubleList = List<String>.generate(393, (int index) => '${index * .25 + 1}');
+  List<DropdownMenuItem> menuItemList = doubleList.map((val) => DropdownMenuItem(value: val, child: Text(val))).toList();
+
+  void goToForgetPw(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
+  }
+
   Gender _gender = Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
@@ -238,9 +246,9 @@ class _LoginPage extends State<LoginPage> {
         ),
         DropdownButtonHideUnderline(
           child: DropdownButton(
-          value: selected,
-          onChanged: (val) => setState(() => selected = val),
-          items: menuItemList,
+            value: selected,
+            onChanged: (val) => setState(() => selected = val),
+            items: menuItemList,
           ),
         ),
         TextFormField(
@@ -291,16 +299,6 @@ class _LoginPage extends State<LoginPage> {
         ),
       ], //Widget
     ); //Column
-  }
-
-  List<String> doubleList =
-    List<String>.generate(393, (int index) => '${index * .25 + 1}');
-  List<DropdownMenuItem> menuItemList = doubleList
-    .map((val) => DropdownMenuItem(value: val, child: Text(val)))
-    .toList();
-
-  void goToForgetPw(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
 
   //로그인 버튼
