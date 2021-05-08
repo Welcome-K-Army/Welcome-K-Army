@@ -250,10 +250,12 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.portrait),
             Container(
+              alignment:Alignment.center,
               height: 50.0,
               width: 200.0,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
+                  isExpanded: true,
                   iconSize: 24,
                   elevation: 16,
                   hint: Text("Age"),
