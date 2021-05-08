@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'mapView/mapScreen/MapSample.dart';    // Api 사용 예시
-import 'mapView/filterScreen/FilterSample.dart'; // 학교 정보 필터링 예시
+import 'mapView/filterScreen/FilterScreen.dart'; // 학교 정보 필터링 예시
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Filtering demo',
-      home: FilterSample(),
+      home: FilterScreen(),
     );
   }
 }

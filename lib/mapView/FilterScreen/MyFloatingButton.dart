@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/BottomSheetWidget.dart';
-
-class FilterSample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: MyFloatingActionButton(),
-      body: Center(
-        child: Text('HomeView'),
-      ),
-    );
-  }
-}
-
+import 'BottomSheet/MyBottomSheet.dart';
+import 'dart:async';
 
 class MyFloatingActionButton extends StatefulWidget {
   @override
@@ -22,28 +10,26 @@ class MyFloatingActionButton extends StatefulWidget {
 class _MyFloatingActionButtonState extends State<MyFloatingActionButton> {
   bool showFab = true;
 
+  void showFloatingActionButton(bool value) {
+    setState(() {
+      showFab = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return showFab
         ? FloatingActionButton(
             onPressed: () {
               var bottomSheetController = showBottomSheet(
-                  context: context, builder: (context) => BottomSheetWidget());
+                  context: context, builder: (context) => MyBottomSheet());
               showFloatingActionButton(false);
-              bottomSheetController.closed.then((value) {
+              bottomSheetController.closed.then((value) async {
+                await Future.delayed(Duration(milliseconds: 200));
                 showFloatingActionButton(true);
               });
             },
           )
         : Container();
   }
-  void showFloatingActionButton(bool value) {
-    setState(() {
-      showFab = value;
-    });
-  }
 }
-
-
-
-
