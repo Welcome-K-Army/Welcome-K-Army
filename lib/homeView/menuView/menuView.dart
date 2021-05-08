@@ -12,7 +12,7 @@ class MenuViewState extends State<MenuView> {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      child: ListView.builder(
+      children: ListView.builder(
           itemCount: menuList.length,
           itemBuilder: (context, index) {
             return MenuIconButton(menuList[index]);
