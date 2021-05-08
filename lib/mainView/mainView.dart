@@ -11,16 +11,13 @@ class MainView extends StatefulWidget {
   MainViewState createState() => new MainViewState();
 }
 
-//Bottom Tab으로 구성된 MainView, View 추가시 length 값 변경 및 body의 TabBarView에 생성자 추가할 것
 class MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('welcome k-army'),
-        ),
         body: TabBarView(
           children: [
             HomeView(),
@@ -30,6 +27,6 @@ class MainViewState extends State<MainView> {
         ),
         bottomNavigationBar: BottomBar(),
       ),
-    );
+    ); // Column
   }
 }
