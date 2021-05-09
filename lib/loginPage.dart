@@ -18,21 +18,21 @@ class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-  
+
   get age => _userAge;
   get gender {
-    return _userGender==Gender.MAN?"MAN":"WOMEN";
+    return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
+
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
 
-  
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
-  final TextEditingController _passwordCheckController = TextEditingController(); //password 컨트롤러  
+  final TextEditingController _passwordCheckController = TextEditingController(); //password 컨트롤러
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -251,28 +251,34 @@ class _LoginPage extends State<LoginPage> {
           children: <Widget>[
             Icon(Icons.portrait),
             Container(
-              alignment:Alignment.center,
+              alignment: Alignment.center,
               height: 50.0,
-              width: size.width*0.72,
+              width: size.width * 0.72,
               //child: DropdownButtonHideUnderline(
-                child: DropdownButton(
-                  isExpanded: true,
-                  iconSize: 24,
-                  elevation: 16,
-                  hint: Text("Age",textAlign: TextAlign.left,),
-                  value: _userAge,
-                  onChanged: (val) => setState(() => _userAge = val),
-                  items: [
-                    for (var age in ageList)
-                      DropdownMenuItem(
-                        value: age,
-                        child: SizedBox(
-                          width:size.width*0.72,
-                          child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
+              child: DropdownButton(
+                isExpanded: true,
+                iconSize: 24,
+                elevation: 16,
+                hint: Text(
+                  "Age",
+                  textAlign: TextAlign.left,
+                ),
+                value: _userAge,
+                onChanged: (val) => setState(() => _userAge = val),
+                items: [
+                  for (var age in ageList)
+                    DropdownMenuItem(
+                      value: age,
+                      child: SizedBox(
+                        width: size.width * 0.72,
+                        child: Text(
+                          age.toString() + " years old",
+                          textAlign: TextAlign.left,
                         ),
                       ),
-                  ],
-                ),
+                    ),
+                ],
+              ),
               //),
             ),
           ],
@@ -306,9 +312,9 @@ class _LoginPage extends State<LoginPage> {
                 return "Please input correct Password!";
               } else if (value.length < 8) {
                 return "Please enter a password of at least 8 digits!";
-              } else if (value!=_passwordController.text) {
+              } else if (value != _passwordController.text) {
                 return "Not same the password";
-              } 
+              }
               return null;
             }), //TextFormField 패스워드
         Container(
@@ -408,7 +414,7 @@ class _LoginPage extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
-    
+
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }

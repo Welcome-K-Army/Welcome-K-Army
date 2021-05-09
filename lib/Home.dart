@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(uId+"/n"+email),
+        title: Text(email),
       ),
       body: Container(
         child: Center(

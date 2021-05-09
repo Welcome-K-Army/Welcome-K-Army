@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class UserDetail extends ChangeNotifier {
   String _uId;
@@ -16,22 +15,27 @@ class UserDetail extends ChangeNotifier {
 
   void set uId(userUid) {
     _uId = userUid;
+    notifyListeners();
   }
 
   void set nickName(userNickname) {
     _nickName = userNickname;
+    notifyListeners();
   }
 
   void set email(userEmail) {
     _email = userEmail;
+    notifyListeners();
   }
 
   void set age(userAge) {
     _age = userAge;
+    notifyListeners();
   }
 
   void set gender(userGender) {
     _gender = userGender;
+    notifyListeners();
   }
-  //notifyListeners();
+  
 }
