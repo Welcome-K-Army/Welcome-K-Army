@@ -8,7 +8,7 @@ class AddUser extends StatelessWidget {
   final String email;
   final int age;
 
-  AddUser(this.uid,this.nickName, this.email, this.age);
+  AddUser(this.nickName, this.email, this.age);
   @override
   Widget build(BuildContext context) {
     // Create a CollectionReference called users that references the firestore collection
@@ -18,7 +18,6 @@ class AddUser extends StatelessWidget {
       // Call the user's CollectionReference to add a new user
       return users
           .add({
-            'uid':uid,
             'nickName': nickName, // John Doe
             'email': email, // login@naver.com
             'age': age // 42
