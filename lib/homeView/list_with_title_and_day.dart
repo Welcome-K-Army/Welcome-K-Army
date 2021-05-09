@@ -69,11 +69,7 @@ class ListTileWithTitleAndDay extends StatelessWidget {
     return ListTile(
       title: Text(content.title),
       subtitle: Text(content.date_yMd),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ListContent(content)),
-        );
+      onTap: press,
       },
     ); // ListTile
   }
@@ -117,10 +113,10 @@ class ListContentView extends StatelessWidget {
         body: ListView(children: <Widget>[
           ListTile(
             leading: Icon(Icons.person, size: 40),
-            title: Text(content.name),
+            title: Text(content.person.name),
             subtitle: Text(content.date_yMMMd),
           ),
-          Text(content),
+          Text(content.content),
           Container(
             height: 60,
             child: ListView.builder(

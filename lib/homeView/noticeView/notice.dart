@@ -10,10 +10,10 @@ import 'person.dart';
 
 int noticeNumber = 0;
 
-final List<Notice> noticeList = [
-  new Notice(title: "Intro", content: 'Hello World', person: personList[0], imgList: publicImgList),
-  new Notice(title: 'App Info', content: 'Welcome K Army', person: personList[1], imgList: publicImgList),
-  new Notice(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
+final List<Content> noticeList = [
+  new Content(title: "Intro", content: 'Hello World', person: personList[0], imgList: publicImgList),
+  new Content(title: 'App Info', content: 'Welcome K Army', person: personList[1], imgList: publicImgList),
+  new Content(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
 ];
 
 final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
@@ -23,5 +23,3 @@ final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
 final List<ListTile> noticeContents = List.generate(noticeList.length, (index) {
   return noticeList[index];
 });
-
-class Notice extends Content {}
