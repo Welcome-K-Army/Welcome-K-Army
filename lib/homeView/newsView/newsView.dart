@@ -11,14 +11,9 @@ class NewsView extends StatelessWidget {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Card(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Column(children: <Widget>[
-                  TitleWithMoreBtn(title: "News", press: () {}),
-                  SlideBanner(),
-                ]))));
+            child: Column(children: <Widget>[
+              TitleWithMoreBtn(title: "News", press: () {}),
+              SlideBanner(),
+            ])));
   }
 }

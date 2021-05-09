@@ -17,20 +17,25 @@ class SildeBannerState extends State<SlideBanner> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      color: Color(0xFFEDF0F4),
       height: 200,
-      child: Padding(
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(BorderRadius.circular(15.0),),
+        elevation: 4,
+        child: Padding(
           padding: EdgeInsets.all(10),
           child: Swiper(
-              autoplay: true,
-              scale: 0.8,
-              viewportFraction: 1,
-              pagination: SwiperPagination(),
-              itemCount: publicImgList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Image.asset(publicImgList[index]);
-              }) // Swiper
-          ), // Padding
+            autoplay: true,
+            scale: 0.8,
+            viewportFraction: 1,
+            pagination: SwiperPagination(),
+            itemCount: publicImgList.length,
+            itemBuilder: (BuildContext context, int index) {
+             return Image.asset(publicImgList[index]);
+            }
+          ) // Swiper
+        ),
+      ), // Padding
     ); // Container
   }
 }
