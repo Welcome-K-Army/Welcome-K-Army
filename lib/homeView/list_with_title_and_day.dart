@@ -70,7 +70,6 @@ class ListTileWithTitleAndDay extends StatelessWidget {
       title: Text(content.title),
       subtitle: Text(content.date_yMd),
       onTap: press,
-      },
     ); // ListTile
   }
 }

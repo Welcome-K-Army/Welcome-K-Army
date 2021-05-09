@@ -17,9 +17,9 @@ final List<Content> noticeList = [
 ];
 
 final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
-  return noticeList[index];
+  return ListTileWithTitleAndDay(noticeList[index]);
 });
 
-final List<ListTile> noticeContents = List.generate(noticeList.length, (index) {
-  return noticeList[index];
+final List<ListContent> noticeContents = List.generate(noticeList.length, (index) {
+  return ListContent(noticeList[index]);
 });
