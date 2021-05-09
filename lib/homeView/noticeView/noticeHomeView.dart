@@ -22,12 +22,12 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            TitleWithMoreBtn(title: "Notice", onpress() {
+            TitleWithMoreBtn(title: "Notice", onpress: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => NoticeView()),
               )
-            })
+            }),
             ListView.separated(
                 shrinkWrap: true,
                 itemCount: noticeList.length+1,
