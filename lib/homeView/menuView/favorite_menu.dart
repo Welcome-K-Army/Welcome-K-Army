@@ -8,6 +8,7 @@ class FavoriteMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        color: Color(0xFFEDF0F4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),

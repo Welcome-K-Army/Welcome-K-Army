@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'noticeView.dart';
 import 'notice.dart';
 
+import '../title_with_more_bbtn.dart';
+
 class NoticeHomeView extends StatefulWidget {
   NoticeHomeViewState createState() => new NoticeHomeViewState();
 }

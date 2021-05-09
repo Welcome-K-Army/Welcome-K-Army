@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../mainView/header.dart';
+import 'header.dart';
 import 'slideBanner.dart';
-
 import './menuView/menuView.dart';
 import './noticeView/noticeHomeView.dart';
 

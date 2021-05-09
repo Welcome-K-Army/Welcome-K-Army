@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import '../../constants.dart';
 import 'menu.dart';
 
-import 'title_with_more_bbtn.dart';
+import '../title_with_more_bbtn.dart';
 import 'favorite_menu.dart';
 
 class MenuView extends StatefulWidget {
