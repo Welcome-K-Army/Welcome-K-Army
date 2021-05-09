@@ -19,8 +19,13 @@ class HomeViewState extends State<HomeView> {
       child: ListView(children: [
         Header(size: size),
         SlideBanner(),
-        MenuView(),
-        NoticeHomeView(),
+        Padding(
+          padding: EdgeInsets.all(10),
+          children: <Widget>[
+            MenuView(),
+            NoticeHomeView(),
+          ],
+        )
     ] // Column children
             ) // Column
         ); // Return Widget
