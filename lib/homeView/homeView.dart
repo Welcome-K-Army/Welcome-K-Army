@@ -32,6 +32,7 @@ class HomeViewState extends State<HomeView> {
                   NoticeHomeView(),
                 ]
             ),
+            )
           ] // <Widget>[]
         ) // Column
       ) // SingleChildScrollview
