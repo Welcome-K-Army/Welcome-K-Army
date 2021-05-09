@@ -11,7 +11,7 @@ class FavoriteMenu extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        elevation: 2,
+        elevation: 4,
         child: GridView.builder(
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
