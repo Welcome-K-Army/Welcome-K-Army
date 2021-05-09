@@ -4,8 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
-// import 'userDetail.dart';
-import '/lib/userDetail.dart';
+import 'userDetail.dart';
 
 enum Gender { MAN, WOMEN }
 
