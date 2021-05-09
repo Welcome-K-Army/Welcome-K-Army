@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 import '../title_with_more_bbtn.dart';
-import 'slideBanner.dart'
+import 'slideBanner.dart';
 
-class NewsView extends StatefulWidget {
+class NewsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
