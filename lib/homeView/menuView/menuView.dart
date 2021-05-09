@@ -14,15 +14,15 @@ class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.black12,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
               MenuTitleWithMoreBtn(title: "Favorite", press: () {}),
-              GridView.builder(
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
@@ -34,6 +34,7 @@ class MenuViewState extends State<MenuView> {
                   return MenuIconButton(menuList[index]);
                 },
               )
+              ),
             ]))); // GridView
   } // Widget
 } // Class
