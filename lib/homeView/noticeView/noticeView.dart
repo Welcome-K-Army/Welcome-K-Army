@@ -14,17 +14,7 @@ class NoticeViewState extends State<NoticeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('k army notice')),
-        body: ListView.separated(
-            shrinkWrap: true,
-            itemCount: noticeList.length + 1,
-            itemBuilder: (context, index) {
-              if (index == 0) return HeaderTile();
-              return NoticeTile(noticeList[index - 1]);
-            },
-            separatorBuilder: (context, index) {
-              if (index == 0) return SizedBox.shrink();
-              return const Divider();
-            }) // ListView
+        body: ListWithTitleAndDay(headerTile: false, title: "Notice", length: noticeList.lenghth, listTiles: noticeTiles),
         );
   }
 }

@@ -25,11 +25,13 @@ class Content {
 class ListWithTitleAndDay extends StatelessWidget {
   const ListWithTitleAndDay({
     Key key,
+    this.headerTile,
     this.title,
     this.length,
     this.listTiles,
   }) : super(key: key);
 
+  final bool headerTile;
   final String title;
   final int length;
   final List<ListTile> listTiles;
@@ -40,7 +42,7 @@ class ListWithTitleAndDay extends StatelessWidget {
         shrinkWrap: true,
         itemCount: length + 1,
         itemBuilder: (context, index) {
-          if (index == 0) return HeaderTile(title: title);
+          if (index == 0 && headerTile) return HeaderTile(title: title);
           return listTiles[index];
         },
         separatorBuilder: (context, index) {
@@ -103,6 +105,7 @@ class ListContentView extends StatelessWidget {
   const ListContentView({Key key, this.content}) : super(key: key);
 
   final Content content;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
