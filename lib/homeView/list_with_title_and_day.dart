@@ -40,7 +40,9 @@ class ListWithTitleAndDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return Container(
+      color: Color(0xFFEDF0F4),
+      child: ListView.separated(
         shrinkWrap: true,
         itemCount: contents.length + 1,
         itemBuilder: (context, index) {
@@ -50,7 +52,9 @@ class ListWithTitleAndDay extends StatelessWidget {
         separatorBuilder: (context, index) {
           if (index == 0) return SizedBox.shrink();
           return const Divider();
-        }); // ListView
+        }
+      )
+    ); // ListView
   }
 }
 
