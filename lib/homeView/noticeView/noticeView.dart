@@ -15,6 +15,6 @@ class NoticeViewState extends State<NoticeView> {
     return Scaffold(
         appBar: AppBar(title: Text('k army notice')),
         body: ListWithTitleAndDay(headerTile: false, title: "Notice", length: noticeList.lenghth, listTiles: noticeTiles),
-        );
+    );
   }
 }
