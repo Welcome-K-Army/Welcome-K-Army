@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
+
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
-import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'userDetail.dart';
 
 enum Gender { MAN, WOMEN }
@@ -392,7 +393,8 @@ class _LoginPage extends State<LoginPage> {
   }
 
   // 계정생성 메서드
-
+Consumer<UserDetail>(
+      builder: (context, userDetail, child) =>
   void _register(BuildContext context) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
@@ -416,4 +418,5 @@ class _LoginPage extends State<LoginPage> {
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
+)
 }
