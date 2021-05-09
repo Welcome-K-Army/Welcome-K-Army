@@ -21,7 +21,7 @@ class HomeViewState extends State<HomeView> {
       child: ListView(children: [
         Header(size: size),
         Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(0),
           child: Padding(
             padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
             child: Column(
