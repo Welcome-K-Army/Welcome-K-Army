@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Splash extends StatelessWidget {
-  Splash(UserDetail userDetail)
+  Splash(UserDetail userDetail);
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User>(
