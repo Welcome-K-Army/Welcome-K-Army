@@ -253,7 +253,7 @@ class _LoginPage extends State<LoginPage> {
                   isExpanded: true,
                   iconSize: 24,
                   elevation: 16,
-                  hint: Text("Age"),
+                  hint: Text("Age",textAlign: TextAlign.left,),
                   value: _userAge,
                   onChanged: (val) => setState(() => _userAge = val),
                   items: [
@@ -262,7 +262,7 @@ class _LoginPage extends State<LoginPage> {
                         value: age,
                         child: SizedBox(
                           width:200,
-                          child:Text(age.toString()+" years old" ,),
+                          child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
                         ),
                       ),
                   ],
