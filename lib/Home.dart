@@ -6,7 +6,7 @@ class MainPage extends StatelessWidget {
   MainPage({this.uId, this.email});
   final String uId;
   final String email;
-
+  
   // Future<void> addUser(String nickName, int age, String gender) async {
   //   User firebaseUser = await FirebaseAuth.instance.currentUser;
   //   if (firebaseUser != null) {
