@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'header.dart';
 import 'slideBanner.dart';
+
+import './newsView/newsView.dart';
 import './menuView/menuView.dart';
 import './noticeView/noticeHomeView.dart';
 
@@ -18,11 +20,11 @@ class HomeViewState extends State<HomeView> {
       color: Color(0xFFEDF0F4),
       child: ListView(children: [
         Header(size: size),
-        SlideBanner(),
         Padding(
           padding: EdgeInsets.all(10),
           child: Column(
             children: <Widget>[
+              NewsView(),
               MenuView(),
               NoticeHomeView(),
             ]
