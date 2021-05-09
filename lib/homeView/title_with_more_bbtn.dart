@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
-class TitleWithCustomUnderLine extends StatelessWidget {
-  const TitleWithCustomUnderLine({
+class MenuTitleWithCustomUnderLine extends StatelessWidget {
+  const MenuTitleWithCustomUnderLine({
     Key key,
     this.text,
   }) : super(key: key);
@@ -40,8 +40,8 @@ class TitleWithCustomUnderLine extends StatelessWidget {
   }
 }
 
-class TitleWithMoreBtn extends StatelessWidget {
-  const TitleWithMoreBtn({
+class MenuTitleWithMoreBtn extends StatelessWidget {
+  const MenuTitleWithMoreBtn({
     Key key,
     this.title,
     this.press,
@@ -54,7 +54,7 @@ class TitleWithMoreBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        TitleWithCustomUnderLine(text: title),
+        MenuTitleWithCustomUnderLine(text: title),
         Spacer(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),

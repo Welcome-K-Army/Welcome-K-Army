@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-final List<String> imgList = [
+final List<String> publicImgList = [
   'assets/images/1.jpg',
   'assets/images/2.jpg',
   'assets/images/3.jpg',
@@ -27,7 +27,7 @@ class SildeBannerState extends State<SlideBanner> {
               pagination: SwiperPagination(),
               itemCount: imgList.length,
               itemBuilder: (BuildContext context, int index) {
-                return Image.asset(imgList[index]);
+                return Image.asset(publicImgList[index]);
               }) // Swiper
           ), // Padding
     ); // Container
