@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserDetail>(
-      builder: (context, joinOrLogin, child) => MaterialApp(
+      builder: (context, userDetail, child) => MaterialApp(
         home: Splash(),
       ), //MaterialApp
     );

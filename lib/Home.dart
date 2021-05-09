@@ -29,7 +29,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserDetail>(
-      builder: (context, joinOrLogin, child) =>Scaffold(
+      builder: (context, userDetail, child) =>Scaffold(
       appBar: AppBar(
         title: Text(email),
       ),
