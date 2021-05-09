@@ -24,7 +24,7 @@ class HomeViewState extends State<HomeView> {
           children: <Widget>[
             Header(size: size),
             Container(
-              margin: EdgeInsets.only(kDefaultPadding),
+              margin: EdgeInsets.only(bottom: kDefaultPadding),
               child: Column(
                 children: <Widget>[
                   NewsView(),
