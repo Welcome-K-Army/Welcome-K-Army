@@ -72,7 +72,7 @@ class ListTileWithTitleAndDay extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ListContentView(content: content));
+          MaterialPageRoute(builder: (context) => ListContentView(content: content)),
         );
       }
     ); // ListTile
