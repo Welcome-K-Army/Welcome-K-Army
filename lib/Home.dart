@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'userDetail.dart';
-
+import 'package:provider/provider.dart';
 class MainPage extends StatelessWidget {
   MainPage({this.uId, this.email});
   final String uId;
@@ -44,7 +44,7 @@ class MainPage extends StatelessWidget {
               Text(userDetail.uId),
               Text(userDetail.nickName),
               Text(userDetail.email),
-              Text(userDetail.age),
+              Text(userDetail.age.toString()),
               Text(userDetail.gender),
             ]),
           ),
