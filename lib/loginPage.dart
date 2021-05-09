@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
+import 'userDetail.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -247,7 +248,7 @@ class _LoginPage extends State<LoginPage> {
             Container(
               alignment:Alignment.center,
               height: 50.0,
-              width: size.width*0.72,
+              width: size.width*0.73,
               //child: DropdownButtonHideUnderline(
                 child: DropdownButton(
                   isExpanded: true,
@@ -261,7 +262,7 @@ class _LoginPage extends State<LoginPage> {
                       DropdownMenuItem(
                         value: age,
                         child: SizedBox(
-                          width:size.width*0.72,
+                          width:size.width*0.73,
                           child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
                         ),
                       ),
@@ -402,6 +403,7 @@ class _LoginPage extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
+    AddUser(_nickNameController.text,_emailController.text,_userAge);
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
