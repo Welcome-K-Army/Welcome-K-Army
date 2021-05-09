@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'userDetail.dart';
 import 'package:provider/provider.dart';
 
@@ -9,22 +10,20 @@ class MainPage extends StatelessWidget {
   final String email;
 
   Future<Null> handleSignIn() async {
-    Future<void> addUser() async {
-      User firebaseUser = await FirebaseAuth.instance.currentUser;
-      if (firebaseUser != null) {
-        // Check is already sign up
-        final QuerySnapshot result = await FirebaseFirestore.instance.collection('usersDetail').where('uid', isEqualTo: uid).get();
-        final List<DocumentSnapshot> documents = result.docs;
-        if (documents.length == 0) {
-          // Update data to server if new user
-          FirebaseFirestore.instance.collection('usersDetail').doc(firebaseUser.uid).set({
-            'nickname': Provider.of(UserDetail)(context).nickName,
-            'email': Provider.of(UserDetail)(context).email,
-            'gender': Provider.of(UserDetail)(context).gender,
-            'age': Provider.of(UserDetail)(context).age,
-            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-          });
-        }
+    User firebaseUser = await FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null) {
+      // Check is already sign up
+      final QuerySnapshot result = await FirebaseFirestore.instance.collection('usersDetail').where('uid', isEqualTo: uid).get();
+      final List<DocumentSnapshot> documents = result.docs;
+      if (documents.length == 0) {
+        // Update data to server if new user
+        FirebaseFirestore.instance.collection('usersDetail').doc(firebaseUser.uid).set({
+          'nickname': Provider.of(UserDetail)(context).nickName,
+          'email': Provider.of(UserDetail)(context).email,
+          'gender': Provider.of(UserDetail)(context).gender,
+          'age': Provider.of(UserDetail)(context).age,
+          'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+        });
       }
     }
   }
