@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import '../constants.dart';
 import 'header.dart';
 import 'slideBanner.dart';
 
@@ -22,12 +23,15 @@ class HomeViewState extends State<HomeView> {
         Header(size: size),
         Padding(
           padding: EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              NewsView(),
-              MenuView(),
-              NoticeHomeView(),
-            ]
+          child: Padding(
+            padding: EdgeInsets.only(bottom: kDefaultPadding),
+            child: Column(
+              children: <Widget>[
+                NewsView(),
+                MenuView(),
+                NoticeHomeView(),
+              ]
+            ),
           ),
         ),
     ] // Column children
