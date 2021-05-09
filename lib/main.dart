@@ -14,20 +14,22 @@ import 'userDetail.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(Consumer<UserDetail>(
-      builder: (context, userDetail, child) => MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Splash(),
-      ); //MaterialApp
+    return Consumer<UserDetail>(
+      builder: (context, userDetail, child) => MaterialApp(
+        home: Splash(userDetail),
+      ), //MaterialApp
+    );
   }
 }
 
 class Splash extends StatelessWidget {
+  Splash(UserDetail userDetail)
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User>(
