@@ -17,7 +17,7 @@ final List<Content> noticeList = [
 ];
 
 final List<Widget> noticeTiles = List.generate(noticeList.length, (index) {
-  ListTileWithTitleAndDay(content: noticeList[index], );
+  ListTileWithTitleAndDay(content: noticeList[index]);
 });
 
 final List<Widget> noticeContents = List.generate(noticeList.length, (index) {
