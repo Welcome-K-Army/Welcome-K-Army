@@ -15,5 +15,5 @@ class UserDetail extends ChangeNotifier{
   get gender => _gender;
   
   
-  notifyListeners();
+  //notifyListeners();
 }
