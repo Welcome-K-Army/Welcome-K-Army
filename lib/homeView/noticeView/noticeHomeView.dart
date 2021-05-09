@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import '../title_with_more_bbtn.dart';
+import '../list_with_title_and_day.dart';
+
 import 'noticeView.dart';
 import 'notice.dart';
 

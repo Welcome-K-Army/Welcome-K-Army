@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import '../list_with_title_and_day.dart';
+
 import 'notice.dart';
 
 class NoticeView extends StatefulWidget {
