@@ -22,30 +22,12 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(right: 5, bottom: 5),
-                  child: Icon(Icons.star, size: 20),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5),
-                  child: Text("Notice"),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => NoticeView()),
-                      );
-                    },
-                    icon: Icon(Icons.add, size: 20),
-                  ), // IconButton
-                ), // Padding
-              ], // Row children
-            ), // Row
+            TitleWithMoreBtn(title: "Notice", onpress() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NoticeView()),
+              )
+            })
             ListView.separated(
                 shrinkWrap: true,
                 itemCount: noticeList.length+1,

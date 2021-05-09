@@ -18,7 +18,7 @@ class MenuViewState extends State<MenuView> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              MenuTitleWithMoreBtn(title: "Favorite", press: () {}),
+              TitleWithMoreBtn(title: "Favorite", press: () {}),
               FavoriteMenu(),
             ]))); // GridView
   } // Widget
