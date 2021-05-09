@@ -306,7 +306,7 @@ class _LoginPage extends State<LoginPage> {
             validator: (String value) {
               if (value.isEmpty) {
                 return "Please input correct Password!";
-              } else if (value!=_passwordCheckController.text) {
+              } else if (value!=_passwordController.text) {
                 return "Not same the password";
               }
               return null;
