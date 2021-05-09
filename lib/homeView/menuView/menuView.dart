@@ -14,7 +14,7 @@ class MenuView extends StatefulWidget {
 class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),

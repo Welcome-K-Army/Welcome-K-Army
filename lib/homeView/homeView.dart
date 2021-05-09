@@ -26,8 +26,8 @@ class HomeViewState extends State<HomeView> {
               MenuView(),
               NoticeHomeView(),
             ]
-          )
-        )
+          ),
+        ),
     ] // Column children
             ) // Column
         ); // Return Widget
