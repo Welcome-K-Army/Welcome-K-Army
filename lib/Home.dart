@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class MainPage extends StatelessWidget {
-  MainPage({this.uid, this.email});
+  MainPage({this.email});
   final String uid;
   final String email;
   
