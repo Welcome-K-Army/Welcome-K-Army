@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../../constants.dart';
+import '../constants.dart';
 
 class MenuTitleWithCustomUnderLine extends StatelessWidget {
   const MenuTitleWithCustomUnderLine({
