@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class MainPage extends StatelessWidget {
-  MainPage({this.email});
-  //final String uid;
+  MainPage({this.uId,this.email});
+  final String uId;
   final String email;
   
   // Future<void> addUser(String nickName, int age, String gender) async {
@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(email),
+        title: Text(uId+"/n"+email),
       ),
       body: Container(
         child: Center(
