@@ -5,6 +5,9 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 }
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
@@ -44,6 +47,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "MAP_KEY", apikeyProperties['MAP_KEY'])
     }
 
     buildTypes {
