@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'loginPage.dart';
 import 'joinOrLogin.dart';
 import 'Home.dart';
+import 'userDetail.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
