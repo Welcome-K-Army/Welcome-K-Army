@@ -4,13 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
-import 'dart:core';
-import 'package:flutter/src/material/icons.dart';
-import 'package:flutter/src/painting/edge_insets.dart';
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/material/dropdown.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/rendering/table.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -260,7 +253,7 @@ class _LoginPage extends State<LoginPage> {
                   isExpanded: true,
                   iconSize: 24,
                   elevation: 16,
-                  hint: Text("Age",textAlign: TextAlign.center),
+                  hint: Text("Age"),
                   value: _userAge,
                   onChanged: (val) => setState(() => _userAge = val),
                   items: [
@@ -269,7 +262,7 @@ class _LoginPage extends State<LoginPage> {
                         value: age,
                         child: SizedBox(
                           width:200,
-                          child:Text(age.toString() ,textAlign: TextAlign.center),
+                          child:Text(age.toString()+" years old" ,),
                         ),
                       ),
                   ],
@@ -306,9 +299,11 @@ class _LoginPage extends State<LoginPage> {
             validator: (String value) {
               if (value.isEmpty) {
                 return "Please input correct Password!";
+              } else if (value.length < 8) {
+                return "Please enter a password of at least 8 digits!";
               } else if (value!=_passwordController.text) {
                 return "Not same the password";
-              }
+              } 
               return null;
             }), //TextFormField 패스워드
         Container(
