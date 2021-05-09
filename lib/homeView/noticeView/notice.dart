@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../list_with_title_and_day.dart';
 
+import '../slideBanner.dart';
 import 'person.dart';
 
 int noticeNumber = 0;
@@ -49,8 +50,8 @@ class Notice {
   List<String> imgList;
   Person person;
 
-  Scaffold contentView;
-  ListTile tile;
+  ListContent contentView;
+  ListTileWithTitleAndDay tile;
 
   Function press;
 
@@ -60,7 +61,7 @@ class Notice {
     this.contentView = ListContent(name: this.person.name, date_yMMMd: this.date_yMMMd, title: this.title, content: this.content, imgList: this.imgList);
 
     this.press = () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => this.contentView));
+      Navigator.push(MaterialPageRoute(builder: () => this.contentView));
     };
 
     this.tile = ListTileWithTitleAndDay(title: this.title, date_yMd: this.date_yMd, press: this.press);
