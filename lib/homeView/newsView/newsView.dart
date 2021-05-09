@@ -16,7 +16,7 @@ class NewsView extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget> [
-            TitleWithMoreBtn(title: "News"),
+            TitleWithMoreBtn(title: "News", press: () { }),
             SlideBanner(),
           ]
         )

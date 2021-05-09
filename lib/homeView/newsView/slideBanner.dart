@@ -15,9 +15,10 @@ class SlideBanner extends StatefulWidget {
 class SildeBannerState extends State<SlideBanner> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       color: Color(0xFFEDF0F4),
-      height: 280,
+      height: size,
       child: Padding(
           padding: EdgeInsets.all(10),
           child: Swiper(
