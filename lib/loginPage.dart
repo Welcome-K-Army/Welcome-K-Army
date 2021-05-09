@@ -247,7 +247,7 @@ class _LoginPage extends State<LoginPage> {
             Container(
               alignment:Alignment.center,
               height: 50.0,
-              width: size.width*0.8,
+              width: size.width*0.7,
               //child: DropdownButtonHideUnderline(
                 child: DropdownButton(
                   isExpanded: true,
@@ -261,7 +261,7 @@ class _LoginPage extends State<LoginPage> {
                       DropdownMenuItem(
                         value: age,
                         child: SizedBox(
-                          width:size.width*0.8,
+                          width:size.width*0.7,
                           child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
                         ),
                       ),
