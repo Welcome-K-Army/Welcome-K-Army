@@ -13,11 +13,14 @@ class MenuView extends StatefulWidget {
 class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15);
+      ),
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              MenuTitleWithMoreBtn(title: "자주찾는메뉴", press: () {}),
+              MenuTitleWithMoreBtn(title: "Favorite", press: () {}),
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
