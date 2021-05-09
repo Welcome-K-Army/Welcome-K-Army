@@ -23,16 +23,11 @@ class HomeViewState extends State<HomeView> {
         child: Column(
           children: <Widget>[
             Header(size: size),
-            Container(
-              margin: EdgeInsets.only(bottom: kDefaultPadding),
-              child: Column(
-                children: <Widget>[
-                  NewsView(),
-                  MenuView(),
-                  NoticeHomeView(),
-                ]
-            ),
-            )
+            NewsView(),
+            Spacer(),
+            MenuView(),
+            Spacer(),
+            NoticeHomeView(),
           ] // <Widget>[]
         ) // Column
       ) // SingleChildScrollview
