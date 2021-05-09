@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+int contentNumber = 0;
+
+class Content {
+  var date_yMd = DateFormat.yMd().format(new DateTime.now());
+  var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
+
+  int number;
+
+  Person person;
+
+  String title;
+  String content;
+  List<String> imgList;
+
+  Content({this.title, this.content, this.person, this.imgList}) {
+    this.number = contentNumber;
+
+    contentNumber++;
+  }
+}
+
 class ListWithTitleAndDay extends StatelessWidget {
   const ListWithTitleAndDay({
     Key key,
@@ -32,21 +53,22 @@ class ListWithTitleAndDay extends StatelessWidget {
 class ListTileWithTitleAndDay extends StatelessWidget {
   const ListTileWithTitleAndDay({
     Key key,
-    this.title,
-    this.date_yMd,
-    this.press,
+    this.content,
   }) : super(key: key);
 
-  final String title;
-  final String date_yMd;
-  final Function press;
+  final Content content;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
-      subtitle: Text(date_yMd),
-      onTap: press,
+      title: Text(content.title),
+      subtitle: Text(content.date_yMd),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ListContent(content)),
+        );
+      },
     ); // ListTile
   }
 }
@@ -77,22 +99,10 @@ class HeaderTile extends StatelessWidget {
   }
 }
 
-class ListContent extends StatelessWidget {
-  const ListContent({
-    Key key,
-    this.name,
-    this.date_yMMMd,
-    this.title,
-    this.content,
-    this.imgList,
-  }) : super(key: key);
+class ListContentView extends StatelessWidget {
+  const ListContentView({Key key, this.content}) : super(key: key);
 
-  final String name;
-  final String date_yMMMd;
-  final String title;
-  final String content;
-  final List<String> imgList;
-
+  final Content content;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,8 +110,8 @@ class ListContent extends StatelessWidget {
         body: ListView(children: <Widget>[
           ListTile(
             leading: Icon(Icons.person, size: 40),
-            title: Text(name),
-            subtitle: Text(date_yMMMd),
+            title: Text(content.name),
+            subtitle: Text(content.date_yMMMd),
           ),
           Text(content),
           Container(
@@ -110,11 +120,11 @@ class ListContent extends StatelessWidget {
                 // 높이 설정 안 됌 -> 수정하기
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: imgList.length,
+                itemCount: content.imgList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: 50,
-                    child: Image.asset(imgList[index]),
+                    child: Image.asset(content.imgList[index]),
                   ); // Container
                 }), // ListView
           )
