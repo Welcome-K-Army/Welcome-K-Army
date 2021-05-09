@@ -10,8 +10,7 @@ class AddUser extends StatelessWidget {
 
   AddUser(this.nickName, this.email, this.age);
 
-  @override
-  Widget build(BuildContext context) {
+  
     // Create a CollectionReference called users that references the firestore collection
     Future<void> addUser() async{
       User firebaseUser = await FirebaseAuth.instance.currentUser;
@@ -24,11 +23,10 @@ class AddUser extends StatelessWidget {
         if (documents.length == 0) {
           // Update data to server if new user
           FirebaseFirestore.instance.collection('usersDetail').doc(firebaseUser.uid).set({
-            'nickname': firebaseUser.displayName,
-            'photoUrl': firebaseUser.photoURL,
-            'id': firebaseUser.uid,
+            'nickname': nickName,
+            'email':email,
+            'age': age,
             'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-            'chattingWith': null
           });
         }
 

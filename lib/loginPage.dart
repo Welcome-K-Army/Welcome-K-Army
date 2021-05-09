@@ -403,7 +403,7 @@ class _LoginPage extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
-    AddUser(_nickNameController.text,_emailController.text,_userAge);
+    await AddUser(_nickNameController.text,_emailController.text,_userAge).addUser();
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
