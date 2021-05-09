@@ -40,8 +40,12 @@ class ListWithTitleAndDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
       color: Colors.white,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+      elevation: 4,      
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: contents.length + 1,

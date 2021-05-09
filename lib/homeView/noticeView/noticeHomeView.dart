@@ -16,12 +16,8 @@ class NoticeHomeView extends StatefulWidget {
 class NoticeHomeViewState extends State<NoticeHomeView> {
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       color: Color(0xFFEDF0F4),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-      elevation: 4,
       //height: 360,
       child: Padding(
         padding: EdgeInsets.all(10),
