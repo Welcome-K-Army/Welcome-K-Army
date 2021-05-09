@@ -16,13 +16,18 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   int _userAge;
+  Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-
+  
+  get age => _userAge;
+  get gender {
+    return _userGender==Gender.MAN?"MAN":"WOMEN";
+  }
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
 
-  Gender _userGender = Gender.MAN;
+  
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
