@@ -60,18 +60,21 @@ class ListTileWithTitleAndDay extends StatelessWidget {
   const ListTileWithTitleAndDay({
     Key key,
     this.content,
-    this.press,
   }) : super(key: key);
 
   final Content content;
-  final Function press;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(content.title),
       subtitle: Text(content.date_yMd),
-      onTap: press,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ListContentView(content: content));
+        );
+      }
     ); // ListTile
   }
 }
