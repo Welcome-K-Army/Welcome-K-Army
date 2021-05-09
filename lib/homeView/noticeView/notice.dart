@@ -15,11 +15,11 @@ final List<Content> noticeList = [
   new Content(title: 'App Info', content: 'Welcome K Army', person: personList[1], imgList: publicImgList),
   new Content(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
 ];
-
+/*
 final List<Widget> noticeTiles = List.generate(noticeList.length, (index) {
   ListTileWithTitleAndDay(content: noticeList[index]);
 });
-
+*/
 final List<Widget> noticeContents = List.generate(noticeList.length, (index) {
   ListContentView(content: noticeList[index]);
 });
