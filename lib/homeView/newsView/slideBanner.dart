@@ -20,7 +20,9 @@ class SildeBannerState extends State<SlideBanner> {
       height: 200,
       child: Card(
         color: Colors.white,
-        shape: RoundedRectangleBorder(BorderRadius.circular(15.0),),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         elevation: 4,
         child: Padding(
           padding: EdgeInsets.all(10),
