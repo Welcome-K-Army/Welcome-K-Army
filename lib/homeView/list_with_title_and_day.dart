@@ -45,7 +45,7 @@ class ListWithTitleAndDay extends StatelessWidget {
         itemCount: contents.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) return HeaderTile(title: title);
-          return ListTileWithTitleAndDay(contents[index]);
+          return ListTileWithTitleAndDay(content: contents[index]);
         },
         separatorBuilder: (context, index) {
           if (index == 0) return SizedBox.shrink();
