@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({this.email});
-  final String uid;
+  //final String uid;
   final String email;
   
   // Future<void> addUser(String nickName, int age, String gender) async {
