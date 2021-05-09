@@ -16,10 +16,7 @@ class NoticeViewState extends State<NoticeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('k army notice')),
-        body: ListWithTitleAndDay(headerTile: false, title: "Notice", length: noticeList.length, 
-        listTiles: List.generate(noticeList.length, (index) {
-        ListTileWithTitleAndDay(content: noticeList[index]);
-      })),
+        body: ListWithTitleAndDay(headerTile: false, title: "Notice", contents: noticeList)),
     );
   }
 }

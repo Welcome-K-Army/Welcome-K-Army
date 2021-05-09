@@ -31,23 +31,21 @@ class ListWithTitleAndDay extends StatelessWidget {
     Key key,
     this.headerTile,
     this.title,
-    this.length,
-    this.listTiles,
+    this.contents,
   }) : super(key: key);
 
   final bool headerTile;
   final String title;
-  final int length;
-  final List<Widget> listTiles;
+  final List<Content> contents;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
         shrinkWrap: true,
-        itemCount: length + 1,
+        itemCount: contents.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) return HeaderTile(title: title);
-          return listTiles[index];
+          return ListTileWithTitleAndDay(contents[index]);
         },
         separatorBuilder: (context, index) {
           if (index == 0) return SizedBox.shrink();
