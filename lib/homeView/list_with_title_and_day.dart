@@ -46,7 +46,7 @@ class ListWithTitleAndDay extends StatelessWidget {
         shrinkWrap: true,
         itemCount: length + 1,
         itemBuilder: (context, index) {
-          if (index == 0 && headerTile) return HeaderTile(title: title);
+          if (index == 0) return HeaderTile(title: title);
           return listTiles[index];
         },
         separatorBuilder: (context, index) {
@@ -67,15 +67,14 @@ class ListTileWithTitleAndDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(content.title),
-      subtitle: Text(content.date_yMd),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ListContentView(content: content)),
-        );
-      }
-    ); // ListTile
+        title: Text(content.title),
+        subtitle: Text(content.date_yMd),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ListContentView(content: content)),
+          );
+        }); // ListTile
   }
 }
 
