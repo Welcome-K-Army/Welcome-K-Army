@@ -41,7 +41,7 @@ class ListWithTitleAndDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFEDF0F4),
+      color: Colors.white,
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: contents.length + 1,
