@@ -10,6 +10,7 @@ import 'joinOrLogin.dart';
 import 'Home.dart';
 import 'userDetail.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -19,9 +20,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Splash(),
-    ); //MaterialApp
+    return Consumer<UserDetail>(
+      builder: (context, joinOrLogin, child) => MaterialApp(
+        home: Splash(),
+      ), //MaterialApp
+    );
   }
 }
 
@@ -34,7 +37,8 @@ class Splash extends StatelessWidget {
           if (snapshot.data == null) {
             return ChangeNotifierProvider<JoinOrLogin>.value(value: JoinOrLogin(), child: LoginPage()); //ChangeNotifierProvider
           } else {
-            return MainPage(uId:snapshot.data.uid,email: snapshot.data.email);
+            userDetail.uId=snapshot.data.uid;
+            return MainPage(uId: snapshot.data.uid, email: snapshot.data.email);
           }
         }); //SteamBuilder
   }

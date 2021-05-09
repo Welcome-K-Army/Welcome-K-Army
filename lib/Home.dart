@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'userDetail.dart';
 
 class MainPage extends StatelessWidget {
-  MainPage({this.uId,this.email});
+  MainPage({this.uId, this.email});
   final String uId;
   final String email;
-  
+
   // Future<void> addUser(String nickName, int age, String gender) async {
   //   User firebaseUser = await FirebaseAuth.instance.currentUser;
   //   if (firebaseUser != null) {
@@ -28,19 +28,28 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Consumer<UserDetail>(
+      builder: (context, joinOrLogin, child) =>Scaffold(
       appBar: AppBar(
         title: Text(email),
       ),
       body: Container(
         child: Center(
           child: FlatButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              child: Text("Logout")),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            child: Column(children: <Widget>[
+              Text("Logout"),
+              Text(userDetail.uId),
+              Text(userDetail.nickName),
+              Text(userDetail.email),
+              Text(userDetail.age),
+              Text(userDetail.gender),
+            ]),
+          ),
         ),
       ),
-    );
+    ),);
   }
 }
