@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import 'package:intl/intl.dart';
+
+import './noticeView/person.dart';
+
 int contentNumber = 0;
 
 class Content {
@@ -105,7 +109,7 @@ class ListContentView extends StatelessWidget {
   const ListContentView({Key key, this.content}) : super(key: key);
 
   final Content content;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
