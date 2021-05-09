@@ -389,7 +389,7 @@ class _LoginPage extends State<LoginPage> {
 
   void _register(BuildContext context) async {
     try {
-      final result=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         final snackBar = SnackBar(
@@ -403,7 +403,7 @@ class _LoginPage extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
-    AddUser(result.uid,_nickNameController.text,_emailController.text,_userAge);
+    AddUser(FirebaseAuth.instance.currentUser.uid,_nickNameController.text,_emailController.text,_userAge);
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }
