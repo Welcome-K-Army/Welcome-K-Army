@@ -20,18 +20,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserDetail>(
-      builder: (context, userDetail, child) => MaterialApp(
+    return MaterialApp(
         home: Splash(),
-      ), //MaterialApp
-    );
+      ); //MaterialApp
   }
 }
 
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User>(
+    return Consumer<UserDetail>(
+      builder: (context, userDetail, child) => StreamBuilder<User>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
@@ -40,7 +39,8 @@ class Splash extends StatelessWidget {
             userDetail.uId=snapshot.data.uid;
             return MainPage(uId: snapshot.data.uid, email: snapshot.data.email);
           }
-        }); //SteamBuilder
+        }), //SteamBuilder
+    );
   }
 }
 
