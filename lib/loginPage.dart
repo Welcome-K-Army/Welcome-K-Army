@@ -19,10 +19,10 @@ class _LoginPage extends State<LoginPage> {
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
   
-  get age => _userAge;
-  get gender {
-    return _userGender==Gender.MAN?"MAN":"WOMEN";
-  }
+  //get age => _userAge;
+  // get gender {
+  //   return _userGender==Gender.MAN?"MAN":"WOMEN";
+  // }
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
