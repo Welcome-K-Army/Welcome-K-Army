@@ -22,7 +22,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
           borderRadius: BorderRadius.circular(15.0),
         ),
       elevation: 4,
-      height: 360,
+      //height: 360,
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
