@@ -18,7 +18,7 @@ class SildeBannerState extends State<SlideBanner> {
     Size size = MediaQuery.of(context).size;
     return Container(
       color: Color(0xFFEDF0F4),
-      height: size,
+      height: size.fromHeight,
       child: Padding(
           padding: EdgeInsets.all(10),
           child: Swiper(
