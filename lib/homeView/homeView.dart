@@ -18,24 +18,27 @@ class HomeViewState extends State<HomeView> {
     Size size = MediaQuery.of(context).size;
     return Container(
       color: Color(0xFFEDF0F4),
-      child: Column(
-        children: <Widget>[
-          Header(size: size),
-          Padding(
-            padding: EdgeInsets.all(0),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
-              child: Column(
-                children: <Widget>[
-                  NewsView(),
-                  MenuView(),
-                  NoticeHomeView(),
-              ]
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            Header(size: size),
+            Padding(
+              padding: EdgeInsets.all(0),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
+                child: Column(
+                  children: <Widget>[
+                    NewsView(),
+                    MenuView(),
+                    NoticeHomeView(),
+                ]
+              ),
             ),
           ),
-        ),
-    ] // Column children
-            ) // Column
-        ); // Return Widget
+          ] // Column children
+        ) // Column
+      ) // Return Widget
+    );
   } // Wdiget
 } // Class
