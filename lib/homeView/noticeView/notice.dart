@@ -16,12 +16,12 @@ final List<Notice> noticeList = [
   new Notice(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
 ];
 
-final List<ListTile> noticeTiles = List.generate(noticeList.length, (index)) {
+final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
   return noticeList[index];
-};
+});
 
-final List<ListTile> noticeContents = List.generate(noticeList.length, (index)) {
-  return noticeList[index] 
-};
+final List<ListTile> noticeContents = List.generate(noticeList.length, (index) {
+  return noticeList[index];
+});
 
 class Notice extends Content {}
