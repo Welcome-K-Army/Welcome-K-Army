@@ -14,6 +14,8 @@ class LoginPage extends StatefulWidget {
   _LoginPage createState() => _LoginPage();
 }
 
+
+
 class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
@@ -263,14 +265,14 @@ class _LoginPage extends State<LoginPage> {
                   value: _userAge,
                   onChanged: (val) => setState(() => _userAge = val),
                   items: [
-                    for (var age in ageList)
-                      DropdownMenuItem(
-                        value: age,
-                        child: SizedBox(
-                          width:size.width*0.73,
-                          child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
-                        ),
-                      ),
+                    // for (var age in ageList)
+                    //   DropdownMenuItem(
+                    //     value: age,
+                    //     child: SizedBox(
+                    //       width:size.width*0.73,
+                    //       child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
+                    //     ),
+                    //   ),
                   ],
                 ),
               //),
