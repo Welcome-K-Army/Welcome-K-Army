@@ -18,17 +18,18 @@ class HomeViewState extends State<HomeView> {
     Size size = MediaQuery.of(context).size;
     return Container(
       color: Color(0xFFEDF0F4),
-      child: ListView(children: [
-        Header(size: size),
-        Padding(
-          padding: EdgeInsets.all(0),
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
-            child: Column(
-              children: <Widget>[
-                NewsView(),
-                MenuView(),
-                NoticeHomeView(),
+      child: Column(
+        children: <Widget>[
+          Header(size: size),
+          Padding(
+            padding: EdgeInsets.all(0),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
+              child: Column(
+                children: <Widget>[
+                  NewsView(),
+                  MenuView(),
+                  NoticeHomeView(),
               ]
             ),
           ),
