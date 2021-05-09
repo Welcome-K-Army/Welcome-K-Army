@@ -15,11 +15,12 @@ class HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-        child: ListView(children: [
-      Header(size: size),
-      SlideBanner(),
-      MenuView(),
-      NoticeHomeView(),
+      color: Color(0xFFEDF0F4),
+      child: ListView(children: [
+        Header(size: size),
+        SlideBanner(),
+        MenuView(),
+        NoticeHomeView(),
     ] // Column children
             ) // Column
         ); // Return Widget
