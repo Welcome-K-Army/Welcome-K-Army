@@ -14,7 +14,8 @@ import 'userDetail.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(Consumer<UserDetail>(
+      builder: (context, userDetail, child) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +30,7 @@ class MyApp extends StatelessWidget {
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserDetail>(
-      builder: (context, userDetail, child) => StreamBuilder<User>(
+    return StreamBuilder<User>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
@@ -39,8 +39,7 @@ class Splash extends StatelessWidget {
             userDetail.uId=snapshot.data.uid;
             return MainPage(uId: snapshot.data.uid, email: snapshot.data.email);
           }
-        }), //SteamBuilder
-    );
+        }); //SteamBuilder
   }
 }
 
