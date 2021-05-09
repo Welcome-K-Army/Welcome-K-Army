@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import '../constants.dart';
 import 'header.dart';
-import 'slideBanner.dart';
 
 import './newsView/newsView.dart';
 import './menuView/menuView.dart';

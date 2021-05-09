@@ -7,21 +7,18 @@ import 'slideBanner.dart';
 class NewsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget> [
-            TitleWithMoreBtn(title: "News", press: () { }),
-            SlideBanner(),
-          ]
-        )
-      )
-    );
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Column(children: <Widget>[
+                  TitleWithMoreBtn(title: "News", press: () {}),
+                  SlideBanner(),
+                ]))));
   }
 }
-
