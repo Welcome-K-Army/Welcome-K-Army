@@ -21,18 +21,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  int selected;
+  int _userAge;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
 
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
 
-  Gender _gender = Gender.MAN;
+  Gender _userGender = Gender.MAN;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _nickNameController = TextEditingController(); //nickName 컨트롤러
   final TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   final TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
+  final TextEditingController _passwordCheckController = TextEditingController(); //password 컨트롤러  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -202,10 +203,10 @@ class _LoginPage extends State<LoginPage> {
                 width: 20,
                 child: Radio(
                   value: Gender.MAN,
-                  groupValue: _gender,
+                  groupValue: _userGender,
                   onChanged: (value) {
                     setState(() {
-                      _gender = value;
+                      _userGender = value;
                     });
                   },
                 ),
@@ -213,7 +214,7 @@ class _LoginPage extends State<LoginPage> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _gender = Gender.MAN;
+                    _userGender = Gender.MAN;
                   });
                 },
                 child: Text("Male"),
@@ -225,10 +226,10 @@ class _LoginPage extends State<LoginPage> {
                 width: 20,
                 child: Radio(
                   value: Gender.WOMEN,
-                  groupValue: _gender,
+                  groupValue: _userGender,
                   onChanged: (value) {
                     setState(() {
-                      _gender = value;
+                      _userGender = value;
                     });
                   },
                 ),
@@ -236,7 +237,7 @@ class _LoginPage extends State<LoginPage> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _gender = Gender.WOMEN;
+                    _userGender = Gender.WOMEN;
                   });
                 },
                 child: Text("Female"),
@@ -259,9 +260,9 @@ class _LoginPage extends State<LoginPage> {
                   isExpanded: true,
                   iconSize: 24,
                   elevation: 16,
-                  hint: Text("Age"),
-                  value: selected,
-                  onChanged: (val) => setState(() => selected = val),
+                  hint: Text("Age",textAlign: TextAlign.center),
+                  value: _userAge,
+                  onChanged: (val) => setState(() => _userAge = val),
                   items: [
                     for (var age in ageList)
                       DropdownMenuItem(
@@ -297,7 +298,7 @@ class _LoginPage extends State<LoginPage> {
         TextFormField(
             //패스워드
             obscureText: true,
-            controller: _passwordController,
+            controller: _passwordCheckController,
             decoration: InputDecoration(
               icon: Icon(Icons.vpn_key),
               labelText: "Password Check",
@@ -305,8 +306,8 @@ class _LoginPage extends State<LoginPage> {
             validator: (String value) {
               if (value.isEmpty) {
                 return "Please input correct Password!";
-              } else if (value.length < 8) {
-                return "Please enter a password of at least 8 digits!";
+              } else if (value!=_passwordCheckController.text) {
+                return "Not same the password";
               }
               return null;
             }), //TextFormField 패스워드
