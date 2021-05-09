@@ -16,10 +16,16 @@ final List<Content> noticeList = [
   new Content(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
 ];
 
-final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
-  ListTileWithTitleAndDay(noticeList[index]);
+final List<Widget> noticeTiles = List.generate(noticeList.length, (index) {
+  ListTileWithTitleAndDay(content: noticeList[index], press: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => noticeContents[index]),
+      );
+    }
+  );
 });
 
-final List<ListContentView> noticeContents = List.generate(noticeList.length, (index) {
-  return ListContentView(noticeList[index]);
+final List<Widget> noticeContents = List.generate(noticeList.length, (index) {
+  ListContentView(content: noticeList[index]);
 });

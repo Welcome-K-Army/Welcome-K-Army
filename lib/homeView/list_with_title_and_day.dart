@@ -38,7 +38,7 @@ class ListWithTitleAndDay extends StatelessWidget {
   final bool headerTile;
   final String title;
   final int length;
-  final List<ListTile> listTiles;
+  final List<Widget> listTiles;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,11 @@ class ListTileWithTitleAndDay extends StatelessWidget {
   const ListTileWithTitleAndDay({
     Key key,
     this.content,
+    this.press,
   }) : super(key: key);
 
   final Content content;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
