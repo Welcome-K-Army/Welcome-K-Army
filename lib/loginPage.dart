@@ -5,6 +5,7 @@ import 'joinOrLogin.dart';
 import 'forgetPw.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 // import 'userDetail.dart';
+import '/lib/userDetail.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -409,7 +410,10 @@ class _LoginPage extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
-    
+    userDetail.nickName=_nickNameController.text;
+    userDetail.email=_emailController.text;
+    userDetail.age=_userAge;
+    userDetail.gender=userGender;
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
   }

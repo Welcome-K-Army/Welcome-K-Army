@@ -22,14 +22,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserDetail>(
       builder: (context, userDetail, child) => MaterialApp(
-        home: Splash(userDetail),
+        home: Splash(),
       ), //MaterialApp
     );
   }
 }
 
 class Splash extends StatelessWidget {
-  Splash(UserDetail userDetail);
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User>(
@@ -38,7 +37,7 @@ class Splash extends StatelessWidget {
           if (snapshot.data == null) {
             return ChangeNotifierProvider<JoinOrLogin>.value(value: JoinOrLogin(), child: LoginPage()); //ChangeNotifierProvider
           } else {
-            userDetail.uId=snapshot.data.uid;
+            
             return MainPage(uId: snapshot.data.uid, email: snapshot.data.email);
           }
         }); //SteamBuilder
