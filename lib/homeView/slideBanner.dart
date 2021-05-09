@@ -25,7 +25,7 @@ class SildeBannerState extends State<SlideBanner> {
               scale: 0.8,
               viewportFraction: 1,
               pagination: SwiperPagination(),
-              itemCount: imgList.length,
+              itemCount: publicImgList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Image.asset(publicImgList[index]);
               }) // Swiper

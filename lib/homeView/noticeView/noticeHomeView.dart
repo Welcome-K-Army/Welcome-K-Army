@@ -30,7 +30,7 @@ class NoticeHomeViewState extends State<NoticeHomeView> {
                     MaterialPageRoute(builder: (context) => NoticeView()),
                   );
                 }),
-            ListWithTitleAndDay(title: "Notice", length: noticeList.length, listTile: noticeTiles),
+            ListWithTitleAndDay(title: "Notice", length: noticeList.length, listTiles: noticeTiles),
           ], // Column children
         ), // Column
       ), // Padding

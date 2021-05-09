@@ -5,8 +5,6 @@ import 'package:intl/intl.dart';
 
 import '../list_with_title_and_day.dart';
 
-import 'noticeContentView.dart';
-
 import 'person.dart';
 
 int noticeNumber = 0;
@@ -19,7 +17,8 @@ final List<Notice> noticeList = [
 
 final List<ListTile> noticeTiles = List.generate(noticeList.length, (index) {
   return noticeList[index].tile;
-})
+});
+
 /*
 
 final List<ListTileWithTitleAndDay> noticeListTiles = [
