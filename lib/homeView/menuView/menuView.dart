@@ -24,7 +24,7 @@ class MenuViewState extends State<MenuView> {
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 4,
                   crossAxisSpacing: 2,
                   mainAxisSpacing: 2,
                 ),
