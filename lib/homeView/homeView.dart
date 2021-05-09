@@ -24,9 +24,9 @@ class HomeViewState extends State<HomeView> {
           children: <Widget>[
             Header(size: size),
             NewsView(),
-            Spacer(),
+            Container(),
             MenuView(),
-            Spacer(),
+            Container(),
             NoticeHomeView(),
           ] // <Widget>[]
         ) // Column
