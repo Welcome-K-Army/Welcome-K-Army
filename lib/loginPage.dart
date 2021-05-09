@@ -14,17 +14,15 @@ class LoginPage extends StatefulWidget {
   _LoginPage createState() => _LoginPage();
 }
 
-
-
 class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
   
-  //get age => _userAge;
-  // get gender {
-  //   return _userGender==Gender.MAN?"MAN":"WOMEN";
-  // }
+  get age => _userAge;
+  get gender {
+    return _userGender==Gender.MAN?"MAN":"WOMEN";
+  }
   void goToForgetPw(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPw()));
   }
@@ -265,14 +263,14 @@ class _LoginPage extends State<LoginPage> {
                   value: _userAge,
                   onChanged: (val) => setState(() => _userAge = val),
                   items: [
-                    // for (var age in ageList)
-                    //   DropdownMenuItem(
-                    //     value: age,
-                    //     child: SizedBox(
-                    //       width:size.width*0.73,
-                    //       child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
-                    //     ),
-                    //   ),
+                    for (var age in ageList)
+                      DropdownMenuItem(
+                        value: age,
+                        child: SizedBox(
+                          width:size.width*0.73,
+                          child:Text(age.toString()+" years old" ,textAlign: TextAlign.left,),
+                        ),
+                      ),
                   ],
                 ),
               //),
