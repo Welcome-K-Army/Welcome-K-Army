@@ -23,7 +23,7 @@ class HomeViewState extends State<HomeView> {
         Padding(
           padding: EdgeInsets.all(10),
           child: Padding(
-            padding: EdgeInsets.only(bottom: 36+kDefaultPadding),
+            padding: EdgeInsets.only(bottom: 130+kDefaultPadding),
             child: Column(
               children: <Widget>[
                 NewsView(),
