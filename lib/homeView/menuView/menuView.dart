@@ -14,9 +14,9 @@ class MenuViewState extends State<MenuView> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15);
-      ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
