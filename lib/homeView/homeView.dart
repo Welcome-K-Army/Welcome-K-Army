@@ -21,10 +21,12 @@ class HomeViewState extends State<HomeView> {
         SlideBanner(),
         Padding(
           padding: EdgeInsets.all(10),
-          child: <Widget>[
-            MenuView(),
-            NoticeHomeView(),
-          ],
+          child: Column(
+            children: <Widget>[
+              MenuView(),
+              NoticeHomeView(),
+            ]
+          )
         )
     ] // Column children
             ) // Column
