@@ -247,7 +247,7 @@ class _LoginPage extends State<LoginPage> {
             Container(
               alignment:Alignment.center,
               height: 50.0,
-              width: 220.0,
+              width: 250.0,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
                   isExpanded: true,
