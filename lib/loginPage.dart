@@ -415,14 +415,12 @@ class _LoginPage extends State<LoginPage> {
           content: Text("You cannot use this account"),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      } else if (e == null) {
+      }
+    }
         userDetail.nickName = _nickNameController.text;
         userDetail.email = _emailController.text;
         userDetail.age = userAge();
         userDetail.gender = userGender();
-      }
-    }
-
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
     //Navigator.push(context, MaterialPageRoute(bunoteilder:(context)=>MainPage(email:user.email));
   }
