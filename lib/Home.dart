@@ -21,7 +21,7 @@ class MainPage extends StatelessWidget {
       final List<DocumentSnapshot> documents = result.docs;
       if (documents.length == 0) {
         // Update data to server if new user
-        users
+        return users
             .doc(uId)
             .set({
               'nickname': userDetail.nickName,
