@@ -32,7 +32,7 @@ class MenuIconButton extends StatelessWidget {
         MaterialPageRoute(builder: (context) => menu.widget),
       ),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-        _Menu.icon,
+        menu.icon,
         Text(menu.name),
       ]), // Column
     ); // ListTile
