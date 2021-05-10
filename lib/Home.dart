@@ -48,7 +48,7 @@ class MainPage extends StatelessWidget {
                 Text(userDetail.uId==null?"null":userDetail.uId),
                 Text(userDetail.nickName==null?"null":userDetail.nickName),
                 Text(userDetail.email==null?"null":userDetail.email),
-                Text(userDetail.age.toString()==null?"null":userDetail.age.toString),
+                Text(userDetail.age==null?"null":userDetail.age.toString()),
                 Text(userDetail.gender==null?"null":userDetail.gender),
               ]),
             ),
