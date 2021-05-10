@@ -13,5 +13,5 @@ final List<Person> personList = [
 class Person {
   String? name;
 
-  Person({this.name});
+  Person({required this.name});
 }
