@@ -17,17 +17,19 @@ class MainPage extends StatelessWidget {
       User firebaseUser = await FirebaseAuth.instance.currentUser;
       //if (firebaseUser != null) {
         // Check is already sign up
-        final QuerySnapshot result = await FirebaseFirestore.instance.collection('UserDetail').where('uId', isEqualTo: uId).get();
+        final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+        final result=users.where('uId', isEqualTo: uId).get();
         final List<DocumentSnapshot> documents = result.docs;
         if (documents.length == 0) {
           // Update data to server if new user
-          FirebaseFirestore.instance.collection('UserDetail').doc(uId).set({
+          users.doc(uId).add({
             'nickname': userDetail.nickName,
             'email': userDetail.email,
             'gender': userDetail.gender,
             'age': userDetail.age,
             'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-          });
+          }).then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));;
         }
       //}
     }
