@@ -5,11 +5,11 @@ import '../constants.dart';
 
 class TitleWithCustomUnderLine extends StatelessWidget {
   const TitleWithCustomUnderLine({
-    Key key,
+    Key? key,
     this.text,
   }) : super(key: key);
 
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +42,13 @@ class TitleWithCustomUnderLine extends StatelessWidget {
 
 class TitleWithMoreBtn extends StatelessWidget {
   const TitleWithMoreBtn({
-    Key key,
+    Key? key,
     this.title,
     this.press,
   }) : super(key: key);
 
-  final String title;
-  final Function press;
+  final String? title;
+  final Function? press;
 
   @override
   Widget build(BuildContext context) {

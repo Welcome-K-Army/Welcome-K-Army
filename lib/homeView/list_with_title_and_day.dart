@@ -13,11 +13,11 @@ class Content {
 
   int number;
 
-  Person person;
+  Person? person;
 
-  String title;
-  String content;
-  List<String> imgList;
+  String? title;
+  String? content;
+  List<String>? imgList;
 
   Content({this.title, this.content, this.person, this.imgList}) {
     this.number = contentNumber;
@@ -34,9 +34,9 @@ class ListWithTitleAndDay extends StatelessWidget {
     this.contents,
   }) : super(key: key);
 
-  final bool headerTile;
-  final String title;
-  final List<Content> contents;
+  final bool? headerTile;
+  final String? title;
+  final List<Content>? contents;
 
   @override
   Widget build(BuildContext context) {
