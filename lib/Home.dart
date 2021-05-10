@@ -11,14 +11,15 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<Null> handleSignIn(BuildContext context) async {
+
+    Future handleSignIn(BuildContext context) async {
       final userDetail = Provider.of<UserDetail>(context);
       User firebaseUser = await FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         // Check is already sign up
         final QuerySnapshot result = await FirebaseFirestore.instance.collection('UserDetail').where('uId', isEqualTo: uId).get();
         final List<DocumentSnapshot> documents = result.docs;
-        if (documents.length == 0) {
+        //if (documents.length == 0) {
           // Update data to server if new user
           FirebaseFirestore.instance.collection('UserDetail').doc(uId).set({
             'nickname': userDetail.nickName,
@@ -27,7 +28,7 @@ class MainPage extends StatelessWidget {
             'age': userDetail.age,
             'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
           });
-        }
+        //}
       }
     }
 
