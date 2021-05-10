@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'userDetail.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     Future<void> handleSignIn() async {
       final userDetail = Provider.of<UserDetail>(context);
       User firebaseUser = await FirebaseAuth.instance.currentUser;
