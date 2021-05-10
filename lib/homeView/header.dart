@@ -35,7 +35,7 @@ class Header extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'wecome k army',
-                    style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Image.asset("assets/images/4.jpg")
