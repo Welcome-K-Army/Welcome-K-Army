@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   
-    Future<void> handleSignIn(BuildContext context) async {
+    Future<void> handleSignIn() async {
       final userDetail = Provider.of<UserDetail>(context);
       User firebaseUser = await FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
@@ -48,7 +48,7 @@ class MainPage extends StatelessWidget {
           child: Center(
             child: FlatButton(
               onPressed: () async{
-                handleSignIn(context);
+                handleSignIn();
                 FirebaseAuth.instance.signOut();
               },
               child: Column(children: <Widget>[
