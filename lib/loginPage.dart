@@ -414,7 +414,7 @@ class _LoginPage extends State<LoginPage> {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e == null) {
-        final userDetail = Provider.of(UserDetail)(context);
+        final userDetail = Provider.of<UserDetail>(context);
         userDetail.nickName=_nickNameController.text;
         userDetail.email=_emailController.text;
         userDetail.age=_userAge;
