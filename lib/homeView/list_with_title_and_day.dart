@@ -11,7 +11,7 @@ class Content {
   var date_yMd = DateFormat.yMd().format(new DateTime.now());
   var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
 
-  int? number;
+  int number;
 
   Person person;
 
@@ -20,7 +20,7 @@ class Content {
   List<String> imgList;
 
   Content({required this.title, required this.content, required this.person, required this.imgList}) {
-    this.number = contentNumber;
+    required this.number = contentNumber;
 
     contentNumber++;
   }

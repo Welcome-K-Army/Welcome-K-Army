@@ -6,10 +6,10 @@ import '../constants.dart';
 class Header extends StatelessWidget {
   const Header({
     Key? key,
-    @required this.size,
+    required this.size,
   }) : super(key: key);
 
-  final Size? size;
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
