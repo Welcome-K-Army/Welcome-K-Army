@@ -5,8 +5,8 @@ import '../constants.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key? key,
-    required this.size,
+    Key key,
+    this.size,
   }) : super(key: key);
 
   final Size size;

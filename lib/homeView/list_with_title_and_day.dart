@@ -11,7 +11,7 @@ class Content {
   var date_yMd = DateFormat.yMd().format(new DateTime.now());
   var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
 
-  int number = 0;
+  int number;
 
   Person person;
 
@@ -19,7 +19,7 @@ class Content {
   String content;
   List<String> imgList;
 
-  Content({required this.title, required this.content, required this.person, required this.imgList}) {
+  Content({this.title, this.content, this.person, this.imgList}) {
     this.number = contentNumber;
 
     contentNumber++;
@@ -28,10 +28,10 @@ class Content {
 
 class ListWithTitleAndDay extends StatelessWidget {
   const ListWithTitleAndDay({
-    Key? key,
-    required this.headerTile,
-    required this.title,
-    required this.contents,
+    Key key,
+    this.headerTile,
+    this.title,
+    this.contents,
   }) : super(key: key);
 
   final bool headerTile;
@@ -64,8 +64,8 @@ class ListWithTitleAndDay extends StatelessWidget {
 
 class ListTileWithTitleAndDay extends StatelessWidget {
   const ListTileWithTitleAndDay({
-    Key? key,
-    required this.content,
+    Key key,
+    this.content,
   }) : super(key: key);
 
   final Content content;
@@ -86,8 +86,8 @@ class ListTileWithTitleAndDay extends StatelessWidget {
 
 class HeaderTile extends StatelessWidget {
   const HeaderTile({
-    Key? key,
-    required this.title,
+    Key key,
+    this.title,
   }) : super(key: key);
 
   final String title;
@@ -111,7 +111,7 @@ class HeaderTile extends StatelessWidget {
 }
 
 class ListContentView extends StatelessWidget {
-  const ListContentView({Key? key, required this.content}) : super(key: key);
+  const ListContentView({Key key, his.content}) : super(key: key);
 
   final Content content;
 

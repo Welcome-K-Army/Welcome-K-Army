@@ -15,13 +15,13 @@ class Menu {
   Icon icon;
   Widget widget;
 
-  Menu({required this.name, required this.icon, required this.widget});
+  Menu({this.name, this.icon, this.widget});
 }
 
 class MenuIconButton extends StatelessWidget {
   const MenuIconButton({
-    Key? key,
-    required this.menu
+    Key key,
+    this.menu
   }) : super(key: key);
   
   final Menu menu;
