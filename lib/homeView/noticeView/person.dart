@@ -11,7 +11,7 @@ final List<Person> personList = [
 ];
 
 class Person {
-  String name;
+  String? name;
 
   Person({this.name});
 }
