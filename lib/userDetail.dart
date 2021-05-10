@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class UserDetail extends ChangeNotifier {
   
   String _uId;

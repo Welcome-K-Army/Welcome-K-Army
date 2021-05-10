@@ -8,7 +8,7 @@ class MainPage extends StatelessWidget {
   MainPage({this.uId, this.email});
   final String uId;
   final String email;
-
+  final userDetail = Provider.of(UserDetail)(context);
   Future<Null> handleSignIn() async {
     User firebaseUser = await FirebaseAuth.instance.currentUser;
     if (firebaseUser != null) {
@@ -18,10 +18,10 @@ class MainPage extends StatelessWidget {
       if (documents.length == 0) {
         // Update data to server if new user
         FirebaseFirestore.instance.collection('usersDetail').doc(firebaseUser.uid).set({
-          'nickname': nickName,
-          'email': email,
-          'gender': gender,
-          'age': age,
+          'nickname': userDetail.nickName,
+          'email': userDetail.email,
+          'gender': userDetail.gender,
+          'age':userDetail.age,
           'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
         });
       }

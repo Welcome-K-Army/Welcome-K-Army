@@ -19,7 +19,6 @@ class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-
   get age => _userAge;
   get gender {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
@@ -415,14 +414,15 @@ class _LoginPage extends State<LoginPage> {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e == null) {
-        // userDetail.nickName=_nickNameController.text;
-        // userDetail.email=_emailController.text;
-        // userDetail.age=_userAge;
-        // userDetail.gender=userGender;
+        final userDetail = Provider.of(UserDetail)(context);
+        userDetail.nickName=_nickNameController.text;
+        userDetail.email=_emailController.text;
+        userDetail.age=_userAge;
+        userDetail.gender=userGender;
       }
     }
 
     //스트림 빌더 안쓸경우 화면 전환 하는 방법
-    //Navigator.push(context, MaterialPageRoute(builder:(context)=>MainPage(email:user.email));
+    //Navigator.push(context, MaterialPageRoute(bunoteilder:(context)=>MainPage(email:user.email));
   }
 }
