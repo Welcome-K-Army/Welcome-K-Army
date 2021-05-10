@@ -20,10 +20,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  Consumer<UserDetail>(
+            builder: (context, userDetail, child) =>MaterialApp(
         home: Splash(),
-      ); //MaterialApp
-    
+      ), //MaterialApp
+    );
   }
 }
 
