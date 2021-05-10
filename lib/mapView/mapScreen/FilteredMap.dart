@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../FilterScreen/School.dart';
+import '../filterScreen/School.dart';
 
 class FilteredMap extends StatefulWidget {
-  List<School> filteredData;
+  final List<School> filteredData;
 
   FilteredMap(this.filteredData);
+
   @override
   State<FilteredMap> createState() => FilteredMapState();
 }
@@ -20,13 +21,13 @@ class FilteredMapState extends State<FilteredMap> {
   // );
 
   static final CameraPosition initialPosition =
-      CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 5);
+      CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
 
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
       mapType: MapType.normal,
-      // markers: _createMarkers(),
+      markers: _createMarkers(),
       initialCameraPosition: initialPosition,
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
@@ -39,12 +40,12 @@ class FilteredMapState extends State<FilteredMap> {
   //   controller.animateCamera(CameraUpdate.newCameraPosition(initialPosition));
   // }
 
-  List<Marker> _createMarkers() {
+  Set<Marker> _createMarkers() {
     return widget.filteredData
         .map((school) => Marker(
             markerId: MarkerId(school.name),
             position: school.latlng,
             infoWindow: InfoWindow(title: school.name)))
-        .toList();
+        .toSet();
   }
 }

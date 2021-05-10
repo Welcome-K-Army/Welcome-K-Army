@@ -22,7 +22,7 @@ List<School> fillData() {
   lists.add(new School(
       idx: 3,
       name: "공군사관학교",
-      latlng: LatLng(35.127210, 128.662695),
+      latlng: LatLng(36.579458, 127.524334),
       category: Categories.AirForce,
       type: Types.Cadets,
       age: Ages.A_17_21,
