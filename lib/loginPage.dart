@@ -343,7 +343,9 @@ class _LoginPage extends State<LoginPage> {
         bottom: 0,
         child: SizedBox(
           height: 50,
-          child: Consumer<JoinOrLogin>(
+          child: Consumer<UserDetail>(
+            builder: (context, userDetail, child) =>
+                Consumer<JoinOrLogin>(
             builder: (context, joinOrLogin, child) => RaisedButton(
                 child: Text(
                   joinOrLogin.isJoin ? "Sign Up" : "Sign In",
@@ -353,9 +355,10 @@ class _LoginPage extends State<LoginPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                 onPressed: () {
                   if (_formkey.currentState.validate()) {
-                    joinOrLogin.isJoin ? _register(context) : _login(context);
+                    joinOrLogin.isJoin ? _register(context) : _login(context, userDetail);
                   }
                 }), //RaisedButton
+          ),
           ),
         ), //SizedBox
       ); //Positioned
@@ -399,7 +402,7 @@ class _LoginPage extends State<LoginPage> {
 
   // 계정생성 메서드
 
-  void _register(BuildContext context) async {
+  void _register(BuildContext context,userDetail) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
@@ -414,7 +417,6 @@ class _LoginPage extends State<LoginPage> {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e == null) {
-        final userDetail = Provider.of<UserDetail>(context);
         userDetail.nickName=_nickNameController.text;
         userDetail.email=_emailController.text;
         userDetail.age=userAge();
