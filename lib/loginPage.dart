@@ -19,8 +19,8 @@ class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-  get age => _userAge;
-  get gender {
+  get userAge => _userAge;
+  get userGender {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
 
