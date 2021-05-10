@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'userDetail.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +12,11 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     Future<void> handleSignIn(BuildContext context) async {
       final userDetail = Provider.of<UserDetail>(context);
       User firebaseUser = await FirebaseAuth.instance.currentUser;
-      //if (firebaseUser != null) {
+      if (firebaseUser != null) {
       // Check is already sign up
       final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
       final QuerySnapshot result = await users.where('uId', isEqualTo: uId).get();
@@ -34,9 +35,8 @@ class MainPage extends StatelessWidget {
             })
             .then((value) => print("User Added"))
             .catchError((error) => print("Failed to add user: $error"));
-        ;
       }
-      //}
+      }
     }
 
     return Consumer<UserDetail>(
