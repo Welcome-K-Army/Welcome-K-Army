@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class UserDetail extends ChangeNotifier {
-  UserDetail({uId,nickName,email,age,gender})
+  UserDetail({uId,nickName,email,age,gender});
 
   String uId;
   String nickName;
