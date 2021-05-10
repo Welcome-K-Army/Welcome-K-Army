@@ -29,7 +29,7 @@ class MainPage extends StatelessWidget {
       }
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Consumer<UserDetail>(
@@ -41,6 +41,7 @@ class MainPage extends StatelessWidget {
           child: Center(
             child: FlatButton(
               onPressed: () {
+                handleSignIn(context);
                 FirebaseAuth.instance.signOut();
               },
               child: Column(children: <Widget>[
