@@ -12,7 +12,7 @@ class UserDetail extends ChangeNotifier {
   String gender;
 
 
-  update(){
+  void update(){
     notifyListeners();
   }
   
