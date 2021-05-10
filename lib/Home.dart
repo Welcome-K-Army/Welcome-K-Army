@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'userDetail.dart';
 import 'package:provider/provider.dart';
@@ -10,13 +10,9 @@ class MainPage extends StatelessWidget {
   final String uId;
   final String email;
 
-  @override
-  Widget build(BuildContext context) {
-
-    Future<void> handleSignIn() async {
-      final userDetail = Provider.of<UserDetail>(context);
-      User firebaseUser = await FirebaseAuth.instance.currentUser;
-      if (firebaseUser != null) {
+  Future<void> handleSignIn(UserDetail userDetail) async {
+    User firebaseUser = await FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null) {
       // Check is already sign up
       final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
       final QuerySnapshot result = await users.where('uId', isEqualTo: uId).get();
@@ -36,9 +32,11 @@ class MainPage extends StatelessWidget {
             .then((value) => print("User Added"))
             .catchError((error) => print("Failed to add user: $error"));
       }
-      }
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Consumer<UserDetail>(
       builder: (context, userDetail, child) => Scaffold(
         appBar: AppBar(
@@ -47,8 +45,8 @@ class MainPage extends StatelessWidget {
         body: Container(
           child: Center(
             child: FlatButton(
-              onPressed: () async{
-                handleSignIn();
+              onPressed: () async {
+                handleSignIn(userDetail);
                 FirebaseAuth.instance.signOut();
               },
               child: Column(children: <Widget>[
