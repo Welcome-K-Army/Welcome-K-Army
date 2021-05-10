@@ -11,25 +11,29 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future<void> handleSignIn(BuildContext context) async {
       final userDetail = Provider.of<UserDetail>(context);
       User firebaseUser = await FirebaseAuth.instance.currentUser;
       //if (firebaseUser != null) {
-        // Check is already sign up
-        final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-        final QuerySnapshot result = await users.where('uId', isEqualTo: uId).get();
-        final List<DocumentSnapshot> documents = result.docs;
-        if (documents.length == 0) {
-          // Update data to server if new user
-          users.doc(uId).set({
-            'nickname': userDetail.nickName,
-            'email': userDetail.email,
-            'gender': userDetail.gender,
-            'age': userDetail.age,
-            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-          });
-        }
+      // Check is already sign up
+      final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+      final QuerySnapshot result = await users.where('uId', isEqualTo: uId).get();
+      final List<DocumentSnapshot> documents = result.docs;
+      if (documents.length == 0) {
+        // Update data to server if new user
+        users
+            .doc(uId)
+            .set({
+              'nickname': userDetail.nickName,
+              'email': userDetail.email,
+              'gender': userDetail.gender,
+              'age': userDetail.age,
+              'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            })
+            .then((value) => print("User Added"))
+            .catchError((error) => print("Failed to add user: $error"));
+        ;
+      }
       //}
     }
 
