@@ -111,7 +111,7 @@ class HeaderTile extends StatelessWidget {
 }
 
 class ListContentView extends StatelessWidget {
-  const ListContentView({Key key, his.content}) : super(key: key);
+  const ListContentView({Key key, this.content}) : super(key: key);
 
   final Content content;
 
