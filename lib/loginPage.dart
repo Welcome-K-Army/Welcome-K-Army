@@ -19,8 +19,8 @@ class _LoginPage extends State<LoginPage> {
   int _userAge;
   Gender _userGender = Gender.MAN;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);
-  int get userAge => _userAge;
-  String get userGender {
+  int userAge() => _userAge;
+  String userGender() {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
 
@@ -417,8 +417,8 @@ class _LoginPage extends State<LoginPage> {
         final userDetail = Provider.of<UserDetail>(context);
         userDetail.nickName=_nickNameController.text;
         userDetail.email=_emailController.text;
-        userDetail.age=userAge;
-        userDetail.gender=userGender;
+        userDetail.age=userAge();
+        userDetail.gender=userGender();
       }
     }
 
