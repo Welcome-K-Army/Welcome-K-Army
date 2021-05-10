@@ -10,9 +10,9 @@ final List<Menu> menuList = [
 
 class Menu {
   var name;
-  Icon? icon;
+  Icon icon;
 
-  Menu({this.name, this.icon});
+  Menu({required this.name, required this.icon});
 }
 
 class MenuIconButton extends StatelessWidget {
