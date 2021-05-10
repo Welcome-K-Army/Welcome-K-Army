@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'userDetail.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class MainPage extends StatelessWidget {
       final CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
       final QuerySnapshot result = await users.where('uId', isEqualTo: uId).get();
       final List<DocumentSnapshot> documents = result.docs;
+      print(documents.length);
       if (documents.length == 0) {
         // Update data to server if new user
         return users
