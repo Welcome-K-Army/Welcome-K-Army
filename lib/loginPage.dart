@@ -344,21 +344,20 @@ class _LoginPage extends State<LoginPage> {
         child: SizedBox(
           height: 50,
           child: Consumer<UserDetail>(
-            builder: (context, userDetail, child) =>
-                Consumer<JoinOrLogin>(
-            builder: (context, joinOrLogin, child) => RaisedButton(
-                child: Text(
-                  joinOrLogin.isJoin ? "Sign Up" : "Sign In",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-                color: joinOrLogin.isJoin ? Colors.red : Colors.green,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                onPressed: () {
-                  if (_formkey.currentState.validate()) {
-                    joinOrLogin.isJoin ? _register(context) : _login(context, userDetail);
-                  }
-                }), //RaisedButton
-          ),
+            builder: (context, userDetail, child) => Consumer<JoinOrLogin>(
+              builder: (context, joinOrLogin, child) => RaisedButton(
+                  child: Text(
+                    joinOrLogin.isJoin ? "Sign Up" : "Sign In",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  color: joinOrLogin.isJoin ? Colors.red : Colors.green,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  onPressed: () {
+                    if (_formkey.currentState.validate()) {
+                      joinOrLogin.isJoin ? _register(context, userDetail) : _login(context);
+                    }
+                  }), //RaisedButton
+            ),
           ),
         ), //SizedBox
       ); //Positioned
@@ -402,7 +401,7 @@ class _LoginPage extends State<LoginPage> {
 
   // 계정생성 메서드
 
-  void _register(BuildContext context,userDetail) async {
+  void _register(BuildContext context, userDetail) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
     } on FirebaseAuthException catch (e) {
@@ -417,10 +416,10 @@ class _LoginPage extends State<LoginPage> {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else if (e == null) {
-        userDetail.nickName=_nickNameController.text;
-        userDetail.email=_emailController.text;
-        userDetail.age=userAge();
-        userDetail.gender=userGender();
+        userDetail.nickName = _nickNameController.text;
+        userDetail.email = _emailController.text;
+        userDetail.age = userAge();
+        userDetail.gender = userGender();
       }
     }
 

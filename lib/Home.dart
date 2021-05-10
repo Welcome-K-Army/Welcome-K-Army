@@ -8,9 +8,10 @@ class MainPage extends StatelessWidget {
   MainPage({this.uId, this.email});
   final String uId;
   final String email;
-  final userDetail = Provider.of<UserDetail>(context);
   
-  Future<Null> handleSignIn() async {
+  
+  Future<Null> handleSignIn(BuildContext context) async {
+    final userDetail = Provider.of<UserDetail>(context);
     User firebaseUser = await FirebaseAuth.instance.currentUser;
     if (firebaseUser != null) {
       // Check is already sign up
