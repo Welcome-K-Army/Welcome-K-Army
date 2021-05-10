@@ -39,7 +39,7 @@ class Splash extends StatelessWidget {
             return ChangeNotifierProvider<JoinOrLogin>.value(value: JoinOrLogin(), child: LoginPage()); //ChangeNotifierProvider
           } else {
             final userDetail= Provider.of<UserDetail>(context);
-            userDetail.uId=uId;
+            userDetail.uId=snapshot.data.uid;
             return MainPage(uId: snapshot.data.uid, email: snapshot.data.email);
           }
         }); //SteamBuilder
