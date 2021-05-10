@@ -13,15 +13,15 @@ class MainPage extends StatelessWidget {
     User firebaseUser = await FirebaseAuth.instance.currentUser;
     if (firebaseUser != null) {
       // Check is already sign up
-      final QuerySnapshot result = await FirebaseFirestore.instance.collection('usersDetail').where('uid', isEqualTo: uid).get();
+      final QuerySnapshot result = await FirebaseFirestore.instance.collection('usersDetail').where('uid', isEqualTo: uId).get();
       final List<DocumentSnapshot> documents = result.docs;
       if (documents.length == 0) {
         // Update data to server if new user
         FirebaseFirestore.instance.collection('usersDetail').doc(firebaseUser.uid).set({
-          'nickname': Provider.of(UserDetail)(context).nickName,
-          'email': Provider.of(UserDetail)(context).email,
-          'gender': Provider.of(UserDetail)(context).gender,
-          'age': Provider.of(UserDetail)(context).age,
+          'nickname': nickName,
+          'email': email,
+          'gender': gender,
+          'age': age,
           'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
         });
       }
