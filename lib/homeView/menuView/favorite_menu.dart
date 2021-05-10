@@ -21,7 +21,7 @@ class FavoriteMenu extends StatelessWidget {
           ),
           itemCount: menuList.length,
           itemBuilder: (context, index) {
-            return MenuIconButton(menuList[index]);
+            return MenuIconButton(menu: menuList[index]);
           },
         ));
   }
