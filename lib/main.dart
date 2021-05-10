@@ -20,8 +20,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Consumer<UserDetail>(
-            builder: (context, userDetail, child) =>MaterialApp(
+    return  ChangeNotifierProvider(
+      create:(context)=>UserDetail(),
+      child:MaterialApp(
         home: Splash(),
       ), //MaterialApp
     );
