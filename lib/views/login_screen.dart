@@ -26,7 +26,7 @@ class _LoginViewState extends State<Login> {
           context: context,
           builder: (BuildContext context) {
             TextEditingController _emailControllerField = TextEditingController();
-            return CustomAlertDialog(
+            return Dialog(
               content: Container(
                 width: size.width / 1.2,
                 height: size.height / 4.5,
