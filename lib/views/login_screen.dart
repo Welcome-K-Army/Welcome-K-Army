@@ -28,7 +28,7 @@ class _LoginViewState extends State<Login> {
             return Dialog(
               child: Container(
                 width: size.width / 1.2,
-                height: size.height / 4.5,
+                height: size.height / 3.5,
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
