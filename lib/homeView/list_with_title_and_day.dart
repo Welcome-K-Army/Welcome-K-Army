@@ -41,30 +41,28 @@ class ListWithTitleAndDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-      elevation: 4,      
-      child: ListView.separated(
-        shrinkWrap: true,
-        itemCount: contents.length + 1,
-        itemBuilder: (context, index) {
-          if (index == 0) return HeaderTile(title: title);
-          return ListTileWithTitleAndDay(content: contents[index-1]);
-        },
-        separatorBuilder: (context, index) {
-          if (index == 0) return SizedBox.shrink();
-          return const Divider(
-            color: Colors.black12,
-            height: 10,
-            thickness: 5,
-            indent: 20,
-            endIndent: 20,
-          );
-        }
-      )
-    ); // ListView
+        elevation: 4,
+        child: ListView.separated(
+            shrinkWrap: true,
+            itemCount: contents.length + 1,
+            itemBuilder: (context, index) {
+              if (index == 0) return HeaderTile(title: title);
+              return ListTileWithTitleAndDay(content: contents[index - 1]);
+            },
+            separatorBuilder: (context, index) {
+              if (index == 0) return SizedBox.shrink();
+              return const Divider(
+                color: Colors.black12,
+                height: 10,
+                thickness: 5,
+                indent: 20,
+                endIndent: 20,
+              );
+            })); // ListView
   }
 }
 
