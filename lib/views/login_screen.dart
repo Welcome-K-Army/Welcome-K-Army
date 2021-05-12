@@ -30,7 +30,6 @@ class _LoginViewState extends State<Login> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: Container(
-                margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.white,
@@ -44,6 +43,8 @@ class _LoginViewState extends State<Login> {
                       padding: EdgeInsets.all(5),
                       child: Text("Insert Reset Email:"),
                     ),
+                                        Padding(
+                      padding: EdgeInsets.all(5),
                     TextField(
                       controller: _emailControllerField,
                       decoration: InputDecoration(
@@ -62,6 +63,7 @@ class _LoginViewState extends State<Login> {
                         ),
                       ),
                     ),
+                                        ),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: Material(
