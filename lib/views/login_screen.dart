@@ -33,11 +33,11 @@ class _LoginViewState extends State<Login> {
                 margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 width: size.width / 1.1,
                 height: size.height / 4.0,
-                color: Colors.white,
                 child: Column(
                   children: <Widget>[
                     Padding(
