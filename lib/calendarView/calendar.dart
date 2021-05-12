@@ -181,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       calendarController: _calendarController,
       events: _events,
       holidays: _holidays,
-      startingDayOfWeek: StartingDayOfWeek.monday,
+      startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.deepOrange[400],
         todayColor: Colors.deepOrange[200],
