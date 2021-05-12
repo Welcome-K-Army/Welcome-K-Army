@@ -207,7 +207,7 @@ class _RegisterViewState extends State<Register> {
     );
 
     return Scaffold(
-      backgroundColor: Color(0xff8c52ff),
+      backgroundColor: Color(0xff0c9869),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
