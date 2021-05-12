@@ -26,17 +26,17 @@ class _LoginViewState extends State<Login> {
           builder: (BuildContext context) {
             TextEditingController _emailControllerField = TextEditingController();
             return Dialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: Colors.white,
+                  // color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+                  // ],
                 ),
                 width: size.width / 1.1,
                 height: size.height / 4.0,
