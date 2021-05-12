@@ -43,27 +43,27 @@ class _LoginViewState extends State<Login> {
                       padding: EdgeInsets.all(5),
                       child: Text("Insert Reset Email:"),
                     ),
-                                        Padding(
+                    Padding(
                       padding: EdgeInsets.all(5),
-                    TextField(
-                      controller: _emailControllerField,
-                      decoration: InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
+                      child: TextField(
+                        controller: _emailControllerField,
+                        decoration: InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                            ),
+                          ),
+                          hintText: "something@example.com",
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                          hintStyle: TextStyle(
                             color: Colors.black,
                           ),
                         ),
-                        hintText: "something@example.com",
-                        labelText: "Email",
-                        labelStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                        ),
                       ),
                     ),
-                                        ),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: Material(
