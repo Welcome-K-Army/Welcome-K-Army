@@ -57,6 +57,10 @@ class ListWithTitleAndDay extends StatelessWidget {
           if (index == 0) return SizedBox.shrink();
           return const Divider(
             color: Colors.black,
+            height: 10,
+            thickness: 5,
+            indent: 10,
+            endIndent: 10,
           );
         }
       )
