@@ -8,6 +8,7 @@ final List<Menu> menuList = [
   new Menu(name: '지도검색', icon: Icon(Icons.location_pin, size: 30), widget: MyHomePage(title: "welcome k army")),
   new Menu(name: '입시정보', icon: Icon(Icons.search, size: 30), widget: MyHomePage(title: "welcome k army")),
   new Menu(name: '일정', icon: Icon(Icons.calendar_today, size: 30), widget: MyHomePage(title: "welcome k army")),
+  new Menu(name: '입시분석', icon: Icon(Icons.pie_chart, size: 30), widget: MyHomePage(title: "welcome k army")),
 ];
 
 class Menu {
