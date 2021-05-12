@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'theme/routes.dart';
 //0xff0c9869
 
 class Login extends StatefulWidget {
@@ -89,7 +90,7 @@ class _LoginViewState extends State<Login> {
     //상단부 이미지
     final logo = Image.asset(
       "lib/image/Loading.gif",
-      height: mq.size.height / 4,
+      height: size.height / 4,
     );
     // final logo = Expanded(
     //   child: Padding(

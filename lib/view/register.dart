@@ -21,7 +21,7 @@ class _RegisterViewState extends State<Register> {
 
     final logo = Image.asset(
       "lib/image/Loading.gif",
-      height: mq.size.height / 4,
+      height: size.height / 4,
     );
 
     final nicknameField = TextFormField(
@@ -213,7 +213,7 @@ class _RegisterViewState extends State<Register> {
         child: SingleChildScrollView(
           padding: EdgeInsets.all(36),
           child: Container(
-            height: mq.size.height,
+            height: size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
