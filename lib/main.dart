@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../theme/routes.dart';
-import '../views/opening_screen.dart';
+import 'theme/routes.dart';
+import 'views/opening_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,37 +17,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 
