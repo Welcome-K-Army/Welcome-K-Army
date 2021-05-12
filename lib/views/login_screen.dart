@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,73 +20,73 @@ class _LoginViewState extends State<Login> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    void showAlertDialog(BuildContext context) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            TextEditingController _emailControllerField = TextEditingController();
-            return Dialog(
-              content: Container(
-                width: size.width / 1.2,
-                height: size.height / 4.5,
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Text("Insert Reset Email:"),
-                    TextField(
-                      controller: _emailControllerField,
-                      decoration: InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                        hintText: "something@example.com",
-                        labelText: "Email",
-                        labelStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(25.0),
-                        color: Color(0xff0c9869),
-                        child: MaterialButton(
-                          minWidth: size.width / 2,
-                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                          child: Text(
-                            "Send Reset Email",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          onPressed: () async {
-                            try {
-                              FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
-                              Navigator.of(context).pop();
-                            } catch (e) {
-                              print(e);
-                              // TODO: Add snackbar reporting error
-                            }
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            );
-          });
-    }
+    // void showAlertDialog(BuildContext context) {
+    //   showDialog(
+    //       context: context,
+    //       builder: (BuildContext context) {
+    //         TextEditingController _emailControllerField = TextEditingController();
+    //         return YYDialog(
+    //           content: Container(
+    //             width: size.width / 1.2,
+    //             height: size.height / 4.5,
+    //             color: Colors.white,
+    //             child: Column(
+    //               children: <Widget>[
+    //                 Text("Insert Reset Email:"),
+    //                 TextField(
+    //                   controller: _emailControllerField,
+    //                   decoration: InputDecoration(
+    //                     focusedBorder: UnderlineInputBorder(
+    //                       borderSide: BorderSide(
+    //                         color: Colors.black,
+    //                       ),
+    //                     ),
+    //                     hintText: "something@example.com",
+    //                     labelText: "Email",
+    //                     labelStyle: TextStyle(
+    //                       color: Colors.black,
+    //                     ),
+    //                     hintStyle: TextStyle(
+    //                       color: Colors.black,
+    //                     ),
+    //                   ),
+    //                 ),
+    //                 Padding(
+    //                   padding: EdgeInsets.all(15),
+    //                   child: Material(
+    //                     elevation: 5.0,
+    //                     borderRadius: BorderRadius.circular(25.0),
+    //                     color: Color(0xff0c9869),
+    //                     child: MaterialButton(
+    //                       minWidth: size.width / 2,
+    //                       padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+    //                       child: Text(
+    //                         "Send Reset Email",
+    //                         textAlign: TextAlign.center,
+    //                         style: TextStyle(
+    //                           fontSize: 20.0,
+    //                           color: Colors.white,
+    //                           fontWeight: FontWeight.bold,
+    //                         ),
+    //                       ),
+    //                       onPressed: () async {
+    //                         try {
+    //                           FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+    //                           Navigator.of(context).pop();
+    //                         } catch (e) {
+    //                           print(e);
+    //                           // TODO: Add snackbar reporting error
+    //                         }
+    //                       },
+    //                     ),
+    //                   ),
+    //                 )
+    //               ],
+    //             ),
+    //           ),
+    //         );
+    //       });
+    // }
 
     //상단부 이미지
     final logo = Image.asset(
@@ -115,9 +114,9 @@ class _LoginViewState extends State<Login> {
         ),
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          border: BorderSide(
+          border: Border.all(BorderSide(
             color: Colors.white,
-          ),
+          )),
           labelText: "Email",
           hintText: "something@example.com",
           labelStyle: TextStyle(
