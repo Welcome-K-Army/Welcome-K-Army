@@ -56,11 +56,11 @@ class ListWithTitleAndDay extends StatelessWidget {
         separatorBuilder: (context, index) {
           if (index == 0) return SizedBox.shrink();
           return const Divider(
-            color: Colors.black,
+            color: Colors.black12,
             height: 10,
             thickness: 5,
-            indent: 10,
-            endIndent: 10,
+            indent: 20,
+            endIndent: 20,
           );
         }
       )
