@@ -65,14 +65,14 @@ class _LoginViewState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.fromLTRB(10,20,10,10),
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
                         color: Color(0xff0c9869),
                         child: MaterialButton(
                           minWidth: size.width / 2,
-                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 30.0),
+                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 25.0),
                           child: Text(
                             "Send Reset Email",
                             textAlign: TextAlign.center,
