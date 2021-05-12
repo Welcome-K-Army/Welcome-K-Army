@@ -26,12 +26,16 @@ class _LoginViewState extends State<Login> {
           builder: (BuildContext context) {
             TextEditingController _emailControllerField = TextEditingController();
             return Dialog(
+              shape : RoundedRectangleBorder ( 
+                borderRadius : 
+                    BorderRadius.circular (20.0)),
               child: Container(
                 width: size.width / 1.2,
                 height: size.height / 3.5,
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
+                    Container(),
                     Text("Insert Reset Email:"),
                     TextField(
                       controller: _emailControllerField,
@@ -52,14 +56,14 @@ class _LoginViewState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(10),
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
                         color: Color(0xff0c9869),
                         child: MaterialButton(
                           minWidth: size.width / 2,
-                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 25.0),
                           child: Text(
                             "Send Reset Email",
                             textAlign: TextAlign.center,
