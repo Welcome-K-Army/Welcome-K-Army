@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginViewState extends State<Login> {
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   @override
@@ -113,7 +113,7 @@ class _LoginViewState extends State<Login> {
         ),
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          borderSide: BorderSide(
+          border: BorderSide(
             color: Colors.white,
           ),
           labelText: "Email",
@@ -221,7 +221,7 @@ class _LoginViewState extends State<Login> {
               password: _passwordController.text,
             );
             SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setString('NickName', user.user.nickName);
+            prefs.setString('NickName', user.user.displayName);
             Navigator.of(context).pushNamed(AppRoutes.menu);
           } on FirebaseAuthException catch (e) {
             if (e.code == 'weak-password') {
