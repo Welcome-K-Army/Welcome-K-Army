@@ -217,23 +217,25 @@ class _LoginViewState extends State<Login> {
           ),
         ),
         onPressed: () async {
-          try {
-            await Firebase.initializeApp();
-            UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            );
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setString('NickName', user.user.displayName);
-            Navigator.of(context).pushNamed(AppRoutes.menu);
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'weak-password') {
-              print('The password provided is too weak.');
-            } else if (e.code == 'email-already-in-use') {
-              print('The account already exists for that email.');
+          if (_formkey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('NickName', user.user.displayName);
+              Navigator.of(context).pushNamed(AppRoutes.menu);
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'weak-password') {
+                print('The password provided is too weak.');
+              } else if (e.code == 'email-already-in-use') {
+                print('The account already exists for that email.');
+              }
+            } catch (e) {
+              print(e.toString());
             }
-          } catch (e) {
-            print(e.toString());
           }
         },
       ),
