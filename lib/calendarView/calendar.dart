@@ -230,18 +230,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         formatButtonVisible: false,
       ),
       builders: CalendarBuilders(
-        dowWeekendBuilder: (context, day) {
-          if (weekendDays.saturday == DateTime.saturday) {
-            final text = DateFormat.E().format(weekendDays);
-
-            return Center(
-              child: Text(
-                text,
-                style: TextStyle(color: Colors.blue),
-              )
-            );
-          }
-        },
         selectedDayBuilder: (context, date, _) {
           return FadeTransition(
             opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
