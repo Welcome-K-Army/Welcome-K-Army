@@ -83,7 +83,7 @@ class OpeningViewState extends State<OpeningView> {
       children: <Widget>[
         loginButton,
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 15, 0, 70),
+          padding: EdgeInsets.fromLTRB(0, 15, 0, 40),
           child: registerButton,
         ),
       ],
