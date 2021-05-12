@@ -216,7 +216,7 @@ class _LoginViewState extends State<Login> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: (_formkey.currentState.validator()) async {
+        onPressed: (_formKey.currentState.validator()) async {
           try {
             await Firebase.initializeApp();
             UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
