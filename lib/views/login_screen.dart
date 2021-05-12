@@ -36,7 +36,7 @@ class _LoginViewState extends State<Login> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 width: size.width / 1.1,
-                height: size.height / 4.0,
+                height: size.height / 3.5,
                 child: Column(
                   children: <Widget>[
                     Padding(
