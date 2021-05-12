@@ -55,7 +55,9 @@ class ListWithTitleAndDay extends StatelessWidget {
         },
         separatorBuilder: (context, index) {
           if (index == 0) return SizedBox.shrink();
-          return const Divider();
+          return const Divider(
+            color: Colors.black,
+          );
         }
       )
     ); // ListView
