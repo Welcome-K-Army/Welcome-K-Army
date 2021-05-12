@@ -30,9 +30,9 @@ class _LoginViewState extends State<Login> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: Container(
+                margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: const Color(0xFFFFFF),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 width: size.width / 1.1,
