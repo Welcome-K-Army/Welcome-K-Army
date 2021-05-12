@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'theme/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../theme/routes.dart';
 
 class OpeningView extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class OpeningViewState extends State<OpeningView> {
     final size = MediaQuery.of(context).size;
 
     final logo = Image.asset(
-      "assets/logo.png",
+      "lib/image/Loading.gif",
       height: size.height / 4,
     );
 

@@ -12,7 +12,7 @@ class UserData {
     this.nickName,
     this.email,
     this.creationDate,
-    this.gender;
+    this.gender,
     this.age,
   });
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '/net/firebase.dart';
-
+import '../net/firebase.dart';
+import '../theme/routes.dart';
 class Register extends StatefulWidget {
   @override
   _RegisterViewState createState() => _RegisterViewState();
@@ -124,7 +124,7 @@ class _RegisterViewState extends State<Register> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          usernameField,
+          nicknameField,
           emailField,
           passwordField,
           repasswordField,
@@ -156,7 +156,7 @@ class _RegisterViewState extends State<Register> {
               password: _passwordController.text,
             );
             User updateUser = FirebaseAuth.instance.currentUser;
-            updateUser.updateProfile(nickName: _nicknameController.text);
+            updateUser.updateProfile(nickname: _nicknameController.text);
             userSetup(_nicknameController.text);
             Navigator.of(context).pushNamed(AppRoutes.menu);
           } on FirebaseAuthException catch (e) {
