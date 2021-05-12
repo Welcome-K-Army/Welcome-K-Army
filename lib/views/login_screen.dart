@@ -35,8 +35,10 @@ class _LoginViewState extends State<Login> {
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
-                    Container(),
-                    Text("Insert Reset Email:"),
+                    Padding(
+                      padding:EdgeInsets.all(5),
+                      child:Text("Insert Reset Email:"),
+                    ),
                     TextField(
                       controller: _emailControllerField,
                       decoration: InputDecoration(
