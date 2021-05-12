@@ -182,7 +182,7 @@ class _LoginViewState extends State<Login> {
                   style: Theme.of(context).textTheme.caption.copyWith(color: Colors.white),
                 ),
                 onPressed: () {
-                  //showAlertDialog(context);
+                  showAlertDialog(context);
                 }),
           ],
         ),
