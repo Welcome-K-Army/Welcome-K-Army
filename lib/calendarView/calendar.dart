@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         selectedColor: Colors.deepOrange[400],
         todayColor: Colors.deepOrange[200],
         markersColor: Colors.brown[700],
-        outsideDaysVisible: false,
+        outsideDaysVisible: true,
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle: TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
@@ -217,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         CalendarFormat.week: '',
       },
       calendarStyle: CalendarStyle(
-        outsideDaysVisible: false,
+        outsideDaysVisible: true,
         weekendStyle: TextStyle().copyWith(color: Colors.blue[800]),
         holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
       ),
