@@ -114,7 +114,8 @@ class _LoginViewState extends State<Login> {
         ),
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          border: InputBorder(BorderSide(
+          border: InputBorder(
+              borderSize: BorderSide(
             color: Colors.white,
           )),
           labelText: "Email",
