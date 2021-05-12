@@ -83,7 +83,7 @@ class OpeningViewState extends State<OpeningView> {
       children: <Widget>[
         loginButton,
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 15, 0, 40),
+          padding: EdgeInsets.fromLTRB(0, 15, 0, 30),
           child: registerButton,
         ),
       ],
@@ -116,15 +116,15 @@ class OpeningViewState extends State<OpeningView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 40),
               child: logo,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50, bottom: 50),
+              padding: EdgeInsets.only(top: 40, bottom: 40),
               child: display(),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50, bottom: 50),
+              padding: EdgeInsets.only(top: 40, bottom: 40),
               child: buttons,
             )
           ],
