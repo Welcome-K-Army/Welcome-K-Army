@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../days_of_week_style.dart';
 
 // Example holidays
 final Map<DateTime, List> _holidays = {
@@ -222,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
+        //weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
       ),
       headerStyle: HeaderStyle(
         centerHeaderTitle: true,
@@ -240,7 +241,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               )
             );
           }
-        }
+        },
         selectedDayBuilder: (context, date, _) {
           return FadeTransition(
             opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
