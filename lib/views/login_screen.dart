@@ -30,7 +30,7 @@ class _LoginViewState extends State<Login> {
                 borderRadius : 
                     BorderRadius.circular (20.0)),
               child: Container(
-                width: size.width / 1.2,
+                width: size.width / 1.1,
                 height: size.height / 3.5,
                 color: Colors.white,
                 child: Column(
