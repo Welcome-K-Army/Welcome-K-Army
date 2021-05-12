@@ -114,7 +114,7 @@ class _LoginViewState extends State<Login> {
         ),
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          border: InputBorder(
+          border: OutlineInputBorder(
               borderSide: BorderSide(
             color: Colors.white,
           )),
