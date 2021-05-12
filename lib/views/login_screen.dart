@@ -33,7 +33,7 @@ class _LoginViewState extends State<Login> {
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: const Color(0xFFFFFF),
-                  borderRadius: Radius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 width: size.width / 1.1,
                 height: size.height / 4.0,
