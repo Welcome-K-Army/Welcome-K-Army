@@ -118,7 +118,7 @@ class _LoginViewState extends State<Login> {
             borderSide: BorderSide(
               color: Colors.white,
             ),
-          )
+          ),
           labelText: "Email",
           hintText: "something@example.com",
           labelStyle: TextStyle(
