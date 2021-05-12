@@ -24,27 +24,6 @@ final Map<DateTime, List> _holidays = {
   ],
 };
 
-/*
-void main() {
-  initializeDateFormatting().then((_) => runApp(MyApp()));
-}
-
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Table Calendar Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Table Calendar Demo'),
-    );
-  }
-}
-
-*/
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
