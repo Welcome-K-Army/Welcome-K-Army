@@ -237,8 +237,8 @@ class _LoginViewState extends State<Login> {
                 email: _emailController.text,
                 password: _passwordController.text,
               );
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString('NickName', user.user.displayName);
+              //SharedPreferences prefs = await SharedPreferences.getInstance();
+              //prefs.setString('NickName', user.user.displayName);
               Navigator.of(context).pushNamed(AppRoutes.menu);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'weak-password') {
