@@ -18,6 +18,9 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _repasswordController = TextEditingController();
   Gender _userGender = Gender.MAN;
+  int _userAge;
+  List<int> ageList = List<int>.generate(60, (int index) => index + 15);//15~75
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +125,38 @@ class _RegisterViewState extends State<Register> {
       ),
     ]);
 
+    final ageField= Container(
+              alignment: Alignment.center,
+              height: 50.0,
+              width: size.width * 0.73,
+              //child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                isExpanded: true,
+                iconSize: 24,
+                elevation: 16,
+                hint: Text(
+                  "Age",
+                  textAlign: TextAlign.left,
+                ),
+                value: _userAge,
+                onChanged: (val) => setState(() => _userAge = val),
+                items: [
+                  for (var age in ageList)
+                    DropdownMenuItem(
+                      value: age,
+                      child: SizedBox(
+                        width: size.width * 0.73,
+                        child: Text(
+                          age.toString() + " years old",
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              //),
+            );
+
     final passwordField = TextFormField(
       obscureText: true,
       controller: _passwordController,
@@ -178,6 +213,7 @@ class _RegisterViewState extends State<Register> {
           nicknameField,
           emailField,
           genderField,
+          ageField,
           passwordField,
           repasswordField,
         ],
