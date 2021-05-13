@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class MenuScreen extends StatefulWidget {
   MenuScreen();
   @override
@@ -38,8 +36,7 @@ class MenuScreenState extends State<MenuScreen> {
                   ],
                   labelColor: Color(0xff8c52ff),
                   indicator: UnderlineTabIndicator(
-                    borderSide:
-                        BorderSide(color: Color(0xff8c52ff), width: 4.0),
+                    borderSide: BorderSide(color: Color(0xff8c52ff), width: 4.0),
                     insets: EdgeInsets.only(bottom: 44),
                   ),
                   unselectedLabelColor: Colors.grey,
@@ -47,6 +44,7 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
+                  Container(), Container(), Container()
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
