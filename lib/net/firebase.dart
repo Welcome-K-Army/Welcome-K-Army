@@ -5,6 +5,6 @@ Future<void> userSetup(String nickName,String email /*,int age, String gender*/)
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
-  users.add({'nickName': nickName,'email':email, 'uid': uid});
+  users.doc(uid).set({'nickName': nickName,'email':email, 'uid': uid});
   return;
 }

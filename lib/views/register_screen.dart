@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../net/firebase.dart';
 import '../theme/routes.dart';
+
+enum Gender { MAN, WOMEN }
+
 class Register extends StatefulWidget {
   @override
   _RegisterViewState createState() => _RegisterViewState();
@@ -14,6 +17,7 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _repasswordController = TextEditingController();
+  Gender _userGender = Gender.MAN;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +75,53 @@ class _RegisterViewState extends State<Register> {
       ),
     );
 
+    final genderField = Row(children: <Widget>[
+      SizedBox(
+        height: 20,
+        width: 20,
+        child: Radio(
+          value: Gender.MAN,
+          groupValue: _userGender,
+          onChanged: (value) {
+            setState(() {
+              _userGender = value;
+            });
+          },
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            _userGender = Gender.MAN;
+          });
+        },
+        child: Text("Male"),
+      ),
+      Container(),
+      Container(),
+      SizedBox(
+        height: 20,
+        width: 20,
+        child: Radio(
+          value: Gender.WOMEN,
+          groupValue: _userGender,
+          onChanged: (value) {
+            setState(() {
+              _userGender = value;
+            });
+          },
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            _userGender = Gender.WOMEN;
+          });
+        },
+        child: Text("Female"),
+      ),
+    ]);
+
     final passwordField = TextFormField(
       obscureText: true,
       controller: _passwordController,
@@ -126,6 +177,7 @@ class _RegisterViewState extends State<Register> {
         children: <Widget>[
           nicknameField,
           emailField,
+          genderField,
           passwordField,
           repasswordField,
         ],
@@ -157,7 +209,7 @@ class _RegisterViewState extends State<Register> {
             );
             User updateUser = FirebaseAuth.instance.currentUser;
             updateUser.updateProfile(displayName: _nicknameController.text);
-            userSetup(_nicknameController.text,_emailController.text);
+            userSetup(_nicknameController.text, _emailController.text);
             Navigator.of(context).pushNamed(AppRoutes.menu);
           } on FirebaseAuthException catch (e) {
             if (e.code == 'weak-password') {
