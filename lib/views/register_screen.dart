@@ -18,6 +18,9 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _repasswordController = TextEditingController();
   Gender _userGender = Gender.MAN;
+  String userGender() {
+    return _userGender == Gender.MAN ? "MAN" : "WOMEN";
+  }
   int _userAge;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15);//15~75
 
@@ -245,7 +248,7 @@ class _RegisterViewState extends State<Register> {
             );
             User updateUser = FirebaseAuth.instance.currentUser;
             updateUser.updateProfile(displayName: _nicknameController.text);
-            userSetup(_nicknameController.text, _emailController.text);
+            userSetup(_nicknameController.text, _emailController.text,userGender(),_userAge);
             Navigator.of(context).pushNamed(AppRoutes.menu);
           } on FirebaseAuthException catch (e) {
             if (e.code == 'weak-password') {
