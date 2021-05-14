@@ -61,7 +61,7 @@ class _CustomRadarChartState extends State<CustomRadarChart> {
     return Container(
       height: 300,
       width: 300,
-      child: RadarChart(
+      child: RadarChart.light(
         ticks: ticks,
         features: features,
         data: data,
