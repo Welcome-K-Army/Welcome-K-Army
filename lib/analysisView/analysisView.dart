@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 class AnalysisView extends StatefulWidget {
-  AnalysisView createState() => new AnalysisStateView();
+  AnalysisViewState createState() => new AnalysisStateView();
 }
 
 class AnalysisStateView extends State<AnalysisView> {
