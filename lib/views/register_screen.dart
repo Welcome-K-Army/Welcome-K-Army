@@ -148,6 +148,9 @@ class _RegisterViewState extends State<Register> {
         hint: Text(
           "- years old",
           textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
         dropdownColor: Color(0xff0c9869),
         style: TextStyle(
