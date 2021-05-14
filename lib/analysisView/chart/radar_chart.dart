@@ -28,6 +28,8 @@ class _CustomRadarChartState extends State<CustomRadarChart> {
         .toList();
 
     return Container(
+      height: 300,
+      width: 300,
         color: darkMode ? Colors.black : Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
