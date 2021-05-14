@@ -13,7 +13,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age) as
         'gender': gender,
         'age': age,
         'uid': uid,
-        'createdAt': DateTime.now().millisecondsSinceEpoch.toString()
+        'createdAt': DateTime.now().toString()
       })
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));
