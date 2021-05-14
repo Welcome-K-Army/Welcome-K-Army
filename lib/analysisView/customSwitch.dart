@@ -5,12 +5,13 @@ class CustomSwitch extends StatefulWidget {
   bool status;
   CustomSwtich({this.status});
   @override
-  _CustomSwitchState createState() => _CustomSwitchState(status);
+  _CustomSwitchState createState() => _CustomSwitchState(status: status);
 }
 
 class _CustomSwitchState extends State<CustomSwitch> { 
-  _CustomSwitchState(bool status);
+  _CustomSwitchState({this.status});
 
+  bool status;
   Color _textColor = Colors.black;
 
   @override

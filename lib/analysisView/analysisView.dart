@@ -64,6 +64,10 @@ class AnalysisViewState extends State<AnalysisView> {
                           ),
                         ),
                         : CustomRadarChart(),
+                    ],
+                  ),
+                ),
+              ),
               CustomSwitch(status),
               Text("항목별 분석"),
               Row(children: [
