@@ -12,7 +12,7 @@ class SwitchWithPieAndRadarChart extends StatefulWidget {
 }
 
 class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart> {
-  final String title; 
+  String title; 
  
   _SwitchWithPieAndRadarChartState({this.title});
   

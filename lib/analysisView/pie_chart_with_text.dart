@@ -12,8 +12,8 @@ class PieChartWithText extends StatefulWidget {
 }
 
 class _PieChartWithTextState extends State<PieChartWithText> {
-  final String title;
-  final Size size;
+  String title;
+  Size size;
 
   _PieChartWithTextState({this.title, this.size});
 
