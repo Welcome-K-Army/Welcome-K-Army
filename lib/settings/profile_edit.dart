@@ -7,6 +7,7 @@ import '../model/user_data_model.dart';
 
 class EditProfile extends StatefulWidget {
   final String currentOnlinUserId;
+  
 
   EditProfile({this.currentOnlinUserId});
 

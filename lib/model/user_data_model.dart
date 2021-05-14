@@ -27,4 +27,5 @@ class UserData {
       creationDate: json['CreationDate'].toString(),
     );
   }
+  
 }

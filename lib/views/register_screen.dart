@@ -90,7 +90,7 @@ class _RegisterViewState extends State<Register> {
         });
 
     final genderField = Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         SizedBox(
           height: 20,
@@ -98,7 +98,7 @@ class _RegisterViewState extends State<Register> {
           child: Radio(
             value: Gender.MAN,
             groupValue: _userGender,
-            activeColor: Color(0xff0c9869),
+            activeColor: Colors.white,
             onChanged: (value) {
               setState(() {
                 _userGender = value;
@@ -112,15 +112,15 @@ class _RegisterViewState extends State<Register> {
               _userGender = Gender.MAN;
             });
           },
-          child: /*Padding(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 7),
-            child:*/ Text(
+            child: Text(
               "Male",
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
-          //),
+          ),
         ),
         SizedBox(
           height: 20,
@@ -128,6 +128,7 @@ class _RegisterViewState extends State<Register> {
           child: Radio(
             value: Gender.WOMEN,
             groupValue: _userGender,
+            activeColor: Colors.white,
             onChanged: (value) {
               setState(() {
                 _userGender = value;
@@ -141,7 +142,7 @@ class _RegisterViewState extends State<Register> {
               _userGender = Gender.WOMEN;
             });
           },
-          child: /*Padding(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 7),
             child:*/ Text(
               "Female",
@@ -150,7 +151,7 @@ class _RegisterViewState extends State<Register> {
               ),
             ),
           ),
-        //),
+        ),
       ],
     );
 
