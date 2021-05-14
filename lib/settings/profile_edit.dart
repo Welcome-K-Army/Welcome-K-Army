@@ -24,6 +24,7 @@ class _EditProfileState extends State<EditProfile> {
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
+  
   PickedFile _imageFile;
   final ImagePicker _picker=ImagePicker();
 
