@@ -54,8 +54,8 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
-   DocumentSnapshot documentSnapshot = await UserData.doc(widget.currentOnlineUserId).get();
-   user=UserData.fromDocument(documentSnapshot);
+  //  DocumentSnapshot documentSnapshot = await UserData.doc(widget.currentOnlineUserId).get();
+  //  user=UserData.fromDocument(documentSnapshot);
 
   //profile,email등 입력한에 사용자 정보로 채워넣기
   //profileNameTextEditingController.text = user.profileName;

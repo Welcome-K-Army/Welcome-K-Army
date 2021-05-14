@@ -90,7 +90,6 @@ class _RegisterViewState extends State<Register> {
         });
 
     final genderField = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         SizedBox(
           height: 20,
