@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../settings/profile_menu.dart';
+
+
 
 class MenuScreen extends StatefulWidget {
   MenuScreen();
@@ -44,7 +47,7 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  Container(), Container(), Container()
+                  Container(), Container(), Profile_menu(),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),

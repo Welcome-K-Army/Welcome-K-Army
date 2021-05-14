@@ -142,15 +142,17 @@ class _RegisterViewState extends State<Register> {
       // height: 50.0,
       // width: size.width * 0.73,
       child: DropdownButton(
+        underline:underline,
         isExpanded: true,
         iconSize: 24,
         elevation: 16,
         hint: Text(
           "- years old",
-          style:TextStyle(
-          color: Colors.white,
-        ),
           textAlign: TextAlign.left,
+        ),
+        dropdownColor: Color(0xff0c9869),
+        style:TextStyle(
+          color: Colors.white,
         ),
         value: _userAge,
         onChanged: (val) => setState(() => _userAge = val),
