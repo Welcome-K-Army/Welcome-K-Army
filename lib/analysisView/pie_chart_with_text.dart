@@ -22,7 +22,9 @@ class _PieChartWithTextState extends State<PieChartWithText> {
   
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
       Text(title),
       Row(children: [
         Container(
