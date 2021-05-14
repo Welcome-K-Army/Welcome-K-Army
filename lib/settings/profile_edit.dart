@@ -43,7 +43,7 @@ class _EditProfileState extends State<EditProfile> {
   void initState(){
     super.initState();
 
-   // getUserinformation();
+    getUserinformation();
   }
   
   getUserinformation() async{
@@ -52,8 +52,8 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
-  //DocumentSnapshot documentSnapshot이용해서  사용자 db가져오기
-  //user=User.fromDocument(documentSnapshot);
+  DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
+  user=UserData.fromDocument(documentSnapshot);
 
   //profile,email등 입력한에 사용자 정보로 채워넣기
   //profileNameTextEditingController.text = user.profileName;
