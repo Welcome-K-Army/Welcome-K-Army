@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import '../views/menu.dart';
-import 'profile_edit.dart';
 
 
 class Profile_menu extends StatefulWidget {
