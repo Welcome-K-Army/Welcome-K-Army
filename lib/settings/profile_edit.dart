@@ -30,7 +30,7 @@ class _EditProfileState extends State<EditProfile> {
 
   bool isObscurePassword=true; 
 
-  //bool loading //비동기이용하기 위한 bool값
+  bool loading;
 
   // updateUserData(){
   //   setState((){
