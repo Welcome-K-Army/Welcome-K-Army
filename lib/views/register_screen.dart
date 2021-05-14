@@ -58,28 +58,28 @@ class _RegisterViewState extends State<Register> {
     );
 
     final emailField = TextFormField(
-      controller: _emailController,
-      keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
+        controller: _emailController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          hintText: "something@example.com",
+          labelText: "Email",
+          labelStyle: TextStyle(
+            color: Colors.white,
+          ),
+          hintStyle: TextStyle(
             color: Colors.white,
           ),
         ),
-        hintText: "something@example.com",
-        labelText: "Email",
-        labelStyle: TextStyle(
-          color: Colors.white,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      validator: (String value) {
+        validator: (String value) {
           if (value.isEmpty) {
             return "Please input correct Email!";
           } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
@@ -87,8 +87,7 @@ class _RegisterViewState extends State<Register> {
             return "Not correct Email format";
           }
           return null;
-        }
-    );
+        });
 
     final genderField = Row(children: <Widget>[
       SizedBox(
@@ -187,70 +186,68 @@ class _RegisterViewState extends State<Register> {
     );
 
     final passwordField = TextFormField(
-      obscureText: true,
-      controller: _passwordController,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
+        obscureText: true,
+        controller: _passwordController,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          hintText: "password",
+          labelText: "Password",
+          labelStyle: TextStyle(
+            color: Colors.white,
+          ),
+          hintStyle: TextStyle(
             color: Colors.white,
           ),
         ),
-        hintText: "password",
-        labelText: "Password",
-        labelStyle: TextStyle(
-          color: Colors.white,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      validator: (String value) {
-              if (value.isEmpty) {
-                return "Please input correct Password!";
-              } else if (value.length < 8) {
-                return "Please enter a password of at least 8 digits!";
-              }
-              return null;
-            }
-    );
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "Please input correct Password!";
+          } else if (value.length < 8) {
+            return "Please enter a password of at least 8 digits!";
+          }
+          return null;
+        });
 
     final repasswordField = TextFormField(
-      obscureText: true,
-      controller: _repasswordController,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
+        obscureText: true,
+        controller: _repasswordController,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          hintText: "password",
+          labelText: "Re-enter Password",
+          labelStyle: TextStyle(
+            color: Colors.white,
+          ),
+          hintStyle: TextStyle(
             color: Colors.white,
           ),
         ),
-        hintText: "password",
-        labelText: "Re-enter Password",
-        labelStyle: TextStyle(
-          color: Colors.white,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      validator: (String value) {
-              if (value.isEmpty) {
-                return "Please input correct Password!";
-              } else if (value.length < 8) {
-                return "Please enter a password of at least 8 digits!";
-              } else if (value != _passwordController.text) {
-                return "Not same the password";
-              }
-              return null;
-            }
-    );
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "Please input correct Password!";
+          } else if (value.length < 8) {
+            return "Please enter a password of at least 8 digits!";
+          } else if (value != _passwordController.text) {
+            return "Not same the password";
+          }
+          return null;
+        });
 
     final fields = Padding(
       padding: EdgeInsets.only(top: 10.0),
@@ -272,39 +269,40 @@ class _RegisterViewState extends State<Register> {
       borderRadius: BorderRadius.circular(25.0),
       color: Colors.white,
       child: MaterialButton(
-        minWidth: size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
-          "Register",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+          minWidth: size.width / 1.2,
+          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+          child: Text(
+            "Register",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        onPressed: () async {
-          try {
-            await Firebase.initializeApp();
-            UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            );
-            User updateUser = FirebaseAuth.instance.currentUser;
-            updateUser.updateProfile(displayName: _nicknameController.text);
-            userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge);
-            Navigator.of(context).pushNamed(AppRoutes.menu);
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'weak-password') {
-              print('The password provided is too weak.');
-            } else if (e.code == 'email-already-in-use') {
-              print('The account already exists for that email.');
+          onPressed: () async {
+            if (_formKey.currentState.validate()) {
+              try {
+                await Firebase.initializeApp();
+                UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+                User updateUser = FirebaseAuth.instance.currentUser;
+                updateUser.updateProfile(displayName: _nicknameController.text);
+                userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge);
+                Navigator.of(context).pushNamed(AppRoutes.menu);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'weak-password') {
+                  print('The password provided is too weak.');
+                } else if (e.code == 'email-already-in-use') {
+                  print('The account already exists for that email.');
+                }
+              } catch (e) {
+                print(e.toString());
+              }
             }
-          } catch (e) {
-            print(e.toString());
-          }
-        },
-      ),
+          }),
     );
 
     final bottom = Column(
