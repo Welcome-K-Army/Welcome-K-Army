@@ -150,7 +150,7 @@ class _RegisterViewState extends State<Register> {
           textAlign: TextAlign.left,
         ),
         dropdownColor: Color(0xff0c9869),
-        style:TextStyle(
+        style: TextStyle(
           color: Colors.white,
         ),
         value: _userAge,
@@ -164,6 +164,9 @@ class _RegisterViewState extends State<Register> {
                 child: Text(
                   age.toString() + " years old",
                   textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

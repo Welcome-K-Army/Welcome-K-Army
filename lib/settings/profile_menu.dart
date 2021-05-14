@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
-import 'views/menu.dart';
+import '../views/menu.dart';
 
-class Profile_menu extends StatelessWidget {
+
+
+class Profile_menu extends StatefulWidget {
+  @override
+  _Profile_menuState createState() => _Profile_menuState();
+}
+
+class _Profile_menuState extends State<Profile_menu> {
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children:[
         const SizedBox(height:50),
@@ -38,17 +44,17 @@ class Profile_menu extends StatelessWidget {
           press: (){}
           ),
       ],
-    );//Column
-  }//Widget
+    );//Column;
+  }
 }
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     Key key,
-    @required this.text, 
+    @required this.text, //@required은 기본값이 없고 null이 아닐경우에 사용/
     @required this.icon,
     @required this.press,
-  }) : super(key: key); 
+  }) : super(key: key); //기본생성자 호출
 
   final String text;
   final Icon icon;
@@ -86,3 +92,4 @@ class ProfileMenu extends StatelessWidget {
         );//Padding;
   }
 }
+
