@@ -113,15 +113,15 @@ class _RegisterViewState extends State<Register> {
               _userGender = Gender.MAN;
             });
           },
-          child: Padding(
+          child: /*Padding(
             padding: EdgeInsets.symmetric(horizontal: 7),
-            child: Text(
+            child:*/ Text(
               "Male",
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
-          ),
+          //),
         ),
         SizedBox(
           height: 20,
@@ -142,16 +142,16 @@ class _RegisterViewState extends State<Register> {
               _userGender = Gender.WOMEN;
             });
           },
-          child: Padding(
+          child: /*Padding(
             padding: EdgeInsets.symmetric(horizontal: 7),
-            child: Text(
+            child:*/ Text(
               "Female",
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
           ),
-        ),
+        //),
       ],
     );
 
