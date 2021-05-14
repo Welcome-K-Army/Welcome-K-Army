@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 class AnalysisView extends StatefulWidget {
-  AnalysisViewState createState() => new AnalysisStateView();
+  AnalysisViewState createState() => new AnalysisViewState();
 }
 
-class AnalysisStateView extends State<AnalysisView> {
+class AnalysisViewState extends State<AnalysisView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
