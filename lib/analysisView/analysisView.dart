@@ -5,6 +5,7 @@ import './chart/pie_chart.dart';
 import './chart/line_chart.dart';
 import './chart/bar_chart.dart';
 import './chart/radar_chart.dart';
+import 'customSwitch.dart';
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -63,6 +64,7 @@ class AnalysisViewState extends State<AnalysisView> {
                 ),
               ),
               CustomRadarChart(),
+              CustomSwitch(),
               Text("항목별 분석"),
               Row(children: [
                 Container(
