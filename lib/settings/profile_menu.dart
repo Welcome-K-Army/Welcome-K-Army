@@ -5,10 +5,10 @@ import '../views/menu.dart';
 
 class Profile_menu extends StatefulWidget {
   @override
-  _Profile_menuState createState() => _Profile_menuState();
+  Profile_menuState createState() => Profile_menuState();
 }
 
-class _Profile_menuState extends State<Profile_menu> {
+class Profile_menuState extends State<Profile_menu> {
   @override
   Widget build(BuildContext context) {
     return Column(
