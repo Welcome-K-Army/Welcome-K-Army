@@ -12,18 +12,21 @@ class SwitchWithPieAndRadarChart extends StatefulWidget {
 }
 
 class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart> {
+  final String title; 
+ 
   _SwitchWithPieAndRadarChartState({this.title});
   
   bool status = false;
   Color _textColor = Colors.black;
 
-  final String title;
-
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
-        Text(title),
+        Text(
+              title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(

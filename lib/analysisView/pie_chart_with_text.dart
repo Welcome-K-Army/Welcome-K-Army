@@ -12,20 +12,23 @@ class PieChartWithText extends StatefulWidget {
 }
 
 class _PieChartWithTextState extends State<PieChartWithText> {
+  final String title;
+  final Size size;
+
   _PieChartWithTextState({this.title, this.size});
 
   bool status = false;
   Color _textColor = Colors.black;
-
-  final String title;
-  final Size size;
   
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-      Text(title),
+        Text(
+              title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       Row(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
