@@ -29,10 +29,22 @@ class _RegisterViewState extends State<Register> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final logo = Image.asset(
-      "lib/image/Loading.gif",
-      height: size.height / 4,
-    );
+    // final logo = Image.asset(
+    //   "lib/image/Loading.gif",
+    //   height: size.height / 4,
+    // );
+    final logo = Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: CircleAvatar(
+            minRadius: 40,
+            backgroundImage: AssetImage("lib/image/Loading.gif"),
+          ), //CircleAvatar
+        ), //FittedBox
+      ), //Padding
+    ); //Expanded
 
     final nicknameField = TextFormField(
       controller: _nicknameController,
@@ -144,7 +156,7 @@ class _RegisterViewState extends State<Register> {
               });
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal:15),
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 "Female",
                 style: TextStyle(
@@ -358,7 +370,7 @@ class _RegisterViewState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(36,36,36,20),
+          padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
           child: Container(
             height: size.height,
             child: Column(

@@ -28,10 +28,22 @@ class OpeningViewState extends State<OpeningView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final logo = Image.asset(
-      "lib/image/Loading.gif",
-      height: size.height / 4,
-    );
+    // final logo = Image.asset(
+    //   "lib/image/Loading.gif",
+    //   height: size.height / 4,
+    // );
+    final logo = Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: CircleAvatar(
+            minRadius: 40,
+            backgroundImage: AssetImage("lib/image/Loading.gif"),
+          ), //CircleAvatar
+        ), //FittedBox
+      ), //Padding
+    ); //Expanded
 
     final loginButton = Material(
       elevation: 5.0,
