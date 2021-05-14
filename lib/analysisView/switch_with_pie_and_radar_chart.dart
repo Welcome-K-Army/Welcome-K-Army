@@ -7,7 +7,7 @@ import './chart/radar_chart.dart';
 class SwitchWithPieAndRadarChart extends StatefulWidget {
   String title;
   SwitchWithPieAndRadarChart({this.title});
-  @override
+
   _SwitchWithPieAndRadarChartState createState() => _SwitchWithPieAndRadarChartState();
 }
 
