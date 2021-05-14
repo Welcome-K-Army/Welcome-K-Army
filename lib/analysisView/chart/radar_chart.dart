@@ -11,7 +11,7 @@ class CustomRadarChart extends StatefulWidget {
 class _CustomRadarChartState extends State<CustomRadarChart> {
   bool darkMode = false;
   bool useSides = false;
-  double numberOfFeatures = 3;
+  double numberOfFeatures = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,7 @@ class _CustomRadarChartState extends State<CustomRadarChart> {
     return Container(
       height: 300,
       width: 300,
+      /*
         color: darkMode ? Colors.black : Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -133,6 +134,7 @@ class _CustomRadarChartState extends State<CustomRadarChart> {
             ),
           ],
         ),
+        */
       );
   }
 }
