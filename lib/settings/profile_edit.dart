@@ -49,7 +49,7 @@ class _EditProfileState extends State<EditProfile> {
   getUserinformation() async{
     setState((){
       loading=true;
-    })
+    });
   }
 
   //DocumentSnapshot documentSnapshot이용해서  사용자 db가져오기
