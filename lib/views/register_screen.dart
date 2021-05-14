@@ -142,7 +142,6 @@ class _RegisterViewState extends State<Register> {
       // height: 50.0,
       // width: size.width * 0.73,
       child: DropdownButton(
-        underline:underline,
         isExpanded: true,
         iconSize: 24,
         elevation: 16,
