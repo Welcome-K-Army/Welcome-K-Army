@@ -111,7 +111,7 @@ class OpeningViewState extends State<OpeningView> {
     return Scaffold(
       backgroundColor: Color(0xff0c9869),
       body: Padding(
-        padding: EdgeInsets.all(36),
+        padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

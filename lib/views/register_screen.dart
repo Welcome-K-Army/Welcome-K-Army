@@ -358,7 +358,7 @@ class _RegisterViewState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.fromLTRB(36,36,36,20),
           child: Container(
             height: size.height,
             child: Column(
