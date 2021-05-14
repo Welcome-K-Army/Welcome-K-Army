@@ -90,7 +90,7 @@ class _RegisterViewState extends State<Register> {
         });
 
     final genderField = Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: <Widget>[
           SizedBox(
@@ -114,7 +114,7 @@ class _RegisterViewState extends State<Register> {
               });
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 "Male",
                 style: TextStyle(
@@ -144,7 +144,7 @@ class _RegisterViewState extends State<Register> {
               });
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.symmetric(horizontal:15),
               child: Text(
                 "Female",
                 style: TextStyle(
@@ -358,7 +358,7 @@ class _RegisterViewState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: EdgeInsets.all(20),
           child: Container(
             height: size.height,
             child: Column(
@@ -367,7 +367,7 @@ class _RegisterViewState extends State<Register> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: EdgeInsets.only(bottom: 30),
                   child: bottom,
                 ),
               ],

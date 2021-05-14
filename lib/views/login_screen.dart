@@ -299,7 +299,7 @@ class _LoginViewState extends State<Login> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: EdgeInsets.all(20),
           child: Container(
             height: size.height,
             child: Column(
@@ -308,7 +308,7 @@ class _LoginViewState extends State<Login> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 70),
+                  padding: EdgeInsets.only(bottom: 50),
                   child: bottom,
                 ),
               ],
