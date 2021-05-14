@@ -144,7 +144,7 @@ class _RegisterViewState extends State<Register> {
           },
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 7),
-            child:*/ Text(
+            child: Text(
               "Female",
               style: TextStyle(
                 color: Colors.white,
@@ -365,7 +365,7 @@ class _RegisterViewState extends State<Register> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 40),
+                  padding: EdgeInsets.only(bottom: 20),
                   child: bottom,
                 ),
               ],
