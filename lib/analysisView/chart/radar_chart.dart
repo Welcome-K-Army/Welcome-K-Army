@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 
-class RadarChart extends StatefulWidget {
-  const RadarChart({Key? key}) : super(key: key);
+class CustomRadarChart extends StatefulWidget {
+  const CustomRadarChart({Key key}) : super(key: key);
 
   @override
-  _RadarChartState createState() => _RadarChartState();
+  _CustomRadarChartState createState() => _RadarChartState();
 }
 
-class _RadarChartState extends State<RadarChart> {
+class _CustomRadarChartState extends State<CustomRadarChart> {
   bool darkMode = false;
   bool useSides = false;
   double numberOfFeatures = 3;

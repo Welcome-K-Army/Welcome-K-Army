@@ -62,7 +62,7 @@ class AnalysisViewState extends State<AnalysisView> {
                   ),
                 ),
               ),
-              RadarChart(),
+              CustomRadarChart(),
               Text("항목별 분석"),
               Row(children: [
                 Container(
