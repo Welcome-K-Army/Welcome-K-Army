@@ -43,7 +43,7 @@ class Profile_menuState extends State<Profile_menu> {
   }
 }
 
-class ProfileMenu extends StatelessWidget {
+class ProfileMenu extends StatefulWidget {
   const ProfileMenu({
     Key key,
     @required this.text, //@required은 기본값이 없고 null이 아닐경우에 사용/
