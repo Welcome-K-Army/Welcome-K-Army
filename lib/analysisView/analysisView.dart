@@ -68,7 +68,7 @@ class AnalysisViewState extends State<AnalysisView> {
                   ),
                 ),
               ),
-              CustomSwitch(status),
+              CustomSwitch(status: status),
               Text("항목별 분석"),
               Row(children: [
                 Container(
