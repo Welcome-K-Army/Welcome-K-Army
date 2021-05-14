@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class CustomSwitch extends StatefulWidget {
+  bool status;
+  CustomSwtich({this.status});
   @override
-  _CustomSwitchState createState() => _CustomSwitchState();
+  _CustomSwitchState createState() => _CustomSwitchState(status);
 }
 
-class _CustomSwitchState extends State<CustomSwitch> {
-  bool status2 = true;
+class _CustomSwitchState extends State<CustomSwitch> { 
+  _CustomSwitchState(bool status);
 
   Color _textColor = Colors.black;
 
@@ -24,11 +26,11 @@ class _CustomSwitchState extends State<CustomSwitch> {
         borderRadius: 30.0,
         padding: 1.0,
         toggleColor: Color.fromRGBO(225, 225, 225, 1),
+        /*
         switchBorder: Border.all(
           color: Color(0xFF0C9869),
           width: 6.0,
         ),
-        /*
           toggleBorder: Border.all(
             color: Color.fromRGBO(2, 107, 206, 1),
             width: 5.0,
@@ -39,7 +41,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
         showOnOff: true,
         onToggle: (val) {
           setState(() {
-            status2 = val;
+            status = val;
           });
         },
       ),

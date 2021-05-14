@@ -23,6 +23,8 @@ class AnalysisViewState extends State<AnalysisView> {
     80
   ];
 
+  bool status = true;
+  
   List<String> labels = [
     "2012",
     "2013",
@@ -49,22 +51,20 @@ class AnalysisViewState extends State<AnalysisView> {
                 child: Center(
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        child: CustomPaint(
-                          // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
-                          size: Size(150, 150), // CustomPaint의 크기는 가로 세로 150, 150으로 합니다.
-                          painter: PieChart(
+                      status
+                        ? Container(
+                          child: CustomPaint(
+                            // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
+                            size: Size(150, 150), // CustomPaint의 크기는 가로 세로 150, 150으로 합니다.
+                            painter: PieChart(
                               percentage: 50, // 파이 차트가 얼마나 칠해져 있는지 정하는 변수입니다.
                               textScaleFactor: 1.0, // 파이 차트에 들어갈 텍스트 크기를 정합니다.
-                              textColor: Colors.blueGrey),
+                              textColor: Colors.blueGrey
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              CustomRadarChart(),
-              CustomSwitch(),
+                        : CustomRadarChart(),
+              CustomSwitch(status),
               Text("항목별 분석"),
               Row(children: [
                 Container(
