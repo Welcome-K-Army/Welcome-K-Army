@@ -79,6 +79,15 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (String value) {
+          if (value.isEmpty) {
+            return "Please input correct Email!";
+          } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+            //이메일 정규 표현식
+            return "Not correct Email format";
+          }
+          return null;
+        }
     );
 
     final genderField = Row(children: <Widget>[
@@ -199,6 +208,14 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (String value) {
+              if (value.isEmpty) {
+                return "Please input correct Password!";
+              } else if (value.length < 8) {
+                return "Please enter a password of at least 8 digits!";
+              }
+              return null;
+            }
     );
 
     final repasswordField = TextFormField(
@@ -223,6 +240,16 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (String value) {
+              if (value.isEmpty) {
+                return "Please input correct Password!";
+              } else if (value.length < 8) {
+                return "Please enter a password of at least 8 digits!";
+              } else if (value != _passwordController.text) {
+                return "Not same the password";
+              }
+              return null;
+            }
     );
 
     final fields = Padding(

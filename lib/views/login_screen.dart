@@ -64,7 +64,7 @@ class _LoginViewState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10,20,10,10),
+                      padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
@@ -84,10 +84,14 @@ class _LoginViewState extends State<Login> {
                           onPressed: () async {
                             try {
                               FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+                              final snackBar = SnackBar(
+                                content: Text("Check your email for password reset."),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                               Navigator.of(context).pop();
                             } catch (e) {
                               print(e);
-                              // TODO: Add snackbar reporting error
+                              
                             }
                           },
                         ),
