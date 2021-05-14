@@ -21,9 +21,9 @@ class _RegisterViewState extends State<Register> {
   String userGender() {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
-  int _userAge;
-  List<int> ageList = List<int>.generate(60, (int index) => index + 15);//15~75
 
+  int _userAge;
+  List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
 
   @override
   Widget build(BuildContext context) {
@@ -128,35 +128,37 @@ class _RegisterViewState extends State<Register> {
       ),
     ]);
 
-    final ageField= Container(
-              alignment: Alignment.center,
-              height: 50.0,
-              width: size.width * 0.73,
-              child: DropdownButton(
-                isExpanded: true,
-                iconSize: 24,
-                elevation: 16,
-                hint: Text(
-                  "Age",
+    final ageField = Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+      height: 50.0,
+      width: size.width * 0.73,
+      child: DropdownButton(
+        isExpanded: true,
+        iconSize: 24,
+        elevation: 16,
+        hint: Text(
+          "Age",
+          textAlign: TextAlign.left,
+        ),
+        value: _userAge,
+        onChanged: (val) => setState(() => _userAge = val),
+        items: [
+          for (var age in ageList)
+            DropdownMenuItem(
+              value: age,
+              child: SizedBox(
+                width: size.width * 0.73,
+                child: Text(
+                  age.toString() + " years old",
                   textAlign: TextAlign.left,
                 ),
-                value: _userAge,
-                onChanged: (val) => setState(() => _userAge = val),
-                items: [
-                  for (var age in ageList)
-                    DropdownMenuItem(
-                      value: age,
-                      child: SizedBox(
-                        width: size.width * 0.73,
-                        child: Text(
-                          age.toString() + " years old",
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ),
-                ],
               ),
-            );
+            ),
+        ],
+      ),
+    );
 
     final passwordField = TextFormField(
       obscureText: true,
@@ -246,7 +248,7 @@ class _RegisterViewState extends State<Register> {
             );
             User updateUser = FirebaseAuth.instance.currentUser;
             updateUser.updateProfile(displayName: _nicknameController.text);
-            userSetup(_nicknameController.text, _emailController.text,userGender(),_userAge);
+            userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge);
             Navigator.of(context).pushNamed(AppRoutes.menu);
           } on FirebaseAuthException catch (e) {
             if (e.code == 'weak-password') {
