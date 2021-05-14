@@ -3,7 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 class CustomSwitch extends StatefulWidget {
   bool status;
-  CustomSwtich({this.status});
+  CustomSwitch({this.status});
   @override
   _CustomSwitchState createState() => _CustomSwitchState(status: status);
 }
