@@ -23,7 +23,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
         width: 150.0,
         height: 55.0,
         toggleSize: 75.0,
-        value: status2,
+        value: status,
         borderRadius: 30.0,
         padding: 1.0,
         toggleColor: Color.fromRGBO(225, 225, 225, 1),

@@ -62,7 +62,7 @@ class AnalysisViewState extends State<AnalysisView> {
                               textColor: Colors.blueGrey
                             ),
                           ),
-                        ),
+                        )
                         : CustomRadarChart(),
                     ],
                   ),
