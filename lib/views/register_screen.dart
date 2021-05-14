@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../net/firebase.dart';
 import '../theme/routes.dart';
-import 'package:flutter/src/painting/edge_insets.dart';
 
 enum Gender { MAN, WOMEN }
 
