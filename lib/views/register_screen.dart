@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../net/firebase.dart';
 import '../theme/routes.dart';
+import 'package:flutter/src/painting/edge_insets.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -109,13 +110,16 @@ class _RegisterViewState extends State<Register> {
             _userGender = Gender.MAN;
           });
         },
-        child: Text("Male",
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 7),
+          child: Text(
+            "Male",
             style: TextStyle(
               color: Colors.white,
-            )),
+            ),
+          ),
+        ),
       ),
-      Container(),
-      Container(),
       SizedBox(
         height: 20,
         width: 20,
@@ -135,10 +139,13 @@ class _RegisterViewState extends State<Register> {
             _userGender = Gender.WOMEN;
           });
         },
-        child: Text(
-          "Female",
-          style: TextStyle(
-            color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 7),
+          child: Text(
+            "Female",
+            style: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
       ),
@@ -147,8 +154,6 @@ class _RegisterViewState extends State<Register> {
     final ageField = Container(
       padding: EdgeInsets.symmetric(vertical: 5),
       alignment: Alignment.center,
-      // height: 50.0,
-      // width: size.width * 0.73,
       child: DropdownButton(
         isExpanded: true,
         iconSize: 24,
@@ -171,7 +176,6 @@ class _RegisterViewState extends State<Register> {
             DropdownMenuItem(
               value: age,
               child: SizedBox(
-                // width: size.width * 0.73,
                 child: Text(
                   age.toString() + " years old",
                   textAlign: TextAlign.left,
