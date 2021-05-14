@@ -1,8 +1,7 @@
 import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'model/user_data_model.dart';
+import '../model/user_data_model.dart';
 
 
 
