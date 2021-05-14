@@ -6,7 +6,8 @@ import './chart/line_chart.dart';
 import './chart/bar_chart.dart';
 import './chart/radar_chart.dart';
 
-import 'switchWithPieAndRadarChart.dart';
+import 'switch_with_pie_and_radar_chart.dart';
+import 'pie_chart_with_text.dart'
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -46,49 +47,7 @@ class AnalysisViewState extends State<AnalysisView> {
             scrollDirection: Axis.vertical,
             child: Column(children: [
               SwitchWithPieAndRadarChart(title: "전체 분석"),
-              Text("항목별 분석"),
-              Row(children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Center(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: CustomPaint(
-                            // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
-                            size: Size(size.width/4, size.width/4), // CustomPaint의 크기는 가로 세로 150, 150으로 합니다.
-                            painter: PieChart(
-                                percentage: 50, // 파이 차트가 얼마나 칠해져 있는지 정하는 변수입니다.
-                                textScaleFactor: 1.0, // 파이 차트에 들어갈 텍스트 크기를 정합니다.
-                                textColor: Colors.blueGrey),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Text("hi"),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Center(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: CustomPaint(
-                            // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
-                            size: Size(size.width/4, size.width/4), // CustomPaint의 크기는 가로 세로 150, 150으로 합니다.
-                            painter: PieChart(
-                                percentage: 50, // 파이 차트가 얼마나 칠해져 있는지 정하는 변수입니다.
-                                textScaleFactor: 1.0, // 파이 차트에 들어갈 텍스트 크기를 정합니다.
-                                textColor: Colors.blueGrey),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Text("hi"),
-              ]),
+              PieChartWithText(title: "항목별 분석"),
               Text("경쟁률"),
               Container(
                 child: CustomPaint(
