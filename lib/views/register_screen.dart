@@ -365,7 +365,7 @@ class _RegisterViewState extends State<Register> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 25),
+                  padding: EdgeInsets.only(bottom: 40),
                   child: bottom,
                 ),
               ],
