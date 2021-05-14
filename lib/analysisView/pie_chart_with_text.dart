@@ -3,21 +3,23 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import './chart/pie_chart.dart';
 
-class PieChartWithText extends StatefulWidget {\
+class PieChartWithText extends StatefulWidget {
   String title;
-  PieChartWithText({this.title});
+  Size size;
+  PieChartWithText({this.title, this.size});
   @override
   _PieChartWithTextState createState() => _PieChartWithTextState();
 }
 
 class _PieChartWithTextState extends State<PieChartWithText> {
-  _PieChartWithTextState({this.title});
+  _PieChartWithTextState({this.title, this.size});
 
   bool status = false;
   Color _textColor = Colors.black;
 
   final String title;
-
+  final Size size;
+  
   @override
   Widget build(BuildContext context) {
     return Column(children: [

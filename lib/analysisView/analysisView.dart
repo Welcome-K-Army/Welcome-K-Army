@@ -7,7 +7,7 @@ import './chart/bar_chart.dart';
 import './chart/radar_chart.dart';
 
 import 'switch_with_pie_and_radar_chart.dart';
-import 'pie_chart_with_text.dart'
+import 'pie_chart_with_text.dart';
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -47,7 +47,7 @@ class AnalysisViewState extends State<AnalysisView> {
             scrollDirection: Axis.vertical,
             child: Column(children: [
               SwitchWithPieAndRadarChart(title: "전체 분석"),
-              PieChartWithText(title: "항목별 분석"),
+              PieChartWithText(title: "항목별 분석", size: size),
               Text("경쟁률"),
               Container(
                 child: CustomPaint(
