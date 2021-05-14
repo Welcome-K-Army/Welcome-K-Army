@@ -3,10 +3,10 @@ import '../views/menu.dart';
 
 class Profile_menu extends StatefulWidget {
   @override
-  Profile_menuState createState() => Profile_menuState();
+  _Profile_menuState createState() => _Profile_menuState();
 }
 
-class Profile_menuState extends State<Profile_menu> {
+class _Profile_menuState extends State<Profile_menu> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +44,12 @@ class Profile_menuState extends State<Profile_menu> {
 }
 
 class ProfileMenu extends StatefulWidget {
-  const ProfileMenu({
+  @override
+  _ProflieMenuState createState() => _ProfileMenuState();
+}
+
+class _ProfileMenuState extends State<ProfileMenu> {
+  const _ProfileMenuState({
     Key key,
     @required this.text, //@required은 기본값이 없고 null이 아닐경우에 사용/
     @required this.icon,
