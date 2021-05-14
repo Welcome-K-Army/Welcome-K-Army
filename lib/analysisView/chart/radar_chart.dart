@@ -5,7 +5,7 @@ class CustomRadarChart extends StatefulWidget {
   const CustomRadarChart({Key key}) : super(key: key);
 
   @override
-  _CustomRadarChartState createState() => _RadarChartState();
+  _CustomRadarChartState createState() => _CustomRadarChartState();
 }
 
 class _CustomRadarChartState extends State<CustomRadarChart> {
