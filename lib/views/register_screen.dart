@@ -90,7 +90,7 @@ class _RegisterViewState extends State<Register> {
         });
 
     final genderField = Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(vertical: 20),
       child: Row(
         children: <Widget>[
           SizedBox(
