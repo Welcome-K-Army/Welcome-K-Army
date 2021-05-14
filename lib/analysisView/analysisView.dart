@@ -1,4 +1,4 @@
-import 'pacakge:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 class AnalysisView extends StatefulWidget {
