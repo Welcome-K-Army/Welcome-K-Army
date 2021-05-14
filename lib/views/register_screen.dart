@@ -132,7 +132,6 @@ class _RegisterViewState extends State<Register> {
               alignment: Alignment.center,
               height: 50.0,
               width: size.width * 0.73,
-              //child: DropdownButtonHideUnderline(
               child: DropdownButton(
                 isExpanded: true,
                 iconSize: 24,
@@ -157,7 +156,6 @@ class _RegisterViewState extends State<Register> {
                     ),
                 ],
               ),
-              //),
             );
 
     final passwordField = TextFormField(
