@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../views/menu.dart';
 
-
 class Profile_menu extends StatefulWidget {
   @override
   Profile_menuState createState() => Profile_menuState();
@@ -10,39 +9,37 @@ class Profile_menu extends StatefulWidget {
 class Profile_menuState extends State<Profile_menu> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children:[
-        const SizedBox(height:50),
-
-        SizedBox(height:25),
-        
-        ProfileMenu( //계정 수정 네비게이터
-          icon:Icon(Icons.account_circle),
-          text:"My Account",
-          press: (){
+    return Container(
+        child: Column(
+      children: [
+        const SizedBox(height: 50),
+        SizedBox(height: 25),
+        ProfileMenu(
+          //계정 수정 네비게이터
+          icon: Icon(Icons.account_circle),
+          text: "My Account",
+          press: () {
             // Navigator.push(context,MaterialPageRoute(builder:(context) =>);//currentOnlineUserId넘겨줘야됨
           },
-          ),
-
-        ProfileMenu( //관심 직책 네비게이터
-          icon:Icon(Icons.library_books),
-          text:"관심직책",
-          press: (){}
-          ),
-
-        ProfileMenu( //도움말 네비게이터
-          icon:Icon(Icons.help_outline),
-          text:"help",
-          press: (){}
-          ),
-
-        ProfileMenu( //로그아웃 네비게이터
-          icon:Icon(Icons.logout),
-          text:"Logout",
-          press: (){}
-          ),
+        ),
+        ProfileMenu(
+            //관심 직책 네비게이터
+            icon: Icon(Icons.library_books),
+            text: "관심직책",
+            press: () {}),
+        ProfileMenu(
+            //도움말 네비게이터
+            icon: Icon(Icons.help_outline),
+            text: "help",
+            press: () {}),
+        ProfileMenu(
+            //로그아웃 네비게이터
+            icon: Icon(Icons.logout),
+            text: "Logout",
+            press: () {}),
       ],
-    );//Column;
+    ) //Column;
+        );
   }
 }
 
@@ -61,33 +58,30 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding:const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-          child:Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-              elevation: 5,
-              child:FlatButton(
-              padding: EdgeInsets.all(20),
-              
-              color: Color(0xFFF5F6F9),
-              onPressed : press,
-              child:Row(
-                children:[
-                  icon,
-                  SizedBox(width: 20),
-                  Expanded(
-                    child:Text(
-                      text,
-                      style: Theme.of(context).textTheme.bodyText1,
-                      
-                    ),//Text
-                  ),//Expanded
-                  Icon(Icons.east)
-                ],
-              ),//Row
-            ),//FlatButton
-          ),//Card
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+        elevation: 5,
+        child: FlatButton(
+          padding: EdgeInsets.all(20),
 
-        );//Padding;
+          color: Color(0xFFF5F6F9),
+          onPressed: press,
+          child: Row(
+            children: [
+              icon,
+              SizedBox(width: 20),
+              Expanded(
+                child: Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ), //Text
+              ), //Expanded
+              Icon(Icons.east)
+            ],
+          ), //Row
+        ), //FlatButton
+      ), //Card
+    ); //Padding;
   }
 }
-
