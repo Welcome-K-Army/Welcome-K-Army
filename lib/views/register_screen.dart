@@ -101,7 +101,10 @@ class _RegisterViewState extends State<Register> {
             _userGender = Gender.MAN;
           });
         },
-        child: Text("Male"),
+        child: Text("Male",
+            style: TextStyle(
+              color: Colors.white,
+            )),
       ),
       Container(),
       Container(),
@@ -124,22 +127,29 @@ class _RegisterViewState extends State<Register> {
             _userGender = Gender.WOMEN;
           });
         },
-        child: Text("Female"),
+        child: Text(
+          "Female",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
     ]);
 
     final ageField = Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 5),
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-      height: 50.0,
-      width: size.width * 0.73,
+      // height: 50.0,
+      // width: size.width * 0.73,
       child: DropdownButton(
         isExpanded: true,
         iconSize: 24,
         elevation: 16,
         hint: Text(
-          "Age",
+          "- years old",
+          style:TextStyle(
+          color: Colors.white,
+        ),
           textAlign: TextAlign.left,
         ),
         value: _userAge,
@@ -149,7 +159,7 @@ class _RegisterViewState extends State<Register> {
             DropdownMenuItem(
               value: age,
               child: SizedBox(
-                width: size.width * 0.73,
+                // width: size.width * 0.73,
                 child: Text(
                   age.toString() + " years old",
                   textAlign: TextAlign.left,
