@@ -293,13 +293,17 @@ class _RegisterViewState extends State<Register> {
                 userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge);
                 Navigator.of(context).pushNamed(AppRoutes.menu);
               } on FirebaseAuthException catch (e) {
-                if (e.code == 'weak-password') {
-                  print('The password provided is too weak.');
-                } else if (e.code == 'email-already-in-use') {
-                  print('The account already exists for that email.');
+                if (e.code == 'email-already-in-use') {
+                  final snackBar = SnackBar(
+                    content: Text("An account already exists for that email"),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                } else if (e.code == 'operation-not-allowed') {
+                  final snackBar = SnackBar(
+                    content: Text("You cannot use this account"),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
-              } catch (e) {
-                print(e.toString());
               }
             }
           }),
