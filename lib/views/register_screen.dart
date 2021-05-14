@@ -89,69 +89,72 @@ class _RegisterViewState extends State<Register> {
           return null;
         });
 
-    final genderField = Row(
-      children: <Widget>[
-        SizedBox(
-          height: 20,
-          width: 20,
-          child: Radio(
-            value: Gender.MAN,
-            groupValue: _userGender,
-            activeColor: Colors.white,
-            onChanged: (value) {
+    final genderField = Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.MAN,
+              groupValue: _userGender,
+              activeColor: Colors.white,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
               setState(() {
-                _userGender = value;
+                _userGender = Gender.MAN;
               });
             },
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _userGender = Gender.MAN;
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 7),
-            child: Text(
-              "Male",
-              style: TextStyle(
-                color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 7),
+              child: Text(
+                "Male",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 20,
-          width: 20,
-          child: Radio(
-            value: Gender.WOMEN,
-            groupValue: _userGender,
-            activeColor: Colors.white,
-            onChanged: (value) {
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.WOMEN,
+              groupValue: _userGender,
+              activeColor: Colors.white,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
               setState(() {
-                _userGender = value;
+                _userGender = Gender.WOMEN;
               });
             },
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _userGender = Gender.WOMEN;
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 7),
-            child: Text(
-              "Female",
-              style: TextStyle(
-                color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 7),
+              child: Text(
+                "Female",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
 
     final ageField = Container(
