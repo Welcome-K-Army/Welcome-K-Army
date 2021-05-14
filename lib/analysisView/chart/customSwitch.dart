@@ -23,7 +23,8 @@ class _CustomSwitchState extends State<CustomSwitch> {
             child: Column(
               children: <Widget>[
                 status
-                    ? Container(
+                    ? CustomRadarChart()
+                    : Container(
                         child: CustomPaint(
                           // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
                           size: Size(150, 150), // CustomPaint의 크기는 가로 세로 150, 150으로 합니다.
@@ -32,8 +33,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
                               textScaleFactor: 1.0, // 파이 차트에 들어갈 텍스트 크기를 정합니다.
                               textColor: Colors.blueGrey),
                         ),
-                      )
-                    : CustomRadarChart(),
+                      ),
               ],
             ),
           ),
