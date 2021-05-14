@@ -4,9 +4,12 @@ import 'constants.dart';
 
 import './mainView/mainView.dart';
 
+import 'analysisView/analysisData.dart';
+
 void main() { runApp(MyApp()); }
 
 class MyApp extends StatelessWidget {
+  AnalysisData(type: AnalysisType.principal);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
