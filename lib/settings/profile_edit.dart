@@ -23,7 +23,7 @@ class _EditProfileState extends State<EditProfile> {
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
-  UserData user;
+  UserData userdata;
 
   PickedFile _imageFile;
   final ImagePicker _picker=ImagePicker();
@@ -52,8 +52,8 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
-  DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
-  user=UserData.fromDocument(documentSnapshot);
+  // DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
+  // user=UserData.fromDocument(documentSnapshot);
 
   //profile,email등 입력한에 사용자 정보로 채워넣기
   //profileNameTextEditingController.text = user.profileName;
