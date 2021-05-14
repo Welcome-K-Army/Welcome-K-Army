@@ -22,7 +22,7 @@ class _Profile_menuState extends State<Profile_menu> {
           icon:Icon(Icons.account_circle),
           text:"My Account",
           press: (){
-            Navigator.push(context,MaterialPageRoute(builder:(context) =>);//currentOnlineUserId넘겨줘야됨
+            // Navigator.push(context,MaterialPageRoute(builder:(context) =>);//currentOnlineUserId넘겨줘야됨
           },
           ),
 
