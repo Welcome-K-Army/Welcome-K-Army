@@ -8,7 +8,7 @@ class PieChartWithText extends StatefulWidget {
   Size size;
   PieChartWithText({this.title, this.size});
   
-  _PieChartWithTextState createState() => _PieChartWithTextState();
+  _PieChartWithTextState createState() => _PieChartWithTextState(title: title, size: size);
 }
 
 class _PieChartWithTextState extends State<PieChartWithText> {
