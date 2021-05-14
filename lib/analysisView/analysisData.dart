@@ -1,80 +1,63 @@
-enum AdmissionType {
-  principal,
-  aptitude,
-  comprehensive,
-  merit,
-  village,
-  needy,
-  foreigner
-}
+enum AdmissionType { principal, aptitude, comprehensive, merit, village, needy, foreigner }
 
 class AnalysisData {
+  UID uid = UID();
   AdmissionType type;
+  FirstExam firstExam = FirstExam();
+  Body body = Body();
+  Interview interview = Interview();
+  Health health = Health();
+  Grade grade = Grade();
+  K_SAT k_SAT = K_SAT;
+  Point point = Point();
 
-  /*
-  FirstExam firstExam;
-  Body body;
-  Interview interview;
-  Health health;
-  Grade grade;
-  K_SAT k_SAT;
-  Point point;
-  */
-
-  AnalysisData({this.type});
+  AnalysisData({this.uid, this.type});
 }
 
-/*
+class UID {
+  dynamic uid = 0;
+
+  UID();
+}
+
 class FirstExam {
-  
-  bool pass = false;
-  int max = 300;
-  int current = 0;
+  dynamic score = 0;
 
   FirstExam();
-  FirstExam({this.max});
 }
 
 class Body {
   bool pass = false;
-  
+
   Body();
 }
 
 class Interview {
-  int max = 500;
-  int current = 0;
+  int score = 0;
 
   Interview();
-  Interview({this.max});
 }
 
 class Health {
-  int max = 100;
-  int current = 0;
+  int score = 0;
 
   Health();
-  Health({this.max});
 }
 
 class Grade {
-  int max = 100;
-  int current = 0;
+  int score = 0;
 
   Grade();
-  Grade({this.max});
 }
 
 class K_SAT {
-  int max = 0;
-  int current = 0;
+  int score = 0;
 
   K_SAT();
-  K_SAT({this.max});
 }
 
 class Point {
-  int current = 0;
-}
+  int score = 0;
 
-*/
+  Point();
+}
