@@ -5,7 +5,8 @@ import './chart/pie_chart.dart';
 import './chart/line_chart.dart';
 import './chart/bar_chart.dart';
 import './chart/radar_chart.dart';
-import './chart/customSwitch.dart';
+
+import 'switchWithPieAndRadarChart.dart';
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -44,8 +45,7 @@ class AnalysisViewState extends State<AnalysisView> {
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(children: [
-              Text("전체 분석"),
-              CustomSwitch(),
+              SwitchWithPieAndRadarChart(title: "전체 분석"),
               Text("항목별 분석"),
               Row(children: [
                 Container(

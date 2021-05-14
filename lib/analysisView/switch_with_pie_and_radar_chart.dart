@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-import './chart/pie_chart.dart';
-import './chart/radar_chart.dart';
+import 'pie_chart.dart';
+import 'radar_chart.dart';
 
-class CustomSwitch extends StatefulWidget {
+class SwitchWithPieAndRadarChart extends StatefulWidget {
+  String title;
+  SwitchWithPieAndRadarChart({this.title});
   @override
-  _CustomSwitchState createState() => _CustomSwitchState();
+  _SwitchWithPieAndRadarChartState createState() => _SwitchWithPieAndRadarChartState();
 }
 
-class _CustomSwitchState extends State<CustomSwitch> {
+class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart> {
+  _SwitchWithPieAndRadarChartState({this.title});
+  
   bool status = false;
   Color _textColor = Colors.black;
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(children: [
+        Text(title),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
