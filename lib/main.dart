@@ -9,7 +9,7 @@ import 'analysisView/analysisData.dart';
 void main() { runApp(MyApp()); }
 
 class MyApp extends StatelessWidget {
-  AnalysisData(type: AnalysisType.principal);
+  AnalysisData(type: AdmissionType.principal);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
