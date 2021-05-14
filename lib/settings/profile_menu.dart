@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_edit.dart';
+
 
 class Profile_menu extends StatelessWidget {
   @override
