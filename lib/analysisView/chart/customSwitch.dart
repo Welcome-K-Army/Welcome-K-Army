@@ -10,7 +10,7 @@ class CustomSwitch extends StatefulWidget {
 }
 
 class _CustomSwitchState extends State<CustomSwitch> {
-  bool status = true;
+  bool status = false;
   Color _textColor = Colors.black;
 
   @override
@@ -58,8 +58,8 @@ class _CustomSwitchState extends State<CustomSwitch> {
             width: 5.0,
           ),
           */
-          activeColor: Color(0xFF0C9869),
-          inactiveColor: Color(0xFFEF9A9A),
+          activeColor: Color(0xFFEF9A9A),
+          inactiveColor: Color(0xFF0C9869),
           showOnOff: true,
           onToggle: (val) {
             setState(() {
