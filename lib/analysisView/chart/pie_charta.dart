@@ -1,5 +1,5 @@
-/// Donut chart with labels example. This is a simple pie chart with a hole in
-/// the middle.
+import 'dart:math';
+// EXCLUDE_FROM_GALLERY_DOCS_END
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,37 @@ class DonutAutoLabelChart extends StatelessWidget {
     );
   }
 
+  // EXCLUDE_FROM_GALLERY_DOCS_START
+  // This section is excluded from being copied to the gallery.
+  // It is used for creating random series data to demonstrate animation in
+  // the example app only.
+  factory DonutAutoLabelChart.withRandomData() {
+    return new DonutAutoLabelChart(_createRandomData());
+  }
+
+  /// Create random data.
+  static List<charts.Series<LinearSales, int>> _createRandomData() {
+    final random = new Random();
+
+    final data = [
+      new LinearSales(0, random.nextInt(100)),
+      new LinearSales(1, random.nextInt(100)),
+      new LinearSales(2, random.nextInt(100)),
+      new LinearSales(3, random.nextInt(100)),
+    ];
+
+    return [
+      new charts.Series<LinearSales, int>(
+        id: 'Sales',
+        domainFn: (LinearSales sales, _) => sales.year,
+        measureFn: (LinearSales sales, _) => sales.sales,
+        data: data,
+        // Set a label accessor to control the text of the arc label.
+        labelAccessorFn: (LinearSales row, _) => '${row.year}: ${row.sales}',
+      )
+    ];
+  }
+  // EXCLUDE_FROM_GALLERY_DOCS_END
 
   @override
   Widget build(BuildContext context) {
