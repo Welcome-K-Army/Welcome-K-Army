@@ -60,7 +60,7 @@ class AnalysisViewState extends State<AnalysisView> {
                 child: CustomPaint(
                   size: Size(250, 250), 
                   painter: BarChart(data: points, labels: labels, color: Colors.pinkAccent),
-                  foregroundPainter: LineChart(points: points, pointSize: 5.0, pointColor: Colors.pinkAccent, lineColor: Colors.pinkAccent, lineWidth: 2.0),
+                  foregroundPainter: LineChart(points: points, pointSize: 5.0, pointColor: Colors.pinkAccent, lineColor: Colors.blue, lineWidth: 2.0),
                   ),
               ),
             ])));
