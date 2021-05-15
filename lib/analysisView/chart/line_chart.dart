@@ -19,6 +19,8 @@ class LineChart extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    setTextPadding(size);
+    
     List<Offset> offsets = getCoordinates(points, size);
 
     drawText(canvas, offsets);
