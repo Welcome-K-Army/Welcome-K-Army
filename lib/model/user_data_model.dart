@@ -7,7 +7,6 @@ class UserData {
   final String creationDate;
 
   
-
   const UserData ({
     this.uid,
     this.nickName,

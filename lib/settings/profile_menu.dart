@@ -3,8 +3,6 @@ import 'profile_edit.dart';
 
 
 class Profile_menu extends StatelessWidget {
-  final String currentOnlineUserId=currentUser?.id
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +14,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context,MaterialPageRoute(builder:(context) => EditProfile(currentOnlineUserId:currentOnlineUserId)));//currentOnlineUserId넘겨줘야됨
+            Navigator.push(context,MaterialPageRoute(builder:(context) => EditProfile()));//currentOnlineUserId넘겨줘야됨
           },
         ),
         ProfileMenu(
