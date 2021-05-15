@@ -99,7 +99,7 @@ class BarChart extends CustomPainter {
     String maxValue = "${data[indexOfMax].toInt()}";
     String minValue = "${data[indexOfMin].toInt()}";
 
-    double value;
+    int value;
     double height = bottomY - topY;
     double heightSpace = height / numberOfLabels;
     double valueSpace = int.parse(maxValue) / numberOfLabels;
