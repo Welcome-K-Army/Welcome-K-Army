@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
   final String currentOnlinUserId;
-  
+  final userReference = FirebaseFirestore.instance.collection('UserDetail');
 
   EditProfile({this.currentOnlinUserId});
 
