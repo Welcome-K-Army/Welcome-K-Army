@@ -30,6 +30,8 @@ class _PieChartWithTextState extends State<PieChartWithText> {
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Container(
+          height: size.width / 4,
+          width : size.width / 4,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
@@ -37,6 +39,8 @@ class _PieChartWithTextState extends State<PieChartWithText> {
         ),
         Text("hi"),
         Container(
+          height: size.width / 4,
+          width : size.width / 4,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
