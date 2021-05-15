@@ -33,6 +33,10 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           child: Center(
             child: Column(
               children: <Widget>[
+                Container(
+                  height: 400,
+                  width: 400,
+                  child: 
                 status
                     ? DonutAutoLabelChart.withSampleData()
                     : Container(
@@ -45,6 +49,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
                               textColor: Colors.blueGrey),
                         ),
                       ),
+                )
               ],
             ),
           ),
