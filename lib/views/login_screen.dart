@@ -239,6 +239,7 @@ class _LoginViewState extends State<Login> {
                 email: _emailController.text,
                 password: _passwordController.text,
               );
+              //userdata 업데이트 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
               Navigator.of(context).pushNamed(AppRoutes.menu);
