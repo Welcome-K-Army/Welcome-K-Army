@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_edit.dart';
-import '../model/user_data_models.dart';
 
 
-final userReference=FirebaseFirestore.instance.collection('UserData')
 
 
 
