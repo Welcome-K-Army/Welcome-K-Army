@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../model/user_data_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../net/firebase.dart';
 
 
 class EditProfile extends StatefulWidget {
@@ -52,17 +53,19 @@ class _EditProfileState extends State<EditProfile> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       nickName = prefs.getString('nickName');
+      email=prefs.getString('email');
+      age=prefs.getSting('age');
     });
   }
 
-  //  DocumentSnapshot documentSnapshot = await UserData.doc(widget.currentOnlineUserId).get();
-  //  user=UserData.fromDocument(documentSnapshot);
+    // DocumentSnapshot documentSnapshot = await userSetup.doc(widget.currentOnlineUserId).get();
+    // user=userSetup.fromDocument(documentSnapshot);
 
-  //profile,email등 입력한에 사용자 정보로 채워넣기
-  //profileNameTextEditingController.text = user.profileName;
-  //emailTextEditingController.text = user.email;
-  //password1TextEditingController.text = user.password1;
-  //password2TextEditingController.text = user.password2;
+  // profile,email등 입력한에 사용자 정보로 채워넣기
+  // profileNameTextEditingController.text = user.profileName;
+  // emailTextEditingController.text = user.email;
+  // password1TextEditingController.text = user.password1;
+  // password2TextEditingController.text = user.password2;
 
 
   @override
@@ -88,8 +91,8 @@ class _EditProfileState extends State<EditProfile> {
               
               buildTextField("username","$nickName",false),
               buildTextField("Password","a123456",true),
-              buildTextField("Email","sinminseok12@naver.com",false),
-              buildTextField("Age","22",false),
+              buildTextField("Email","$email",false),
+              buildTextField("Age","$age",false),
               SizedBox(height:25,),
 
               Row(
