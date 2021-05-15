@@ -91,7 +91,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height:30,),
 
               
-              buildTextField("nickname","minseok12",false),
+              createProfileNameTextFormField(),
               buildTextField("Password","a123456",true),
               buildTextField("Email","$email",false),
               buildTextField("Age","$age",false),
@@ -298,6 +298,6 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
-  }
+  } //createProfileNameTextFormField
 }
 
