@@ -280,9 +280,6 @@ class _EditProfileState extends State<EditProfile> {
         }
       });
     }
-    
-}
-
   createProfileNameTextFormField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,3 +306,5 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
+}
+
