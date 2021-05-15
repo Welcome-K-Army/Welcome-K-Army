@@ -108,6 +108,7 @@ class BarChart extends CustomPainter {
     for(int index = 0; index < numberOfLabels; index++) {
       value = valueSpace * index;
       print(bottomY);
+      print(topY+10000);
       print(heightSpace);
       print(heightSpace*index);
       print(bottomY+heightSpace*index);
