@@ -34,7 +34,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             child: Column(
               children: <Widget>[
                 status
-                    ? DonutAutoLabelChart()
+                    ? DonutAutoLabelChart.withSampleData()
                     : Container(
                         child: CustomPaint(
                           // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
