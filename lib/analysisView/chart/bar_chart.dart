@@ -107,6 +107,7 @@ class BarChart extends CustomPainter {
 
     for(int index = 0; index < numberOfLabels; index++) {
       value = valueSpace * index;
+      print(bottomY+heightSpace*index);
       drawYText(canvas, value.toString(), fontSize, bottomY+heightSpace * index);
     }
   }
