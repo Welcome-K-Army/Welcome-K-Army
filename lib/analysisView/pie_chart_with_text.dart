@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import './chart/pie_chart.dart';
 import './chart/donut_auto_label_chart.dart';
 
 class PieChartWithText extends StatefulWidget {
