@@ -48,16 +48,16 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
   //초기값 가져오기
-  @override
-  void initState() {
-    super.getData();
-  }
+  // @override
+  // // void initState() {
+  // //   super.getData();
+  // // }
 
-  getData() async {
-    setState(() {
-      userSetup.users
-    });
-  }
+  // // getData() async {
+  // //   setState(() {
+  // //     userSetup.users
+  // //   });
+  // // }
 
     // DocumentSnapshot documentSnapshot = await userSetup.doc(widget.currentOnlineUserId).get();
     // user=userSetup.fromDocument(documentSnapshot);

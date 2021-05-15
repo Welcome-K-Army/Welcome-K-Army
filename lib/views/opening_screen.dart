@@ -12,6 +12,10 @@ class OpeningViewState extends State<OpeningView> {
 
   String nickName="";
 
+  
+
+  
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
