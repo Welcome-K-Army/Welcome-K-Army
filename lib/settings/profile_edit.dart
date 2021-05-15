@@ -61,7 +61,7 @@ class _EditProfileState extends State<EditProfile> {
 
     // DB에서 사용자 정보 가져오기
     DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
-    user = userdata.fromDocument(documentSnapshot);
+    user = UserData.fromDocument(documentSnapshot);
 
     // profile, bio 입력란에 사용자 정보로 채워주기
     profileNameTextEditingController.text = user.nickName;
