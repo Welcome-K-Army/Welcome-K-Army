@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'switch_with_pie_and_radar_chart.dart';
 import 'pie_chart_with_text.dart';
 import 'mix_line_and_bar_chart.dart';
-import './chart/oridinal_combo_bar_line_chart.dart';
+import './chart/ordinal_combo_bar_line_chart.dart';
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -27,7 +27,7 @@ class AnalysisViewState extends State<AnalysisView> {
               Container(
                 height: 300,
                 width: 300,
-                child: OridinalComboBarLineChart.withSampleData(),
+                child: OrdinalComboBarLineChart.withSampleData(),
               )
             ])));
   }
