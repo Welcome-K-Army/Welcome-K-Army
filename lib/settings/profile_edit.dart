@@ -19,6 +19,8 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
     String nickName = "";
+    String email="";
+    String age="";
 
 
    TextEditingController profileNameTextEditingController = TextEditingController();
