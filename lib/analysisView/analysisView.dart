@@ -49,12 +49,6 @@ class AnalysisViewState extends State<AnalysisView> {
               SwitchWithPieAndRadarChart(title: "전체 분석"),
               PieChartWithText(title: "항목별 분석", size: size),
               Text("경쟁률"),
-              Container(
-                child: CustomPaint(
-                  size: Size(150, 150),
-                  painter: LineChart(points: points, pointSize: 5.0, pointColor: Colors.pinkAccent, lineColor: Colors.pinkAccent, lineWidth: 2.0),
-                ),
-              ),
               Padding(padding: const EdgeInsets.symmetric(vertical: 8.0)),
               Container(
                 child: CustomPaint(

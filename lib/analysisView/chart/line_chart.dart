@@ -12,6 +12,8 @@ class LineChart extends CustomPainter {
   int maxValueIndex;
   int minValueIndex;
   double fontSize = 18.0;
+  double bottomPadding = 0.0;
+  double leftPadding = 0.0;
 
   LineChart({this.points, this.pointSize, this.lineWidth, this.lineColor, this.pointColor});
 
@@ -25,6 +27,11 @@ class LineChart extends CustomPainter {
     drawPoints(canvas, size, offsets);
   }
 
+  void setTextPadding(Size size) {
+    bottomPadding = size.height / 10;
+    leftPadding = size.width / 10;
+  }
+  
   void drawLines(Canvas canvas, Size size, List<Offset> offsets) {
     Paint paint = Paint()
       ..color = lineColor
@@ -64,7 +71,7 @@ class LineChart extends CustomPainter {
     double h = size.height - topPadding;
 
     for (int index = 0; index < points.length; index++) {
-      double x = spacing * index;
+      double x = spacing * index + leftPadding;
       double normalizedY = points[index] / maxY; // 정규화한다. 정규화란 [0 ~ 1] 사이가 나오게 값을 변경하는 것.
       double y = getYPos(h, bottomPadding, normalizedY); // 높이에 비례한 Y 값을 구한다.
 
