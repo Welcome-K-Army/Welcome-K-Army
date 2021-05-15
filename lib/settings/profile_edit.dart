@@ -1,7 +1,7 @@
 import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
-import '../model/user_data_model.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -91,7 +91,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height:30,),
 
               
-              buildTextbuild("nickname","minseok12",false),
+              buildTextField("nickname","minseok12",false),
               buildTextField("Password","a123456",true),
               buildTextField("Email","$email",false),
               buildTextField("Age","$age",false),
