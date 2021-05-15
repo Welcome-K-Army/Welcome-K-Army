@@ -39,7 +39,7 @@ class _EditProfileState extends State<EditProfile> {
 
   bool isObscurePassword=true; 
 
-  bool loading;
+  bool loading=false;
 
   // updateUserData(){
   //   setState((){
@@ -48,31 +48,39 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
   //초기값 가져오기
-  // @override
-  // // void initState() {
-  // //   super.getData();
-  // // }
+  @override
+  void initState() {
+    super.initState();
 
-  // // getData() async {
-  // //   setState(() {
-  // //     userSetup.users
-  // //   });
-  // // }
+    // 화면 빌드 전 미리 해당 사용자의 값들로 셋팅해주자
+    getAndDisplayUserInformation();
+  }
 
-    // DocumentSnapshot documentSnapshot = await userSetup.doc(widget.currentOnlineUserId).get();
-    // user=userSetup.fromDocument(documentSnapshot);
+  getAndDisplayUserInformation() async {
+    setState(() {
+      loading = true;
+    });
 
-  // profile,email등 입력한에 사용자 정보로 채워넣기
-  // profileNameTextEditingController.text = user.profileName;
-  // emailTextEditingController.text = user.email;
-  // password1TextEditingController.text = user.password1;
-  // password2TextEditingController.text = user.password2;
+    // DB에서 사용자 정보 가져오기
+    DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
+    user = UserData.fromDocument(documentSnapshot);
+
+    // profile, bio 입력란에 사용자 정보로 채워주기
+    profileNameTextEditingController.text = user.nickName;
+    emailTextEditingController.text = user.email;
+
+    // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
+    setState(() {
+      loading = false;
+    });
+  }
+
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //key: _scaffoldGlobalKey 
+      key: _scaffoldGlobalKey 
       appBar: AppBar(
         title:Text('Register Profile'),
         backgroundColor: Colors.green,
@@ -90,7 +98,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height:30,),
 
               
-              buildTextField("username","$nickName",false),
+              createProfileNameTextFormField(),
               buildTextField("Password","a123456",true),
               buildTextField("Email","$email",false),
               buildTextField("Age","$age",false),
@@ -275,15 +283,29 @@ class _EditProfileState extends State<EditProfile> {
     
 }
 
-// createProfileNameTextField(){
-//   return Column(
-//     corssAxisAlignment:CrossAxisAlignment.start,
-//     children:[
-//       Padding(
-//         padding:EdgeInsets.only(top:13),
-//         child:Text('Profile name',TextStyle(color:Colors.grey),),
-//       ),
-//       TextField()
-//     ]
-//   )
-// }
+  createProfileNameTextFormField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text('Profile Name', style: TextStyle(color: Colors.grey),),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: profileNameTextEditingController,
+          decoration: InputDecoration(
+            hintText: 'Write profile name here...',
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)
+            ),
+            hintStyle: TextStyle(color: Colors.grey),
+            errorText: _profileNameValid ? null : 'Profile name is very short'
+          ),
+        )
+      ],
+    );
+  }

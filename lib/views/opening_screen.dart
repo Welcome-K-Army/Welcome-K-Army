@@ -13,15 +13,6 @@ class OpeningViewState extends State<OpeningView> {
 
   String nickName="";
 
-  void initState() {
-      getData();
-  }
-
-  getData() async {
-    setState(() {
-      nickName=UserData.nickName;
-    });
-  }
 
   
   @override
