@@ -63,7 +63,7 @@ class _EditProfileState extends State<EditProfile> {
 
     // DB에서 사용자 정보 가져오기
     DocumentSnapshot documentSnapshot = await userReference.doc(widget.currentOnlineUserId).get();
-    user = UserData.fromDocument(documentSnapshot);
+    user = userdata.fromDocument(documentSnapshot);
 
     // profile, bio 입력란에 사용자 정보로 채워주기
     profileNameTextEditingController.text = user.nickName;
@@ -80,11 +80,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldGlobalKey 
-      appBar: AppBar(
-        title:Text('Register Profile'),
-        backgroundColor: Colors.green,
-        ),//AppBar
+      key: _scaffoldGlobalKey,
 
       body:Container(
         padding:EdgeInsets.only(left:15,top:20,right:15),

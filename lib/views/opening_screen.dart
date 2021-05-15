@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/routes.dart';
-import '../model/user_data_model.dart";
 
 class OpeningView extends StatefulWidget {
   @override
