@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import '../model/user_data_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../net/firebase.dart';
-
 
 class EditProfile extends StatefulWidget {
   final String currentOnlinUserId;
