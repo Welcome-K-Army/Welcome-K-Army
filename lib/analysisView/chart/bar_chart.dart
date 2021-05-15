@@ -78,6 +78,8 @@ class BarChart extends CustomPainter {
   void drawYLabels(Canvas canvas, Size size, List<Offset> coordinates) {
     double bottomY = coordinates[0].dy;
     double topY = coordinates[0].dy;
+    double height = topY - bottomY;
+    int numberOfLabels = 5;
     int indexOfMax = 0;
     int indexOfMin = 0;
 
@@ -98,10 +100,11 @@ class BarChart extends CustomPainter {
     String maxValue = "${data[indexOfMax].toInt()}";
     String minValue = "${data[indexOfMin].toInt()}";
 
+    double heightSpace = height / numberOfLabels;
+    double valueSpace = maxValue / numberOfLabels;
     double fontSize = calculateFontSize(maxValue, size, xAxis: false);
 
-    drawYText(canvas, maxValue, fontSize, topY);
-    drawYText(canvas, minValue, fontSize, bottomY);
+    for(int index = 0; index < numberOfLabels; index++) drawYText(canvas, valueSpace * index, fontsize, bottomY+heightSpace * index);
   }
 
   double calculateFontSize(String value, Size size, {bool xAxis}) {
