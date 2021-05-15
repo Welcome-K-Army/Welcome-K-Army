@@ -30,7 +30,7 @@ class _EditProfileState extends State<EditProfile> {
 
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
-  UserData userdata;
+
 
   PickedFile _imageFile;
   final ImagePicker _picker=ImagePicker();
