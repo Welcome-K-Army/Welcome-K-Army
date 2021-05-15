@@ -82,7 +82,9 @@ class BarChart extends CustomPainter {
     int numberOfLabels = 5;
     int indexOfMax = 0;
     int indexOfMin = 0;
-
+    print(bottomY+100000);
+    print(topY+200000);
+    print(height+300000)
     for (int index = 0; index < coordinates.length; index++) {
       double dy = coordinates[index].dy;
 
