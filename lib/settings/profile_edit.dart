@@ -95,7 +95,7 @@ class _EditProfileState extends State<EditProfile> {
               buildTextField("Password","a123456",true),
               buildTextField("Email","$email",false),
               buildTextField("Age","$age",false),
-              SizedBox(height:25,),
+              SizedBox(height:40,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
