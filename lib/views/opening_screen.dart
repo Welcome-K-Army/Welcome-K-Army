@@ -13,7 +13,7 @@ class OpeningViewState extends State<OpeningView> {
   String nickName="";
 
   
-
+  
   
 
   @override
