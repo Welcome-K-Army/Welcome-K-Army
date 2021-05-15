@@ -56,7 +56,7 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       nickName = prefs.getString('nickName');
       email=prefs.getString('email');
-      age=prefs.getSting('age');
+      age=prefs.getString('age');
     });
   }
 
