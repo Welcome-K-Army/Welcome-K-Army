@@ -104,9 +104,8 @@ class BarChart extends CustomPainter {
     double heightSpace = height / numberOfLabels;
     double valueSpace = int.parse(maxValue) / numberOfLabels;
     double fontSize = calculateFontSize(maxValue, size, xAxis: false);
-    print(bottomY+2000);
-    print(topY+1000);
-    print(height+3000);
+    print(maxValue);
+    print(minValue);
     for(int index = 0; index < numberOfLabels; index++) {
       value = valueSpace * index;
       drawYText(canvas, value.toString(), fontSize, bottomY+heightSpace * index);
