@@ -10,19 +10,7 @@ class OpeningView extends StatefulWidget {
 class OpeningViewState extends State<OpeningView> {
   OpeningViewState();
 
-  String nickName = "";
-
-  @override
-  void initState() {
-    getData();
-  }
-
-  getData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      nickName = prefs.getString('nickName');
-    });
-  }
+  String nickName="";
 
   @override
   Widget build(BuildContext context) {

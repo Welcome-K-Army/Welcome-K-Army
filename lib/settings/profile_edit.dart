@@ -28,6 +28,8 @@ class _EditProfileState extends State<EditProfile> {
    TextEditingController password1TextEditingController = TextEditingController();
    TextEditingController password2TextEditingController = TextEditingController();
   
+
+
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
   UserData userdata;
@@ -48,15 +50,12 @@ class _EditProfileState extends State<EditProfile> {
   //초기값 가져오기
   @override
   void initState() {
-    getData();
+    super.getData();
   }
 
   getData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      nickName = prefs.getString('nickName');
-      email=prefs.getString('email');
-      age=prefs.getString('age');
+      userSetup.users
     });
   }
 
