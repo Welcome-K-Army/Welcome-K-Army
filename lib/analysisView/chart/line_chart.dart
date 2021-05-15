@@ -72,8 +72,8 @@ class LineChart extends CustomPainter {
     double maxY = points.reduce(max);
     double minY = points.reduce(min);
 
-    double bottomPadding = 50;
-    double topPadding = 50;
+    double bottomPadding = (fontSize + bottomFontPadding) * 2;
+    double topPadding = bottomPadding * 2 - bottomFontPadding;
     double h = size.height - topPadding;
 
     for (int index = 0; index < points.length; index++) {
