@@ -57,7 +57,11 @@ class AnalysisViewState extends State<AnalysisView> {
               ),
               Padding(padding: const EdgeInsets.symmetric(vertical: 8.0)),
               Container(
-                child: CustomPaint(size: Size(250, 250), foregroundPainter: BarChart(data: points, labels: labels, color: Colors.pinkAccent)),
+                child: CustomPaint(
+                  size: Size(250, 250), 
+                  foregroundPainter: BarChart(data: points, labels: labels, color: Colors.pinkAccent),
+                  painter: LineChart(points: points, pointSize: 5.0, pointColor: Colors.pinkAccent, lineColor: Colors.pinkAccent, lineWidth: 2.0),
+                  ),
               ),
             ])));
   }
