@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/routes.dart';
+import '../model/user_data_model.dart";
 
 class OpeningView extends StatefulWidget {
   @override
@@ -12,10 +13,17 @@ class OpeningViewState extends State<OpeningView> {
 
   String nickName="";
 
-  
-  
-  
+  void initState() {
+      getData();
+  }
 
+  getData() async {
+    setState(() {
+      nickName=UserData.nickName;
+    });
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
