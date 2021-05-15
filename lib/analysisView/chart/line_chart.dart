@@ -64,7 +64,10 @@ class LineChart extends CustomPainter {
   List<Offset> getCoordinates(List<double> points, Size size) {
     List<Offset> coordinates = [];
 
-    double spacing = (size.width - leftPadding) / points.length;
+    double width = size.width - leftPadding;
+    double spacing = width / points.length;
+    double barCenter = spacing * 0.5;
+    double barWidthMargin = size.width * 0.09;
     double maxY = points.reduce(max);
     double minY = points.reduce(min);
 
@@ -73,7 +76,7 @@ class LineChart extends CustomPainter {
     double h = size.height - topPadding;
 
     for (int index = 0; index < points.length; index++) {
-      double x = spacing * (index + 0.5) + size.width * 0.09;
+      double x = spacing * index + barCenter + barWidthMargin;
       double normalizedY = points[index] / maxY; // 정규화한다. 정규화란 [0 ~ 1] 사이가 나오게 값을 변경하는 것.
       double y = getYPos(h, bottomPadding, normalizedY); // 높이에 비례한 Y 값을 구한다.
 
