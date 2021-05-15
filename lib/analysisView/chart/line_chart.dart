@@ -12,6 +12,7 @@ class LineChart extends CustomPainter {
   int maxValueIndex;
   int minValueIndex;
   double fontSize = 18.0;
+  double bottomFontPadding = 36.0;
   double bottomPadding = 0.0;
   double leftPadding = 0.0;
 
@@ -71,8 +72,8 @@ class LineChart extends CustomPainter {
     double maxY = points.reduce(max);
     double minY = points.reduce(min);
 
-    double bottomPadding = fontSize * 2;
-    double topPadding = bottomPadding * 2;
+    double bottomPadding = fontSize * 2 + bottomFontPadding;
+    double topPadding = bottomPadding * 2 - bottomFontPadding;
     double h = size.height - topPadding;
 
     for (int index = 0; index < points.length; index++) {

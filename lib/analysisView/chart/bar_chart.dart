@@ -55,14 +55,7 @@ class BarChart extends CustomPainter {
     double fontSize = calculateFontSize(labels[0], size, xAxis: true);
 
     for (int index = 0; index < labels.length; index++) {
-
-      TextSpan span = TextSpan(
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: fontSize,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w400),
-          text: labels[index]);
+      TextSpan span = TextSpan(style: TextStyle(color: Colors.black, fontSize: fontSize, fontFamily: 'Roboto', fontWeight: FontWeight.w400), text: labels[index]);
 
       TextPainter tp = TextPainter(text: span, textDirection: TextDirection.ltr);
       tp.layout();
@@ -105,15 +98,15 @@ class BarChart extends CustomPainter {
     double valueSpace = int.parse(maxValue) / numberOfLabels;
     double fontSize = calculateFontSize(maxValue, size, xAxis: false);
 
-    for(int index = 0; index < numberOfLabels + 1; index++) {
+    for (int index = 0; index < numberOfLabels + 1; index++) {
       value = (valueSpace * index).toInt();
-      drawYText(canvas, value.toString(), fontSize, bottomY-heightSpace * index);
+      drawYText(canvas, value.toString(), fontSize, bottomY - heightSpace * index);
     }
   }
 
   double calculateFontSize(String value, Size size, {bool xAxis}) {
     int numberOfCharacters = value.length;
-    double fontSize = size.width / (numberOfCharacters *  data.length);
+    double fontSize = size.width / (numberOfCharacters * data.length);
 
     if (xAxis) {
       fontSize *= textScaleFactorXAxis;
@@ -143,13 +136,8 @@ class BarChart extends CustomPainter {
   }
 
   void drawYText(Canvas canvas, String text, double fontSize, double y) {
-
     TextSpan span = TextSpan(
-      style: TextStyle(
-          fontSize: fontSize,
-          color: Colors.black,
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w600),
+      style: TextStyle(fontSize: fontSize, color: Colors.black, fontFamily: 'Roboto', fontWeight: FontWeight.w600),
       text: text,
     );
 
