@@ -3,7 +3,7 @@ import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
 import '../model/user_data_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class EditProfile extends StatefulWidget {
@@ -17,6 +17,8 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+    String nickName = "";
+
 
    TextEditingController profileNameTextEditingController = TextEditingController();
    TextEditingController emailTextEditingController = TextEditingController();
@@ -42,15 +44,14 @@ class _EditProfileState extends State<EditProfile> {
 
   //초기값 가져오기
   @override
-  void initState(){
-    super.initState();
-
-    getUserinformation();
+  void initState() {
+    getData();
   }
-  
-  getUserinformation() async{
-    setState((){
-      loading=true;
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      nickName = prefs.getString('nickName');
     });
   }
 
@@ -85,7 +86,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height:30,),
 
               
-              buildTextField("username","minseok",false),
+              buildTextField("username","$nickName",false),
               buildTextField("Password","a123456",true),
               buildTextField("Email","sinminseok12@naver.com",false),
               buildTextField("Age","22",false),
