@@ -3,6 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 import './chart/pie_chart.dart';
 import './chart/radar_chart.dart';
+import './chart/pie_charta.dart';
 
 class SwitchWithPieAndRadarChart extends StatefulWidget {
   String title;
@@ -33,7 +34,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             child: Column(
               children: <Widget>[
                 status
-                    ? CustomRadarChart()
+                    ? DonutAutoLabelChart()
                     : Container(
                         child: CustomPaint(
                           // CustomPaint를 그리고 이 안에 차트를 그려줍니다..
