@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-import './chart/pie_chart.dart';
 import './chart/radar_chart.dart';
-import './chart/pie_charta.dart';
+import './chart/donut_auto_label_chart.dart';
 
 class SwitchWithPieAndRadarChart extends StatefulWidget {
   String title;
