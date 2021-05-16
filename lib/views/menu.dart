@@ -5,13 +5,6 @@ import '../settings/profile_menu.dart';
 
 class MenuScreen extends StatefulWidget {
 
-  const MenuScreen({
-    Key key,
-    this.user
-  });
-
-  final FirebaseUser user;
-
   MenuScreen();
   @override
   MenuScreenState createState() => MenuScreenState();
