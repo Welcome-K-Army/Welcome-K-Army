@@ -19,6 +19,32 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
 
   User user;
+  bool _profileNameValid =true;
+  bool _emailValid =true;
+  bool _ageValid =true;
+  bool _genderValid =true;
+
+  updateUserData(){
+
+    setState((){
+      profileNameTextEditingController.text.trim().length < 3
+          || profileNameTextEditingController.text.isEmpty
+          ? _profileNameValid = false
+          : _profileNameValid = true;
+
+      emailTextEditingController.text.trim().length > 110
+          || emailTextEditingController.text.isEmpty
+          ? _emailValid = false
+          : _emailValid = true;
+    });
+
+    if(_profileNameValid && _emailValid) {
+      Firestore.instance.collection('UserDetail').document(user.uid).upDate({
+        'nickName':profileNameTextEditingController.text,
+        'email':emailTextEditingController.text,
+      });
+    }  //if
+  }//updateUserData
 
   Future<void> getUserData() async{
     User userData = await FirebaseAuth.instance.currentUser;
@@ -32,31 +58,17 @@ class _EditProfileState extends State<EditProfile> {
     getUserData();
   }
 
-
-
    TextEditingController profileNameTextEditingController = TextEditingController();
    TextEditingController emailTextEditingController = TextEditingController();
-   TextEditingController password1TextEditingController = TextEditingController();
-   TextEditingController password2TextEditingController = TextEditingController();
+   TextEditingController ageTextEditingController = TextEditingController();
+   TextEditingController genderTextEditingController = TextEditingController();
   
-
-
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-
-
 
   PickedFile _imageFile;
   final ImagePicker _picker=ImagePicker();
 
-  bool isObscurePassword=true; 
-  bool _profileNameValid = true;
-  bool loading=false;
 
-  // updateUserData(){
-  //   setState((){
-  //     //profilename,email.. 확인하는 로직 넣어주기
-  //   })
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +89,8 @@ class _EditProfileState extends State<EditProfile> {
               
               createProfileNameTextFormField(),
               createProfileemailTextField(),
-              createProfileGenderTextField(),
-              createProfileAgeTextFormField(),
+              // createProfileGenderTextField(),
+              // createProfileAgeTextFormField(),
               SizedBox(height:40,),
 
               Row(
@@ -293,7 +305,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.white),
-          controller: profileNameTextEditingController,
+          controller: emailTextEditingController,
           decoration: InputDecoration(
             hintText: "$user.email",
             enabledBorder: UnderlineInputBorder(
@@ -319,7 +331,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.white),
-          controller: profileNameTextEditingController,
+          controller: genderTextEditingController,
           decoration: InputDecoration(
             hintText: "$user.gender",
             enabledBorder: UnderlineInputBorder(
@@ -345,7 +357,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.white),
-          controller: profileNameTextEditingController,
+          controller: ageTextEditingController,
           decoration: InputDecoration(
             hintText: "$user.age",
             enabledBorder: UnderlineInputBorder(
