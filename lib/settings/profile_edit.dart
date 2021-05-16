@@ -39,12 +39,12 @@ class _EditProfileState extends State<EditProfile> {
           : _emailValid = true;
     });
 
-    if(_profileNameValid && _emailValid) {
-      firestore.instance.collection('UserDetail').document(user.uid).upDate({
-        'nickName':profileNameTextEditingController.text,
-        'email':emailTextEditingController.text,
-      });
-    }  //if
+    // if(_profileNameValid && _emailValid) {
+    //   firestore.instance.collection('UserDetail').document(user.uid).upDate({
+    //     'nickName':profileNameTextEditingController.text,
+    //     'email':emailTextEditingController.text,
+    //   });
+    // }  //if
   }//updateUserData
 
   Future<void> getUserData() async{
