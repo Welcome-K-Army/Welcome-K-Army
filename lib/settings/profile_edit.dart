@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 
+
 class EditProfile extends StatefulWidget {
 
   @override
@@ -39,7 +40,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     if(_profileNameValid && _emailValid) {
-      Firestore.instance.collection('UserDetail').document(user.uid).upDate({
+      firestore.instance.collection('UserDetail').document(user.uid).upDate({
         'nickName':profileNameTextEditingController.text,
         'email':emailTextEditingController.text,
       });
