@@ -66,10 +66,8 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       loading = true;
     });
-
-    // DB에서 사용자 정보 가져오r깅
+    
     Firebase.Auth.FirebaseUser user = auth.CurrentUser;
-
     if (user != null){
       String nickname= user.nickName;
       String email =user.email;
