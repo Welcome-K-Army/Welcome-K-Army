@@ -13,10 +13,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class EditProfile extends StatefulWidget {
-  // final String currentOnlinUserId;
-  // final userReference = FirebaseFirestore.instance.collection('UserDetail');
-
-  // EditProfile({this.currentOnlinUserId});
 
   @override
   _EditProfileState createState() => _EditProfileState();
@@ -31,7 +27,6 @@ class _EditProfileState extends State<EditProfile> {
         user=userData;
       });
     }
-
 
 
     String nickName = "";
@@ -62,10 +57,6 @@ class _EditProfileState extends State<EditProfile> {
   //     //profilename,email.. 확인하는 로직 넣어주기
   //   })
   // }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
