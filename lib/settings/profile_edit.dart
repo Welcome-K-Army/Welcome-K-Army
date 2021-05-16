@@ -27,10 +27,6 @@ class _EditProfileState extends State<EditProfile> {
     }
 
 
-    String nickName = "";
-    String email="";
-    String age="";
-
 
    TextEditingController profileNameTextEditingController = TextEditingController();
    TextEditingController emailTextEditingController = TextEditingController();
