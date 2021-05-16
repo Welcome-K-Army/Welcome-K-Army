@@ -23,6 +23,8 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
 
 
+
+
     String nickName = "";
     String email="";
     String age="";
@@ -65,12 +67,19 @@ class _EditProfileState extends State<EditProfile> {
       loading = true;
     });
 
-    // DB에서 사용자 정보 가져오기
-    user = DataService();
+    // DB에서 사용자 정보 가져오r깅
+    Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+
+    if (user != null){
+      String nickname= user.nickName;
+      String email =user.email;
+      String age=user.age;
+      String uid = user.uid;
+    }
 
     // profile, bio 입력란에 사용자 정보로 채워주기
-    profileNameTextEditingController.text = user.nickName;
-    emailTextEditingController.text = user.email;
+    profileNameTextEditingController.text = nickName;
+    emailTextEditingController.text = email;
 
     // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
     setState(() {

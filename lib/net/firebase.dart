@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
-class DataSerview {
   
 Future<void> userSetup(String nickName, String email, String gender, int age) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -23,6 +22,6 @@ Future<void> userSetup(String nickName, String email, String gender, int age) as
   return users;
 }
 
-}
+
 
 
