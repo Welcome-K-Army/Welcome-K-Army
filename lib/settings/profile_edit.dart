@@ -23,7 +23,7 @@ class _EditProfileState extends State<EditProfile> {
     var userdata=firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
-    if(userdata != null) {
+    if ( userdata != null) {
 
       nickName = userdata.nickName;
       email = userdata.email;
@@ -33,15 +33,15 @@ class _EditProfileState extends State<EditProfile> {
                       // you have one. Use User.getToken() instead.
     },
 
-    String nickName = "";
-    String email="";
-    String age="";
+  //   String nickName = "";
+  //   String email="";
+  //   String age="";
 
 
-   TextEditingController profileNameTextEditingController = TextEditingController();
-   TextEditingController emailTextEditingController = TextEditingController();
-   TextEditingController password1TextEditingController = TextEditingController();
-   TextEditingController password2TextEditingController = TextEditingController();
+  //  TextEditingController profileNameTextEditingController = TextEditingController();
+  //  TextEditingController emailTextEditingController = TextEditingController();
+  //  TextEditingController password1TextEditingController = TextEditingController();
+  //  TextEditingController password2TextEditingController = TextEditingController();
   
 
 
