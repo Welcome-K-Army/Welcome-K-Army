@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../net/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
   // final String currentOnlinUserId;
@@ -60,7 +59,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // DB에서 사용자 정보 가져오기
-    DocumentSnapshot documentSnapshot = await userSetup.doc(uid).get();
+    DocumentSnapshot documentSnapshot = await userSetup.(uid).get();
     user = userSetup.fromDocument(documentSnapshot);
 
     // profile, bio 입력란에 사용자 정보로 채워주기
