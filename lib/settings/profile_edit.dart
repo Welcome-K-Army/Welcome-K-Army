@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 
+
 class EditProfile extends StatefulWidget {
   // final String currentOnlinUserId;
   // final userReference = FirebaseFirestore.instance.collection('UserDetail');
@@ -56,10 +57,12 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
 
+
   @override
   void initState() {
     super.initState();
 
+    // 화면 빌드 전 미리 해당 사용자의 값들로 셋팅해주자
     getAndDisplayUserInformation();
   }
 
@@ -67,26 +70,27 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       loading = true;
     });
-    
-    Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+
+    // DB에서 사용자 정보 가져오기
+    final FirebaseUser user = await _auth.currentUser();
+
     if (user != null){
       String nickname= user.nickName;
       String email =user.email;
       String age=user.age;
       String uid = user.uid;
     }
-    
+       
 
     // profile, bio 입력란에 사용자 정보로 채워주기
-    profileNameTextEditingController.text = nickName;
-    emailTextEditingController.text = email;
+    profileNameTextEditingController.text = nickname;
+    // emailTextEditingController.text = email;
 
     // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
     setState(() {
       loading = false;
     });
   }
-
 
 
   @override
