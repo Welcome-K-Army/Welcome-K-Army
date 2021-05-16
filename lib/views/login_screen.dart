@@ -242,7 +242,9 @@ class _LoginViewState extends State<Login> {
               //userdata 업데이트 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              Navigator.of(context).pushNamed(AppRoutes.menu);
+              // Navigator.of(context).pushNamed(AppRoutes.menu);
+              Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => MenuScreen(user)))
+              
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
