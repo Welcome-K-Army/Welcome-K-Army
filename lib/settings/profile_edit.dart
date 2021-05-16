@@ -59,7 +59,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // DB에서 사용자 정보 가져오기
-    DocumentSnapshot documentSnapshot = await userSetup.(uid).get();
+    DocumentSnapshot documentSnapshot = await userSetup.get(uid);
     user = userSetup.fromDocument(documentSnapshot);
 
     // profile, bio 입력란에 사용자 정보로 채워주기
