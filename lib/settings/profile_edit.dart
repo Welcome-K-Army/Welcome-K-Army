@@ -2,6 +2,7 @@ import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
 
+import '../net/currentuser.dart';
 import '../net/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -20,28 +21,17 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-    var userdata=firebase.auth().currentUser;
-    var nickName,email,uid,gender;
-
-    if ( userdata != null) {
-
-      nickName = userdata.nickName;
-      email = userdata.email;
-      gender = userdata.gender;
-      uid = userdata.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                      // this value to authenticate with your backend server, if
-                      // you have one. Use User.getToken() instead.
-    },
-
-  //   String nickName = "";
-  //   String email="";
-  //   String age="";
 
 
-  //  TextEditingController profileNameTextEditingController = TextEditingController();
-  //  TextEditingController emailTextEditingController = TextEditingController();
-  //  TextEditingController password1TextEditingController = TextEditingController();
-  //  TextEditingController password2TextEditingController = TextEditingController();
+    String nickName = "";
+    String email="";
+    String age="";
+
+
+   TextEditingController profileNameTextEditingController = TextEditingController();
+   TextEditingController emailTextEditingController = TextEditingController();
+   TextEditingController password1TextEditingController = TextEditingController();
+   TextEditingController password2TextEditingController = TextEditingController();
   
 
 
@@ -63,31 +53,31 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  //   getAndDisplayUserInformation();
-  // }
+    getAndDisplayUserInformation();
+  }
 
-  // getAndDisplayUserInformation() async {
-  //   setState(() {
-  //     loading = true;
-  //   });
+  getAndDisplayUserInformation() async {
+    setState(() {
+      loading = true;
+    });
 
-  //   // DB에서 사용자 정보 가져오기
-  //   DocumentSnapshot documentSnapshot = await userSetup.get(uid);
-  //   user = userSetup.fromDocument(documentSnapshot);
+    // DB에서 사용자 정보 가져오기
+    DocumentSnapshot documentSnapshot = await userSetup.get(uid);
+    user = userSetup.fromDocument(documentSnapshot);
 
-  //   // profile, bio 입력란에 사용자 정보로 채워주기
-  //   profileNameTextEditingController.text = user.nickName;
-  //   emailTextEditingController.text = user.email;
+    // profile, bio 입력란에 사용자 정보로 채워주기
+    profileNameTextEditingController.text = user.nickName;
+    emailTextEditingController.text = user.email;
 
-  //   // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
-  //   setState(() {
-  //     loading = false;
-  //   });
-  // }
+    // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
+    setState(() {
+      loading = false;
+    });
+  }
 
 
 
