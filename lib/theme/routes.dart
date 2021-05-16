@@ -14,7 +14,7 @@ class AppRoutes {
     return {
       authLogin: (context) => Login(),
       authRegister: (context) => Register(),
-      menu: (context) => MenuScreen(),
+      // menu: (context) => MenuScreen(),
     };
   }
 }
