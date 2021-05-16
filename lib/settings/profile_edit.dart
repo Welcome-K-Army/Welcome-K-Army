@@ -6,17 +6,8 @@ import '../net/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-var userdata=firebase.auth().currentUser;
-var name, email, photoUrl, uid, emailVerified;
 
-if (userdata != null) {
-  nickName = userdata.nickName;
-  email = userdata.email;
-  gender = userdata.gender;
-  uid = userdata.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                   // this value to authenticate with your backend server, if
-                   // you have one. Use User.getToken() instead.
-}
+
 
 class EditProfile extends StatefulWidget {
   // final String currentOnlinUserId;
@@ -29,7 +20,18 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+    var userdata=firebase.auth().currentUser;
+    var name, email, photoUrl, uid, emailVerified;
 
+    if (userdata != null) {
+
+      nickName = userdata.nickName;
+      email = userdata.email;
+      gender = userdata.gender;
+      uid = userdata.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                      // this value to authenticate with your backend server, if
+                      // you have one. Use User.getToken() instead.
+    },
 
     String nickName = "";
     String email="";
