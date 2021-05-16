@@ -90,8 +90,9 @@ class _EditProfileState extends State<EditProfile> {
               
               createProfileNameTextFormField(),
               createProfileemailTextField(),
-              // createProfileGenderTextField(),
-              // createProfileAgeTextFormField(),
+              createProfileGenderTextField(),
+
+              createProfileAgeTextFormField(),
               SizedBox(height:40,),
 
               Row(
@@ -282,7 +283,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: "$user.nickName",
+            hintText: '${user.nickName}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -334,7 +335,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: genderTextEditingController,
           decoration: InputDecoration(
-            hintText: "$user.gender",
+            hintText: '${user.gender}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -360,7 +361,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: ageTextEditingController,
           decoration: InputDecoration(
-            hintText: "$user.age",
+            hintText: '${user.age}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
