@@ -5,8 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key key,this.userdata}):super(key:key);
-  final FirebaseUser user;
+
 
   MenuScreen();
   @override
