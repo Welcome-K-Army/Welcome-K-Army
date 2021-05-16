@@ -18,6 +18,6 @@ Future<void> userSetup(String nickName, String email, String gender, int age) as
       })
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));
-  return;
+  return users;
 }
 
