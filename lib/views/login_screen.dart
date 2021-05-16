@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'menu.dart';
 import '../theme/routes.dart';
 
 //0xff0c9869
@@ -243,7 +244,10 @@ class _LoginViewState extends State<Login> {
               //userdata 업데이트 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              Navigator.of(context).pushNamed(AppRoutes.menu);
+              Navigator.pushReplacement(context,MaterialPageRoute(
+                builder:(context)=>MenuScreen(userdata :user )
+              ))
+              // Navigator.of(context).pushNamed(AppRoutes.menu);
               
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {

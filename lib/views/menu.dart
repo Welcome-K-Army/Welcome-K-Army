@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import '../settings/profile_menu.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
 class MenuScreen extends StatefulWidget {
+  const MenuScreen({Key key,this.userdata}):super(key:key);
+  final FirebaseUser user;
 
   MenuScreen();
   @override
