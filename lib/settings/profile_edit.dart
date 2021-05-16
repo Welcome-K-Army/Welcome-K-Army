@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 var userdata=firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
 
-if (user != null) {
+if (userdata != null) {
   nickName = userdata.nickName;
   email = userdata.email;
   gender = userdata.gender;
@@ -29,7 +29,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-    var future:_nickName;
+
 
     String nickName = "";
     String email="";
