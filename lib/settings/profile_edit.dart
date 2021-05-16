@@ -23,7 +23,7 @@ class _EditProfileState extends State<EditProfile> {
     var userdata=firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
-    if (userdata != null) {
+    if(userdata != null) {
 
       nickName = userdata.nickName;
       email = userdata.email;
