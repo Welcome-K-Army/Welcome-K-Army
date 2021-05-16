@@ -67,6 +67,7 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       loading = true;
     });
+    
     Firebase.Auth.FirebaseUser user = auth.CurrentUser;
     if (user != null){
       String nickname= user.nickName;
