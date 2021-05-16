@@ -24,6 +24,13 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
+    FirebaseUser user;
+    Future<void> getUserData() async{
+      FirebaseUser userData = await FirebaseAuth.instance.currentUser();
+      setState((){
+        user=userData;
+      });
+    }
 
 
 
@@ -58,39 +65,6 @@ class _EditProfileState extends State<EditProfile> {
 
 
 
-  @override
-  void initState() {
-    super.initState();
-
-    // 화면 빌드 전 미리 해당 사용자의 값들로 셋팅해주자
-    getAndDisplayUserInformation();
-  }
-
-  getAndDisplayUserInformation() async {
-    setState(() {
-      loading = true;
-    });
-
-    // DB에서 사용자 정보 가져오기
-    final FirebaseUser user = await _auth.currentUser();
-
-    if (user != null){
-      String nickname= user.nickName;
-      String email =user.email;
-      String age=user.age;
-      String uid = user.uid;
-    }
-       
-
-    // profile, bio 입력란에 사용자 정보로 채워주기
-    profileNameTextEditingController.text = nickname;
-    // emailTextEditingController.text = email;
-
-    // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
-    setState(() {
-      loading = false;
-    });
-  }
 
 
   @override
@@ -304,7 +278,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: "$nickName",
+            hintText: "${user.nickName}",
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
