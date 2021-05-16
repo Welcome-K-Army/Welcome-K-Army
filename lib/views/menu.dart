@@ -13,9 +13,26 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
+  User user;
+
+  Future<void> getUserData() async{
+    User userData = await FirebaseAuth.instance.currentUser;
+    setState(() {
+          user=userData;
+      });
+  }
+  @override
+  void initState(){
+    super.initState();
+    getUserData();
+  }
+
   MenuScreenState();
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar :AppBar(
+        title:Text('${user.email}'),
+      ),
       floatingActionButton: null,
       body: DefaultTabController(
         length: 3,
