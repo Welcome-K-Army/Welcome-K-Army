@@ -71,8 +71,8 @@ class _EditProfileState extends State<EditProfile> {
               
               createProfileNameTextFormField(),
               buildTextField("Password","a123456",true),
-              buildTextField("Email","$email",false),
-              buildTextField("Age","$age",false),
+              buildTextField("Email","email",false),
+              buildTextField("Age","age",false),
               SizedBox(height:40,),
 
               Row(
@@ -263,7 +263,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: "${user.nickName}",
+            hintText: "$user.nickName",
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
