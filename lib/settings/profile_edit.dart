@@ -308,7 +308,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: emailTextEditingController,
           decoration: InputDecoration(
-            hintText: "$user.email",
+            hintText: '${user.email}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
