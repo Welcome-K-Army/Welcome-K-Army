@@ -76,9 +76,9 @@ class _EditProfileState extends State<EditProfile> {
 
               
               createProfileNameTextFormField(),
-              buildTextField("Password","a123456",true),
-              buildTextField("Email","email",false),
-              buildTextField("Age","age",false),
+              createProfileemailTextField(),
+              createProfileGenderTextField(),
+              createProfileAgeTextFormField(),
               SizedBox(height:40,),
 
               Row(
@@ -177,31 +177,31 @@ class _EditProfileState extends State<EditProfile> {
   }
   
   
-  Widget buildTextField(String labelText,String placeholder,bool isPasswordTextField){
-    return Padding(
-      padding:EdgeInsets.only(bottom:30),
-      child:TextFormField( //key값 받으려면 TextField말고 TextFormField사용
+  // Widget buildTextField(String labelText,String placeholder,bool isPasswordTextField){
+  //   return Padding(
+  //     padding:EdgeInsets.only(bottom:30),
+  //     child:TextFormField( //key값 받으려면 TextField말고 TextFormField사용
       
-        obscureText : isPasswordTextField ? isObscurePassword : false,
-        decoration:InputDecoration(
-          suffixIcon: isPasswordTextField ?
-          IconButton(
-            icon:Icon(Icons.remove_red_eye,color:Colors.grey),
-            onPressed:(){}
-          ): null,
-        //contextPadding: EdgeInsets.only(bottom:5),
-          labelText:labelText,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          hintText:placeholder,
-          hintStyle:TextStyle(
-            fontSize:16,
-            fontWeight: FontWeight.bold,
-            color:Colors.grey
-          ),
-        ),//InputDecoration
-      ),//TextField
-    );//Padding
-  }
+  //       obscureText : isPasswordTextField ? isObscurePassword : false,
+  //       decoration:InputDecoration(
+  //         suffixIcon: isPasswordTextField ?
+  //         IconButton(
+  //           icon:Icon(Icons.remove_red_eye,color:Colors.grey),
+  //           onPressed:(){}
+  //         ): null,
+  //       //contextPadding: EdgeInsets.only(bottom:5),
+  //         labelText:labelText,
+  //         floatingLabelBehavior: FloatingLabelBehavior.always,
+  //         hintText:placeholder,
+  //         hintStyle:TextStyle(
+  //           fontSize:16,
+  //           fontWeight: FontWeight.bold,
+  //           color:Colors.grey
+  //         ),
+  //       ),//InputDecoration
+  //     ),//TextField
+  //   );//Padding
+  // }
 
   Widget bottomSheet(){
     return Container(
@@ -270,6 +270,84 @@ class _EditProfileState extends State<EditProfile> {
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
             hintText: "$user.nickName",
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)
+            ),
+            hintStyle: TextStyle(color: Colors.grey),
+            errorText: _profileNameValid ? null : 'Profile name is very short'
+          ),
+        )
+      ],
+    );
+  } //createProfileNameTextFormField
+  createProfileemailTextField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text('Email', style: TextStyle(color: Colors.grey),),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: profileNameTextEditingController,
+          decoration: InputDecoration(
+            hintText: "$user.email",
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)
+            ),
+            hintStyle: TextStyle(color: Colors.grey),
+            errorText: _profileNameValid ? null : 'Profile name is very short'
+          ),
+        )
+      ],
+    );
+  } //createProfileemailTextField
+  createProfileGenderTextField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text('Gender', style: TextStyle(color: Colors.grey),),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: profileNameTextEditingController,
+          decoration: InputDecoration(
+            hintText: "$user.gender",
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)
+            ),
+            hintStyle: TextStyle(color: Colors.grey),
+            errorText: _profileNameValid ? null : 'Profile name is very short'
+          ),
+        )
+      ],
+    );
+  } //createProfileNameTextFormField
+  createProfileAgeTextFormField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text('Age', style: TextStyle(color: Colors.grey),),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: profileNameTextEditingController,
+          decoration: InputDecoration(
+            hintText: "$user.age",
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
