@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../net/currentuser.dart';
 import '../net/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
@@ -66,7 +67,6 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       loading = true;
     });
-    
     Firebase.Auth.FirebaseUser user = auth.CurrentUser;
     if (user != null){
       String nickname= user.nickName;
@@ -74,6 +74,7 @@ class _EditProfileState extends State<EditProfile> {
       String age=user.age;
       String uid = user.uid;
     }
+    
 
     // profile, bio 입력란에 사용자 정보로 채워주기
     profileNameTextEditingController.text = nickName;
