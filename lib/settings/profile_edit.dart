@@ -18,13 +18,19 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-    User user;
-    Future<void> getUserData() async{
-      User userData = await FirebaseAuth.instance.currentUser;
-      setState((){
-        user=userData;
+  User user;
+
+  Future<void> getUserData() async{
+    User userData = await FirebaseAuth.instance.currentUser;
+    setState(() {
+          user=userData;
       });
-    }
+  }
+  @override
+  void initState(){
+    super.initState();
+    getUserData();
+  }
 
 
 
