@@ -21,7 +21,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
     var userdata=firebase.auth().currentUser;
-    var name, email, photoUrl, uid, emailVerified;
+    var nickName, email,uid, email;
 
     if ( userdata != null) {
 
