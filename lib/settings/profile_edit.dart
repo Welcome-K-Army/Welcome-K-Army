@@ -6,21 +6,17 @@ import '../net/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
- Future<String> _nickName;
-  @override
-  void initState() {
-    super.initState();
-    _nickName = _loadcurrentName();
-  }
-  Future<String> _loadcurrentName() async {
-    await Firestore.instance.collection('UserDetail').document(currentUser.uid).get().then((DocumentSnapshot ds) async {
-      return ds['nickName'];
-    });
-  }
+var userdata=firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
 
-
-
-
+if (user != null) {
+  nickName = userdata.nickName;
+  email = userdata.email;
+  gender = userdata.gender;
+  uid = userdata.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+                   // you have one. Use User.getToken() instead.
+}
 
 class EditProfile extends StatefulWidget {
   // final String currentOnlinUserId;
@@ -33,7 +29,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-    var future:_nickName,
+    var future:_nickName;
 
     String nickName = "";
     String email="";
@@ -304,7 +300,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: 'Write profile name here...',
+            hintText: "$nickName",
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
