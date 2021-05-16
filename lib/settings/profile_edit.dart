@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
 
 import '../net/firebase.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -19,7 +20,7 @@ class _EditProfileState extends State<EditProfile> {
 
     final User user;
     Future<void> getUserData() async{
-      User userData = await FirebaseAuth.instance.currentUser();
+      User userData = await FirebaseAuth.instance.currentUser;
       setState((){
         user=userData;
       });
