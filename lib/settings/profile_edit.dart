@@ -53,31 +53,31 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    getAndDisplayUserInformation();
-  }
+  //   getAndDisplayUserInformation();
+  // }
 
-  getAndDisplayUserInformation() async {
-    setState(() {
-      loading = true;
-    });
+  // getAndDisplayUserInformation() async {
+  //   setState(() {
+  //     loading = true;
+  //   });
 
-    // DB에서 사용자 정보 가져오기
-    DocumentSnapshot documentSnapshot = await userSetup.get(uid);
-    user = userSetup.fromDocument(documentSnapshot);
+  //   // DB에서 사용자 정보 가져오기
+  //   DocumentSnapshot documentSnapshot = await userSetup.get(uid);
+  //   user = userSetup.fromDocument(documentSnapshot);
 
-    // profile, bio 입력란에 사용자 정보로 채워주기
-    profileNameTextEditingController.text = user.nickName;
-    emailTextEditingController.text = user.email;
+  //   // profile, bio 입력란에 사용자 정보로 채워주기
+  //   profileNameTextEditingController.text = user.nickName;
+  //   emailTextEditingController.text = user.email;
 
-    // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
-    setState(() {
-      loading = false;
-    });
-  }
+  //   // 셋팅 끝나면 loading은 false로 바뀌고 화면에 값들이 보임
+  //   setState(() {
+  //     loading = false;
+  //   });
+  // }
 
 
 
