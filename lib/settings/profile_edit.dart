@@ -12,8 +12,6 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-
-
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
@@ -26,7 +24,6 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-
     final userData = Provider.of<UserData>(context);
 
     final usernicknameForm = Column(
@@ -52,73 +49,73 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
 
-    final useremailForm=Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Email',
-              style: TextStyle(color: Colors.grey),
-            ),
+    final useremailForm = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Email',
+            style: TextStyle(color: Colors.grey),
           ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: emailTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.email}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
-    final usergenderForm= Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Gender',
-              style: TextStyle(color: Colors.grey),
-            ),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: emailTextEditingController,
+          decoration: InputDecoration(
+            hintText: '${userData.email}',
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            hintStyle: TextStyle(color: Colors.grey),
           ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: genderTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.gender}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
-    
-    final userageForm=Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Age',
-              style: TextStyle(color: Colors.grey),
-            ),
+        )
+      ],
+    );
+    final usergenderForm = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Gender',
+            style: TextStyle(color: Colors.grey),
           ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: ageTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.age}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: genderTextEditingController,
+          decoration: InputDecoration(
+            hintText: '${userData.gender}',
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            hintStyle: TextStyle(color: Colors.grey),
+          ),
+        )
+      ],
+    );
+
+    final userageForm = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Age',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: ageTextEditingController,
+          decoration: InputDecoration(
+            hintText: '${userData.age}',
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            hintStyle: TextStyle(color: Colors.grey),
+          ),
+        )
+      ],
+    );
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
 
@@ -230,7 +227,6 @@ class _EditProfileState extends State<EditProfile> {
       ), //Stack
     ); //Center
 
-
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
 
@@ -257,12 +253,10 @@ class _EditProfileState extends State<EditProfile> {
                 SizedBox(
                   height: 30,
                 ),
-                
                 usernicknameForm,
                 useremailForm,
                 usergenderForm,
                 userageForm,
-
                 SizedBox(
                   height: 40,
                 ),
