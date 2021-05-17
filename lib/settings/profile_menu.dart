@@ -7,8 +7,6 @@ import '../model/user_data_model.dart';
 
 
 class Profile_menu extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +18,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context,MaterialPageRoute(builder:(context) => EditProfile()));//currentOnlineUserId넘겨줘야됨
+            Navigator.push(context,MaterialPageRoute(builder:(context) => EditProfile()));
           },
         ),
         ProfileMenu(
@@ -46,10 +44,10 @@ class Profile_menu extends StatelessWidget {
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     Key key,
-    @required this.text, //@required은 기본값이 없고 null이 아닐경우에 사용/
+    @required this.text, 
     @required this.icon, 
     @required this.press,
-  }) : super(key: key); //기본생성자 호출
+  }) : super(key: key); 
 
   final String text;
   final Icon icon;

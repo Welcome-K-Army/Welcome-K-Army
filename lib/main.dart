@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme/routes.dart';
 import 'views/opening_screen.dart';
+import 'model/user_data_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => UserDetail(),
+        create: (context) => UserData(),
         child: MaterialApp(
           title: 'Opening View Demo',
           routes: AppRoutes.define(),

@@ -19,17 +19,58 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
 
   final userData=Provider.of<UserDetail>(context);
+  
+  bool _profileNameValid =true;
+  bool _emailValid =true;
+  bool _ageValid =true;
+  bool _genderValid =true;
 
+  updateUserData(){
 
-  TextEditingController profileNameTextEditingController = TextEditingController();
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController ageTextEditingController = TextEditingController();
-  TextEditingController genderTextEditingController = TextEditingController();
+    setState((){
+      profileNameTextEditingController.text.trim().length < 3
+          || profileNameTextEditingController.text.isEmpty
+          ? _profileNameValid = false
+          : _profileNameValid = true;
+
+      emailTextEditingController.text.trim().length > 110
+          || emailTextEditingController.text.isEmpty
+          ? _emailValid = false
+          : _emailValid = true;
+    });
+
+    // if(_profileNameValid && _emailValid) {
+    //   firestore.instance.collection('UserDetail').document(user.uid).upDate({
+    //     'nickName':profileNameTextEditingController.text,
+    //     'email':emailTextEditingController.text,
+    //   });
+    // }  //if
+  }//updateUserData
+
+  Future<void> getUserData() async{
+    User userData = await FirebaseAuth.instance.currentUser;
+    setState(() {
+          user=userData;
+      });
+  }
+  
+  @override
+  void initState(){
+    super.initState();
+    getUserData();
+  }
+
+   TextEditingController profileNameTextEditingController = TextEditingController();
+   TextEditingController emailTextEditingController = TextEditingController();
+   TextEditingController ageTextEditingController = TextEditingController();
+   TextEditingController genderTextEditingController = TextEditingController();
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
   PickedFile _imageFile;
   final ImagePicker _picker=ImagePicker();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height:30,),
 
               
-              usernicknameForm,
+              createProfileNameTextFormField(),
               createProfileemailTextField(),
               createProfileGenderTextField(),
 
@@ -150,6 +191,32 @@ class _EditProfileState extends State<EditProfile> {
          );//Center 
   }
   
+  
+  // Widget buildTextField(String labelText,String placeholder,bool isPasswordTextField){
+  //   return Padding(
+  //     padding:EdgeInsets.only(bottom:30),
+  //     child:TextFormField( //key값 받으려면 TextField말고 TextFormField사용
+      
+  //       obscureText : isPasswordTextField ? isObscurePassword : false,
+  //       decoration:InputDecoration(
+  //         suffixIcon: isPasswordTextField ?
+  //         IconButton(
+  //           icon:Icon(Icons.remove_red_eye,color:Colors.grey),
+  //           onPressed:(){}
+  //         ): null,
+  //       //contextPadding: EdgeInsets.only(bottom:5),
+  //         labelText:labelText,
+  //         floatingLabelBehavior: FloatingLabelBehavior.always,
+  //         hintText:placeholder,
+  //         hintStyle:TextStyle(
+  //           fontSize:16,
+  //           fontWeight: FontWeight.bold,
+  //           color:Colors.grey
+  //         ),
+  //       ),//InputDecoration
+  //     ),//TextField
+  //   );//Padding
+  // }
 
   Widget bottomSheet(){
     return Container(
@@ -205,8 +272,8 @@ class _EditProfileState extends State<EditProfile> {
         }
       });
     }
-    
-  final usernicknameForm = Column(
+  createProfileNameTextFormField() {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -230,8 +297,7 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
-
-
+  } //createProfileNameTextFormField
   createProfileemailTextField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
