@@ -19,15 +19,7 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
 
   // final userData=Provider.of<UserDetail>(context);
-
-
-
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController ageTextEditingController = TextEditingController();
-  TextEditingController genderTextEditingController = TextEditingController();
-  TextEditingController profileNameTextEditingController = TextEditingController();
-
-    final usernicknameForm = Column(
+      final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -36,7 +28,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.white),
-          // controller: profileNameTextEditingController,
+          controller: profileNameTextEditingController,
           decoration: InputDecoration(
             // hintText: '${user.nickName}',
             enabledBorder: UnderlineInputBorder(
@@ -51,6 +43,11 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
+
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController ageTextEditingController = TextEditingController();
+  TextEditingController genderTextEditingController = TextEditingController();
+  TextEditingController profileNameTextEditingController = TextEditingController();
 
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
@@ -121,6 +118,7 @@ class _EditProfileState extends State<EditProfile> {
       ),//Container
     );//Scafolld
   }//
+
 
 
   Widget imageProfile(){
