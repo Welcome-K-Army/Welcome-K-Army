@@ -25,7 +25,7 @@ Future<void> userLoad() async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
-  users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+  await users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
       UserData.fromJson(data).update();

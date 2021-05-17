@@ -263,7 +263,9 @@ class _EditProfileState extends State<EditProfile> {
                           ), //OutlineButton
 
                           ElevatedButton(
-                            onPressed: () {}, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
+                            onPressed: () {
+                              userUpdate();
+                            }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                             child: Text("Save",
                                 style: TextStyle(
                                   fontSize: 17,
