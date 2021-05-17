@@ -225,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
                 borderSide: BorderSide(color: Colors.white)
             ),
             hintStyle: TextStyle(color: Colors.grey),
-            errorText: _profileNameValid ? null : 'Profile name is very short'
+
           ),
         )
       ],
@@ -252,7 +252,7 @@ class _EditProfileState extends State<EditProfile> {
                 borderSide: BorderSide(color: Colors.white)
             ),
             hintStyle: TextStyle(color: Colors.grey),
-            errorText: _profileNameValid ? null : 'Profile name is very short'
+
           ),
         )
       ],
@@ -278,7 +278,7 @@ class _EditProfileState extends State<EditProfile> {
                 borderSide: BorderSide(color: Colors.white)
             ),
             hintStyle: TextStyle(color: Colors.grey),
-            errorText: _profileNameValid ? null : 'Profile name is very short'
+
           ),
         )
       ],
@@ -304,7 +304,7 @@ class _EditProfileState extends State<EditProfile> {
                 borderSide: BorderSide(color: Colors.white)
             ),
             hintStyle: TextStyle(color: Colors.grey),
-            errorText: _profileNameValid ? null : 'Profile name is very short'
+
           ),
         )
       ],
