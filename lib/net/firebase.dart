@@ -29,6 +29,7 @@ Future<void> userLoad() async {
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
       UserData.fromJson(data);
+      UserData.update();
     } else {
       print('no data');
     }
