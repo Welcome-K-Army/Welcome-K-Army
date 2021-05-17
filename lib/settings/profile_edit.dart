@@ -43,7 +43,7 @@ class _EditProfileState extends State<EditProfile> {
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
         )
@@ -66,7 +66,7 @@ class _EditProfileState extends State<EditProfile> {
           decoration: InputDecoration(
             hintText: '${userData.email}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
         )
@@ -88,7 +88,7 @@ class _EditProfileState extends State<EditProfile> {
           decoration: InputDecoration(
             hintText: '${userData.gender}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
         )
@@ -111,7 +111,7 @@ class _EditProfileState extends State<EditProfile> {
           decoration: InputDecoration(
             hintText: '${userData.age}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
         )
