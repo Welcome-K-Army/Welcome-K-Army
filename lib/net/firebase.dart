@@ -27,7 +27,7 @@ Future<void> userLoad(UserData userData) async {
   String uid = auth.currentUser.uid.toString();
   await users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      print("{$documentSnapshot.data()}");
+      print({"$documentSnapshot.data().toString()"});
       Map<String, dynamic> data = documentSnapshot.data();
       final userData = UserData.fromJson(data);
       userData.update();
