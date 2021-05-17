@@ -119,6 +119,17 @@ class _EditProfileState extends State<EditProfile> {
           )
         ],
       );
+    Future takePhoto(ImageSource source) async {
+      final pickedFile = await _picker.getImage(source: source);
+
+      setState(() {
+        if (pickedFile != null) {
+          _imageFile = pickedFile;
+        } else {
+          print('No image selected.');
+        }
+      });
+    }
 
 
     final imageProfile = Center(
