@@ -27,6 +27,8 @@ Future<void> userLoad() async {
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       print(documentSnapshot.data);
+    } else {
+      print('no data');
     }
   });
   return;
