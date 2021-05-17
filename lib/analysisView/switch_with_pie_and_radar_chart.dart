@@ -57,12 +57,11 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
                   )
                 )
               ), 
-                    onPressed: () => {
-                      setState(() { 
-                        status = false;
-                      });
-                    }
-            ),
+              onPressed: () {
+                setState(() { 
+                 status = false;
+                });
+            },),
             SizedBox(width: 10),
             ElevatedButton(
               child: Text(
@@ -79,12 +78,11 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
                   )
                 )
               ), 
-                onPressed: () => {
-                  setState(() { 
-                    status = true;
-                  });
-                }
-            ),
+              onPressed: () {
+                setState(() { 
+                  status = true;
+                });
+              },),
           ])
         )
       ]),
