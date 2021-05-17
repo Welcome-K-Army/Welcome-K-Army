@@ -11,8 +11,6 @@ class CustomToggleButton extends StatefulWidget {
 }
 
 class _CustomToggleButtonState extends State<CustomToggleButton> {
-  _CustomToggleButtonState({this.status, this.firstButtonColor, this.secondButtonColor, this.borderColor});
-
   bool status;
 
   Color firstButtonColor;
@@ -21,6 +19,12 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
 
   Color trueButtonColor = firstButtonColor;
   Color falseButtonColor = secondButtonColor;
+
+  _CustomToggleButtonState({this.status, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
+    this.trueButtonColor = this.firstButtonColor;
+    this.falseButtonColor = this.secondButtonColor;
+  }
+
 
   @override
   Widget build(BuildContext context) {
