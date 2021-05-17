@@ -53,6 +53,7 @@ class _EditProfileState extends State<EditProfile> {
           user=userData;
       });
   }
+  
   @override
   void initState(){
     super.initState();
