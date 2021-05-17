@@ -211,7 +211,7 @@ class _EditProfileState extends State<EditProfile> {
 
             child: InkWell(
               onTap: () {
-                showModalBottomSheet(context: context, builder: ((builder) => bottomSheet);
+                // showModalBottomSheet(context: context, builder: ((builder) => bottomSheet);
               },
               child: Container(
                 height: 40,
