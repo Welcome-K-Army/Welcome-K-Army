@@ -4,6 +4,8 @@ import 'package:flutter_switch/flutter_switch.dart';
 import './chart/radar_chart.dart';
 import './chart/donut_auto_label_chart.dart';
 
+import 'custom_toggle_button.dart';
+
 class SwitchWithPieAndRadarChart extends StatefulWidget {
   String title;
   SwitchWithPieAndRadarChart({this.title});
@@ -17,11 +19,6 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
   _SwitchWithPieAndRadarChartState({this.title});
 
   bool status = false;
-  Color _textColor = Colors.black;
-  Color _firstButtonColor = Colors.red;
-  Color _secondButtonColor = Colors.grey[300];
-  Color _trueButtonColor = Colors.red;
-  Color _falseButtonColor = Colors.grey[300];
 
   @override
   Widget build(BuildContext context) {
@@ -41,53 +38,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        Container(
-          padding: EdgeInsets.all(4),
-          width : 170,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
-            borderRadius: BorderRadius.circular(22.0)
-          ), 
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white), 
-                backgroundColor: MaterialStateProperty.all<Color>(_firstButtonColor), 
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22.0), 
-                    side: BorderSide(color: _firstButtonColor),
-                  )
-                )
-              ), 
-              onPressed: () {
-                setState(() { 
-                 status = false;
-                 _firstButtonColor = _trueButtonColor;
-                 _secondButtonColor = _falseButtonColor;
-                });
-            },),
-            SizedBox(width: 15),
-            ElevatedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white), 
-                backgroundColor: MaterialStateProperty.all<Color>(_secondButtonColor), 
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22.0), 
-                    side: BorderSide(color: _secondButtonColor)
-                  )
-                )
-              ), 
-              onPressed: () {
-                setState(() { 
-                  status = true;
-                  _firstButtonColor = _falseButtonColor;
-                  _secondButtonColor = _trueButtonColor;
-                });
-              },),
-          ])
-        )
+        CustomToggleButton(status: status, firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
       ]),
     );
   }
