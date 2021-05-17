@@ -36,7 +36,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.white),
-          controller: profileNameTextEditingController,
+          // controller: profileNameTextEditingController,
           decoration: InputDecoration(
             // hintText: '${user.nickName}',
             enabledBorder: UnderlineInputBorder(
