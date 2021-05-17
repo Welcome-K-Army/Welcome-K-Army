@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'menu.dart';
 import '../theme/routes.dart';
 import '../net/firebase.dart';
-import '/lib/model/user_data_model.dart';
+import '../model/user_data_model.dart';
 
 //0xff0c9869
 
