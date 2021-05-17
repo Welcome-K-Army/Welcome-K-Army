@@ -59,7 +59,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
               ), 
                     onPressed: () => {
                       setState(() { 
-                        status = false
+                        status = false;
                       });
                     }
             ),
@@ -79,43 +79,14 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
                   )
                 )
               ), 
-                    onPressed: () => {
-                      setState(() { 
-                        status = true
-                      });
-                    }
+                onPressed: () => {
+                  setState(() { 
+                    status = true;
+                  });
+                }
             ),
           ])
         )
-        /*
-        FlutterSwitch(
-          activeText: "Pie",
-          inactiveText: "Radar",
-          width: 150.0,
-          height: 55.0,
-          toggleSize: 75.0,
-          value: status,
-          borderRadius: 30.0,
-          padding: 1.0,
-          toggleColor: Color.fromRGBO(225, 225, 225, 1),
-        switchBorder: Border.all(
-          color: Color(0xFF0C9869),
-          width: 6.0,
-        ),
-          toggleBorder: Border.all(
-            color: Color.fromRGBO(2, 107, 206, 1),
-            width: 5.0,
-          ),
-          activeColor: Color(0xFFEF9A9A),
-          inactiveColor: Color(0xFF0C9869),
-          showOnOff: true,
-          onToggle: (val) {
-            setState(() {
-              status = val;
-            });
-          },
-        ),
-        */
       ]),
     );
   }
