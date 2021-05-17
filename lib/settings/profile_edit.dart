@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
 import 'package:provider/provider.dart';
+import '../net/firebase.dart';
 
 class EditProfile extends StatefulWidget {
   @override
