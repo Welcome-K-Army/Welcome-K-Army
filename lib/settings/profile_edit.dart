@@ -12,7 +12,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  // final userData=Provider.of<UserData>(context);
+
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
@@ -26,6 +26,9 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
+
+    final userData = Provider.of<UserData>(context);
+
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,6 +51,75 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
+
+    final useremailForm=Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 13),
+            child: Text(
+              'Email',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          TextField(
+            style: TextStyle(color: Colors.white),
+            controller: emailTextEditingController,
+            decoration: InputDecoration(
+              hintText: '${userData.email}',
+              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+          )
+        ],
+      );
+    final usergenderForm= Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 13),
+            child: Text(
+              'Gender',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          TextField(
+            style: TextStyle(color: Colors.white),
+            controller: genderTextEditingController,
+            decoration: InputDecoration(
+              hintText: '${userData.gender}',
+              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+          )
+        ],
+      );
+    
+    final userageForm=Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 13),
+            child: Text(
+              'Age',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          TextField(
+            style: TextStyle(color: Colors.white),
+            controller: ageTextEditingController,
+            decoration: InputDecoration(
+              hintText: '${userData.age}',
+              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+          )
+        ],
+      );
+
 
     final imageProfile = Center(
       child: Stack(
@@ -160,131 +232,56 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    createProfileemailTextField() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Email',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: emailTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.email}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
-    } //createProfileemailTextField
+    return Scaffold(
+      key: _scaffoldGlobalKey,
+      body: Container(
+        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                imageProfile(),
+                SizedBox(
+                  height: 30,
+                ),
+                
+                usernicknameForm,
+                useremailForm,
+                usergenderForm,
+                userageForm,
 
-    createProfileGenderTextField() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Gender',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: genderTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.gender}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
-    } //createProfileNameTextFormField
+                SizedBox(
+                  height: 40,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text("Cancel",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.black,
+                        )), //Text
+                    style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ), //OutlineButton
 
-    createProfileAgeTextFormField() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 13),
-            child: Text(
-              'Age',
-              style: TextStyle(color: Colors.grey),
+                  ElevatedButton(
+                    onPressed: () {}, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
+                    child: Text("Save",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                        )),
+                    style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ) //ElevatedButton
+                ]),
+              ],
+            ) //ListView
             ),
-          ),
-          TextField(
-            style: TextStyle(color: Colors.white),
-            controller: ageTextEditingController,
-            decoration: InputDecoration(
-              hintText: '${userData.age}',
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-          )
-        ],
-      );
-    } //createProfileNameTextFormField
-
-    return Consumer<UserData>(
-      builder: (context, userData, child) => Scaffold(
-        key: _scaffoldGlobalKey,
-        body: Container(
-          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: ListView(
-                children: [
-                  imageProfile(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  usernicknameForm,
-                  createProfileemailTextField(),
-                  createProfileGenderTextField(),
-                  createProfileAgeTextFormField(),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Cancel",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.black,
-                          )), //Text
-                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ), //OutlineButton
-
-                    ElevatedButton(
-                      onPressed: () {}, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
-                      child: Text("Save",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.white,
-                          )),
-                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ) //ElevatedButton
-                  ]),
-                ],
-              ) //ListView
-              ),
-        ), //Container
-      ), //Scafolld
-    );
+      ), //Container
+    ); //Scafolld
   } //
 }

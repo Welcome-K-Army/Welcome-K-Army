@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import '../settings/profile_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
-
+import 'package:flutter/src/widgets/basic.dart';
+import '../model/user_data_model.dart';
 class MenuScreen extends StatefulWidget {
-
-
   // MenuScreen();
   @override
   MenuScreenState createState() => MenuScreenState();
@@ -15,14 +12,15 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   User user;
 
-  Future<void> getUserData() async{
+  Future<void> getUserData() async {
     User userData = await FirebaseAuth.instance.currentUser;
     setState(() {
-          user=userData;
-      });
+      user = userData;
+    });
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getUserData();
   }
@@ -30,8 +28,8 @@ class MenuScreenState extends State<MenuScreen> {
   MenuScreenState();
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar :AppBar(
-        title:Text('${user.email}'),
+      appBar: AppBar(
+        title: Text('${user.email}'),
       ),
       floatingActionButton: null,
       body: DefaultTabController(
@@ -67,7 +65,17 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  Container(), Container(), Profile_menu(),
+                  Consumer<UserData>
+                  Container(
+                      body: Column(children: [
+                    Text(userData.uId == null ? "null" : userData.uId),
+                    Text(userData.nickName == null ? "null" : userData.nickName),
+                    Text(userData.email == null ? "null" : userData.email),
+                    Text(userData.age == null ? "null" : userData.age.toString()),
+                    Text(userData.gender == null ? "null" : userData.gender),
+                  ])),
+                  Container(),
+                  Profile_menu(),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
