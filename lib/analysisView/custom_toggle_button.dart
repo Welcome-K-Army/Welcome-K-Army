@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomToggleButton extends StatefulWidget {
-  bool status;
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
-  CustomToggleButton({this.status, this.firstButtonColor, this.secondButtonColor, this.borderColor});
+  CustomToggleButton({this.firstButtonColor, this.secondButtonColor, this.borderColor});
 
   _CustomToggleButtonState createState() => _CustomToggleButtonState(status: status, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor, borderColor: borderColor);
 }
 
 class _CustomToggleButtonState extends State<CustomToggleButton> {
-  bool status;
-
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
@@ -20,7 +17,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   Color trueButtonColor;
   Color falseButtonColor;
 
-  _CustomToggleButtonState({this.status, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
+  _CustomToggleButtonState({this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
     this.trueButtonColor = this.firstButtonColor;
     this.falseButtonColor = this.secondButtonColor;
   }
@@ -44,7 +41,6 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                     ))),
                 onPressed: () {
                   setState(() {
-                    status = false;
                     firstButtonColor = trueButtonColor;
                     secondButtonColor = falseButtonColor;
                   });
@@ -61,7 +57,6 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                   ))),
                 onPressed: () {
                   setState(() {
-                    status = true;
                     firstButtonColor = falseButtonColor;
                     secondButtonColor = trueButtonColor;
                   });
