@@ -38,9 +38,9 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           ),
         ),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-          TextButton(child: Text("Add to cart".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(15)), foregroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null),
+          ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null),
           SizedBox(width: 10),
-          ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide(color: Colors.red)))), onPressed: () => null)
+          ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null)
         ])
         /*
         FlutterSwitch(
