@@ -2,11 +2,9 @@ import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart';//갤러리 접근
 import 'package:flutter/material.dart';
 
-import '../net/firebase.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import '../model/user_data_model.dart';
 
 
 
@@ -19,7 +17,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-  User user;
+  final currentUser=Provider.of<UserData>(context);
   bool _profileNameValid =true;
   bool _emailValid =true;
   bool _ageValid =true;
@@ -284,7 +282,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.nickName}',
+            hintText: '${currentUser.nickName}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -310,7 +308,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: emailTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.email}',
+            hintText: '${currentUser.email}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -336,7 +334,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: genderTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.gender}',
+            hintText: '${currentUser.gender}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -362,7 +360,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: ageTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.age}',
+            hintText: '${currentUser.age}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
