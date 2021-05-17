@@ -264,7 +264,8 @@ class _EditProfileState extends State<EditProfile> {
 
                           ElevatedButton(
                             onPressed: () {
-                              userUpdate();
+                              userUpdate(profileNameTextEditingController.text,emailTextEditingController.text,genderTextEditingController.text,ageTextEditingController.text);
+                              
                             }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                             //String nickName, String email, String gender, int age
                             child: Text("Save",
