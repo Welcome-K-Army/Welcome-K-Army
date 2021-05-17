@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -12,7 +12,8 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  // final userData=Provider.of<UserDetail>(context);
+  
+  final userData=Provider.of<UserDetail>(context);
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
