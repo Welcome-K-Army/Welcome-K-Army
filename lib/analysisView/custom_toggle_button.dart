@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomToggleButton extends StatefulWidget {
+  Function widgetSetStatus;
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
-  CustomToggleButton({this.firstButtonColor, this.secondButtonColor, this.borderColor});
+  CustomToggleButton({this.widgetSetStatus, this.firstButtonColor, this.secondButtonColor, this.borderColor});
 
-  _CustomToggleButtonState createState() => _CustomToggleButtonState(status: status, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor, borderColor: borderColor);
+  _CustomToggleButtonState createState() => _CustomToggleButtonState(firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor, borderColor: borderColor);
 }
 
 class _CustomToggleButtonState extends State<CustomToggleButton> {
+  Function widgetSetStatus;
+
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
@@ -17,7 +20,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   Color trueButtonColor;
   Color falseButtonColor;
 
-  _CustomToggleButtonState({this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
+  _CustomToggleButtonState({this.widgetSetStatusl, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
     this.trueButtonColor = this.firstButtonColor;
     this.falseButtonColor = this.secondButtonColor;
   }
@@ -40,6 +43,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                       side: BorderSide(color: firstButtonColor),
                     ))),
                 onPressed: () {
+                  widgetSetStatus();
                   setState(() {
                     firstButtonColor = trueButtonColor;
                     secondButtonColor = falseButtonColor;
@@ -57,6 +61,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                   ))),
                 onPressed: () {
                   setState(() {
+                    widgetSetStatus();
                     firstButtonColor = falseButtonColor;
                     secondButtonColor = trueButtonColor;
                   });

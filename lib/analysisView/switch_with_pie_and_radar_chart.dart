@@ -20,6 +20,10 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
 
   bool status = false;
 
+  Function chartSetState = () {
+    status = !status;
+  };
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -38,13 +42,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        NotificationListener<PressedNotification>(
-          onNotification: () {
-            status = !status;
-            print(status);
-            return true;
-          }, 
-          child: CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
+        CustomToggleButton(widgetSetStatus: chartSetState, firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
         ) 
       ]),
     );
