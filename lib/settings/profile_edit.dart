@@ -25,6 +25,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
+  TextEditingController profileNameTextEditingController = TextEditingController();
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +51,7 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
-      TextEditingController profileNameTextEditingController = TextEditingController();
+
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
