@@ -12,6 +12,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
@@ -239,7 +240,7 @@ class _EditProfileState extends State<EditProfile> {
             },
             child: ListView(
               children: [
-                imageProfile(),
+                imageProfile,
                 SizedBox(
                   height: 30,
                 ),
