@@ -39,9 +39,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
         ),
         Container(
           decoration: BoxDecoration(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0)
-            )
+            borderRadius: BorderRadius.circular(18.0)
           ), 
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null),
