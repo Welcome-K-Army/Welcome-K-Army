@@ -17,7 +17,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-  final currentUser=Provider.of<UserData>(context);
+  User user=FirebaseAuth.instance.currentUser;
   bool _profileNameValid =true;
   bool _emailValid =true;
   bool _ageValid =true;
@@ -282,7 +282,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: '${currentUser.nickName}',
+            hintText: '${user.nickName}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -308,7 +308,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: emailTextEditingController,
           decoration: InputDecoration(
-            hintText: '${currentUser.email}',
+            hintText: '${user.email}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -334,7 +334,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: genderTextEditingController,
           decoration: InputDecoration(
-            hintText: '${currentUser.gender}',
+            hintText: '${user.gender}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -360,7 +360,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: ageTextEditingController,
           decoration: InputDecoration(
-            hintText: '${currentUser.age}',
+            hintText: '${user.age}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
