@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'menu.dart';
 import '../theme/routes.dart';
-import '../model/user_data_model.dart';
+import '../net/firebase.dart';
+import '/lib/net/firebase.dart';
 
 //0xff0c9869
 
@@ -242,6 +243,7 @@ class _LoginViewState extends State<Login> {
                 email: _emailController.text,
                 password: _passwordController.text,
               );
+              userLoad();
               //userdata 리드 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
