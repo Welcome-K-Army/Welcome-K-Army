@@ -40,7 +40,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-             hintText: '${userData.nickName}',
+            hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
             hintStyle: TextStyle(color: Colors.grey),
@@ -49,107 +49,104 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
 
-    Widget imageProfile() {
-      return Center(
-        child: Stack(
-          children: [
-            Container(
-              width: 130,
-              height: 130,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 4, color: Colors.green),
-                  boxShadow: [
-                    BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-                  ],
+    final imageProfile = Center(
+      child: Stack(
+        children: [
+          Container(
+            width: 130,
+            height: 130,
+            decoration: BoxDecoration(
+                border: Border.all(width: 4, color: Colors.green),
+                boxShadow: [
+                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    //DB에서 사진가져와야댐
+                    fit: BoxFit.cover, //원본크기 유지
+                    //CachedNetworkImageProvider(user.url),이용
+                    image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
+          ), //Container
+
+          Positioned(
+            //프로필 수정ui
+            bottom: 0,
+            right: 0,
+
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(context: context, builder: ((builder) => bottomSheet()));
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  image: DecorationImage(
-                      //DB에서 사진가져와야댐
-                      fit: BoxFit.cover, //원본크기 유지
-                      //CachedNetworkImageProvider(user.url),이용
-                      image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
-            ), //Container
-
-            Positioned(
-              //프로필 수정ui
-              bottom: 0,
-              right: 0,
-
-              child: InkWell(
-                onTap: () {
-                  showModalBottomSheet(context: context, builder: ((builder) => bottomSheet()));
-                },
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
-                  child: Icon(Icons.edit, size: 30, color: Colors.white),
+                  color: Colors.green,
                 ),
+                child: Icon(Icons.edit, size: 30, color: Colors.white),
               ),
-            ), //Positioned
+            ),
+          ), //Positioned
+        ],
+      ), //Stack
+    ); //Center
+
+    final bottomSheet = Container(
+        height: 100,
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Column(
+          children: <Widget>[
+            Text(
+              'Choose Profile photo',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ), //Text
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                FlatButton.icon(
+                  icon: Icon(
+                    Icons.camera,
+                    size: 50,
+                  ),
+                  onPressed: () {
+                    takePhoto(ImageSource.camera);
+                  },
+                  label: Text(
+                    'Camera',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                FlatButton.icon(
+                  icon: Icon(
+                    Icons.photo_library,
+                    size: 50,
+                  ),
+                  onPressed: () {
+                    takePhoto(ImageSource.gallery);
+                  },
+                  label: Text(
+                    'Gallery',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ], //children
+            )
           ],
-        ), //Stack
-      ); //Center
-    }
+        ) //column
 
-    Widget bottomSheet() {
-      return Container(
-          height: 100,
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Choose Profile photo',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ), //Text
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  FlatButton.icon(
-                    icon: Icon(
-                      Icons.camera,
-                      size: 50,
-                    ),
-                    onPressed: () {
-                      takePhoto(ImageSource.camera);
-                    },
-                    label: Text(
-                      'Camera',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  FlatButton.icon(
-                    icon: Icon(
-                      Icons.photo_library,
-                      size: 50,
-                    ),
-                    onPressed: () {
-                      takePhoto(ImageSource.gallery);
-                    },
-                    label: Text(
-                      'Gallery',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ], //children
-              )
-            ],
-          ) //column
-
-          ); //container
-    } //bottomSheet
+        ); //container
+    //bottomSheet
 
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
@@ -178,7 +175,7 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.white),
             controller: emailTextEditingController,
             decoration: InputDecoration(
-               hintText: '${userData.email}',
+              hintText: '${userData.email}',
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               hintStyle: TextStyle(color: Colors.grey),
@@ -203,7 +200,7 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.white),
             controller: genderTextEditingController,
             decoration: InputDecoration(
-               hintText: '${userData.gender}',
+              hintText: '${userData.gender}',
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               hintStyle: TextStyle(color: Colors.grey),
@@ -228,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.white),
             controller: ageTextEditingController,
             decoration: InputDecoration(
-               hintText: '${userData.age}',
+              hintText: '${userData.age}',
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
               hintStyle: TextStyle(color: Colors.grey),
