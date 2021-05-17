@@ -12,8 +12,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  
-  final userData=Provider.of<UserDetail>(context);
+  final userData = Provider.of<UserData>(context);
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
@@ -236,56 +235,54 @@ class _EditProfileState extends State<EditProfile> {
       );
     } //createProfileNameTextFormField
 
-    return Consumer<UserData>(
-      builder: (context, userData, child) => Scaffold(
-        key: _scaffoldGlobalKey,
-        body: Container(
-          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: ListView(
-                children: [
-                  imageProfile(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  usernicknameForm,
-                  createProfileemailTextField(),
-                  createProfileGenderTextField(),
-                  createProfileAgeTextFormField(),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Cancel",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.black,
-                          )), //Text
-                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ), //OutlineButton
+    return Scaffold(
+      key: _scaffoldGlobalKey,
+      body: Container(
+        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                imageProfile(),
+                SizedBox(
+                  height: 30,
+                ),
+                usernicknameForm,
+                createProfileemailTextField(),
+                createProfileGenderTextField(),
+                createProfileAgeTextFormField(),
+                SizedBox(
+                  height: 40,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text("Cancel",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.black,
+                        )), //Text
+                    style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ), //OutlineButton
 
-                    ElevatedButton(
-                      onPressed: () {}, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
-                      child: Text("Save",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.white,
-                          )),
-                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ) //ElevatedButton
-                  ]),
-                ],
-              ) //ListView
-              ),
-        ), //Container
-      ), //Scafolld
-    );
+                  ElevatedButton(
+                    onPressed: () {}, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
+                    child: Text("Save",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                        )),
+                    style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ) //ElevatedButton
+                ]),
+              ],
+            ) //ListView
+            ),
+      ), //Container
+    ); //Scafolld
   } //
 }
