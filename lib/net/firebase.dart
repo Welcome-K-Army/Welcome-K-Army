@@ -26,7 +26,7 @@ Future<void> userLoad() async {
   String uid = auth.currentUser.uid.toString();
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      print(documentSnapshot.data);
+      print(documentSnapshot.data());
     } else {
       print('no data');
     }
