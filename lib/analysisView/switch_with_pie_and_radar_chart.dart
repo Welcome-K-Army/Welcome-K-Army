@@ -16,7 +16,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
 
   _SwitchWithPieAndRadarChartState({this.title});
 
-  bool status = false;
+  bool status = true;
   Color _textColor = Colors.black;
 
   @override
@@ -42,9 +42,9 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             borderRadius: BorderRadius.circular(18.0)
           ), 
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null),
+            ElevatedButton(child: Text("Donut".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => { status = true}),
             SizedBox(width: 10),
-            ElevatedButton(child: Text("Buy now".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => null)
+            ElevatedButton(child: Text("Radar".toUpperCase(), style: TextStyle(fontSize: 14)), style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(Colors.red), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0), side: BorderSide(color: Colors.red)))), onPressed: () => { status = false})
           ])
         )
         /*
