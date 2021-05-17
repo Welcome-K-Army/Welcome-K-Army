@@ -38,7 +38,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           ),
         ),
         Container(
-          width : 100,
+          width : 160,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black),
             borderRadius: BorderRadius.circular(18.0)
