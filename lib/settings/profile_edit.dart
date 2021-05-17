@@ -26,7 +26,16 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController profileNameTextEditingController = TextEditingController();
 
 
-      final usernicknameForm = Column(
+
+  
+  final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
+
+  PickedFile _imageFile;
+  final ImagePicker _picker=ImagePicker();
+
+  @override
+  Widget build(BuildContext context) {
+        final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -50,15 +59,6 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
-
-  
-  final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-
-  PickedFile _imageFile;
-  final ImagePicker _picker=ImagePicker();
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldGlobalKey,
 
