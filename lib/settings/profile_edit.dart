@@ -18,7 +18,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-  final userData=Provider.of<UserDetail>(context);
+  // final userData=Provider.of<UserDetail>(context);
 
 
   TextEditingController profileNameTextEditingController = TextEditingController();
@@ -217,7 +217,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.nickName}',
+            // hintText: '${user.nickName}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -270,7 +270,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: genderTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.gender}',
+            // hintText: '${user.gender}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
@@ -296,7 +296,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: ageTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.age}',
+            // hintText: '${user.age}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),

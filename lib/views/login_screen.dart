@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'menu.dart';
 import '../theme/routes.dart';
+import '../model/user_data_model.dart';
 
 //0xff0c9869
 
@@ -244,9 +245,8 @@ class _LoginViewState extends State<Login> {
               //userdata 리드 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-  
+
               Navigator.of(context).pushNamed(AppRoutes.menu);
-              
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
@@ -304,7 +304,7 @@ class _LoginViewState extends State<Login> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(36,36,36,20),
+          padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
           child: Container(
             height: size.height,
             child: Column(
