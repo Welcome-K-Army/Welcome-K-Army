@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../model/user_data_model.dart';
 
 Future<void> userSetup(String nickName, String email, String gender, int age) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -26,7 +27,8 @@ Future<void> userLoad() async {
   String uid = auth.currentUser.uid.toString();
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      print(documentSnapshot.data());
+      Map<String, dynamic> data = documentSnapshot.data();
+      UserData.fromJson(data);
     } else {
       print('no data');
     }
