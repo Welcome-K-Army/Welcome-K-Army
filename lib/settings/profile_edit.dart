@@ -21,7 +21,7 @@ class _EditProfileState extends State<EditProfile> {
   // final userData=Provider.of<UserDetail>(context);
 
 
-  TextEditingController profileNameTextEditingController = TextEditingController();
+
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
@@ -50,6 +50,7 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
+      TextEditingController profileNameTextEditingController = TextEditingController();
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
