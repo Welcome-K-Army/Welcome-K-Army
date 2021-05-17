@@ -50,6 +50,10 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           ), 
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             ElevatedButton(
+              child: Text(
+                "Donut".toUpperCase(), 
+                style: TextStyle(fontSize: 14)
+              ), 
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white), 
                 backgroundColor: MaterialStateProperty.all<Color>(_firstButtonColor), 
@@ -69,6 +73,10 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             },),
             SizedBox(width: 15),
             ElevatedButton(
+              child: Text(
+                "Radar".toUpperCase(), 
+                style: TextStyle(fontSize: 14)
+              ), 
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white), 
                 backgroundColor: MaterialStateProperty.all<Color>(_secondButtonColor), 
