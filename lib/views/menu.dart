@@ -3,6 +3,8 @@ import '../settings/profile_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import '../model/user_data_model.dart';
+import 'package:provider/provider.dart';
+
 class MenuScreen extends StatefulWidget {
   // MenuScreen();
   @override
@@ -65,15 +67,19 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  Consumer<UserData>
-                  Container(
-                      body: Column(children: [
-                    Text(userData.uId == null ? "null" : userData.uId),
-                    Text(userData.nickName == null ? "null" : userData.nickName),
-                    Text(userData.email == null ? "null" : userData.email),
-                    Text(userData.age == null ? "null" : userData.age.toString()),
-                    Text(userData.gender == null ? "null" : userData.gender),
-                  ])),
+                  Consumer<UserData>(
+                    builder: (context, userData, child) => Container(
+                      child: Column(
+                        children: [
+                          Text(userData.uid == null ? "null" : userData.uid),
+                          Text(userData.nickName == null ? "null" : userData.nickName),
+                          Text(userData.email == null ? "null" : userData.email),
+                          Text(userData.age == null ? "null" : userData.age.toString()),
+                          Text(userData.gender == null ? "null" : userData.gender),
+                        ],
+                      ),
+                    ),
+                  ),
                   Container(),
                   Profile_menu(),
                   //VideoScreen(),
