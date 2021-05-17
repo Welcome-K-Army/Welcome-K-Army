@@ -21,7 +21,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
   bool status = false;
 
   Function chartSetState = () {
-    status = !status;
+    this.status = !this.status;
   };
 
   @override
@@ -43,7 +43,6 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           ),
         ),
         CustomToggleButton(widgetSetStatus: chartSetState, firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-        ) 
       ]),
     );
   }
