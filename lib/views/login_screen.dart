@@ -244,7 +244,7 @@ class _LoginViewState extends State<Login> {
                 email: _emailController.text,
                 password: _passwordController.text,
               );
-              userLoad(Provider.of<UserData>(context));
+              userLoad(Provider.of<UserData>(context).value);
               //userdata 리드 함수 만들기
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
