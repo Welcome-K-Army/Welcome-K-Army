@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'theme/routes.dart';
 import 'views/opening_screen.dart';
 import 'model/user_data_model.dart';
