@@ -26,6 +26,7 @@ Future<void> userLoad(UserData userData) async {
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+    print(documentSnapshot.exists);
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
       final userData = UserData.fromJson(data);
