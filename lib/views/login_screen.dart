@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'menu.dart';
 import '../theme/routes.dart';
 import '../net/firebase.dart';
-import '/lib/net/firebase.dart';
 
 //0xff0c9869
 
