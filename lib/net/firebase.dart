@@ -30,6 +30,7 @@ Future<void> userLoad(UserData userData) async {
       print(documentSnapshot.data().toString());
       Map<String, dynamic> data = documentSnapshot.data();
       final userData = UserData.fromJson(data);
+      print(userData.gender);
       userData.update();
     } else {
       print('no data');
