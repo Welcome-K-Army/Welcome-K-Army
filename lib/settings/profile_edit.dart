@@ -25,6 +25,31 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
+
+    final usernicknameForm = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text('Profile Name', style: TextStyle(color: Colors.grey),),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.white),
+          controller: profileNameTextEditingController,
+          decoration: InputDecoration(
+            // hintText: '${user.nickName}',
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white)
+            ),
+            hintStyle: TextStyle(color: Colors.grey),
+
+          ),
+        )
+      ],
+    );
   
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
@@ -206,30 +231,6 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
     
-  final usernicknameForm = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 13),
-          child: Text('Profile Name', style: TextStyle(color: Colors.grey),),
-        ),
-        TextField(
-          style: TextStyle(color: Colors.white),
-          controller: profileNameTextEditingController,
-          decoration: InputDecoration(
-            // hintText: '${user.nickName}',
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey)
-            ),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white)
-            ),
-            hintStyle: TextStyle(color: Colors.grey),
-
-          ),
-        )
-      ],
-    );
 
 
   createProfileemailTextField() {
@@ -244,7 +245,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: emailTextEditingController,
           decoration: InputDecoration(
-            hintText: '${user.email}',
+            // hintText: '${user.email}',
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
             ),
