@@ -17,8 +17,8 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   Color secondButtonColor;
   Color borderColor;
 
-  Color trueButtonColor = firstButtonColor;
-  Color falseButtonColor = secondButtonColor;
+  Color trueButtonColor;
+  Color falseButtonColor;
 
   _CustomToggleButtonState({this.status, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
     this.trueButtonColor = this.firstButtonColor;
