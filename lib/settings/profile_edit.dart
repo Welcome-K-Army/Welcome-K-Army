@@ -131,50 +131,6 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-
-    final imageProfile = Center(
-      child: Stack(
-        children: [
-          Container(
-            width: 130,
-            height: 130,
-            decoration: BoxDecoration(
-                border: Border.all(width: 4, color: Colors.green),
-                boxShadow: [
-                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    //DB에서 사진가져와야댐
-                    fit: BoxFit.cover, //원본크기 유지
-                    //CachedNetworkImageProvider(user.url),이용
-                    image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
-          ), //Container
-
-          Positioned(
-            //프로필 수정ui
-            bottom: 0,
-            right: 0,
-
-            child: InkWell(
-              onTap: () {
-                showModalBottomSheet(context: context, builder: ((builder) => bottomSheet()));
-              },
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.green,
-                ),
-                child: Icon(Icons.edit, size: 30, color: Colors.white),
-              ),
-            ),
-          ), //Positioned
-        ],
-      ), //Stack
-    ); //Center
-
     final bottomSheet = Container(
         height: 100,
         width: MediaQuery.of(context).size.width,
@@ -230,6 +186,50 @@ class _EditProfileState extends State<EditProfile> {
 
         ); //container
     //bottomSheet
+
+    final imageProfile = Center(
+      child: Stack(
+        children: [
+          Container(
+            width: 130,
+            height: 130,
+            decoration: BoxDecoration(
+                border: Border.all(width: 4, color: Colors.green),
+                boxShadow: [
+                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    //DB에서 사진가져와야댐
+                    fit: BoxFit.cover, //원본크기 유지
+                    //CachedNetworkImageProvider(user.url),이용
+                    image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
+          ), //Container
+
+          Positioned(
+            //프로필 수정ui
+            bottom: 0,
+            right: 0,
+
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(context: context, builder: ((builder) => bottomSheet()));
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.green,
+                ),
+                child: Icon(Icons.edit, size: 30, color: Colors.white),
+              ),
+            ),
+          ), //Positioned
+        ],
+      ), //Stack
+    ); //Center
+
 
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
