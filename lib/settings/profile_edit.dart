@@ -2,10 +2,16 @@ import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart'; //갤러리 접근
 import 'package:flutter/material.dart';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
 import 'package:provider/provider.dart';
 import '../net/firebase.dart';
+import 'dart:async';
+import 'package:flutter/src/widgets/framework.dart';
+import 'dart:js_util';
+import 'package:path/path.dart';
+import 'package:flutter/src/material/snack_bar.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -13,6 +19,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  
   File _image;
 
   TextEditingController emailTextEditingController = TextEditingController();
@@ -126,11 +133,24 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           //리스트에 파일 경로 추가
-          _image=File(_imageFile.path);
+          _image=pickedFile;
+          print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
           print('No image selected.');
         }
+      });
+    }
+//19 33
+    Future uploadPic(BuildContext context) async{
+      String fileName=basename(_image.path);
+      StorageReference firebaseStorageRef= FirebaseStorage.instance.ref().child(fileName);
+      StorageUploadTask uploadTask = firebaseStorageRef.putFile(_image);
+      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      setState((){
+        print("Profile picture upload");
+        Scaffold.of(context).showSnackBar(SnackBar(context:Text('Profile image upload')));
+
       });
     }
 
@@ -196,17 +216,28 @@ class _EditProfileState extends State<EditProfile> {
           Container(
             width: 130,
             height: 130,
-            decoration: BoxDecoration(
-                border: Border.all(width: 4, color: Colors.green),
-                boxShadow: [
-                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    //DB에서 사진가져와야댐
-                    fit: BoxFit.cover, //원본크기 유지
-                    //CachedNetworkImageProvider(user.url),이용
-                    image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
+            child:CircleAvatar(
+              radius:100,
+              bakgroundColor:Color(0xff476cfb),_EditProfileState
+              child:ClipOval(
+                child:SizedBox(
+                  width:180.0,
+                  height:180.0,alignment,
+                  child(_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
+                ),
+              ),
+            ),
+            // decoration: BoxDecoration(
+            //     border: Border.all(width: 4, color: Colors.green),
+            //     boxShadow: [
+            //       BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
+            //     ],
+            //     shape: BoxShape.circle,
+            //     image: DecorationImage(
+            //         //DB에서 사진가져와야댐
+            //         fit: BoxFit.cover, //원본크기 유지
+            //         //CachedNetworkImageProvider(user.url),이용
+            //         image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
           ), //Container
 
           Positioned(
@@ -259,7 +290,9 @@ class _EditProfileState extends State<EditProfile> {
                         ),
                         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                           OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                             child: Text("Cancel",
                                 style: TextStyle(
                                   fontSize: 17,
