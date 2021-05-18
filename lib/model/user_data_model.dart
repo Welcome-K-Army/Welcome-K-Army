@@ -19,7 +19,7 @@ class UserData extends ChangeNotifier{
   });
 
   void update(){
-     notifyListeners();
+     super.notifyListeners();
   }
   
   factory UserData.fromJson(Map<String, dynamic> json){
