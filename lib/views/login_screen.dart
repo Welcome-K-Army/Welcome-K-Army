@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
-import 'menu.dart';
 import '../theme/routes.dart';
-import '../net/firebase.dart';
-import '../model/user_data_model.dart';
 //0xff0c9869
 
 class Login extends StatefulWidget {
@@ -16,9 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginViewState extends State<Login> {
-    void update() {
-    notifyListeners();
-  }
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
@@ -91,13 +85,10 @@ class _LoginViewState extends State<Login> {
                           onPressed: () async {
                             try {
                               FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
-                              final snackBar = SnackBar(
-                                content: Text("Check your email for password reset."),
-                              );
-                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                               Navigator.of(context).pop();
                             } catch (e) {
                               print(e);
+                              // TODO: Add snackbar reporting error
                             }
                           },
                         ),
@@ -111,22 +102,22 @@ class _LoginViewState extends State<Login> {
     }
 
     //상단부 이미지
-    // final logo = Image.asset(
-    //   "lib/image/Loading.gif",
-    //   height: size.height / 4,
-    // );
-    final logo = Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: CircleAvatar(
-            minRadius: 40,
-            backgroundImage: AssetImage("lib/image/Loading.gif"),
-          ), //CircleAvatar
-        ), //FittedBox
-      ), //Padding
-    ); //Expanded
+    final logo = Image.asset(
+      "lib/image/Loading.gif",
+      height: size.height / 4,
+    );
+    // final logo = Expanded(
+    //   child: Padding(
+    //     padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+    //     child: FittedBox(
+    //       fit: BoxFit.contain,
+    //       child: CircleAvatar(
+    //         minRadius: 40,
+    //         backgroundImage: AssetImage("lib/image/Loading.gif"),
+    //       ), //CircleAvatar
+    //     ), //FittedBox
+    //   ), //Padding
+    // ); //Expanded
 
     final emailField = TextFormField(
         controller: _emailController,
@@ -222,53 +213,46 @@ class _LoginViewState extends State<Login> {
       ),
     );
 
-    final loginButton = Consumer<UserData>(
-      builder: (context, userData, child) => Material(
-        elevation: 5.0,
-        borderRadius: BorderRadius.circular(25.0),
-        color: Colors.white,
-        child: MaterialButton(
-          minWidth: size.width / 1.2,
-          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-          child: Text(
-            "Login",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+    final loginButton = Material(
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(25.0),
+      color: Colors.white,
+      child: MaterialButton(
+        minWidth: size.width / 1.2,
+        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
-          onPressed: () async {
-            if (_formKey.currentState.validate()) {
-              try {
-                await Firebase.initializeApp();
-                UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                );
-                userData(userLoad());
-                userData.update();
-                //userdata 리드 함수 만들기
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString('nickName', user.user.displayName);
-                Navigator.of(context).pushNamed(AppRoutes.menu);
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  final snackBar = SnackBar(
-                    content: Text("No user found for that email."),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                } else if (e.code == 'wrong-password') {
-                  final snackBar = SnackBar(
-                    content: Text("Wrong password provided for that user."),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
-              }
-            }
-          },
         ),
+        onPressed: () async {
+          if (_formKey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              userData=UserData.fromJson(userUpdate());
+              userData.update();
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('nickName', user.user.displayName);
+              Navigator.of(context).pushNamed(AppRoutes.menu);
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'weak-password') {
+                print('The password provided is too weak.');
+              } else if (e.code == 'email-already-in-use') {
+                print('The account already exists for that email.');
+              }
+            } catch (e) {
+              print(e.toString());
+            }
+          }
+        },
       ),
     );
 
@@ -311,7 +295,7 @@ class _LoginViewState extends State<Login> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
+          padding: EdgeInsets.all(36),
           child: Container(
             height: size.height,
             child: Column(
@@ -320,7 +304,7 @@ class _LoginViewState extends State<Login> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 50),
+                  padding: EdgeInsets.only(bottom: 70),
                   child: bottom,
                 ),
               ],

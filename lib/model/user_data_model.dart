@@ -19,6 +19,9 @@ class UserData extends ChangeNotifier {
     this.creationDate,
   });
 
+  void update() {
+    notifyListeners();
+  }
 
   void setUserData({String uid, String nickName, String email, int age, String gender, String creationDate}) {
     this.uid = uid;
