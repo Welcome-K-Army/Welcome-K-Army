@@ -10,7 +10,7 @@ import 'custom_toggle_button.dart';
 class ChartState extends ChangeNotifier {
   bool _state = false;
 
-  getState() => _state;
+  bool get state => _state;
 
   void toggle() {
     this._state = !this._state;
@@ -45,7 +45,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           child: Center(
             child: Column(
               children: <Widget>[
-                Container(height: 200, width: 200, child: chartState.getState() ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+                Container(height: 200, width: 200, child: chartState.state ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
               ],
             ),
           ),
