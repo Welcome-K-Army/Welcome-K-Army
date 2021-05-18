@@ -249,6 +249,7 @@ class _EditProfileState extends State<EditProfile> {
                         SizedBox(
                           height: 30,
                         ),
+                        child: Image.file(_image),
                         usernicknameForm,
                         useremailForm,
                         usergenderForm,
