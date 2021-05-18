@@ -45,7 +45,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
            ); 
           },
           child: const Icon(Icons.navigation),
-          backGroundColor: Color(0xFF0C9869),
+          backgroundColor: Color(0xFF0C9869),
         )          
     );
   }
