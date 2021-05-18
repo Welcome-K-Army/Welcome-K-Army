@@ -19,11 +19,11 @@ class UserData extends ChangeNotifier{
   });
 
   void update(){
-     super.notifyListeners();
+    notifyListeners();
   }
   
   factory UserData.fromJson(Map<String, dynamic> json){
-    return UserData(
+    final userData=UserData(
       uid: json['uid'].toString(),
       nickName: json['nickName'].toString(),
       email:json['email'].toString(),
@@ -31,6 +31,7 @@ class UserData extends ChangeNotifier{
       gender:json['gender'].toString(),
       creationDate: json['createdAt'].toString(),
     );
+    n
   }
   
   Map<String, dynamic> toJson() {
