@@ -54,6 +54,32 @@ class _PieChartWithTextState extends State<PieChartWithText> {
           width: size.width / 6,
           child: Text("hi"),
         ),
+        Container(
+          height: size.width / 3,
+          width : size.width / 3,
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: DonutAutoLabelChart.withSampleData()
+          ),
+        ),
+        Container(
+          height: size.width / 3,
+          width: size.width / 6,
+          child: Text("hi"),
+        ),
+        Container(
+          height: size.width / 3,
+          width : size.width / 3,
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: DonutAutoLabelChart.withSampleData()
+          ),
+        ),
+        Container(
+          height: size.width / 3,
+          width: size.width / 6,
+          child: Text("hi"),
+        ),                
       ]),
     ]);
   }
