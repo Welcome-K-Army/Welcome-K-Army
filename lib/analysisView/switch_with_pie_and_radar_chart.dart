@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:provider/provider.dart';
 
 import './chart/radar_chart.dart';
 import './chart/donut_auto_label_chart.dart';
 
 import 'custom_toggle_button.dart';
+
+class ChartState with ChangeNotifier {
+  bool _state = false;
+
+  bool getState() => _state;
+
+  void toggle() {
+    _state = !_state
+    notifyListeners(); //must be inserted
+  }
+}
 
 class SwitchWithPieAndRadarChart extends StatefulWidget {
   String title;
@@ -17,8 +29,6 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
   String title;
 
   _SwitchWithPieAndRadarChartState({this.title});
-
-  bool status = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +48,15 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        CustomToggleButton(
-          widgetSetState: () {
-          setState(() {
-            this.status = !this.status;
-          });
-        }, firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-      ]),
+        ChangeNotifierProvider<ChartState>(
+          builder: () => ChartState(),
+          child: CustomToggleButton(
+            firstButtonColor: Colors.red, 
+            secondButtonColor: Colors.grey[300], 
+            borderColor: Colors.black
+          ),
+        ),
+        ]),
     );
   }
 }
