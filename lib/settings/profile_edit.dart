@@ -219,7 +219,6 @@ class _EditProfileState extends State<EditProfile> {
           Container(
             width: 130,
             height: 130,
-            child:
             decoration: BoxDecoration(
                 border: Border.all(width: 4, color: Colors.green),
                 boxShadow: [
