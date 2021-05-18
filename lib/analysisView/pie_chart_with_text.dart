@@ -22,7 +22,7 @@ class _PieChartWithTextState extends State<PieChartWithText> {
 
   @override
   Widget build(BuildContext context) {
-    double size = size.width - 20;
+    double width = size.width - 20;
     return Center(
       child:Column(children: [
       Text(
