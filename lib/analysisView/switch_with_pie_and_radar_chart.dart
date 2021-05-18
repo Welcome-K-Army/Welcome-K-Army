@@ -13,7 +13,7 @@ class ChartState with ChangeNotifier {
   bool getState() => _state;
 
   void toggle() {
-    _state = !_state
+    _state = !_state;
     notifyListeners(); //must be inserted
   }
 }
@@ -32,6 +32,8 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
 
   @override
   Widget build(BuildContext context) {
+    final chartState = Provider.of<ChartState>(context);
+
     return Center(
       child: Column(children: [
         Text(
@@ -43,20 +45,16 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           child: Center(
             child: Column(
               children: <Widget>[
-                Container(height: 200, width: 200, child: status ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+                Container(height: 200, width: 200, child: chartState.getState() ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
               ],
             ),
           ),
         ),
         ChangeNotifierProvider<ChartState>(
-          builder: () => ChartState(),
-          child: CustomToggleButton(
-            firstButtonColor: Colors.red, 
-            secondButtonColor: Colors.grey[300], 
-            borderColor: Colors.black
-          ),
+          builder: (_) => ChartState(),
+          child: CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
         ),
-        ]),
+      ]),
     );
   }
 }
