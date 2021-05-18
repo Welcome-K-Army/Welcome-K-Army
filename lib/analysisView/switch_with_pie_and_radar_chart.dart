@@ -35,13 +35,13 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
     return Center(
         child: ChangeNotifierProvider(
       create: (context) => ChartState(),
-      child: Column(children: [
-        Text(
-          title,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        Consumer<ChartState>(
-          builder: (context, value, child) => Container(
+      child: Consumer<ChartState>(
+        builder: (context, chartState, child) => Column(children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Container(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Center(
               child: Column(
@@ -51,9 +51,9 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
               ),
             ),
           ),
-        ),
-        CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-      ]),
+          CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
+        ]),
+      ),
     ));
   }
 }
