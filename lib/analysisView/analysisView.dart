@@ -19,10 +19,13 @@ class AnalysisViewState extends State<AnalysisView> {
         ),
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: Column(children: [
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Column(children: [
               ToggleWithPieAndRadarChart(title: "전체 분석", firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300]),
               PieChartWithText(title: "항목별 분석", size: size),
               ToggleWithComboBarLineChart(title: "경쟁률", firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300]),
-            ])));
+            ]))));
   }
 }
