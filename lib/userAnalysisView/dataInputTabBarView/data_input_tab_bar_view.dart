@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import '../analysisView/analysisView.dart';
+
 class DataInputTabBarView extends StatefulWidget {
   DataInputTabBarViewState createState() => new DataInputTabBarViewState();
 }
@@ -34,7 +36,17 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
             tabs: _tabs
           )
         ),
-        body: Container(),           
+        body: Container(),
+        flotingActionButton: FlotingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AnalysisView()),
+           ),
+          },
+          child: const Icon(Icons.navigation),
+          backGroundColor: Color(0xFF0C9869),
+        )          
     );
   }
 }
