@@ -22,7 +22,8 @@ class _PieChartWithTextState extends State<PieChartWithText> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Center(
+      child: Column(children: [
       Text(
         title,
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -111,6 +112,7 @@ class _PieChartWithTextState extends State<PieChartWithText> {
           child: Text("hi"),
         ),   
       ]),            
-    ]);
+    ])
+    );
   }
 }
