@@ -29,7 +29,7 @@ class UserData extends ChangeNotifier {
     this.age = age;
     this.gender = gender;
     this.creationDate = creationDate;
-    this.update();
+    notifyListeners();
   }
 
   factory UserData.fromJson(Map<String, dynamic> json) {
