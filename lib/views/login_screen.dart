@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 
 import '../theme/routes.dart';
 import '../model/user_data_model.dart';
-//0xff0c9869
+import '/lib/net/firebase.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -239,7 +240,7 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                userData = UserData.fromJson(userData.userLoad());
+                userData=userLoad();
                 userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
@@ -293,24 +294,27 @@ class _LoginViewState extends State<Login> {
       ],
     );
 
-    return Scaffold(
-      backgroundColor: Color(0xff0c9869),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
-          child: Container(
-            height: size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                logo,
-                fields,
-                Padding(
-                  padding: EdgeInsets.only(bottom: 70),
-                  child: bottom,
-                ),
-              ],
+    return ChangeNotifierProvider(
+      create: (context) => UserData(),
+      child: Scaffold(
+        backgroundColor: Color(0xff0c9869),
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(36),
+            child: Container(
+              height: size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  logo,
+                  fields,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 70),
+                    child: bottom,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
