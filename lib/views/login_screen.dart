@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 import '../theme/routes.dart';
 import '../model/user_data_model.dart';
 //0xff0c9869
@@ -214,46 +213,48 @@ class _LoginViewState extends State<Login> {
       ),
     );
 
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
-      child: MaterialButton(
-        minWidth: size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
-          "Login",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+    final loginButton = Consumer<UserData>(
+      builder: (context, userData, child) => Material(
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.white,
+        child: MaterialButton(
+          minWidth: size.width / 1.2,
+          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+          child: Text(
+            "Login",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        onPressed: () async {
-          if (_formKey.currentState.validate()) {
-            try {
-              await Firebase.initializeApp();
-              UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                email: _emailController.text,
-                password: _passwordController.text,
-              );
-              userData=UserData.fromJson(userUpdate());
-              userData.update();
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString('nickName', user.user.displayName);
-              Navigator.of(context).pushNamed(AppRoutes.menu);
-            } on FirebaseAuthException catch (e) {
-              if (e.code == 'weak-password') {
-                print('The password provided is too weak.');
-              } else if (e.code == 'email-already-in-use') {
-                print('The account already exists for that email.');
+          onPressed: () async {
+            if (_formKey.currentState.validate()) {
+              try {
+                await Firebase.initializeApp();
+                UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+                userData = UserData.fromJson(userUpdate());
+                userData.update();
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('nickName', user.user.displayName);
+                Navigator.of(context).pushNamed(AppRoutes.menu);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'weak-password') {
+                  print('The password provided is too weak.');
+                } else if (e.code == 'email-already-in-use') {
+                  print('The account already exists for that email.');
+                }
+              } catch (e) {
+                print(e.toString());
               }
-            } catch (e) {
-              print(e.toString());
             }
-          }
-        },
+          },
+        ),
       ),
     );
 
