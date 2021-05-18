@@ -8,8 +8,6 @@ import 'menu.dart';
 import '../theme/routes.dart';
 import '../net/firebase.dart';
 import '../model/user_data_model.dart';
-import '/lib/net/firebase.dart';
-
 //0xff0c9869
 
 class Login extends StatefulWidget {
