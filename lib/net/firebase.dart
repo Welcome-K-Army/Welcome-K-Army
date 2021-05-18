@@ -21,7 +21,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age) as
   return;
 }
 
-Future<void> userLoad(UserData userData) async {
+Future<UserData> userLoad(UserData userData) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
@@ -35,7 +35,7 @@ Future<void> userLoad(UserData userData) async {
       return userData;
     } else {
       print('no data');
-      return null;
+      return userData;
     }
   });
 }
