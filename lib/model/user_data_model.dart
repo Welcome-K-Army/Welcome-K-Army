@@ -21,7 +21,7 @@ class UserData extends ChangeNotifier{
   void update(){
      notifyListeners();
   }
-
+  
   factory UserData.fromJson(Map<String, dynamic> json){
     return UserData(
       uid: json['uid'].toString(),
