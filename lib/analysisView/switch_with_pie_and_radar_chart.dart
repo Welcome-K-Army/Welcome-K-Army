@@ -32,7 +32,6 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
 
   @override
   Widget build(BuildContext context) {
-    ChartState chartState = ChartState();
 
     return Center(
       child: ChangeNotifierProvider.value(
