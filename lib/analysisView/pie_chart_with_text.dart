@@ -18,11 +18,11 @@ class _PieChartWithTextState extends State<PieChartWithText> {
   _PieChartWithTextState({this.title, this.size});
 
   bool status = false;
-  int width = size.width - 10;
   Color _textColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
+    int width = size.width - 10;
     return Center(
       child: Column(children: [
       Text(
