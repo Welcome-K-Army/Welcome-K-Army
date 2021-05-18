@@ -33,7 +33,7 @@ class UserData extends ChangeNotifier{
     );
   }
   
-  Map<String, Object?> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'uid': uid,
       'nickName': nickName,
