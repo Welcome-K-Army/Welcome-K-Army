@@ -40,16 +40,17 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
           title,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        Consumer<ChartState>(builder(context,value,child)=>Container(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Container(height: 200, width: 200, child: chartState.state ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
-              ],
+        Consumer<ChartState>(
+          builder: (context, value, child) => Container(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Container(height: 200, width: 200, child: chartState.state ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+                ],
+              ),
             ),
           ),
-        ),
         ),
         CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
       ]),
