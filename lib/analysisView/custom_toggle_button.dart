@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomToggleButton extends StatefulWidget {
-  Function widgetSetStatus;
+  Function widgetSetState;
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
-  CustomToggleButton({this.widgetSetStatus, this.firstButtonColor, this.secondButtonColor, this.borderColor});
+  CustomToggleButton({this.widgetSetState, this.firstButtonColor, this.secondButtonColor, this.borderColor});
 
   _CustomToggleButtonState createState() => _CustomToggleButtonState(firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor, borderColor: borderColor);
 }
 
 class _CustomToggleButtonState extends State<CustomToggleButton> {
-  Function widgetSetStatus;
+  Function widgetSetState;
 
   Color firstButtonColor;
   Color secondButtonColor;
@@ -20,7 +20,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   Color trueButtonColor;
   Color falseButtonColor;
 
-  _CustomToggleButtonState({this.widgetSetStatus, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
+  _CustomToggleButtonState({this.widgetSetState, this.firstButtonColor, this.secondButtonColor, this.borderColor}) {
     this.trueButtonColor = this.firstButtonColor;
     this.falseButtonColor = this.secondButtonColor;
   }
@@ -42,7 +42,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                       side: BorderSide(color: firstButtonColor),
                     ))),
                 onPressed: () {
-                  widgetSetStatus();
+                  widgetSetState();
                   setState(() {
                     firstButtonColor = trueButtonColor;
                     secondButtonColor = falseButtonColor;
@@ -53,8 +53,8 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
               ElevatedButton(
                 style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(secondButtonColor), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0), side: BorderSide(color: secondButtonColor)))),
                 onPressed: () {
+                  widgetSetState();
                   setState(() {
-                    widgetSetStatus();
                     firstButtonColor = falseButtonColor;
                     secondButtonColor = trueButtonColor;
                   });
