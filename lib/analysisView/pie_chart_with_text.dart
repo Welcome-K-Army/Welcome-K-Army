@@ -22,8 +22,9 @@ class _PieChartWithTextState extends State<PieChartWithText> {
 
   @override
   Widget build(BuildContext context) {
-    double width = size.width - 10;
     return Center(
+      child:Padding(
+        padding: EdgeInsets.all(10),
       child: Column(children: [
       Text(
         title,
@@ -31,89 +32,89 @@ class _PieChartWithTextState extends State<PieChartWithText> {
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Container(
-          height: width / 3,
-          width : width / 3,
+          height: size.width / 3,
+          width : size.width / 3,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
         Container(
-          height: width / 3,
-          width: width / 6,
+          height: size.width / 3,
+          width: size.width / 6,
           child: Text("hi"),
         ),
         Container(
-          height: width / 3,
-          width : width / 3,
+          height: size.width / 3,
+          width : size.width / 3,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
         Container(
-          height: width / 3,
-          width: width / 6,
-          child: Text("hi"),
-        ),   
-      ]),
-      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        Container(
-          height: width / 3,
-          width : width / 3,
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Center(
-            child: DonutAutoLabelChart.withSampleData()
-          ),
-        ),
-        Container(
-          height: width / 3,
-          width: width / 6,
-          child: Text("hi"),
-        ),
-        Container(
-          height: width / 3,
-          width : width / 3,
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Center(
-            child: DonutAutoLabelChart.withSampleData()
-          ),
-        ),
-        Container(
-          height: width / 3,
-          width: width / 6,
+          height: size.width / 3,
+          width: size.width / 6,
           child: Text("hi"),
         ),   
       ]),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Container(
-          height: width / 3,
-          width : width / 3,
+          height: size.width / 3,
+          width : size.width / 3,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
         Container(
-          height: width / 3,
-          width: width / 6,
+          height: size.width / 3,
+          width: size.width / 6,
           child: Text("hi"),
         ),
         Container(
-          height: width / 3,
-          width : width / 3,
+          height: size.width / 3,
+          width : size.width / 3,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
         Container(
-          height: width / 3,
-          width: width / 6,
+          height: size.width / 3,
+          width: size.width / 6,
+          child: Text("hi"),
+        ),   
+      ]),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Container(
+          height: size.width / 3,
+          width : size.width / 3,
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: DonutAutoLabelChart.withSampleData()
+          ),
+        ),
+        Container(
+          height: size.width / 3,
+          width: size.width / 6,
+          child: Text("hi"),
+        ),
+        Container(
+          height: size.width / 3,
+          width : size.width / 3,
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: DonutAutoLabelChart.withSampleData()
+          ),
+        ),
+        Container(
+          height: size.width / 3,
+          width: size.width / 6,
           child: Text("hi"),
         ),   
       ]),            
-    ])
+    ]))
     );
   }
 }
