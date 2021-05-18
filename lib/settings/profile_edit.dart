@@ -129,7 +129,7 @@ class _EditProfileState extends State<EditProfile> {
     );
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     Future takePhoto(ImageSource source) async {
-      final pickedFile = await _picker.getImage(source: source);
+      var pickedFile = await _picker.getImage(source: source);
 
       setState(() {
         if (pickedFile != null) {
@@ -142,7 +142,7 @@ class _EditProfileState extends State<EditProfile> {
         }
       });
     }
-//19 33
+
     Future uploadPic(BuildContext context) async{
 
       String fileName=basename(_image.path);
