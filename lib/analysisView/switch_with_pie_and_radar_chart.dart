@@ -50,8 +50,8 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        ChangeNotifierProvider<ChartState>(
-          builder: (_) => ChartState(),
+        ChangeNotifierProvider.value(
+          value: chartState,
           child: CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
         ),
       ]),
