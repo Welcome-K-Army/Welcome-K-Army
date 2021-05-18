@@ -4,16 +4,16 @@ import 'package:provider/provider.dart';
 
 import './chart/ordinal_combo_bar_line_chart.dart';
 
-class ToggleWithComboBarChart extends StatefulWidget {
+class ToggleWithComboBarLineChart extends StatefulWidget {
   String title;
   Color firstButtonColor;
   Color secondButtonColor;
-  ToggleWithComboBarChart({this.title, this.firstButtonColor, this.secondButtonColor});
+  ToggleWithComboBarLineChart({this.title, this.firstButtonColor, this.secondButtonColor});
 
-  _ToggleWithComboBarChartState createState() => _ToggleWithComboBarChartState(title: title, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor);
+  _ToggleWithComboBarLineChartState createState() => _ToggleWithComboBarLineChartState(title: title, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor);
 }
 
-class _ToggleWithComboBarChartState extends State<ToggleWithComboBarChart> {
+class _ToggleWithComboBarLineChartState extends State<ToggleWithComboBarLineChart> {
   String title;
   Color firstButtonColor;
   Color secondButtonColor;
@@ -24,7 +24,7 @@ class _ToggleWithComboBarChartState extends State<ToggleWithComboBarChart> {
   OrdinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
   OrdinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
 
-  _ToggleWithComboBarChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
+  _ToggleWithComboBarLineChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
     this.trueButtonColor = this.firstButtonColor;
     this.falseButtonColor = this.secondButtonColor;
   }
