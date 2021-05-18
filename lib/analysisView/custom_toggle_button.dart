@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomToggleButton extends StatefulWidget {
-  Function widgetSetState;
+  Function() widgetSetState;
   Color firstButtonColor;
   Color secondButtonColor;
   Color borderColor;
@@ -11,7 +11,7 @@ class CustomToggleButton extends StatefulWidget {
 }
 
 class _CustomToggleButtonState extends State<CustomToggleButton> {
-  Function widgetSetState;
+  Function() widgetSetState;
 
   Color firstButtonColor;
   Color secondButtonColor;
