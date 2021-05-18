@@ -37,6 +37,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
           )
         ),
         body: TabBarView(
+          controller: _tabController,
           children: <Widget>[
             Text("1차 시험"),
             Text("2차 시험"),
