@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'toggle_with_pie_and_radar_chart.dart';
-import 'pie_chart_with_text.dart';
-import 'toggle_with_combo_bar_line_chart.dart';
-
 class DataInputTabBarView extends StatefulWidget {
   DataInputTabBarViewState createState() => new DataInputTabBarViewState();
 }
