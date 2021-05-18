@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'switch_with_pie_and_radar_chart.dart';
+import 'toggle_with_pie_and_radar_chart.dart';
+import 'toggle_with_combo_bar_line_chart.dart';
 
 class CustomToggleButton extends StatefulWidget {
   Color firstButtonColor;
@@ -27,8 +28,8 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
 
   @override
   Widget build(BuildContext context) {
-    ChartState chartState = Provider.of<ChartState>(context);
-
+    PieAndRadarChartState pieAndRadarChartState = Provider.of<PieAndRadarChartState>(context);
+    ComboBarLineChartState comboBarLineChartState = Provider.of<ComboBarLineChartState>(context);
     return Center(
         child: Container(
             padding: EdgeInsets.all(4),
@@ -44,7 +45,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                       side: BorderSide(color: firstButtonColor),
                     ))),
                 onPressed: () {
-                  chartState.toggle();
+                  pieAndRadarchartState.toggle();
                   setState(() {
                     firstButtonColor = trueButtonColor;
                     secondButtonColor = falseButtonColor;

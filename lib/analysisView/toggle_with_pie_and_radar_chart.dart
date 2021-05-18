@@ -5,55 +5,76 @@ import 'package:provider/provider.dart';
 import './chart/radar_chart.dart';
 import './chart/donut_auto_label_chart.dart';
 
-import 'custom_toggle_button.dart';
-
-class PieAndRadarChartState extends ChangeNotifier {
-  bool _state = false;
-
-  bool get state => _state;
-
-  void toggle() {
-    this._state = !this._state;
-    notifyListeners(); //must be inserted
-  }
-}
-
 class ToggleWithPieAndRadarChart extends StatefulWidget {
   String title;
-  ToggleWithPieAndRadarChart({this.title});
+  Color firstButtonColor;
+  Color secondButtonColor;
+  ToggleWithPieAndRadarChart({this.title, this.firstButtonColor, this.secondButtonColor});
 
-  _ToggleWithPieAndRadarChartState createState() => _ToggleWithPieAndRadarChartState(title: title);
+  _ToggleWithPieAndRadarChartState createState() => _ToggleWithPieAndRadarChartState(title: title, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor);
 }
 
 class _ToggleWithPieAndRadarChartState extends State<ToggleWithPieAndRadarChart> {
   String title;
+  Color firstButtonColor;
+  Color secondButtonColor;
+  Color trueButtonColor;
+  Color falseButtonColor;
+  bool chartState = true;
 
-  _ToggleWithPieAndRadarChartState({this.title});
+  _ToggleWithPieAndRadarChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
+    this.trueButtonColor = this.firstButtonColor;
+    this.falseButtonColor = this.secondButtonColor;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: ChangeNotifierProvider(
-      create: (context) => PieAndRadarChartState(),
-      child: Consumer<PieAndRadarChartState>(
-        builder: (context, PieAndRadarChartState, child) => Column(children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(height: 200, width: 200, child: PieAndRadarChartState.state ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
-                ],
-              ),
+      child: Column(children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Container(height: 200, width: 200, child: chartState ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+              ],
             ),
           ),
-          CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-        ]),
-      ),
-    ));
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          ElevatedButton(
+            style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor: MaterialStateProperty.all<Color>(firstButtonColor),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(22.0),
+                  side: BorderSide(color: firstButtonColor),
+                ))),
+            onPressed: () {
+              setState(() {
+                chartState = !chartState;
+                firstButtonColor = trueButtonColor;
+                secondButtonColor = falseButtonColor;
+              });
+            },
+          ),
+          SizedBox(width: 15),
+          ElevatedButton(
+            style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(secondButtonColor), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0), side: BorderSide(color: secondButtonColor)))),
+            onPressed: () {
+              setState(() {
+                chartState = !chartState;
+                firstButtonColor = falseButtonColor;
+                secondButtonColor = trueButtonColor;
+              });
+            },
+          ),
+        ])
+      ]),
+    );
   }
 }

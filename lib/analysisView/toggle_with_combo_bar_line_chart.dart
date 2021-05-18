@@ -2,60 +2,81 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 
-import './chart/oridinal_combo_bar_line_chart.dart';
-
-import 'custom_toggle_button.dart';
-
-class ComboBarChartState extends ChangeNotifier {
-  bool _state = false;
-
-  bool get state => _state;
-
-  void toggle() {
-    this._state = !this._state;
-    notifyListeners(); //must be inserted
-  }
-}
+import './chart/ordinal_combo_bar_line_chart.dart';
 
 class ToggleWithComboBarChart extends StatefulWidget {
   String title;
-  
-  ToggleWithComboBarChart({this.title});
+  Color firstButtonColor;
+  Color secondButtonColor;
+  ToggleWithComboBarChart({this.title, this.firstButtonColor, this.secondButtonColor});
 
-  _ToggleWithComboBarChartState createState() => _ToggleWithComboBarChartState(title: title);
+  _ToggleWithComboBarChartState createState() => _ToggleWithComboBarChartState(title: title, firstButtonColor: firstButtonColor, secondButtonColor: secondButtonColor);
 }
 
 class _ToggleWithComboBarChartState extends State<ToggleWithComboBarChart> {
   String title;
-  OridinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
-  OridinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
+  Color firstButtonColor;
+  Color secondButtonColor;
+  Color trueButtonColor;
+  Color falseButtonColor;
+  bool chartState = true;
 
-  _ToggleWithComboBarChartState({this.title});
+  OrdinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
+  OrdinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
+
+  _ToggleWithComboBarChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
+    this.trueButtonColor = this.firstButtonColor;
+    this.falseButtonColor = this.secondButtonColor;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: ChangeNotifierProvider(
-      create: (context) => ComboBarChartState(),
-      child: Consumer<ComboBarChartState>(
-        builder: (context, ComboBarChartState, child) => Column(children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(height: 200, width: 200, child: ComboBarChartState.state ? allChart : typeChart)
-                ],
-              ),
+      child: Column(children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Container(height: 200, width: 200, child: chartState ? allChart : typeChart)
+              ],
             ),
           ),
-          CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-        ]),
-      ),
-    ));
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          ElevatedButton(
+            style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor: MaterialStateProperty.all<Color>(firstButtonColor),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(22.0),
+                  side: BorderSide(color: firstButtonColor),
+                ))),
+            onPressed: () {
+              setState(() {
+                chartState = !chartState;
+                firstButtonColor = trueButtonColor;
+                secondButtonColor = falseButtonColor;
+              });
+            },
+          ),
+          SizedBox(width: 15),
+          ElevatedButton(
+            style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(secondButtonColor), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0), side: BorderSide(color: secondButtonColor)))),
+            onPressed: () {
+              setState(() {
+                chartState = !chartState;
+                firstButtonColor = falseButtonColor;
+                secondButtonColor = trueButtonColor;
+              });
+            },
+          ),
+        ])
+      ]),
+    );
   }
 }
