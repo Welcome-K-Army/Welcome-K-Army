@@ -7,13 +7,13 @@ import './chart/donut_auto_label_chart.dart';
 
 import 'custom_toggle_button.dart';
 
-class ChartState with ChangeNotifier {
+class ChartState extends ChangeNotifier {
   bool _state = false;
 
   bool getState() => _state;
 
   void toggle() {
-    _state = !_state;
+    this._state = !this._state;
     notifyListeners(); //must be inserted
   }
 }
