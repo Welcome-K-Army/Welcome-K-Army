@@ -31,7 +31,7 @@ class UserData extends ChangeNotifier{
       gender:json['gender'].toString(),
       creationDate: json['createdAt'].toString(),
     );
-    n
+    
   }
   
   Map<String, dynamic> toJson() {
