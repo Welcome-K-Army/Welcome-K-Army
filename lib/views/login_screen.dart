@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../theme/routes.dart';
 import '../model/user_data_model.dart';
-
+import '../net/firebase.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -239,7 +239,7 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                userLoad();
+                userData=userLoad();
                 userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);

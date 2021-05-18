@@ -126,7 +126,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           //리스트에 파일 경로 추가
-          _images.add(File(_imageFile.path));
+          // _images.add(File(_imageFile.path));
           // _imageFile = pickedFile;
         } else {
           print('No image selected.');
