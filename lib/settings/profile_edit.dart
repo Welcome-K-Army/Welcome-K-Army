@@ -194,6 +194,7 @@ class _EditProfileState extends State<EditProfile> {
       child: Stack(
         children: [
           Container(
+            Image.file(_image),
             width: 130,
             height: 130,
             decoration: BoxDecoration(
@@ -249,7 +250,7 @@ class _EditProfileState extends State<EditProfile> {
                         SizedBox(
                           height: 30,
                         ),
-                        child: Image.file(_image),
+                        
                         usernicknameForm,
                         useremailForm,
                         usergenderForm,
