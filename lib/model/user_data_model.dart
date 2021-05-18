@@ -33,4 +33,15 @@ class UserData extends ChangeNotifier{
     );
   }
   
+  Map<String, Object?> toJson() {
+    return {
+      'uid': uid,
+      'nickName': nickName,
+      'email':email,
+      'age': age,
+      'gender':gender,
+      'createdAt': creationDate,
+    };
+  }
+
 }
