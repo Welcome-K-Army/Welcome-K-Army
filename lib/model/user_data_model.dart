@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
+import 'dart:core';
 
 class UserData extends ChangeNotifier {
-   String uid;
-   String nickName;
-   String email;
-   int age;
-   String gender;
-   String creationDate;
+  String uid;
+  String nickName;
+  String email;
+  int age;
+  String gender;
+  String creationDate;
 
   UserData({
     this.uid,
@@ -19,6 +21,16 @@ class UserData extends ChangeNotifier {
 
   void update() {
     notifyListeners();
+  }
+
+  void setUserData({String uid, String nickName, String email, int age, String gender, String creationDate}) {
+    this.uid = uid;
+    this.nickName = nickName;
+    this.email = email;
+    this.age = age;
+    this.gender = gender;
+    this.creationDate = creationDate;
+    this.update();
   }
 
   factory UserData.fromJson(Map<String, dynamic> json) {

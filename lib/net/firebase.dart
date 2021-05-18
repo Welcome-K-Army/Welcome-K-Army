@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
+import '/lib/model/user_data_model.dart';
 
 Future<void> userSetup(String nickName, String email, String gender, int age) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -21,7 +22,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age) as
   return;
 }
 
-UserData userLoad(UserData userData) {
+UserData userLoad() {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
@@ -29,14 +30,12 @@ UserData userLoad(UserData userData) {
     if (documentSnapshot.exists) {
       print(documentSnapshot.data().toString());
       Map<String, dynamic> data = documentSnapshot.data();
-      userData=UserData.fromJson(data);
-      userData.update();
-      return userData;
+      return UserData.fromJson(data);
     } else {
       print('no data');
     }
   });
-  return userData;
+  return UserData();
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
