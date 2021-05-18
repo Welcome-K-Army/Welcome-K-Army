@@ -6,6 +6,12 @@ class DataInputTabBarView extends StatefulWidget {
 }
 
 class DataInputTabBarViewState extends State<DataInputTabBarView> {
+  final List<Tab> _tabs = <Tab> [
+    Tab(text: "1차 시험"),
+    Tab(text: "2차 시험"),
+    Tab(text: "내신 및 수능"),    
+  ];
+
   TabController _tabController;
 
   @override
@@ -16,6 +22,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> {
       length: 3,
     )
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,12 +30,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> {
         appBar: AppBar(
           title: Text("UserDataInput"),
           bottom: TabBar(
-            controller: x,
-            tabs: <Tab>[
-              Tab(text: "1차 시험"),
-              Tab(text: "2차 시험"),
-              Tab(text: "내신 및 수능"),
-            ]
+            controller: _tabController,
+            tabs: _tabs
           )
         ),
         body: Container(),           
