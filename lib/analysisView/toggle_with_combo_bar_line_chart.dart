@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 
+import './chart/radar_chart.dart';
 import './chart/ordinal_combo_bar_line_chart.dart';
 
 class ToggleWithComboBarLineChart extends StatefulWidget {
@@ -21,8 +22,8 @@ class _ToggleWithComboBarLineChartState extends State<ToggleWithComboBarLineChar
   Color falseButtonColor;
   bool chartState = true;
 
-  OrdinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
-  OrdinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
+  OridinalComboBarLineChart allChart = OridinalComboBarLineChart.withSampleData();
+  OridinalComboBarLineChart typeChart = OridinalComboBarLineChart.withSampleData();
 
   _ToggleWithComboBarLineChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
     this.trueButtonColor = this.firstButtonColor;

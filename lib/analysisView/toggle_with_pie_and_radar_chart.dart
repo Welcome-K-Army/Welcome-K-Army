@@ -40,7 +40,7 @@ class _ToggleWithPieAndRadarChartState extends State<ToggleWithPieAndRadarChart>
           child: Center(
             child: Column(
               children: <Widget>[
-                Container(height: 200, width: 200, child: chartState ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+                Container(height: 200, width: 200, child: chartState ? DonutAutoLabelChart.withSampleData() : CustomRadarChart())
               ],
             ),
           ),
