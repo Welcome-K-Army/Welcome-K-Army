@@ -194,7 +194,7 @@ class _EditProfileState extends State<EditProfile> {
       child: Stack(
         children: [
           Container(
-            Image.file(_image),
+            child : Image.file(_image),
             width: 130,
             height: 130,
             decoration: BoxDecoration(
