@@ -36,7 +36,13 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
             tabs: _tabs
           )
         ),
-        body: Container(),
+        body: TabBarView(
+          children: <Widget>[
+            Text("1차 시험"),
+            Text("2차 시험"),
+            Text("내신 및 수능"),
+          ]
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
