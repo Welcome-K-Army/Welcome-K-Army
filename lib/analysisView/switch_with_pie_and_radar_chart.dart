@@ -10,7 +10,7 @@ import 'custom_toggle_button.dart';
 class ChartState extends ChangeNotifier {
   bool _state = false;
 
-  bool getState() => this._state;
+  getState() => _state;
 
   void toggle() {
     this._state = !this._state;
