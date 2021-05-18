@@ -244,7 +244,7 @@ class _EditProfileState extends State<EditProfile> {
                     },
                     child: ListView(
                       children: [
-                        child: Image.file(_image),
+                        
                         imageProfile,
                         SizedBox(
                           height: 30,
