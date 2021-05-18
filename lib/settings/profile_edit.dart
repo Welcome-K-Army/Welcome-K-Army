@@ -216,30 +216,20 @@ class _EditProfileState extends State<EditProfile> {
           Container(
             width: 130,
             height: 130,
-            child:CircleAvatar(
-              radius:100,
-              bakgroundColor:Color(0xff476cfb),_EditProfileState
-              child:ClipOval(
-                child:SizedBox(
-                  width:180.0,
-                  height:180.0,alignment,
-                  child(_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
-                ),
-              ),
-            ),
-            // decoration: BoxDecoration(
-            //     border: Border.all(width: 4, color: Colors.green),
-            //     boxShadow: [
-            //       BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-            //     ],
-            //     shape: BoxShape.circle,
-            //     image: DecorationImage(
-            //         //DB에서 사진가져와야댐
-            //         fit: BoxFit.cover, //원본크기 유지
-            //         //CachedNetworkImageProvider(user.url),이용
-            //         image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
+            child:
+            decoration: BoxDecoration(
+                border: Border.all(width: 4, color: Colors.green),
+                boxShadow: [
+                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    //DB에서 사진가져와야댐
+                    fit: BoxFit.cover, //원본크기 유지
+                    //CachedNetworkImageProvider(user.url),이용
+                    image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
           ), //Container
-
+// (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
             //프로필 수정ui
             bottom: 0,
