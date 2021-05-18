@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -238,7 +239,7 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                userData = UserData.fromJson(userUpdate());
+                userData = UserData.fromJson(userLoad());
                 userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
