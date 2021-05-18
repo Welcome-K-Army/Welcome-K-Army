@@ -5,7 +5,7 @@ class DataInputTabBarView extends StatefulWidget {
   DataInputTabBarViewState createState() => new DataInputTabBarViewState();
 }
 
-class DataInputTabBarViewState extends State<DataInputTabBarView> {
+class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTickerProviderStateMixin {
   final List<Tab> _tabs = <Tab> [
     Tab(text: "1차 시험"),
     Tab(text: "2차 시험"),
