@@ -37,12 +37,12 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
           )
         ),
         body: Container(),
-        flotingActionButton: FlotingActionButton(
+        floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => AnalysisView()),
-           ),
+           ); 
           },
           child: const Icon(Icons.navigation),
           backGroundColor: Color(0xFF0C9869),
