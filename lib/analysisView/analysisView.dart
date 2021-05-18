@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'switch_with_pie_and_radar_chart.dart';
+import 'toogle_with_pie_and_radar_chart.dart';
 import 'pie_chart_with_text.dart';
-import 'mix_line_and_bar_chart.dart';
-import './chart/ordinal_combo_bar_line_chart.dart';
+import 'toggle_with_combo_bar_line_chart.dart';
 
 class AnalysisView extends StatefulWidget {
   AnalysisViewState createState() => new AnalysisViewState();
@@ -21,14 +20,9 @@ class AnalysisViewState extends State<AnalysisView> {
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(children: [
-              SwitchWithPieAndRadarChart(title: "전체 분석"),
+              ToggleWithPieAndRadarChart(title: "전체 분석"),
               PieChartWithText(title: "항목별 분석", size: size),
-              MixLineAndBarChart(title: "경쟁률"),
-              Container(
-                height: 300,
-                width: 300,
-                child: OrdinalComboBarLineChart.withSampleData(),
-              )
+              ToggleWithComboBarLineChart(title: "경쟁률"),
             ])));
   }
 }

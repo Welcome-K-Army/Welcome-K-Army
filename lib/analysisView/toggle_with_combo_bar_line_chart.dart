@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 
-import './chart/radar_chart.dart';
-import './chart/donut_auto_label_chart.dart';
+import './chart/oridinal_combo_bar_line_chart.dart';
 
 import 'custom_toggle_button.dart';
 
-class ChartState extends ChangeNotifier {
+class ComboBarChartState extends ChangeNotifier {
   bool _state = false;
 
   bool get state => _state;
@@ -18,25 +17,28 @@ class ChartState extends ChangeNotifier {
   }
 }
 
-class SwitchWithPieAndRadarChart extends StatefulWidget {
+class ToggleWithComboBarChart extends StatefulWidget {
   String title;
-  SwitchWithPieAndRadarChart({this.title});
+  
+  ToggleWithComboBarChart({this.title});
 
-  _SwitchWithPieAndRadarChartState createState() => _SwitchWithPieAndRadarChartState(title: title);
+  _ToggleWithComboBarChartState createState() => _ToggleWithComboBarChartState(title: title);
 }
 
-class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart> {
+class _ToggleWithComboBarChartState extends State<ToggleWithComboBarChart> {
   String title;
+  OridinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
+  OridinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
 
-  _SwitchWithPieAndRadarChartState({this.title});
+  _ToggleWithComboBarChartState({this.title});
 
   @override
   Widget build(BuildContext context) {
     return Center(
         child: ChangeNotifierProvider(
-      create: (context) => ChartState(),
-      child: Consumer<ChartState>(
-        builder: (context, chartState, child) => Column(children: [
+      create: (context) => ComboBarChartState(),
+      child: Consumer<ComboBarChartState>(
+        builder: (context, ComboBarChartState, child) => Column(children: [
           Text(
             title,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -46,7 +48,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             child: Center(
               child: Column(
                 children: <Widget>[
-                  Container(height: 200, width: 200, child: chartState.state ? CustomRadarChart() : DonutAutoLabelChart.withSampleData())
+                  Container(height: 200, width: 200, child: ComboBarChartState.state ? allChart : typeChart)
                 ],
               ),
             ),
