@@ -126,7 +126,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           //리스트에 파일 경로 추가
-          // _images.add(File(_imageFile.path));
+          _image=File(_imageFile.path);
           // _imageFile = pickedFile;
         } else {
           print('No image selected.');
@@ -244,6 +244,7 @@ class _EditProfileState extends State<EditProfile> {
                     },
                     child: ListView(
                       children: [
+                        child: Image.file(_image),
                         imageProfile,
                         SizedBox(
                           height: 30,
