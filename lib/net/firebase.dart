@@ -31,7 +31,6 @@ UserData userLoad(UserData userData) {
       Map<String, dynamic> data = documentSnapshot.data();
       userData=UserData.fromJson(data);
       userData.update();
-      print(userData);
       return userData;
     } else {
       print('no data');
