@@ -35,7 +35,9 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
     ChartState chartState = ChartState();
 
     return Center(
-      child: Column(children: [
+      child: ChangeNotifierProvider.value(
+        value: chartState,
+        child: Column(children: [
         Text(
           title,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -50,11 +52,9 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        ChangeNotifierProvider.value(
-          value: chartState,
-          child: CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
-        ),
+        CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
       ]),
+      )
     );
   }
 }
