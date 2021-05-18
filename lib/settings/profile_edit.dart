@@ -13,6 +13,10 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+
+  List<File> _images = [];
+  File _image; 
+
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
@@ -21,7 +25,7 @@ class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
   PickedFile _imageFile;
-  final ImagePicker _picker = ImagePicker();
+  ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +127,9 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          _imageFile = pickedFile;
+          //리스트에 파일 경로 추가
+          _images.add(File(_imageFile.path));
+          // _imageFile = pickedFile;
         } else {
           print('No image selected.');
         }
