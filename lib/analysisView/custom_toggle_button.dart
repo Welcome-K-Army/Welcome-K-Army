@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'switch_with_pie_and_radar_chart.dart';
 
 class CustomToggleButton extends StatefulWidget {
   Color firstButtonColor;
@@ -25,6 +28,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   @override
   Widget build(BuildContext context) {
     ChartState chartState = Provider.of<ChartState>(context);
+
     return Center(
         child: Container(
             padding: EdgeInsets.all(4),
