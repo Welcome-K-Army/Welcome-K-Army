@@ -240,7 +240,7 @@ class _LoginViewState extends State<Login> {
                   password: _passwordController.text,
                 );
                 userData = await userLoad();
-                print(userData.toString);
+                print(userData.toJson().toString);
                 userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
