@@ -25,7 +25,6 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
     this.falseButtonColor = this.secondButtonColor;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -52,13 +51,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
               ),
               SizedBox(width: 15),
               ElevatedButton(
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white), 
-                  backgroundColor: MaterialStateProperty.all<Color>(secondButtonColor), 
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22.0), 
-                    side: BorderSide(color: secondButtonColor)
-                  ))),
+                style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white), backgroundColor: MaterialStateProperty.all<Color>(secondButtonColor), shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0), side: BorderSide(color: secondButtonColor)))),
                 onPressed: () {
                   setState(() {
                     widgetSetStatus();

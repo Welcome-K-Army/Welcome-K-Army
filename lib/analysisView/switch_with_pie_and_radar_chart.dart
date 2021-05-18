@@ -38,9 +38,10 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
             ),
           ),
         ),
-        CustomToggleButton(widgetSetStatus: () {
+        CustomToggleButton(
+          widgetSetStatus: () {
           setState(() {
-            status = !status;
+            this.status = !this.status;
           });
         }, firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
       ]),
