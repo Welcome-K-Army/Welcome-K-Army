@@ -21,7 +21,7 @@ class _ToggleWithComboBarLineChartState extends State<ToggleWithComboBarLineChar
   Color falseButtonColor;
   bool chartState = true;
 
-  OrdinalComboBarLineChart allChart = OrdinalComboBarLineChart.withRandomData();
+  OrdinalComboBarLineChart allChart = OrdinalComboBarLineChart.withSampleData();
   OrdinalComboBarLineChart typeChart = OrdinalComboBarLineChart.withSampleData();
 
   _ToggleWithComboBarLineChartState({this.title, this.firstButtonColor, this.secondButtonColor}) {
