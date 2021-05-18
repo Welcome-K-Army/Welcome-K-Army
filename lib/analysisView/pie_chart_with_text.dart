@@ -36,7 +36,7 @@ class _PieChartWithTextState extends State<PieChartWithText> {
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
-        Cotainer(
+        Container(
           height: size.width / 3,
           width: size.width / 6,
           child: Text("hi"),
@@ -49,7 +49,7 @@ class _PieChartWithTextState extends State<PieChartWithText> {
             child: DonutAutoLabelChart.withSampleData()
           ),
         ),
-        Cotainer(
+        Container(
           height: size.width / 3,
           width: size.width / 6,
           child: Text("hi"),
