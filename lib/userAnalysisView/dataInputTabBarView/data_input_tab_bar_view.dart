@@ -20,7 +20,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> {
     _tabController = TabController(
       vsync: this,
       length: 3,
-    )
+    );  
   }
 
   @override
