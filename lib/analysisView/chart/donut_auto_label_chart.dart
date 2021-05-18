@@ -74,7 +74,7 @@ class DonutAutoLabelChart extends StatelessWidget {
           leftMarginSpec: common.MarginSpec.fixedPixel(0),
           rightMarginSpec: common.MarginSpec.fixedPixel(0),
           bottomMarginSpec: common.MarginSpec.fixedPixel(0),
-          topMarginSpec: common.MarginSpec.fixedPixel(0),
+          topMarginSpec: common.MarginSpec.fixedPixel(20),
         ),
         defaultRenderer: new charts.ArcRendererConfig(
             arcWidth: 120,
