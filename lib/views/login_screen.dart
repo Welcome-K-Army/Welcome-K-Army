@@ -239,8 +239,8 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                final user =userLoad();
-                userData(user).update();
+                userData =userLoad();
+                userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
                 Navigator.of(context).pushNamed(AppRoutes.menu);
