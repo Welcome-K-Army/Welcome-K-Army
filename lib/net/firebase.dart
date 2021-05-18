@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
-
 Future<void> userSetup(String nickName, String email, String gender, int age) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
