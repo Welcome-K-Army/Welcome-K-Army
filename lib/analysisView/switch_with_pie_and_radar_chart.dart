@@ -32,17 +32,15 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
 
   @override
   Widget build(BuildContext context) {
-    ChartState chartState;
-
     return Center(
-        child: ChangeNotifierProvider.value(
-      value: chartState,
+        child: ChangeNotifierProvider(
+      create: (context) => ChartState(),
       child: Column(children: [
         Text(
           title,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        Container(
+        Consumer<ChartState>(builder(context,value,child)=>Container(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Center(
             child: Column(
@@ -51,6 +49,7 @@ class _SwitchWithPieAndRadarChartState extends State<SwitchWithPieAndRadarChart>
               ],
             ),
           ),
+        ),
         ),
         CustomToggleButton(firstButtonColor: Colors.red, secondButtonColor: Colors.grey[300], borderColor: Colors.black),
       ]),
