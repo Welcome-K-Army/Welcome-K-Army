@@ -37,7 +37,8 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     UserData userData = Provider.of<UserData>(context);
-    userData.setUserData(userLoad());
+    userLoad();
+    // userData.setUserData(userLoad());
 
 
     final usernicknameForm = Column(
