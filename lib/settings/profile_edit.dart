@@ -47,7 +47,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-int currentOffset = emailTextEditingController.selection.base.offset; 
+    int currentOffset = emailTextEditingController.selection.base.offset;
     emailTextEditingController.value = TextEditingValue(
       text: userData.email,
       selection: TextSelection.fromPosition(
@@ -89,6 +89,9 @@ int currentOffset = emailTextEditingController.selection.base.offset;
           ),
         ),
         TextField(
+          onChanged: (text) {
+            value = text;
+          },
           enableInteractiveSelection: true,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
