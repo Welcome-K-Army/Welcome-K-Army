@@ -43,9 +43,24 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    TextEditingController emailTextEditingController = TextEditingController(text: '${userData.email}');
-    TextEditingController ageTextEditingController = TextEditingController(text : '${userData.age}');
-    TextEditingController genderTextEditingController = TextEditingController(text:'${userData.gender}');
+    TextEditingController emailTextEditingController = TextEditingController(
+      text: '${userData.email}',
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newValue.length),
+      ),
+    );
+    TextEditingController ageTextEditingController = TextEditingController(
+      text: '${userData.age}',
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newValue.length),
+      ),
+    );
+    TextEditingController genderTextEditingController = TextEditingController(
+      text: '${userData.gender}',
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newValue.length),
+      ),
+    );
     TextEditingController profileNameTextEditingController = TextEditingController();
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
