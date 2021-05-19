@@ -59,7 +59,7 @@ class _EditProfileState extends State<EditProfile> {
           padding: EdgeInsets.only(top: 13),
           child: Text(
             'Profile Name',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         TextField(
@@ -67,7 +67,7 @@ class _EditProfileState extends State<EditProfile> {
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
@@ -82,7 +82,7 @@ class _EditProfileState extends State<EditProfile> {
           padding: EdgeInsets.only(top: 13),
           child: Text(
             'Email',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         TextField(
@@ -90,7 +90,7 @@ class _EditProfileState extends State<EditProfile> {
           controller: emailTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.email}',
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
@@ -104,7 +104,7 @@ class _EditProfileState extends State<EditProfile> {
           padding: EdgeInsets.only(top: 13),
           child: Text(
             'Gender',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         TextField(
@@ -112,7 +112,7 @@ class _EditProfileState extends State<EditProfile> {
           controller: genderTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.gender}',
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
@@ -127,7 +127,7 @@ class _EditProfileState extends State<EditProfile> {
           padding: EdgeInsets.only(top: 13),
           child: Text(
             'Age',
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         TextField(
@@ -135,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
           controller: ageTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.age}',
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
           ),
