@@ -32,15 +32,14 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  factory UserData.fromJson(Map<String, dynamic> json) {
-    return UserData(
-      uid: json['uid'].toString(),
-      nickName: json['nickName'].toString(),
-      email: json['email'].toString(),
-      age: json['age'] as int,
-      gender: json['gender'].toString(),
-      creationDate: json['createdAt'].toString(),
-    );
+  factory fromJson(Map<String, dynamic> json) {
+    this.uid: json['uid'].toString();
+    this.nickName: json['nickName'].toString();
+    this.email: json['email'].toString();
+    this.age: json['age'] as int;
+    this.gender: json['gender'].toString();
+    this.creationDate: json['createdAt'].toString();
+    return this;
   }
 
   Map<String, dynamic> toJson() {
