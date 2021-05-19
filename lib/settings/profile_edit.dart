@@ -23,7 +23,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   
-  File _image;
+  PickedFile _image;
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
@@ -136,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           _image= pickedFile;
-          print('Image Path $_image.toString()');
+          print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
           print('No image selected.');
