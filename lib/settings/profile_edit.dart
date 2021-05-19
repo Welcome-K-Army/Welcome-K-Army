@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../model/user_data_model.dart';
 import 'package:provider/provider.dart';
 import '../net/firebase.dart';
@@ -148,7 +148,7 @@ class _EditProfileState extends State<EditProfile> {
       File file =File(_image.path);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
-        await firebase_storage.FirebaseStorage.instance.ref('/profile_image/upload.png').putFile(file);
+        await FirebaseStorage.instance.ref('/profile_image/upload.png').putFile(file);
       } on firebase_core.FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
       }
