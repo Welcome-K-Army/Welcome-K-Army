@@ -89,8 +89,8 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          onChanged: (text) {
-            value = text;
+          onChanged: (emailTextEditingController.text) {
+            value = emailTextEditingController.text;
           },
           enableInteractiveSelection: true,
           style: TextStyle(color: Colors.black),
