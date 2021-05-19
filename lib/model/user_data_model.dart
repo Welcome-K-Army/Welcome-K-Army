@@ -17,7 +17,7 @@ class UserData with ChangeNotifier {
     this.age,
     this.creationDate,
   });
-
+  
   void update() {
     notifyListeners();
   }
