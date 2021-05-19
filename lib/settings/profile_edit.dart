@@ -136,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           //리스트에 파일 경로 추가
-          _image=pickedFile;
+          _image=File(pickedFile);
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
@@ -150,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
       String fileName=basename(_image.path);
       Reference firebaseStorageRef= FirebaseStorage.instance.ref().child(fileName);
       UploadTask uploadTask = firebaseStorageRef.putFile(_image);
-      TaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      // TaskSnapshot taskSnapshot = await uploadTask.onComplete;
       
 
       setState((){
