@@ -36,6 +36,7 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
+
     UserData userData = Provider.of<UserData>(context);
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -62,7 +63,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
@@ -85,7 +86,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.email}',
@@ -107,7 +108,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
           controller: genderTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.gender}',
@@ -130,7 +131,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
           controller: ageTextEditingController,
           decoration: InputDecoration(
             hintText: '${userData.age}',
