@@ -23,9 +23,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   PickedFile _image;
-  
-
-
 
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
@@ -34,7 +31,6 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-
     UserData userData = Provider.of<UserData>(context);
     // userData.setUserData(userLoad());
 
@@ -55,7 +51,6 @@ class _EditProfileState extends State<EditProfile> {
     TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
     TextEditingController profileNameTextEditingController = TextEditingController();
 
-
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -68,12 +63,11 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.black),
+          prefixText: Text('${userData.nickName}'),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            hintStyle: TextStyle(color: Colors.grey),
           ),
         )
       ],
@@ -162,19 +156,16 @@ class _EditProfileState extends State<EditProfile> {
     }
 
     Future<void> uploadPic(String filePath) async {
-
-      File file =File(filePath);
+      File file = File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
         await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
-        if (file != null){
+        if (file != null) {
           print("upload Image!");
         }
       } on FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
       }
-
-      
     }
 
     final bottomSheet = Container(
@@ -315,7 +306,6 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
