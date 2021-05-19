@@ -22,7 +22,7 @@ class UserData with ChangeNotifier {
     notifyListeners();
   }
 
-  void set setuserData(UserData setuserData) {
+  void set setUserData(UserData setuserData) {
     this.uid = setuserData.uid;
     this.nickName = setuserData.nickName;
     this.email = setuserData.email;
