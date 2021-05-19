@@ -18,7 +18,7 @@ class UserData with ChangeNotifier {
     this.creationDate,
   });
 
-  void setUserData(UserData setuserData) {
+  UserData setUserData(UserData setuserData) {
     this.uid = setuserData.uid == null ? "" : setuserData.uid;
     this.nickName = setuserData.nickName == null ? "" : setuserData.nickName;
     this.email = setuserData.email == null ? "" : setuserData.email;
@@ -26,6 +26,7 @@ class UserData with ChangeNotifier {
     this.gender = setuserData.gender == null ? "" : setuserData.gender;
     this.creationDate = setuserData.creationDate == null ? "" : setuserData.creationDate;
     notifyListeners();
+    return this;
   }
 
   factory UserData.fromJson(Map<String, dynamic> json) {
