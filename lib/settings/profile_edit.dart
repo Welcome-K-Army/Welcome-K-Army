@@ -94,7 +94,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          enableInteractiveSelection:true
+          enableInteractiveSelection:true,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
