@@ -85,7 +85,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextFormField(
             controller: emailTextEditingController,
-            initialValue: userData.email,
+            initialValue: '${userData.email}',
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
