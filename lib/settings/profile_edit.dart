@@ -36,7 +36,7 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserData>(context);
+    UserData userData = Provider.of<UserData>(context);
     userData.setUserData(userLoad());
     print(userData.uid);
     print(userData.email);
