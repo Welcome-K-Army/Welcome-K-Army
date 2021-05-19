@@ -82,17 +82,15 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        Consumer<UserData>(
-          builder: (context, userData, child) => TextFormField(
+        TextFormField(
             controller: emailTextEditingController,
-            initialValue: '${userData.email}',
+            // initialValue: '${userData.email}',
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             ),
           ),
-        )
       ],
     );
     final usergenderForm = Column(
