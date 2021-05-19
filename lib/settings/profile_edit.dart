@@ -37,7 +37,10 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     UserData userData = Provider.of<UserData>(context);
-    userData.setUserData(userLoad());
+    print(userLoad().email);
+    // userData.setUserData(userLoad());
+
+
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
