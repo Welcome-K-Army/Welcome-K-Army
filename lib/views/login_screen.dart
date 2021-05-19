@@ -249,6 +249,7 @@ class _LoginViewState extends State<Login> {
                     Map<String, dynamic> data = documentSnapshot.data();
                     print(UserData.fromJson(data).email);
                     userData.setUserData(UserData.fromJson(data));
+                    print(userData.email);
 ;                  } else {
                     print('no data');
                   }
