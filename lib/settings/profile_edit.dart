@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import '../net/firebase.dart';
 import 'dart:async';
 import 'package:flutter/src/widgets/framework.dart';
-import 'dart:js_util';
+// import 'dart:js_util';
 import 'package:path/path.dart';
 import 'package:flutter/src/material/snack_bar.dart';
 
