@@ -27,7 +27,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
-  TextEditingController profileNameTextEditingController = TextEditingController();
+  TextEditingController profileNameTextEditingController = TextEditingController()..text = 'Your initial value';
 
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
@@ -62,11 +62,11 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextFormField(
+        TextField(
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            initialValue: '${userData.nickName}',
+            hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
