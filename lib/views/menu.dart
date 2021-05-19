@@ -29,9 +29,7 @@ class MenuScreenState extends State<MenuScreen> {
   
   MenuScreenState();
   Widget build(BuildContext context) {
-    final updateuser=Provider.of<UserData>(context);
-    updateuser.setUserData(userLoad());
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(''),
@@ -74,7 +72,7 @@ class MenuScreenState extends State<MenuScreen> {
                     builder: (context, userData, child) => Container(
                       child: Column(
                         children: [
-                          Text(updateuser.uid == null ? "null" : updateuser.uid),
+                          Text(userData.uid == null ? "null" : userData.uid),
                           Text(userData.nickName == null ? "null" : userData.nickName),
                           Text(userData.email == null ? "null" : userData.email),
                           Text(userData.age == null ? "null" : userData.age.toString()),
