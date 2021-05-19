@@ -27,7 +27,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
-  TextEditingController profileNameTextEditingController = TextEditingController()..text = 'Your initial value';
+  TextEditingController profileNameTextEditingController = TextEditingController()..text = '${userData.nickName}';
 
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
