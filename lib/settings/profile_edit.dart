@@ -45,20 +45,20 @@ class _EditProfileState extends State<EditProfile> {
     // userData.setUserData(userLoad());
     TextEditingController emailTextEditingController = TextEditingController(
       text: '${userData.email}',
-      selection: TextSelection.fromPosition(
-        TextPosition(offset: _newValue.length),
+      value.selection: TextSelection.fromPosition(
+        TextPosition(offset: userData.email.length),
       ),
     );
     TextEditingController ageTextEditingController = TextEditingController(
       text: '${userData.age}',
       selection: TextSelection.fromPosition(
-        TextPosition(offset: _newValue.length),
+        TextPosition(offset: '${userData.age}'.length),
       ),
     );
     TextEditingController genderTextEditingController = TextEditingController(
       text: '${userData.gender}',
       selection: TextSelection.fromPosition(
-        TextPosition(offset: _newValue.length),
+        TextPosition(offset: userData.gender.length),
       ),
     );
     TextEditingController profileNameTextEditingController = TextEditingController();
