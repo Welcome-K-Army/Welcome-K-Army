@@ -135,8 +135,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          
-          _image=pickedFile;
+          _image=File(pickedFile);
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
