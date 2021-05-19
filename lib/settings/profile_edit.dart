@@ -36,14 +36,10 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-
-    
     UserData userData = Provider.of<UserData>(context);
 
-
-  CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-  String uid = FirebaseAuth.instance.currentUser.uid.toString();
-  if (uid != null) {
+    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    String uid = FirebaseAuth.instance.currentUser.uid.toString();
     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         Map<String, dynamic> data = documentSnapshot.data();
@@ -52,9 +48,8 @@ class _EditProfileState extends State<EditProfile> {
         print('no data');
       }
     });
-  }
-    // userData.setUserData(userLoad());
 
+    // userData.setUserData(userLoad());
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,

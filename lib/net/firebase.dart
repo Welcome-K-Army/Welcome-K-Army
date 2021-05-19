@@ -25,20 +25,19 @@ UserData userLoad() {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
-  UserData userData;
   if (uid != null) {
     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         Map<String, dynamic> data = documentSnapshot.data();
-        userData= UserData.fromJson(data);
+        return UserData.fromJson(data);
       } else {
         print('no data');
       }
     });
   }else{
   print("no uid");
+  return null;
   }
-  return userData;
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
