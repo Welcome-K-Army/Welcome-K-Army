@@ -243,7 +243,7 @@ class _LoginViewState extends State<Login> {
                 CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
                 String uid = FirebaseFirestore.instance.currentUser.uid.toString();
 
-                users.doc(user.uid).get().then((DocumentSnapshot documentSnapshot) {
+                users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
                   if (documentSnapshot.exists) {
                     print(documentSnapshot.data().toString());
                     Map<String, dynamic> data = documentSnapshot.data();
