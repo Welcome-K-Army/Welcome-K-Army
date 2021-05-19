@@ -29,7 +29,7 @@ Future<void>  userLoad(UserData userData) {
     if (documentSnapshot.exists) {
       print(documentSnapshot.data().toString());
       Map<String, dynamic> data = documentSnapshot.data();
-      userData.setUserData(UserData.fromJson(data));
+      // userData.setUserData(UserData.fromJson(data));
     } else {
       print('no data');
     }

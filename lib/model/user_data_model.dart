@@ -20,7 +20,7 @@ class UserData with ChangeNotifier {
   
 
 
-  set setUserData(UserData setuserData) {
+  void setUserData(UserData setuserData) {
     this.uid = setuserData.uid;
     this.nickName = setuserData.nickName;
     this.email = setuserData.email;
