@@ -160,7 +160,7 @@ class _EditProfileState extends State<EditProfile> {
       File file = File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
-        await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
+        await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
         if (file != null) {
           print("upload Image!");
         }
@@ -293,7 +293,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        print(_image.toString());
+                        print(_image.path.toString());
                         uploadPic(_image.path.toString());
                       },
                       child: Text("Cancel",
