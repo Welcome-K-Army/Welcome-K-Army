@@ -135,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          //리스트에 파일 경로 추가
+          
           _image=pickedFile;
           print('Image Path $_image');
           // _imageFile = pickedFile;
@@ -299,7 +299,7 @@ class _EditProfileState extends State<EditProfile> {
 
                           ElevatedButton(
                             onPressed: () {
-                              uploadPic(context);
+                              // uploadPic(context);
                               userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                             }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                             //String nickName, String email, String gender, int age
