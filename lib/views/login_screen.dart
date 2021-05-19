@@ -239,7 +239,7 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                userData.setuserData(userLoad());
+                userData.setUserData(userLoad());
                 userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
