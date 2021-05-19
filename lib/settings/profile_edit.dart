@@ -62,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextField(
+        TextFormField(
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
