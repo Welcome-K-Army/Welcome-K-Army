@@ -23,6 +23,10 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
+  TextEditingController profileNameTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController ageTextEditingController = TextEditingController();
+  TextEditingController genderTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +47,14 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    TextEditingController emailTextEditingController = TextEditingController();
+int currentOffset = emailTextEditingController.selection.base.offset; 
     emailTextEditingController.value = TextEditingValue(
       text: '${userData.email}',
       selection: TextSelection.fromPosition(
-        TextPosition(offset: userData.email.length),
+        TextPosition(offset: currentOffset),
       ),
     );
-    TextEditingController ageTextEditingController = TextEditingController(
-      text: '${userData.age}',
-    );
-    TextEditingController genderTextEditingController = TextEditingController(
-      text: '${userData.gender}',
-    );
-    
 
-    TextEditingController profileNameTextEditingController = TextEditingController();
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -70,7 +66,6 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
@@ -94,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          enableInteractiveSelection:true,
+          enableInteractiveSelection: true,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
