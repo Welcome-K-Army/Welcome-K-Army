@@ -150,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          _image = pickedFile.path;
+          _image = pickedFile;
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
@@ -160,12 +160,12 @@ class _EditProfileState extends State<EditProfile> {
     }
 
     Future<void> uploadPic(String filePath) async {
-      File file =File(filePath);
+      var file =File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
         await FirebaseStorage.instance.ref('profile_image/').putFile(file);
         if (file != null){
-          print("upload Image!")
+          print("upload Image!");
         }
       } on FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
