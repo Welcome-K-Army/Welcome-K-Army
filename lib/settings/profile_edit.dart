@@ -69,7 +69,6 @@ class _EditProfileState extends State<EditProfile> {
         TextField(
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
-          onChanged: (text) => {},
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
@@ -163,10 +162,11 @@ class _EditProfileState extends State<EditProfile> {
     }
 
     Future<void> uploadPic(String filePath) async {
-      var file =File(filePath);
+
+      File file =File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
-        await FirebaseStorage.instance.ref('profile_image/').putFile(file);
+        await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
         if (file != null){
           print("upload Image!");
         }
@@ -301,6 +301,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
+                        print(_image.toString());
                         uploadPic(_image.toString());
                       },
                       child: Text("Cancel",
