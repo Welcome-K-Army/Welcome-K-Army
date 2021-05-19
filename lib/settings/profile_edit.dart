@@ -150,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
       String fileName=basename(_image.path);
       Reference firebaseStorageRef= FirebaseStorage.instance.ref().child(fileName);
       UploadTask uploadTask = firebaseStorageRef.putFile(_image);
-      TaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      TaskSnapshot taskSnapshot = await(await uploadTask.onComplete);
 
       setState((){
         print("Profile picture upload");
