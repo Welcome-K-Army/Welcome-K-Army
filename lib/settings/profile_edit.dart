@@ -293,8 +293,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
-                      onPressed: () {
-                        print(_image.path.toString());
+                      ontap: () {
                         uploadPic(_image.path);
                       },
                       child: Text("Cancel",
