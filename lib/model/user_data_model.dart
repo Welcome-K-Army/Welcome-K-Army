@@ -17,8 +17,6 @@ class UserData with ChangeNotifier {
     this.age,
     this.creationDate,
   });
-  
-
 
   void setUserData(UserData setuserData) {
     this.uid = setuserData.uid;
