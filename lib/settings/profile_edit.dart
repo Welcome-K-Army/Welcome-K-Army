@@ -68,7 +68,7 @@ class _EditProfileState extends State<EditProfile> {
             prefixText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            prefixStyle: TextStyle(color: Colors.balck),
+            prefixStyle: TextStyle(color: Colors.black),
           ),
         )
       ],
@@ -294,7 +294,7 @@ class _EditProfileState extends State<EditProfile> {
                     OutlinedButton(
                       onPressed: () {
                         print(_image.toString());
-                        uploadPic(_image.toString());
+                        uploadPic(_image.path.toString());
                       },
                       child: Text("Cancel",
                           style: TextStyle(
