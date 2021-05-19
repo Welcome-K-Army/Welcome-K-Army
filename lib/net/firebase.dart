@@ -34,8 +34,9 @@ UserData userLoad() {
         print('no data');
       }
     });
-  }
+  }else{
   print("no uid");
+  }
   return null;
 }
 
