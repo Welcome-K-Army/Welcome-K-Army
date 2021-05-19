@@ -51,13 +51,13 @@ class _EditProfileState extends State<EditProfile> {
     );
     TextEditingController ageTextEditingController = TextEditingController(
       text: '${userData.age}',
-      selection: TextSelection.fromPosition(
+      value.selection: TextSelection.fromPosition(
         TextPosition(offset: '${userData.age}'.length),
       ),
     );
     TextEditingController genderTextEditingController = TextEditingController(
       text: '${userData.gender}',
-      selection: TextSelection.fromPosition(
+      value.selection: TextSelection.fromPosition(
         TextPosition(offset: userData.gender.length),
       ),
     );
