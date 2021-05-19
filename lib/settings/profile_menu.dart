@@ -3,9 +3,6 @@ import 'profile_edit.dart';
 
 import '../model/user_data_model.dart';
 
-
-
-
 class Profile_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context,MaterialPageRoute(builder:(context) => EditProfile()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()));
           },
         ),
         ProfileMenu(
@@ -44,10 +41,10 @@ class Profile_menu extends StatelessWidget {
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     Key key,
-    @required this.text, 
-    @required this.icon, 
+    @required this.text,
+    @required this.icon,
     @required this.press,
-  }) : super(key: key); 
+  }) : super(key: key);
 
   final String text;
   final Icon icon;
@@ -56,33 +53,30 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding:const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-          child:Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-              elevation: 5,
-              child:FlatButton(
-              padding: EdgeInsets.all(20),
-              
-              color: Color(0xFFF5F6F9),
-              onPressed : press,
-              child:Row(
-                children:[
-                  icon,
-                  SizedBox(width: 20),
-                  Expanded(
-                    child:Text(
-                      text,
-                      style: Theme.of(context).textTheme.bodyText1,
-                      
-                    ),//Text
-                  ),//Expanded
-                  Icon(Icons.east)
-                ],
-              ),//Row
-            ),//FlatButton
-          ),//Card
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+        elevation: 5,
+        child: FlatButton(
+          padding: EdgeInsets.all(20),
 
-        );//Padding;
+          color: Color(0xFFF5F6F9),
+          onPressed: press,
+          child: Row(
+            children: [
+              icon,
+              SizedBox(width: 20),
+              Expanded(
+                child: Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ), //Text
+              ), //Expanded
+              Icon(Icons.east)
+            ],
+          ), //Row
+        ), //FlatButton
+      ), //Card
+    ); //Padding;
   }
 }
-
