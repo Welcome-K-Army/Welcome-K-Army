@@ -163,7 +163,7 @@ class _EditProfileState extends State<EditProfile> {
       File file =File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
-        await FirebaseStorage.instance.ref('/profile_image/upload.png').putFile(file);
+        await FirebaseStorage.instance.ref('profile_image/').putFile(file);
       } on FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
       }
