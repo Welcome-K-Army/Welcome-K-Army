@@ -22,7 +22,7 @@ class UserData with ChangeNotifier {
     notifyListeners();
   }
 
-  void set setUserData(UserData setuserData) {
+  UserData setUserData(UserData setuserData) {
     this.uid = setuserData.uid;
     this.nickName = setuserData.nickName;
     this.email = setuserData.email;
@@ -30,6 +30,7 @@ class UserData with ChangeNotifier {
     this.gender = setuserData.gender;
     this.creationDate = setuserData.creationDate;
     notifyListeners();
+    return this;
   }
 
   factory UserData.fromJson(Map<String, dynamic> json) {
