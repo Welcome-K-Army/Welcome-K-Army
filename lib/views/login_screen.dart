@@ -241,7 +241,7 @@ class _LoginViewState extends State<Login> {
                   password: _passwordController.text,
                 );
                 CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-                String uid = FirebaseFirestore.instance.currentUser.uid.toString();
+                String uid = FirebaseAuth.instance.currentUser.uid.toString();
 
                 users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
                   if (documentSnapshot.exists) {
