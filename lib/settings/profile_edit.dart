@@ -68,10 +68,8 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            // prefixText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            // prefixStyle: TextStyle(color: Colors.black),
           ),
         )
       ],
@@ -88,9 +86,9 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          initialValue: userData.email,
           style: TextStyle(color: Colors.black),
-          controller: emailTextEditingController,
+          onChanged: (text) => {},
+          controller: emailTextEditingController..text =userData.email,
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
