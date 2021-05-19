@@ -166,6 +166,7 @@ class _EditProfileState extends State<EditProfile> {
           print("upload Image!");
         }
       } on FirebaseException catch (e) {
+        print(e.code);
         // e.g, e.code == 'canceled'
       }
     }
