@@ -136,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         if (pickedFile != null) {
           //리스트에 파일 경로 추가
-          _image=File(pickedFile);
+          _image=pickedFile;
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
