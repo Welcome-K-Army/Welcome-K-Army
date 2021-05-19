@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
@@ -22,7 +21,6 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  
   PickedFile _image;
 
   TextEditingController emailTextEditingController = TextEditingController();
@@ -135,7 +133,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          _image= pickedFile;
+          _image = pickedFile;
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
@@ -144,18 +142,15 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future uploadPic(BuildContext context) async{
-
-      String fileName=basename(_image.path);
-      Reference firebaseStorageRef= FirebaseStorage.instance.ref().child(fileName);
-      // UploadTask uploadTask = firebaseStorageRef.putFile(_image);
+    Future uploadPic(BuildContext context) async {
+      String fileName = basename(_image.path);
+      Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image").child(fileName);
+      UploadTask uploadTask = firebaseStorageRef.putFile(_image);
       // TaskSnapshot taskSnapshot = await uploadTask.onComplete;
-      
 
-      setState((){
+      setState(() {
         print("Profile picture upload");
         // Scaffold.of(context).showSnackBar(SnackBar(context:Text('Profile image upload')));
-
       });
     }
 
@@ -269,12 +264,10 @@ class _EditProfileState extends State<EditProfile> {
                     },
                     child: ListView(
                       children: [
-                        
                         imageProfile,
                         SizedBox(
                           height: 30,
                         ),
-                        
                         usernicknameForm,
                         useremailForm,
                         usergenderForm,
