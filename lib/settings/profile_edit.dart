@@ -47,13 +47,12 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    int currentOffset = emailTextEditingController.selection.base.offset;
-    emailTextEditingController.value = TextEditingValue(
-      text: userData.email,
-      selection: TextSelection.fromPosition(
-        TextPosition(offset: currentOffset),
-      ),
-    );
+    // emailTextEditingController.value = TextEditingValue(
+    //   text: userData.email,
+    //   selection: TextSelection.fromPosition(
+    //     TextPosition(offset: emailTextEditingController.selection.base.offset),
+    //   ),
+    // );
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,13 +88,12 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
+          initialValue: userData.email,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
-            hintText: '${userData.email}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            hintStyle: TextStyle(color: Colors.grey),
           ),
         )
       ],
@@ -114,10 +112,8 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.black),
           controller: genderTextEditingController,
           decoration: InputDecoration(
-            hintText: '${userData.gender}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            hintStyle: TextStyle(color: Colors.grey),
           ),
         )
       ],
@@ -137,10 +133,8 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.black),
           controller: ageTextEditingController,
           decoration: InputDecoration(
-            hintText: '${userData.age}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            hintStyle: TextStyle(color: Colors.grey),
           ),
         )
       ],
