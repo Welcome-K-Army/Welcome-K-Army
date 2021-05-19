@@ -23,6 +23,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   PickedFile _image;
+  
 
 
 
@@ -52,7 +53,12 @@ class _EditProfileState extends State<EditProfile> {
     TextEditingController emailTextEditingController = TextEditingController()..text = '${userData.email}';
     TextEditingController ageTextEditingController = TextEditingController()..text = '${userData.age}';
     TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
-    TextEditingController profileNameTextEditingController = TextEditingController(text:'${userData.nickName}');
+    TextEditingController profileNameTextEditingController = TextEditingController();
+    @override
+    void initState() {
+      super.initState();
+      profileNameTextEditingController.text = '${userData.nickName}';
+      }
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
