@@ -156,25 +156,18 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(BuildContext context) async {
-      String fileName = basename(_image.path);
-      StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child('/profile_image$fileName');
-      StorageUploadTask uploadTask = firebaseStorageRef.putFile(_image);
-      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-      taskSnapshot.ref.getDownloadURL().then(
-            (value) => print("Done: $value"),
-          );
+    Future<void> uploadPic(String filePath) async {
 
-      // final File file = File(filePath);
-      // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
-      // try {
-      //   await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
-      //   if (file != null) {
-      //     print("upload Image!");
-      //   }
-      // } on FirebaseException catch (e) {
-      //   // e.g, e.code == 'canceled'
-      // }
+      final File file = File(filePath);
+      Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
+      try {
+        await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
+        if (file != null) {
+          print("upload Image!");
+        }
+      } on FirebaseException catch (e) {
+        // e.g, e.code == 'canceled'
+      }
     }
 
     final bottomSheet = Container(
@@ -302,7 +295,7 @@ class _EditProfileState extends State<EditProfile> {
                     OutlinedButton(
                       onPressed: () {
                         print(_image.path.toString());
-                        uploadPic(context);
+                        uploadPic(_image.path.toString());
                       },
                       child: Text("Cancel",
                           style: TextStyle(
