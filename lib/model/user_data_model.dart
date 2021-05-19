@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 
-class UserData extends ChangeNotifier {
+class UserData with ChangeNotifier {
   String uid;
   String nickName;
   String email;
@@ -22,7 +22,7 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUserData(UserData setuserData) {
+  void set setuserData(UserData setuserData) {
     this.uid = setuserData.uid;
     this.nickName = setuserData.nickName;
     this.email = setuserData.email;
