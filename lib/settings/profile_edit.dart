@@ -49,9 +49,9 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    TextEditingController emailTextEditingController = TextEditingController();..text = '${userData.email}';
-    TextEditingController ageTextEditingController = TextEditingController();..text = '${userData.age}';
-    TextEditingController genderTextEditingController = TextEditingController();..text = '${userData.gender}';
+    TextEditingController emailTextEditingController = TextEditingController()..text = '${userData.email}';
+    TextEditingController ageTextEditingController = TextEditingController()..text = '${userData.age}';
+    TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
     TextEditingController profileNameTextEditingController = TextEditingController()..text = '${userData.nickName}';
 
     final usernicknameForm = Column(
