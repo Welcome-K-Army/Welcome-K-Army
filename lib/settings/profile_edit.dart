@@ -15,7 +15,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'dart:js_util';
 import 'package:path/path.dart';
 import 'package:flutter/src/material/snack_bar.dart';
-import '/lib/net/firebase.dart';
 
 class EditProfile extends StatefulWidget {
   @override
