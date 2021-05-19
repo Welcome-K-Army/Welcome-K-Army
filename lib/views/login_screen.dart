@@ -240,18 +240,21 @@ class _LoginViewState extends State<Login> {
                   password: _passwordController.text,
                 );
                 userData.setUserData(userLoad());
-                userData.update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
                 Navigator.of(context).pushNamed(AppRoutes.menu);
               } on FirebaseAuthException catch (e) {
-                if (e.code == 'weak-password') {
-                  print('The password provided is too weak.');
-                } else if (e.code == 'email-already-in-use') {
-                  print('The account already exists for that email.');
+                if (e.code == 'user-not-found') {
+                  final snackBar = SnackBar(
+                    content: Text("No user found for that email."),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                } else if (e.code == 'wrong-password') {
+                  final snackBar = SnackBar(
+                    content: Text("Wrong password provided for that user."),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
-              } catch (e) {
-                print(e.toString());
               }
             }
           },
