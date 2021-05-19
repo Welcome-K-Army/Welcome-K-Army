@@ -159,9 +159,9 @@ class _EditProfileState extends State<EditProfile> {
     Future<void> uploadPic(String filePath) async {
 
       final File file = File(filePath);
-      Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
+      // gs://login-project-afa09.appspot.com/
       try {
-        await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
+        await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
         if (file != null) {
           print("upload Image!");
         }
