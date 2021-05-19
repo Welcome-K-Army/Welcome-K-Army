@@ -36,8 +36,7 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    // UserData userData = Provider.of<UserData>(context);
-    UserData userData.setUserData(userLoad());
+    UserData userData = Provider.of<UserData>(context);
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,9 +261,8 @@ class _EditProfileState extends State<EditProfile> {
       ), //Stack
     ); //Center
 
-    return ChangeNotifierProvider(
-      create: (context) => UserData(),
-      child: Scaffold(
+    return Consumer<UserData>(
+      builder: (context, userData, child) => Scaffold(
         key: _scaffoldGlobalKey,
         body: Container(
           padding: EdgeInsets.only(left: 15, top: 20, right: 15),
