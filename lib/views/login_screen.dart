@@ -8,7 +8,6 @@ import '../theme/routes.dart';
 import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 
-
 class Login extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -241,7 +240,7 @@ class _LoginViewState extends State<Login> {
                   password: _passwordController.text,
                 );
 
-                final loaduser=userLoad();
+                final loaduser = userLoad();
                 userData(loaduser).update();
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
