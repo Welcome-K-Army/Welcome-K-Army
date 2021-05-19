@@ -47,13 +47,13 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    int currentOffset = emailTextEditingController.selection.base.offset;
-    emailTextEditingController.value = TextEditingValue(
-      text: userData.email,
-      selection: TextSelection.fromPosition(
-        TextPosition(offset: currentOffset),
-      ),
-    );
+    // int currentOffset = emailTextEditingController.selection.base.offset;
+    // emailTextEditingController.value = TextEditingValue(
+    //   text: userData.email,
+    //   selection: TextSelection.fromPosition(
+    //     TextPosition(offset: currentOffset),
+    //   ),
+    // );
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,10 +89,10 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          onChanged: (emailTextEditingController.text) {
-            value = emailTextEditingController.text;
+          onChanged: (userData.email) {
+            value = userData.email;
           },
-          enableInteractiveSelection: true,
+          // enableInteractiveSelection: true,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
