@@ -22,13 +22,13 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUserData({UserData userData}) {
-    this.uid = userData.uid;
-    this.nickName = userData.nickName;
-    this.email = userData.email;
-    this.age = userData.age;
-    this.gender = userData.gender;
-    this.creationDate = userData.creationDate;
+  void setUserData(UserData setuserData) {
+    this.uid = setuserData.uid;
+    this.nickName = setuserData.nickName;
+    this.email = setuserData.email;
+    this.age =setuserData.age;
+    this.gender = setuserData.gender;
+    this.creationDate = setuserData.creationDate;
     notifyListeners();
   }
 
