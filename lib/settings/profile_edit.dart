@@ -43,7 +43,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    TextEditingController emailTextEditingController = TextEditingController(enableInteractiveSelection:true);
+    TextEditingController emailTextEditingController = TextEditingController();
     emailTextEditingController.value = TextEditingValue(
       text: '${userData.email}',
       selection: TextSelection.fromPosition(
@@ -70,6 +70,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
+          
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
@@ -93,6 +94,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
+          enableInteractiveSelection:true
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
           decoration: InputDecoration(
