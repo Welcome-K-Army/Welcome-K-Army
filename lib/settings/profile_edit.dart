@@ -157,7 +157,6 @@ class _EditProfileState extends State<EditProfile> {
     }
 
     Future<void> uploadPic(String filePath) async {
-
       final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
       try {
