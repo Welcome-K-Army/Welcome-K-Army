@@ -39,7 +39,6 @@ class _EditProfileState extends State<EditProfile> {
     final userData = Provider.of<UserData>(context);
     userData.setUserData(userLoad());
 
-
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -263,61 +262,63 @@ class _EditProfileState extends State<EditProfile> {
       ), //Stack
     ); //Center
 
-    return  Scaffold(
-              key: _scaffoldGlobalKey,
-              body: Container(
-                padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-                child: GestureDetector(
-                    onTap: () {
-                      FocusScope.of(context).unfocus();
-                    },
-                    child: ListView(
-                      children: [
-                        imageProfile,
-                        SizedBox(
-                          height: 30,
-                        ),
-                        usernicknameForm,
-                        useremailForm,
-                        usergenderForm,
-                        userageForm,
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                          OutlinedButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text("Cancel",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  letterSpacing: 2,
-                                  color: Colors.black,
-                                )), //Text
-                            style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                          ), //OutlineButton
+    return ChangeNotifierProvider(
+      create: (context) => UserData(),
+      child: Scaffold(
+        key: _scaffoldGlobalKey,
+        body: Container(
+          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+          child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: ListView(
+                children: [
+                  imageProfile,
+                  SizedBox(
+                    height: 30,
+                  ),
+                  usernicknameForm,
+                  useremailForm,
+                  usergenderForm,
+                  userageForm,
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("Cancel",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.black,
+                          )), //Text
+                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ), //OutlineButton
 
-                          ElevatedButton(
-                            onPressed: () {
-                              // uploadPic(context);
-                              userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
-                            }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
-                            //String nickName, String email, String gender, int age
-                            child: Text("Save",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  letterSpacing: 2,
-                                  color: Colors.white,
-                                )),
-                            style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                          ) //ElevatedButton
-                        ]),
-                      ],
-                    ) //ListView
-                    ),
-              ), //Container
-            ); //Scafolld
-        
+                    ElevatedButton(
+                      onPressed: () {
+                        // uploadPic(context);
+                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
+                      }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
+                      //String nickName, String email, String gender, int age
+                      child: Text("Save",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.white,
+                          )),
+                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ) //ElevatedButton
+                  ]),
+                ],
+              ) //ListView
+              ),
+        ), //Container
+      ), //Scafolld
+    );
   } //
 }
