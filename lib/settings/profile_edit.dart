@@ -302,7 +302,7 @@ class _EditProfileState extends State<EditProfile> {
                     OutlinedButton(
                       onPressed: () {
                         print(_image.path.toString());
-                        uploadPic();
+                        uploadPic(context);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
