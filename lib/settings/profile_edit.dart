@@ -36,18 +36,18 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
 
     UserData userData = Provider.of<UserData>(context);
-    userData.setUserData(userLoad());
+    // userData.setUserData(userLoad());
 
-    // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-    // String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    // users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-    //   if (documentSnapshot.exists) {
-    //     Map<String, dynamic> data = documentSnapshot.data();
-    //     userData.setUserData(UserData.fromJson(data));
-    //   } else {
-    //     print('no data');
-    //   }
-    // });
+    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data();
+        userData.setUserData(UserData.fromJson(data));
+      } else {
+        print('no data');
+      }
+    });
 
     // userData.setUserData(userLoad());
     TextEditingController emailTextEditingController = TextEditingController()..text = '${userData.email}';

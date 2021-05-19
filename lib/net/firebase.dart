@@ -39,7 +39,6 @@ UserData userLoad() {
   print("no uid");
   return null;
   }
-  print("success");
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
