@@ -18,9 +18,7 @@ class UserData with ChangeNotifier {
     this.creationDate,
   });
   
-  void update() {
-    notifyListeners();
-  }
+  
 
   UserData setUserData(UserData setuserData) {
     this.uid = setuserData.uid;
