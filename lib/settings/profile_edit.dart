@@ -63,11 +63,12 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.black),
-          prefixText: Text('${userData.nickName}'),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
+            prefixText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            prefixStyle: TextStyle(color: Colors.balck),
           ),
         )
       ],
