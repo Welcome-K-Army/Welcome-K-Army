@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -239,8 +240,18 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                userLoad(userData);
-                userData.update();
+                CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+                String uid = FirebaseFirestore.instance.currentUser.uid.toString();
+
+                users.doc(user.uid).get().then((DocumentSnapshot documentSnapshot) {
+                  if (documentSnapshot.exists) {
+                    print(documentSnapshot.data().toString());
+                    Map<String, dynamic> data = documentSnapshot.data();
+                    userData.setUserData(UserData.fromJson(data));
+                  } else {
+                    print('no data');
+                  }
+                });
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
                 Navigator.of(context).pushNamed(AppRoutes.menu);
