@@ -14,7 +14,7 @@ class UserData with ChangeNotifier {
     this.nickName,
     this.email,
     this.gender,
-    this.age:,
+    this.age,
     this.creationDate,
   });
 
