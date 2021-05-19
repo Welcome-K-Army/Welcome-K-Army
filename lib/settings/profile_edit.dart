@@ -311,7 +311,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        uploadPic(_image);
+                        uploadPic(_image.toString());
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
