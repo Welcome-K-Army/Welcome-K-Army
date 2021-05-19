@@ -85,10 +85,10 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextField(
+        TextFormField(
           style: TextStyle(color: Colors.black),
-          onChanged: (text) => {},
-          controller: emailTextEditingController..text =userData.email,
+          initialValue:userData.email,
+          controller: emailTextEditingController,
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
