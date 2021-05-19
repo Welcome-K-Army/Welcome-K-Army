@@ -89,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextField(
-          value=userData.email;
+          value='${userData.email}',
           enableInteractiveSelection: true,
           style: TextStyle(color: Colors.black),
           controller: emailTextEditingController,
