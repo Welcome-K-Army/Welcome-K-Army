@@ -84,7 +84,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextFormField(
             controller: emailTextEditingController,
-            initialValue: userData.email.toString(),
+            initialValue: "hello",
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
