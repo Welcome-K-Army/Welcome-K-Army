@@ -10,12 +10,12 @@ class UserData with ChangeNotifier {
   String creationDate;
 
   UserData({
-    this.uid,
-    this.nickName,
-    this.email,
-    this.gender,
-    this.age,
-    this.creationDate,
+    this.uid:"",
+    this.nickName:"",
+    this.email:"",
+    this.gender:"",
+    this.age:0,
+    this.creationDate:"",
   });
 
   void setUserData(UserData setuserData) {
