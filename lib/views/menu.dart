@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import '../model/user_data_model.dart';
 import 'package:provider/provider.dart';
-
+import '../net/firebase.dart';
 class MenuScreen extends StatefulWidget {
   // MenuScreen();
   @override
@@ -29,6 +29,9 @@ class MenuScreenState extends State<MenuScreen> {
   
   MenuScreenState();
   Widget build(BuildContext context) {
+    final updateuser=Provider.of<UserData>(context);
+    updateuser.setUserData(userLoad());
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(''),
@@ -71,7 +74,7 @@ class MenuScreenState extends State<MenuScreen> {
                     builder: (context, userData, child) => Container(
                       child: Column(
                         children: [
-                          Text(userData.uid == null ? "null" : userData.uid),
+                          Text(updateuser.uid == null ? "null" : updateuser.uid),
                           Text(userData.nickName == null ? "null" : userData.nickName),
                           Text(userData.email == null ? "null" : userData.email),
                           Text(userData.age == null ? "null" : userData.age.toString()),
