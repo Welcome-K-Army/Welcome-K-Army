@@ -150,7 +150,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          _image = pickedFile;
+          _image = pickedFile.path;
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
@@ -164,14 +164,14 @@ class _EditProfileState extends State<EditProfile> {
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
         await FirebaseStorage.instance.ref('profile_image/').putFile(file);
+        if (file != null){
+          print("upload Image!")
+        }
       } on FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
       }
 
-      setState(() {
-        print("Profile picture upload");
-        // Scaffold.of(context).showSnackBar(SnackBar(context:Text('Profile image upload')));
-      });
+      
     }
 
     final bottomSheet = Container(
