@@ -36,9 +36,8 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final userData = Provider.of<UserData>(context);
-    UserData updateUserData;
-    updateUserData.setUserData(userLoad());
+    UserData userData = Provider.of<UserData>(context);
+    userData.setUserData(userLoad());
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,7 +52,7 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.white),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            hintText: '${updateUserData.nickName}',
+            hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             hintStyle: TextStyle(color: Colors.grey),
@@ -300,7 +299,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        // uploadPic(context);
+                        uploadPic(context);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
