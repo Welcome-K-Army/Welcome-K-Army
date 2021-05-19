@@ -22,7 +22,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  PickedFile _image;
+  File _image;
 
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
 
@@ -147,7 +147,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState(() {
         if (pickedFile != null) {
-          _image = pickedFile;
+          _image = File(pickedFile.path);
           print('Image Path $_image');
           // _imageFile = pickedFile;
         } else {
@@ -156,17 +156,25 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(String filePath) async {
-      File file = File(filePath);
+    Future<void> uploadPic(BuildContext context) async {
+      String fileName = basename(_image.path);
+      StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child('/profile_image$fileName');
+      StorageUploadTask uploadTask = firebaseStorageRef.putFile(_image);
+      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      taskSnapshot.ref.getDownloadURL().then(
+            (value) => print("Done: $value"),
+          );
+
+      // final File file = File(filePath);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
-      try {
-        await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
-        if (file != null) {
-          print("upload Image!");
-        }
-      } on FirebaseException catch (e) {
-        // e.g, e.code == 'canceled'
-      }
+      // try {
+      //   await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
+      //   if (file != null) {
+      //     print("upload Image!");
+      //   }
+      // } on FirebaseException catch (e) {
+      //   // e.g, e.code == 'canceled'
+      // }
     }
 
     final bottomSheet = Container(
@@ -294,7 +302,7 @@ class _EditProfileState extends State<EditProfile> {
                     OutlinedButton(
                       onPressed: () {
                         print(_image.path.toString());
-                        uploadPic(_image.path.toString());
+                        uploadPic();
                       },
                       child: Text("Cancel",
                           style: TextStyle(
