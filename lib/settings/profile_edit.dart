@@ -38,6 +38,8 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     final userData = Provider.of<UserData>(context);
     userData.setUserData(userLoad());
+
+
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -261,8 +263,7 @@ class _EditProfileState extends State<EditProfile> {
       ), //Stack
     ); //Center
 
-    return Consumer<UserData>(
-        builder: (context, userData, child) => Scaffold(
+    return  Scaffold(
               key: _scaffoldGlobalKey,
               body: Container(
                 padding: EdgeInsets.only(left: 15, top: 20, right: 15),
@@ -316,7 +317,7 @@ class _EditProfileState extends State<EditProfile> {
                     ) //ListView
                     ),
               ), //Container
-            ) //Scafolld
-        );
+            ); //Scafolld
+        
   } //
 }

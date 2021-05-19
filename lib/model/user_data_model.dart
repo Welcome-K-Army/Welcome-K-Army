@@ -19,12 +19,12 @@ class UserData with ChangeNotifier {
   });
 
   void setUserData(UserData setuserData) {
-    this.uid = setuserData.uid.toString();
-    this.nickName = setuserData.nickName.toString();
-    this.email = setuserData.email.toString();
+    this.uid = setuserData.uid;
+    this.nickName = setuserData.nickName;
+    this.email = setuserData.email;
     this.age =setuserData.age;
-    this.gender = setuserData.gender.toString();
-    this.creationDate = setuserData.creationDate.toString();
+    this.gender = setuserData.gender;
+    this.creationDate = setuserData.creationDate;
     notifyListeners();
   }
 
