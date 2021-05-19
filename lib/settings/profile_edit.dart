@@ -54,11 +54,7 @@ class _EditProfileState extends State<EditProfile> {
     TextEditingController ageTextEditingController = TextEditingController()..text = '${userData.age}';
     TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
     TextEditingController profileNameTextEditingController = TextEditingController();
-    @override
-    void initState() {
-      super.initState();
-      profileNameTextEditingController.text = '${userData.nickName}';
-      }
+
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
