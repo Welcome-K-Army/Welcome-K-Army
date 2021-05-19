@@ -19,12 +19,12 @@ class UserData with ChangeNotifier {
   });
 
   void setUserData(UserData setuserData) {
-    this.uid = setuserData.uid == null ? "" : setuserData.uid;
-    this.nickName = setuserData.nickName == null ? "" : setuserData.nickName;
-    this.email = setuserData.email == null ? "" : setuserData.email;
-    this.age = setuserData.age == null ? 0 : setuserData.age;
-    this.gender = setuserData.gender == null ? "" : setuserData.gender;
-    this.creationDate = setuserData.creationDate == null ? "" : setuserData.creationDate;
+    this.uid = setuserData.uid ;
+    this.nickName = setuserData.nickName ;
+    this.email = setuserData.email ;
+    this.age = setuserData.age;
+    this.gender = setuserData.gender;
+    this.creationDate = setuserData.creationDate;
     notifyListeners();
   }
 
