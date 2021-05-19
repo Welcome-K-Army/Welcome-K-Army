@@ -67,7 +67,7 @@ class _EditProfileState extends State<EditProfile> {
         TextField(
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
-          onChanged: (text) => {}
+          onChanged: (text) => {},
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
