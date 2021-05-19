@@ -52,7 +52,7 @@ class _EditProfileState extends State<EditProfile> {
     TextEditingController emailTextEditingController = TextEditingController()..text = '${userData.email}';
     TextEditingController ageTextEditingController = TextEditingController()..text = '${userData.age}';
     TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
-    TextEditingController profileNameTextEditingController = TextEditingController()
+    TextEditingController profileNameTextEditingController = TextEditingController();
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.black),
-          controller: profileNameTextEditingController..text = '${userData.nickName}';,
+          controller: profileNameTextEditingController..text = '${userData.nickName}',
           decoration: InputDecoration(
             hintText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
