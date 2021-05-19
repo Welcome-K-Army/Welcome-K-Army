@@ -159,8 +159,8 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future uploadPic(BuildContext context) async {
-      String fileName = basename(_image.path);
+    Future<void> uploadPic(String filePath) async {
+      File file =file()
       File file = File(_image.path);
       // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
       try {
@@ -168,9 +168,6 @@ class _EditProfileState extends State<EditProfile> {
       } on FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
       }
-
-      // UploadTask uploadTask = firebaseStorageRef.putFile(_image);
-      // TaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
       setState(() {
         print("Profile picture upload");
@@ -315,7 +312,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        uploadPic(context);
+                        uploadPic(_image);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
