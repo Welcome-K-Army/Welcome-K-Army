@@ -22,24 +22,25 @@ class UserData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUserData({String uid, String nickName, String email, int age, String gender, String creationDate}) {
-    this.uid = uid;
-    this.nickName = nickName;
-    this.email = email;
-    this.age = age;
-    this.gender = gender;
-    this.creationDate = creationDate;
+  void setUserData({UserData userData}) {
+    this.uid = userData.uid;
+    this.nickName = userData.nickName;
+    this.email = userData.email;
+    this.age = userData.age;
+    this.gender = userData.gender;
+    this.creationDate = userData.creationDate;
     notifyListeners();
   }
 
-  factory fromJson(Map<String, dynamic> json) {
-    this.uid: json['uid'].toString();
-    this.nickName: json['nickName'].toString();
-    this.email: json['email'].toString();
-    this.age: json['age'] as int;
-    this.gender: json['gender'].toString();
-    this.creationDate: json['createdAt'].toString();
-    return this;
+  factory UserData.fromJson(Map<String, dynamic> json) {
+    return UserData(
+      uid: json['uid'].toString(),
+      nickName: json['nickName'].toString(),
+      email: json['email'].toString(),
+      age: json['age'] as int,
+      gender: json['gender'].toString(),
+      creationDate: json['createdAt'].toString(),
+    );
   }
 
   Map<String, dynamic> toJson() {
