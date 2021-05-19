@@ -144,8 +144,15 @@ class _EditProfileState extends State<EditProfile> {
 
     Future uploadPic(BuildContext context) async {
       String fileName = basename(_image.path);
-      Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image").child(fileName);
-      UploadTask uploadTask = firebaseStorageRef.putFile(_image);
+      File file =File(_image.path)
+      // Reference firebaseStorageRef = FirebaseStorage.instance.ref("/profile_image/upload.png").child(fileName);
+      try {
+        await firebase_storage.FirebaseStorage.instance.ref('/profile_image/upload.png').putFile(file);
+      } on firebase_core.FirebaseException catch (e) {
+        // e.g, e.code == 'canceled'
+      }
+
+      // UploadTask uploadTask = firebaseStorageRef.putFile(_image);
       // TaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
       setState(() {
