@@ -29,69 +29,66 @@ class MenuScreenState extends State<MenuScreen> {
 
   MenuScreenState();
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => UserData(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(''),
-        ),
-        floatingActionButton: null,
-        body: DefaultTabController(
-          length: 3,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-              ),
-              Scaffold(
-                bottomNavigationBar: Padding(
-                  padding: EdgeInsets.only(bottom: 15),
-                  child: TabBar(
-                    tabs: <Widget>[
-                      Tab(
-                        icon: Icon(Icons.video_library),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.insert_drive_file),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.account_circle),
-                      ),
-                    ],
-                    labelColor: Color(0xff8c52ff),
-                    indicator: UnderlineTabIndicator(
-                      borderSide: BorderSide(color: Color(0xff8c52ff), width: 4.0),
-                      insets: EdgeInsets.only(bottom: 44),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(''),
+      ),
+      floatingActionButton: null,
+      body: DefaultTabController(
+        length: 3,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Scaffold(
+              bottomNavigationBar: Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      icon: Icon(Icons.video_library),
                     ),
-                    unselectedLabelColor: Colors.grey,
-                  ),
-                ),
-                body: TabBarView(
-                  children: <Widget>[
-                    Consumer<UserData>(
-                      builder: (context, userData, child) => Container(
-                        child: Column(
-                          children: [
-                            Text(userData.uid == null ? "null" : userData.uid),
-                            Text(userData.nickName == null ? "null" : userData.nickName),
-                            Text(userData.email == null ? "null" : userData.email),
-                            Text(userData.age == null ? "null" : userData.age.toString()),
-                            Text(userData.gender == null ? "null" : userData.gender),
-                          ],
-                        ),
-                      ),
+                    Tab(
+                      icon: Icon(Icons.insert_drive_file),
                     ),
-                    Container(),
-                    Profile_menu(),
-                    //VideoScreen(),
-                    //AricleScreen(),
-                    //ProfileScreen(),
+                    Tab(
+                      icon: Icon(Icons.account_circle),
+                    ),
                   ],
+                  labelColor: Color(0xff8c52ff),
+                  indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(color: Color(0xff8c52ff), width: 4.0),
+                    insets: EdgeInsets.only(bottom: 44),
+                  ),
+                  unselectedLabelColor: Colors.grey,
                 ),
               ),
-            ],
-          ),
+              body: TabBarView(
+                children: <Widget>[
+                  Consumer<UserData>(
+                    builder: (context, userData, child) => Container(
+                      child: Column(
+                        children: [
+                          Text(userData.uid == null ? "null" : userData.uid),
+                          Text(userData.nickName == null ? "null" : userData.nickName),
+                          Text(userData.email == null ? "null" : userData.email),
+                          Text(userData.age == null ? "null" : userData.age.toString()),
+                          Text(userData.gender == null ? "null" : userData.gender),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(),
+                  Profile_menu(),
+                  //VideoScreen(),
+                  //AricleScreen(),
+                  //ProfileScreen(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
