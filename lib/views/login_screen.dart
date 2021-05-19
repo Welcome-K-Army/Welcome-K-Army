@@ -240,20 +240,7 @@ class _LoginViewState extends State<Login> {
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
-                CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-                String uid = FirebaseAuth.instance.currentUser.uid.toString();
-
-                users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-                  if (documentSnapshot.exists) {
-                    print(documentSnapshot.data().toString());
-                    Map<String, dynamic> data = documentSnapshot.data();
-                    print(UserData.fromJson(data).email);
-                    userData.setUserData(UserData.fromJson(data));
-                    print(userData.email);
-;                  } else {
-                    print('no data');
-                  }
-                });
+                
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('nickName', user.user.displayName);
                 Navigator.of(context).pushNamed(AppRoutes.menu);
