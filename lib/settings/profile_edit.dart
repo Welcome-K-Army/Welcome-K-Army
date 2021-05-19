@@ -49,7 +49,7 @@ class _EditProfileState extends State<EditProfile> {
     // userData.setUserData(userLoad());
 int currentOffset = emailTextEditingController.selection.base.offset; 
     emailTextEditingController.value = TextEditingValue(
-      text: '${userData.email}',
+      text: userData.email,
       selection: TextSelection.fromPosition(
         TextPosition(offset: currentOffset),
       ),
