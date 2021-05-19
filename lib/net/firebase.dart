@@ -28,6 +28,7 @@ UserData userLoad() {
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
+      print(UserData.fromJson(data).uid);
       return UserData.fromJson(data);
     } else {
       print('no data');
