@@ -22,15 +22,12 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  File _image;
-
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-
-  PickedFile _imageFile;
-  ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
+    File _image;
+    ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
     // userData.setUserData(userLoad());
 
@@ -50,7 +47,7 @@ class _EditProfileState extends State<EditProfile> {
     TextEditingController ageTextEditingController = TextEditingController()..text = '${userData.age}';
     TextEditingController genderTextEditingController = TextEditingController()..text = '${userData.gender}';
     TextEditingController profileNameTextEditingController = TextEditingController();
-
+    profileNameTextEditingController.text=userData.nickName;
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,10 +62,10 @@ class _EditProfileState extends State<EditProfile> {
           style: TextStyle(color: Colors.black),
           controller: profileNameTextEditingController,
           decoration: InputDecoration(
-            prefixText: '${userData.nickName}',
+            // prefixText: '${userData.nickName}',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            prefixStyle: TextStyle(color: Colors.black),
+            // prefixStyle: TextStyle(color: Colors.black),
           ),
         )
       ],
@@ -293,7 +290,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
-                      ontap: () {
+                      onPressed: () {
                         uploadPic(_image.path);
                       },
                       child: Text("Cancel",
