@@ -42,10 +42,10 @@ class _EditProfileState extends State<EditProfile> {
         @override
     void initState(){
       super.initState();
-      profileNameTextEditingController=new TextEditingController(text:"$userData.nickname");
-      emailTextEditingController=new TextEditingController(text:"$userData.email");
-      ageTextEditingController=new TextEditingController(text:"$userData.age");
-      genderTextEditingController=new TextEditingController(text:"$userData.gender");
+      profileNameTextEditingController=new TextEditingController(text:"nickname");
+      emailTextEditingController=new TextEditingController(text:"email");
+      ageTextEditingController=new TextEditingController(text:"age");
+      genderTextEditingController=new TextEditingController(text:"gender");
     }
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
