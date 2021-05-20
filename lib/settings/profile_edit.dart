@@ -30,8 +30,8 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: "nickname");
-    emailTextEditingController = new TextEditingController(text: "email");
+    profileNameTextEditingController = new TextEditingController(text: "userData.nickname");
+    emailTextEditingController = new TextEditingController(text: "userData.email");
     ageTextEditingController = new TextEditingController(text: "age");
     genderTextEditingController = new TextEditingController(text: "gender");
   }
@@ -95,7 +95,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextFormField(
-          controller: emailTextEditingController..text = userData.email,
+          controller: emailTextEditingController
           style: TextStyle(color: Colors.black),
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
@@ -160,9 +160,9 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(File file) async {
+    Future<void> uploadPic(String filePath) async {
+      final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
-      print('uploadPic function start');
       if (file == null) return;
       print('uploading...');
       try {
@@ -297,7 +297,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image);
+                        uploadPic(_image.path);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
