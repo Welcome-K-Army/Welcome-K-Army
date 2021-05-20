@@ -22,6 +22,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -37,37 +38,36 @@ class _EditProfileState extends State<EditProfile> {
     genderTextEditingController = new TextEditingController(text: "gender");
   }
 
-    void takePhoto(ImageSource source) async {
-      final _picker = ImagePicker();
-      final _pickimage = await _picker.getImage(source: source);
-      print(_pickimage.path + "picked File");
+  void takePhoto(ImageSource source) async {
+    final _picker = ImagePicker();
+    final _pickimage = await _picker.getImage(source: source);
+    print(_pickimage.path + "picked File");
 
-      setState(() {
-        if (_pickimage != null) {
-          image = File(_pickimage.path);
-        }
-      });
-
-      FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-      Reference storageReference = await _firebaseStorage.ref().child("profile_image/${userData.uid}");
-      final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
-        'picked-file-path': _pickimage.path
-      });
-      UploadTask uploadTask;
-      // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
-
-      if (kIsWeb) {
-        print("web");
-        uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
-      } else {
-        print("no web");
-        uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+    setState(() {
+      if (_pickimage != null) {
+        image = File(_pickimage.path);
       }
+    });
 
-      String downloadURL = await storageReference.getDownloadURL();
-      // print(downloadURL);
+    FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+    Reference storageReference = await _firebaseStorage.ref().child("profile_image/${_pickimage.path}");
+    final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
+      'picked-file-path': _pickimage.path
+    });
+    UploadTask uploadTask;
+    // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+
+    if (kIsWeb) {
+      print("web");
+      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+    } else {
+      print("no web");
+      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
 
+    String downloadURL = await storageReference.getDownloadURL();
+    // print(downloadURL);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,10 +180,6 @@ class _EditProfileState extends State<EditProfile> {
 
     String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
-
-    File image;
-
-
 
     final bottomSheet = Container(
         height: 100,
