@@ -20,11 +20,14 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController = TextEditingController();
+  TextEditingController profileNameTextEditingController =new TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
 
+
+  profileNameTextEditingController='{TTEST}';
+  
   @override
   Widget build(BuildContext context) {
     File _image;
