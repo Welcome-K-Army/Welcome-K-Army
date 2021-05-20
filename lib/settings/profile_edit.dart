@@ -20,14 +20,11 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController =new TextEditingController();
+  TextEditingController profileNameTextEditingController = TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
 
-
-  profileNameTextEditingController='{TTEST}';
-  
   @override
   Widget build(BuildContext context) {
     File _image;
@@ -151,8 +148,7 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(String filePath) async {
-      final File file = File(filePath);
+    Future<void> uploadPic(File file) async {
       // gs://login-project-afa09.appspot.com/
       if (file == null) return ;
       print('uploading...');
@@ -288,7 +284,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image.path);
+                        uploadPic(_image);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
