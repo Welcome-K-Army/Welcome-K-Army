@@ -149,9 +149,10 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+    String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     void takePhoto(ImageSource source) async {
-      PickedFile image=await _picker.getImage(source: source));
+      PickedFile image=await _picker.getImage(source: source);
       if (image == null)return;
       setState(() {
       _image = image;
