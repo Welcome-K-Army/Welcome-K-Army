@@ -155,12 +155,12 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
 
 
-        File image;
+    File image;
 
     void takePhoto(ImageSource source) async {
       final _picker=ImagePicker();
       final _pickimage = await _picker.getImage(source: source);
-      print(_pickimage.path);
+      print(_pickimage.path+"picked File");
   
       setState(() {
         if(_pickimage!=null){
@@ -168,17 +168,21 @@ class _EditProfileState extends State<EditProfile> {
         }
        
       });
+
       FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
       Reference storageReference = await _firebaseStorage.ref().child("profile_image/${userData.uid}");
         final metadata = SettableMetadata(
         contentType: 'image/png',
-        customMetadata: {'picked-file-path': image.path});
+        customMetadata: {'picked-file-path': _pickimage.path});
+        UploadTask uploadTask
       // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
       if (kIsWeb) {
-      UploadTask uploadTask = storageReference.putData(await image.readAsBytes(), metadata);
+      print("web");
+      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
     } else {
-      UploadTask uploadTask = storageReference.putFile(File(image.path), metadata);
+      print("no web");
+      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
 
       String downloadURL = await storageReference.getDownloadURL();
