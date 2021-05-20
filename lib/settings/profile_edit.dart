@@ -23,7 +23,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
 
-  File _image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -42,7 +41,6 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
 
-    ImagePicker _picker = ImagePicker();
 
     UserData userData = Provider.of<UserData>(context);
 
@@ -159,22 +157,31 @@ class _EditProfileState extends State<EditProfile> {
 
 
     void takePhoto(ImageSource source) async {
-      PickedFile image = await _picker.getImage(source: source);
-      print(File(image.path));
-
-      // setState(() {
-      //   _image = File(image.path);
-      // });
+      final _pickimage = await ImagePicker.getImage(source: source);
+      print(_pickimage.path);
+      File image;
+      setState(() {
+        if(_pickimage!=null){
+          _image = File(_pickimage.path);
+        }
+       
+      });
       FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-      Reference storageReference = await _firebaseStorage.ref("gs://login-project-afa09.appspot.com/profile_image/test.png");
-      // UploadTask storageUploadTask = 
-      await storageReference.putFile(File(image.path));
+      Reference storageReference = await _firebaseStorage.ref().child("profile_image/${userData.uid}");
+        final metadata = SettableMetadata(
+        contentType: 'image/png',
+        customMetadata: {'picked-file-path': image.path});
+      // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+
+      if (kIsWeb) {
+      UploadTask uploadTask = ref.putData(await image.readAsBytes(), metadata);
+    } else {
+      UploadTask uploadTask = ref.putFile(io.File(image.path), metadata);
+    }
 
       String downloadURL = await storageReference.getDownloadURL();
-      print(downloadURL);
-      setState(() {
-        _profileImageURL = downloadURL;
-      });
+      // print(downloadURL);
+  
     }
 
     final bottomSheet = Container(
