@@ -23,24 +23,29 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController ageTextEditingController = TextEditingController();
-  TextEditingController genderTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController;
+  TextEditingController ageTextEditingController;
+  TextEditingController genderTextEditingController;
 
 
 
-  @override
-  void initState(){
-    super.initState();
-    profileNameTextEditingController=new TextEditingController(text:"test");
-  }
+
 
   @override
   Widget build(BuildContext context) {
     File _image;
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
+  
     // userData.setUserData(userLoad());
+        @override
+    void initState(){
+      super.initState();
+      profileNameTextEditingController=new TextEditingController(text:{"$userData.nickname"});
+      emailTextEditingController=new TextEditingController(text:{"$userData.email"});
+      ageTextEditingController=new TextEditingController(text:{"$userData.age"});
+      genderTextEditingController=new TextEditingController(text:{"$userData.gender"});
+    }
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
     String uid = FirebaseAuth.instance.currentUser.uid.toString();
