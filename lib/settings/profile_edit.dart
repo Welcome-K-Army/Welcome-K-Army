@@ -28,10 +28,8 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController genderTextEditingController;
 
   @override
-  void initState(BuildContext context) {
-    
+  void initState() {
     super.initState();
-
     profileNameTextEditingController = new TextEditingController(text: 'test');
     emailTextEditingController = new TextEditingController(text: "userData.email");
     ageTextEditingController = new TextEditingController(text: "age");
