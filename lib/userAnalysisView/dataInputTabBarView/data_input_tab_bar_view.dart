@@ -15,6 +15,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     Tab(text: "내신 및 수능"),    
   ];
 
+  String dropdownValue = 'One';
   TabController _tabController;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -68,9 +69,9 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
                 height: 2,
                 color: Colors.deepPurpleAccent,
               ),
-              onChanged: (String? newValue) {
+              onChanged: (String newValue) {
                 setState(() {
-                  dropdownValue = newValue!;
+                  dropdownValue = newValue;
                 });
               },
               items: <String>['One', 'Two', 'Free', 'Four']
