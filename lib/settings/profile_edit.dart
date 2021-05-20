@@ -14,6 +14,7 @@ import 'dart:async';
 import 'package:flutter/src/widgets/framework.dart';
 import 'dart:core';
 import 'package:flutter/src/widgets/editable_text.dart';
+import 'package:http/http.dart' as http;
 
 
 class EditProfile extends StatefulWidget {
@@ -242,9 +243,8 @@ class _EditProfileState extends State<EditProfile> {
                   image: DecorationImage(
                       //DB에서 사진가져와야댐
                       fit: BoxFit.cover, //원본크기 유지
-                      //CachedNetworkImageProvider(user.url),이용
-                      image:
-                        (_image != null) ? FileImage(_image) : NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
+                      
+                      image:NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) 
               ), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
