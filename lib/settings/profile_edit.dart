@@ -27,7 +27,14 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-
+    @override
+    void initState(){
+      super.initState();
+      profileNameTextEditingController=new TextEditingController(text:"nickname");
+      emailTextEditingController=new TextEditingController(text:"email");
+      ageTextEditingController=new TextEditingController(text:"age");
+      genderTextEditingController=new TextEditingController(text:"gender");
+    }
 
 
 
@@ -39,14 +46,7 @@ class _EditProfileState extends State<EditProfile> {
   
     // userData.setUserData(userLoad());
 
-        @override
-    void initState(){
-      super.initState();
-      profileNameTextEditingController=new TextEditingController(text:"nickname");
-      emailTextEditingController=new TextEditingController(text:"email");
-      ageTextEditingController=new TextEditingController(text:"age");
-      genderTextEditingController=new TextEditingController(text:"gender");
-    }
+
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
     String uid = FirebaseAuth.instance.currentUser.uid.toString();
