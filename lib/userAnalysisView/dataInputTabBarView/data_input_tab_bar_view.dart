@@ -15,7 +15,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     Tab(text: "내신 및 수능"),    
   ];
 
-  final TabController _tabController;
+  TabController _tabController;
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
