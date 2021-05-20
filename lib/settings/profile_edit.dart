@@ -21,6 +21,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -30,7 +31,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: "userData.nickname");
+    profileNameTextEditingController = new TextEditingController(text: userData.nickname);
     emailTextEditingController = new TextEditingController(text: "userData.email");
     ageTextEditingController = new TextEditingController(text: "age");
     genderTextEditingController = new TextEditingController(text: "gender");
@@ -149,7 +150,6 @@ class _EditProfileState extends State<EditProfile> {
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
       _image = File(pickedFile.path);
-      print('Image Path $_image');
       // setState(() {
       //   if (pickedFile != null) {
 
@@ -161,9 +161,9 @@ class _EditProfileState extends State<EditProfile> {
       // });
     }
 
-    Future<void> uploadPic(File file) async {
+    Future<void> uploadPic(String filePath) async {
+      final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
-      print('uploadpic start');
       if (file == null) return;
       print('uploading...');
       try {
@@ -298,8 +298,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        print(_image);
-                        uploadPic(_image);
+                        uploadPic(_image.path);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
