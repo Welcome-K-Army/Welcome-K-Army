@@ -151,11 +151,10 @@ class _EditProfileState extends State<EditProfile> {
     Future<void> uploadPic(String filePath) async {
       final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
+      if (file == null) return ;
+      print('uploading...');
       try {
-        await FirebaseStorage.instance.ref('gs://login-project-afa09.appspot.com/profile_image/image.png').putFile(file);
-        if (file != null) {
-          print("upload Image!");
-        }
+        await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
       } on FirebaseException catch (e) {
         print(e.code);
         // e.g, e.code == 'canceled'
