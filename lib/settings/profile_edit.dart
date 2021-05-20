@@ -151,7 +151,7 @@ class _EditProfileState extends State<EditProfile> {
       PickedFile pickedFile = await _picker.getImage(source: source);
       _image = File(pickedFile.path);
       setState(() {
-         _image=Image.file(File(pickedFile.path));
+         _image=Image.network(pickedFile.path);
        });
     }
 
