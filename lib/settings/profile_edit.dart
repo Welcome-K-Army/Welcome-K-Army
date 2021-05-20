@@ -163,7 +163,8 @@ class _EditProfileState extends State<EditProfile> {
       });
 
       Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
-      UploadTask storageUploadTask = await storageReference.putFile(_image);
+      // UploadTask storageUploadTask = 
+      await storageReference.putFile(_image);
 
       String downloadURL = await storageReference.getDownloadURL();
 
