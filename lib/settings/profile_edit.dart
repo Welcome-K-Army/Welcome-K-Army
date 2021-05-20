@@ -162,7 +162,7 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         _image = File(image.path);
       });
-      Reference storageReference = _firebaseStorage.ref().child("gs://login-project-afa09.appspot.com/profile_image/test.image");
+      Reference storageReference = _firebaseStorage.ref().child("gs://login-project-afa09.appspot.com/profile_image/test.png");
       UploadTask storageUploadTask = storageReference.putFile(_image);
 
       String downloadURL = await storageReference.getDownloadURL();
