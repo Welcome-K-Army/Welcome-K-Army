@@ -148,7 +148,7 @@ class _EditProfileState extends State<EditProfile> {
     );
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     void takePhoto(ImageSource source) async {
-      File pickedFile = await _picker.getImage(source: source);
+      final pickedFile = await _picker.getImage(source: source);
       // _image = File(pickedFile.path);
       if(pickedFile == null)return;
       setState((){
