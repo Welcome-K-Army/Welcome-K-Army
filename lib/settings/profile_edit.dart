@@ -149,9 +149,10 @@ class _EditProfileState extends State<EditProfile> {
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
       _image = File(pickedFile.path);
+      print('Image Path $_image');
       // setState(() {
       //   if (pickedFile != null) {
-          
+
       //     print('Image Path $_image');
       //     // _imageFile = pickedFile;
       //   } else {
@@ -160,8 +161,7 @@ class _EditProfileState extends State<EditProfile> {
       // });
     }
 
-    Future<void> uploadPic(String filePath) async {
-      final File file = File(filePath);
+    Future<void> uploadPic(File file) async {
       // gs://login-project-afa09.appspot.com/
       if (file == null) return;
       print('uploading...');
@@ -297,7 +297,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image.path);
+                        uploadPic(_image);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
