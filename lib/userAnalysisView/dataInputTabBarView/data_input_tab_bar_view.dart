@@ -61,6 +61,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
             ),
             DropdownButton<String>(
               value: dropdownValue,
+              isExpanded: true,
               icon: const Icon(Icons.arrow_downward),
               iconSize: 24,
               elevation: 16,
