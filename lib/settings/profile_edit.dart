@@ -21,27 +21,28 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-  @override
-  void initState() {
-    super.initState();
-    profileNameTextEditingController = new TextEditingController(text: "userData.nickname");
-    emailTextEditingController = new TextEditingController(text: "userData.email");
-    ageTextEditingController = new TextEditingController(text: "age");
-    genderTextEditingController = new TextEditingController(text: "gender");
-  }
+
 
   @override
   Widget build(BuildContext context) {
     File _image;
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
-
+    @override
+    void initState() {
+      super.initState();
+      profileNameTextEditingController = new TextEditingController(text: userData.nickname);
+      emailTextEditingController = new TextEditingController(text: "userData.email");
+      ageTextEditingController = new TextEditingController(text: "age");
+      genderTextEditingController = new TextEditingController(text: "gender");
+    }
     // userData.setUserData(userLoad());
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -148,21 +149,21 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
+      _image = File(pickedFile.path);
+      // setState(() {
+      //   if (pickedFile != null) {
 
-      setState(() {
-        if (pickedFile != null) {
-          _image = File(pickedFile.path);
-          print('Image Path $_image');
-          // _imageFile = pickedFile;
-        } else {
-          print('No image selected.');
-        }
-      });
+      //     print('Image Path $_image');
+      //     // _imageFile = pickedFile;
+      //   } else {
+      //     print('No image selected.');
+      //   }
+      // });
     }
 
-    Future<void> uploadPic(File file) async {
+    Future<void> uploadPic(String filePath) async {
+      final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
-      print('uploadpic start');
       if (file == null) return;
       print('uploading...');
       try {
@@ -297,8 +298,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        print(_image);
-                        uploadPic(_image);
+                        uploadPic(_image.path);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
