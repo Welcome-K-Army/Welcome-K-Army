@@ -14,6 +14,7 @@ import 'dart:async';
 import 'package:flutter/src/widgets/framework.dart';
 import 'dart:core';
 import 'package:flutter/src/widgets/editable_text.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 
 class EditProfile extends StatefulWidget {
@@ -157,12 +158,13 @@ class _EditProfileState extends State<EditProfile> {
 
 
     void takePhoto(ImageSource source) async {
-      final _pickimage = await ImagePicker.getImage(source: source);
+      final _picker=ImagePicker();
+      final _pickimage = await _picker.getImage(source: source);
       print(_pickimage.path);
       File image;
       setState(() {
         if(_pickimage!=null){
-          _image = File(_pickimage.path);
+          image = File(_pickimage.path);
         }
        
       });
@@ -174,9 +176,9 @@ class _EditProfileState extends State<EditProfile> {
       // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
       if (kIsWeb) {
-      UploadTask uploadTask = ref.putData(await image.readAsBytes(), metadata);
+      UploadTask uploadTask = storageReference.putData(await image.readAsBytes(), metadata);
     } else {
-      UploadTask uploadTask = ref.putFile(io.File(image.path), metadata);
+      UploadTask uploadTask = storageReference.putFile(io.File(image.path), metadata);
     }
 
       String downloadURL = await storageReference.getDownloadURL();
