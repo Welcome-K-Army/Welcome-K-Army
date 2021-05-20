@@ -15,7 +15,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     Tab(text: "내신 및 수능"),    
   ];
 
-  TabController _tabController;
+  final TabController _tabController;
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -24,6 +25,14 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
       vsync: this,
       length: 4,
     );  
+    _textEditingController.addListener(() {
+      print(_textEditingController.text);
+    });
+  }
+
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
   }
 
   @override
@@ -40,7 +49,15 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
         body: TabBarView(
           controller: _tabController,
           children: <Widget>[
-            Text("전형"),
+            TextField( 
+              controller: _controller, 
+              decoration: InputDecoration( 
+                border: OutlineInputBorder(), 
+                hintText: 'hint', 
+                labelText: 'ID', 
+                prefixIcon: Icon(Icons.perm_identity), 
+              ), 
+            ),
             Text("1차 시험"),
             Text("2차 시험"),
             Text("내신 및 수능"),
