@@ -50,7 +50,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
           controller: _tabController,
           children: <Widget>[
             TextField( 
-              controller: _controller, 
+              controller: _textEditingController, 
               decoration: InputDecoration( 
                 border: OutlineInputBorder(), 
                 hintText: 'hint', 
