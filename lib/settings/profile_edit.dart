@@ -156,9 +156,10 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     void takePhoto(ImageSource source) async {
       PickedFile image = await _picker.getImage(source: source);
+      print(image)
       if (image == null) return;
       setState(() {
-        _image = File(image);
+        _image = File(image.path);
       });
       Reference storageReference = _firebaseStorage.ref().child("profile_image/");
       UploadTask storageUploadTask = storageReference.putFile(_image);
