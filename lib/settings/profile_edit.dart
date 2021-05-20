@@ -28,7 +28,8 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController genderTextEditingController;
 
   @override
-  void initState() {
+  void initState(BuildContext context) {
+    UserData userData = Provider.of<UserData>(context);
     super.initState();
     profileNameTextEditingController = new TextEditingController(text: userData.nickName);
     emailTextEditingController = new TextEditingController(text: "userData.email");
@@ -41,6 +42,7 @@ class _EditProfileState extends State<EditProfile> {
     File _image;
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
+
 
     // userData.setUserData(userLoad());
 
