@@ -148,27 +148,25 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
+    FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     void takePhoto(ImageSource source) async {
-      PickedFile pickedFile = await _picker.getImage(source: source);
-
+      PickedFile image=await _picker.getImage(source: source));
+      if (image == null)return;
       setState(() {
-         _image=File(pickedFile.path);
-       });
-    }
+      _image = image;
+      });
+      Reference storageReference=_firebaseStorage .ref().child("profile_image/");
+      UploadTask storageUploadTask  = storageReference.putFile(_image);
 
-    Future<void> uploadPic(String filePath) async {
-      final File file = File(filePath);
-      // gs://login-project-afa09.appspot.com/
-      if (file == null) return;
-      print('uploading...');
-      try {
-        await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
-      } on FirebaseException catch (e) {
-        print(e.code);
-        // e.g, e.code == 'canceled'
-      }
+      String downloadURL = await storageReference.getDownloadURL();
+
+      setState((){
+        _profileImageURL =downloadURL;
+      })
+
     }
+ 
 
     final bottomSheet = Container(
         height: 100,
@@ -242,7 +240,7 @@ class _EditProfileState extends State<EditProfile> {
                     //DB에서 사진가져와야댐
                     fit: BoxFit.cover, //원본크기 유지
                     //CachedNetworkImageProvider(user.url),이용
-                    image:(_image != null) ? _image : NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
+                    image:(_profileImageURL != null) ? Text(_profileImageURL),: NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
           ), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
