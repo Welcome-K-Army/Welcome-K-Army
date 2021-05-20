@@ -27,26 +27,22 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-    @override
-    void initState(){
-      super.initState();
-      profileNameTextEditingController=new TextEditingController(text:"nickname");
-      emailTextEditingController=new TextEditingController(text:"email");
-      ageTextEditingController=new TextEditingController(text:"age");
-      genderTextEditingController=new TextEditingController(text:"gender");
-    }
-
-
+  @override
+  void initState() {
+    super.initState();
+    profileNameTextEditingController = new TextEditingController(text: "nickname");
+    emailTextEditingController = new TextEditingController(text: "email");
+    ageTextEditingController = new TextEditingController(text: "age");
+    genderTextEditingController = new TextEditingController(text: "gender");
+  }
 
   @override
   Widget build(BuildContext context) {
     File _image;
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
-  
+
     // userData.setUserData(userLoad());
-
-
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
     String uid = FirebaseAuth.instance.currentUser.uid.toString();
@@ -99,13 +95,13 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextFormField(
-            controller: emailTextEditingController..text=userData.email,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            ),
+          controller: emailTextEditingController..text = userData.email,
+          style: TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
           ),
+        ),
       ],
     );
     final usergenderForm = Column(
@@ -164,10 +160,10 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(String filePath) async {
-      final File file = File(filePath);
+    Future<void> uploadPic(File file) async {
       // gs://login-project-afa09.appspot.com/
-      if (file == null) return ;
+      print('uploadPic function start');
+      if (file == null) return;
       print('uploading...');
       try {
         await FirebaseStorage.instance.ref('profile_image/image.png').putFile(file);
@@ -301,7 +297,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image.path);
+                        uploadPic(_image);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
