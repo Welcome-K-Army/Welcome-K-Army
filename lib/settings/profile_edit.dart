@@ -151,17 +151,21 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
     
-    FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+
     String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
+
+
+
+
     void takePhoto(ImageSource source) async {
       PickedFile image = await _picker.getImage(source: source);
       print(File(image.path));
-      if (image == null) return;
-      setState(() {
-        _image = File(image.path);
-      });
 
+      // setState(() {
+      //   _image = File(image.path);
+      // });
+      FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
       Reference storageReference = await _firebaseStorage.ref("profile_image/test.png");
       // UploadTask storageUploadTask = 
       await storageReference.putFile(File(image.path));
