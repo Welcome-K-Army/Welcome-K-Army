@@ -14,7 +14,6 @@ import 'dart:async';
 import 'package:flutter/src/widgets/framework.dart';
 import 'dart:core';
 import 'package:flutter/src/widgets/editable_text.dart';
-import 'package:http/http.dart' as http;
 
 
 class EditProfile extends StatefulWidget {
@@ -162,7 +161,8 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         _image = File(image.path);
       });
-      Reference storageReference = _firebaseStorage.ref().child("gs://login-project-afa09.appspot.com/profile_image/test.png");
+
+      Reference storageReference = _firebaseStorage.ref().child("profile_image/test.png");
       UploadTask storageUploadTask = storageReference.putFile(_image);
 
       String downloadURL = await storageReference.getDownloadURL();
