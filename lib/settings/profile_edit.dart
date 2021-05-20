@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import '../net/firebase.dart';
 import 'dart:async';
 import 'package:flutter/src/widgets/framework.dart';
+import 'dart:core';
+import 'package:flutter/src/widgets/editable_text.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -20,10 +22,18 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController = TextEditingController();
+  TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController ageTextEditingController = TextEditingController();
   TextEditingController genderTextEditingController = TextEditingController();
+
+
+
+  @override
+  void initState(){
+    super.initState();
+    profileNameTextEditingController=new TextEditingController(text:"test");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +158,8 @@ class _EditProfileState extends State<EditProfile> {
       });
     }
 
-    Future<void> uploadPic(File file) async {
+    Future<void> uploadPic(String filePath) async {
+      final File file = File(filePath);
       // gs://login-project-afa09.appspot.com/
       if (file == null) return ;
       print('uploading...');
@@ -284,7 +295,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image);
+                        uploadPic(_image.path);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
