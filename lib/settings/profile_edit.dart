@@ -155,13 +155,13 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
 
 
-
+        File image;
 
     void takePhoto(ImageSource source) async {
       final _picker=ImagePicker();
       final _pickimage = await _picker.getImage(source: source);
       print(_pickimage.path);
-      File image;
+  
       setState(() {
         if(_pickimage!=null){
           image = File(_pickimage.path);
