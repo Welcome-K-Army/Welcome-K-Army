@@ -155,7 +155,7 @@ class _EditProfileState extends State<EditProfile> {
       PickedFile image=await _picker.getImage(source: source);
       if (image == null)return;
       setState(() {
-      _image = image;
+      _image = File(image.path);
       });
       Reference storageReference=_firebaseStorage .ref().child("profile_image/");
       UploadTask storageUploadTask  = storageReference.putFile(_image);
@@ -164,7 +164,7 @@ class _EditProfileState extends State<EditProfile> {
 
       setState((){
         _profileImageURL =downloadURL;
-      })
+      });
 
     }
  
