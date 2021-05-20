@@ -23,6 +23,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File image;
+  String downloadURL
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -65,8 +66,8 @@ class _EditProfileState extends State<EditProfile> {
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
 
-    String downloadURL = await storageReference.getDownloadURL();
-    // print(downloadURL);
+    downloadURL = await storageReference.getDownloadURL();
+    print(downloadURL);
   }
 
   @override
@@ -253,7 +254,7 @@ class _EditProfileState extends State<EditProfile> {
                       //DB에서 사진가져와야댐
                       fit: BoxFit.cover, //원본크기 유지
 
-                      image: image != null ? FileImage(image) : NetworkImage("https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg")))), //Container
+                      image: (image != null) ? FileImage(image) : NetworkImage("https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg")))), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
             //프로필 수정ui
