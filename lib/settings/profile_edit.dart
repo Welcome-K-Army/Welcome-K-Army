@@ -31,8 +31,8 @@ class _EditProfileState extends State<EditProfile> {
   void initState(BuildContext context) {
     
     super.initState();
-    UserData userData = Provider.of<UserData>(context);
-    profileNameTextEditingController = new TextEditingController(text: userData.nickName);
+
+    profileNameTextEditingController = new TextEditingController(text: 'test');
     emailTextEditingController = new TextEditingController(text: "userData.email");
     ageTextEditingController = new TextEditingController(text: "age");
     genderTextEditingController = new TextEditingController(text: "gender");
