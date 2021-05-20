@@ -16,14 +16,12 @@ import 'dart:core';
 import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-
 class EditProfile extends StatefulWidget {
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
-
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -39,10 +37,40 @@ class _EditProfileState extends State<EditProfile> {
     genderTextEditingController = new TextEditingController(text: "gender");
   }
 
+    void takePhoto(ImageSource source) async {
+      final _picker = ImagePicker();
+      final _pickimage = await _picker.getImage(source: source);
+      print(_pickimage.path + "picked File");
+
+      setState(() {
+        if (_pickimage != null) {
+          image = File(_pickimage.path);
+        }
+      });
+
+      FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+      Reference storageReference = await _firebaseStorage.ref().child("profile_image/${userData.uid}");
+      final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
+        'picked-file-path': _pickimage.path
+      });
+      UploadTask uploadTask;
+      // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+
+      if (kIsWeb) {
+        print("web");
+        uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+      } else {
+        print("no web");
+        uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+      }
+
+      String downloadURL = await storageReference.getDownloadURL();
+      // print(downloadURL);
+    }
+
+
   @override
   Widget build(BuildContext context) {
-
-
     UserData userData = Provider.of<UserData>(context);
 
     // userData.setUserData(userLoad());
@@ -149,46 +177,13 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
-    
 
     String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
 
-
     File image;
 
-    void takePhoto(ImageSource source) async {
-      final _picker=ImagePicker();
-      final _pickimage = await _picker.getImage(source: source);
-      print(_pickimage.path+"picked File");
-  
-      setState(() {
-        if(_pickimage!=null){
-          image = File(_pickimage.path);
-        }
-       
-      });
 
-      FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-      Reference storageReference = await _firebaseStorage.ref().child("profile_image/${userData.uid}");
-        final metadata = SettableMetadata(
-        contentType: 'image/png',
-        customMetadata: {'picked-file-path': _pickimage.path});
-        UploadTask uploadTask;
-      // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
-
-      if (kIsWeb) {
-      print("web");
-      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
-    } else {
-      print("no web");
-      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
-    }
-
-      String downloadURL = await storageReference.getDownloadURL();
-      // print(downloadURL);
-  
-    }
 
     final bottomSheet = Container(
         height: 100,
@@ -261,9 +256,8 @@ class _EditProfileState extends State<EditProfile> {
                   image: DecorationImage(
                       //DB에서 사진가져와야댐
                       fit: BoxFit.cover, //원본크기 유지
-                      
-                      image:image != null ?FileImage(image):NetworkImage("https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg"))) 
-              ), //Container
+
+                      image: image != null ? FileImage(image) : NetworkImage("https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg")))), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
             //프로필 수정ui
