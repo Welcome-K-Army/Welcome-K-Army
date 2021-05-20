@@ -21,28 +21,27 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-
+  @override
+  void initState() {
+    super.initState();
+    profileNameTextEditingController = new TextEditingController(text: "userData.nickname");
+    emailTextEditingController = new TextEditingController(text: "userData.email");
+    ageTextEditingController = new TextEditingController(text: "age");
+    genderTextEditingController = new TextEditingController(text: "gender");
+  }
 
   @override
   Widget build(BuildContext context) {
-    File _image;
+    File image;
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
-    @override
-    void initState() {
-      super.initState();
-      profileNameTextEditingController = new TextEditingController(text: userData.nickName);
-      emailTextEditingController = new TextEditingController(text: "userData.email");
-      ageTextEditingController = new TextEditingController(text: "age");
-      genderTextEditingController = new TextEditingController(text: "gender");
-    }
+
     // userData.setUserData(userLoad());
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -149,21 +148,21 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
-      _image = File(pickedFile.path);
-      // setState(() {
-      //   if (pickedFile != null) {
 
-      //     print('Image Path $_image');
-      //     // _imageFile = pickedFile;
-      //   } else {
-      //     print('No image selected.');
-      //   }
-      // });
+      setState(() {
+        if (pickedFile != null) {
+          image = File(pickedFile.path);
+          print('Image Path $image');
+          // _imageFile = pickedFile;
+        } else {
+          print('No image selected.');
+        }
+      });
     }
 
-    Future<void> uploadPic(String filePath) async {
-      final File file = File(filePath);
+    Future<void> uploadPic(File file) async {
       // gs://login-project-afa09.appspot.com/
+      print('uploadpic start');
       if (file == null) return;
       print('uploading...');
       try {
@@ -248,7 +247,7 @@ class _EditProfileState extends State<EditProfile> {
                     //CachedNetworkImageProvider(user.url),이용
                     image: NetworkImage('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'))), //BoxDecoration
           ), //Container
-// (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
+// (image != null)?Image.file(image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
             //프로필 수정ui
             bottom: 0,
@@ -298,7 +297,8 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () {
-                        uploadPic(_image.path);
+                        print(image);
+                        uploadPic(image);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
