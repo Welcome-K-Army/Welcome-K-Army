@@ -174,7 +174,7 @@ class _EditProfileState extends State<EditProfile> {
         final metadata = SettableMetadata(
         contentType: 'image/png',
         customMetadata: {'picked-file-path': _pickimage.path});
-        UploadTask uploadTask
+        UploadTask uploadTask;
       // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
       if (kIsWeb) {
