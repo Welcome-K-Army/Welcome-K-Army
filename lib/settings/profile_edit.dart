@@ -163,6 +163,7 @@ class _EditProfileState extends State<EditProfile> {
 
     Future<void> uploadPic(File file) async {
       // gs://login-project-afa09.appspot.com/
+      print('uploadpic start');
       if (file == null) return;
       print('uploading...');
       try {
