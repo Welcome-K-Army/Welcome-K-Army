@@ -44,7 +44,6 @@ class _EditProfileState extends State<EditProfile> {
     ImagePicker _picker = ImagePicker();
     UserData userData = Provider.of<UserData>(context);
 
-
     // userData.setUserData(userLoad());
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -152,22 +151,20 @@ class _EditProfileState extends State<EditProfile> {
     String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     void takePhoto(ImageSource source) async {
-      PickedFile image=await _picker.getImage(source: source);
-      if (image == null)return;
+      PickedFile image = await _picker.getImage(source: source);
+      if (image == null) return;
       setState(() {
-      _image = File(image.path);
+        _image = File(image.path);
       });
-      Reference storageReference=_firebaseStorage .ref().child("profile_image/");
-      UploadTask storageUploadTask  = storageReference.putFile(_image);
+      Reference storageReference = _firebaseStorage.ref().child("profile_image/");
+      UploadTask storageUploadTask = storageReference.putFile(_image);
 
       String downloadURL = await storageReference.getDownloadURL();
 
-      setState((){
-        _profileImageURL =downloadURL;
+      setState(() {
+        _profileImageURL = downloadURL;
       });
-
     }
- 
 
     final bottomSheet = Container(
         height: 100,
@@ -229,20 +226,20 @@ class _EditProfileState extends State<EditProfile> {
       child: Stack(
         children: [
           Container(
-            width: 130,
-            height: 130,
-            decoration: BoxDecoration(
-                border: Border.all(width: 4, color: Colors.green),
-                boxShadow: [
-                  BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    //DB에서 사진가져와야댐
-                    fit: BoxFit.cover, //원본크기 유지
-                    //CachedNetworkImageProvider(user.url),이용
-                    image:NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
-          ), //Container
+              width: 130,
+              height: 130,
+              decoration: BoxDecoration(
+                  border: Border.all(width: 4, color: Colors.green),
+                  boxShadow: [
+                    BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
+                  ],
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      //DB에서 사진가져와야댐
+                      fit: BoxFit.cover, //원본크기 유지
+                      //CachedNetworkImageProvider(user.url),이용
+                      image: NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
+              ), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
             //프로필 수정ui
@@ -292,9 +289,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
-                      onPressed: () {
- 
-                      },
+                      onPressed: () {},
                       child: Text("Cancel",
                           style: TextStyle(
                             fontSize: 17,
