@@ -9,6 +9,7 @@ class DataInputTabBarView extends StatefulWidget {
 
 class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTickerProviderStateMixin {
   final List<Tab> _tabs = <Tab> [
+    Tab(text: "전형"),
     Tab(text: "1차 시험"),
     Tab(text: "2차 시험"),
     Tab(text: "내신 및 수능"),    
@@ -21,7 +22,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     super.initState;
     _tabController = TabController(
       vsync: this,
-      length: 3,
+      length: 4,
     );  
   }
 
@@ -39,6 +40,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
         body: TabBarView(
           controller: _tabController,
           children: <Widget>[
+            Text("전형"),
             Text("1차 시험"),
             Text("2차 시험"),
             Text("내신 및 수능"),
