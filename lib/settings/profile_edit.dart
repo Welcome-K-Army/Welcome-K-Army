@@ -15,7 +15,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'dart:core';
 import 'package:flutter/src/widgets/editable_text.dart';
 
-import 'package:http/http.dart' as http;
 
 class EditProfile extends StatefulWidget {
   @override
@@ -23,6 +22,8 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+
+  File _image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -40,13 +41,15 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    File _image;
+
     ImagePicker _picker = ImagePicker();
+
     UserData userData = Provider.of<UserData>(context);
 
     // userData.setUserData(userLoad());
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+
     String uid = FirebaseAuth.instance.currentUser.uid.toString();
     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
@@ -147,6 +150,7 @@ class _EditProfileState extends State<EditProfile> {
         )
       ],
     );
+    
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     String _profileImageURL = "";
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
@@ -154,7 +158,7 @@ class _EditProfileState extends State<EditProfile> {
       PickedFile image = await _picker.getImage(source: source);
       if (image == null) return;
       setState(() {
-        _image = File(image.path);
+        _image = File(image);
       });
       Reference storageReference = _firebaseStorage.ref().child("profile_image/");
       UploadTask storageUploadTask = storageReference.putFile(_image);
@@ -238,7 +242,8 @@ class _EditProfileState extends State<EditProfile> {
                       //DB에서 사진가져와야댐
                       fit: BoxFit.cover, //원본크기 유지
                       //CachedNetworkImageProvider(user.url),이용
-                      image: NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
+                      image:
+                        (_image != null) ? FileImage(_image) : NetworkImage("'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'"))) //BoxDecoration
               ), //Container
 // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
           Positioned(
