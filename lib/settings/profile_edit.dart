@@ -95,7 +95,7 @@ class _EditProfileState extends State<EditProfile> {
           ),
         ),
         TextFormField(
-          controller: emailTextEditingController
+          controller: emailTextEditingController,
           style: TextStyle(color: Colors.black),
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
@@ -148,16 +148,16 @@ class _EditProfileState extends State<EditProfile> {
 //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
     Future takePhoto(ImageSource source) async {
       final pickedFile = await _picker.getImage(source: source);
-
-      setState(() {
-        if (pickedFile != null) {
-          _image = File(pickedFile.path);
-          print('Image Path $_image');
-          // _imageFile = pickedFile;
-        } else {
-          print('No image selected.');
-        }
-      });
+      _image = File(pickedFile.path);
+      // setState(() {
+      //   if (pickedFile != null) {
+          
+      //     print('Image Path $_image');
+      //     // _imageFile = pickedFile;
+      //   } else {
+      //     print('No image selected.');
+      //   }
+      // });
     }
 
     Future<void> uploadPic(String filePath) async {
