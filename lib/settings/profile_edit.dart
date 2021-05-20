@@ -1,4 +1,4 @@
-import 'dart:io' as io;
+import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
 import 'package:image_picker/image_picker.dart'; //갤러리 접근
 import 'package:flutter/material.dart';
 
@@ -178,7 +178,7 @@ class _EditProfileState extends State<EditProfile> {
       if (kIsWeb) {
       UploadTask uploadTask = storageReference.putData(await image.readAsBytes(), metadata);
     } else {
-      UploadTask uploadTask = storageReference.putFile(io.File(image.path), metadata);
+      UploadTask uploadTask = storageReference.putFile(File(image.path), metadata);
     }
 
       String downloadURL = await storageReference.getDownloadURL();
