@@ -56,7 +56,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
         setState(() {
           dropdownValue = newValue;
         });
-                switch(dropdownValue) {
+ switch(value) {
                   case "사관학교" : 
                   institutionStatus.setStatus(true);
                   break;
@@ -66,7 +66,8 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
                   case "부사관" : 
                   institutionStatus.setStatus(false);
                   break;
-                  default : break;        
+                  default : break;
+                }       
       },
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
