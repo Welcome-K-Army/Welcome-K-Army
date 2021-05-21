@@ -23,7 +23,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File image;
-  String downloadURL;
+  String imageURL;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -35,7 +35,7 @@ class _EditProfileState extends State<EditProfile> {
     super.initState();
     profileNameTextEditingController = new TextEditingController(text: '');
     emailTextEditingController = new TextEditingController(text: "");
-    ageTextEditingController = new TextEditingController(text: "");
+    ageTextEditingController = new TextEditingController(text: "22");
     genderTextEditingController = new TextEditingController(text: "");
   }
 
@@ -71,6 +71,8 @@ class _EditProfileState extends State<EditProfile> {
     // });
   }
 
+
+
   void uploadfile(File metaimage) async {
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
@@ -89,16 +91,14 @@ class _EditProfileState extends State<EditProfile> {
     }
   }
 
+    Future<String> getURL() async {
+      Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
+      return storageReference.getDownloadURL();
+    }
+
+
   @override
   Widget build(BuildContext context) {
-    void getURL() async {
-      Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
-      String url = await storageReference.getDownloadURL();
-      setState(() {
-        downloadURL = url;
-        print(downloadURL);
-      });
-    }
 
     UserData userData = Provider.of<UserData>(context);
 
@@ -347,10 +347,10 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        getURL();
-                        print(downloadURL);
+                        print(getURL());
+                        imageURL=getURL();
                         uploadfile(image);
-                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text), downloadURL);
+                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text), imageURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
                       child: Text("Save",
