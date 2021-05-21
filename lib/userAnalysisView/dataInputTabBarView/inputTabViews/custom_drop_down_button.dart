@@ -58,7 +58,12 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: GestureDetector(
+            onTap: () {
+              
+            },
+            child: Text(value),
+          )
         );
       }).toList(),
     );

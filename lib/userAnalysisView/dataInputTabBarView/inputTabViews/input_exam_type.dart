@@ -26,8 +26,6 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
 
   bool status = true;
 
-  CustomDropDownButton typeDropdownButton = CustomDropDownButton(dropdownValue: this.typeItems[0], items: this.typeItems);
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,7 +33,7 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
         height: 200,
         child: Column(
           children: [
-            typeDropdownButton,
+            CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems),
             Container(
                 child:
                   status
