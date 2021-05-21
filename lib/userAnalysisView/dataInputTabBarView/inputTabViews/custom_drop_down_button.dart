@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../analysisView/analysisView.dart';
-
 class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
