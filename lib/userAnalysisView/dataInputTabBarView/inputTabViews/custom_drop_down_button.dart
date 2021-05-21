@@ -5,8 +5,8 @@ class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
   bool changed;
-  CustomDropDownButton({this.dropdownValue, this.items});
-  bool get ischanged()=>changed;
+  CustomDropDownButton({this.dropdownValue, this.items,this.changed});
+  bool get ischanged=>changed;
   CustomDropDownButtonState createState() => new CustomDropDownButtonState(
     changed:false;
     dropdownValue: dropdownValue,
@@ -20,7 +20,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
 
-  CustomDropDownButtonState({this.dropdownValue, this.items});
+  CustomDropDownButtonState({this.dropdownValue, this.items,this.changed});
 
   @override
   void initState() {
@@ -36,9 +36,8 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
   }
 
   
-  String get getDropDownValue() => dropdownValue;
+  String get getDropDownValue => dropdownValue;
   
-  changed=false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
