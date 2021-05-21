@@ -54,28 +54,6 @@ class _EditProfileState extends State<EditProfile> {
     });
 
 
-    // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-    // Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
-    // final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
-    //   'picked-file-path': _pickimage.path
-    // });
-    // UploadTask uploadTask;
-    // // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
-
-    // if (kIsWeb) {
-    //   print("web");
-    //   uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
-    // } else {
-    //   print("no web");
-    //   uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
-    // }
-    // setState(() async {
-    //   downloadURL = await storageReference.getDownloadURL();
-    //   print(downloadURL);
-    // });
-  }
-  
-  void uploadfile() async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -95,8 +73,30 @@ class _EditProfileState extends State<EditProfile> {
       downloadURL = await storageReference.getDownloadURL();
       print(downloadURL);
     });
-    
   }
+  
+  // void uploadfile() async{
+  //   FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+  //   Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
+  //   final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
+  //     'picked-file-path': _pickimage.path
+  //   });
+  //   UploadTask uploadTask;
+  //   // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+
+  //   if (kIsWeb) {
+  //     print("web");
+  //     uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+  //   } else {
+  //     print("no web");
+  //     uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+  //   }
+  //   setState(() async {
+  //     downloadURL = await storageReference.getDownloadURL();
+  //     print(downloadURL);
+  //   });
+    
+  // }
 
 
   @override
