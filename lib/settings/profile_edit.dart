@@ -29,14 +29,13 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
-
+  final loadUser=userLoad();
   
 
   @override
   void initState() {
     super.initState();
-    // UserData loadUser=userLoad();
-    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
     emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
     ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
     genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
