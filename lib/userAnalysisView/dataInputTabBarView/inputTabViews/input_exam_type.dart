@@ -8,24 +8,12 @@ class DataInputTabBarView extends StatefulWidget {
 }
 
 class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTickerProviderStateMixin {
-  final List<Tab> _tabs = <Tab>[
-    Tab(text: "전형"),
-    Tab(text: "1차 시험"),
-    Tab(text: "2차 시험"),
-    Tab(text: "내신 및 수능"),
-  ];
-
   String dropdownValue = 'One';
-  TabController _tabController;
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState;
-    _tabController = TabController(
-      vsync: this,
-      length: 4,
-    );
     _textEditingController.addListener(() {
       print(_textEditingController.text);
     });
