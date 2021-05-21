@@ -30,6 +30,8 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
+  final loadUser=userLoad();
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,8 @@ class _EditProfileState extends State<EditProfile> {
     ageTextEditingController = new TextEditingController(text: "age");
     genderTextEditingController = new TextEditingController(text: "gender");
   }
+
+
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -74,19 +78,19 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     UserData userData = Provider.of<UserData>(context);
 
-    // userData.setUserData(userLoad());
+    userData.setUserData(loadUser);
 
-    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
-    String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        Map<String, dynamic> data = documentSnapshot.data();
-        userData.setUserData(UserData.fromJson(data));
-      } else {
-        print('no data');
-      }
-    });
+    // String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    // users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+    //   if (documentSnapshot.exists) {
+    //     Map<String, dynamic> data = documentSnapshot.data();
+    //     userData.setUserData(UserData.fromJson(data));
+    //   } else {
+    //     print('no data');
+    //   }
+    // });
 
     // userData.setUserData(userLoad());
     // emailTextEditingController.value = TextEditingValue(
