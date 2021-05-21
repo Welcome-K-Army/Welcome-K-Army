@@ -66,6 +66,7 @@ class _EditProfileState extends State<EditProfile> {
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
     setState(() async{
+      
       downloadURL = await storageReference.getDownloadURL();
       print(downloadURL);
     });
@@ -299,9 +300,9 @@ class _EditProfileState extends State<EditProfile> {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
                       onPressed: () async{
-                        UserData test;
-                        test.setUserData(test.userLoad());
-                        print(test);
+                        // UserData test;
+                        // test.setUserData(test.userLoad());
+                        // print(test);
                       },
                       child: Text("Cancel",
                           style: TextStyle(
