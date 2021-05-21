@@ -91,13 +91,18 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
-    String url=await storageReference.getDownloadURL();
+
+    
+  }
+
+  void getURL()async{
+     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
+     String url=await storageReference.getDownloadURL();
     setState(() {
       downloadURL = url;
       print(downloadURL);
       
     });
-    
   }
 
 
@@ -134,7 +139,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController..text = "test",
+            controller: profileNameTextEditingController,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
@@ -352,8 +357,9 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        uploadfile(image);
+                        getURL();
                         print(downloadURL);
+                        uploadfile(image);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text),downloadURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
