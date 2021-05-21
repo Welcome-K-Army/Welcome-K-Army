@@ -4,23 +4,21 @@ import 'package:flutter/src/widgets/basic.dart';
 class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
-  bool changed;
-  CustomDropDownButton({this.dropdownValue, this.items,this.changed});
-  bool get ischanged=>changed;
+
+  CustomDropDownButton({this.dropdownValue, this.items});
+
   CustomDropDownButtonState createState() => new CustomDropDownButtonState(
-    changed:false;
     dropdownValue: dropdownValue,
     items: items
   );
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
-  bool changed;
   String dropdownValue;
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
 
-  CustomDropDownButtonState({this.dropdownValue, this.items,this.changed});
+  CustomDropDownButtonState({this.dropdownValue, this.items});
 
   @override
   void initState() {
@@ -55,7 +53,6 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          changed=!changed;
         });
       },
       items: items.map<DropdownMenuItem<String>>((String value) {
