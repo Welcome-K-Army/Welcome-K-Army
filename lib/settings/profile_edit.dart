@@ -50,6 +50,7 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       if (_pickimage != null) {
         image = File(_pickimage.path);
+        PickedFile metaimage=_pickimage;
       }
     });
 
@@ -74,7 +75,7 @@ class _EditProfileState extends State<EditProfile> {
     //   print(downloadURL);
     // });
   }
-  PickedFile metaimage=_pickimage;
+  
   void uploadfile() async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
