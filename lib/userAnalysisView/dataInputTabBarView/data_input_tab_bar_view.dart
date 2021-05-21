@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import '../analysisView/analysisView.dart';
 
+import './inputTabViews/input_exam_type.dart';
+
 class DataInputTabBarView extends StatefulWidget {
   DataInputTabBarViewState createState() => new DataInputTabBarViewState();
 }
@@ -35,13 +37,14 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     _textEditingController.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(controller: _tabController, tabs: _tabs)),
         body: TabBarView(controller: _tabController, children: <Widget>[
+          InputExamType(),
           TextField(
             controller: _textEditingController,
             decoration: InputDecoration(
@@ -79,7 +82,6 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
               );
             }).toList(),
           ),
-          Text("2차 시험"),
           Text("내신 및 수능"),
         ]),
         floatingActionButton: FloatingActionButton(

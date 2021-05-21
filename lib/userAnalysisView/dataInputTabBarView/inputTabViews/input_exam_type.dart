@@ -1,84 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../analysisView/analysisView.dart';
+import 'custom_drop_down_button.dart';
 
-class DataInputTabBarView extends StatefulWidget {
-  DataInputTabBarViewState createState() => new DataInputTabBarViewState();
+class InputExamType extends StatefulWidget {
+  InputExamTypeState createState() => new InputExamTypeState();
 }
 
-class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTickerProviderStateMixin {
-  String dropdownValue = 'One';
-  final TextEditingController _textEditingController = TextEditingController();
+class InputExamTypeState extends State<InputExamType> with SingleTickerProviderStateMixin {
+  final List<String> typeItems = {
+    "사관학교",
+    "학군단",
+    "부사관"
+  };
 
-  @override
-  void initState() {
-    super.initState;
-    _textEditingController.addListener(() {
-      print(_textEditingController.text);
-    });
+  final List<String> typeAcademyItems = {
+    "고등학교 학교장 추천",
+    "적성 우수",
+    "종합 선발",
+    "독립유공자 손자녀 및 국가유공자 자녀",
+    "농어촌 학생",
+    "기초생활 수급자 및 차상위 계층",
+    "재외국민 자녀"
   }
 
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
   
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(controller: _tabController, tabs: _tabs)),
-        body: TabBarView(controller: _tabController, children: <Widget>[
-          TextField(
-            controller: _textEditingController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'hint',
-              labelText: 'ID',
-              prefixIcon: Icon(Icons.perm_identity),
-            ),
-          ),
-          DropdownButton<String>(
-            value: dropdownValue,
-            isExpanded: true,
-            icon: const Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: const TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownValue = newValue;
-              });
-            },
-            items: <String>[
-              'One',
-              'Two',
-              'Free',
-              'Four'
-            ].map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          Text("2차 시험"),
-          Text("내신 및 수능"),
-        ]),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AnalysisView()),
-            );
-          },
-          child: const Icon(Icons.navigation),
-          backgroundColor: Color(0xFF0C9869),
-        ));
+        body: Container(
+          height: 200,
+          child: Column(
+            children: [
+              CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems),
+              CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems),
+            ],
+          )
+        )
+    );
   }
 }

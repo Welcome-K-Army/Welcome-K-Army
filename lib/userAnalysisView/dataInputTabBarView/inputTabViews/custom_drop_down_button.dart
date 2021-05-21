@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'custom_drop_down_button.dart';
+import '../analysisView/analysisView.dart';
 
-class DataInputTabBarView extends StatefulWidget {
+class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
-  List<String> item;
-  DataInputTabBarViewState createState() => new DataInputTabBarViewState({
+  List<String> items;
+
+  CustomDropDownButton({this.dropdownValue, this.items});
+
+  CustomDropDownButtonState createState() => new CustomDropDownButtonState({
         this.dropdownValue,
         this.items
       });
 }
 
-class DataInputTabBarViewState extends State<DataInputTabBarView> {
+class CustomDropDownButtonState extends State<CustomDropDownButton> {
   String dropdownValue;
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
 
-  DataInputTabBarViewState({this.dropdownValue, this.items});
+  CustomDropDownButtonState({this.dropdownValue, this.items});
 
   @override
   void initState() {
