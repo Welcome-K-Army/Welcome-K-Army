@@ -51,23 +51,4 @@ class UserData with ChangeNotifier {
     };
   }
 
-  Future<UserData> userLoad() async {
-  CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-  FirebaseAuth auth = FirebaseAuth.instance;
-  String uid = auth.currentUser.uid.toString();
-  UserData loadingUser;
-  if (uid != null) {
-    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        Map<String, dynamic> data = documentSnapshot.data();
-        loadingUser=UserData.fromJson(data);
-      } else {
-        print('no data');
-      }
-    });
-  } else {
-    print("no uid");
-  }
-  return loadingUser;
-}
 }
