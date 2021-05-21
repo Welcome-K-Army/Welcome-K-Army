@@ -33,7 +33,6 @@ class InstitutionStatus with ChangeNotifier {
   void setStatus(bool value) {
     if (status == null) {
       print("null");
-      return true;
     }
     print("set"+DateTime.now().toString());
     print(status);
