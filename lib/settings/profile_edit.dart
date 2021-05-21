@@ -93,7 +93,7 @@ class _EditProfileState extends State<EditProfile> {
     }
     String url=await storageReference.getDownloadURL();
     setState(() {
-      downloadURL = url
+      downloadURL = url;
       print(downloadURL);
     });
     
