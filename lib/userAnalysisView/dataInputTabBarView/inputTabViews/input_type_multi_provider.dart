@@ -6,7 +6,7 @@ class TypeStatus with ChangeNotifier {
   bool status = true;
 
   bool getStatus() {
-    print("get"+DateTime.now());
+    print("get" + DateTime.now().toString());
     print(status);
     return status;
   }
@@ -21,11 +21,11 @@ class InstitutionStatus with ChangeNotifier {
   bool status = true;
 
   bool getStatus() {
-        if (status == null) {
+    if (status == null) {
       print("null");
       return true;
     }
-    print("get"+DateTime.now().toString());
+    print("get" + DateTime.now().toString());
     print(status);
     return status;
   }
@@ -34,7 +34,7 @@ class InstitutionStatus with ChangeNotifier {
     if (status == null) {
       print("null");
     }
-    print("set"+DateTime.now().toString());
+    print("set" + DateTime.now().toString());
     print(status);
     status = value;
     notifyListeners(); //must be inserted
