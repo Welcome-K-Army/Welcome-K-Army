@@ -32,15 +32,12 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   void initState() {
-
     super.initState();
     profileNameTextEditingController = new TextEditingController(text: '');
     emailTextEditingController = new TextEditingController(text: "");
     ageTextEditingController = new TextEditingController(text: "");
     genderTextEditingController = new TextEditingController(text: "");
-
   }
-  
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -52,7 +49,6 @@ class _EditProfileState extends State<EditProfile> {
         image = File(_pickimage.path);
       }
     });
-
 
     // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     // Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
@@ -74,8 +70,8 @@ class _EditProfileState extends State<EditProfile> {
     //   print(downloadURL);
     // });
   }
-  
-  void uploadfile(File metaimage) async{
+
+  void uploadfile(File metaimage) async {
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -91,23 +87,19 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
-
-    
   }
-
-  void getURL()async{
-     Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
-     String url=await storageReference.getDownloadURL();
-    setState(() {
-      downloadURL = url;
-      print(downloadURL);
-      
-    });
-  }
-
 
   @override
   Widget build(BuildContext context) {
+    void getURL() async {
+      Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
+      String url = await storageReference.getDownloadURL();
+      setState(() {
+        downloadURL = url;
+        print(downloadURL);
+      });
+    }
+
     UserData userData = Provider.of<UserData>(context);
 
     // userData.setUserData(loadUser);
@@ -239,9 +231,8 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.camera);
-                    
-                    Navigator.pop(context);
 
+                    Navigator.pop(context);
                   },
                   label: Text(
                     'Camera',
@@ -260,7 +251,6 @@ class _EditProfileState extends State<EditProfile> {
                     Navigator.pop(context);
                   },
                   label: Text(
-                    
                     'Gallery',
                     style: TextStyle(
                       fontSize: 20,
@@ -360,7 +350,7 @@ class _EditProfileState extends State<EditProfile> {
                         getURL();
                         print(downloadURL);
                         uploadfile(image);
-                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text),downloadURL);
+                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text), downloadURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
                       child: Text("Save",
