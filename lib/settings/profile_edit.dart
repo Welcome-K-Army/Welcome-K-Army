@@ -206,6 +206,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.camera);
+
                   },
                   label: Text(
                     'Camera',
@@ -221,8 +222,10 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.gallery);
+                    Navigator.pop(context);
                   },
                   label: Text(
+                    
                     'Gallery',
                     style: TextStyle(
                       fontSize: 20,
