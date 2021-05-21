@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 class UserData with ChangeNotifier {
   String uid;
   String nickName;
@@ -49,4 +50,24 @@ class UserData with ChangeNotifier {
       'createdAt': creationDate,
     };
   }
+
+  Future<UserData> userLoad() async {
+  CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String uid = auth.currentUser.uid.toString();
+  UserData loadingUser;
+  if (uid != null) {
+    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data();
+        loadingUser=UserData.fromJson(data);
+      } else {
+        print('no data');
+      }
+    });
+  } else {
+    print("no uid");
+  }
+  return loadingUser;
+}
 }
