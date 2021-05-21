@@ -4,7 +4,11 @@ import 'package:provider/provider.dart';
 class TypeStatus with ChangeNotifier {
   bool status = true;
 
-  bool getStatus() => status;
+  bool getStatus() {
+    print("get");
+    print(status);
+    return status;
+  }
 
   void setStatus(value) {
     status = value;
@@ -15,9 +19,15 @@ class TypeStatus with ChangeNotifier {
 class InstitutionStatus with ChangeNotifier {
   bool status = true;
 
-  bool getStatus() => status;
+  bool getStatus() {
+    print("get");
+    print(status);
+    status;
+  }
 
   void setStatus(value) {
+    print("set");
+    print(status);
     status = value;
     notifyListeners(); //must be inserted
   }
