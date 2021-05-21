@@ -30,7 +30,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-  final loadUser=await userLoad();
+  UserData loadUser=userLoad();
 
   @override
   void initState() {
