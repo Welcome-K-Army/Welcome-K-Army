@@ -23,7 +23,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File image;
-  String imageURL;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController;
@@ -348,7 +347,7 @@ class _EditProfileState extends State<EditProfile> {
                     ElevatedButton(
                       onPressed: () {
                         print(getURL());
-                        imageURL=getURL();
+                        final imageURL=getURL();
                         uploadfile(image);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text), imageURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
