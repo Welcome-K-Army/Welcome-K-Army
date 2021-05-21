@@ -90,7 +90,7 @@ class _EditProfileState extends State<EditProfile> {
     }
   }
 
-    String getURL() async {
+    Future<String> getURL() async {
       Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
       return storageReference.getDownloadURL();
     }
