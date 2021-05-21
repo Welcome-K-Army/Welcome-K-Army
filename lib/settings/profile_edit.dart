@@ -38,6 +38,7 @@ class _EditProfileState extends State<EditProfile> {
     emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
     ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
     genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+
   }
 
   void takePhoto(ImageSource source) async {
@@ -89,8 +90,8 @@ class _EditProfileState extends State<EditProfile> {
         print('no data');
       }
     });
-    
-    userData.setUserData(userLoad());
+
+    // userData.setUserData(userLoad());
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
