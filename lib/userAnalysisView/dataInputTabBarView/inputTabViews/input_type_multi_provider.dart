@@ -26,10 +26,10 @@ class InstitutionStatus with ChangeNotifier {
     }
     print("get");
     print(status);
-    status;
+    return status;
   }
 
-  void setStatus(value) {
+  void setStatus(bool value) {
     if (status == null) {
       print("null");
       return;
