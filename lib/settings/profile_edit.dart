@@ -91,7 +91,7 @@ class _EditProfileState extends State<EditProfile> {
     
     // userData.setUserData(userLoad());
 
-    final usernicknameForm = Column(
+    Column usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -104,7 +104,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController..text = userData.nickName,
+            controller: profileNameTextEditingController..text = "${userData.nickName}",
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
