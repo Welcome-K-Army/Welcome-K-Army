@@ -75,21 +75,21 @@ class _EditProfileState extends State<EditProfile> {
     // });
   }
   
-  void uploadfile(_pickimage) async{
+  void uploadfile(metaimage) async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
-      'picked-file-path': _pickimage.path
+      'picked-file-path': metaimage.path
     });
     UploadTask uploadTask;
     // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
     if (kIsWeb) {
       print("web");
-      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+      uploadTask = storageReference.putData(await metaimage.readAsBytes(), metadata);
     } else {
       print("no web");
-      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+      uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
     setState(() async {
       downloadURL = await storageReference.getDownloadURL();
@@ -232,6 +232,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.camera);
+                    
                     Navigator.pop(context);
 
                   },
@@ -249,6 +250,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.gallery);
+                    PickedImage metaimage=_pickimage;
                     Navigator.pop(context);
                   },
                   label: Text(
@@ -349,7 +351,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        uploadfile(_pickimage);
+                        uploadfile(metaimage);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
