@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -66,8 +65,7 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
-    setState(() async{
-      
+    setState(() async {
       downloadURL = await storageReference.getDownloadURL();
       print(downloadURL);
     });
@@ -103,12 +101,14 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextField(
-          style: TextStyle(color: Colors.black),
-          controller: profileNameTextEditingController..text=userData.nickName,
-          decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        Consumer<UserData>(
+          builder: (context, userData, child) => TextField(
+            style: TextStyle(color: Colors.black),
+            controller: profileNameTextEditingController..text = userData.nickName,
+            decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            ),
           ),
         )
       ],
@@ -300,7 +300,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
-                      onPressed: () async{
+                      onPressed: () async {
                         Navigator.pop(context);
                         // UserData test;
                         // test.setUserData(test.userLoad());
