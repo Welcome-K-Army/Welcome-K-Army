@@ -91,8 +91,8 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
-    setState(() async {
-      downloadURL = await storageReference.getDownloadURL();
+    setState(() {
+      downloadURL =  storageReference.getDownloadURL();
       print(downloadURL);
     });
     
@@ -351,7 +351,7 @@ class _EditProfileState extends State<EditProfile> {
                     ElevatedButton(
                       onPressed: () {
                         uploadfile(image);
-                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
+                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text),downloadURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
                       child: Text("Save",
