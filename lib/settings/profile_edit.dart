@@ -35,7 +35,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    UserData loadUser=userLoad();
+    // UserData loadUser=userLoad();
     profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
     emailTextEditingController = new TextEditingController(text: "${loadUser.email}");
     ageTextEditingController = new TextEditingController(text: "${loadUser.age}");
@@ -81,17 +81,17 @@ class _EditProfileState extends State<EditProfile> {
 
    // userData.setUserData(loadUser);
 
-    // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
-    // String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    // users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-    //   if (documentSnapshot.exists) {
-    //     Map<String, dynamic> data = documentSnapshot.data();
-    //     userData.setUserData(UserData.fromJson(data));
-    //   } else {
-    //     print('no data');
-    //   }
-    // });
+    String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data();
+        userData.setUserData(UserData.fromJson(data));
+      } else {
+        print('no data');
+      }
+    });
 
     // userData.setUserData(userLoad());
     // emailTextEditingController.value = TextEditingValue(
