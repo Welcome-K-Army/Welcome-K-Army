@@ -40,8 +40,7 @@ class _EditProfileState extends State<EditProfile> {
     genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
 
   }
-
-
+  
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -53,6 +52,7 @@ class _EditProfileState extends State<EditProfile> {
         image = File(_pickimage.path);
       }
     });
+    ImagePicker metaimage=_pickimage;
 
     // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     // Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
@@ -78,17 +78,17 @@ class _EditProfileState extends State<EditProfile> {
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
-      'picked-file-path': _pickimage.path
+      'picked-file-path': metaimage.path
     });
     UploadTask uploadTask;
     // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
     if (kIsWeb) {
       print("web");
-      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+      uploadTask = storageReference.putData(await metaimage.readAsBytes(), metadata);
     } else {
       print("no web");
-      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+      uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
     setState(() async {
       downloadURL = await storageReference.getDownloadURL();
