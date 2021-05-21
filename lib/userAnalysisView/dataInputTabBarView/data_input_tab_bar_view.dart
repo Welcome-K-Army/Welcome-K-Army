@@ -44,7 +44,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return MultiProvider(
-        provider: [
+        providers: [
           ChangeNotifierProvider<TypeStatus>(builder: (_) => TypeStatus()),
           ChangeNotifierProvider<InstitutionStatus>(builder: (_) => InstitutionStatus()),
         ],
