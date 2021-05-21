@@ -35,10 +35,10 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: 'test');
-    emailTextEditingController = new TextEditingController(text: "userData.email");
-    ageTextEditingController = new TextEditingController(text: "age");
-    genderTextEditingController = new TextEditingController(text: "gender");
+    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
+    emailTextEditingController = new TextEditingController(text: "${loadUser.email}");
+    ageTextEditingController = new TextEditingController(text: "${loadUser.age}");
+    genderTextEditingController = new TextEditingController(text: "${loadUser.gender}");
   }
 
 
