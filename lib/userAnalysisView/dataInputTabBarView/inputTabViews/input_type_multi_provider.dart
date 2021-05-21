@@ -23,9 +23,9 @@ class InstitutionStatus with ChangeNotifier {
   bool getStatus() {
         if (status == null) {
       print("null");
-      return;
+      return true;
     }
-    print("get"+DateTime.now());
+    print("get"+DateTime.now().toString());
     print(status);
     return status;
   }
@@ -33,9 +33,9 @@ class InstitutionStatus with ChangeNotifier {
   void setStatus(bool value) {
     if (status == null) {
       print("null");
-      return;
+      return true;
     }
-    print("set");
+    print("set"+DateTime.now().toString());
     print(status);
     status = value;
     notifyListeners(); //must be inserted
