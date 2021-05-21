@@ -14,7 +14,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age,Str
         'gender': gender,
         'age': age,
         'uid': uid,
-        'createdAt': DateTime.now().toString()
+        'createdAt': DateTime.now().toString(),
         'imageURL':imageURL,
       })
       .then((value) => print("User Added"))

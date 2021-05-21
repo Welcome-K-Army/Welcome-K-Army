@@ -91,8 +91,9 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(metaimage.path), metadata);
     }
+    String url=await storageReference.getDownloadURL();
     setState(() {
-      downloadURL =  storageReference.getDownloadURL();
+      downloadURL = url
       print(downloadURL);
     });
     
