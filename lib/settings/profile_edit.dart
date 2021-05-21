@@ -34,10 +34,10 @@ class _EditProfileState extends State<EditProfile> {
   void initState() {
 
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+    profileNameTextEditingController = new TextEditingController(text: '');
+    emailTextEditingController = new TextEditingController(text: "");
+    ageTextEditingController = new TextEditingController(text: "");
+    genderTextEditingController = new TextEditingController(text: "");
 
   }
   
@@ -95,6 +95,7 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       downloadURL = url;
       print(downloadURL);
+      
     });
     
   }
