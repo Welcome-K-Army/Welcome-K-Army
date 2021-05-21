@@ -25,10 +25,10 @@ class _EditProfileState extends State<EditProfile> {
   File image;
   String downloadURL;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController;
-  TextEditingController emailTextEditingController;
-  TextEditingController ageTextEditingController;
-  TextEditingController genderTextEditingController;
+  TextEditingController profileNameTextEditingController=TextEditingController();
+  TextEditingController emailTextEditingController=TextEditingController();
+  TextEditingController ageTextEditingController=TextEditingController();
+  TextEditingController genderTextEditingController=TextEditingController();
 
   // @override
   // void initState() {
