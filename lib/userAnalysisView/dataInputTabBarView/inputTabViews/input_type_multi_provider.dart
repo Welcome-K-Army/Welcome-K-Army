@@ -1,3 +1,4 @@
+import "package:intl/intl.dart";
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -5,7 +6,7 @@ class TypeStatus with ChangeNotifier {
   bool status = true;
 
   bool getStatus() {
-    print("get");
+    print("get"+DateTime.now());
     print(status);
     return status;
   }
@@ -24,7 +25,7 @@ class InstitutionStatus with ChangeNotifier {
       print("null");
       return;
     }
-    print("get");
+    print("get"+DateTime.now());
     print(status);
     return status;
   }
