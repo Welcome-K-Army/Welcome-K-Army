@@ -9,6 +9,7 @@ class UserData with ChangeNotifier {
   int age;
   String gender;
   String creationDate;
+  String imageURL;
 
   UserData({
     this.uid,
@@ -17,6 +18,7 @@ class UserData with ChangeNotifier {
     this.gender,
     this.age,
     this.creationDate,
+    this.imageURL,
   });
 
   void setUserData(UserData setuserData) {
@@ -26,6 +28,7 @@ class UserData with ChangeNotifier {
     this.age = setuserData.age;
     this.gender = setuserData.gender;
     this.creationDate = setuserData.creationDate;
+    this.imageURL=setuserData.imageURL;
     notifyListeners();
   }
 
@@ -37,6 +40,7 @@ class UserData with ChangeNotifier {
       age: json['age'] as int,
       gender: json['gender'].toString(),
       creationDate: json['createdAt'].toString(),
+      imageURL:json[/'imageURL'].
     );
   }
 
