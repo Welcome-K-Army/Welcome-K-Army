@@ -30,15 +30,16 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-  UserData loadUser=userLoad();
+  
 
   @override
   void initState() {
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+    UserData loadUser=userLoad();
+    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
+    emailTextEditingController = new TextEditingController(text: "${loadUser.email}");
+    ageTextEditingController = new TextEditingController(text: "${loadUser.age}");
+    genderTextEditingController = new TextEditingController(text: "${loadUser.gender}");
   }
 
 
@@ -78,7 +79,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     UserData userData = Provider.of<UserData>(context);
 
-    userData.setUserData(loadUser);
+   // userData.setUserData(loadUser);
 
     // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
