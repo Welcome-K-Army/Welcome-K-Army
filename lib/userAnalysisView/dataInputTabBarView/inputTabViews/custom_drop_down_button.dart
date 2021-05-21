@@ -7,7 +7,7 @@ class CustomDropDownButton extends StatefulWidget {
 
   CustomDropDownButton({this.dropdownValue, this.items});
 
-  CustomDropDownButtonState createState() => new CustomDropDownButtonState(
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(
     dropdownValue: dropdownValue,
     items: items
   );
