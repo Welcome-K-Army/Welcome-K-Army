@@ -8,11 +8,11 @@ class DataInputTabBarView extends StatefulWidget {
 }
 
 class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTickerProviderStateMixin {
-  final List<Tab> _tabs = <Tab> [
+  final List<Tab> _tabs = <Tab>[
     Tab(text: "전형"),
     Tab(text: "1차 시험"),
     Tab(text: "2차 시험"),
-    Tab(text: "내신 및 수능"),    
+    Tab(text: "내신 및 수능"),
   ];
 
   String dropdownValue = 'One';
@@ -25,7 +25,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     _tabController = TabController(
       vsync: this,
       length: 4,
-    );  
+    );
     _textEditingController.addListener(() {
       print(_textEditingController.text);
     });
@@ -40,63 +40,57 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("UserDataInput"),
-          bottom: TabBar(
-            controller: _tabController,
-            tabs: _tabs
-          )
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: <Widget>[
-            TextField( 
-              controller: _textEditingController, 
-              decoration: InputDecoration( 
-                border: OutlineInputBorder(), 
-                hintText: 'hint', 
-                labelText: 'ID', 
-                prefixIcon: Icon(Icons.perm_identity), 
-              ), 
+        appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(controller: _tabController, tabs: _tabs)),
+        body: TabBarView(controller: _tabController, children: <Widget>[
+          TextField(
+            controller: _textEditingController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'hint',
+              labelText: 'ID',
+              prefixIcon: Icon(Icons.perm_identity),
             ),
-            DropdownButton<String>(
-              value: dropdownValue,
-              isExpanded: true,
-              icon: const Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String newValue) {
-                setState(() {
-                  dropdownValue = newValue;
-                });
-              },
-              items: <String>['One', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+          ),
+          DropdownButton<String>(
+            value: dropdownValue,
+            isExpanded: true,
+            icon: const Icon(Icons.arrow_downward),
+            iconSize: 24,
+            elevation: 16,
+            style: const TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 2,
+              color: Colors.deepPurpleAccent,
             ),
-            Text("2차 시험"),
-            Text("내신 및 수능"),
-          ]
-        ),
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownValue = newValue;
+              });
+            },
+            items: <String>[
+              'One',
+              'Two',
+              'Free',
+              'Four'
+            ].map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+          Text("2차 시험"),
+          Text("내신 및 수능"),
+        ]),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => AnalysisView()),
-           ); 
+            );
           },
           child: const Icon(Icons.navigation),
           backgroundColor: Color(0xFF0C9869),
-        )          
-    );
+        ));
   }
 }
