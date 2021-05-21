@@ -29,19 +29,15 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
-  final loadUser=await userLoad();
-  
 
-  @override
-  void initState() {
-    super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
-  }
-
-
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+  //   emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
+  //   ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
+  //   genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+  // }
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -78,7 +74,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     UserData userData = Provider.of<UserData>(context);
 
-   // userData.setUserData(loadUser);
+    // userData.setUserData(loadUser);
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
@@ -93,6 +89,11 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
+
+    profileNameTextEditingController = new TextEditingController(text: '${userData.nickName}');
+    emailTextEditingController = new TextEditingController(text: "${userData.email}");
+    ageTextEditingController = new TextEditingController(text: "${userData.age}");
+    genderTextEditingController = new TextEditingController(text: "${userData.gender}");
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
