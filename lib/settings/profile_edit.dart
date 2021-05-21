@@ -29,28 +29,14 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
-  UserData loadUser;
-
-    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
-
-    String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        Map<String, dynamic> data = documentSnapshot.data();
-        loadUser.setUserData(UserData.fromJson(data));
-      } else {
-        print('no data');
-      }
-    });
-
 
   @override
   void initState() {
     super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "${loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "${loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "${loadUser.gender}");
+    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
+    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
+    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
   }
 
   void takePhoto(ImageSource source) async {
@@ -79,9 +65,10 @@ class _EditProfileState extends State<EditProfile> {
       print("no web");
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
-
-    downloadURL = await storageReference.getDownloadURL();
-    print(downloadURL);
+    setState(() {
+      downloadURL = await storageReference.getDownloadURL();
+      print(downloadURL);
+    });
   }
 
   @override
@@ -90,17 +77,17 @@ class _EditProfileState extends State<EditProfile> {
 
     // userData.setUserData(loadUser);
 
-    // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
-    // String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    // users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-    //   if (documentSnapshot.exists) {
-    //     Map<String, dynamic> data = documentSnapshot.data();
-    //     userData.setUserData(UserData.fromJson(data));
-    //   } else {
-    //     print('no data');
-    //   }
-    // });
+    String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data();
+        userData.setUserData(UserData.fromJson(data));
+      } else {
+        print('no data');
+      }
+    });
 
     // userData.setUserData(userLoad());
 
