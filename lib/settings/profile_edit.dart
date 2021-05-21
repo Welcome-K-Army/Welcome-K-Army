@@ -23,7 +23,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File image;
-  PickedFile metaimage=_pickimage;
   String downloadURL;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
@@ -75,6 +74,7 @@ class _EditProfileState extends State<EditProfile> {
     //   print(downloadURL);
     // });
   }
+  PickedFile metaimage=_pickimage;
   void uploadfile() async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
