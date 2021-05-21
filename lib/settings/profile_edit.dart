@@ -31,14 +31,14 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
 
-  @override
-  void initState() {
-    super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+  //   emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
+  //   ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
+  //   genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+  // }
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -93,7 +93,7 @@ class _EditProfileState extends State<EditProfile> {
 
     // userData.setUserData(userLoad());
 
-    final usernicknameForm = Column(
+    Column usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -105,7 +105,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
         TextField(
           style: TextStyle(color: Colors.black),
-          controller: profileNameTextEditingController,
+          controller: profileNameTextEditingController..text=userData.nickName,
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
