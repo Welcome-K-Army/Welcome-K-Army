@@ -56,39 +56,25 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
         setState(() {
           dropdownValue = newValue;
         });
- switch(dropdownValue) {
-                  case "사관학교" : 
-                  institutionStatus.setStatus(true);
-                  break;
-                  case "학군단" : 
-                  institutionStatus.setStatus(false);
-                  break;
-                  case "부사관" : 
-                  institutionStatus.setStatus(false);
-                  break;
-                  default : break;
-                }       
+        switch (dropdownValue) {
+          case "사관학교":
+            institutionStatus.setStatus(true);
+            break;
+          case "학군단":
+            institutionStatus.setStatus(false);
+            break;
+          case "부사관":
+            institutionStatus.setStatus(false);
+            break;
+          default:
+            break;
+        }
       },
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
-            value: value,
-            child: GestureDetector(
-              onTap: () {
-                switch(value) {
-                  case "사관학교" : 
-                  institutionStatus.setStatus(true);
-                  break;
-                  case "학군단" : 
-                  institutionStatus.setStatus(false);
-                  break;
-                  case "부사관" : 
-                  institutionStatus.setStatus(false);
-                  break;
-                  default : break;
-                }
-              },
-              child: Text(value),
-            ));
+          value: value,
+          child: Text(value),
+        );
       }).toList(),
     );
   }
