@@ -9,6 +9,12 @@ class InputExamType extends StatefulWidget {
 
 class InputExamTypeState extends State<InputExamType> with SingleTickerProviderStateMixin {
   final List<String> typeItems = [
+    "육군",
+    "해군",
+    "공군"
+  ];
+
+  final List<String> instituteItems = [
     "사관학교",
     "학군단",
     "부사관"
@@ -34,12 +40,10 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
         child: Column(
           children: [
             CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems),
+            CustomDropDownButton(dropdownValue: instituteItems[0], items: instituteItems),
             Container(
-                child:
-                  status
-                  ?  CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems)
-                  : Container(),
-                ),
+              child: status ? CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems) : Container(),
+            ),
           ],
         ));
   }
