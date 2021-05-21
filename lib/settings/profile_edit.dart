@@ -29,7 +29,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailTextEditingController;
   TextEditingController ageTextEditingController;
   TextEditingController genderTextEditingController;
-  final loadUser=userLoad();
+  final loadUser=await userLoad();
   
 
   @override
