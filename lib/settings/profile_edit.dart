@@ -298,8 +298,8 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     OutlinedButton(
-                      onPressed: () {
-                        UserData test=userLoad();
+                      onPressed: () async{
+                        UserData test=await userLoad();
                         print(test);
                       },
                       child: Text("Cancel",
