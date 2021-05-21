@@ -36,10 +36,10 @@ class _EditProfileState extends State<EditProfile> {
   void initState() {
     super.initState();
     // UserData loadUser=userLoad();
-    profileNameTextEditingController = new TextEditingController(text: '${loadUser.nickName}');
-    emailTextEditingController = new TextEditingController(text: "${loadUser.email}");
-    ageTextEditingController = new TextEditingController(text: "${loadUser.age}");
-    genderTextEditingController = new TextEditingController(text: "${loadUser.gender}");
+    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
+    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
+    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
   }
 
 
@@ -94,12 +94,6 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     // userData.setUserData(userLoad());
-    // emailTextEditingController.value = TextEditingValue(
-    //   text: userData.email,
-    //   selection: TextSelection.fromPosition(
-    //     TextPosition(offset: emailTextEditingController.selection.base.offset),
-    //   ),
-    // );
 
     final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
