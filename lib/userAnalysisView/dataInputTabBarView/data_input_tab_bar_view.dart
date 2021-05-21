@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
+import 'package:provider/provider.dart';
 
 import '../analysisView/analysisView.dart';
 
 import './inputTabViews/input_type.dart';
 import './inputTabViews/input_type_multi_provider.dart';
+
 class DataInputTabBarView extends StatefulWidget {
   DataInputTabBarViewState createState() => new DataInputTabBarViewState();
 }
