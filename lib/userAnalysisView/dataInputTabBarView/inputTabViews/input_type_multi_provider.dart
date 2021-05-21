@@ -20,6 +20,10 @@ class InstitutionStatus with ChangeNotifier {
   bool status = true;
 
   bool getStatus() {
+        if (status == null) {
+      print("null");
+      return;
+    }
     print("get");
     print(status);
     status;
