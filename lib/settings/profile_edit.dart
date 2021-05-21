@@ -75,8 +75,7 @@ class _EditProfileState extends State<EditProfile> {
     // });
   }
   
-  void uploadfile(PickedFile metaimage) async{
-    metaimage=_pickimage;
+  void uploadfile(_pickimage) async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -350,7 +349,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        uploadfile();
+                        uploadfile(_pickimage);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
