@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
-
+  bool changed;
   CustomDropDownButton({this.dropdownValue, this.items});
 
   CustomDropDownButtonState createState() => new CustomDropDownButtonState(
@@ -14,6 +14,7 @@ class CustomDropDownButton extends StatefulWidget {
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
+  bool changed;
   String dropdownValue;
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
@@ -33,6 +34,10 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
     super.dispose();
   }
 
+  
+  String get getDropDownValue() => dropdownValue;
+  
+  changed=false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,6 +55,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
+          changed=!changed;
         });
       },
       items: items.map<DropdownMenuItem<String>>((String value) {

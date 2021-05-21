@@ -24,7 +24,21 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
     "재외국민 자녀"
   ];
 
+  // bool status=false;
+  // bool ischangedStatus() {
+  //   if(status != typeDropdownButton.changed) {
+  //     print("changed");
+  //     return true;
+  //   }else{
+  //     print("nonchanged");
+  //     return false;
+  //   }
+  // }
   
+  
+  CustomDropDownButton typeDropdownButton = CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems);
+  print(typeDropdownButton.changed);
+  // bool status=typeDropdownButton.changed;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,8 +46,13 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
           height: 200,
           child: Column(
             children: [
-              CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems),
-              CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems),
+              typeDropdownButton,
+              Container(
+                child:
+                // ischanged()
+                 CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems)
+                // : Container(),
+              ),
             ],
           )
         );
