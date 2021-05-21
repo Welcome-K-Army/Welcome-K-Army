@@ -6,8 +6,9 @@ class CustomDropDownButton extends StatefulWidget {
   List<String> items;
   bool changed;
   CustomDropDownButton({this.dropdownValue, this.items});
-
+  bool get ischanged()=>changed;
   CustomDropDownButtonState createState() => new CustomDropDownButtonState(
+    changed:false;
     dropdownValue: dropdownValue,
     items: items
   );

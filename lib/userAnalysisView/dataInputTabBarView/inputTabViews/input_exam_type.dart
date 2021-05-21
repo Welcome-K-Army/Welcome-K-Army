@@ -37,7 +37,7 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
   
   
   CustomDropDownButton typeDropdownButton = CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems);
-  print(typeDropdownButton.changed);
+  print(typeDropdownButton.ischanged);
   // bool status=typeDropdownButton.changed;
   @override
   Widget build(BuildContext context) {
