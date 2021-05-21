@@ -50,7 +50,6 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       if (_pickimage != null) {
         image = File(_pickimage.path);
-        PickedFile metaimage=_pickimage;
       }
     });
 
@@ -76,7 +75,8 @@ class _EditProfileState extends State<EditProfile> {
     // });
   }
   
-  void uploadfile() async{
+  void uploadfile(PickedFile metaimage) async{
+    metaimage=_pickimage;
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
