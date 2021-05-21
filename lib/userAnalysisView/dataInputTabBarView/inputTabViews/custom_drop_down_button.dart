@@ -7,10 +7,10 @@ class CustomDropDownButton extends StatefulWidget {
 
   CustomDropDownButton({this.dropdownValue, this.items});
 
-  CustomDropDownButtonState createState() => new CustomDropDownButtonState({
-        this.dropdownValue,
-        this.items
-      });
+  CustomDropDownButtonState createState() => new CustomDropDownButtonState(
+    dropdownValue: dropdownValue,
+    items: items
+  );
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
