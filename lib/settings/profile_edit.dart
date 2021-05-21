@@ -25,19 +25,35 @@ class _EditProfileState extends State<EditProfile> {
   File image;
   String downloadURL;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController=TextEditingController();
-  TextEditingController emailTextEditingController=TextEditingController();
-  TextEditingController ageTextEditingController=TextEditingController();
-  TextEditingController genderTextEditingController=TextEditingController();
+  TextEditingController profileNameTextEditingController;
+  TextEditingController emailTextEditingController;
+  TextEditingController ageTextEditingController;
+  TextEditingController genderTextEditingController;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
-  //   emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
-  //   ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
-  //   genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
-  // }
+  @override
+  void initState(BuildContext context) {
+
+    super.initState();
+    UserData userData = Provider.of<UserData>(context);
+
+    // userData.setUserData(loadUser);
+
+    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+
+    String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data();
+        userData.setUserData(UserData.fromJson(data));
+      } else {
+        print('no data');
+      }
+    });
+    profileNameTextEditingController = new TextEditingController(text: '{loadUser.nickName}');
+    emailTextEditingController = new TextEditingController(text: "{loadUser.email}");
+    ageTextEditingController = new TextEditingController(text: "{loadUser.age}");
+    genderTextEditingController = new TextEditingController(text: "{loadUser.gender}");
+  }
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -73,25 +89,25 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    UserData userData = Provider.of<UserData>(context);
+    // UserData userData = Provider.of<UserData>(context);
 
-    // userData.setUserData(loadUser);
+    // // userData.setUserData(loadUser);
 
-    CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    // CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
 
-    String uid = FirebaseAuth.instance.currentUser.uid.toString();
-    users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        Map<String, dynamic> data = documentSnapshot.data();
-        userData.setUserData(UserData.fromJson(data));
-      } else {
-        print('no data');
-      }
-    });
+    // String uid = FirebaseAuth.instance.currentUser.uid.toString();
+    // users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+    //   if (documentSnapshot.exists) {
+    //     Map<String, dynamic> data = documentSnapshot.data();
+    //     userData.setUserData(UserData.fromJson(data));
+    //   } else {
+    //     print('no data');
+    //   }
+    // });
     
     // userData.setUserData(userLoad());
 
-    Column usernicknameForm = Column(
+    final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
