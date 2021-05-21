@@ -66,7 +66,7 @@ class _EditProfileState extends State<EditProfile> {
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
     setState(() {
-      downloadURL = await storageReference.getDownloadURL();
+      downloadURL = storageReference.getDownloadURL();
       print(downloadURL);
     });
   }
