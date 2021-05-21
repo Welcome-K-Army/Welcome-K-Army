@@ -45,8 +45,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     Size size = MediaQuery.of(context).size;
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<TypeStatus>(builder: () => TypeStatus()),
-          ChangeNotifierProvider<InstitutionStatus>(builder: () => InstitutionStatus()),
+          ChangeNotifierProvider<TypeStatus>(builder: (_) => TypeStatus()),
+          ChangeNotifierProvider<InstitutionStatus>(builder: (_) => InstitutionStatus()),
         ],
         child: Scaffold(
             appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(controller: _tabController, tabs: _tabs)),
