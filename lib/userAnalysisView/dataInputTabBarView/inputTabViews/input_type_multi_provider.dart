@@ -6,8 +6,8 @@ class TypeStatus with ChangeNotifier {
 
   bool getStatus() => status;
 
-  void toggle() {
-    status = !status;
+  void setStatus(value) {
+    status = value;
     notifyListeners(); //must be inserted
   }
 }
@@ -17,8 +17,8 @@ class InstitutionStatus with ChangeNotifier {
 
   bool getStatus() => status;
 
-  void toggle() {
-    status = !status;
+  void setStatus(value) {
+    status = value;
     notifyListeners(); //must be inserted
   }
 }

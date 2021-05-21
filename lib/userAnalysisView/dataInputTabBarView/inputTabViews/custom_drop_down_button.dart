@@ -63,7 +63,9 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
             child: GestureDetector(
               onTap: () {
                 if (value == "사관학교") {
-                  institutionStatus.toggle();
+                  institutionStatus.setStatus(true);
+                } else {
+                  institutionStatus.setStatus(false);
                 }
               },
               child: Text(value),
