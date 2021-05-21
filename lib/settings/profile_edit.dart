@@ -88,10 +88,10 @@ class _EditProfileState extends State<EditProfile> {
         print('no data');
       }
     });
-
+    
     // userData.setUserData(userLoad());
 
-    Column usernicknameForm = Column(
+    final usernicknameForm = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
