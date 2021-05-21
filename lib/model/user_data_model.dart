@@ -40,7 +40,7 @@ class UserData with ChangeNotifier {
       age: json['age'] as int,
       gender: json['gender'].toString(),
       creationDate: json['createdAt'].toString(),
-      imageURL:json[/'imageURL'].
+      imageURL:json['imageURL'].toString(),
     );
   }
 
@@ -52,6 +52,7 @@ class UserData with ChangeNotifier {
       'age': age,
       'gender': gender,
       'createdAt': creationDate,
+      'imageURL':imageURL,
     };
   }
 
