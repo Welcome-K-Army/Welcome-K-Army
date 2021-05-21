@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
 import 'custom_drop_down_button.dart';
+import 'input_type_multi_provider.dart';
 
-class InputExamType extends StatefulWidget {
-  InputExamTypeState createState() => new InputExamTypeState();
+class InputType extends StatefulWidget {
+  InputTypeState createState() => new InputTypeState();
 }
 
-class InputExamTypeState extends State<InputExamType> with SingleTickerProviderStateMixin {
+class InputTypeState extends State<InputType> with SingleTickerProviderStateMixin {
   final List<String> typeItems = [
     "육군",
     "해군",
@@ -35,6 +36,9 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    TypeStatus typeStatus = Provider.of<TypeStatus>(context);
+    InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
+
     return Container(
         height: 200,
         child: Column(
@@ -42,7 +46,7 @@ class InputExamTypeState extends State<InputExamType> with SingleTickerProviderS
             CustomDropDownButton(dropdownValue: typeItems[0], items: typeItems),
             CustomDropDownButton(dropdownValue: instituteItems[0], items: instituteItems),
             Container(
-              child: status ? CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems) : Container(),
+              child: institutionStatus.getStatus() ? CustomDropDownButton(dropdownValue: typeAcademyItems[0], items: typeAcademyItems) : Container(),
             ),
           ],
         ));

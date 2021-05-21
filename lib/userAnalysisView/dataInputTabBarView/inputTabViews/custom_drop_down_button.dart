@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+import 'input_type_multi_provider.dart';
+
 class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
 
   CustomDropDownButton({this.dropdownValue, this.items});
 
-  CustomDropDownButtonState createState() => CustomDropDownButtonState(
-    dropdownValue: dropdownValue,
-    items: items
-  );
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(dropdownValue: dropdownValue, items: items);
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
@@ -33,12 +32,14 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
     super.dispose();
   }
 
-  
   String get getDropDownValue => dropdownValue;
-  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    TypeStatus typeStatus = Provider.of<TypeStatus>(context);
+    InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
+
     return DropdownButton<String>(
       value: dropdownValue,
       isExpanded: true,
@@ -57,14 +58,15 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
       },
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
-          value: value,
-          child: GestureDetector(
-            onTap: () {
-              
-            },
-            child: Text(value),
-          )
-        );
+            value: value,
+            child: GestureDetector(
+              onTap: () {
+                if (value == "사관학교") {
+                  institutionStatus.toggle();
+                }
+              },
+              child: Text(value),
+            ));
       }).toList(),
     );
   }
