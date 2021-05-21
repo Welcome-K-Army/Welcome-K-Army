@@ -52,7 +52,7 @@ class _EditProfileState extends State<EditProfile> {
         image = File(_pickimage.path);
       }
     });
-    ImagePicker metaimage=_pickimage;
+    PickedFile metaimage=_pickimage;
 
     // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     // Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
