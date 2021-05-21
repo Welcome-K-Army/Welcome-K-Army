@@ -41,6 +41,8 @@ class _EditProfileState extends State<EditProfile> {
 
   }
 
+
+
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
     final _pickimage = await _picker.getImage(source: source);
@@ -52,6 +54,27 @@ class _EditProfileState extends State<EditProfile> {
       }
     });
 
+    // FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+    // Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
+    // final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
+    //   'picked-file-path': _pickimage.path
+    // });
+    // UploadTask uploadTask;
+    // // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+
+    // if (kIsWeb) {
+    //   print("web");
+    //   uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+    // } else {
+    //   print("no web");
+    //   uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+    // }
+    // setState(() async {
+    //   downloadURL = await storageReference.getDownloadURL();
+    //   print(downloadURL);
+    // });
+  }
+  void uploadfile() async{
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -71,7 +94,9 @@ class _EditProfileState extends State<EditProfile> {
       downloadURL = await storageReference.getDownloadURL();
       print(downloadURL);
     });
+    
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -206,6 +231,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   onPressed: () {
                     takePhoto(ImageSource.camera);
+                    Navigator.pop(context);
 
                   },
                   label: Text(
@@ -322,6 +348,7 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
+                        uploadfile();
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text));
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
