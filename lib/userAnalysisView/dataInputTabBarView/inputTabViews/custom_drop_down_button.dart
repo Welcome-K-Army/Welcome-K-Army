@@ -35,15 +35,13 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
     super.dispose();
   }
 
-  String get getDropDownValue => dropdownValue;
-
   @override
   Widget build(BuildContext context) {
     TypeStatus typeStatus = Provider.of<TypeStatus>(context);
     InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
 
     return Container(
-      height: 70,
+      height: 50,
       width: width,
       child: DropdownButton<String>(
       value: dropdownValue,
