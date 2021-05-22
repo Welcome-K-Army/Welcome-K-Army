@@ -35,11 +35,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
     _textEditingController.dispose();
     super.dispose();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(height: 50.0 * scoreList.length + 80.0, width: width, child: buildCard(scoreList, title));
-
+  
   Widget buildCard(List<String> scoreList, String title) {
       return Container(
           height: 50.0* scoreList.length + 70.0,
@@ -49,8 +45,10 @@ class CustomTextfieldState extends State<CustomTextfield> {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               elevation: 4,
-              child: Column(children: [
-                Text(text: title),
+              child: Column(
+                children: [
+                  Text(title),
+                  Column(children: 
                 List<Widget>.generate(scoreList.length, (index) {
                   return Textfield(
                     TextField(
@@ -62,8 +60,13 @@ class CustomTextfieldState extends State<CustomTextfield> {
                       ),
                     ),
                   );
-                })
-              ])));
-    }
+                }).toList(),
+              )
+              ])
+              ));
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(height: 50.0 * scoreList.length + 80.0, width: width, child: buildCard(scoreList, title));
   }
 }
