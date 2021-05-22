@@ -19,50 +19,57 @@ class CustomTextfieldState extends State<CustomTextfield> {
   String title;
   String hint;
   List<String> scoreList;
-  final TextEditingController _textEditingController = TextEditingController();
+  // final TextEditingController _textEditingController = TextEditingController();
+  final List<TextEditingController> textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
+    return TextEditingController();
+    }).toList();
 
   CustomTextfieldState({this.width, this.title, this.hint, this.scoreList});
 
   @override
   void initState() {
     super.initState;
-    _textEditingController.addListener(() {
+    for(int index = 0; index < scoreList.length; index++) {
+      textEditingControllers[index].addListener(() {
+        print(textEditingControllers[index].text);
+      })
+    }
+    /*
+    textEditingController.addListener(() {
       print(_textEditingController.text);
     });
+    */
   }
 
-  void dispose() {
-    _textEditingController.dispose();
+  void dispose(int index) {
+    textEditingControllers[index].dispose();
     super.dispose();
   }
-  
+
   Widget buildCard(List<String> scoreList, String title) {
-      return Container(
-          height: 50.0* scoreList.length + 70.0,
-          child: Card(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              elevation: 4,
-              child: Column(
-                children: [
-                  Text(title),
-                  Column(children: 
-                List<Widget>.generate(scoreList.length, (index) {
-                  return 
-                    TextField(
-                      controller: _textEditingController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: hint,
-                        labelText: scoreList[index],
-                      ),
-                    );
+    return Container(
+        height: 50.0 * scoreList.length + 70.0,
+        child: Card(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 4,
+            child: Column(children: [
+              Text(title),
+              Column(
+                children: List<Widget>.generate(scoreList.length, (index) {
+                  return TextField(
+                    controller: textEditingControllers[index],
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: hint,
+                      labelText: scoreList[index],
+                    ),
+                  );
                 }).toList(),
               )
-              ])
-              ));
+            ])));
   }
 
   @override
