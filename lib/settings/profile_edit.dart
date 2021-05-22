@@ -111,7 +111,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController..text="dasqqw",
+            controller: profileNameTextEditingController..text="asd",
             onChanged: (text) => {},
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
