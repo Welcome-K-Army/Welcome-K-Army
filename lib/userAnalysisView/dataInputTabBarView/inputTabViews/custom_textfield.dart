@@ -38,16 +38,15 @@ class CustomTextfieldState extends State<CustomTextfield> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(height: 50 * scoreList.length + 80, width: width, child: buildCard(scoreList, title));
+    return Container(height: 50.0 * scoreList.length + 80.0, width: width, child: buildCard(scoreList, title));
 
-    Widget buildCard(List<String> scoreList, String title) {
+  Widget buildCard(List<String> scoreList, String title) {
       return Container(
-          height: 50 * scoreList.length + 70,
+          height: 50.0* scoreList.length + 70.0,
           child: Card(
               color: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius,
-                BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(15.0),
               ),
               elevation: 4,
               child: Column(children: [

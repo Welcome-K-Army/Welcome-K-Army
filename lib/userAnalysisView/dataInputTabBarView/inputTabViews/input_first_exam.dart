@@ -36,7 +36,7 @@ class InputFirstExamState extends State<InputFirstExam> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            CustomTextfield(size: size.width, title: "국어", hint: "100", scoreList: languageScores),
+            CustomTextfield(width: size.width, title: "국어", hint: "100", scoreList: languageScores),
           ],
         ));
   }
