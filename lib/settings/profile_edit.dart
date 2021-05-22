@@ -24,19 +24,19 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController;
-  TextEditingController emailTextEditingController;
-  TextEditingController ageTextEditingController;
-  TextEditingController genderTextEditingController;
+  TextEditingController profileNameTextEditingController=TextEditingController;
+  TextEditingController emailTextEditingController=TextEditingController;
+  TextEditingController ageTextEditingController=TextEditingController;
+  TextEditingController genderTextEditingController=TextEditingController;
 
-  @override
-  void initState() {
-    super.initState();
-    profileNameTextEditingController = new TextEditingController(text: '');
-    emailTextEditingController = new TextEditingController(text: "");
-    ageTextEditingController = new TextEditingController(text: "22");
-    genderTextEditingController = new TextEditingController(text: "");
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   profileNameTextEditingController = new TextEditingController(text: '');
+  //   emailTextEditingController = new TextEditingController(text: "");
+  //   ageTextEditingController = new TextEditingController(text: "22");
+  //   genderTextEditingController = new TextEditingController(text: "");
+  // }
 
   void takePhoto(ImageSource source) async {
 
@@ -105,7 +105,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController,
+            controller: profileNameTextEditingController..text='miseol',
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),

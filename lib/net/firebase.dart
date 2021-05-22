@@ -43,6 +43,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age,Str
 // }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
+  
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
