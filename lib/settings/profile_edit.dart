@@ -24,19 +24,25 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController=TextEditingController();
+  TextEditingController profileNameTextEditingController;
   TextEditingController emailTextEditingController=TextEditingController();
   TextEditingController ageTextEditingController=TextEditingController();
   TextEditingController genderTextEditingController=TextEditingController();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   profileNameTextEditingController = new TextEditingController(text: '');
-  //   emailTextEditingController = new TextEditingController(text: "");
-  //   ageTextEditingController = new TextEditingController(text: "22");
-  //   genderTextEditingController = new TextEditingController(text: "");
-  // }
+  @override
+  void initState() {
+    profileNameTextEditingController=TextEditingController();
+    profileNameTextEditingController.addListener((){
+      setState((){});
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    profileNameTextEditingController.dispose();
+    super.dispose();
+  }
 
   void takePhoto(ImageSource source) async {
 
@@ -105,7 +111,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController..text='miseol',
+            controller: profileNameTextEditingController,
             onChanged: (text) => {},
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
