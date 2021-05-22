@@ -5,24 +5,22 @@ import 'package:provider/provider.dart';
 import 'input_type_multi_provider.dart';
 
 class CustomDropDownButton extends StatefulWidget {
-  final double height;
   final double width;
   String dropdownValue;
   List<String> items;
   
-  CustomDropDownButton({this.height, this.width, this.dropdownValue, this.items});
+  CustomDropDownButton({this.width, this.dropdownValue, this.items});
 
-  CustomDropDownButtonState createState() => CustomDropDownButtonState(height: height, width: width, dropdownValue: dropdownValue, items: items);
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(width: width, dropdownValue: dropdownValue, items: items);
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
-  final double height;
   final double width;
   String dropdownValue;
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
 
-  CustomDropDownButtonState({this.height, this.width, this.dropdownValue, this.items});
+  CustomDropDownButtonState({this.width, this.dropdownValue, this.items});
 
   @override
   void initState() {
@@ -45,7 +43,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
     InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
 
     return Container(
-      height: height,
+      height: 70,
       width: width,
       child: DropdownButton<String>(
       value: dropdownValue,
