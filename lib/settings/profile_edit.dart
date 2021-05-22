@@ -47,8 +47,8 @@ class _EditProfileState extends State<EditProfile> {
       if (_pickimage != null) {
         image = File(_pickimage.path);
       }
-    }
-    FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+    ),
+    FirebaseStorage _firebaseStorage = FirebaseStorage.instance,
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
       'picked-file-path': _pickimage.path
