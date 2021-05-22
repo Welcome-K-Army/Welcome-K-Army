@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-class CustomDropDownButton extends StatelessWidget {}
+import './custom_textfield.dart';
 
-class CustomDropDownButtonState extends State<CustomDropDownButton> {
-  String dropdownValue;
-  List<String> items;
-  final TextEditingController _textEditingController = TextEditingController();
+class InputFirstExam extends StatefulWidget {
+  InputFirstExam();
 
-  CustomDropDownButtonState({this.dropdownValue, this.items});
+  InputFirstExamState createState() => InputFirstExamState();
+}
 
-  @override
-  void initState() {
-    super.initState;
-    _textEditingController.addListener(() {
-      print(_textEditingController.text);
-    });
-  }
+class InputFirstExamState extends State<InputFirstExam> {
+  final List<String> languageScores = [
+    "원점수",
+    "평균점수",
+    "표준편차"
+  ];
 
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
+  final List<String> mathScores = [
+    "공통과목 원점수",
+    "공통과목 평균점수",
+    "공통과목 표준편차",
+    "선택과목 원점수",
+    "선택과목 평균점수",
+    "선택과목 표준편차",
+    "선택과목 조정점수 평균",
+    "선택과목 조정점수 표준편차"
+  ];
 
-  String get getDropDownValue => dropdownValue;
+  InputFirstExamState();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      child: TextField(
-        controller: _textEditingController,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: 'hint',
-          labelText: 'ID',
-          prefixIcon: Icon(Icons.perm_identity),
-        ),
-      ),
-    );
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            CustomTextfield(size: size.width, title: "국어", hint: "100", scoreList: languageScores),
+          ],
+        ));
   }
 }
