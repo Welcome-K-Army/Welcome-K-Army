@@ -5,20 +5,22 @@ import 'package:provider/provider.dart';
 import 'input_type_multi_provider.dart';
 
 class CustomDropDownButton extends StatefulWidget {
+  final Size size;
   String dropdownValue;
   List<String> items;
+  
+  CustomDropDownButton({this.size, this.dropdownValue, this.items});
 
-  CustomDropDownButton({this.dropdownValue, this.items});
-
-  CustomDropDownButtonState createState() => CustomDropDownButtonState(dropdownValue: dropdownValue, items: items);
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(size: size, dropdownValue: dropdownValue, items: items);
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
+  final Size size;
   String dropdownValue;
   List<String> items;
   final TextEditingController _textEditingController = TextEditingController();
 
-  CustomDropDownButtonState({this.dropdownValue, this.items});
+  CustomDropDownButtonState({this.size, this.dropdownValue, this.items});
 
   @override
   void initState() {
@@ -37,11 +39,13 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     TypeStatus typeStatus = Provider.of<TypeStatus>(context);
     InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
 
-    return DropdownButton<String>(
+    return Container(
+      height: size.height,
+      width: size.width,
+      child: DropdownButton<String>(
       value: dropdownValue,
       isExpanded: true,
       icon: const Icon(Icons.arrow_downward),
@@ -76,6 +80,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
           child: Text(value),
         );
       }).toList(),
+      )
     );
   }
 }

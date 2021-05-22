@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-class CustomDropDownButton extends StatelessWidget {
-  
-}
+class CustomDropDownButton extends StatelessWidget {}
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
   String dropdownValue;
@@ -25,43 +23,21 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
     super.dispose();
   }
 
-  
   String get getDropDownValue => dropdownValue;
-  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return DropdownButton<String>(
-      value: dropdownValue,
-      isExpanded: true,
-      icon: const Icon(Icons.arrow_downward),
-      iconSize: 24,
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
+    return Container(
+      child: TextField(
+        controller: _textEditingController,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'hint',
+          labelText: 'ID',
+          prefixIcon: Icon(Icons.perm_identity),
+        ),
       ),
-      onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
-        });
-      },
-      items: items.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: GestureDetector(
-            onTap: () {
-              if (value == "사관학교") {
-                
-              } else {
-
-              }
-            },
-            child: Text(value),
-          )
-        );
-      }).toList(),
     );
   }
 }
