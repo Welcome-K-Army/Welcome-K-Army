@@ -106,6 +106,7 @@ class _EditProfileState extends State<EditProfile> {
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
             controller: profileNameTextEditingController..text='miseol',
+            onChanged: (text) => {},
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
