@@ -70,8 +70,6 @@ class _EditProfileState extends State<EditProfile> {
     // });
   }
 
-
-
   void uploadfile(File metaimage) async {
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
@@ -90,15 +88,13 @@ class _EditProfileState extends State<EditProfile> {
     }
   }
 
-    String getURL()  {
-      Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
-      return storageReference.getDownloadURL();
-    }
-
+  String getURL() {
+    Reference storageReference = await FirebaseStorage.instance.ref().child("profile_image/test.png");
+    return storageReference.getDownloadURL();
+  }
 
   @override
   Widget build(BuildContext context) {
-
     UserData userData = Provider.of<UserData>(context);
 
     // userData.setUserData(loadUser);
@@ -347,7 +343,7 @@ class _EditProfileState extends State<EditProfile> {
                     ElevatedButton(
                       onPressed: () {
                         print(getURL());
-                        final imageURL=getURL();
+                        final imageURL = getURL();
                         uploadfile(image);
                         userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text), imageURL);
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
