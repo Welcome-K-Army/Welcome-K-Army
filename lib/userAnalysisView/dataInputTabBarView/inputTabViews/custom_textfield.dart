@@ -29,10 +29,10 @@ class CustomTextfieldState extends State<CustomTextfield> {
   @override
   void initState() {
     super.initState;
-    for(int index = 0; index < scoreList.length; index++) {
+    for(int index = 0; index < this.scoreList.length; index++) {
       textEditingControllers[index].addListener(() {
         print(textEditingControllers[index].text);
-      })
+      });
     }
     /*
     textEditingController.addListener(() {
@@ -41,6 +41,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
     */
   }
 
+  @override
   void dispose(int index) {
     textEditingControllers[index].dispose();
     super.dispose();
