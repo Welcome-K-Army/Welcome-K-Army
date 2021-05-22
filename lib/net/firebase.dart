@@ -15,7 +15,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age,Str
         'age': age,
         'uid': uid,
         'createdAt': DateTime.now().toString(),
-        'imageURL':imageURL,
+        // 'imageURL':imageURL,
       })
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));
@@ -54,7 +54,7 @@ Future<void> userUpdate(String nickName, String email, String gender, int age,St
         'gender': gender,
         'age': age,
         'uid': uid,
-        'imageURL':imageURL,
+        // 'imageURL':imageURL,
       })
       .then((value) => print("User Updated"))
       .catchError((error) => print("Failed to update user: $error"));

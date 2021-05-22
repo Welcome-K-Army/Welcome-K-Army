@@ -9,7 +9,7 @@ class UserData with ChangeNotifier {
   int age;
   String gender;
   String creationDate;
-  String imageURL;
+  // String imageURL;
 
   UserData({
     this.uid,
@@ -18,7 +18,7 @@ class UserData with ChangeNotifier {
     this.gender,
     this.age,
     this.creationDate,
-    this.imageURL,
+    // this.imageURL,
   });
 
   void setUserData(UserData setuserData) {
@@ -28,7 +28,7 @@ class UserData with ChangeNotifier {
     this.age = setuserData.age;
     this.gender = setuserData.gender;
     this.creationDate = setuserData.creationDate;
-    this.imageURL=setuserData.imageURL;
+    // this.imageURL=setuserData.imageURL;
     notifyListeners();
   }
 
@@ -40,7 +40,7 @@ class UserData with ChangeNotifier {
       age: json['age'] as int,
       gender: json['gender'].toString(),
       creationDate: json['createdAt'].toString(),
-      imageURL:json['imageURL'].toString(),
+      // imageURL:json['imageURL'].toString(),
     );
   }
 
@@ -52,7 +52,7 @@ class UserData with ChangeNotifier {
       'age': age,
       'gender': gender,
       'createdAt': creationDate,
-      'imageURL':imageURL,
+      // 'imageURL':imageURL,
     };
   }
 
