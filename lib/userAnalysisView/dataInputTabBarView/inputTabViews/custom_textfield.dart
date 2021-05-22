@@ -50,7 +50,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
                   Text(title),
                   Column(children: 
                 List<Widget>.generate(scoreList.length, (index) {
-                  return Textfield(
+                  return 
                     TextField(
                       controller: _textEditingController,
                       decoration: InputDecoration(
@@ -58,12 +58,12 @@ class CustomTextfieldState extends State<CustomTextfield> {
                         hintText: hint,
                         labelText: scoreList[index],
                       ),
-                    ),
-                  );
+                    )
                 }).toList(),
               )
               ])
               ));
+  }
 
   @override
   Widget build(BuildContext context) {
