@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../analysisView/analysisView.dart';
 
 import './inputTabViews/input_type.dart';
+import './inputTabViews/input_first_exam.dart';
 import './inputTabViews/input_type_multi_provider.dart';
 
 class DataInputTabBarView extends StatefulWidget {
@@ -52,15 +53,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
             appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(controller: _tabController, tabs: _tabs)),
             body: TabBarView(controller: _tabController, children: <Widget>[
               InputType(),
-              TextField(
-                controller: _textEditingController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'hint',
-                  labelText: 'ID',
-                  prefixIcon: Icon(Icons.perm_identity),
-                ),
-              ),
+              InputFirstExam(),
               DropdownButton<String>(
                 value: dropdownValue,
                 isExpanded: true,
