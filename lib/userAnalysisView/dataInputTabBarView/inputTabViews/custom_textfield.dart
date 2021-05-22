@@ -58,7 +58,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
                         hintText: hint,
                         labelText: scoreList[index],
                       ),
-                    )
+                    );
                 }).toList(),
               )
               ])
