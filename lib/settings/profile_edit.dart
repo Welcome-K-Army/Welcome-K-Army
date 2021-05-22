@@ -39,6 +39,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   void takePhoto(ImageSource source) async {
+
     final _picker = ImagePicker();
     final _pickimage = await _picker.getImage(source: source);
     print(_pickimage.path + "picked File");
@@ -64,7 +65,7 @@ class _EditProfileState extends State<EditProfile> {
       uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
     }
     setState(() async {
-      downloadURL = await storageReference.getDownloadURL();
+      String downloadURL = await storageReference.getDownloadURL();
       print(downloadURL);
     });
   }
