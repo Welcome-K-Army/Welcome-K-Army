@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_edit.dart';
 
-import '../model/user_data_model.dart';
 
 class Profile_menu extends StatelessWidget {
   @override

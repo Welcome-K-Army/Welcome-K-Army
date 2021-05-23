@@ -17,6 +17,9 @@ import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class EditProfile extends StatefulWidget {
+  EditProfile({this.userData, this.firebaseUser});
+  UserData userData;
+
   @override
   _EditProfileState createState() => _EditProfileState();
 }
@@ -25,21 +28,53 @@ class _EditProfileState extends State<EditProfile> {
   File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
-  TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController ageTextEditingController = TextEditingController();
-  TextEditingController genderTextEditingController = TextEditingController();
-  UserData userData;
+  TextEditingController emailTextEditingController;
+  TextEditingController ageTextEditingController;
+  TextEditingController genderTextEditingController;
+  bool profileChanged = false;
+
   @override
   void initState() {
-    profileNameTextEditingController = TextEditingController(text: "na");
     super.initState();
+    final initUser = widget.userData;
+    profileNameTextEditingController = TextEditingController(text: initUser.nickName);
+    emailTextEditingController = TextEditingController(text: initUser.email);
+    ageTextEditingController = TextEditingController(text: initUser.age.toString());
+    genderTextEditingController = TextEditingController(text: initUser.gender);
+    profileNameTextEditingController.addListener(() {
+      if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
+        setState(() => profileChanged = false);
+      else
+        setState(() => profileChanged = true);
+    });
+    emailTextEditingController.addListener(() {
+      if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
+        setState(() => profileChanged = false);
+      else
+        setState(() => profileChanged = true);
+    });
+    ageTextEditingController.addListener(() {
+      if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
+        setState(() => profileChanged = false);
+      else
+        setState(() => profileChanged = true);
+    });
+    genderTextEditingController.addListener(() {
+      if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
+        setState(() => profileChanged = false);
+      else
+        setState(() => profileChanged = true);
+    });
   }
 
-  // @override
-  // void dispose(){
-  //   profileNameTextEditingController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    profileNameTextEditingController.dispose();
+    emailTextEditingController.dispose();
+    ageTextEditingController.dispose();
+    genderTextEditingController.dispose();
+    super.dispose();
+  }
 
   void takePhoto(ImageSource source) async {
     final _picker = ImagePicker();
@@ -51,6 +86,8 @@ class _EditProfileState extends State<EditProfile> {
         image = File(_pickimage.path);
       }
     });
+
+    
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -74,8 +111,6 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    UserData userData;
-
     // userData.setUserData(loadUser);
 
     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
@@ -280,66 +315,66 @@ class _EditProfileState extends State<EditProfile> {
     ); //Center
 
     return Scaffold(
-        key: _scaffoldGlobalKey,
-        body: Container(
-          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: ListView(
-                children: [
-                  imageProfile,
-                  SizedBox(
-                    height: 30,
-                  ),
-                  usernicknameForm,
-                  useremailForm,
-                  usergenderForm,
-                  userageForm,
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    OutlinedButton(
-                      onPressed: () async {
-                        Navigator.pop(context);
-                        // UserData test;
-                        // test.setUserData(test.userLoad());
-                        // print(test);
-                      },
-                      child: Text("Cancel",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.black,
-                          )), //Text
-                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ), //OutlineButton
+      key: _scaffoldGlobalKey,
+      body: Container(
+        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                imageProfile,
+                SizedBox(
+                  height: 30,
+                ),
+                usernicknameForm,
+                useremailForm,
+                usergenderForm,
+                userageForm,
+                SizedBox(
+                  height: 40,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  OutlinedButton(
+                    onPressed: () async {
+                      Navigator.pop(context);
+                      // UserData test;
+                      // test.setUserData(test.userLoad());
+                      // print(test);
+                    },
+                    child: Text("Cancel",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.black,
+                        )), //Text
+                    style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ), //OutlineButton
 
-                    ElevatedButton(
-                      onPressed: () {
-                        userUpdate(
-                          profileNameTextEditingController.text,
-                          emailTextEditingController.text,
-                          genderTextEditingController.text,
-                          int.parse(ageTextEditingController.text),
-                        );
-                      }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
-                      //String nickName, String email, String gender, int age
-                      child: Text("Save",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.white,
-                          )),
-                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ) //ElevatedButton
-                  ]),
-                ],
-              ) //ListView
-              ),
-        ), //Container
-      ); //Scafolld
+                  ElevatedButton(
+                    onPressed: () {
+                      userUpdate(
+                        profileNameTextEditingController.text,
+                        emailTextEditingController.text,
+                        genderTextEditingController.text,
+                        int.parse(ageTextEditingController.text),
+                      );
+                    }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
+                    //String nickName, String email, String gender, int age
+                    child: Text("Save",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                        )),
+                    style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ) //ElevatedButton
+                ]),
+              ],
+            ) //ListView
+            ),
+      ), //Container
+    ); //Scafolld
   } //
 }
