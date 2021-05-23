@@ -93,12 +93,15 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
             Text("교과성적"),
             Row(children: [
               Text("국어"),
-              TextField(
-                controller: textEditingControllers[1],
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "10",
-                  labelText: "이수 과목 개수",
+              Container(
+                width: size.width / 3,
+                child: TextField(
+                  controller: textEditingControllers[1],
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "10",
+                    labelText: "이수 과목 개수",
+                  ),
                 ),
               ),
               IconButton(
@@ -110,21 +113,27 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                   }),
             ]),
             Row(children: [
-              CustomDropDownButton(width: size.width / 3, dropdownValue: languageSubjects[0], items: languageSubjects),
-              TextField(
-                controller: textEditingControllers[1],
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "1",
-                  labelText: "석차",
+              CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
+              Container(
+                width: size.width / 3 - 10,
+                child: TextField(
+                  controller: textEditingControllers[1],
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "1",
+                    labelText: "석차",
+                  ),
                 ),
               ),
-              TextField(
-                controller: textEditingControllers[2],
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "1",
-                  labelText: "이수 단위",
+              Container(
+                width: size.width / 3 - 10,
+                child: TextField(
+                  controller: textEditingControllers[2],
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "1",
+                    labelText: "이수 단위",
+                  ),
                 ),
               ),
             ]),
