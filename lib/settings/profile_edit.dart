@@ -17,7 +17,7 @@ import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class EditProfile extends StatefulWidget {
-  EditProfile({this.userData, this.firebaseUser});
+  EditProfile({this.userData});
   UserData userData;
 
   @override
@@ -87,21 +87,18 @@ class _EditProfileState extends State<EditProfile> {
       }
     });
 
-    
+
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
-    final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
-      'picked-file-path': _pickimage.path
-    });
     UploadTask uploadTask;
     // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
 
     if (kIsWeb) {
       print("web");
-      uploadTask = storageReference.putData(await _pickimage.readAsBytes(), metadata);
+      uploadTask = storageReference.putData(await _pickimage.readAsBytes());
     } else {
       print("no web");
-      uploadTask = storageReference.putFile(File(_pickimage.path), metadata);
+      uploadTask = storageReference.putFile(File(_pickimage.path));
     }
     setState(() async {
       String downloadURL = await storageReference.getDownloadURL();

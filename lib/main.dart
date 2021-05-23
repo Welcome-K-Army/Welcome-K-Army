@@ -13,10 +13,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Opening View',
-      routes: AppRoutes.define(),
-      home: OpeningView(),
-    );
+        title: 'Opening View',
+        routes: AppRoutes.define(),
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case Login.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => Login(userData: settings.arguments));
+              }
+              break;
+
+            case Register.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => Register(userData: settings.arguments));
+              }
+              break;
+
+            case MenuScreen.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
+              }
+              break;
+              
+            default:
+              {
+                return MaterialPageRoute(builder: (context) => OpeningView());
+              }
+              break;
+          }
+        });
   }
 }
 

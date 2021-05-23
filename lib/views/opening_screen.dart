@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/routes.dart';
+import '../model/user_data_model.dart';
 
 class OpeningView extends StatefulWidget {
   @override
@@ -9,11 +10,9 @@ class OpeningView extends StatefulWidget {
 
 class OpeningViewState extends State<OpeningView> {
   OpeningViewState();
+  UserData userData;
+  String nickName = "";
 
-  String nickName="";
-
-
-  
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -52,7 +51,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authLogin);
+          Navigator.of(context).pushNamed(AppRoutes.authLogin,arguments: userData);
         },
       ),
     );
@@ -74,7 +73,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authRegister);
+          Navigator.of(context).pushNamed(AppRoutes.authRegister,arguments: userData);
         },
       ),
     );

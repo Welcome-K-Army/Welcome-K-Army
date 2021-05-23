@@ -3,6 +3,8 @@ import 'profile_edit.dart';
 
 
 class Profile_menu extends StatelessWidget {
+  Profile_menu({this.userData});
+  UserData userData;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,7 +16,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()),argument:userData);
           },
         ),
         ProfileMenu(
@@ -26,7 +28,7 @@ class Profile_menu extends StatelessWidget {
             //도움말 네비게이터
             icon: Icon(Icons.help_outline),
             text: "help",
-            press: () {}),
+            press: () {print(userData)}),
         ProfileMenu(
             //로그아웃 네비게이터
             icon: Icon(Icons.logout),

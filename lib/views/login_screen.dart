@@ -9,12 +9,13 @@ import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 
 class Login extends StatefulWidget {
+  Login({this.userData});
+  UserData userData;
   @override
   _LoginViewState createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<Login> {
-
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
@@ -244,7 +245,8 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              Navigator.of(context).pushNamed(AppRoutes.menu);
+              widget.userData = await userLoad();
+              Navigator.of(context).pushNamed(AppRoutes.menu, argument: widget.userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
@@ -282,7 +284,7 @@ class _LoginViewState extends State<Login> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authRegister);
+                Navigator.of(context).pushNamed(AppRoutes.authRegister, argument: userData);
               },
               child: Text(
                 "Sign Up",

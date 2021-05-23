@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import '../settings/profile_menu.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import '../model/user_data_model.dart';
-import 'package:provider/provider.dart';
 import '../net/firebase.dart';
+import '../model/user_data_model.dart';
+
 class MenuScreen extends StatefulWidget {
-  // MenuScreen();
+  MenuScreen({this.userData});
+  final UserData userData;
   @override
   MenuScreenState createState() => MenuScreenState();
 }
 
 class MenuScreenState extends State<MenuScreen> {
-  UserData userData;
   // User user;
 
   // Future<void> getUserData() async {
@@ -27,10 +27,9 @@ class MenuScreenState extends State<MenuScreen> {
   //   super.initState();
   //   getUserData();
   // }
-  
+
   MenuScreenState();
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(''),
@@ -69,18 +68,18 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-Container(
-                      child: Column(
-                        children: [
-                          Text(userData.uid == null ? "null" : userData.uid),
-                          Text(userData.nickName == null ? "null" : userData.nickName),
-                          Text(userData.email == null ? "null" : userData.email),
-                          Text(userData.age == null ? "null" : userData.age.toString()),
-                          Text(userData.gender == null ? "null" : userData.gender),
-                        ],
-                      ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(widget.userData.uid),
+                        Text(widget.userData.nickName),
+                        Text(widget.userData.email),
+                        Text(widget.userData.age.toString()),
+                        Text(widget.userData.gender),
+                      ],
                     ),
-                
+                  ),
+
                   Container(),
                   Profile_menu(),
                   //VideoScreen(),
