@@ -10,7 +10,7 @@ import '../net/firebase.dart';
 
 class Login extends StatefulWidget {
   Login({this.userData});
-  UserData userData;
+  final UserData userData;
   @override
   _LoginViewState createState() => _LoginViewState();
 }
@@ -284,7 +284,7 @@ class _LoginViewState extends State<Login> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authRegister, argument: userData);
+                Navigator.of(context).pushNamed(AppRoutes.authRegister, argument: widget.userData);
               },
               child: Text(
                 "Sign Up",
