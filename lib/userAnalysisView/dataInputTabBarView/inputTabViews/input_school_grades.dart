@@ -83,6 +83,36 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     super.dispose();
   }
 
+  Widget _build(int num) {
+    if (num == 0) return Container();
+    for(int index = 0; index < num; index++) {
+      return Row(children: [
+              CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
+              Container(
+                width: size.width / 3 - 10,
+                child: TextField(
+                  controller: textEditingControllers[1],
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "1",
+                    labelText: "석차",
+                  ),
+                ),
+              ),
+              Container(
+                width: size.width / 3 - 10,
+                child: TextField(
+                  controller: textEditingControllers[2],
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "1",
+                    labelText: "이수 단위",
+                  ),
+                ),
+              ),
+            ]),
+    }
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -96,7 +126,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
               Container(
                 width: size.width / 3,
                 child: TextField(
-                  controller: textEditingControllers[1],
+                  controller: textEditingControllers[0]],
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "10",
@@ -112,6 +142,8 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                     });
                   }),
             ]),
+            _build(num),
+            /*
             Row(children: [
               CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
               Container(
@@ -137,6 +169,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
             ]),
+            */
           ],
         ));
   }
