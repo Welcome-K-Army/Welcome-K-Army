@@ -66,7 +66,9 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
   @override
   void initState() {
     super.initState;
-    textEditingController.addListener();
+    textEditingController.addListener(() {
+      print(_textEditingController.text);
+    });
   }
 
   void dispose() {
@@ -94,13 +96,14 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
               ),
               IconButton(
                 icon: Icons.arrow_forward_rounded,
-                onPress: () {
+                onPressed: () {
                   setState(
                     num = textEditingController.text.toInt();
                   );
                 }  
               ),
             ]),
+
           ],
         ));
   }
