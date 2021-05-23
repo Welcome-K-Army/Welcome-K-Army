@@ -46,8 +46,9 @@ class ReadInputData with ChangeNotifier {
 
   String get getData => data;
 
-  void setData(String inputData) {
+  void setData(String inputData, String name) {
     data = inputData;
+    print(name);
     print(data);
     notifyListeners();
   }

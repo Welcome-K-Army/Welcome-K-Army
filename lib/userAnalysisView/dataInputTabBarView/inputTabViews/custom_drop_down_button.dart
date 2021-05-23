@@ -9,9 +9,10 @@ class CustomDropDownButton extends StatefulWidget {
   String dropdownValue;
   List<String> items;
   ReadInputData readInputData;
-  CustomDropDownButton({this.width, this.dropdownValue, this.items, this.readInputData});
+  String name;
+  CustomDropDownButton({this.width, this.dropdownValue, this.items, this.readInputData, this.name});
 
-  CustomDropDownButtonState createState() => CustomDropDownButtonState(width: width, dropdownValue: dropdownValue, items: items, readInputData: readInputData);
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(width: width, dropdownValue: dropdownValue, items: items, readInputData: readInputData, name: name);
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
@@ -19,8 +20,9 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
   String dropdownValue;
   List<String> items;
   ReadInputData readInputData;
+  String name;
 
-  CustomDropDownButtonState({this.width, this.dropdownValue, this.items, this.readInputData});
+  CustomDropDownButtonState({this.width, this.dropdownValue, this.items, this.readInputData, this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
                 setState(() {
                   dropdownValue = newValue;
                 });
-                readInputData.setData(dropdownValue);
+                readInputData.setData(dropdownValue, name);
                 switch (dropdownValue) {
                   case "사관학교":
                     institutionStatus.setStatus(true);

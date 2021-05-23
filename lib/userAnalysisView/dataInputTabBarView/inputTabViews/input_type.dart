@@ -47,10 +47,10 @@ class InputTypeState extends State<InputType> with SingleTickerProviderStateMixi
         height: size.height,
         child: Column(
           children: [
-            CustomDropDownButton(width: size.width, dropdownValue: typeItems[0], items: typeItems, readInputData: readInputData1),
-            CustomDropDownButton(width: size.width, dropdownValue: instituteItems[0], items: instituteItems, readInputData: readInputData2),
+            CustomDropDownButton(width: size.width, dropdownValue: typeItems[0], items: typeItems, readInputData: readInputData1, name: "첫번째"),
+            CustomDropDownButton(width: size.width, dropdownValue: instituteItems[0], items: instituteItems, readInputData: readInputData2, name: "두번째"),
             Container(
-              child: institutionStatus.getStatus() ? CustomDropDownButton(width: size.width, dropdownValue: typeAcademyItems[0], items: typeAcademyItems, readInputData: readInputData3) : Container(),
+              child: institutionStatus.getStatus() ? CustomDropDownButton(width: size.width, dropdownValue: typeAcademyItems[0], items: typeAcademyItems, readInputData: readInputData3, name: "세번째") : Container(),
             ),
           ],
         ));
