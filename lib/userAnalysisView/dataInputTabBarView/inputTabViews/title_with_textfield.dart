@@ -46,27 +46,31 @@ class TitleWithTextfieldState extends State<TitleWithTextfield> {
   Widget buildCard(List<String> scoreList, String title) {
     return Container(
         height: 50.0 * scoreList.length + 70.0,
-        child: Card(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            elevation: 4,
-            child: Column(children: [
-              Text(title),
-              Column(
-                children: List<Widget>.generate(scoreList.length, (index) {
-                  return TextField(
-                    controller: textEditingControllers[index],
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: hint,
-                      labelText: scoreList[index],
-                    ),
-                  );
-                }).toList(),
-              )
-            ])));
+        child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                elevation: 4,
+                child: Column(children: [
+                  Text(title),
+                  Column(
+                    children: List<Widget>.generate(scoreList.length, (index) {
+                      return Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: TextField(
+                            controller: textEditingControllers[index],
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: hint,
+                              labelText: scoreList[index],
+                            ),
+                          ));
+                    }).toList(),
+                  )
+                ]))));
   }
 
   @override
