@@ -111,7 +111,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
             ]);
-    }));
+    });
   }
 
   @override
