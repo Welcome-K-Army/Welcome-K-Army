@@ -31,7 +31,7 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   void initState() {
-    profileNameTextEditingController=TextEditingController(text="na");
+    profileNameTextEditingController=TextEditingController(text:"na");
     super.initState();
   }
 
@@ -108,7 +108,7 @@ class _EditProfileState extends State<EditProfile> {
         Consumer<UserData>(
           builder: (context, userData, child) => TextField(
             style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController..text="asd",
+            controller: profileNameTextEditingController,
             onChanged: (text) => {},
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
