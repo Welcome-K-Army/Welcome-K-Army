@@ -65,7 +65,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     "이수단위"
   ];
 
-  final List<List> subjectList;
+  List<List> subjectList;
 
   List<TextEditingController> languageTextEditingControllers;
   List<TextEditingController> englishTextEditingControllers;
@@ -122,7 +122,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
         child: Card(
             child: Column(children: [
       Text(title),
-      Column(children: [
+      Column(children: 
         List<Widget>.generate(items.length, (index) {
           return Row(children: [
             CustomDropDownButton(width: size.width / 3, dropdownValue: items[0], items: items),
@@ -150,7 +150,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
             ),
           ]);
         })
-      ])
+      )
     ])));
   }
 
