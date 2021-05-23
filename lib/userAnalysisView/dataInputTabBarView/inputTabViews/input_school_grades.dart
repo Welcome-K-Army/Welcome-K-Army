@@ -63,7 +63,6 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
 
   InputSchoolGradesState();
 
-
   @override
   void initState() {
     super.initState;
@@ -103,13 +102,12 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.arrow_forward_rounded),
-                onPressed: () {
-                  setState(
-                    num = int.parse(textEditingController.text);
-                  );
-                }  
-              ),
+                  icon: Icon(Icons.arrow_forward_rounded),
+                  onPressed: () {
+                    setState(() {
+                      num = int.parse(textEditingController.text);
+                    });
+                  }),
             ]),
             Row(childern: [
               CustomDropDownButton(width: size.width / 3, dropdownValue: languageSubjects[0], items: languageSubjects),
