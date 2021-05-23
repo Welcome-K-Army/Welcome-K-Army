@@ -83,9 +83,9 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     super.dispose();
   }
 
-  Widget _build(int num) {
+  List<Widget> _build(int num) {
     if (num == 0) return Container();
-    for(int index = 0; index < num; index++) {
+    return List<Widget>.generate(num, (index {
       return Row(children: [
               CustomDropDownButton(width: 70, dropdownValue: languageSubjects[0], items: languageSubjects),
               Container(
@@ -111,7 +111,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
             ]);
-    }
+    }))
   }
 
   @override
@@ -143,7 +143,9 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                     });
                   }),
             ]),
-            _build(num),
+            Column(
+              children: _build(num),
+            ),
             /*
             Row(children: [
               CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
