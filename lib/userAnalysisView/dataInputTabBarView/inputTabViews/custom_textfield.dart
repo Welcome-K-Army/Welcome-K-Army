@@ -9,7 +9,7 @@ class CustomTextfield extends StatefulWidget {
   String title;
   String hint;
   List<String> scoreList;
-  CustomTextfield({this.width, this.title, this.hint, this.scoreList});
+  CustomTextfield({this.width, this.title, this.hint, this.scoreList, this.textEditingControllers});
 
   CustomTextfieldState createState() => CustomTextfieldState(width: width, title: title, hint: hint, scoreList: scoreList);
 }
@@ -19,32 +19,23 @@ class CustomTextfieldState extends State<CustomTextfield> {
   String title;
   String hint;
   List<String> scoreList;
-  // final TextEditingController _textEditingController = TextEditingController();
-  final List<TextEditingController> textEditingControllers;
+  List<TextEditingController> textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
+    return TextEditingController();
+  }).toList();
+  final TextEditingController _textEditingController = TextEditingController();
 
   CustomTextfieldState({this.width, this.title, this.hint, this.scoreList});
 
   @override
   void initState() {
     super.initState;
-    textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
-    return TextEditingController();
-    }).toList();
-    for(int index = 0; index < scoreList.length; index++) {
-      textEditingControllers[index].addListener(() {
-        print(textEditingControllers[index].text);
-      });
-    }
-    /*
-    textEditingController.addListener(() {
+    _textEditingController.addListener(() {
       print(_textEditingController.text);
     });
-    */
   }
 
-  @override
   void dispose() {
-    textEditingControllers[0].dispose();
+    _textEditingController.dispose();
     super.dispose();
   }
 
@@ -62,7 +53,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
               Column(
                 children: List<Widget>.generate(scoreList.length, (index) {
                   return TextField(
-                    controller: textEditingControllers[index],
+                    controller: _textEditingController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: hint,
