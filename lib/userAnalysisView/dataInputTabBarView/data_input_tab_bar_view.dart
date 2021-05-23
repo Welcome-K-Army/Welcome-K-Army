@@ -59,8 +59,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
               InputType(),
               InputFirstExam(),
               InputSecondExam(),
-              InputKSAT(),
               InputSchoolGrades(),
+              InputKSAT(),
             ]),
             floatingActionButton: FloatingActionButton(
               onPressed: () {

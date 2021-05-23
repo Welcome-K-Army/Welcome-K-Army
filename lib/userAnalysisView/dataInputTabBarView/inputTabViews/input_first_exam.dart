@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import './custom_textfield.dart';
+import './title_with_textfield.dart';
 
 class InputFirstExam extends StatefulWidget {
   InputFirstExam();
@@ -36,9 +36,9 @@ class InputFirstExamState extends State<InputFirstExam> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            CustomTextfield(width: size.width, title: "국어", hint: "100", scoreList: languageScores),
-            CustomTextfield(width: size.width, title: "영어", hint: "100", scoreList: languageScores),
-            CustomTextfield(width: size.width, title: "수학", hint: "100", scoreList: mathScores),
+            TitleWithTextfield(width: size.width, title: "국어", hint: "100", scoreList: languageScores),
+            TitleWithTextfield(width: size.width, title: "영어", hint: "100", scoreList: languageScores),
+            TitleWithTextfield(width: size.width, title: "수학", hint: "100", scoreList: mathScores),
           ],
         ));
   }

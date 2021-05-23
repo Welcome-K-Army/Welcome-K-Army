@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import './custom_textfield.dart';
+import './title_with_textfield.dart';
 
 class InputKSAT extends StatefulWidget {
   InputKSAT();
@@ -28,12 +28,12 @@ class InputKSATState extends State<InputKSAT> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            CustomTextfield(width: size.width, title: "국어", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
-            CustomTextfield(width: size.width, title: "수학", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
-            CustomTextfield(width: size.width, title: "영어", hint: "100", scoreList: englishAndHistoryScores),
-            CustomTextfield(width: size.width, title: "한국사", hint: "100", scoreList: englishAndHistoryScores),
-            CustomTextfield(width: size.width, title: "탐구 1", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
-            CustomTextfield(width: size.width, title: "탐구 2", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores)
+            TitleWithTextfield(width: size.width, title: "국어", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
+            TitleWithTextfield(width: size.width, title: "수학", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
+            TitleWithTextfield(width: size.width, title: "영어", hint: "100", scoreList: englishAndHistoryScores),
+            TitleWithTextfield(width: size.width, title: "한국사", hint: "100", scoreList: englishAndHistoryScores),
+            TitleWithTextfield(width: size.width, title: "탐구 1", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores),
+            TitleWithTextfield(width: size.width, title: "탐구 2", hint: "100", scoreList: koreanLanguageAndMathAndInquiryScores)
           ],
         ));
   }

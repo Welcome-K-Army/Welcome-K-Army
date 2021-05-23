@@ -4,24 +4,24 @@ import 'package:provider/provider.dart';
 
 import 'input_type_multi_provider.dart';
 
-class CustomTextfield extends StatefulWidget {
+class TitleWithTextfield extends StatefulWidget {
   final double width;
   String title;
   String hint;
   List<String> scoreList;
-  CustomTextfield({this.width, this.title, this.hint, this.scoreList});
+  TitleWithTextfield({this.width, this.title, this.hint, this.scoreList});
 
-  CustomTextfieldState createState() => CustomTextfieldState(width: width, title: title, hint: hint, scoreList: scoreList);
+  TitleWithTextfieldState createState() => TitleWithTextfieldState(width: width, title: title, hint: hint, scoreList: scoreList);
 }
 
-class CustomTextfieldState extends State<CustomTextfield> {
+class TitleWithTextfieldState extends State<TitleWithTextfield> {
   final double width;
   String title;
   String hint;
   List<String> scoreList;
   List<TextEditingController> textEditingControllers;
 
-  CustomTextfieldState({this.width, this.title, this.hint, this.scoreList});
+  TitleWithTextfieldState({this.width, this.title, this.hint, this.scoreList});
 
   @override
   void initState() {
