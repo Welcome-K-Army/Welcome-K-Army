@@ -14,7 +14,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginViewState extends State<Login> {
-  
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
@@ -87,10 +86,13 @@ class _LoginViewState extends State<Login> {
                           onPressed: () async {
                             try {
                               FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+                              final snackBar = SnackBar(
+                                content: Text("Check your email for password reset."),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                               Navigator.of(context).pop();
                             } catch (e) {
                               print(e);
-                              // TODO: Add snackbar reporting error
                             }
                           },
                         ),
