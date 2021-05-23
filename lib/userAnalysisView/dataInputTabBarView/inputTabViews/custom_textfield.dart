@@ -9,7 +9,7 @@ class CustomTextfield extends StatefulWidget {
   String title;
   String hint;
   List<String> scoreList;
-  CustomTextfield({this.width, this.title, this.hint, this.scoreList, this.textEditingControllers});
+  CustomTextfield({this.width, this.title, this.hint, this.scoreList});
 
   CustomTextfieldState createState() => CustomTextfieldState(width: width, title: title, hint: hint, scoreList: scoreList);
 }
@@ -19,9 +19,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
   String title;
   String hint;
   List<String> scoreList;
-  List<TextEditingController> textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
-    return TextEditingController();
-  }).toList();
+  List<TextEditingController> textEditingControllers;
   final TextEditingController _textEditingController = TextEditingController();
 
   CustomTextfieldState({this.width, this.title, this.hint, this.scoreList});
@@ -29,6 +27,9 @@ class CustomTextfieldState extends State<CustomTextfield> {
   @override
   void initState() {
     super.initState;
+    textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
+    return TextEditingController();
+  }).toList();
     _textEditingController.addListener(() {
       print(_textEditingController.text);
     });
