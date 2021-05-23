@@ -13,7 +13,7 @@ class TypeStatus with ChangeNotifier {
 
   void setStatus(value) {
     status = value;
-    notifyListeners(); //must be inserted
+    notifyListeners();
   }
 }
 
@@ -37,6 +37,18 @@ class InstitutionStatus with ChangeNotifier {
     print("set" + DateTime.now().toString());
     print(status);
     status = value;
-    notifyListeners(); //must be inserted
+    notifyListeners();
+  }
+}
+
+class ReadInputData with ChangeNotifier {
+  String data = "";
+
+  String get getData => data;
+
+  void setData(String inputData) {
+    data = inputData;
+    print(data);
+    notifyListeners();
   }
 }

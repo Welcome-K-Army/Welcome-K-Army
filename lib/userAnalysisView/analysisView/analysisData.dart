@@ -22,8 +22,13 @@ class UID {
 
 class FirstExam {
   dynamic score = 0;
+  List<double> languageScores;
+  List<double> englishScores;
+  List<double> mathScores;
 
-  FirstExam();
+  FirstExam({this.languageScores, this.englishScores, this.mathScores}) {
+    print("success");
+  }
 }
 
 class Body {

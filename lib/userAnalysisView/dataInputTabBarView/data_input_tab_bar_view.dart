@@ -52,6 +52,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
         providers: [
           ChangeNotifierProvider<TypeStatus>(create: (context) => TypeStatus()),
           ChangeNotifierProvider<InstitutionStatus>(create: (context) => InstitutionStatus()),
+          ChangeNotifierProvider<ReadInputData>(create: (context) => ReadInputData()),
         ],
         child: Scaffold(
             appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(isScrollable: true, controller: _tabController, tabs: _tabs)),

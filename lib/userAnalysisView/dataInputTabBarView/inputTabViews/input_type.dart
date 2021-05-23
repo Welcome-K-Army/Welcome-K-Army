@@ -39,15 +39,18 @@ class InputTypeState extends State<InputType> with SingleTickerProviderStateMixi
     Size size = MediaQuery.of(context).size;
     TypeStatus typeStatus = Provider.of<TypeStatus>(context);
     InstitutionStatus institutionStatus = Provider.of<InstitutionStatus>(context);
+    ReadInputData readInputData1 = Provider.of<ReadInputData>(context);
+    ReadInputData readInputData2 = Provider.of<ReadInputData>(context);
+    ReadInputData readInputData3 = Provider.of<ReadInputData>(context);
 
     return Container(
         height: size.height,
         child: Column(
           children: [
-            CustomDropDownButton(width: size.width, dropdownValue: typeItems[0], items: typeItems),
-            CustomDropDownButton(width: size.width, dropdownValue: instituteItems[0], items: instituteItems),
+            CustomDropDownButton(width: size.width, dropdownValue: typeItems[0], items: typeItems, readInputData: readInputData1),
+            CustomDropDownButton(width: size.width, dropdownValue: instituteItems[0], items: instituteItems, readInputData: readInputData2),
             Container(
-              child: institutionStatus.getStatus() ? CustomDropDownButton(width: size.width, dropdownValue: typeAcademyItems[0], items: typeAcademyItems) : Container(),
+              child: institutionStatus.getStatus() ? CustomDropDownButton(width: size.width, dropdownValue: typeAcademyItems[0], items: typeAcademyItems, readInputData: readInputData3) : Container(),
             ),
           ],
         ));

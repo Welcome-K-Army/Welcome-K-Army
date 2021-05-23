@@ -8,32 +8,19 @@ class CustomDropDownButton extends StatefulWidget {
   final double width;
   String dropdownValue;
   List<String> items;
+  ReadInputData readInputData;
+  CustomDropDownButton({this.width, this.dropdownValue, this.items, this.readInputData});
 
-  CustomDropDownButton({this.width, this.dropdownValue, this.items});
-
-  CustomDropDownButtonState createState() => CustomDropDownButtonState(width: width, dropdownValue: dropdownValue, items: items);
+  CustomDropDownButtonState createState() => CustomDropDownButtonState(width: width, dropdownValue: dropdownValue, items: items, readInputData: readInputData);
 }
 
 class CustomDropDownButtonState extends State<CustomDropDownButton> {
   final double width;
   String dropdownValue;
   List<String> items;
-  final TextEditingController _textEditingController = TextEditingController();
+  ReadInputData readInputData;
 
-  CustomDropDownButtonState({this.width, this.dropdownValue, this.items});
-
-  @override
-  void initState() {
-    super.initState;
-    _textEditingController.addListener(() {
-      print(_textEditingController.text);
-    });
-  }
-
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
+  CustomDropDownButtonState({this.width, this.dropdownValue, this.items, this.readInputData});
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +47,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
                 setState(() {
                   dropdownValue = newValue;
                 });
+                readInputData.setData(dropdownValue);
                 switch (dropdownValue) {
                   case "사관학교":
                     institutionStatus.setStatus(true);
