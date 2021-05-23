@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'custom_drop_dwon_button.dart';
+import 'custom_drop_down_button.dart';
 
 class InputSchoolGrades extends StatefulWidget {
   InputSchoolGrades();
@@ -105,11 +105,11 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                   icon: Icon(Icons.arrow_forward_rounded),
                   onPressed: () {
                     setState(() {
-                      num = int.parse(textEditingController.text);
+                      num = int.parse(textEditingControllers[0].text);
                     });
                   }),
             ]),
-            Row(childern: [
+            Row(children: [
               CustomDropDownButton(width: size.width / 3, dropdownValue: languageSubjects[0], items: languageSubjects),
               TextField(
                 controller: textEditingControllers[1],
