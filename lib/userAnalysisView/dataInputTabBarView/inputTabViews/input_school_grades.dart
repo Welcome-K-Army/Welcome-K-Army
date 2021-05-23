@@ -65,32 +65,36 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     "이수단위"
   ];
 
-  final List<List> subjectList = [
-    this.languageSubjects,
-    this.englishSubjects,
-    this.mathSubjects,
-    this.socialSubjects,
-    this.scienceSubjects,
-  ];
+  final List<List> subjectList;
 
   List<TextEditingController> languageTextEditingControllers;
   List<TextEditingController> englishTextEditingControllers;
   List<TextEditingController> mathTextEditingControllers;
   List<TextEditingController> socialTextEditingControllers;
   List<TextEditingController> scienceTextEditingControllers;
-  List<List> controllers = [
-    this.languageTextEditingControllers,
-    this.englishTextEditingControllers,
-    this.mathTextEditingControllers,
-    this.socialTextEditingControllers,
-    this.scienceTextEditingControllers
-  ];
+  List<List> controllers;
 
   InputSchoolGradesState();
 
   @override
   void initState() {
     super.initState;
+
+    subjectList = [
+      this.languageSubjects,
+      this.englishSubjects,
+      this.mathSubjects,
+      this.socialSubjects,
+      this.scienceSubjects,
+    ];
+    controllers = [
+      this.languageTextEditingControllers,
+      this.englishTextEditingControllers,
+      this.mathTextEditingControllers,
+      this.socialTextEditingControllers,
+      this.scienceTextEditingControllers
+    ];
+
     for (int index = 0; index < controllers.length; index++) {
       controllers[index] = List<TextEditingController>.generate(subjectList[index].length * 2, (index) {
         return TextEditingController();
