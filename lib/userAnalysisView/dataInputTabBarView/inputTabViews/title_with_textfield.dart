@@ -45,7 +45,7 @@ class TitleWithTextfieldState extends State<TitleWithTextfield> {
 
   Widget buildCard(List<String> scoreList, String title) {
     return Container(
-        height: 65.0 * scoreList.length + 70.0,
+        height: 65.0 * scoreList.length + 90.0,
         child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Card(
