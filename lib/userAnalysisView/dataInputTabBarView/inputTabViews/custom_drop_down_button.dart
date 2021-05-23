@@ -65,7 +65,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
           case "학군단":
             institutionStatus.setStatus(false);
             break;
-          case "부사관":
+          case   "부사관":
             institutionStatus.setStatus(false);
             break;
           default:
