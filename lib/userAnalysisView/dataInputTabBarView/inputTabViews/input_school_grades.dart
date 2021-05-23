@@ -125,7 +125,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
       Column(children: 
         List<Widget>.generate(items.length, (index) {
           return Row(children: [
-            CustomDropDownButton(width: size.width / 3 - 5, dropdownValue: items[0], items: items),
+            CustomDropDownButton(width: size.width / 3 - 5, dropdownValue: items[index], items: items),
             Container(
               width: size.width / 3 - 5,
               child: TextField(
