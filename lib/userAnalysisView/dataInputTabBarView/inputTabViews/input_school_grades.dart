@@ -121,36 +121,46 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     return Container(
         child: Card(
             child: Column(children: [
-      Text(title),
-      Column(children: 
-        List<Widget>.generate(items.length, (index) {
-          return Row(children: [
-            CustomDropDownButton(width: size.width / 3 - 5, dropdownValue: items[index], items: items),
-            Container(
-              width: size.width / 3 - 5,
-              child: TextField(
-                controller: controllers[index * 2],
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "1",
-                  labelText: "석차",
+      Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text(title),
+      ),
+      Column(
+          children: List<Widget>.generate(items.length, (index) {
+        return Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Row(children: [
+              CustomDropDownButton(width: size.width / 3 - 15, dropdownValue: items[index], items: items),
+              Padding(
+                padding: EdgeInsets.all(7.5),
+                child: Container(
+                  width: size.width / 3 - 15,
+                  child: TextField(
+                    controller: controllers[index * 2],
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "1",
+                      labelText: "석차",
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              width: size.width / 3 - 5,
-              child: TextField(
-                controller: controllers[index * 2 + 1],
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "1",
-                  labelText: "이수 단위",
+              Padding(
+                padding: EdgeInsets.all(7.5),
+                child: Container(
+                  width: size.width / 3 - 15,
+                  child: TextField(
+                    controller: controllers[index * 2 + 1],
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "1",
+                      labelText: "이수 단위",
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ]);
-        })
-      )
+              )
+            ]));
+      }))
     ])));
   }
 
