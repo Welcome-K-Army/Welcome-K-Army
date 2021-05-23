@@ -15,7 +15,7 @@ class InputSchoolGradesAndKSATState extends State<InputSchoolGradesAndKSAT> {
     "몸무게"
   ];
 
-  final List<String> healthScores = [
+  final List<String> kSAT_Scores = [
     "오래달리기",
     "팔굽혀펴기",
     "윗몸일으키기"

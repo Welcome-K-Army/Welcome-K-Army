@@ -24,7 +24,7 @@ class InputSecondExamState extends State<InputSecondExam> {
   final List<String> interviewScores = [
     "점수"
   ];
-  final List<String> historyScore = [
+  final List<String> historyScores = [
     "급수"
   ];
 
