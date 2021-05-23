@@ -87,9 +87,9 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     if (num == 0) return Container();
     for(int index = 0; index < num; index++) {
       return Row(children: [
-              CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
+              CustomDropDownButton(width: 70, dropdownValue: languageSubjects[0], items: languageSubjects),
               Container(
-                width: size.width / 3 - 10,
+                width: 70,
                 child: TextField(
                   controller: textEditingControllers[1],
                   decoration: InputDecoration(
@@ -100,7 +100,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
               Container(
-                width: size.width / 3 - 10,
+                width: 70,
                 child: TextField(
                   controller: textEditingControllers[2],
                   decoration: InputDecoration(
@@ -110,9 +110,10 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                   ),
                 ),
               ),
-            ]),
+            ]);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -126,7 +127,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
               Container(
                 width: size.width / 3,
                 child: TextField(
-                  controller: textEditingControllers[0]],
+                  controller: textEditingControllers[0],
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "10",
