@@ -10,6 +10,14 @@ class InputSchoolGrades extends StatefulWidget {
 }
 
 class InputSchoolGradesState extends State<InputSchoolGrades> {
+  final List<String> mainSubjects = [
+    "국어",
+    "영어",
+    "수학",
+    "과학탐구",
+    "사회탐구"
+  ];
+
   final List<String> languageSubjects = [
     "화법과 작문",
     "독서",
@@ -30,7 +38,6 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     "미적분",
     "확률과 통계"
   ];
-
   final List<String> socialSubjects = [
     "생활과 윤리",
     "윤리와 사상",
@@ -58,60 +65,89 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     "이수단위"
   ];
 
-  int num = 0;
-  List<TextEditingController> textEditingControllers;
+  final List<List> subjectList = [
+    languageSubjects,
+    englishSubjects,
+    mathSubjects,
+    socialSubjects,
+    scienceSubjects,
+  ];
+
+  List<TextEditingController> languageTextEditingControllers;
+  List<TextEditingController> englishTextEditingControllers;
+  List<TextEditingController> mathTextEditingControllers;
+  List<TextEditingController> socialTextEditingControllers;
+  List<TextEditingController> scienceTextEditingControllers;
+  List<List> controllers = [
+    languageTextEditingControllers,
+    englishTextEditingControllers,
+    mathTextEditingControllers,
+    socialTextEditingControllers,
+    scienceTextEditingControllers
+  ];
 
   InputSchoolGradesState();
 
   @override
   void initState() {
     super.initState;
-    textEditingControllers = List<TextEditingController>.generate(3, (index) {
-      return TextEditingController();
-    }).toList();
-    for (int index = 0; index < 3; index++) {
-      textEditingControllers[index].addListener(() {
-        print(textEditingControllers[index].text);
-      });
+    for (int index = 0; index < controllers.length; index++) {
+      controllers[index] = List<TextEditingController>.generate(subjectList[index].length * 2, (index) {
+        return TextEditingController();
+      }).toList();
+    }
+
+    for (int i = 0; i < controllers.length; i++) {
+      for (int j = 0; j < controllers[i].length; j++) {
+        controllers[i][j].addListener(() {
+          print(controllers[i][j].text);
+        });
+      }
     }
   }
 
   void dispose() {
-    for (int index = 0; index < 3; index++) {
-      textEditingControllers[index].dispose();
+    for (int i = 0; i < controllers.length; i++) {
+      for (int j = 0; j < controllers[i].length; j++) controllers[i][j].dispose();
     }
     super.dispose();
   }
 
-  List<Widget> _build(int num) {
-    if (num == 0) return List<Widget>.generate(1,(index) { return Container();});
-    return List<Widget>.generate(num, (index) {
-      return Row(children: [
-              CustomDropDownButton(width: 70, dropdownValue: languageSubjects[0], items: languageSubjects),
-              Container(
-                width: 70,
-                child: TextField(
-                  controller: textEditingControllers[1],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "1",
-                    labelText: "석차",
-                  ),
+  Widget buildCard(Size size, String title, List<String> items, List<TextEditingController> controllers) {
+    return Container(
+        child: Card(
+            child: Column(children: [
+      Text(title),
+      Column(children: [
+        List<Widget>.generate(items.length, (index) {
+          return Row(children: [
+            CustomDropDownButton(width: size.width / 3, dropdownValue: items[0], items: items),
+            Container(
+              width: size.width / 3,
+              child: TextField(
+                controller: controllers[index * 2],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "1",
+                  labelText: "석차",
                 ),
               ),
-              Container(
-                width: 70,
-                child: TextField(
-                  controller: textEditingControllers[2],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "1",
-                    labelText: "이수 단위",
-                  ),
+            ),
+            Container(
+              width: size.width / 3,
+              child: TextField(
+                controller: controllers[index * 2 + 1],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "1",
+                  labelText: "이수 단위",
                 ),
               ),
-            ]);
-    });
+            ),
+          ]);
+        })
+      ])
+    ])));
   }
 
   @override
@@ -120,60 +156,13 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: [
-            Text("교과성적"),
-            Row(children: [
-              Text("국어"),
-              Container(
-                width: size.width / 3,
-                child: TextField(
-                  controller: textEditingControllers[0],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "10",
-                    labelText: "이수 과목 개수",
-                  ),
-                ),
-              ),
-              IconButton(
-                  icon: Icon(Icons.arrow_forward_rounded),
-                  onPressed: () {
-                    setState(() {
-                      num = int.parse(textEditingControllers[0].text);
-                    });
-                  }),
-            ]),
-            Column(
-              children: _build(num),
-            ),
-            /*
-            Row(children: [
-              CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: languageSubjects[0], items: languageSubjects),
-              Container(
-                width: size.width / 3 - 10,
-                child: TextField(
-                  controller: textEditingControllers[1],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "1",
-                    labelText: "석차",
-                  ),
-                ),
-              ),
-              Container(
-                width: size.width / 3 - 10,
-                child: TextField(
-                  controller: textEditingControllers[2],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "1",
-                    labelText: "이수 단위",
-                  ),
-                ),
-              ),
-            ]),
-            */
-          ],
-        ));
+            children: List<Widget>.generate(5, (index) {
+          return buildCard(
+            size,
+            mainSubjects[index],
+            subjectList[index],
+            controllers[index],
+          );
+        })));
   }
 }
