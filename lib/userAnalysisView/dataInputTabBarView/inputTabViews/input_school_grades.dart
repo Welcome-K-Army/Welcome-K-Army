@@ -134,7 +134,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: Container(
-                  width: size.width / 3 - 10,
+                  width: size.width / 3 - 20,
                   child: TextField(
                     controller: controllers[index * 2],
                     decoration: InputDecoration(
@@ -148,7 +148,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: Container(
-                  width: size.width / 3 - 10,
+                  width: size.width / 3 - 20,
                   child: TextField(
                     controller: controllers[index * 2 + 1],
                     decoration: InputDecoration(
