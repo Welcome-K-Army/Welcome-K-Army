@@ -33,7 +33,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
     for(int index = 0; index < scoreList.length; index++) {
       textEditingControllers[index].addListener(() {
         print(textEditingControllers[index].text);
-      })
+      });
     }
     /*
     _textEditingController.addListener(() {
