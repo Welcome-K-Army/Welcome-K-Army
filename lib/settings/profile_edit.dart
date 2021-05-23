@@ -84,7 +84,7 @@ class _EditProfileState extends State<EditProfile> {
     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         Map<String, dynamic> data = documentSnapshot.data();
-        userData.setUserData(UserData.fromJson(data));
+        // userData.setUserData(UserData.fromJson(data));
       } else {
         print('no data');
       }
