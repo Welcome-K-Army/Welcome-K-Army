@@ -66,11 +66,11 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
   ];
 
   final List<List> subjectList = [
-    languageSubjects,
-    englishSubjects,
-    mathSubjects,
-    socialSubjects,
-    scienceSubjects,
+    this.languageSubjects,
+    this.englishSubjects,
+    this.mathSubjects,
+    this.socialSubjects,
+    this.scienceSubjects,
   ];
 
   List<TextEditingController> languageTextEditingControllers;
@@ -79,11 +79,11 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
   List<TextEditingController> socialTextEditingControllers;
   List<TextEditingController> scienceTextEditingControllers;
   List<List> controllers = [
-    languageTextEditingControllers,
-    englishTextEditingControllers,
-    mathTextEditingControllers,
-    socialTextEditingControllers,
-    scienceTextEditingControllers
+    this.languageTextEditingControllers,
+    this.englishTextEditingControllers,
+    this.mathTextEditingControllers,
+    this.socialTextEditingControllers,
+    this.scienceTextEditingControllers
   ];
 
   InputSchoolGradesState();
