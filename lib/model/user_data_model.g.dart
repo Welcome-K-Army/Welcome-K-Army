@@ -1,4 +1,4 @@
-part of 'user.dart';
+part of 'user_data_model.dart';
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) {
   return UserData(
