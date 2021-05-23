@@ -30,9 +30,16 @@ class CustomTextfieldState extends State<CustomTextfield> {
     textEditingControllers = List<TextEditingController>.generate(scoreList.length, (index) {
     return TextEditingController();
   }).toList();
+    for(int index = 0; index < scoreList.length; index++) {
+      textEditingControllers[index].addListener(() {
+        print(textEditingControllers[index].text);
+      })
+    }
+    /*
     _textEditingController.addListener(() {
       print(_textEditingController.text);
     });
+    */
   }
 
   void dispose() {
@@ -54,7 +61,7 @@ class CustomTextfieldState extends State<CustomTextfield> {
               Column(
                 children: List<Widget>.generate(scoreList.length, (index) {
                   return TextField(
-                    controller: _textEditingController,
+                    controller: textEditingControllers[index],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: hint,
