@@ -130,11 +130,11 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
         return Padding(
             padding: EdgeInsets.all(10.0),
             child: Row(children: [
-              CustomDropDownButton(width: size.width / 3 - 15, dropdownValue: items[index], items: items),
+              CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: items[index], items: items),
               Padding(
-                padding: EdgeInsets.all(7.5),
+                padding: EdgeInsets.all(5),
                 child: Container(
-                  width: size.width / 3 - 15,
+                  width: size.width / 3 - 10,
                   child: TextField(
                     controller: controllers[index * 2],
                     decoration: InputDecoration(
@@ -146,9 +146,9 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(7.5),
+                padding: EdgeInsets.all(5),
                 child: Container(
-                  width: size.width / 3 - 15,
+                  width: size.width / 3 - 10,
                   child: TextField(
                     controller: controllers[index * 2 + 1],
                     decoration: InputDecoration(

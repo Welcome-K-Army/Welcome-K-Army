@@ -44,7 +44,7 @@ class CustomDropDownButtonState extends State<CustomDropDownButton> {
         height: 50,
         width: width,
         child: Padding(
-            padding: EdgeInsets.all(7.5),
+            padding: EdgeInsets.all(5),
             child: DropdownButton<String>(
               value: dropdownValue,
               isExpanded: true,
