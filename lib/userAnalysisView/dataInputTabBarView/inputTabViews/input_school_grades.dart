@@ -129,7 +129,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
           children: List<Widget>.generate(items.length, (index) {
         return Padding(
             padding: EdgeInsets.all(10.0),
-            child: Row(children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               CustomDropDownButton(width: size.width / 3 - 10, dropdownValue: items[index], items: items),
               Padding(
                 padding: EdgeInsets.all(5),
