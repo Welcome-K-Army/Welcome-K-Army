@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import './custom_drop_dwon_button.dart';
+import 'custom_drop_dwon_button.dart';
 
 class InputSchoolGrades extends StatefulWidget {
   InputSchoolGrades();
@@ -59,20 +59,28 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
   ];
 
   int num = 0;
-  TextEditingController textEditingController = TextEditingController();
+  List<TextEditingController> textEditingControllers;
 
   InputSchoolGradesState();
+
 
   @override
   void initState() {
     super.initState;
-    textEditingController.addListener(() {
-      print(_textEditingController.text);
-    });
+    textEditingControllers = List<TextEditingController>.generate(3, (index) {
+      return TextEditingController();
+    }).toList();
+    for (int index = 0; index < 3; index++) {
+      textEditingControllers[index].addListener(() {
+        print(textEditingControllers[index].text);
+      });
+    }
   }
 
   void dispose() {
-    textEditingController.dispose();
+    for (int index = 0; index < 3; index++) {
+      textEditingControllers[index].dispose();
+    }
     super.dispose();
   }
 
@@ -87,7 +95,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
             Row(children: [
               Text("국어"),
               TextField(
-                controller: textEditingController,
+                controller: textEditingControllers[1],
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "10",
@@ -95,15 +103,33 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
                 ),
               ),
               IconButton(
-                icon: Icons.arrow_forward_rounded,
+                icon: Icon(Icons.arrow_forward_rounded),
                 onPressed: () {
                   setState(
-                    num = textEditingController.text.toInt();
+                    num = int.parse(textEditingController.text);
                   );
                 }  
               ),
             ]),
-
+            Row(childern: [
+              CustomDropDownButton(width: size.width / 3, dropdownValue: languageSubjects[0], items: languageSubjects),
+              TextField(
+                controller: textEditingControllers[1],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "1",
+                  labelText: "석차",
+                ),
+              ),
+              TextField(
+                controller: textEditingControllers[2],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "1",
+                  labelText: "이수 단위",
+                ),
+              ),
+            ]),
           ],
         ));
   }
