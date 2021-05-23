@@ -24,25 +24,22 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-  TextEditingController profileNameTextEditingController;
+  TextEditingController profileNameTextEditingController=;
   TextEditingController emailTextEditingController=TextEditingController();
   TextEditingController ageTextEditingController=TextEditingController();
   TextEditingController genderTextEditingController=TextEditingController();
 
   @override
   void initState() {
-    profileNameTextEditingController=TextEditingController();
-    profileNameTextEditingController.addListener((){
-      setState((){});
-    });
+    profileNameTextEditingController=TextEditingController(text="na");
     super.initState();
   }
 
-  @override
-  void dispose(){
-    profileNameTextEditingController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose(){
+  //   profileNameTextEditingController.dispose();
+  //   super.dispose();
+  // }
 
   void takePhoto(ImageSource source) async {
 
