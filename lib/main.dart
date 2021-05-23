@@ -5,6 +5,7 @@ import 'views/opening_screen.dart';
 import 'model/user_data_model.dart';
 import 'views/login_screen.dart';
 import 'views/register_screen.dart';
+import 'views/menu.dart';
 void main() {
   runApp(MyApp());
 }
