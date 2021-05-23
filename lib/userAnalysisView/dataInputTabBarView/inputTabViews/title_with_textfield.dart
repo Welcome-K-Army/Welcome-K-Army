@@ -78,6 +78,6 @@ class TitleWithTextfieldState extends State<TitleWithTextfield> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(height: 50.0 * scoreList.length + 80.0, width: width, child: buildCard(scoreList, title));
+    return Container(height: 100.0 * scoreList.length + 100.0, width: width, child: buildCard(scoreList, title));
   }
 }
