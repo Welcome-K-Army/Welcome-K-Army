@@ -16,7 +16,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()),argument:userData);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()),argument:widget.userData);
           },
         ),
         ProfileMenu(
@@ -28,7 +28,7 @@ class Profile_menu extends StatelessWidget {
             //도움말 네비게이터
             icon: Icon(Icons.help_outline),
             text: "help",
-            press: () {print(userData)}),
+            press: () {print(widget.userData);}),
         ProfileMenu(
             //로그아웃 네비게이터
             icon: Icon(Icons.logout),

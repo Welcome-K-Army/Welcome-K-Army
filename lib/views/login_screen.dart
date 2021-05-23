@@ -10,7 +10,7 @@ import '../net/firebase.dart';
 
 class Login extends StatefulWidget {
   Login({this.userData});
-  final UserData userData;
+  UserData userData;
   @override
   _LoginViewState createState() => _LoginViewState();
 }
