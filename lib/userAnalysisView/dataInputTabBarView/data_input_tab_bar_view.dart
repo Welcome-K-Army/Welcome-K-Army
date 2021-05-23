@@ -7,6 +7,8 @@ import '../analysisView/analysisView.dart';
 import './inputTabViews/input_type.dart';
 import './inputTabViews/input_first_exam.dart';
 import './inputTabViews/input_second_exam.dart';
+import './inputTabViews/input_school_grades.dart';
+import './inputTabViews/input_k_sat.dart';
 import './inputTabViews/input_type_multi_provider.dart';
 
 class DataInputTabBarView extends StatefulWidget {
@@ -18,7 +20,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     Tab(text: "전형"),
     Tab(text: "1차 시험"),
     Tab(text: "2차 시험"),
-    Tab(text: "내신 및 수능"),
+    Tab(text: "내신"),
+    Tab(text: "수능")
   ];
 
   String dropdownValue = 'One';
@@ -30,7 +33,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
     super.initState;
     _tabController = TabController(
       vsync: this,
-      length: 4,
+      length: 5,
     );
     _textEditingController.addListener(() {
       print(_textEditingController.text);
@@ -56,7 +59,8 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
               InputType(),
               InputFirstExam(),
               InputSecondExam(),
-              Text("내신 및 수능"),
+              InputKSAT(),
+              InputSchoolGrades(),
             ]),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
