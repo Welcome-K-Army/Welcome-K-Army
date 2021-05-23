@@ -37,6 +37,8 @@ class InputFirstExamState extends State<InputFirstExam> {
         child: Column(
           children: [
             CustomTextfield(width: size.width, title: "국어", hint: "100", scoreList: languageScores),
+            CustomTextfield(width: size.width, title: "영어", hint: "100", scoreList: languageScores),
+            CustomTextfield(width: size.width, title: "수학", hint: "100", scoreList: mathScores),
           ],
         ));
   }
