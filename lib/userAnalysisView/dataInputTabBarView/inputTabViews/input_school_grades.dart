@@ -84,7 +84,7 @@ class InputSchoolGradesState extends State<InputSchoolGrades> {
   }
 
   List<Widget> _build(int num) {
-    if (num == 0) return List<Widget>.generate(1,(index) {Container();});
+    if (num == 0) return List<Widget>.generate(1,(index) { return Container();});
     return List<Widget>.generate(num, (index) {
       return Row(children: [
               CustomDropDownButton(width: 70, dropdownValue: languageSubjects[0], items: languageSubjects),
