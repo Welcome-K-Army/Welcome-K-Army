@@ -45,7 +45,7 @@ class TitleWithTextfieldState extends State<TitleWithTextfield> {
 
   Widget buildCard(List<String> scoreList, String title) {
     return Container(
-        height: 60.0 * scoreList.length + 70.0,
+        height: 65.0 * scoreList.length + 70.0,
         child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Card(
@@ -62,7 +62,7 @@ class TitleWithTextfieldState extends State<TitleWithTextfield> {
                   Column(
                     children: List<Widget>.generate(scoreList.length, (index) {
                       return Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(7.5),
                           child: TextField(
                             controller: textEditingControllers[index],
                             decoration: InputDecoration(
