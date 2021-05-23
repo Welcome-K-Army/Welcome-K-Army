@@ -25,13 +25,13 @@ class _EditProfileState extends State<EditProfile> {
   File image;
   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
   TextEditingController profileNameTextEditingController;
-  TextEditingController emailTextEditingController=TextEditingController();
-  TextEditingController ageTextEditingController=TextEditingController();
-  TextEditingController genderTextEditingController=TextEditingController();
-
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController ageTextEditingController = TextEditingController();
+  TextEditingController genderTextEditingController = TextEditingController();
+  UserData userData;
   @override
   void initState() {
-    profileNameTextEditingController=TextEditingController(text:"na");
+    profileNameTextEditingController = TextEditingController(text: "na");
     super.initState();
   }
 
@@ -42,7 +42,6 @@ class _EditProfileState extends State<EditProfile> {
   // }
 
   void takePhoto(ImageSource source) async {
-
     final _picker = ImagePicker();
     final _pickimage = await _picker.getImage(source: source);
     print(_pickimage.path + "picked File");
@@ -50,8 +49,8 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       if (_pickimage != null) {
         image = File(_pickimage.path);
-        }
-      });
+      }
+    });
     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
     final metadata = SettableMetadata(contentType: 'image/png', customMetadata: {
@@ -72,8 +71,6 @@ class _EditProfileState extends State<EditProfile> {
       print(downloadURL);
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,15 +102,13 @@ class _EditProfileState extends State<EditProfile> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        Consumer<UserData>(
-          builder: (context, userData, child) => TextField(
-            style: TextStyle(color: Colors.black),
-            controller: profileNameTextEditingController,
-            onChanged: (text) => {},
-            decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            ),
+        TextField(
+          style: TextStyle(color: Colors.black),
+          controller: profileNameTextEditingController,
+          onChanged: (text) => {},
+          decoration: InputDecoration(
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
           ),
         )
       ],
@@ -284,8 +279,7 @@ class _EditProfileState extends State<EditProfile> {
       ), //Stack
     ); //Center
 
-    return Consumer<UserData>(
-      builder: (context, userData, child) => Scaffold(
+    return Scaffold(
         key: _scaffoldGlobalKey,
         body: Container(
           padding: EdgeInsets.only(left: 15, top: 20, right: 15),
@@ -325,8 +319,12 @@ class _EditProfileState extends State<EditProfile> {
 
                     ElevatedButton(
                       onPressed: () {
-                        
-                        userUpdate(profileNameTextEditingController.text, emailTextEditingController.text, genderTextEditingController.text, int.parse(ageTextEditingController.text),);
+                        userUpdate(
+                          profileNameTextEditingController.text,
+                          emailTextEditingController.text,
+                          genderTextEditingController.text,
+                          int.parse(ageTextEditingController.text),
+                        );
                       }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
                       //String nickName, String email, String gender, int age
                       child: Text("Save",
@@ -342,7 +340,6 @@ class _EditProfileState extends State<EditProfile> {
               ) //ListView
               ),
         ), //Container
-      ), //Scafolld
-    );
+      ); //Scafolld
   } //
 }

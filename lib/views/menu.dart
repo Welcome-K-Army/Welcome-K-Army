@@ -12,6 +12,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
+  UserData userData;
   // User user;
 
   // Future<void> getUserData() async {
@@ -68,8 +69,7 @@ class MenuScreenState extends State<MenuScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  Consumer<UserData>(
-                    builder: (context, userData, child) => Container(
+Container(
                       child: Column(
                         children: [
                           Text(userData.uid == null ? "null" : userData.uid),
@@ -80,7 +80,7 @@ class MenuScreenState extends State<MenuScreen> {
                         ],
                       ),
                     ),
-                  ),
+                
                   Container(),
                   Profile_menu(),
                   //VideoScreen(),

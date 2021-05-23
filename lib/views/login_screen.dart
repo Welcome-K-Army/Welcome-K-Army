@@ -14,6 +14,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginViewState extends State<Login> {
+
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
@@ -217,50 +218,48 @@ class _LoginViewState extends State<Login> {
       ),
     );
 
-    final loginButton = Consumer<UserData>(
-      builder: (context, userData, child) => Material(
-        elevation: 5.0,
-        borderRadius: BorderRadius.circular(25.0),
-        color: Colors.white,
-        child: MaterialButton(
-          minWidth: size.width / 1.2,
-          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-          child: Text(
-            "Login",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+    final loginButton = Material(
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(25.0),
+      color: Colors.white,
+      child: MaterialButton(
+        minWidth: size.width / 1.2,
+        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
-          onPressed: () async {
-            if (_formKey.currentState.validate()) {
-              try {
-                await Firebase.initializeApp();
-                UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: _emailController.text,
-                  password: _passwordController.text,
+        ),
+        onPressed: () async {
+          if (_formKey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('nickName', user.user.displayName);
+              Navigator.of(context).pushNamed(AppRoutes.menu);
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'user-not-found') {
+                final snackBar = SnackBar(
+                  content: Text("No user found for that email."),
                 );
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString('nickName', user.user.displayName);
-                Navigator.of(context).pushNamed(AppRoutes.menu);
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  final snackBar = SnackBar(
-                    content: Text("No user found for that email."),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                } else if (e.code == 'wrong-password') {
-                  final snackBar = SnackBar(
-                    content: Text("Wrong password provided for that user."),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              } else if (e.code == 'wrong-password') {
+                final snackBar = SnackBar(
+                  content: Text("Wrong password provided for that user."),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             }
-          },
-        ),
+          }
+        },
       ),
     );
 
@@ -298,27 +297,24 @@ class _LoginViewState extends State<Login> {
       ],
     );
 
-    return ChangeNotifierProvider(
-      create: (context) => UserData(),
-      child: Scaffold(
-        backgroundColor: Color(0xff0c9869),
-        body: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(36),
-            child: Container(
-              height: size.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  logo,
-                  fields,
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 70),
-                    child: bottom,
-                  ),
-                ],
-              ),
+    return Scaffold(
+      backgroundColor: Color(0xff0c9869),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(36),
+          child: Container(
+            height: size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                logo,
+                fields,
+                Padding(
+                  padding: EdgeInsets.only(bottom: 70),
+                  child: bottom,
+                ),
+              ],
             ),
           ),
         ),
