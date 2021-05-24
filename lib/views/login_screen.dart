@@ -244,7 +244,7 @@ class _LoginViewState extends State<Login> {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
               final userData = await userLoad();
-              Navigator.of(context).pushNamed(AppRoutes.menu, arguments: userData);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
@@ -282,7 +282,7 @@ class _LoginViewState extends State<Login> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushReplaceNamed(AppRoutes.authRegister);
+                Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
               },
               child: Text(
                 "Sign Up",
