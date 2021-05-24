@@ -30,7 +30,7 @@ class Profile_menu extends StatelessWidget {
             icon: Icon(Icons.help_outline),
             text: "help",
             press: () {
-              print(widget.userData);
+              print(userData);
             }),
         ProfileMenu(
             //로그아웃 네비게이터
