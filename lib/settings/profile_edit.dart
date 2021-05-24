@@ -17,9 +17,9 @@ import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class EditProfile extends StatefulWidget {
+  static const routeName = '/profile/edit';
   EditProfile({this.userData});
   UserData userData;
-
   @override
   _EditProfileState createState() => _EditProfileState();
 }

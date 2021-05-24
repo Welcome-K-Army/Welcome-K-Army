@@ -3,6 +3,7 @@ import 'profile_edit.dart';
 import '../model/user_data_model.dart';
 
 class Profile_menu extends StatelessWidget {
+  static const routeName = '/profile/menu';
   Profile_menu({this.userData});
   UserData userData;
   @override
@@ -16,7 +17,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()), arguments: widget.userData);
+            Navigator.pushNamed(context,'/profile/edit' ,arguments: widget.userData);
           },
         ),
         ProfileMenu(

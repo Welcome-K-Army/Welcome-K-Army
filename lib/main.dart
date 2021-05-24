@@ -6,6 +6,8 @@ import 'model/user_data_model.dart';
 import 'views/login_screen.dart';
 import 'views/register_screen.dart';
 import 'views/menu.dart';
+import 'settings/profile_menu.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -19,21 +21,9 @@ class MyApp extends StatelessWidget {
         routes: AppRoutes.define(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
-            case AppRoutes.routelogin:
+            case EditProfile.routeName:
               {
-                return MaterialPageRoute(builder: (context) => Login(userData: settings.arguments));
-              }
-              break;
-
-            case AppRoutes.routeregister:
-              {
-                return MaterialPageRoute(builder: (context) => Register(userData: settings.arguments));
-              }
-              break;
-
-            case AppRoutes.routemenu:
-              {
-                return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
+                return MaterialPageRoute(builder: (context) => EditProfile(userData:settings.arguments));
               }
               break;
 

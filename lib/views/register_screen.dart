@@ -8,8 +8,6 @@ import '../model/user_data_model.dart';
 enum Gender { MAN, WOMEN }
 
 class Register extends StatefulWidget {
-  Register({this.userData});
-  UserData userData;
   @override
   _RegisterViewState createState() => _RegisterViewState();
 }
@@ -354,7 +352,7 @@ class _RegisterViewState extends State<Register> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authLogin, arguments: widget.userData);
+                Navigator.of(context).pushNamed(AppRoutes.authLogin);
               },
               child: Text(
                 "Login",

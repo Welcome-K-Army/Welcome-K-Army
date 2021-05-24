@@ -6,6 +6,7 @@ import '../net/firebase.dart';
 import '../model/user_data_model.dart';
 
 class MenuScreen extends StatefulWidget {
+  static const routeName = '/menu';
   MenuScreen({this.userData});
   final UserData userData;
   @override
