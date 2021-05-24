@@ -5,7 +5,7 @@ import '../model/user_data_model.dart';
 class Profile_menu extends StatelessWidget {
   static const routeName = '/profile/menu';
   Profile_menu({this.userData});
-  UserData userData;
+  final userData;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +17,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.pushNamed(context,'/profile/edit' ,arguments: widget.userData);
+            Navigator.pushNamed(context,'/profile/edit' ,arguments: userData);
           },
         ),
         ProfileMenu(

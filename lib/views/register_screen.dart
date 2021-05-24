@@ -315,7 +315,7 @@ class _RegisterViewState extends State<Register> {
                 updateUser.updateProfile(displayName: _nicknameController.text);
                 userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge, "");
                 final userData = await userLoad();
-                Navigator.of(context).pushRepalcementNamed(AppRoutes.menu, arguments: userData);
+                Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'email-already-in-use') {
                   final snackBar = SnackBar(
