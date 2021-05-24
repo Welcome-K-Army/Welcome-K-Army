@@ -247,7 +247,7 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              Future<UserData> userData = await userLoad();
+              Future<UserData> userData =  userLoad();
               userData.then((userData) {
                 print(userData);
                 Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
