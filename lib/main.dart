@@ -6,7 +6,7 @@ import 'model/user_data_model.dart';
 import 'views/login_screen.dart';
 import 'views/register_screen.dart';
 import 'views/menu.dart';
-import 'settings/profile_menu.dart';
+import 'settings/profile_edit.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case EditProfile.routeName:
               {
-                return MaterialPageRoute(builder: (context) => EditProfile(userData:settings.arguments));
+                return MaterialPageRoute(builder: (context) => EditProfile(userData: settings.arguments));
               }
               break;
 

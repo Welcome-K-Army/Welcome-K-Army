@@ -59,7 +59,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authLogin,arguments: userData);
+          Navigator.of(context).pushNamed(AppRoutes.authLogin);
         },
       ),
     );
@@ -81,7 +81,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authRegister,arguments: userData);
+          Navigator.of(context).pushNamed(AppRoutes.authRegister);
         },
       ),
     );
