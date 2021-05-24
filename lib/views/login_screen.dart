@@ -242,8 +242,6 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              UserData userData;
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
@@ -255,6 +253,11 @@ class _LoginViewState extends State<Login> {
                   content: Text("Wrong password provided for that user."),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+              finally{
+              UserData userData=await userLoad();
+              await print(userData);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
               }
             }
           }

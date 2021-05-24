@@ -5,7 +5,6 @@ import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 import '../model/user_data_model.dart';
 
-
 class MenuScreen extends StatefulWidget {
   static const routeName = '/menu';
   MenuScreen({this.userData});
@@ -22,6 +21,7 @@ class MenuScreenState extends State<MenuScreen> {
     setState(() {
       user = loadUser;
     });
+    print(loadUser);
   }
 
   @override
@@ -83,7 +83,7 @@ class MenuScreenState extends State<MenuScreen> {
                   ),
 
                   Container(),
-                  Profile_menu(userData:user),
+                  Profile_menu(userData: user),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
