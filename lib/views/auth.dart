@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 import '../theme/routes.dart';
@@ -16,9 +17,8 @@ class _AuthPageState extends State<AuthPage> {
   User _firebaseUser;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     _streamOpen();
   }
@@ -31,14 +31,14 @@ class _AuthPageState extends State<AuthPage> {
 
   _streamOpen() {
     _subscriptionAuth = FirebaseAuth.instance.authStateChanges.listen((User fu) {
-      if (fu == null) { 
+      if (fu == null) {
         Navigator.pushReplacementNamed(context, AppRoutes.authLogin);
         return;
       }
       setState(() => _firebaseUser = fu);
       if (!fu.emailVerified) {
         setState(() => _message = 'Email is not authenticated.');
-        return; 
+        return;
       }
       // Navigator.pushReplacementNamed(context, '/home', arguments: {'fu': fu, 'dance': 'withme'});
       Navigator.pushReplacementNamed(context, AppRoutes.menu, arguments: fu);
@@ -51,8 +51,8 @@ class _AuthPageState extends State<AuthPage> {
       onPressed: () async {
         final fu = await FirebaseAuth.instance.currentUser;
         await fu.reload();
-        if (!fu.emailVerified) {          
-          // toastError(_scaffoldKey, 'Email is not authenticated. please try again');          
+        if (!fu.emailVerified) {
+          // toastError(_scaffoldKey, 'Email is not authenticated. please try again');
           return;
         }
         Navigator.pushReplacementNamed(context, AppRoutes.menu, arguments: fu);
@@ -60,21 +60,20 @@ class _AuthPageState extends State<AuthPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text('Account check')
-      ),
+      appBar: AppBar(title: Text('Account check')),
       body: Container(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(_message),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               _firebaseUser == null ? CircularProgressIndicator() : _buildReloadButton()
             ],
           ),
@@ -82,3 +81,4 @@ class _AuthPageState extends State<AuthPage> {
       ),
     );
   }
+}

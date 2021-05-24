@@ -246,7 +246,7 @@ class _LoginViewState extends State<Login> {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
               widget.userData = await userLoad();
-              Navigator.of(context).pushNamed(AppRoutes.menu, argument: widget.userData);
+              Navigator.of(context).pushNamed(AppRoutes.menu, arguments: widget.userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(

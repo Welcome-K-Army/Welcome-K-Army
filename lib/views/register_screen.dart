@@ -317,7 +317,7 @@ class _RegisterViewState extends State<Register> {
                 updateUser.updateProfile(displayName: _nicknameController.text);
                 userSetup(_nicknameController.text, _emailController.text, userGender(), _userAge, "");
                 widget.userData = await userLoad();
-                Navigator.of(context).pushNamed(AppRoutes.menu, argument: widget.userData);
+                Navigator.of(context).pushNamed(AppRoutes.menu, arguments: widget.userData);
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'email-already-in-use') {
                   final snackBar = SnackBar(
@@ -354,7 +354,7 @@ class _RegisterViewState extends State<Register> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authLogin, argument: widget.userData);
+                Navigator.of(context).pushNamed(AppRoutes.authLogin, arguments: widget.userData);
               },
               child: Text(
                 "Login",

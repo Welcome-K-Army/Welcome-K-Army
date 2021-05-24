@@ -16,7 +16,7 @@ class OpeningViewState extends State<OpeningView> {
   }
  _routePage () async {
     await Future.delayed(Duration(seconds: 4));
-    return Navigator.pushReplacementNamed(context, AppRoutes.authLogin);
+    return Navigator.pushReplacementNamed(context, '/auth');
   }
   UserData userData;
   String nickName = "";
