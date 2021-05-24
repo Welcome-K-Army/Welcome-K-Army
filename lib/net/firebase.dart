@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/user_data_model.dart';
 
-Future<void> userSetup(String nickName, String email, String gender, int age,String imageURL) async {
+Future<void> userSetup(String nickName, String email, String gender, int age, String imageURL) async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
@@ -23,6 +23,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age,Str
 }
 
 Future<UserData> userLoad() async {
+  Future.delayed(Duration(seconds: 2));
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = await auth.currentUser.uid.toString();
@@ -41,7 +42,6 @@ Future<UserData> userLoad() async {
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
-  
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
