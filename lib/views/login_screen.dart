@@ -254,11 +254,10 @@ class _LoginViewState extends State<Login> {
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
-              finally{
-              UserData userData=await userLoad();
+            } finally {
+              UserData userData = await userLoad();
               await print(userData);
               Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
-              }
             }
           }
         },
