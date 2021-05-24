@@ -9,7 +9,9 @@ class AppRoutes {
   static const String authLogin = '/auth-login';
   static const String authRegister = '/auth-register';
   static const String menu = '/menu';
-
+  String get routelogin=>authLogin;
+  String get routeregister=>authRegister;
+  String get routemenu=>menu;
   static Map<String, WidgetBuilder> define() {
     return {
       authLogin: (context) => Login(),

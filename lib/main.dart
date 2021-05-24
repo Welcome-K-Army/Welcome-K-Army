@@ -19,19 +19,19 @@ class MyApp extends StatelessWidget {
         routes: AppRoutes.define(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
-            case authLogin:
+            case AppRoutes.routelogin:
               {
                 return MaterialPageRoute(builder: (context) => Login(userData: settings.arguments));
               }
               break;
 
-            case authRegister:
+            case AppRoutes.routeregister:
               {
                 return MaterialPageRoute(builder: (context) => Register(userData: settings.arguments));
               }
               break;
 
-            case menu:
+            case AppRoutes.routemenu:
               {
                 return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
               }
