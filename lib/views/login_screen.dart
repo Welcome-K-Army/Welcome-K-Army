@@ -246,7 +246,7 @@ class _LoginViewState extends State<Login> {
               UserData userData = await userLoad();
               await Future.delayed(Duration(seconds: 2));
               print(userData);
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: await userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
