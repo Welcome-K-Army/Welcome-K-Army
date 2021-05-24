@@ -9,15 +9,15 @@ class OpeningView extends StatefulWidget {
 }
 
 class OpeningViewState extends State<OpeningView> {
-  @override
-  void initState() { 
-    super.initState();
-    _routePage();
-  }
- _routePage () async {
-    await Future.delayed(Duration(seconds: 4));
-    return Navigator.pushReplacementNamed(context, '/auth');
-  }
+//   @override
+//   void initState() {
+//     super.initState();
+//     _routePage();
+//   }
+//  _routePage () async {
+//     await Future.delayed(Duration(seconds: 4));
+//     return Navigator.pushReplacementNamed(context, '/auth');
+//   }
   UserData userData;
   String nickName = "";
 
@@ -59,7 +59,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authLogin);
+          Navigator.of(context).pushReplacementNamed(AppRoutes.authLogin);
         },
       ),
     );
@@ -81,7 +81,7 @@ class OpeningViewState extends State<OpeningView> {
           ),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(AppRoutes.authRegister);
+          Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
         },
       ),
     );
