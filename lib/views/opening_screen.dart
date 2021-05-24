@@ -9,7 +9,15 @@ class OpeningView extends StatefulWidget {
 }
 
 class OpeningViewState extends State<OpeningView> {
-  OpeningViewState();
+  @override
+  void initState() { 
+    super.initState();
+    _routePage();
+  }
+ _routePage () async {
+    await Future.delayed(Duration(seconds: 4));
+    return Navigator.pushReplacementNamed(context, AppRoutes.authLogin);
+  }
   UserData userData;
   String nickName = "";
 
