@@ -217,7 +217,7 @@ class _LoginViewState extends State<Login> {
       ),
     );
     UserData userData;
-    
+
     void load() async {
       userData = await userLoad();
     }
@@ -248,9 +248,6 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              await load();
-              print(userData);
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
@@ -263,6 +260,10 @@ class _LoginViewState extends State<Login> {
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
+            }
+            if (FirebaseAuth.instance.currentUser) {
+              load();
+              print(userData);
             }
           }
         },
