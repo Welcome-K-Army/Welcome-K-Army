@@ -39,6 +39,7 @@ Future<UserData> userLoad() async {
   } else {
     print("no uid");
   }
+  print(upUser);
   return upUser;
 }
 
