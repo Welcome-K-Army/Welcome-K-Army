@@ -16,7 +16,7 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   UserData user;
 
-  Future<void> getUserData() async {
+  getUserData() async {
     await Future.delayed(Duration(seconds: 4));
     UserData loadUser = await userLoad();
     setState(() {
