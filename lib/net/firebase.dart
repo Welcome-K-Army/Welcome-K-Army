@@ -23,7 +23,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age, St
 }
 
 Future<UserData> userLoad() async {
-  
+  UserData upUser;
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = await auth.currentUser.uid.toString();
@@ -31,7 +31,7 @@ Future<UserData> userLoad() async {
     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         Map<String, dynamic> data = documentSnapshot.data();
-        return UserData.fromJson(data);
+        upUser= UserData.fromJson(data);
       } else {
         print('no data');
       }
@@ -39,6 +39,7 @@ Future<UserData> userLoad() async {
   } else {
     print("no uid");
   }
+  return upUser;
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {

@@ -217,6 +217,10 @@ class _LoginViewState extends State<Login> {
       ),
     );
 
+    void load() async {
+      final userData = await userLoad();
+    }
+
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(25.0),
@@ -243,10 +247,9 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              UserData userData = await userLoad();
-              await Future.delayed(Duration(seconds: 2));
+              load();
               print(userData);
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: await userData);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
