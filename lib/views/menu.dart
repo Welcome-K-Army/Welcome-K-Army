@@ -17,6 +17,7 @@ class MenuScreenState extends State<MenuScreen> {
   UserData user;
 
   Future<void> getUserData() async {
+    await Future.delayed(Duration(seconds: 4));
     UserData loadUser = await userLoad();
     setState(() {
       user = loadUser;
