@@ -5,6 +5,7 @@ import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 import '../model/user_data_model.dart';
 
+
 class MenuScreen extends StatefulWidget {
   static const routeName = '/menu';
   MenuScreen({this.userData});
@@ -14,20 +15,20 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
-  // User user;
+  UserData user;
 
-  // Future<void> getUserData() async {
-  //   User userData = await FirebaseAuth.instance.currentUser;
-  //   setState(() {
-  //     user = userData;
-  //   });
-  // }
+  Future<void> getUserData() async {
+    UserData loadUser = await userLoad();
+    setState(() {
+      user = loadUser;
+    });
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getUserData();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    getUserData();
+  }
 
   MenuScreenState();
   Widget build(BuildContext context) {
@@ -72,17 +73,17 @@ class MenuScreenState extends State<MenuScreen> {
                   Container(
                     child: Column(
                       children: [
-                        Text(widget.userData.uid),
-                        Text(widget.userData.nickName),
-                        Text(widget.userData.email),
-                        Text(widget.userData.age.toString()),
-                        Text(widget.userData.gender),
+                        Text(user.uid),
+                        Text(user.nickName),
+                        Text(user.email),
+                        Text(user.age.toString()),
+                        Text(user.gender),
                       ],
                     ),
                   ),
 
                   Container(),
-                  Profile_menu(),
+                  Profile_menu(userData:user),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
