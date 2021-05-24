@@ -23,7 +23,7 @@ Future<void> userSetup(String nickName, String email, String gender, int age, St
 }
 
 Future<UserData> userLoad() async {
-  Future.delayed(Duration(seconds: 2));
+  
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = await auth.currentUser.uid.toString();
