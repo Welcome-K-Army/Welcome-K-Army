@@ -16,7 +16,7 @@ class Profile_menu extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()),argument:widget.userData);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()),arguments:widget.userData);
           },
         ),
         ProfileMenu(

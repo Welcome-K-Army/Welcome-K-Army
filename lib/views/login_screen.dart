@@ -284,7 +284,7 @@ class _LoginViewState extends State<Login> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authRegister, argument: widget.userData);
+                Navigator.of(context).pushNamed(AppRoutes.authRegister, arguments: widget.userData);
               },
               child: Text(
                 "Sign Up",
