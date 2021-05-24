@@ -261,7 +261,7 @@ class _LoginViewState extends State<Login> {
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             }
-            if (FirebaseAuth.instance.currentUser) {
+            if (FirebaseAuth.instance.currentUser!=null) {
               load();
               print(userData);
             }
