@@ -19,6 +19,7 @@ class MenuScreenState extends State<MenuScreen> {
       setState(() {
         userData.copy(user);
       });
+      print(user);
     });
   }
 
