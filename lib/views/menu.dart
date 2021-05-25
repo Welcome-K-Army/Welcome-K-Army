@@ -14,14 +14,12 @@ class MenuScreenState extends State<MenuScreen> {
   UserData userData;
   Future load() async {
     final user = await userLoad();
-
-    print(user);
     return user;
   }
 
   getUserData() async {
     final uload = await load();
-    print(uload);
+    uload.then(print(uload));
     setState(() {
       userData=uload;
     });
