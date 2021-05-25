@@ -20,7 +20,7 @@ class MenuScreenState extends State<MenuScreen> {
         userData.copy(value);
       });
       print(value);
-    }).catchError((error) => print(error));
+    }).catchError((error) => print("getuserData error"+error));
   }
 
   @override
