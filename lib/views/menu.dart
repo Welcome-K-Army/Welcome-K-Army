@@ -16,9 +16,11 @@ class MenuScreenState extends State<MenuScreen> {
 
   void getUserData() {
     userLoad().then((value) {
+            print(value);
       setState(() {
         userData = value;
       });
+      print(value);
     }).catchError((error) => print("getuserData error $error"));
   }
 
