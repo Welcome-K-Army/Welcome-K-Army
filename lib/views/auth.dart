@@ -30,7 +30,7 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   _streamOpen() {
-    _subscriptionAuth = FirebaseAuth.instance.authStateChanges.listen((User fu) {
+    _subscriptionAuth = FirebaseAuth.instance.authStateChanges().listen((User fu) {
       if (fu == null) {
         Navigator.pushReplacementNamed(context, AppRoutes.authLogin);
         return;
