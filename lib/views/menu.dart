@@ -15,8 +15,7 @@ class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
   void getUserData() async {
-    await userLoad().then((value) {
-      print(value);
+    userLoad().then((value) {
       setState(() {
         userData.copy(value);
       });
