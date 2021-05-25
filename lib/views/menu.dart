@@ -16,7 +16,7 @@ class MenuScreenState extends State<MenuScreen> {
   getUserData() async {
     print("userLoad start");
     UserData loadUser = await userLoad();
-    print("menu " + loadUser.email);
+    print("menu  $loadUser.email");
     setState(() {
       user = loadUser;
     });

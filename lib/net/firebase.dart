@@ -29,7 +29,6 @@ Future<UserData> userLoad() async {
   users.doc(uid!=null?uid:"").get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
-      print("userLoad "+UserData.fromJson(data).uid);
       return UserData.fromJson(data);
     } else {
       print('no data');
