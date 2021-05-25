@@ -15,7 +15,7 @@ class MenuScreenState extends State<MenuScreen> {
 
   void getUserData() async {
     final user = await userLoad();
-    Future.delayed(Duration(seconds: 3), () {
+    await Future.delayed(Duration(seconds: 3), () {
       setState(() {
         userData.copy(user);
       });
@@ -72,18 +72,18 @@ class MenuScreenState extends State<MenuScreen> {
                   Container(
                     child: Column(
                       children: [
-                        Text(userData.uid),
-                        Text(userData.nickName),
-                        Text(userData.email),
-                        Text(userData.age.toString()),
-                        Text(userData.gender),
+                        // Text(userData.uid),
+                        // Text(userData.nickName),
+                        // Text(userData.email),
+                        // Text(userData.age.toString()),
+                        // Text(userData.gender),
                       ],
                     ),
                   ),
 
                   Container(),
-                  Container(),
-                  // Profile_menu(userData: userData),
+                  // Container(),
+                  Profile_menu(userData: userData),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
