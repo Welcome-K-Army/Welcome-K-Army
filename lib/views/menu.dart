@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/basic.dart';
 import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 
-
 class MenuScreen extends StatefulWidget {
   static const routeName = '/menu';
   @override
@@ -17,11 +16,11 @@ class MenuScreenState extends State<MenuScreen> {
   getUserData() async {
     print("userLoad start");
     UserData loadUser = await userLoad();
+    print("menu " + loadUser.email);
     setState(() {
       user = loadUser;
     });
     print("setState userData $user.email");
-    print("menu "+loadUser.email);
   }
 
   @override
