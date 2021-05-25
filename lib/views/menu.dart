@@ -72,17 +72,17 @@ class MenuScreenState extends State<MenuScreen> {
                   Container(
                     child: Column(
                       children: [
-                        Text(userData.uid),
-                        Text(userData.nickName),
-                        Text(userData.email),
-                        Text(userData.age.toString()),
-                        Text(userData.gender),
+                        // Text(userData.uid),
+                        // Text(userData.nickName),
+                        // Text(userData.email),
+                        // Text(userData.age.toString()),
+                        // Text(userData.gender),
                       ],
                     ),
                   ),
 
                   Container(),
-                  Profile_menu(userData: userData),
+                  // Profile_menu(userData: userData),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
