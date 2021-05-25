@@ -31,7 +31,7 @@ Future<UserData> userLoad() async {
     if (documentSnapshot.exists) {
       data = documentSnapshot.data();
     }
-  });
+  }).catchError((error) =>print(error));
   return UserData.fromJson(data);
 }
 
