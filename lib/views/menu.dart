@@ -26,7 +26,9 @@ class MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     getUserData();
-    await Future.delayed(Duration(seconds: 4), super.initState()));
+    Future.delayed(Duration(seconds: 4), () {
+      super.initState();
+    });
   }
 
   MenuScreenState();
