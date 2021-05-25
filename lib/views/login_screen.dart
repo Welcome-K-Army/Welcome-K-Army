@@ -235,6 +235,7 @@ class _LoginViewState extends State<Login> {
         onPressed: () async {
           if (_formKey.currentState.validate()) {
             try {
+              print("onPressed..");
               await Firebase.initializeApp();
               UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
                 email: _emailController.text,
@@ -243,6 +244,7 @@ class _LoginViewState extends State<Login> {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
               UserData userData;
+              print("userData set");
               Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
