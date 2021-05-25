@@ -11,6 +11,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
+  UserData userData;
   Future load() async {
     final user = await userLoad();
 
@@ -21,7 +22,9 @@ class MenuScreenState extends State<MenuScreen> {
   getUserData() async {
     final uload = await load();
     print(uload);
-    setState(() {});
+    setState(() {
+      userData=uload;
+    });
   }
 
   @override
@@ -73,17 +76,17 @@ class MenuScreenState extends State<MenuScreen> {
                   Container(
                     child: Column(
                       children: [
-                        Text(user.uid),
-                        Text(user.nickName),
-                        Text(user.email),
-                        Text(user.age.toString()),
-                        Text(user.gender),
+                        Text(userData.uid),
+                        Text(userData.nickName),
+                        Text(userData.email),
+                        Text(userData.age.toString()),
+                        Text(userData.gender),
                       ],
                     ),
                   ),
 
                   Container(),
-                  Profile_menu(userData: user),
+                  Profile_menu(userData: userData),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
