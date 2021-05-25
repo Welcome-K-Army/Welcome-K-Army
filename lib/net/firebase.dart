@@ -33,6 +33,7 @@ Future<UserData> userLoad() async {
       fu=UserData.fromJson(data);
     }
   }).catchError((error) => print("userLoad error $error"));
+  print(fu);
   print(fu.email);
   return fu;
 }

@@ -16,10 +16,11 @@ class MenuScreenState extends State<MenuScreen> {
 
   void getUserData() async {
     await userLoad().then((value) {
-      print(value.email);
+
       setState(() {
         userData = value;
       });
+            print(value.email);
     }).catchError((error) => print("getuserData error $error"));
   }
 
