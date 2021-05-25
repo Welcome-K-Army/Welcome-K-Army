@@ -14,9 +14,9 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
-  void getUserData() {
-    userLoad().then((value) {
-            print(value);
+  void getUserData() async {
+    await userLoad().then((value) {
+      print(value);
       setState(() {
         userData = value;
       });
