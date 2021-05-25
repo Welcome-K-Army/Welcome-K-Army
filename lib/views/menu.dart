@@ -3,6 +3,7 @@ import '../settings/profile_menu.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import '../model/user_data_model.dart';
 import '../net/firebase.dart';
+import 'dart:core';
 
 class MenuScreen extends StatefulWidget {
   static const routeName = '/menu';
@@ -14,19 +15,18 @@ class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
   void getUserData() async {
-    await userLoad().then((value){
+    await userLoad().then((value) {
       setState(() {
         userData.copy(value);
       });
       print(value);
-    }).catchError((error)=>print(error));
-
+    }).catchError((error) => print(error));
   }
 
   @override
   void initState() {
-    super.initState();
     getUserData();
+    await Future.delayed(Duration(seconds: 4), super.initState()));
   }
 
   MenuScreenState();
