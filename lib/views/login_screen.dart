@@ -245,7 +245,7 @@ class _LoginViewState extends State<Login> {
               prefs.setString('nickName', user.user.displayName);
               UserData userData;
               print("userData set");
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: userData);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.menu);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
