@@ -26,12 +26,10 @@ Future<UserData> userLoad() async {
   CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
-  print(uid);
-
-  users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+  users.doc(uid!=null?uid:"").get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       Map<String, dynamic> data = documentSnapshot.data();
-      print("userLoad "+UserData.fromJson(data).email);
+      print("userLoad "+UserData.fromJson(data).uid);
       return UserData.fromJson(data);
     } else {
       print('no data');
