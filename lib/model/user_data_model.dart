@@ -27,6 +27,7 @@ class UserData {
     this.age = copydata.age;
     this.creationDate = copydata.creationDate;
     // copydata.imageURL,
+    return this;
   }
 
   factory UserData.fromJson(Map<String, dynamic> json) {
