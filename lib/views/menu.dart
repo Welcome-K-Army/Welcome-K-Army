@@ -14,12 +14,13 @@ class MenuScreenState extends State<MenuScreen> {
   UserData user;
 
   getUserData() async {
+    Future.delayed(Duration(seconds: 4));
     print("userLoad start");
-    UserData loadUser = await userLoad();
-    print("menu  $loadUser.email");
+    final loadUser = await userLoad();
     setState(() {
       user = loadUser;
     });
+    print("menu  $loadUser.email");
     print("setState userData $user.email");
   }
 
