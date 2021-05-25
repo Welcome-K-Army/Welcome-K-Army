@@ -14,13 +14,12 @@ class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
   void getUserData() async {
-    final user = await userLoad();
-    await Future.delayed(Duration(seconds: 3), () {
+    await userLoad().then((value){
       setState(() {
-        userData.copy(user);
+        userData.copy(value);
       });
-      print(user);
     });
+
   }
 
   @override

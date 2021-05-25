@@ -32,6 +32,7 @@ Future<UserData> userLoad() async {
       data = documentSnapshot.data();
     }
   }).catchError((error) =>print(error));
+  print(UserData.fromJson(data).nickName);
   return UserData.fromJson(data);
 }
 
