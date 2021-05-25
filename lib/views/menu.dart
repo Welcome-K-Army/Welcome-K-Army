@@ -21,7 +21,7 @@ class MenuScreenState extends State<MenuScreen> {
       user = loadUser;
     });
     print("setState userData $user.email");
-    print(loadUser.email);
+    print("menu "+loadUser.email);
   }
 
   @override
