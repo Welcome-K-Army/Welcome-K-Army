@@ -19,6 +19,18 @@ class UserData {
     // this.imageURL,
   });
 
+  UserData copy(UserData copydata) {
+    return UserData(
+      uid: copydata.uid,
+      nickName: copydata.nickName,
+      email: copydata.email,
+      gender: copydata.gender,
+      age: copydata.age,
+      creationDate: copydata.creationDate,
+      // copydata.imageURL,
+    );
+  }
+
   factory UserData.fromJson(Map<String, dynamic> json) {
     return UserData(
       uid: json['uid'].toString(),

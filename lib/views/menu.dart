@@ -13,10 +13,10 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
-  getUserData() async {
+  void getUserData() async {
     final user=await userLoad();
     setState(() {
-       userData=user;
+       userData.copy(user);
     });
   }
 
