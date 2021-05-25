@@ -14,9 +14,11 @@ class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
   void getUserData() async {
-    final user=await userLoad();
-    setState(() {
-       userData.copy(user);
+    final user = await userLoad();
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        userData.copy(user);
+      });
     });
   }
 
@@ -24,7 +26,6 @@ class MenuScreenState extends State<MenuScreen> {
   void initState() {
     super.initState();
     getUserData();
-    print(userData.email);
   }
 
   MenuScreenState();
