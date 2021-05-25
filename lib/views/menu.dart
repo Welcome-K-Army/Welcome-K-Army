@@ -13,16 +13,17 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   UserData user;
 
+  Future load() async {
+    user = await userLoad();
+    print(user);
+  }
+
   getUserData() async {
-    
-    print("userLoad start");
-    UserData loadUser = await userLoad();
-    Future.delayed(Duration(seconds: 4));
+    await load();
+    print(user);
     setState(() {
-      user = loadUser;
+
     });
-    print("menu  $loadUser.email");
-    print("setState userData $user.email");
   }
 
   @override
