@@ -27,15 +27,13 @@ Future<UserData> userLoad() async {
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser.uid.toString();
   UserData fu;
-  users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
+  await users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       final data = documentSnapshot.data();
       fu = UserData.fromJson(data);
       return fu;
     }
   }).catchError((error) => print("userLoad error $error"));
-  print(fu);
-  print(fu.email);
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
