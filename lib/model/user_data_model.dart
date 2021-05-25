@@ -19,7 +19,7 @@ class UserData {
     // this.imageURL,
   });
 
-  copy(UserData copydata) {
+  UserData copy(UserData copydata) {
     this.uid = copydata.uid;
     this.nickName = copydata.nickName;
     this.email = copydata.email;
