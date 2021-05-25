@@ -7,7 +7,7 @@ import 'views/login_screen.dart';
 import 'views/register_screen.dart';
 import 'views/menu.dart';
 import 'settings/profile_edit.dart';
-
+import 'settings/profile_menu.dart';
 void main() {
   runApp(MyApp());
 }
