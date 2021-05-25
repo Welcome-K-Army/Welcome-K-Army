@@ -31,6 +31,8 @@ Future<UserData> userLoad() async {
     if (documentSnapshot.exists) {
       final data = documentSnapshot.data();
       fu.copy(UserData.fromJson(data));
+      print(UserData.fromJson(data).email);
+      print(fu);
     }
   }).catchError((error) => print("userLoad error $error"));
 
