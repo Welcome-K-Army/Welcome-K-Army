@@ -30,12 +30,12 @@ Future<UserData> userLoad() async {
   users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       final data = documentSnapshot.data();
-      fu=UserData.fromJson(data);
+      fu = UserData.fromJson(data);
+      return fu;
     }
   }).catchError((error) => print("userLoad error $error"));
   print(fu);
   print(fu.email);
-  return fu;
 }
 
 Future<void> userUpdate(String nickName, String email, String gender, int age) async {
