@@ -31,8 +31,6 @@ Future<UserData> userLoad() async {
       Map<String, dynamic> data = documentSnapshot.data();
       print(UserData.fromJson(data).email);
       return UserData.fromJson(data);
-    } else {
-      print('no data');
     }
   });
 }
