@@ -14,7 +14,7 @@ class MenuScreen extends StatefulWidget {
 class MenuScreenState extends State<MenuScreen> {
   UserData userData;
 
-  void getUserData() async {
+  void getUserData() {
     userLoad().then((value) {
       setState(() {
         userData.copy(value);
@@ -25,9 +25,7 @@ class MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     getUserData();
-    Future.delayed(Duration(seconds: 4), () {
-      super.initState();
-    });
+    super.initState();
   }
 
   MenuScreenState();
