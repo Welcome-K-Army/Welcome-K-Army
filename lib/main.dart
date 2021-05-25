@@ -27,6 +27,12 @@ class MyApp extends StatelessWidget {
               }
               break;
 
+              case Profile_menu.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => Profile_menu(userData: settings.arguments));
+              }
+              break;
+
             default:
               {
                 return MaterialPageRoute(builder: (context) => OpeningView());
