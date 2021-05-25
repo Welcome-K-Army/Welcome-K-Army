@@ -24,6 +24,7 @@ class MenuScreenState extends State<MenuScreen> {
   void initState() {
     super.initState();
     getUserData();
+    print(userData.email);
   }
 
   MenuScreenState();
