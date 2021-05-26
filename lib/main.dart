@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
 // import 'joinOrLogin.dart';
 // import 'Home.dart';
 // import 'userDetail.dart';
-// import '/lib/views/menu.dart';
+
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -99,9 +99,7 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 
-// // 2021년 2월 23일 기준
-// // Authresult -> UserCredential
-// // FirebaseUser -> User
+
 
 // // main.dart  파일 수정
 // // void main() async{
