@@ -27,15 +27,14 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
               }
               break;
-            case EditProfile.routeName:
-              {
-                return MaterialPageRoute(builder: (context) => EditProfile(userData: settings.arguments));
-              }
-              break;
-
             case Profile_menu.routeName:
               {
                 return MaterialPageRoute(builder: (context) => Profile_menu(userData: settings.arguments));
+              }
+              break;
+            case EditProfile.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => EditProfile(userData: settings.arguments));
               }
               break;
 
@@ -61,7 +60,6 @@ class MyApp extends StatelessWidget {
 // import 'joinOrLogin.dart';
 // import 'Home.dart';
 // import 'userDetail.dart';
-
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -98,8 +96,6 @@ class MyApp extends StatelessWidget {
 //         }); //SteamBuilder
 //   }
 // }
-
-
 
 // // main.dart  파일 수정
 // // void main() async{
