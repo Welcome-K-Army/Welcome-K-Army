@@ -19,9 +19,7 @@ class _LoginViewState extends State<Login> {
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   UserData luser;
-  void uload() async {
-    luser = await userLoad();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -326,5 +324,8 @@ class _LoginViewState extends State<Login> {
         ),
       ),
     );
+  }
+    void uload() async {
+    luser = await userLoad();
   }
 }
