@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../theme/routes.dart';
 import '../model/user_data_model.dart';
 import '../net/firebase.dart';
+import 'dart:async';
 
 class Login extends StatefulWidget {
   @override
@@ -242,9 +243,9 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              final luser = await userLoad().then((){print(luser.email);});
-              
-              Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: luser);
+              final luser = await userLoad().then();
+              print(luser.email);
+              Future.delayed(Duration(seconds:4),()=>{Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: luser);});
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
                 final snackBar = SnackBar(
