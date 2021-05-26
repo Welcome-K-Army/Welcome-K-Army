@@ -16,7 +16,6 @@ class MenuScreenState extends State<MenuScreen> {
 
   void getUserData() async {
     await userLoad().then((value) {
-      print(value);
       setState(() {
         userData = value;
       });
@@ -27,7 +26,8 @@ class MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     getUserData();
-    super.initState();
+    Future.delayed(Duration(seconds: 4),(){super.initState();});
+    
   }
 
   MenuScreenState();
