@@ -247,7 +247,7 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              await uload();
+              // await uload();
               Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: luser);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'user-not-found') {
@@ -325,7 +325,5 @@ class _LoginViewState extends State<Login> {
       ),
     );
   }
-    void uload() async {
-    luser = await userLoad();
-  }
+  
 }
