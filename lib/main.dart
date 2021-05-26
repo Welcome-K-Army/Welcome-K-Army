@@ -8,6 +8,7 @@ import 'views/register_screen.dart';
 import 'views/menu.dart';
 import 'settings/profile_edit.dart';
 import 'settings/profile_menu.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,13 +22,18 @@ class MyApp extends StatelessWidget {
         routes: AppRoutes.define(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
+            case MenuScreen.routeName:
+              {
+                return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
+              }
+              break;
             case EditProfile.routeName:
               {
                 return MaterialPageRoute(builder: (context) => EditProfile(userData: settings.arguments));
               }
               break;
 
-              case Profile_menu.routeName:
+            case Profile_menu.routeName:
               {
                 return MaterialPageRoute(builder: (context) => Profile_menu(userData: settings.arguments));
               }
@@ -55,6 +61,7 @@ class MyApp extends StatelessWidget {
 // import 'joinOrLogin.dart';
 // import 'Home.dart';
 // import 'userDetail.dart';
+import '/lib/views/menu.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
