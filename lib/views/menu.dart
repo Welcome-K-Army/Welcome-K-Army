@@ -7,26 +7,28 @@ import 'dart:core';
 
 class MenuScreen extends StatefulWidget {
   static const routeName = '/menu';
+  final userData;
+  MenuScreen({this.userData});
   @override
   MenuScreenState createState() => MenuScreenState();
 }
 
 class MenuScreenState extends State<MenuScreen> {
-  UserData userData;
+  
 
-  void getUserData() async {
-    await userLoad().then((value) {
-      setState(() {
-        userData = value;
-      });
+  // void getUserData() async {
+  //   await userLoad().then((value) {
+  //     setState(() {
+  //       userData = value;
+  //     });
 
-    }).catchError((error) => print("getuserData error $error"));
-  }
+  //   }).catchError((error) => print("getuserData error $error"));
+  // }
 
   @override
   void initState() {
-    getUserData();
-    Future.delayed(Duration(seconds: 4),(){super.initState();});
+    // getUserData();
+    super.initState();
     
   }
 
