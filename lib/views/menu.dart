@@ -86,7 +86,7 @@ class MenuScreenState extends State<MenuScreen> {
 
                   Container(),
                   // Container(),
-                  Profile_menu(userData: userData),
+                  Profile_menu(userData: widget.userData),
                   //VideoScreen(),
                   //AricleScreen(),
                   //ProfileScreen(),
