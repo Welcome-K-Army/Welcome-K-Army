@@ -34,9 +34,9 @@ class UserData {
     return UserData(
       uid: json['uid'].toString(),
       nickName: json['nickName'].toString(),
-      email: json['email'].toString(),
       age: json['age'] as int,
       gender: json['gender'].toString(),
+      email: json['email'].toString(),
       creationDate: json['createdAt'].toString(),
       // imageURL:json['imageURL'].toString(),
     );
@@ -45,8 +45,8 @@ class UserData {
   Map<String, dynamic> toJson() {
     return {
       'uid': uid,
-      'nickName': nickName,
       'email': email,
+      'nickName': nickName,
       'age': age,
       'gender': gender,
       'createdAt': creationDate,
