@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -185,7 +186,7 @@ class OnBoardingState extends State<OnBoarding> {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
           MyAppState.currentUser = user;
-          pushReplacement(context, new OpeningView(user: user));
+          pushReplacement(context, new OpeningView(/*user: user*/));
         } else {
           pushReplacement(context, new Login());
         }
