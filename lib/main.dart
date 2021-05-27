@@ -151,7 +151,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (auth.FirebaseAuth.instance.currentUser != null && currentUser != null) {
+    if (FirebaseAuth.instance.currentUser != null && currentUser != null) {
       if (state == AppLifecycleState.paused) {
         //user offline
         tokenStream.pause();
@@ -181,7 +181,7 @@ class OnBoardingState extends State<OnBoarding> {
     bool finishedOnBoarding = (prefs.getBool(FINISHED_ON_BOARDING) ?? false);
 
     if (finishedOnBoarding) {
-      auth.User firebaseUser = auth.FirebaseAuth.instance.currentUser;
+      User firebaseUser = FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
