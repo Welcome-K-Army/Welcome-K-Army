@@ -13,7 +13,7 @@ import 'settings/profile_menu.dart';
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
@@ -151,7 +151,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (FirebaseAuth.instance.currentUser != null && currentUser != null) {
+    if (auth.FirebaseAuth.instance.currentUser != null && currentUser != null) {
       if (state == AppLifecycleState.paused) {
         //user offline
         tokenStream.pause();
@@ -181,7 +181,7 @@ class OnBoardingState extends State<OnBoarding> {
     bool finishedOnBoarding = (prefs.getBool(FINISHED_ON_BOARDING) ?? false);
 
     if (finishedOnBoarding) {
-      User firebaseUser = FirebaseAuth.instance.currentUser;
+      auth.User firebaseUser = auth.FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
