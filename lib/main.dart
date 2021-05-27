@@ -9,7 +9,6 @@ import 'views/menu.dart';
 import 'settings/profile_edit.dart';
 import 'settings/profile_menu.dart';
 
-
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,7 +20,6 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -61,7 +59,6 @@ void main() {
 //         });
 //   }
 // }
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -129,11 +126,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
       );
     }
 
-    return MaterialApp(
-        theme: ThemeData(accentColor: Color(COLOR_PRIMARY)),
-        debugShowCheckedModeBanner: false,
-        color: Color(COLOR_PRIMARY),
-        home: OnBoarding());
+    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: false, color: Color(COLOR_PRIMARY), home: OnBoarding());
   }
 
   @override
