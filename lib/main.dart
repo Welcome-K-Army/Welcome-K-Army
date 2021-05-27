@@ -179,7 +179,7 @@ class OnBoardingState extends State<OnBoarding> {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
           MyAppState.currentUser = user;
-          pushReplacement(context, new Menu(/*user: user*/));
+          pushReplacement(context, new MenuScreen(/*user: user*/));
         } else {
           pushReplacement(context, new OpeningView());
         }
@@ -187,6 +187,7 @@ class OnBoardingState extends State<OnBoarding> {
         pushReplacement(context, new OpeningView());
       }
     } else {
+      pushReplacement(context, new OpeningView());
       // pushReplacement(context, new OnBoardingScreen());
     }
   }
