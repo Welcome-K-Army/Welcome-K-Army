@@ -19,7 +19,6 @@ class OpeningViewState extends State<OpeningView> {
 //     return Navigator.pushReplacementNamed(context, '/auth');
 //   }
   UserData userData;
-  String nickName = "";
 
   @override
   Widget build(BuildContext context) {
@@ -98,25 +97,6 @@ class OpeningViewState extends State<OpeningView> {
       ],
     );
 
-    display() {
-      if (nickName != null)
-        return Text(
-          "Welcome back $nickName!",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-          ),
-        );
-      else
-        return Text(
-          "Welcome!",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-          ),
-        );
-    }
-
     return Scaffold(
       backgroundColor: Color(0xff0c9869),
       body: Padding(
@@ -130,7 +110,13 @@ class OpeningViewState extends State<OpeningView> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 40),
-              child: display(),
+              child: Text(
+                "Welcome!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 40),

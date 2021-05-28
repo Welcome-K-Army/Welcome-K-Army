@@ -28,41 +28,6 @@ void main() {
   runApp(MyApp());
 }
 
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: 'Opening View',
-//         routes: AppRoutes.define(),
-//         onGenerateRoute: (settings) {
-//           switch (settings.name) {
-//             case MenuScreen.routeName:
-//               {
-//                 return MaterialPageRoute(builder: (context) => MenuScreen(userData: settings.arguments));
-//               }
-//               break;
-//             case Profile_menu.routeName:
-//               {
-//                 return MaterialPageRoute(builder: (context) => Profile_menu(userData: settings.arguments));
-//               }
-//               break;
-//             case EditProfile.routeName:
-//               {
-//                 return MaterialPageRoute(builder: (context) => EditProfile(userData: settings.arguments));
-//               }
-//               break;
-
-//             default:
-//               {
-//                 return MaterialPageRoute(builder: (context) => OpeningView());
-//               }
-//               break;
-//           }
-//         });
-//   }
-// }
-
 class MyApp extends StatefulWidget {
   @override
   MyAppState createState() => MyAppState();
@@ -268,6 +233,3 @@ class OnBoardingState extends State<OnBoarding> {
 // //   await Firebase.initializeApp();
 // //   runApp(MyApp());
 // // }
-
-// // StreamBuilder 부분
-// // stream: FirebaseAuth.instance.authStateChanges()
