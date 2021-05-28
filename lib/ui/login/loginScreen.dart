@@ -277,6 +277,7 @@ class _LoginScreen extends State<LoginScreen> {
     }
   }
 
+}
 //   void _createUserFromFacebookLogin(
 //       FacebookLoginResult result, String userID) async {
 //     final token = result.accessToken.token;
