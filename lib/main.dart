@@ -20,7 +20,8 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
-
+import 'package:Army/ui/auth/authScreen.dart';
+import 'package:Army/ui/home/homeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -181,16 +182,15 @@ class OnBoardingState extends State<OnBoarding> {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
           MyAppState.currentUser = user;
-          pushReplacement(context, new MenuScreen(/*user: user*/));
+          pushReplacement(context, new HomeScreen(user: user));
         } else {
-          pushReplacement(context, new OpeningView());
+          pushReplacement(context, new AuthScreen());
         }
       } else {
-        pushReplacement(context, new OpeningView());
+        pushReplacement(context, new AuthScreen());
       }
     } else {
       pushReplacement(context, new OnBoardingScreen());
-      // pushReplacement(context, new OnBoardingScreen());
     }
   }
 
