@@ -44,12 +44,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       body: Stack(
         children: <Widget>[
           PageView.builder(
-            itemBuilder: (context, index) => getPage(
-                _imageList[index],
-                _titlesList[index],
-                _subtitlesList[index],
-                context,
-                index + 1 == _titlesList.length),
+            itemBuilder: (context, index) => getPage(_imageList[index], _titlesList[index], _subtitlesList[index], context, index + 1 == _titlesList.length),
             controller: pageController,
             itemCount: _titlesList.length,
             onPageChanged: (int index) {
@@ -65,11 +60,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: SmoothPageIndicator(
                 controller: pageController,
                 count: _titlesList.length,
-                effect: ScrollingDotsEffect(
-                    activeDotColor: Colors.white,
-                    dotColor: Colors.grey.shade400,
-                    dotWidth: 8,
-                    dotHeight: 8),
+                effect: ScrollingDotsEffect(activeDotColor: Colors.white, dotColor: Colors.grey.shade400, dotWidth: 8, dotHeight: 8),
               ),
             ),
           )
@@ -78,8 +69,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget getPage(dynamic image, String title, String subTitle,
-      BuildContext context, bool isLastPage) {
+  Widget getPage(dynamic image, String title, String subTitle, BuildContext context, bool isLastPage) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -99,8 +89,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         SizedBox(height: 40),
         Text(
           title.toUpperCase(),
-          style: TextStyle(
-              color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
         Padding(
@@ -113,10 +102,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   },
                   child: Text(
                     "Get Started",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   borderSide: BorderSide(color: Colors.white),
                   shape: StadiumBorder(),
