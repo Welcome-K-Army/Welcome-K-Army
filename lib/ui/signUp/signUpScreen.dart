@@ -75,8 +75,7 @@ class _SignUpState extends State<SignUpScreen> {
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile image =
-                await _imagePicker.getImage(source: ImageSource.gallery);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null)
               setState(() {
                 _image = File(image.path);
@@ -88,8 +87,7 @@ class _SignUpState extends State<SignUpScreen> {
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile image =
-                await _imagePicker.getImage(source: ImageSource.camera);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null)
               setState(() {
                 _image = File(image.path);
@@ -114,14 +112,10 @@ class _SignUpState extends State<SignUpScreen> {
             alignment: Alignment.topLeft,
             child: Text(
               'Create new account',
-              style: TextStyle(
-                  color: Color(COLOR_PRIMARY),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.0),
+              style: TextStyle(color: Color(COLOR_PRIMARY), fontWeight: FontWeight.bold, fontSize: 25.0),
             )),
         Padding(
-          padding:
-          const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
+          padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: <Widget>[
@@ -134,24 +128,20 @@ class _SignUpState extends State<SignUpScreen> {
                     height: 170,
                     child: _image == null
                         ? Image.asset(
-                      'assets/images/placeholder.jpg',
-                      fit: BoxFit.cover,
-                    )
+                            'assets/images/placeholder.jpg',
+                            fit: BoxFit.cover,
+                          )
                         : Image.file(
-                      _image,
-                      fit: BoxFit.cover,
-                    ),
+                            _image,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
               ),
               Positioned(
                 left: 80,
                 right: 0,
-                child: FloatingActionButton(
-                    backgroundColor: Color(COLOR_ACCENT),
-                    child: Icon(Icons.camera_alt),
-                    mini: true,
-                    onPressed: _onCameraClick),
+                child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
               )
             ],
           ),
@@ -159,8 +149,7 @@ class _SignUpState extends State<SignUpScreen> {
         ConstrainedBox(
             constraints: BoxConstraints(minWidth: double.infinity),
             child: Padding(
-                padding:
-                const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
                 child: TextFormField(
                     validator: validateName,
                     onSaved: (String val) {
@@ -169,22 +158,17 @@ class _SignUpState extends State<SignUpScreen> {
                     textInputAction: TextInputAction.next,
                     onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
                     decoration: InputDecoration(
-                        contentPadding: new EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 16),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         fillColor: Colors.white,
                         hintText: 'First Name',
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                                color: Color(COLOR_PRIMARY), width: 2.0)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ))))),
         ConstrainedBox(
             constraints: BoxConstraints(minWidth: double.infinity),
             child: Padding(
-                padding:
-                const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
                 child: TextFormField(
                     validator: validateName,
                     onSaved: (String val) {
@@ -193,22 +177,17 @@ class _SignUpState extends State<SignUpScreen> {
                     textInputAction: TextInputAction.next,
                     onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
                     decoration: InputDecoration(
-                        contentPadding: new EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 16),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         fillColor: Colors.white,
                         hintText: 'Last Name',
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                                color: Color(COLOR_PRIMARY), width: 2.0)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ))))),
         ConstrainedBox(
             constraints: BoxConstraints(minWidth: double.infinity),
             child: Padding(
-                padding:
-                const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
                 child: TextFormField(
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.next,
@@ -218,22 +197,17 @@ class _SignUpState extends State<SignUpScreen> {
                       mobile = val;
                     },
                     decoration: InputDecoration(
-                        contentPadding: new EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 16),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         fillColor: Colors.white,
                         hintText: 'Mobile Number',
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                                color: Color(COLOR_PRIMARY), width: 2.0)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ))))),
         ConstrainedBox(
             constraints: BoxConstraints(minWidth: double.infinity),
             child: Padding(
-                padding:
-                const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(top: 16.0, right: 8.0, left: 8.0),
                 child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
@@ -243,14 +217,10 @@ class _SignUpState extends State<SignUpScreen> {
                       email = val;
                     },
                     decoration: InputDecoration(
-                        contentPadding: new EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 16),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         fillColor: Colors.white,
                         hintText: 'Email Address',
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                                color: Color(COLOR_PRIMARY), width: 2.0)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ))))),
@@ -270,14 +240,10 @@ class _SignUpState extends State<SignUpScreen> {
                   style: TextStyle(height: 0.8, fontSize: 18.0),
                   cursorColor: Color(COLOR_PRIMARY),
                   decoration: InputDecoration(
-                      contentPadding:
-                          new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                       fillColor: Colors.white,
                       hintText: 'Password',
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                              color: Color(COLOR_PRIMARY), width: 2.0)),
+                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
                       ))),
@@ -292,22 +258,17 @@ class _SignUpState extends State<SignUpScreen> {
                   _sendToServer();
                 },
                 obscureText: true,
-                validator: (val) =>
-                    validateConfirmPassword(_passwordController.text, val),
+                validator: (val) => validateConfirmPassword(_passwordController.text, val),
                 onSaved: (String val) {
                   confirmPassword = val;
                 },
                 style: TextStyle(height: 0.8, fontSize: 18.0),
                 cursorColor: Color(COLOR_PRIMARY),
                 decoration: InputDecoration(
-                    contentPadding:
-                        new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    contentPadding: new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     fillColor: Colors.white,
                     hintText: 'Confirm Password',
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: BorderSide(
-                            color: Color(COLOR_PRIMARY), width: 2.0)),
+                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0), borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                     ))),
@@ -327,9 +288,7 @@ class _SignUpState extends State<SignUpScreen> {
               splashColor: Color(COLOR_PRIMARY),
               onPressed: _sendToServer,
               padding: EdgeInsets.only(top: 12, bottom: 12),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  side: BorderSide(color: Color(COLOR_PRIMARY))),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0), side: BorderSide(color: Color(COLOR_PRIMARY))),
             ),
           ),
         ),
@@ -343,26 +302,13 @@ class _SignUpState extends State<SignUpScreen> {
       showProgress(context, 'Creating new account, Please wait...', false);
       var profilePicUrl = '';
       try {
-        auth.UserCredential result = await auth.FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: email.trim(), password: password.trim());
+        auth.UserCredential result = await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.trim(), password: password.trim());
         if (_image != null) {
           updateProgress('Uploading image, Please wait...');
-          profilePicUrl = await FireStoreUtils()
-              .uploadUserImageToFireStorage(_image, result.user.uid);
+          profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, result.user.uid);
         }
-        User user = User(
-            email: email,
-            firstName: firstName,
-            phoneNumber: mobile,
-            userID: result.user.uid,
-            active: true,
-            lastName: lastName,
-            profilePictureURL: profilePicUrl);
-        await FireStoreUtils.firestore
-            .collection(USERS)
-            .doc(result.user.uid)
-            .set(user.toJson());
+        User user = User(email: email, firstName: firstName, phoneNumber: mobile, userID: result.user.uid, active: true, lastName: lastName, profilePictureURL: profilePicUrl);
+        await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).set(user.toJson());
         hideProgress();
         MyAppState.currentUser = user;
         pushAndRemoveUntil(context, HomeScreen(user: user), false);
