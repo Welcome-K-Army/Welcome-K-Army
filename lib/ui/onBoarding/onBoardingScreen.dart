@@ -109,7 +109,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ? OutlineButton(
                   onPressed: () {
                     setFinishedOnBoarding();
-                    pushReplacement(context, new AuthScreen());
+                    pushReplacement(context, new Login());
                   },
                   child: Text(
                     "Get Started",
