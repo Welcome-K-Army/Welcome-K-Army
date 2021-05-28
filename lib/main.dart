@@ -19,6 +19,8 @@ import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
+import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -187,7 +189,7 @@ class OnBoardingState extends State<OnBoarding> {
         pushReplacement(context, new OpeningView());
       }
     } else {
-      pushReplacement(context, new OpeningView());
+      pushReplacement(context, new OnBoardingScreen());
       // pushReplacement(context, new OnBoardingScreen());
     }
   }
