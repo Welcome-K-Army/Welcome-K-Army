@@ -244,7 +244,7 @@ class _LoginViewState extends State<Login> {
               );
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString('nickName', user.user.displayName);
-              await uload();
+  
               
               // Navigator.of(context).pushReplacementNamed(AppRoutes.menu, arguments: luser);
             } on FirebaseAuthException catch (e) {
