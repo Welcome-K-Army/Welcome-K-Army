@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Army/constants.dart';
@@ -39,9 +38,9 @@ class _SignUpState extends State<SignUpScreen> {
 
     int _userAge;
     List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
-    if (Platform.isAndroid) {
-      retrieveLostData();
-    }
+    // if (Platform.isAndroid) {
+    //   retrieveLostData();
+    // }
 
     _sendToServer() async {
       if (_key.currentState.validate()) {
