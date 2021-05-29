@@ -30,6 +30,61 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+        login() async {
+      if (_key.currentState.validate()) {
+        _key.currentState.save();
+        showProgress(context, 'Logging in, please wait...', false);
+        User user = await loginWithUserNameAndPassword();
+        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
+      } else {
+        setState(() {
+          _validate = AutovalidateMode.onUserInteraction;
+        });
+      }
+    }
+
+    Future<User> loginWithUserNameAndPassword() async {
+      try {
+        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
+        DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).get();
+        User user;
+        if (documentSnapshot != null && documentSnapshot.exists) {
+          user = User.fromJson(documentSnapshot.data());
+          user.active = true;
+          await FireStoreUtils.updateCurrentUser(user);
+          hideProgress();
+          MyAppState.currentUser = user;
+        }
+        return user;
+      } on auth.FirebaseAuthException catch (exception) {
+        hideProgress();
+        switch ((exception).code) {
+          case "invalid-email":
+            showAlertDialog(context, 'Couldn\'t Authenticate', 'malformedEmail');
+            break;
+          case "wrong-password":
+            showAlertDialog(context, 'Couldn\'t Authenticate', 'Wrong password');
+            break;
+          case "user-not-found":
+            showAlertDialog(context, 'Couldn\'t Authenticate', 'No user corresponds to this email');
+            break;
+          case "user-disabled":
+            showAlertDialog(context, 'Couldn\'t Authenticate', 'This user is disabled');
+            break;
+          case 'too-many-requests':
+            showAlertDialog(context, 'Couldn\'t Authenticate', 'Too many requests, Please try again later.');
+            break;
+        }
+        print(exception.toString());
+        return null;
+      } catch (e) {
+        hideProgress();
+        showAlertDialog(context, 'Couldn\'t Authenticate', 'Login failed. Please try again.');
+        print(e.toString());
+        return null;
+      }
+    }
+
     void showSendEmailDialog(BuildContext context) {
       showDialog(
           context: context,
@@ -55,7 +110,7 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.all(5),
-                      child: TextField(
+                      child: TextFormField(
                         controller: _emailControllerField,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
@@ -277,60 +332,7 @@ class _LoginScreen extends State<LoginScreen> {
       ],
     );
 
-    login() async {
-      if (_key.currentState.validate()) {
-        _key.currentState.save();
-        showProgress(context, 'Logging in, please wait...', false);
-        User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
-      } else {
-        setState(() {
-          _validate = AutovalidateMode.onUserInteraction;
-        });
-      }
-    }
 
-    Future<User> loginWithUserNameAndPassword() async {
-      try {
-        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
-        DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).get();
-        User user;
-        if (documentSnapshot != null && documentSnapshot.exists) {
-          user = User.fromJson(documentSnapshot.data());
-          user.active = true;
-          await FireStoreUtils.updateCurrentUser(user);
-          hideProgress();
-          MyAppState.currentUser = user;
-        }
-        return user;
-      } on auth.FirebaseAuthException catch (exception) {
-        hideProgress();
-        switch ((exception).code) {
-          case "invalid-email":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'malformedEmail');
-            break;
-          case "wrong-password":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Wrong password');
-            break;
-          case "user-not-found":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'No user corresponds to this email');
-            break;
-          case "user-disabled":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'This user is disabled');
-            break;
-          case 'too-many-requests':
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Too many requests, Please try again later.');
-            break;
-        }
-        print(exception.toString());
-        return null;
-      } catch (e) {
-        hideProgress();
-        showAlertDialog(context, 'Couldn\'t Authenticate', 'Login failed. Please try again.');
-        print(e.toString());
-        return null;
-      }
-    }
 
     return Scaffold(
       backgroundColor: Color(0xff0c9869),

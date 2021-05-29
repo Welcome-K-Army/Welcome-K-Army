@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/services/helper.dart';
-import 'package:Army/views/login_screen.dart';
+import 'package:Army/ui/auth/authScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -98,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ? OutlineButton(
                   onPressed: () {
                     setFinishedOnBoarding();
-                    pushReplacement(context, new LoginScreen());
+                    pushReplacement(context, new AuthScreen());
                   },
                   child: Text(
                     "Get Started",
