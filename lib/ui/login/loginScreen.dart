@@ -27,6 +27,7 @@ class _LoginScreen extends State<LoginScreen> {
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   AutovalidateMode _validate = AutovalidateMode.disabled;
+  AutovalidateMode _forgotvalidate = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -113,7 +114,7 @@ class _LoginScreen extends State<LoginScreen> {
                       padding: EdgeInsets.all(5),
                       child: Form(
                         key: _forgotkey,
-                        autovalidateMode: _validate,
+                        autovalidateMode: _forgotvalidate,
                         child: TextFormField(
                           controller: _emailControllerField,
                           decoration: InputDecoration(
@@ -166,6 +167,10 @@ class _LoginScreen extends State<LoginScreen> {
                                 } catch (e) {
                                   print(e);
                                 }
+                              } else {
+                                setState(() {
+                                  _forgotvalidate = AutovalidateMode.onUserInteraction;
+                                });
                               }
                             }),
                       ),
