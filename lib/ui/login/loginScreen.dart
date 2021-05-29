@@ -347,7 +347,7 @@ class _LoginScreen extends State<LoginScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Color(Color_Primary),
+      backgroundColor: Color(COLOR_PRIMARY),
       body: Form(
         key: _key,
         autovalidateMode: _validate,
