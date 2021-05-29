@@ -45,7 +45,6 @@ class _SignUpState extends State<SignUpScreen> {
 
     _sendToServer() async {
       if (_key.currentState.validate()) {
-        _key.currentState.save();
         showProgress(context, 'Creating new account, Please wait...', false);
         var profilePicUrl = '';
         try {
@@ -391,7 +390,7 @@ class _SignUpState extends State<SignUpScreen> {
     );
 
     final formUI = Container(
-      height: size.height,
+      height: size.height*1.4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[

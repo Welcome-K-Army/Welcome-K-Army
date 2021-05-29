@@ -76,7 +76,7 @@ class _LoginScreen extends State<LoginScreen> {
 
     login() async {
       if (_key.currentState.validate()) {
-        _key.currentState.save();
+        // _key.currentState.save();
         showProgress(context, 'Logging in, please wait...', false);
         User user = await loginWithUserNameAndPassword();
         if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
@@ -347,7 +347,7 @@ class _LoginScreen extends State<LoginScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Color(0xff0c9869),
+      backgroundColor: Color(Color_Primary),
       body: Form(
         key: _key,
         autovalidateMode: _validate,
