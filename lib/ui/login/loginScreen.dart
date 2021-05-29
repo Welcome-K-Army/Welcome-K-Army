@@ -111,7 +111,7 @@ class _LoginScreen extends State<LoginScreen> {
                       child: Text("Insert Reset Email:"),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(5,10,5,15),
+                      padding: EdgeInsets.all(5),
                       child: Form(
                         key: _forgotkey,
                         autovalidateMode: _forgotvalidate,
