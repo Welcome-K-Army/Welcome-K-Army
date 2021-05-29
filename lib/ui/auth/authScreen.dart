@@ -21,12 +21,9 @@ class AuthScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            logo(),
             Padding(
-              padding: EdgeInsets.only(top: 40),
-              child: logo(),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 40),
+              padding: EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
                 "Welcome!",
                 style: TextStyle(
@@ -36,7 +33,7 @@ class AuthScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 40),
+              padding: EdgeInsets.only(top: 20, bottom: 20),
               child: buttons(context,size),
             )
           ],
