@@ -51,7 +51,7 @@ class _SignUpState extends State<SignUpScreen> {
           auth.UserCredential result = await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
           if (_image != null) {
             updateProgress('Uploading image, Please wait...');
-            profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, result.user.uid);
+            // profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, result.user.uid);
           }
           User user = User(email: _emailController.text, nickName: _nicknameController.text, age: _userAge, gender: userGender(), userID: result.user.uid, active: true, profilePictureURL: profilePicUrl);
           await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).set(user.toJson());
