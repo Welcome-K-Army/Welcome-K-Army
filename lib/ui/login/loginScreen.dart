@@ -34,7 +34,7 @@ class _LoginScreen extends State<LoginScreen> {
 
     Future<User> loginWithUserNameAndPassword() async {
       try {
-        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
+        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
         DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).get();
         User user;
         if (documentSnapshot != null && documentSnapshot.exists) {
