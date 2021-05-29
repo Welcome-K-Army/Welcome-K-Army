@@ -63,47 +63,47 @@ class _SignUpState extends State<SignUpScreen> {
     }
   }
 
-  _onCameraClick() {
-    final action = CupertinoActionSheet(
-      message: Text(
-        "Add profile picture",
-        style: TextStyle(fontSize: 15.0),
-      ),
-      actions: <Widget>[
-        CupertinoActionSheetAction(
-          child: Text("Choose from gallery"),
-          isDefaultAction: false,
-          onPressed: () async {
-            Navigator.pop(context);
-            PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
-            if (image != null)
-              setState(() {
-                _image = File(image.path);
-              });
-          },
-        ),
-        CupertinoActionSheetAction(
-          child: Text("Take a picture"),
-          isDestructiveAction: false,
-          onPressed: () async {
-            Navigator.pop(context);
-            PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
-            if (image != null)
-              setState(() {
-                _image = File(image.path);
-              });
-          },
-        )
-      ],
-      cancelButton: CupertinoActionSheetAction(
-        child: Text("Cancel"),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-    );
-    showCupertinoModalPopup(context: context, builder: (context) => action);
-  }
+  // _onCameraClick() {
+  //   final action = CupertinoActionSheet(
+  //     message: Text(
+  //       "Add profile picture",
+  //       style: TextStyle(fontSize: 15.0),
+  //     ),
+  //     actions: <Widget>[
+  //       CupertinoActionSheetAction(
+  //         child: Text("Choose from gallery"),
+  //         isDefaultAction: false,
+  //         onPressed: () async {
+  //           Navigator.pop(context);
+  //           PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
+  //           if (image != null)
+  //             setState(() {
+  //               _image = File(image.path);
+  //             });
+  //         },
+  //       ),
+  //       CupertinoActionSheetAction(
+  //         child: Text("Take a picture"),
+  //         isDestructiveAction: false,
+  //         onPressed: () async {
+  //           Navigator.pop(context);
+  //           PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
+  //           if (image != null)
+  //             setState(() {
+  //               _image = File(image.path);
+  //             });
+  //         },
+  //       )
+  //     ],
+  //     cancelButton: CupertinoActionSheetAction(
+  //       child: Text("Cancel"),
+  //       onPressed: () {
+  //         Navigator.pop(context);
+  //       },
+  //     ),
+  //   );
+  //   showCupertinoModalPopup(context: context, builder: (context) => action);
+  // }
 
   Widget formUI() {
     return new Column(
@@ -141,7 +141,7 @@ class _SignUpState extends State<SignUpScreen> {
               Positioned(
                 left: 80,
                 right: 0,
-                child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+                // child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
               )
             ],
           ),

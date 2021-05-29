@@ -151,13 +151,13 @@ class OnBoardingState extends State<OnBoarding> {
           MyAppState.currentUser = user;
           pushReplacement(context, new HomeScreen(user: user));
         } else {
-          pushReplacement(context, new SignUpScreen());
+          pushReplacement(context, new LoginScreen());
         }
       } else {
-        pushReplacement(context, new SignUpScreen());
+        pushReplacement(context, new LoginScreen());
       }
     } else {
-      pushReplacement(context, new SignUpScreen());//OnBoardingScreen
+      pushReplacement(context, new OnBoardingScreen());
     }
   }
 
@@ -192,6 +192,7 @@ class OnBoardingState extends State<OnBoarding> {
 // import 'joinOrLogin.dart';
 // import 'Home.dart';
 // import 'userDetail.dart';
+import '/lib/ui/login/loginScreen.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
