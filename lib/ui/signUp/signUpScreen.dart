@@ -391,6 +391,7 @@ class _SignUpState extends State<SignUpScreen> {
     );
 
     final formUI = Container(
+      height: size.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
@@ -436,20 +437,13 @@ class _SignUpState extends State<SignUpScreen> {
       ),
     );
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Color(COLOR_PRIMARY),
-        iconTheme: IconThemeData(color: Colors.black),
-      ),
+      backgroundColor: Color(0xff0c9869),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
-        child: new Container(
-          margin: new EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
-          child: new Form(
-            key: _key,
-            autovalidateMode: _validate,
-            child: formUI,
-          ),
+        child: new Form(
+          key: _key,
+          autovalidateMode: _validate,
+          child: formUI,
         ),
       ),
     );
