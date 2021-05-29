@@ -352,7 +352,7 @@ class _LoginScreen extends State<LoginScreen> {
         key: _key,
         autovalidateMode: _validate,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: EdgeInsets.fromLTRB(36,20,36,20),
           child: Container(
             height: size.height,
             child: Column(

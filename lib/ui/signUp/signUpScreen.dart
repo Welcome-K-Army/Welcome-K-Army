@@ -443,7 +443,7 @@ class _SignUpState extends State<SignUpScreen> {
         key: _key,
         autovalidateMode: _validate,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
+          padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
           child: formUI,
         ),
       ),
