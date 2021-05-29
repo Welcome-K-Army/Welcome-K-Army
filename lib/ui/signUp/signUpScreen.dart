@@ -11,7 +11,6 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:image_picker/image_picker.dart';
-import '/lib/constants.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
