@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/login/loginScreen.dart';
 import 'package:Army/ui/signUp/signUpScreen.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
 class AuthScreen extends StatelessWidget {
   @override
@@ -12,7 +13,40 @@ class AuthScreen extends StatelessWidget {
     //   "lib/image/Loading.gif",
     //   height: size.height / 4,
     // );
-    final logo = Expanded(
+
+    return Scaffold(
+      backgroundColor: Color(0xff0c9869),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 40),
+              child: logo(),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 40, bottom: 40),
+              child: Text(
+                "Welcome!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 40, bottom: 40),
+              child: buttons(context,size),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget logo() {
+    return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
         child: FittedBox(
@@ -24,8 +58,10 @@ class AuthScreen extends StatelessWidget {
         ), //FittedBox
       ), //Padding
     ); //Expanded
+  }
 
-    final loginButton = Material(
+  Widget loginButton(BuildContext context,Size size) {
+    return Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(25.0),
       color: Colors.white,
@@ -44,8 +80,10 @@ class AuthScreen extends StatelessWidget {
         onPressed: () => push(context, new LoginScreen()),
       ),
     );
+  }
 
-    final registerButton = Material(
+  Widget registerButton(BuildContext context,Size size) {
+    return Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(25.0),
       color: Colors.white,
@@ -64,47 +102,19 @@ class AuthScreen extends StatelessWidget {
         onPressed: () => push(context, new SignUpScreen()),
       ),
     );
+  }
 
-    final buttons = Column(
+  Widget buttons(BuildContext context, Size size) {
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        loginButton,
+        loginButton(context,size),
         Padding(
           padding: EdgeInsets.fromLTRB(0, 15, 0, 30),
-          child: registerButton,
+          child: registerButton(context,size),
         ),
       ],
-    );
-
-    return Scaffold(
-      backgroundColor: Color(0xff0c9869),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 40),
-              child: logo,
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 40),
-              child: Text(
-                "Welcome!",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 40),
-              child: buttons,
-            )
-          ],
-        ),
-      ),
     );
   }
 }

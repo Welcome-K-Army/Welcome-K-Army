@@ -115,6 +115,8 @@ class _SignUpState extends State<SignUpScreen> {
       style: TextStyle(
         color: Colors.white,
       ),
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
       cursorColor: Colors.white,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
@@ -390,7 +392,7 @@ class _SignUpState extends State<SignUpScreen> {
     );
 
     final formUI = Container(
-      height: size.height*1.4,
+      height: size.height * 1.4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
