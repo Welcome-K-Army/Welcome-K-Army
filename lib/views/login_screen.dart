@@ -8,12 +8,7 @@ import '../theme/routes.dart';
 import '../model/user_data_model.dart';
 import '../net/firebase.dart';
 import 'dart:async';
-import 'package:Army/constants.dart';
-import 'package:Army/main.dart';
-import 'package:Army/model/user.dart';
-import 'package:Army/services/authenticate.dart';
-import 'package:Army/services/helper.dart';
-import 'package:Army/ui/home/homeScreen.dart';
+
 class Login extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -23,12 +18,11 @@ class _LoginViewState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
-  AutovalidateMode _validate = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    void showSendEmailDialog(BuildContext context) {
+    void showAlertDialog(BuildContext context) {
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -70,11 +64,6 @@ class _LoginViewState extends State<Login> {
                             color: Colors.black,
                           ),
                         ),
-                        validator: validateEmail,
-                        onSaved: (String val) {
-                          email = val;
-                        },
-                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                     Padding(
@@ -136,68 +125,69 @@ class _LoginViewState extends State<Login> {
     // ); //Expanded
 
     final emailField = TextFormField(
-      controller: _emailController,
-      keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
+        controller: _emailController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          labelText: "Email",
+          hintText: "something@example.com",
+          labelStyle: TextStyle(
             color: Colors.white,
           ),
-        ),
-        labelText: "Email",
-        hintText: "something@example.com",
-        labelStyle: TextStyle(
-          color: Colors.white,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ), //InputDecoration
-      textInputAction: TextInputAction.next,
-      validator: validateEmail,
-      onSaved: (String val) {
-        email = val;
-      },
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-    ); //TextFormField 이메일
+          hintStyle: TextStyle(
+            color: Colors.white,
+          ),
+        ), //InputDecoration
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "Please input correct Email!";
+          } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").hasMatch(value.toString())) {
+            //이메일 정규 표현식
+            return "Not correct Email format";
+          }
+          return null;
+        }); //TextFormField 이메일
 
     final passwordField = Column(
       children: <Widget>[
         TextFormField(
-          obscureText: true,
-          controller: _passwordController,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          cursorColor: Colors.white,
-          decoration: InputDecoration(
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
+            obscureText: true,
+            controller: _passwordController,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              hintText: "password",
+              labelText: "Password",
+              labelStyle: TextStyle(
+                color: Colors.white,
+              ),
+              hintStyle: TextStyle(
                 color: Colors.white,
               ),
             ),
-            hintText: "password",
-            labelText: "Password",
-            labelStyle: TextStyle(
-              color: Colors.white,
-            ),
-            hintStyle: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          textInputAction: TextInputAction.next,
-          validator: validatePassword,
-          onSaved: (String val) {
-            password = val;
-          },
-          onFieldSubmitted: (password) async {
-            await login();
-          },
-        ),
+            validator: (String value) {
+              if (value.isEmpty) {
+                return "Please input correct Password!";
+              } else if (value.length < 8) {
+                return "Please enter a password of at least 8 digits!";
+              }
+              return null;
+            }),
         Padding(
           padding: EdgeInsets.all(2.0),
         ),
@@ -210,7 +200,7 @@ class _LoginViewState extends State<Login> {
                   style: Theme.of(context).textTheme.caption.copyWith(color: Colors.white),
                 ),
                 onPressed: () {
-                  showSendEmailDialog(context);
+                  showAlertDialog(context);
                 }),
           ],
         ),
@@ -245,7 +235,30 @@ class _LoginViewState extends State<Login> {
           ),
         ),
         onPressed: () async {
-          await login();
+          if (_formKey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('nickName', user.user.displayName);
+              Navigator.of(context).pushNamed(AppRoutes.menu);
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'user-not-found') {
+                final snackBar = SnackBar(
+                  content: Text("No user found for that email."),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              } else if (e.code == 'wrong-password') {
+                final snackBar = SnackBar(
+                  content: Text("Wrong password provided for that user."),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+            }
+          }
         },
       ),
     );
@@ -269,7 +282,7 @@ class _LoginViewState extends State<Login> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
+                Navigator.of(context).pushNamed(AppRoutes.authRegister);
               },
               child: Text(
                 "Sign Up",
@@ -284,66 +297,10 @@ class _LoginViewState extends State<Login> {
       ],
     );
 
-    login() async {
-      if (_key.currentState.validate()) {
-        _key.currentState.save();
-        showProgress(context, 'Logging in, please wait...', false);
-        User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
-      } else {
-        setState(() {
-          _validate = AutovalidateMode.onUserInteraction;
-        });
-      }
-    }
-
-    Future<User> loginWithUserNameAndPassword() async {
-      try {
-        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
-        DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).get();
-        User user;
-        if (documentSnapshot != null && documentSnapshot.exists) {
-          user = User.fromJson(documentSnapshot.data());
-          user.active = true;
-          await FireStoreUtils.updateCurrentUser(user);
-          hideProgress();
-          MyAppState.currentUser = user;
-        }
-        return user;
-      } on auth.FirebaseAuthException catch (exception) {
-        hideProgress();
-        switch ((exception).code) {
-          case "invalid-email":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'malformedEmail');
-            break;
-          case "wrong-password":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Wrong password');
-            break;
-          case "user-not-found":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'No user corresponds to this email');
-            break;
-          case "user-disabled":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'This user is disabled');
-            break;
-          case 'too-many-requests':
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Too many requests, Please try again later.');
-            break;
-        }
-        print(exception.toString());
-        return null;
-      } catch (e) {
-        hideProgress();
-        showAlertDialog(context, 'Couldn\'t Authenticate', 'Login failed. Please try again.');
-        print(e.toString());
-        return null;
-      }
-    }
-
     return Scaffold(
       backgroundColor: Color(0xff0c9869),
       body: Form(
         key: _formKey,
-        autovalidateMode: _validate,
         child: SingleChildScrollView(
           padding: EdgeInsets.all(36),
           child: Container(

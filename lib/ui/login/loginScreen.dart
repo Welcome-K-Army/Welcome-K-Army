@@ -73,9 +73,6 @@ class _LoginScreen extends State<LoginScreen> {
                           ),
                         ),
                         validator: validateEmail,
-                        onSaved: (String val) {
-                          email = val;
-                        },
                         keyboardType: TextInputType.emailAddress,
                       ),
                     ),
@@ -161,9 +158,6 @@ class _LoginScreen extends State<LoginScreen> {
       ), //InputDecoration
       textInputAction: TextInputAction.next,
       validator: validateEmail,
-      onSaved: (String val) {
-        email = val;
-      },
       onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
     ); //TextFormField 이메일
 
@@ -193,9 +187,6 @@ class _LoginScreen extends State<LoginScreen> {
           ),
           textInputAction: TextInputAction.next,
           validator: validatePassword,
-          onSaved: (String val) {
-            password = val;
-          },
           onFieldSubmitted: (password) async {
             await login();
           },
