@@ -94,22 +94,22 @@ class _SignUpState extends State<SignUpScreen> {
       }
     }
 
-    // final logo = Image.asset(
-    //   "lib/image/Loading.gif",
-    //   height: size.height / 4,
-    // );
-    final logo = Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: CircleAvatar(
-            minRadius: 40,
-            backgroundImage: AssetImage("lib/image/Loading.gif"),
-          ), //CircleAvatar
-        ), //FittedBox
-      ), //Padding
-    ); //Expanded
+    final logo = Image.asset(
+      "lib/image/Loading.gif",
+      height: size.height / 4,
+    );
+    // final logo = Expanded(
+    //   child: Padding(
+    //     padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+    //     child: FittedBox(
+    //       fit: BoxFit.contain,
+    //       child: CircleAvatar(
+    //         minRadius: 40,
+    //         backgroundImage: AssetImage("lib/image/Loading.gif"),
+    //       ), //CircleAvatar
+    //     ), //FittedBox
+    //   ), //Padding
+    // ); //Expanded
 
     final nicknameField = TextFormField(
       controller: _nicknameController,
