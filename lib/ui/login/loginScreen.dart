@@ -22,7 +22,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreen extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final _key = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   AutovalidateMode _validate = AutovalidateMode.disabled;
@@ -335,7 +335,7 @@ class _LoginScreen extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Color(0xff0c9869),
       body: Form(
-        key: _formKey,
+        key: _key,
         autovalidateMode: _validate,
         child: SingleChildScrollView(
           padding: EdgeInsets.all(36),
