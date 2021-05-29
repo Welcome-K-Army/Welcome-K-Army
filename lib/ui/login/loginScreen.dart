@@ -23,6 +23,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreen extends State<LoginScreen> {
   final _key = GlobalKey<FormState>();
+  final _forgotkey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   AutovalidateMode _validate = AutovalidateMode.disabled;
@@ -110,25 +111,29 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.all(5),
-                      child: TextFormField(
-                        controller: _emailControllerField,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
+                      child: Form(
+                        key: _forgotkey,
+                        autovalidateMode: _validate,
+                        child: TextFormField(
+                          controller: _emailControllerField,
+                          decoration: InputDecoration(
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.black,
+                              ),
+                            ),
+                            hintText: "something@example.com",
+                            labelText: "Email",
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                            ),
+                            hintStyle: TextStyle(
                               color: Colors.black,
                             ),
                           ),
-                          hintText: "something@example.com",
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            color: Colors.black,
-                          ),
-                          hintStyle: TextStyle(
-                            color: Colors.black,
-                          ),
+                          validator: validateEmail,
+                          keyboardType: TextInputType.emailAddress,
                         ),
-                        validator: validateEmail,
-                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                     Padding(
@@ -138,30 +143,31 @@ class _LoginScreen extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(25.0),
                         color: Color(0xff0c9869),
                         child: MaterialButton(
-                          minWidth: size.width / 2,
-                          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 25.0),
-                          child: Text(
-                            "Send Reset Email",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            minWidth: size.width / 2,
+                            padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 25.0),
+                            child: Text(
+                              "Send Reset Email",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          onPressed: () async {
-                            try {
-                              auth.FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
-                              final snackBar = SnackBar(
-                                content: Text("Check your email for password reset."),
-                              );
-                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                              Navigator.of(context).pop();
-                            } catch (e) {
-                              print(e);
-                            }
-                          },
-                        ),
+                            onPressed: () async {
+                              if (_key.currentState.validate()) {
+                                try {
+                                  auth.FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+                                  final snackBar = SnackBar(
+                                    content: Text("Check your email for password reset."),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                  Navigator.of(context).pop();
+                                } catch (e) {
+                                  print(e);
+                                }
+                              }
+                            }),
                       ),
                     )
                   ],
