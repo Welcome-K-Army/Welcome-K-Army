@@ -397,7 +397,7 @@ class _SignUpState extends State<SignUpScreen> {
         children: <Widget>[
           logo,
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
+            padding: const EdgeInsets.only(left: 8, top: 8, right: 8, bottom: 8),
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: <Widget>[
