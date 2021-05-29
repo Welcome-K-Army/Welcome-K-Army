@@ -11,6 +11,7 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:image_picker/image_picker.dart';
+import '/lib/constants.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
@@ -436,13 +437,14 @@ class _SignUpState extends State<SignUpScreen> {
         ],
       ),
     );
+
     return Scaffold(
-      backgroundColor: Color(0xff0c9869),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
-        child: new Form(
-          key: _key,
-          autovalidateMode: _validate,
+      backgroundColor: Color(COLOR_PRIMARY),
+      body: Form(
+        key: _key,
+        autovalidateMode: _validate,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
           child: formUI,
         ),
       ),
