@@ -156,7 +156,7 @@ class _LoginScreen extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () async {
-                              if (_key.currentState.validate()) {
+                              if (_forgotkey.currentState.validate()) {
                                 try {
                                   auth.FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
                                   final snackBar = SnackBar(
