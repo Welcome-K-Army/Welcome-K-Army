@@ -227,36 +227,37 @@ class _LoginScreen extends State<LoginScreen> {
       onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
     ); //TextFormField 이메일
 
-    final passwordField = Column(
-      children: <Widget>[
-        TextFormField(
-          obscureText: true,
-          controller: _passwordController,
-          style: TextStyle(
+    final passwordField = TextFormField(
+      obscureText: true,
+      controller: _passwordController,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
             color: Colors.white,
           ),
-          cursorColor: Colors.white,
-          decoration: InputDecoration(
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-            ),
-            hintText: "password",
-            labelText: "Password",
-            labelStyle: TextStyle(
-              color: Colors.white,
-            ),
-            hintStyle: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          textInputAction: TextInputAction.next,
-          validator: validatePassword,
-          onFieldSubmitted: (value) async {
-            await login();
-          },
         ),
+        hintText: "password",
+        labelText: "Password",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      textInputAction: TextInputAction.done,
+      validator: validatePassword,
+      onFieldSubmitted: (value) async {
+        await login();
+      },
+    );
+
+    final forgotPasswordField = Column(
+      children: <Widget>[
         Padding(
           padding: EdgeInsets.all(2.0),
         ),
@@ -272,10 +273,9 @@ class _LoginScreen extends State<LoginScreen> {
                   showSendEmailDialog(context);
                 }),
           ],
-        ),
+        )
       ],
     );
-
     final fields = Padding(
       padding: EdgeInsets.only(top: 10.0),
       child: Column(
@@ -283,6 +283,7 @@ class _LoginScreen extends State<LoginScreen> {
         children: <Widget>[
           emailField,
           passwordField,
+          forgotPasswordField,
         ],
       ),
     );
