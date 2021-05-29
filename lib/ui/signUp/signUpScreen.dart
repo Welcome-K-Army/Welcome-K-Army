@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';
 import 'package:Army/model/user.dart';
@@ -93,6 +94,11 @@ class _SignUpState extends State<SignUpScreen> {
       }
     }
 
+
+  // final logo = Image.asset(
+  //   "lib/image/Loading.gif",
+  //   height: size.height / 4,
+  // );
     final logo = Expanded(
       child: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -420,7 +426,7 @@ class _SignUpState extends State<SignUpScreen> {
                   Positioned(
                     left: 80,
                     right: 0,
-                    child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: () {} /*_onCameraClick*/),
+                    child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: () {} _onCameraClick),
                   )
                 ],
               ),
@@ -437,7 +443,7 @@ class _SignUpState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(COLOR_PRIMARY),
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
@@ -465,52 +471,49 @@ class _SignUpState extends State<SignUpScreen> {
     }
   }
 
-  // _onCameraClick() {
-  //   final action = CupertinoActionSheet(
-  //     message: Text(
-  //       "Add profile picture",
-  //       style: TextStyle(fontSize: 15.0),
-  //     ),
-  //     actions: <Widget>[
-  //       CupertinoActionSheetAction(
-  //         child: Text("Choose from gallery"),
-  //         isDefaultAction: false,
-  //         onPressed: () async {
-  //           Navigator.pop(context);
-  //           PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
-  //           if (image != null)
-  //             setState(() {
-  //               _image = File(image.path);
-  //             });
-  //         },
-  //       ),
-  //       CupertinoActionSheetAction(
-  //         child: Text("Take a picture"),
-  //         isDestructiveAction: false,
-  //         onPressed: () async {
-  //           Navigator.pop(context);
-  //           PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
-  //           if (image != null)
-  //             setState(() {
-  //               _image = File(image.path);
-  //             });
-  //         },
-  //       )
-  //     ],
-  //     cancelButton: CupertinoActionSheetAction(
-  //       child: Text("Cancel"),
-  //       onPressed: () {
-  //         Navigator.pop(context);
-  //       },
-  //     ),
-  //   );
-  //   showCupertinoModalPopup(context: context, builder: (context) => action);
-  // }
+  _onCameraClick() {
+    final action = CupertinoActionSheet(
+      message: Text(
+        "Add profile picture",
+        style: TextStyle(fontSize: 15.0),
+      ),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: Text("Choose from gallery"),
+          isDefaultAction: false,
+          onPressed: () async {
+            Navigator.pop(context);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
+            if (image != null)
+              setState(() {
+                _image = File(image.path);
+              });
+          },
+        ),
+        CupertinoActionSheetAction(
+          child: Text("Take a picture"),
+          isDestructiveAction: false,
+          onPressed: () async {
+            Navigator.pop(context);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
+            if (image != null)
+              setState(() {
+                _image = File(image.path);
+              });
+          },
+        )
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: Text("Cancel"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+    showCupertinoModalPopup(context: context, builder: (context) => action);
+  }
 
-  // final logo = Image.asset(
-  //   "lib/image/Loading.gif",
-  //   height: size.height / 4,
-  // );
+
 
   @override
   void dispose() {
