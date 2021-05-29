@@ -199,6 +199,35 @@ class _LoginScreen extends State<LoginScreen> {
     //     ), //FittedBox
     //   ), //Padding
     // ); //Expanded
+
+    final emailField = TextFormField(
+      controller: _emailController,
+      keyboardType: TextInputType.emailAddress,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        labelText: "Email",
+        hintText: "something@example.com",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ), //InputDecoration
+      textInputAction: TextInputAction.next.next,
+      validator: validateEmail,
+      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+    ); //TextFormField 이메일
+
+
     final passwordField = TextFormField(
       obscureText: true,
       controller: _passwordController,
@@ -227,33 +256,6 @@ class _LoginScreen extends State<LoginScreen> {
         await login();
       },
     );
-
-    final emailField = TextFormField(
-      controller: _emailController,
-      keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.white,
-          ),
-        ),
-        labelText: "Email",
-        hintText: "something@example.com",
-        labelStyle: TextStyle(
-          color: Colors.white,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ), //InputDecoration
-      textInputAction: TextInputAction.next,
-      validator: validateEmail,
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-    ); //TextFormField 이메일
 
     final forgotPasswordField = Column(
       children: <Widget>[
