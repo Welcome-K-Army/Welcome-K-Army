@@ -94,7 +94,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
       );
     }
 
-    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: true, color: Color(COLOR_PRIMARY), home: OnBoarding());
+    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: false, color: Color(COLOR_PRIMARY), home: OnBoarding());
   }
 
   @override
