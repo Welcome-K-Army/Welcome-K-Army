@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:Army/model/user.dart';
-
+import 'package:Army/constants.dart';
 class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   Reference storage = FirebaseStorage.instance.ref();
 
   Future<User> getCurrentUser(String uid) async {
     DocumentSnapshot userDocument =
-        await firestore.collection("userDetail").doc(uid).get();
+        await firestore.collection(USERS).doc(uid).get();
     if (userDocument != null && userDocument.exists) {
       return User.fromJson(userDocument.data());
     } else {
@@ -20,7 +20,7 @@ class FireStoreUtils {
 
   static Future<User> updateCurrentUser(User user) async {
     return await firestore
-        .collection("userDetail")
+        .collection("USERS")
         .doc(user.userID)
         .set(user.toJson())
         .then((document) {

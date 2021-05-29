@@ -222,13 +222,14 @@ class _LoginScreen extends State<LoginScreen> {
           color: Colors.white,
         ),
       ), //InputDecoration
-      textInputAction: TextInputAction.go,
+      textInputAction: TextInputAction.next,
       validator: validateEmail,
       onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
     ); //TextFormField 이메일
 
 
     final passwordField = TextFormField(
+      
       obscureText: true,
       controller: _passwordController,
       style: TextStyle(
