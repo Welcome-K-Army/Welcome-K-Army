@@ -5,7 +5,7 @@ import '../net/firebase.dart';
 import '../theme/routes.dart';
 import '../model/user_data_model.dart';
 
-enum Gender { "MAN", "WOMEN" }
+enum Gender { MAN, WOMEN }
 
 class Register extends StatefulWidget {
   @override

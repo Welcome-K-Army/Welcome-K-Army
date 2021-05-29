@@ -26,12 +26,12 @@ class _SignUpState extends State<SignUpScreen> {
   TextEditingController _nicknameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  TextEditingController _repasswordController = TextEditingController();
 
   AutovalidateMode _validate = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     Gender _userGender = Gender.MAN;
     String userGender() {
       return _userGender == Gender.MAN ? "MAN" : "WOMEN";
@@ -49,12 +49,12 @@ class _SignUpState extends State<SignUpScreen> {
         showProgress(context, 'Creating new account, Please wait...', false);
         var profilePicUrl = '';
         try {
-          auth.UserCredential result = await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.trim(), password: password.trim());
+          auth.UserCredential result = await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
           if (_image != null) {
             updateProgress('Uploading image, Please wait...');
             profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, result.user.uid);
           }
-          User user = User(email: email, firstName: firstName, phoneNumber: mobile, userID: result.user.uid, active: true, lastName: lastName, profilePictureURL: profilePicUrl);
+          User user = User(email: _emailController.text, nickName: _nicknameController.text, age: _userAge, gender: userGender(), userID: result.user.uid, active: true, profilePictureURL: profilePicUrl);
           await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).set(user.toJson());
           hideProgress();
           MyAppState.currentUser = user;
@@ -94,6 +94,347 @@ class _SignUpState extends State<SignUpScreen> {
       }
     }
 
+    final logo = Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: CircleAvatar(
+            minRadius: 40,
+            backgroundImage: AssetImage("lib/image/Loading.gif"),
+          ), //CircleAvatar
+        ), //FittedBox
+      ), //Padding
+    ); //Expanded
+
+    final nicknameField = TextFormField(
+      controller: _nicknameController,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        hintText: "K Amry",
+        labelText: "Nickname",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    );
+
+    final emailField = TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+      validator: validateEmail,
+      controller: _emailController,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        hintText: "something@example.com",
+        labelText: "Email",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    );
+
+    final genderField = Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.MAN,
+              groupValue: _userGender,
+              activeColor: Colors.white,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _userGender = Gender.MAN;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "Male",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.WOMEN,
+              groupValue: _userGender,
+              activeColor: Colors.white,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _userGender = Gender.WOMEN;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "Female",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    final ageField = Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      alignment: Alignment.center,
+      child: DropdownButton(
+        isExpanded: true,
+        iconSize: 24,
+        elevation: 16,
+        hint: Text(
+          "- years old",
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        dropdownColor: Color(0xff0c9869),
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        value: _userAge,
+        onChanged: (val) => setState(() => _userAge = val),
+        items: [
+          for (var age in ageList)
+            DropdownMenuItem(
+              value: age,
+              child: SizedBox(
+                child: Text(
+                  age.toString() + " years old",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+
+    final passwordField = TextFormField(
+      obscureText: true,
+      controller: _passwordController,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+      validator: validatePassword,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        hintText: "password",
+        labelText: "Password",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    );
+
+    final repasswordField = TextFormField(
+      obscureText: true,
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: (_) {
+        _sendToServer();
+      },
+      validator: (val) => validateConfirmPassword(_passwordController.text, val),
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        hintText: "password",
+        labelText: "Re-enter Password",
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    );
+
+    final fields = Padding(
+      padding: EdgeInsets.only(top: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          nicknameField,
+          emailField,
+          genderField,
+          ageField,
+          passwordField,
+          repasswordField,
+        ],
+      ),
+    );
+    final registerButton = Material(
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(25.0),
+      color: Colors.white,
+      child: MaterialButton(
+          minWidth: size.width / 1.2,
+          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+          child: Text(
+            "Register",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          onPressed: () {
+            _sendToServer();
+          }),
+    );
+    final bottom = Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        registerButton,
+        Padding(
+          padding: EdgeInsets.all(8.0),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              "Already have an account?",
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                // Navigator.of(context).pushNamed(AppRoutes.authLogin);
+              },
+              child: Text(
+                "Login",
+                style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+
+    final formUI = SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
+      child: Container(
+        height: size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            logo,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 65,
+                    backgroundColor: Colors.grey.shade400,
+                    child: ClipOval(
+                      child: SizedBox(
+                        width: 170,
+                        height: 170,
+                        child: _image == null
+                            ? Image.asset(
+                                'lib/image/Loading.gif',
+                                fit: BoxFit.cover,
+                              )
+                            : Image.file(
+                                _image,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 80,
+                    right: 0,
+                    child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: () {} /*_onCameraClick*/),
+                  )
+                ],
+              ),
+            ),
+            fields,
+            Padding(
+              padding: EdgeInsets.only(bottom: 30),
+              child: bottom,
+            ),
+          ],
+        ),
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -106,7 +447,7 @@ class _SignUpState extends State<SignUpScreen> {
           child: new Form(
             key: _key,
             autovalidateMode: _validate,
-            child: formUI(),
+            child: formUI,
           ),
         ),
       ),
@@ -171,330 +512,6 @@ class _SignUpState extends State<SignUpScreen> {
   //   "lib/image/Loading.gif",
   //   height: size.height / 4,
   // );
-  final logo = Expanded(
-    child: Padding(
-      padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-      child: FittedBox(
-        fit: BoxFit.contain,
-        child: CircleAvatar(
-          minRadius: 40,
-          backgroundImage: AssetImage("lib/image/Loading.gif"),
-        ), //CircleAvatar
-      ), //FittedBox
-    ), //Padding
-  ); //Expanded
-  final size = MediaQuery.of(context).size;
-
-  final nicknameField = TextFormField(
-    controller: _nicknameController,
-    style: TextStyle(
-      color: Colors.white,
-    ),
-    cursorColor: Colors.white,
-    decoration: InputDecoration(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white,
-        ),
-      ),
-      hintText: "K Amry",
-      labelText: "Nickname",
-      labelStyle: TextStyle(
-        color: Colors.white,
-      ),
-      hintStyle: TextStyle(
-        color: Colors.white,
-      ),
-    ),
-  );
-
-  final emailField = TextFormField(
-    keyboardType: TextInputType.emailAddress,
-    textInputAction: TextInputAction.next,
-    onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-    validator: validateEmail,
-    controller: _emailController,
-    style: TextStyle(
-      color: Colors.white,
-    ),
-    cursorColor: Colors.white,
-    decoration: InputDecoration(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white,
-        ),
-      ),
-      hintText: "something@example.com",
-      labelText: "Email",
-      labelStyle: TextStyle(
-        color: Colors.white,
-      ),
-      hintStyle: TextStyle(
-        color: Colors.white,
-      ),
-    ),
-  );
-
-  final genderField = Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      children: <Widget>[
-        SizedBox(
-          height: 20,
-          width: 20,
-          child: Radio(
-            value: Gender.MAN,
-            groupValue: _userGender,
-            activeColor: Colors.white,
-            onChanged: (value) {
-              setState(() {
-                _userGender = value;
-              });
-            },
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _userGender = Gender.MAN;
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              "Male",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-          width: 20,
-          child: Radio(
-            value: Gender.WOMEN,
-            groupValue: _userGender,
-            activeColor: Colors.white,
-            onChanged: (value) {
-              setState(() {
-                _userGender = value;
-              });
-            },
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _userGender = Gender.WOMEN;
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              "Female",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final ageField = Container(
-    padding: EdgeInsets.symmetric(vertical: 5),
-    alignment: Alignment.center,
-    child: DropdownButton(
-      isExpanded: true,
-      iconSize: 24,
-      elevation: 16,
-      hint: Text(
-        "- years old",
-        textAlign: TextAlign.left,
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      dropdownColor: Color(0xff0c9869),
-      style: TextStyle(
-        color: Colors.white,
-      ),
-      value: _userAge,
-      onChanged: (val) => setState(() => _userAge = val),
-      items: [
-        for (var age in ageList)
-          DropdownMenuItem(
-            value: age,
-            child: SizedBox(
-              child: Text(
-                age.toString() + " years old",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-      ],
-    ),
-  );
-
-  final passwordField = TextFormField(
-    obscureText: true,
-    controller: _passwordController,
-    style: TextStyle(
-      color: Colors.white,
-    ),
-    cursorColor: Colors.white,
-    textInputAction: TextInputAction.next,
-    onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-    validator: validatePassword,
-    decoration: InputDecoration(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white,
-        ),
-      ),
-      hintText: "password",
-      labelText: "Password",
-      labelStyle: TextStyle(
-        color: Colors.white,
-      ),
-      hintStyle: TextStyle(
-        color: Colors.white,
-      ),
-    ),
-  );
-
-  final repasswordField = TextFormField(
-    obscureText: true,
-    textInputAction: TextInputAction.done,
-    onFieldSubmitted: (_) {
-      _sendToServer();
-    },
-    validator: (val) => validateConfirmPassword(_passwordController.text, val),
-    style: TextStyle(
-      color: Colors.white,
-    ),
-    cursorColor: Colors.white,
-    decoration: InputDecoration(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white,
-        ),
-      ),
-      hintText: "password",
-      labelText: "Re-enter Password",
-      labelStyle: TextStyle(
-        color: Colors.white,
-      ),
-      hintStyle: TextStyle(
-        color: Colors.white,
-      ),
-    ),
-  );
-
-  final fields = Padding(
-    padding: EdgeInsets.only(top: 10.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        nicknameField,
-        emailField,
-        genderField,
-        ageField,
-        passwordField,
-        repasswordField,
-      ],
-    ),
-  );
-
-  final bottom = Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: <Widget>[
-      registerButton,
-      Padding(
-        padding: EdgeInsets.all(8.0),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            "Already have an account?",
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  color: Colors.white,
-                ),
-          ),
-          MaterialButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.authLogin);
-            },
-            child: Text(
-              "Login",
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    color: Colors.white,
-                    decoration: TextDecoration.underline,
-                  ),
-            ),
-          ),
-        ],
-      ),
-    ],
-  );
-  Widget formUI() {
-    return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
-      child: Container(
-        height: size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            logo,
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 65,
-                    backgroundColor: Colors.grey.shade400,
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 170,
-                        height: 170,
-                        child: _image == null
-                            ? Image.asset(
-                                'lib/image/Loading.gif',
-                                fit: BoxFit.cover,
-                              )
-                            : Image.file(
-                                _image,
-                                fit: BoxFit.cover,
-                              ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 80,
-                    right: 0,
-                    child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: () {} /*_onCameraClick*/),
-                  )
-                ],
-              ),
-            ),
-            fields,
-            Padding(
-              padding: EdgeInsets.only(bottom: 30),
-              child: bottom,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   void dispose() {
