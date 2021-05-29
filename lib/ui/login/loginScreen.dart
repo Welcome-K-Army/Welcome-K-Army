@@ -22,8 +22,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreen extends State<LoginScreen> {
-  final _key = GlobalKey<FormState>();
-  final _forgotkey = GlobalKey<FormState>();
+  GlobalKey<FormState> _key = new GlobalKey();
+  GlobalKey<FormState> _forgotkey = new GlobalKey();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
   TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
   AutovalidateMode _validate = AutovalidateMode.disabled;
