@@ -103,7 +103,7 @@ class _LoginScreen extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 width: size.width / 1.1,
-                height: size.height / 3.5,
+                height: size.height / 2,
                 child: Column(
                   children: <Widget>[
                     Padding(
