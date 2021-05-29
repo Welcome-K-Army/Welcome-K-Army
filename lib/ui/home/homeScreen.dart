@@ -48,9 +48,7 @@ class _HomeState extends State<HomeScreen> {
                 'Logout',
                 style: TextStyle(color: Colors.black),
               ),
-              leading: Transform.rotate(
-                angle: pi/1,
-                  child: Icon(Icons.exit_to_app, color: Colors.black)),
+              leading: Transform.rotate(angle: pi / 1, child: Icon(Icons.exit_to_app, color: Colors.black)),
               onTap: () async {
                 user.active = false;
                 user.lastOnlineTimestamp = Timestamp.now();
@@ -79,6 +77,18 @@ class _HomeState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             displayCircleImage(user.profilePictureURL, 125, false),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(user.age.toString()),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(user.nickName),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(user.gender),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(user.firstName),
