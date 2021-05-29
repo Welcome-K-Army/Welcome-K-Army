@@ -192,7 +192,6 @@ class OnBoardingState extends State<OnBoarding> {
 // import 'joinOrLogin.dart';
 // import 'Home.dart';
 // import 'userDetail.dart';
-import '/lib/ui/login/loginScreen.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
