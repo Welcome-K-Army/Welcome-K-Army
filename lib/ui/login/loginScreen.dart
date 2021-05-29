@@ -30,19 +30,6 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-        login() async {
-      if (_key.currentState.validate()) {
-        _key.currentState.save();
-        showProgress(context, 'Logging in, please wait...', false);
-        User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
-      } else {
-        setState(() {
-          _validate = AutovalidateMode.onUserInteraction;
-        });
-      }
-    }
-
     Future<User> loginWithUserNameAndPassword() async {
       try {
         auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
@@ -82,6 +69,19 @@ class _LoginScreen extends State<LoginScreen> {
         showAlertDialog(context, 'Couldn\'t Authenticate', 'Login failed. Please try again.');
         print(e.toString());
         return null;
+      }
+    }
+
+    login() async {
+      if (_key.currentState.validate()) {
+        _key.currentState.save();
+        showProgress(context, 'Logging in, please wait...', false);
+        User user = await loginWithUserNameAndPassword();
+        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
+      } else {
+        setState(() {
+          _validate = AutovalidateMode.onUserInteraction;
+        });
       }
     }
 
@@ -151,7 +151,7 @@ class _LoginScreen extends State<LoginScreen> {
                           ),
                           onPressed: () async {
                             try {
-                              FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+                              auth.FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
                               final snackBar = SnackBar(
                                 content: Text("Check your email for password reset."),
                               );
@@ -317,7 +317,7 @@ class _LoginScreen extends State<LoginScreen> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
+                // Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
               },
               child: Text(
                 "Sign Up",
@@ -331,8 +331,6 @@ class _LoginScreen extends State<LoginScreen> {
         ),
       ],
     );
-
-
 
     return Scaffold(
       backgroundColor: Color(0xff0c9869),
