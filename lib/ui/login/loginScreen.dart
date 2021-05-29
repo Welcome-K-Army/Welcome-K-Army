@@ -253,7 +253,7 @@ class _LoginScreen extends State<LoginScreen> {
           ),
           textInputAction: TextInputAction.next,
           validator: validatePassword,
-          onFieldSubmitted: (password) async {
+          onFieldSubmitted: (_passwordController.text) async {
             await login();
           },
         ),
