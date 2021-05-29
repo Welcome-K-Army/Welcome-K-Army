@@ -94,11 +94,10 @@ class _SignUpState extends State<SignUpScreen> {
       }
     }
 
-
-  // final logo = Image.asset(
-  //   "lib/image/Loading.gif",
-  //   height: size.height / 4,
-  // );
+    // final logo = Image.asset(
+    //   "lib/image/Loading.gif",
+    //   height: size.height / 4,
+    // );
     final logo = Expanded(
       child: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -391,53 +390,49 @@ class _SignUpState extends State<SignUpScreen> {
       ],
     );
 
-    final formUI = SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
-      child: Container(
-        height: size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            logo,
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 65,
-                    backgroundColor: Colors.grey.shade400,
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 170,
-                        height: 170,
-                        child: _image == null
-                            ? Image.asset(
-                                'lib/image/Loading.gif',
-                                fit: BoxFit.cover,
-                              )
-                            : Image.file(
-                                _image,
-                                fit: BoxFit.cover,
-                              ),
-                      ),
+    final formUI = Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          logo,
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 32, right: 8, bottom: 8),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 65,
+                  backgroundColor: Colors.grey.shade400,
+                  child: ClipOval(
+                    child: SizedBox(
+                      width: 170,
+                      height: 170,
+                      child: _image == null
+                          ? Image.asset(
+                              'lib/image/Loading.gif',
+                              fit: BoxFit.cover,
+                            )
+                          : Image.file(
+                              _image,
+                              fit: BoxFit.cover,
+                            ),
                     ),
                   ),
-                  Positioned(
-                    left: 80,
-                    right: 0,
-                    child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed:  _onCameraClick),
-                  )
-                ],
-              ),
+                ),
+                Positioned(
+                  left: 80,
+                  right: 0,
+                  child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+                )
+              ],
             ),
-            fields,
-            Padding(
-              padding: EdgeInsets.only(bottom: 30),
-              child: bottom,
-            ),
-          ],
-        ),
+          ),
+          fields,
+          Padding(
+            padding: EdgeInsets.only(bottom: 30),
+            child: bottom,
+          ),
+        ],
       ),
     );
     return Scaffold(
@@ -447,6 +442,7 @@ class _SignUpState extends State<SignUpScreen> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(36, 36, 36, 20),
         child: new Container(
           margin: new EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
           child: new Form(
@@ -512,8 +508,6 @@ class _SignUpState extends State<SignUpScreen> {
     );
     showCupertinoModalPopup(context: context, builder: (context) => action);
   }
-
-
 
   @override
   void dispose() {
