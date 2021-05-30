@@ -25,7 +25,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
       allowedViews: _allowedViews,
       scheduleViewMonthHeaderBuilder: (BuildContext buildContext, ScheduleViewMonthHeaderBuilder details) {
         return Container(
-          color: colors.red,
+          color: Colors.red,
           child: Text("hello"),
         );
       }
