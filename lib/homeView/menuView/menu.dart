@@ -6,10 +6,10 @@ import '../../userAnalysisView/analysisView/analysisView.dart';
 import '../../userAnalysisView/dataInputTabBarView/data_input_tab_bar_view.dart';
 
 final List<Menu> menuList = [
-  new Menu(name: '공지사항', icon: Icon(Icons.star, size: 30), widget: MyHomePage(title: "welcome k army")),
-  new Menu(name: '지도검색', icon: Icon(Icons.location_pin, size: 30), widget: MyHomePage(title: "welcome k army")),
+  new Menu(name: '공지사항', icon: Icon(Icons.star, size: 30), widget: DataInputTabBarView()),
+  new Menu(name: '지도검색', icon: Icon(Icons.location_pin, size: 30), widget: DataInputTabBarView()),
   new Menu(name: '입시정보', icon: Icon(Icons.search, size: 30), widget: DataInputTabBarView()),
-  new Menu(name: '일정', icon: Icon(Icons.calendar_today, size: 30), widget: MyHomePage(title: "welcome k army")),
+  new Menu(name: '일정', icon: Icon(Icons.calendar_today, size: 30), widget: DataInputTabBarView()),
   new Menu(name: '입시분석', icon: Icon(Icons.pie_chart, size: 30), widget: AnalysisView()),
 ];
 
