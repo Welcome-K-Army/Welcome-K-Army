@@ -10,7 +10,7 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
-import 'package:Army/ui/setting/SettingScreen.dart';
+import 'package:Army/ui/setting/settingScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
