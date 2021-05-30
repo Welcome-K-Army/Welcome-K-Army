@@ -34,6 +34,9 @@ TextEditingController _emailController = TextEditingController();
 Gender _userGender;
 
 class _ProfileState extends State<ProfileScreen> {
+  final User user;
+  _ProfileState(this.user);
+
   @override
   void initState() {
     super.initState();
@@ -42,14 +45,10 @@ class _ProfileState extends State<ProfileScreen> {
     _userGender = user.gender == "MAN" ? Gender.MAN : Gender.WOMEN;
   }
 
-  final User user;
-  _ProfileState(this.user);
-
   final ImagePicker _imagePicker = ImagePicker();
   GlobalKey<FormState> _key = new GlobalKey();
   int _userAge;
   AutovalidateMode _validate = AutovalidateMode.disabled;
-
 
   String userGender() {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
@@ -60,7 +59,7 @@ class _ProfileState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    _userAge = user.age;
     final imageField = Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 8, right: 8, bottom: 8),
       child: Stack(
@@ -234,7 +233,7 @@ class _ProfileState extends State<ProfileScreen> {
             iconSize: 24,
             elevation: 16,
             hint: Text(
-              "- years old",
+              "$user.age years old",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,
@@ -279,56 +278,53 @@ class _ProfileState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
         child: Container(
-          height:size.height*1.2,
+          height: size.height * 1.2,
           child: Form(
-            key: _key,
-            autovalidateMode: _validate,
-            child: GestureDetector(
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                },
-                child: ListView(
-                  children: [
-                    imageField,
-                    SizedBox(
-                      height: 30,
-                    ),
-                    nickNameField,
-                    emailField,
-                    genderField,
-                    ageField,
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                      OutlinedButton(
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                        child: Text("Cancel",
-                            style: TextStyle(
-                              fontSize: 17,
-                              letterSpacing: 2,
-                              color: Colors.black,
-                            )), //Text
-                        style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                      ), //OutlineButton
+              key: _key,
+              autovalidateMode: _validate,
+              // child: GestureDetector(
+              //     onTap: () {
+              //       FocusScope.of(context).unfocus();
+              //     },
+              child: Column(
+                children: [
+                  imageField,
+                  nickNameField,
+                  emailField,
+                  genderField,
+                  ageField,
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    OutlinedButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Cancel",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.black,
+                          )), //Text
+                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ), //OutlineButton
 
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Save",
-                            style: TextStyle(
-                              fontSize: 17,
-                              letterSpacing: 2,
-                              color: Colors.white,
-                            )),
-                        style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                      ) //ElevatedButton
-                    ]),
-                  ],
-                ) //ListView
-                ),
-          ), //Form
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Save",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.white,
+                          )),
+                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ) //ElevatedButton
+                  ]),
+                ],
+              ) //ListView
+
+              ), //Form
         ), //Container
       ),
     ); //Scafolld

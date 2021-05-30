@@ -33,7 +33,7 @@ class _SignUpState extends State<SignUpScreen> {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
 
-  int _userAge=10;
+  int _userAge;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
   @override
   Widget build(BuildContext context) {
