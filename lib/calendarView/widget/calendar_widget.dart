@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:syncfusion_flutter_calendar/calendar_controller.dart';
 
 class CalendarWidget extends StatefulWidget {
   CalendarWidgetState createState() => new CalendarWidgetState();
