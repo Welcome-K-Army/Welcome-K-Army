@@ -57,7 +57,7 @@ class _ProfileState extends State<ProfileScreen> {
   }
 
   List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
-  
+
   @override
   Widget build(BuildContext context) {
     final imageField = Padding(
@@ -251,58 +251,60 @@ class _ProfileState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Form(
-        key: _key,
-        autovalidateMode: _validate,
-        child: Container(
-          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: ListView(
-                children: [
-                  imageField,
-                  SizedBox(
-                    height: 30,
-                  ),
-                  nickNameField,
-                  emailField,
-                  genderField,
-                  ageField,
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    OutlinedButton(
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                      child: Text("Cancel",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.black,
-                          )), //Text
-                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ), //OutlineButton
+      body: SingleChildScrollView(
+        child: Form(
+          key: _key,
+          autovalidateMode: _validate,
+          child: Container(
+            padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+            child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: ListView(
+                  children: [
+                    imageField,
+                    SizedBox(
+                      height: 30,
+                    ),
+                    nickNameField,
+                    emailField,
+                    genderField,
+                    ageField,
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                      OutlinedButton(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        child: Text("Cancel",
+                            style: TextStyle(
+                              fontSize: 17,
+                              letterSpacing: 2,
+                              color: Colors.black,
+                            )), //Text
+                        style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                      ), //OutlineButton
 
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Save",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.white,
-                          )),
-                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ) //ElevatedButton
-                  ]),
-                ],
-              ) //ListView
-              ),
-        ), //Container
-      ), //Form
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Save",
+                            style: TextStyle(
+                              fontSize: 17,
+                              letterSpacing: 2,
+                              color: Colors.white,
+                            )),
+                        style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                      ) //ElevatedButton
+                    ]),
+                  ],
+                ) //ListView
+                ),
+          ), //Container
+        ), //Form
+      ),
     ); //Scafolld
   }
 
