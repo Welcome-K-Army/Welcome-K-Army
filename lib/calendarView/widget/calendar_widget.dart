@@ -15,6 +15,12 @@ class CalendarWidgetState extends State<CalendarWidget> {
     CalendarView.schedule
   ];
 
+  Widget scheduleViewMonthHeaderBuilder(BuildContext buildContext, ScheduleViewMonthHeaderBuilder details) {
+    return Container(
+      color: Colors.red,
+      child: Text(details.date.month.toString() + ' ,' + details.date.year.toString()),
+    );    
+  }
   @override
   Widget build(BuildContext context) {
     return SfCalendar(
@@ -23,12 +29,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
       cellBorderColor: Colors.transparent,
       showDatePickerButton: true,
       allowedViews: _allowedViews,
-      scheduleViewMonthHeaderBuilder: (BuildContext buildContext, ScheduleViewMonthHeaderBuilder details) {
-        return Container(
-          color: Colors.red,
-          child: Text("hello"),
-        );
-      }
+      scheduleViewMonthHeaderBuilder: scheduleViewMonthHeaderBuilder,
     );
   }
 }
