@@ -147,7 +147,7 @@ class OnBoardingState extends State<OnBoarding> {
         pushReplacement(context, new SettingScreen(user:User()));
       }
     } else {
-      pushReplacement(context, new OnBoardingScreen());
+      pushReplacement(context, new SettingScreen(user:User()));
     }
   }
 
