@@ -279,7 +279,7 @@ class _ProfileState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
         child: Container(
-          height:size.height*1.2;
+          height:size.height*1.2,
           child: Form(
             key: _key,
             autovalidateMode: _validate,
