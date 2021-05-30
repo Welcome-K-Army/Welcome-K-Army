@@ -8,7 +8,7 @@ class CalendarWidget extends StatefulWidget {
 class CalendarWidgetState extends State<CalendarWidget> {
   CalendarWidgetState();
 
-  CalenderController _calenderController;
+  CalendarController _calendarController;
 
   final List<CalendarView> _allowedViews = <CalendarView>[
     CalendarView.day,
@@ -19,16 +19,16 @@ class CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   initState() {
-    _calenderController = CalenderController();
-    _calenderController.selectDate = DateTime(2021, 06, 01);
-    _calenderController.displayDate = DateTime(2021, 06, 01);
+    _calendarController = CalendarController();
+    _calendarController.selectDate = DateTime(2021, 06, 01);
+    _calendarController.displayDate = DateTime(2021, 06, 01);
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.month,
-      controller: _calenderController,
+      controller: _calendarController,
       initialSelectedDate: DateTime.now(),
       cellBorderColor: Colors.transparent,
       showDatePickerButton: true,
