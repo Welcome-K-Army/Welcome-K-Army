@@ -23,6 +23,12 @@ class CalendarWidgetState extends State<CalendarWidget> {
       cellBorderColor: Colors.transparent,
       showDatePickerButton: true,
       allowedViews: _allowedViews,
+      scheduleViewMonthHeaderBuilder: (BuildContext buildContext, ScheduleViewMonthHeaderBuilder details) {
+        return Container(
+          color: colors.red,
+          child: Text("hello"),
+        );
+      }
     );
   }
 }
