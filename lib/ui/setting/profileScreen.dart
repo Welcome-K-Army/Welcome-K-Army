@@ -1,377 +1,357 @@
-// import 'dart:io'; //카메라 접근하기 위해 필요한 라이블럷ㄹ
-// import 'package:image_picker/image_picker.dart'; //갤러리 접근
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io';
 
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import '../model/user_data_model.dart';
-// import 'package:provider/provider.dart';
-// import '../net/firebase.dart';
-// import 'dart:async';
-// import 'package:flutter/src/widgets/framework.dart';
-// import 'dart:core';
-// import 'package:flutter/src/widgets/editable_text.dart';
-// import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:firebase_core/firebase_core.dart';
+import 'package:image_picker/image_picker.dart';
 
-// class EditProfile extends StatefulWidget {
-//   static const routeName = '/profile/edit';
-//   EditProfile({this.userData});
-//   final userData;
-//   @override
-//   _EditProfileState createState() => _EditProfileState();
-// }
+import 'package:Army/model/user.dart';
+import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/helper.dart';
+import 'package:Army/constants.dart';
+import 'package:Army/main.dart';
 
-// class _EditProfileState extends State<EditProfile> {
-//   File image;
-//   final _scaffoldGlobalKey = GlobalKey<ScaffoldState>();
-//   TextEditingController profileNameTextEditingController;
-//   TextEditingController emailTextEditingController;
-//   TextEditingController ageTextEditingController;
-//   TextEditingController genderTextEditingController;
-//   bool profileChanged = false;
+enum Gender { MAN, WOMEN }
+File _image;
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     final initUser = widget.userData;
-//     profileNameTextEditingController = TextEditingController(text: initUser.nickName);
-//     emailTextEditingController = TextEditingController(text: initUser.email);
-//     ageTextEditingController = TextEditingController(text: initUser.age.toString());
-//     genderTextEditingController = TextEditingController(text: initUser.gender);
-//     profileNameTextEditingController.addListener(() {
-//       if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
-//         setState(() => profileChanged = false);
-//       else
-//         setState(() => profileChanged = true);
-//     });
-//     emailTextEditingController.addListener(() {
-//       if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
-//         setState(() => profileChanged = false);
-//       else
-//         setState(() => profileChanged = true);
-//     });
-//     ageTextEditingController.addListener(() {
-//       if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
-//         setState(() => profileChanged = false);
-//       else
-//         setState(() => profileChanged = true);
-//     });
-//     genderTextEditingController.addListener(() {
-//       if (profileNameTextEditingController.text == initUser.nickName && emailTextEditingController.text == initUser.email && ageTextEditingController.text == initUser.age.toString() && genderTextEditingController.text == initUser.gender)
-//         setState(() => profileChanged = false);
-//       else
-//         setState(() => profileChanged = true);
-//     });
-//   }
+class ProfileScreen extends StatefulWidget {
+  final User user;
 
-//   @override
-//   void dispose() {
-//     profileNameTextEditingController.dispose();
-//     emailTextEditingController.dispose();
-//     ageTextEditingController.dispose();
-//     genderTextEditingController.dispose();
-//     super.dispose();
-//   }
+  ProfileScreen({Key key, @required this.user}) : super(key: key);
 
-//   void takePhoto(ImageSource source) async {
-//     final _picker = ImagePicker();
-//     final _pickimage = await _picker.getImage(source: source);
-//     print(_pickimage.path + "picked File");
+  @override
+  State createState() {
+    return _ProfileState(user);
+  }
+}
 
-//     setState(() {
-//       if (_pickimage != null) {
-//         image = File(_pickimage.path);
-//       }
-//     });
+class _ProfileState extends State<ProfileScreen> {
+  final User user;
+  _ProfileState(this.user);
 
+  final ImagePicker _imagePicker = ImagePicker();
+  GlobalKey<FormState> _key = new GlobalKey();
+  TextEditingController _nicknameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
 
-//     FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-//     Reference storageReference = await _firebaseStorage.ref().child("profile_image/test.png");
-//     UploadTask uploadTask;
-//     // UploadTask storageUploadTask = await storageReference.putFile(await image,metadata);
+  AutovalidateMode _validate = AutovalidateMode.disabled;
+  Gender _userGender = Gender.MAN;
+  String userGender() {
+    return _userGender == Gender.MAN ? "MAN" : "WOMEN";
+  }
 
-//     if (kIsWeb) {
-//       print("web");
-//       uploadTask = storageReference.putData(await _pickimage.readAsBytes());
-//     } else {
-//       print("no web");
-//       uploadTask = storageReference.putFile(File(_pickimage.path));
-//     }
-//     setState(() async {
-//       String downloadURL = await storageReference.getDownloadURL();
-//       print(downloadURL);
-//     });
-//   }
+  int _userAge;
+  List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
+  @override
+  Widget build(BuildContext context) {
+    final imageField = Padding(
+      padding: const EdgeInsets.only(left: 8.0, top: 8, right: 8, bottom: 8),
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          displayCircleImage(user.profilePictureURL == null ? 'assets/images/placeholder.jpg' : user.profilePictureURL, 125, false),
+          Positioned(
+            left: 80,
+            right: 0,
+            child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+          )
+        ],
+      ),
+    );
+    final nickNameField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Profile Name',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        TextField(
+          style: TextStyle(color: Colors.black),
+          controller: _nicknameController,
+          decoration: InputDecoration(
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+          ),
+        )
+      ],
+    );
 
-//   @override
-//   Widget build(BuildContext context) {
-//     // userData.setUserData(loadUser);
+    final emailField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Email',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        TextFormField(
+          controller: _emailController,
+          style: TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+          ),
+        ),
+      ],
+    );
+    final genderField = Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.MAN,
+              groupValue: _userGender,
+              activeColor: Colors.black,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _userGender = Gender.MAN;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "Male",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+            width: 20,
+            child: Radio(
+              value: Gender.WOMEN,
+              groupValue: _userGender,
+              activeColor: Colors.black,
+              onChanged: (value) {
+                setState(() {
+                  _userGender = value;
+                });
+              },
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _userGender = Gender.WOMEN;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "Female",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
 
-//     CollectionReference users = FirebaseFirestore.instance.collection('UserDetail');
+    final ageField = Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      alignment: Alignment.center,
+      child: DropdownButton(
+        isExpanded: true,
+        iconSize: 24,
+        elevation: 16,
+        hint: Text(
+          "- years old",
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        dropdownColor: Colors.white,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        value: _userAge,
+        onChanged: (val) => setState(() => _userAge = val),
+        items: [
+          for (var age in ageList)
+            DropdownMenuItem(
+              value: age,
+              child: SizedBox(
+                child: Text(
+                  age.toString() + " years old",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
 
-//     String uid = FirebaseAuth.instance.currentUser.uid.toString();
-//     users.doc(uid).get().then((DocumentSnapshot documentSnapshot) {
-//       if (documentSnapshot.exists) {
-//         Map<String, dynamic> data = documentSnapshot.data();
-//         // userData.setUserData(UserData.fromJson(data));
-//       } else {
-//         print('no data');
-//       }
-//     });
+    return Scaffold(
+      body: Form(
+        key: _key,
+        autovalidateMode: _validate,
+        child: Container(
+          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+          child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: ListView(
+                children: [
+                  imageField,
+                  SizedBox(
+                    height: 30,
+                  ),
+                  nickNameField,
+                  emailField,
+                  genderField,
+                  ageField,
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    OutlinedButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Cancel",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.black,
+                          )), //Text
+                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ), //OutlineButton
 
-//     // userData.setUserData(userLoad());
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Save",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.white,
+                          )),
+                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ) //ElevatedButton
+                  ]),
+                ],
+              ) //ListView
+              ),
+        ), //Container
+      ), //Form
+    ); //Scafolld
+  }
 
-//     final usernicknameForm = Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: EdgeInsets.only(top: 13),
-//           child: Text(
-//             'Profile Name',
-//             style: TextStyle(color: Colors.black),
-//           ),
-//         ),
-//         TextField(
-//           style: TextStyle(color: Colors.black),
-//           controller: profileNameTextEditingController,
-//           onChanged: (text) => {},
-//           decoration: InputDecoration(
-//             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//           ),
-//         )
-//       ],
-//     );
+  // _saveProfile() async {
+  //   if (_key.currentState.validate()) {
+  //     showProgress(context, 'Saving Profile data, Please wait...', false);
+  //     var profilePicUrl = '';
+  //     try {
+  //       String uid = auth.FirebaseAuth.instance.currentUser.uid;
+  //       if (_image != null) {
+  //         updateProgress('Uploading image, Please wait...');
+  //         profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, uid);
+  //       }
+  //       await FireStoreUtils.firestore.collection(USERS).doc(uid).set(user.toJson());
+  //       hideProgress();
+  //       MyAppState.currentUser = user;
+  //     } on auth.FirebaseAuthException catch (error) {
+  //       hideProgress();
+  //       String message = 'Couldn\'t sign up';
+  //       switch (error.code) {
+  //         case 'email-already-in-use':
+  //           message = 'Email address already in use';
+  //           break;
+  //         case 'invalid-email':
+  //           message = 'validEmail';
+  //           break;
+  //         case 'operation-not-allowed':
+  //           message = 'Email/password accounts are not enabled';
+  //           break;
+  //         case 'weak-password':
+  //           message = 'password is too weak.';
+  //           break;
+  //         case 'too-many-requests':
+  //           message = 'Too many requests, '
+  //               'Please try again later.';
+  //           break;
+  //       }
+  //       showAlertDialog(context, 'Failed', message);
+  //       print(error.toString());
+  //     } catch (e) {
+  //       print('_SignUpState._sendToServer $e');
+  //       hideProgress();
+  //       showAlertDialog(context, 'Failed', 'Couldn\'t sign up');
+  //     }
+  //   } else {
+  //     setState(() {
+  //       _validate = AutovalidateMode.onUserInteraction;
+  //     });
+  //   }
+  // }
 
-//     final useremailForm = Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: EdgeInsets.only(top: 13),
-//           child: Text(
-//             'Email',
-//             style: TextStyle(color: Colors.black),
-//           ),
-//         ),
-//         TextFormField(
-//           controller: emailTextEditingController,
-//           style: TextStyle(color: Colors.black),
-//           decoration: InputDecoration(
-//             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//           ),
-//         ),
-//       ],
-//     );
-//     final usergenderForm = Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: EdgeInsets.only(top: 13),
-//           child: Text(
-//             'Gender',
-//             style: TextStyle(color: Colors.black),
-//           ),
-//         ),
-//         TextField(
-//           style: TextStyle(color: Colors.black),
-//           controller: genderTextEditingController,
-//           decoration: InputDecoration(
-//             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//           ),
-//         )
-//       ],
-//     );
-
-//     final userageForm = Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: EdgeInsets.only(top: 13),
-//           child: Text(
-//             'Age',
-//             style: TextStyle(color: Colors.black),
-//           ),
-//         ),
-//         TextField(
-//           style: TextStyle(color: Colors.black),
-//           controller: ageTextEditingController,
-//           decoration: InputDecoration(
-//             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-//           ),
-//         )
-//       ],
-//     );
-
-//     String _profileImageURL = "";
-// //https://ichi.pro/ko/flutterleul-sayonghayeo-cloud-storagee-imiji-eoblodeu-20936960459186
-
-//     final bottomSheet = Container(
-//         height: 100,
-//         width: MediaQuery.of(context).size.width,
-//         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-//         child: Column(
-//           children: <Widget>[
-//             Text(
-//               'Choose Profile photo',
-//               style: TextStyle(
-//                 fontSize: 20,
-//               ),
-//             ), //Text
-//             SizedBox(
-//               height: 20,
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: <Widget>[
-//                 FlatButton.icon(
-//                   icon: Icon(
-//                     Icons.camera,
-//                     size: 50,
-//                   ),
-//                   onPressed: () {
-//                     takePhoto(ImageSource.camera);
-
-//                     Navigator.pop(context);
-//                   },
-//                   label: Text(
-//                     'Camera',
-//                     style: TextStyle(
-//                       fontSize: 20,
-//                     ),
-//                   ),
-//                 ),
-//                 FlatButton.icon(
-//                   icon: Icon(
-//                     Icons.photo_library,
-//                     size: 50,
-//                   ),
-//                   onPressed: () {
-//                     takePhoto(ImageSource.gallery);
-//                     Navigator.pop(context);
-//                   },
-//                   label: Text(
-//                     'Gallery',
-//                     style: TextStyle(
-//                       fontSize: 20,
-//                     ),
-//                   ),
-//                 ),
-//               ], //children
-//             )
-//           ],
-//         ) //column
-
-//         ); //container
-//     //bottomSheet
-
-//     final imageProfile = Center(
-//       child: Stack(
-//         children: [
-//           Container(
-//               width: 130,
-//               height: 130,
-//               decoration: BoxDecoration(
-//                   border: Border.all(width: 4, color: Colors.green),
-//                   boxShadow: [
-//                     BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1)), //BoxShadow
-//                   ],
-//                   shape: BoxShape.circle,
-//                   image: DecorationImage(
-//                       //DB에서 사진가져와야댐
-//                       fit: BoxFit.cover, //원본크기 유지
-//                       image: (image != null) ? NetworkImage(image.path) : NetworkImage("https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg")))), //Container
-// // (_image != null)?Image.file(_image,fit.BoxFit.fill):Image.network('https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'),
-//           Positioned(
-//             //프로필 수정ui
-//             bottom: 0,
-//             right: 0,
-
-//             child: InkWell(
-//               onTap: () {
-//                 showModalBottomSheet(context: context, builder: ((builder) => bottomSheet));
-//               },
-//               child: Container(
-//                 height: 40,
-//                 width: 40,
-//                 decoration: BoxDecoration(
-//                   shape: BoxShape.circle,
-//                   color: Colors.green,
-//                 ),
-//                 child: Icon(Icons.edit, size: 30, color: Colors.white),
-//               ),
-//             ),
-//           ), //Positioned
-//         ],
-//       ), //Stack
-//     ); //Center
-
-//     return Scaffold(
-//       key: _scaffoldGlobalKey,
-//       body: Container(
-//         padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-//         child: GestureDetector(
-//             onTap: () {
-//               FocusScope.of(context).unfocus();
-//             },
-//             child: ListView(
-//               children: [
-//                 imageProfile,
-//                 SizedBox(
-//                   height: 30,
-//                 ),
-//                 usernicknameForm,
-//                 useremailForm,
-//                 usergenderForm,
-//                 userageForm,
-//                 SizedBox(
-//                   height: 40,
-//                 ),
-//                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-//                   OutlinedButton(
-//                     onPressed: () async {
-//                       Navigator.pop(context);
-//                       // UserData test;
-//                       // test.setUserData(test.userLoad());
-//                       // print(test);
-//                     },
-//                     child: Text("Cancel",
-//                         style: TextStyle(
-//                           fontSize: 17,
-//                           letterSpacing: 2,
-//                           color: Colors.black,
-//                         )), //Text
-//                     style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-//                   ), //OutlineButton
-
-//                   ElevatedButton(
-//                     onPressed: () {
-//                       userUpdate(
-//                         profileNameTextEditingController.text,
-//                         emailTextEditingController.text,
-//                         genderTextEditingController.text,
-//                         int.parse(ageTextEditingController.text),
-//                       );
-//                     }, //바뀐 데이터 db로 보내는 함수 만들어야댐 updateUserData
-//                     //String nickName, String email, String gender, int age
-//                     child: Text("Save",
-//                         style: TextStyle(
-//                           fontSize: 17,
-//                           letterSpacing: 2,
-//                           color: Colors.white,
-//                         )),
-//                     style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-//                   ) //ElevatedButton
-//                 ]),
-//               ],
-//             ) //ListView
-//             ),
-//       ), //Container
-//     ); //Scafolld
-//   } //
-// }
+  _onCameraClick() {
+    final action = CupertinoActionSheet(
+      message: Text(
+        "Add profile picture",
+        style: TextStyle(fontSize: 15.0),
+      ),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: Text("Choose from gallery"),
+          isDefaultAction: false,
+          onPressed: () async {
+            Navigator.pop(context);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
+            if (image != null)
+              setState(() {
+                _image = File(image.path);
+              });
+          },
+        ),
+        CupertinoActionSheetAction(
+          child: Text("Take a picture"),
+          isDestructiveAction: false,
+          onPressed: () async {
+            Navigator.pop(context);
+            PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
+            if (image != null)
+              setState(() {
+                _image = File(image.path);
+              });
+          },
+        )
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: Text("Cancel"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+    showCupertinoModalPopup(context: context, builder: (context) => action);
+  }
+}

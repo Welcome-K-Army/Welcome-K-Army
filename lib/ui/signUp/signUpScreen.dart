@@ -437,7 +437,7 @@ class _SignUpState extends State<SignUpScreen> {
         ],
       ),
     );
-
+///////////////////////////////////////////////     return 문     ////////////////////////////////////////////////
     return Scaffold(
       backgroundColor: Color(COLOR_PRIMARY),
       body: Form(
@@ -450,7 +450,7 @@ class _SignUpState extends State<SignUpScreen> {
       ),
     );
   }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Future<void> retrieveLostData() async {
     final LostData response = await _imagePicker.getLostData();
     if (response == null) {
