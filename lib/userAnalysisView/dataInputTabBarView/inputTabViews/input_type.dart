@@ -6,10 +6,14 @@ import 'custom_drop_down_button.dart';
 import 'input_type_multi_provider.dart';
 
 class InputType extends StatefulWidget {
-  List<ReadInputData> readDatas;
+  // List<ReadInputData> readDatas;
 
-  InputType({this.readDatas});
-  InputTypeState createState() => InputTypeState(readDatas: readDatas);
+  InputType(
+    // {this.readDatas}
+    );
+  InputTypeState createState() => InputTypeState(
+    // readDatas: readDatas
+    );
 }
 
 class InputTypeState extends State<InputType> with SingleTickerProviderStateMixin {
@@ -35,10 +39,12 @@ class InputTypeState extends State<InputType> with SingleTickerProviderStateMixi
     "재외국민 자녀"
   ];
 
-  List<ReadInputData> readDatas;
+  // List<ReadInputData> readDatas;
   bool status = true;
 
-  InputTypeState({this.readDatas});
+  InputTypeState({
+    // this.readDatas
+    });
 
   @override
   Widget build(BuildContext context) {
