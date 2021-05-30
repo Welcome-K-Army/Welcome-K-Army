@@ -22,11 +22,8 @@ class Menu {
 }
 
 class MenuIconButton extends StatelessWidget {
-  const MenuIconButton({
-    Key key,
-    this.menu
-  }) : super(key: key);
-  
+  const MenuIconButton({Key key, this.menu}) : super(key: key);
+
   final Menu menu;
 
   @override
