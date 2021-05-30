@@ -22,6 +22,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
       view: CalendarView.month,
       initialSelectedDate: DateTime.now(),
       cellBorderColor: Colors.transparent,
+      showDatePickerButton: true,
     );
   }
 }
