@@ -78,8 +78,8 @@ class _LoginScreen extends State<LoginScreen> {
       if (_key.currentState.validate()) {
         // _key.currentState.save();
         showProgress(context, 'Logging in, please wait...', false);
-        User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
+        // User user = await loginWithUserNameAndPassword();
+        /*if (user != null)*/ pushAndRemoveUntil(context, HomeScreen(user: User()), false);
       } else {
         setState(() {
           _validate = AutovalidateMode.onUserInteraction;
