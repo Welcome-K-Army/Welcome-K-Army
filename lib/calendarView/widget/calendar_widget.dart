@@ -20,7 +20,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
   @override
   initState() {
     _calendarController = CalendarController();
-    _calendarController.selectDate = DateTime(2021, 06, 01);
+    _calendarController.selectedDate = DateTime(2021, 06, 01);
     _calendarController.displayDate = DateTime(2021, 06, 01);
     super.initState();
   }
