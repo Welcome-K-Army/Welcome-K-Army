@@ -11,7 +11,6 @@ class CalendarWidgetState extends State<CalendarWidget> {
   final List<CalendarView> _allowedViews = <CalendarView>[
     CalendarView.day,
     CalendarView.week,
-    CalendarView.workWeek,
     CalendarView.month,
     CalendarView.schedule
   ];
