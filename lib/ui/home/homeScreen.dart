@@ -10,6 +10,7 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
+import 'package:Army/ui/setting/SettingScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -30,68 +31,63 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(color: Colors.white),
-              ),
-              decoration: BoxDecoration(
-                color: Color(COLOR_PRIMARY),
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Logout',
-                style: TextStyle(color: Colors.black),
-              ),
-              leading: Transform.rotate(angle: pi / 1, child: Icon(Icons.exit_to_app, color: Colors.black)),
-              onTap: () async {
-                user.active = false;
-                user.lastOnlineTimestamp = Timestamp.now();
-                FireStoreUtils.updateCurrentUser(user);
-                await auth.FirebaseAuth.instance.signOut();
-                MyAppState.currentUser = null;
-                pushAndRemoveUntil(context, AuthScreen(), false);
-              },
-            ),
-          ],
-        ),
-      ),
       appBar: AppBar(
-        title: Text(
-          'Home',
-          style: TextStyle(color: Colors.black),
-        ),
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
-        centerTitle: true,
+        title: Text(''),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      floatingActionButton: null,
+      body: DefaultTabController(
+        length: 3,
+        child: Stack(
           children: <Widget>[
-            displayCircleImage(user.profilePictureURL, 125, false),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.age.toString()),
+            Container(
+              height: double.infinity,
+              width: double.infinity,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.nickName),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.gender),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.userID),
+            Scaffold(
+              bottomNavigationBar: Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      icon: Icon(Icons.video_library),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.insert_drive_file),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.account_circle),
+                    ),
+                  ],
+                  labelColor: Color(COLOR_PRIMARY),
+                  indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 4.0),
+                    insets: EdgeInsets.only(bottom: 44),
+                  ),
+                  unselectedLabelColor: Colors.grey,
+                ),
+              ),
+              body: TabBarView(
+                children: <Widget>[
+                  Container(
+                    child: Column(
+                      children: [
+                        // Text(userData.uid),
+                        // Text(userData.nickName),
+                        // Text(userData.email),
+                        // Text(userData.age.toString()),
+                        // Text(userData.gender),
+                      ],
+                    ),
+                  ),
+
+                  Container(),
+                  // Container(),
+                  SettingScreen(user: user),
+                  //VideoScreen(),
+                  //AricleScreen(),
+                  //ProfileScreen(),
+                ],
+              ),
             ),
           ],
         ),

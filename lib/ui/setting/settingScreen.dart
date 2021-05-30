@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import '../model/user.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:Army/main.dart';
+import 'package:Army/model/user.dart';
+import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/helper.dart';
+import 'package:Army/ui/auth/authScreen.dart';
 
 class SettingScreen extends StatelessWidget {
   final User user;
   SettingScreen({Key key, @required this.user}) : super(key: key);
 
-  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,7 +38,14 @@ class SettingScreen extends StatelessWidget {
             //로그아웃 네비게이터
             icon: Icon(Icons.logout),
             text: "Logout",
-            press: () {}),
+            press: () async {
+              user.active = false;
+              user.lastOnlineTimestamp = Timestamp.now();
+              FireStoreUtils.updateCurrentUser(user);
+              await auth.FirebaseAuth.instance.signOut();
+              MyAppState.currentUser = null;
+              pushAndRemoveUntil(context, AuthScreen(), false);
+            }),
       ],
     ); //Column;
   }
