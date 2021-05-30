@@ -24,15 +24,26 @@ class CalendarWidgetState extends State<CalendarWidget> {
     _calendarController.displayDate = DateTime(2021, 06, 01);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return SfCalendar(
-      view: CalendarView.month,
-      controller: _calendarController,
-      initialSelectedDate: DateTime.now(),
-      cellBorderColor: Colors.transparent,
-      showDatePickerButton: true,
-      allowedViews: _allowedViews,
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('일정'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.plus),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        body: SfCalendar(
+          view: CalendarView.month,
+          controller: _calendarController,
+          initialSelectedDate: DateTime.now(),
+          cellBorderColor: Colors.transparent,
+          showDatePickerButton: true,
+          allowedViews: _allowedViews,
+        ));
   }
 }
