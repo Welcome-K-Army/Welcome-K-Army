@@ -58,7 +58,7 @@ class DataInputTabBarViewState extends State<DataInputTabBarView> with SingleTic
             appBar: AppBar(title: Text("UserDataInput"), bottom: TabBar(isScrollable: true, controller: _tabController, tabs: _tabs)),
             body: TabBarView(controller: _tabController, children: <Widget>[
               InputType(readDatas: List<ReadInputData>.generate(3, (index) {
-                return ReadInputData readInputData3 = Provider.of<ReadInputData>(context);
+                return ReadInputData(Provider.of<ReadInputData>(context));
               })),
               InputFirstExam(),
               InputSecondExam(),
