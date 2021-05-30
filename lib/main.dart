@@ -1,13 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 // import 'theme/routes.dart';
-import 'views/opening_screen.dart';
 // import 'model/user_data_model.dart';
-import 'views/login_screen.dart';
-import 'views/register_screen.dart';
-import 'views/menu.dart';
-import 'settings/profile_edit.dart';
-import 'settings/profile_menu.dart';
 
 import 'dart:async';
 
