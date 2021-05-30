@@ -11,6 +11,7 @@ import 'package:Army/services/helper.dart';
 import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
 import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/login/loginScreen.dart';
+import 'package:Army/ui/setting/settingScreen.dart';
 import 'package:Army/ui/signUp/signUpScreen.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -140,10 +141,10 @@ class OnBoardingState extends State<OnBoarding> {
           MyAppState.currentUser = user;
           pushReplacement(context, new HomeScreen(user: user));
         } else {
-          pushReplacement(context, new AuthScreen());
+          pushReplacement(context, new SettingScreen(user:user));
         }
       } else {
-        pushReplacement(context, new AuthScreen());
+        pushReplacement(context, new SettingScreen(user:user));
       }
     } else {
       pushReplacement(context, new OnBoardingScreen());

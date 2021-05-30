@@ -32,7 +32,6 @@ class ProfileScreen extends StatefulWidget {
 TextEditingController _nicknameController = TextEditingController();
 TextEditingController _emailController = TextEditingController();
 Gender _userGender;
-int _userAge;
 
 class _ProfileState extends State<ProfileScreen> {
   @override
@@ -41,7 +40,6 @@ class _ProfileState extends State<ProfileScreen> {
     _nicknameController = TextEditingController(text: user.nickName);
     _emailController = TextEditingController(text: user.email);
     _userGender = user.gender == "MAN" ? Gender.MAN : Gender.WOMEN;
-    _userAge = user.age;
   }
 
   final User user;
@@ -49,7 +47,7 @@ class _ProfileState extends State<ProfileScreen> {
 
   final ImagePicker _imagePicker = ImagePicker();
   GlobalKey<FormState> _key = new GlobalKey();
-
+  int _userAge;
   AutovalidateMode _validate = AutovalidateMode.disabled;
 
   String userGender() {
@@ -60,12 +58,14 @@ class _ProfileState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _userAge = user.age;
+
     final imageField = Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 8, right: 8, bottom: 8),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          _image == null
+          _image != null
               ? CircleAvatar(
                   radius: 65,
                   backgroundColor: Colors.grey.shade400,
@@ -85,7 +85,7 @@ class _ProfileState extends State<ProfileScreen> {
                     ),
                   ),
                 )
-              : displayCircleImage(user.profilePictureURL == "" ? "lib/image/Loading.gif" : user.profilePictureURL, 125, false),
+              : displayCircleImage(user.profilePictureURL.isEmpty ? "lib/image/Loading.gif" : user.profilePictureURL, 125, false),
           Positioned(
             left: 80,
             right: 0,
@@ -135,110 +135,134 @@ class _ProfileState extends State<ProfileScreen> {
         ),
       ],
     );
-    final genderField = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            height: 20,
-            width: 20,
-            child: Radio(
-              value: Gender.MAN,
-              groupValue: _userGender,
-              activeColor: Colors.black,
-              onChanged: (value) {
-                setState(() {
-                  _userGender = value;
-                });
-              },
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _userGender = Gender.MAN;
-              });
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                "Male",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-            width: 20,
-            child: Radio(
-              value: Gender.WOMEN,
-              groupValue: _userGender,
-              activeColor: Colors.black,
-              onChanged: (value) {
-                setState(() {
-                  _userGender = value;
-                });
-              },
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _userGender = Gender.WOMEN;
-              });
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                "Female",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-
-    final ageField = Container(
-      padding: EdgeInsets.symmetric(vertical: 5),
-      alignment: Alignment.center,
-      child: DropdownButton(
-        isExpanded: true,
-        iconSize: 24,
-        elevation: 16,
-        hint: Text(
-          "- years old",
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            color: Colors.black,
+    final genderField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Gender',
+            style: TextStyle(color: Colors.black),
           ),
         ),
-        dropdownColor: Colors.white,
-        style: TextStyle(
-          color: Colors.white,
-        ),
-        value: _userAge,
-        onChanged: (val) => setState(() => _userAge = val),
-        items: [
-          for (var age in ageList)
-            DropdownMenuItem(
-              value: age,
-              child: SizedBox(
-                child: Text(
-                  age.toString() + " years old",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.white,
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+                width: 20,
+                child: Radio(
+                  value: Gender.MAN,
+                  groupValue: _userGender,
+                  activeColor: Colors.black,
+                  onChanged: (value) {
+                    setState(() {
+                      _userGender = value;
+                    });
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _userGender = Gender.MAN;
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "Male",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+                width: 20,
+                child: Radio(
+                  value: Gender.WOMEN,
+                  groupValue: _userGender,
+                  activeColor: Colors.black,
+                  onChanged: (value) {
+                    setState(() {
+                      _userGender = value;
+                    });
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _userGender = Gender.WOMEN;
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "Female",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+
+    final ageField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            'Age',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          alignment: Alignment.center,
+          child: DropdownButton(
+            isExpanded: true,
+            iconSize: 24,
+            elevation: 16,
+            hint: Text(
+              "- years old",
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.black,
+              ),
             ),
-        ],
-      ),
+            dropdownColor: Colors.white,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            value: _userAge,
+            onChanged: (val) => setState(() => _userAge = val),
+            items: [
+              for (var age in ageList)
+                DropdownMenuItem(
+                  value: age,
+                  child: SizedBox(
+                    child: Text(
+                      age.toString() + " years old",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
     );
 
     return Scaffold(
@@ -252,57 +276,57 @@ class _ProfileState extends State<ProfileScreen> {
         centerTitle: true,
       ),
       body: Form(
-          key: _key,
-          autovalidateMode: _validate,
-          child: Container(
-            padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-            child: GestureDetector(
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                },
-                child: ListView(
-                  children: [
-                    imageField,
-                    SizedBox(
-                      height: 30,
-                    ),
-                    nickNameField,
-                    emailField,
-                    genderField,
-                    ageField,
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                      OutlinedButton(
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                        child: Text("Cancel",
-                            style: TextStyle(
-                              fontSize: 17,
-                              letterSpacing: 2,
-                              color: Colors.black,
-                            )), //Text
-                        style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                      ), //OutlineButton
+        key: _key,
+        autovalidateMode: _validate,
+        child: Container(
+          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+          child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: ListView(
+                children: [
+                  imageField,
+                  SizedBox(
+                    height: 30,
+                  ),
+                  nickNameField,
+                  emailField,
+                  genderField,
+                  ageField,
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    OutlinedButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Cancel",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.black,
+                          )), //Text
+                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ), //OutlineButton
 
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Save",
-                            style: TextStyle(
-                              fontSize: 17,
-                              letterSpacing: 2,
-                              color: Colors.white,
-                            )),
-                        style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                      ) //ElevatedButton
-                    ]),
-                  ],
-                ) //ListView
-                ),
-          ), //Container
-        ), //Form
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Save",
+                          style: TextStyle(
+                            fontSize: 17,
+                            letterSpacing: 2,
+                            color: Colors.white,
+                          )),
+                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    ) //ElevatedButton
+                  ]),
+                ],
+              ) //ListView
+              ),
+        ), //Container
+      ), //Form
     ); //Scafolld
   }
 
