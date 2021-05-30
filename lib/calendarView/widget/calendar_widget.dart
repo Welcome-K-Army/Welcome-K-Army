@@ -32,7 +32,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           title: Text('일정'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.plus),
+              icon: Icon(Icons.add),
               onPressed: () {},
             ),
           ],
