@@ -241,7 +241,7 @@ class _ProfileState extends State<ProfileScreen> {
             ),
             dropdownColor: Colors.white,
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
             value: _userAge,
             onChanged: (val) => setState(() => _userAge = val),
@@ -254,7 +254,7 @@ class _ProfileState extends State<ProfileScreen> {
                       age.toString() + " years old",
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
