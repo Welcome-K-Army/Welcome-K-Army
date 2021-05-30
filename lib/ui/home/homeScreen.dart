@@ -91,18 +91,6 @@ class _HomeState extends State<HomeScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(user.firstName),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.email),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(user.phoneNumber),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
               child: Text(user.userID),
             ),
           ],
