@@ -298,6 +298,7 @@ class _ProfileState extends State<ProfileScreen> {
   //       await FireStoreUtils.firestore.collection(USERS).doc(uid).set(user.toJson());
   //       hideProgress();
   //       MyAppState.currentUser = user;
+  //       
   //     } on auth.FirebaseAuthException catch (error) {
   //       hideProgress();
   //       String message = 'Couldn\'t sign up';

@@ -23,7 +23,7 @@ class SettingScreen extends StatelessWidget {
           icon: Icon(Icons.account_circle),
           text: "My Account",
           press: () {
-            push(ProfileScreen(user:user);
+            push(context,ProfileScreen(user:user));
           },
         ),
         Settings(
