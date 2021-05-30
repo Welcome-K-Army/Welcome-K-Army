@@ -251,8 +251,7 @@ class _ProfileState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Form(
+      body: Form(
           key: _key,
           autovalidateMode: _validate,
           child: Container(
@@ -304,7 +303,6 @@ class _ProfileState extends State<ProfileScreen> {
                 ),
           ), //Container
         ), //Form
-      ),
     ); //Scafolld
   }
 
