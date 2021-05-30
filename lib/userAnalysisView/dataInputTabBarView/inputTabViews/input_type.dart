@@ -42,9 +42,9 @@ class InputTypeState extends State<InputType> with SingleTickerProviderStateMixi
   // List<ReadInputData> readDatas;
   bool status = true;
 
-  InputTypeState({
-    // this.readDatas
-    });
+  InputTypeState(
+    //{this.readDatas}
+    );
 
   @override
   Widget build(BuildContext context) {
