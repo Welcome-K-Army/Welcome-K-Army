@@ -7,6 +7,8 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
+import 'package:Army/ui/setting/profileScreen.dart';
+
 
 class SettingScreen extends StatelessWidget {
   final User user;
