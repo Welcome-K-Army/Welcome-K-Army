@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import 'widget/calendar_widget.dart';
-
-class CustomCalendarView extends StatefulWidget {
-  CustomCalendarViewState createState() => new CustomCalendarViewState();
+class CalendarWidget extends StatefulWidget {
+  CalendarWidgetState createState() => new CalendarWidgetState();
 }
 
-class CustomCalendarViewState extends State<CustomCalendarView> {
-  CustomCalendarViewState();
+class CalendarWidgetState extends State<CalendarWidget> {
+  CalendarWidgetState();
 
   final List<CalendarView> _allowedViews = <CalendarView>[
     CalendarView.day,
@@ -20,8 +18,10 @@ class CustomCalendarViewState extends State<CustomCalendarView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CalendarWidget(),
+    return SfCalendar(
+      view: CalendarView.month,
+      initialSelectedDate: DateTime.now(),
+      cellBorderColor: Colors.transparent,
     );
   }
 }
