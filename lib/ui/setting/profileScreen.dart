@@ -57,6 +57,7 @@ class _ProfileState extends State<ProfileScreen> {
   }
 
   List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
+  
   @override
   Widget build(BuildContext context) {
     final imageField = Padding(
@@ -64,7 +65,27 @@ class _ProfileState extends State<ProfileScreen> {
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          displayCircleImage(_imageWhat(), 125, false),
+          _image == null
+              ? CircleAvatar(
+                  radius: 65,
+                  backgroundColor: Colors.grey.shade400,
+                  child: ClipOval(
+                    child: SizedBox(
+                      width: 120,
+                      height: 120,
+                      child: _image == null
+                          ? Image.asset(
+                              "lib/image/Loading.gif",
+                              fit: BoxFit.cover,
+                            )
+                          : Image.file(
+                              _image,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                  ),
+                )
+              : displayCircleImage(user.profilePictureURL == "" ? "lib/image/Loading.gif" : user.profilePictureURL, 125, false),
           Positioned(
             left: 80,
             right: 0,
@@ -298,7 +319,7 @@ class _ProfileState extends State<ProfileScreen> {
   //       await FireStoreUtils.firestore.collection(USERS).doc(uid).set(user.toJson());
   //       hideProgress();
   //       MyAppState.currentUser = user;
-  //       
+  //
   //     } on auth.FirebaseAuthException catch (error) {
   //       hideProgress();
   //       String message = 'Couldn\'t sign up';
@@ -333,19 +354,6 @@ class _ProfileState extends State<ProfileScreen> {
   //     });
   //   }
   // }
-  String _imageWhat() {
-    if (_image == null) {
-      if (user.profilePictureURL != "") {
-        return user.profilePictureURL;
-      }
-    } else {
-      if (_image.path != null) {
-        return _image.path;
-      }
-    }
-
-    return "lib/image/Loading.gif";
-  }
 
   _onCameraClick() {
     final action = CupertinoActionSheet(
