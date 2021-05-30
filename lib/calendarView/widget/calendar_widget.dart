@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-part 'calendar_controller.dart';    
 
 class CalendarWidget extends StatefulWidget {
   CalendarWidgetState createState() => new CalendarWidgetState();
@@ -9,6 +8,7 @@ class CalendarWidget extends StatefulWidget {
 class CalendarWidgetState extends State<CalendarWidget> {
   CalendarWidgetState();
 
+  CalenderController _calenderController;
 
   final List<CalendarView> _allowedViews = <CalendarView>[
     CalendarView.day,
@@ -19,6 +19,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   initState() {
+    _calenderController = CalenderController();
     _calenderController.selectDate = DateTime(2021, 06, 01);
     _calenderController.displayDate = DateTime(2021, 06, 01);
     super.initState();
