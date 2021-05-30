@@ -13,7 +13,6 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
-import 'package:Army/ui/setting/profileScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -80,7 +79,7 @@ class _LoginScreen extends State<LoginScreen> {
         // _key.currentState.save();
         showProgress(context, 'Logging in, please wait...', false);
         User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, ProfileScreen(user: user), false);
+        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
       } else {
         setState(() {
           _validate = AutovalidateMode.onUserInteraction;
@@ -228,9 +227,7 @@ class _LoginScreen extends State<LoginScreen> {
       onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
     ); //TextFormField 이메일
 
-
     final passwordField = TextFormField(
-      
       obscureText: true,
       controller: _passwordController,
       style: TextStyle(
@@ -353,7 +350,7 @@ class _LoginScreen extends State<LoginScreen> {
         key: _key,
         autovalidateMode: _validate,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(36,20,36,20),
+          padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
           child: Container(
             height: size.height,
             child: Column(

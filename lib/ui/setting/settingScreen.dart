@@ -22,7 +22,9 @@ class SettingScreen extends StatelessWidget {
           //계정 수정 네비게이터
           icon: Icon(Icons.account_circle),
           text: "My Account",
-          press: () {},
+          press: () {
+            push(ProfileScreen(user:user);
+          },
         ),
         Settings(
             //관심 직책 네비게이터

@@ -29,22 +29,33 @@ class ProfileScreen extends StatefulWidget {
   }
 }
 
+TextEditingController _nicknameController = TextEditingController();
+TextEditingController _emailController = TextEditingController();
+Gender _userGender;
+int _userAge;
+
 class _ProfileState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _nicknameController = TextEditingController(text: user.nickName);
+    _emailController = TextEditingController(text: user.email);
+    _userGender = user.gender == "MAN" ? Gender.MAN : Gender.WOMEN;
+    _userAge = user.age;
+  }
+
   final User user;
   _ProfileState(this.user);
 
   final ImagePicker _imagePicker = ImagePicker();
   GlobalKey<FormState> _key = new GlobalKey();
-  TextEditingController _nicknameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
 
   AutovalidateMode _validate = AutovalidateMode.disabled;
-  Gender _userGender = Gender.MAN;
+
   String userGender() {
     return _userGender == Gender.MAN ? "MAN" : "WOMEN";
   }
 
-  int _userAge;
   List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
   @override
   Widget build(BuildContext context) {
@@ -53,7 +64,7 @@ class _ProfileState extends State<ProfileScreen> {
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          displayCircleImage(user.profilePictureURL == null ? 'assets/images/placeholder.jpg' : user.profilePictureURL, 125, false),
+          displayCircleImage(_imageWhat(), 125, false),
           Positioned(
             left: 80,
             right: 0,
@@ -210,6 +221,15 @@ class _ProfileState extends State<ProfileScreen> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Profile',
+          style: TextStyle(color: Colors.black),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
       body: Form(
         key: _key,
         autovalidateMode: _validate,
@@ -312,6 +332,19 @@ class _ProfileState extends State<ProfileScreen> {
   //     });
   //   }
   // }
+  String _imageWhat() {
+    if (_image == null) {
+      if (user.profilePictureURL != "") {
+        return user.profilePictureURL;
+      }
+    } else {
+      if (_image.path != null) {
+        return _image.path;
+      }
+    }
+
+    return "lib/image/Loading.gif";
+  }
 
   _onCameraClick() {
     final action = CupertinoActionSheet(
