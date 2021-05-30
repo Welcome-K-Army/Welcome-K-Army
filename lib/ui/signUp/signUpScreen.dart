@@ -28,17 +28,17 @@ class _SignUpState extends State<SignUpScreen> {
   TextEditingController _passwordController = TextEditingController();
 
   AutovalidateMode _validate = AutovalidateMode.disabled;
+  Gender _userGender = Gender.MAN;
+  String userGender() {
+    return _userGender == Gender.MAN ? "MAN" : "WOMEN";
+  }
 
+  int _userAge;
+  List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    Gender _userGender = Gender.MAN;
-    String userGender() {
-      return _userGender == Gender.MAN ? "MAN" : "WOMEN";
-    }
 
-    int _userAge;
-    List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
     // if (Platform.isAndroid) {
     //   retrieveLostData();
     // }
