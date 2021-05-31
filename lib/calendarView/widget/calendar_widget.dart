@@ -37,7 +37,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           actions: <Widget>[
             PopupMenuButton(
                 icon: Icon(Icons.add),
-                onSelcted: (result) {
+                onSelected: (result) {
                   if (result == 0) {
                     Navigator.push(
                       context,
