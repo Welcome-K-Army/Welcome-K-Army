@@ -211,4 +211,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child,
         ],
       );
+  
+  Future saveFrom() async {
+    final isValid = _formKey.currentState.validate();
+  }
 }
