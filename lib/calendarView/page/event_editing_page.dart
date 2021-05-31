@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils.dart';
 
+import '../model/event.dart';
+
 /*
 class EventEditingPage extends StatefulWidget {
   @override
@@ -32,6 +34,7 @@ class EventEditingPage extends StatefulWidget {
 
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formKey = GlobalKey<FormState>();
+  final titleController = TextEditingController();
   DateTime fromDate;
   DateTime toDate;
 
@@ -60,16 +63,18 @@ class _EventEditingPageState extends State<EventEditingPage> {
         actions: buildEditingActions(),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(12),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            buildTitle(),
-            SizedBox(height: 12),
-            buildDateTimePickers(),
-          ],
-        ),
-      ),
+          padding: EdgeInsets.all(12),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                buildTitle(),
+                SizedBox(height: 12),
+                buildDateTimePickers(),
+              ],
+            ),
+          )),
     );
   }
 
@@ -87,11 +92,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Widget buildTitle() => TextFormField(
         style: TextStyle(fontSize: 24),
-        duration: InputDecoration(
+        decoration: InputDecoration(
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
         onFieldSubmitted: (_) {},
+        validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
       );
 
@@ -100,7 +106,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         buildTo(),
       ]);
 
-  Widget buildFrom() => buildHedaer(
+  Widget buildFrom() => buildHeader(
         hedaer: "FROM",
         child: Row(children: [
           Expanded(
@@ -118,7 +124,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ]),
       );
 
-  Widget buildTo() => buildHedaer(
+  Widget buildTo() => buildHeader(
         hedaer: "To",
         child: Row(children: [
           Expanded(
@@ -136,7 +142,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ]),
       );
 
-  Future pickFromDateTime({required bool pickDate}) async {
+  Future pickFromDateTime({bool pickDate}) async {
     final date = await pickDateTime(fromDate, pickDate: pickDate);
     if (date == null) return;
 
@@ -146,7 +152,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     setState(() => fromDate = date);
   }
 
-  Future pickToDateTime({required bool pickDate}) async {
+  Future pickToDateTime({bool pickDate}) async {
     final date = await pickDateTime(
       toDate,
       pickDate: pickDate,
@@ -159,7 +165,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Future<DateTime> pickDateTime(
     DateTime initialDate, {
-    required bool pickDate,
+    bool pickDate,
     DateTime firstDate,
   }) async {
     if (pickDate) {
@@ -191,8 +197,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
   }
 
   Widget buildDropdownField({
-    required String text,
-    required VoidCallback onClicked,
+    String text,
+    VoidCallback onClicked,
   }) =>
       ListTile(
         title: Text(text),
@@ -201,8 +207,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildHeader({
-    required String header,
-    required Widget child,
+    String header,
+    Widget child,
   }) =>
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +217,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child,
         ],
       );
-  
+
   Future saveFrom() async {
     final isValid = _formKey.currentState.validate();
   }
