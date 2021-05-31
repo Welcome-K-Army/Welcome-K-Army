@@ -42,7 +42,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
                         text: TextSpan(children: [
                           TextSpan(
                             text: "일정 추가",
-                            recognize: TapGestureRecognizer()
+                            recognizer: TapGestureRecognizer()
                               ..onTap = () => Navigator.of(context).push(
                                     MaterialPageRoute(builder: (context) => EventEditingPage()),
                                   ),
