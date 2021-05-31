@@ -50,7 +50,17 @@ class _EventEditingPageState extends State<EventEditingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: CloseButton(),
+        actions: buildEditingActions(),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 

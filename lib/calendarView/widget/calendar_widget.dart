@@ -34,24 +34,25 @@ class CalendarWidgetState extends State<CalendarWidget> {
           title: Text('일정'),
           actions: <Widget>[
             PopupMenuButton(
-              icon: Icon(Icons.add),
-              itemBuilder: (context) {
-                var list = List<PopupMenuEntry<Object>>();
-                list.add(
-                  PopupMenuItem(
-                    child: Text("일정 추가"),
-                    value: 1
-                  )
-                );
-                list.add(
-                  PopupMenuItem(
-                    child: Text("학교 일정 추가"),
-                    value: 2
-                  )
-                );
-                return list; 
-              }
-            ),
+                icon: Icon(Icons.add),
+                itemBuilder: (context) {
+                  var list = List<PopupMenuEntry<Object>>();
+                  list.add(PopupMenuItem(
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                            text: "일정 추가",
+                            recognize: TapGestureRecognizer()
+                              ..onTap = () => Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) => EventEditingPage()),
+                                  ),
+                          )
+                        ]),
+                      ),
+                      value: 1));
+                  list.add(PopupMenuItem(child: Text("학교 일정 추가"), value: 2));
+                  return list;
+                }),
           ],
         ),
         body: SfCalendar(
@@ -68,7 +69,6 @@ class CalendarWidgetState extends State<CalendarWidget> {
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => EventEditingPage()),
           ),
-        )
-        );
+        ));
   }
 }
