@@ -46,14 +46,18 @@ class CalendarWidgetState extends State<CalendarWidget> {
                   }
                 },
                 itemBuilder: (context) {
+                  var list = List<PopupMenuEntry<Object>>();  
+                  list.add(
                   PopupMenuItem(
                     child: Text("일정 추가"),
-                    value: 0,
-                  ),
+                    value: 0
+                  ));
+                  list.add(
                   PopupMenuItem(
                     child: Text("학교 일정 추가"),
-                    value: 1,
-                  ),                      
+                    value: 1
+                  ));
+                  return list;               
                 }),
           ],
         ),
