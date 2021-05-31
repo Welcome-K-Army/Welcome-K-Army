@@ -14,6 +14,7 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';
+import 'package:flutter/src/foundation/diagnostics.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
@@ -30,8 +31,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 TextEditingController _nicknameController = TextEditingController();
-TextEditingController _emailController = TextEditingController();
+
 Gender _userGender;
+int _userAge;
 
 class _ProfileState extends State<ProfileScreen> {
   final User user;
@@ -41,13 +43,13 @@ class _ProfileState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     _nicknameController = TextEditingController(text: user.nickName);
-    _emailController = TextEditingController(text: user.email);
     _userGender = user.gender == "MAN" ? Gender.MAN : Gender.WOMEN;
+    _userAge = user.age;
   }
 
   final ImagePicker _imagePicker = ImagePicker();
   GlobalKey<FormState> _key = new GlobalKey();
-  int _userAge;
+
   AutovalidateMode _validate = AutovalidateMode.disabled;
 
   String userGender() {
@@ -59,7 +61,9 @@ class _ProfileState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    _userAge = user.age;
+
+    TextEditingController _emailController = TextEditingController(text: user.email);
+
     final imageField = Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 8, right: 8, bottom: 8),
       child: Stack(
@@ -104,13 +108,17 @@ class _ProfileState extends State<ProfileScreen> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextField(
+        TextFormField(
           style: TextStyle(color: Colors.black),
           controller: _nicknameController,
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
           ),
+          validator: validateName,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         )
       ],
     );
@@ -129,9 +137,14 @@ class _ProfileState extends State<ProfileScreen> {
           controller: _emailController,
           style: TextStyle(color: Colors.black),
           decoration: InputDecoration(
+            hintText: 'Email Address',
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
           ),
+          validator: validateEmail,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         ),
       ],
     );
@@ -233,7 +246,7 @@ class _ProfileState extends State<ProfileScreen> {
             iconSize: 24,
             elevation: 16,
             hint: Text(
-              "$user.age years old",
+              "$_userAge years old",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,
@@ -275,109 +288,86 @@ class _ProfileState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: Container(
         padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
-        child: Container(
-          height: size.height * 1.2,
-          child: Form(
-              key: _key,
-              autovalidateMode: _validate,
-              // child: GestureDetector(
-              //     onTap: () {
-              //       FocusScope.of(context).unfocus();
-              //     },
-              child: Column(
-                children: [
-                  imageField,
-                  nickNameField,
-                  emailField,
-                  genderField,
-                  ageField,
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    OutlinedButton(
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                      child: Text("Cancel",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.black,
-                          )), //Text
-                      style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ), //OutlineButton
+        child: Form(
+            key: _key,
+            autovalidateMode: _validate,
+            child: Column(
+              children: [
+                imageField,
+                nickNameField,
+                emailField,
+                genderField,
+                ageField,
+                SizedBox(
+                  height: 40,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  OutlinedButton(
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Cancel",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.black,
+                        )), //Text
+                    style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ), //OutlineButton
 
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Save",
-                          style: TextStyle(
-                            fontSize: 17,
-                            letterSpacing: 2,
-                            color: Colors.white,
-                          )),
-                      style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    ) //ElevatedButton
-                  ]),
-                ],
-              ) //ListView
+                  ElevatedButton(
+                    onPressed: () {
+                      _saveProfile();
+                      Navigator.pop(context);
+                    },
+                    child: Text("Save",
+                        style: TextStyle(
+                          fontSize: 17,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                        )),
+                    style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  ) //ElevatedButton
+                ]),
+              ],
+            ) //ListView
 
-              ), //Form
-        ), //Container
-      ),
+            ), //Form
+      ), //Container
     ); //Scafolld
   }
 
-  // _saveProfile() async {
-  //   if (_key.currentState.validate()) {
-  //     showProgress(context, 'Saving Profile data, Please wait...', false);
-  //     var profilePicUrl = '';
-  //     try {
-  //       String uid = auth.FirebaseAuth.instance.currentUser.uid;
-  //       if (_image != null) {
-  //         updateProgress('Uploading image, Please wait...');
-  //         profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, uid);
-  //       }
-  //       await FireStoreUtils.firestore.collection(USERS).doc(uid).set(user.toJson());
-  //       hideProgress();
-  //       MyAppState.currentUser = user;
-  //
-  //     } on auth.FirebaseAuthException catch (error) {
-  //       hideProgress();
-  //       String message = 'Couldn\'t sign up';
-  //       switch (error.code) {
-  //         case 'email-already-in-use':
-  //           message = 'Email address already in use';
-  //           break;
-  //         case 'invalid-email':
-  //           message = 'validEmail';
-  //           break;
-  //         case 'operation-not-allowed':
-  //           message = 'Email/password accounts are not enabled';
-  //           break;
-  //         case 'weak-password':
-  //           message = 'password is too weak.';
-  //           break;
-  //         case 'too-many-requests':
-  //           message = 'Too many requests, '
-  //               'Please try again later.';
-  //           break;
-  //       }
-  //       showAlertDialog(context, 'Failed', message);
-  //       print(error.toString());
-  //     } catch (e) {
-  //       print('_SignUpState._sendToServer $e');
-  //       hideProgress();
-  //       showAlertDialog(context, 'Failed', 'Couldn\'t sign up');
-  //     }
-  //   } else {
-  //     setState(() {
-  //       _validate = AutovalidateMode.onUserInteraction;
-  //     });
-  //   }
-  // }
+  _saveProfile() async {
+    if (_key.currentState.validate()) {
+      showProgress(context, 'Saving Profile data, Please wait...', false);
+      var profilePicUrl = '';
+      try {
+        if (_image != null) {
+          updateProgress('Uploading image, Please wait...');
+          profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.uid);
+        }
+        // User tempUser=user;
+        setState(() {
+          user.nickName = _nicknameController.text;
+          user.age = _userAge;
+          user.gender = userGender();
+        });
+
+        await FireStoreUtils.updateCurrentUser(user);
+        hideProgress();
+        MyAppState.currentUser = user;
+      } catch (e) {
+        print('_SignUpState._sendToServer $e');
+        hideProgress();
+      }
+    } else {
+      setState(() {
+        _validate = AutovalidateMode.onUserInteraction;
+      });
+    }
+  }
 
   _onCameraClick() {
     final action = CupertinoActionSheet(

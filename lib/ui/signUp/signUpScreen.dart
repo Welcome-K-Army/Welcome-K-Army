@@ -115,6 +115,7 @@ class _SignUpState extends State<SignUpScreen> {
       style: TextStyle(
         color: Colors.white,
       ),
+      validator: validateName,
       textInputAction: TextInputAction.next,
       onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
       cursorColor: Colors.white,
@@ -450,6 +451,7 @@ class _SignUpState extends State<SignUpScreen> {
       ),
     );
   }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Future<void> retrieveLostData() async {
     final LostData response = await _imagePicker.getLostData();

@@ -150,7 +150,7 @@ Widget _getPlaceholderOrErrorImage(double size, hasBorder) => Container(
       ),
       child: ClipOval(
           child: Image.asset(
-        'assets/images/placeholder.jpg',
+        "lib/image/Loading.gif",
         fit: BoxFit.cover,
         height: size,
         width: size,
