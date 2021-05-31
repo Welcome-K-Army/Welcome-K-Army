@@ -48,9 +48,11 @@ class CalendarWidgetState extends State<CalendarWidget> {
                 itemBuilder: (context) {
                   PopupMenuItem(
                     child: Text("일정 추가"),
+                    value: 0,
                   ),
                   PopupMenuItem(
                     child: Text("학교 일정 추가"),
+                    value: 1,
                   ),                      
                 }),
           ],
