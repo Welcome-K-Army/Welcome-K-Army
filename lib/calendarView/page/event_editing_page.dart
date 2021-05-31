@@ -80,7 +80,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   List<Widget> buildEditingActions() => [
         ElevatedButton.icon(
-          style: ElevatedButton.styleForm(
+          style: ElevatedButton.styleFrom(
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
@@ -228,6 +228,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllday: false,
       );
+
+      //final provider = Provider.of<EventProvider>(context, listen:);
     }
   }
 }
