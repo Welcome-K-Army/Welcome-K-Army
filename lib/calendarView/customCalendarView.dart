@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import 'provider/event_provider.dart';
+
 import 'widget/calendar_widget.dart';
 
 class CustomCalendarView extends StatefulWidget {
@@ -20,9 +22,10 @@ class CustomCalendarViewState extends State<CustomCalendarView> {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => EventProvider(),
+    child: Scaffold(
       body: CalendarWidget(),
-    );
-  }
+    )
+  )
 }

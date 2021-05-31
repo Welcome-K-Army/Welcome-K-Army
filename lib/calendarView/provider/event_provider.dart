@@ -9,5 +9,7 @@ class EventProvider extends ChangeNotifier {
 
   void addEvent(Event event) {
     _events.add(event);
+
+    notifyListeners();
   }
 }

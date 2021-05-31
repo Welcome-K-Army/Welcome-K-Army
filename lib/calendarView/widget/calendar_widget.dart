@@ -24,7 +24,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           PopupMenuButton(
               icon: Icon(Icons.add),
               onSelected: (value) {
-                if (value == 0) {
+                if (value == 1) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => EventEditingPage()),
