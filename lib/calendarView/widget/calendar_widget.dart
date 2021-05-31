@@ -37,23 +37,21 @@ class CalendarWidgetState extends State<CalendarWidget> {
           actions: <Widget>[
             PopupMenuButton(
                 icon: Icon(Icons.add),
+                onSelcted: (result) {
+                  if (result == 0) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventEditingPage()),
+                      );
+                  }
+                },
                 itemBuilder: (context) {
-                  var list = List<PopupMenuEntry<Object>>();
-                  list.add(PopupMenuItem(
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: "일정 추가",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context) => EventEditingPage()),
-                                  ),
-                          )
-                        ]),
-                      ),
-                      value: 1));
-                  list.add(PopupMenuItem(child: Text("학교 일정 추가"), value: 2));
-                  return list;
+                  PopupMenuItem(
+                    child: Text("일정 추가"),
+                  ),
+                  PopupMenuItem(
+                    child: Text("학교 일정 추가"),
+                  ),                      
                 }),
           ],
         ),

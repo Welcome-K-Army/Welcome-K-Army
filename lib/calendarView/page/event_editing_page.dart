@@ -59,7 +59,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
         padding: EdgeInsets.all(12),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[],
+          children: <Widget>[
+            buildTitle(),
+          ],
         ),
       ),
     );
@@ -76,6 +78,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           label: Text('SAVE'),
         )
       ];
+         
   Widget buildTitle() => TextFormField(
         style: TextStyle(fontSize: 24),
         duration: InputDecoration(
