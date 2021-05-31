@@ -27,6 +27,7 @@ class EventEditingPage extends StatefulWidget {
 }
 
 class _EventEditingPageState extends State<EventEditingPage> {
+  final _formKey = GlobalKey<FormState>();
   DateTime fromDate;
   DateTime toDate;
 
