@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import '../page/event_editing_page.dart';
+
 class CalendarWidget extends StatefulWidget {
   CalendarWidgetState createState() => new CalendarWidgetState();
 }
@@ -31,9 +33,24 @@ class CalendarWidgetState extends State<CalendarWidget> {
         appBar: AppBar(
           title: Text('일정'),
           actions: <Widget>[
-            IconButton(
+            PopupMenuButton(
               icon: Icon(Icons.add),
-              onPressed: () {},
+              itemBuilder: (context) {
+                var list = List<PopupMenuEntry<Object>>();
+                list.add(
+                  PopupMenuItem(
+                    child: Text("일정 추가"),
+                    value: 1
+                  )
+                );
+                list.add(
+                  PopupMenuItem(
+                    child: Text("학교 일정 추가"),
+                    value: 2
+                  )
+                );
+                return list; 
+              }
             ),
           ],
         ),
@@ -44,7 +61,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           cellBorderColor: Colors.transparent,
           showDatePickerButton: true,
           allowedViews: _allowedViews,
-        )
+        ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add, color: Colors.white),
           backgroundColor: Colors.red,
