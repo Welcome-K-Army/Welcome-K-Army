@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 
 class EventEditingPage extends StatefulWidget {
+  @override
+  _EventEditingPageState createState() => _EventEditingPageState();
+}
+
+class _EventEditingPageState extends State<EventEditingPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+    );
+  }
+}
+/*
+class EventEditingPage extends StatefulWidget {
   final Event event;
 
   const EventEditingPage({
@@ -13,8 +27,8 @@ class EventEditingPage extends StatefulWidget {
 }
 
 class _EventEditingPageState extends State<EventEditingPage> {
-  late DateTime fromDate;
-  late DateTime toDate;
+  DateTime fromDate;
+  DateTime toDate;
 
   @override
   void initState() {
@@ -61,3 +75,4 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: titleController,
       );
 }
+*/
