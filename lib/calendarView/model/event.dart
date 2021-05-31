@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 class Event {
   final String title;
@@ -9,10 +9,10 @@ class Event {
   final bool isAllday;
 
   const Event({
-    required this.title,
-    required this.description,
-    required this.from,
-    required this.to,
+    this.title,
+    this.description,
+    this.from,
+    this.to,
     this.backgroundColor = Colors.lightGreen,
     this.isAllday = false,
   });

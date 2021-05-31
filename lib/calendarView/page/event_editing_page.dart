@@ -107,7 +107,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ]);
 
   Widget buildFrom() => buildHeader(
-        hedaer: "FROM",
+        header: "FROM",
         child: Row(children: [
           Expanded(
             flex: 2,
@@ -125,7 +125,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildTo() => buildHeader(
-        hedaer: "To",
+        header: "To",
         child: Row(children: [
           Expanded(
             flex: 2,
@@ -220,5 +220,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Future saveFrom() async {
     final isValid = _formKey.currentState.validate();
+
+    if (isValid) {
+      final event = Event(
+        title: titleController.text,
+        from: fromDate,
+        to: toDate,
+        isAllday: false,
+      );
+    }
   }
 }
