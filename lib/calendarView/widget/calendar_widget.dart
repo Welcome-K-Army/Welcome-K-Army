@@ -21,16 +21,21 @@ class CalendarWidgetState extends State<CalendarWidget> {
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
               icon: Icon(Icons.add),
-              onSelected: (route) {
-                Navigator.pushNamed(context, route);
+              onSelected: (value) {
+                if (value == 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventEditingPage()),
+                  );
+                }
               },
               itemBuilder: (context) => [
                     PopupMenuItem(
-                      value: "../page/event_editing_page",
+                      value: 1,
                       child: Text("일정 추가"),
                     ),
                     PopupMenuItem(
-                      value: "",
+                      value: 2,
                       child: Text("학교 일정 추가"),
                     )
                   ])
