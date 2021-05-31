@@ -348,12 +348,10 @@ class _ProfileState extends State<ProfileScreen> {
           updateProgress('Uploading image, Please wait...');
           profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.userID);
         }
-        // User tempUser=user;
-        setState(() {
-          user.nickName = _nicknameController.text;
-          user.age = _userAge;
-          user.gender = userGender();
-        });
+        user.nickName = _nicknameController.text;
+        user.age = _userAge;
+        user.gender = userGender();
+        user.profilePictureURL = profilePicUrl;
 
         await FireStoreUtils.updateCurrentUser(user);
         hideProgress();

@@ -29,10 +29,8 @@ class FireStoreUtils {
     Reference upload = storage.child("images/$userID.png");
     UploadTask uploadTask;
     if (kIsWeb) {
-      print("web");
       uploadTask = upload.putData(await image.readAsBytes());
     } else {
-      print("noweb");
       uploadTask = upload.putFile(image);
     }
     var downloadUrl = await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
