@@ -14,7 +14,6 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
@@ -318,7 +317,7 @@ class _ProfileState extends State<ProfileScreen> {
                   ), //OutlineButton
 
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async{
                       _saveProfile();
                       Navigator.pop(context);
                     },
@@ -347,11 +346,11 @@ class _ProfileState extends State<ProfileScreen> {
         if (_image != null) {
           updateProgress('Uploading image, Please wait...');
           profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.userID);
+          user.profilePictureURL = profilePicUrl;
         }
         user.nickName = _nicknameController.text;
         user.age = _userAge;
         user.gender = userGender();
-        user.profilePictureURL = profilePicUrl;
 
         await FireStoreUtils.updateCurrentUser(user);
         hideProgress();
