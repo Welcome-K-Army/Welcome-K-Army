@@ -228,8 +228,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllday: false,
       );
+      /*
+      final provider = Provider.of<EventProvider>(context, listen:)
+      provider.addEvent(event);
 
-      //final provider = Provider.of<EventProvider>(context, listen:);
+      Navigator.of(context).pop();
+      */
     }
   }
 }
