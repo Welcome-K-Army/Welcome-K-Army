@@ -84,7 +84,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           label: Text('SAVE'),
         )
       ];
-         
+
   Widget buildTitle() => TextFormField(
         style: TextStyle(fontSize: 24),
         duration: InputDecoration(
@@ -94,36 +94,48 @@ class _EventEditingPageState extends State<EventEditingPage> {
         onFieldSubmitted: (_) {},
         controller: titleController,
       );
-  
-  Widget buildDateTimePickers() => Column(
-    children: [
-      buildFrom(),
-    ]
-  );
 
-  Widget buildFrom() => Row(
-    children: [
-      Expanded(
-        child: buildDropdownField(
-          text: Utils.toDate(fromDate),
-          onClicked: () {},
-        ),
-      ),
-      Expanded(
-        child: buildDropdownField(
-          text: Utils.toDate(fromDate),
-          onClicked: () {},
-        )
-      )
-    ]
-  );   
+  Widget buildDateTimePickers() => Column(children: [
+        buildFrom(),
+      ]);
+
+  Widget buildFrom() => buildHedaer(
+        hedaer: "FROM",
+        child: Row(children: [
+          Expanded(
+            flex: 2,
+            child: buildDropdownField(
+              text: Utils.toDate(fromDate),
+              onClicked: () {},
+            ),
+          ),
+          Expanded(
+              child: buildDropdownField(
+            text: Utils.toDate(fromDate),
+            onClicked: () {},
+          ))
+        ]),
+      );
 
   Widget buildDropdownField({
     required String text,
     required VoidCallback onClicked,
-  }) => ListTile(
-      title: Text(text)
-      trailing: Icon(Icons.arrow_drop_down),
-      onTap: onClicked,
-    );  
+  }) =>
+      ListTile(
+        title: Text(text),
+        trailing: Icon(Icons.arrow_drop_down),
+        onTap: onClicked,
+      );
+
+  Widget buildHeader({
+    required String header,
+    required Widget child,
+  }) =>
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(header, style: TextStyle(fontWeight: FontWeight.bold)),
+          child,
+        ],
+      );
 }
