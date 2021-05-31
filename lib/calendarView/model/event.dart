@@ -1,4 +1,4 @@
-import 'pacakge:flutter/material.dart';
+import 'package:meta/meta.dart';
 
 class Event {
   final String title;

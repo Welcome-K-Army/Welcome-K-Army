@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../utils.dart';
+
+/*
 class EventEditingPage extends StatefulWidget {
   @override
   _EventEditingPageState createState() => _EventEditingPageState();
@@ -13,7 +16,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
     );
   }
 }
-/*
+
+*/
 class EventEditingPage extends StatefulWidget {
   final Event event;
 
@@ -61,6 +65,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             buildTitle(),
+            SizedBox(height: 12),
+            buildDateTimePickers(),
           ],
         ),
       ),
@@ -88,5 +94,36 @@ class _EventEditingPageState extends State<EventEditingPage> {
         onFieldSubmitted: (_) {},
         controller: titleController,
       );
+  
+  Widget buildDateTimePickers() => Column(
+    children: [
+      buildFrom(),
+    ]
+  );
+
+  Widget buildFrom() => Row(
+    children: [
+      Expanded(
+        child: buildDropdownField(
+          text: Utils.toDate(fromDate),
+          onClicked: () {},
+        ),
+      ),
+      Expanded(
+        child: buildDropdownField(
+          text: Utils.toDate(fromDate),
+          onClicked: () {},
+        )
+      )
+    ]
+  );   
+
+  Widget buildDropdownField({
+    required String text,
+    required VoidCallback onClicked,
+  }) => ListTile(
+      title: Text(text)
+      trailing: Icon(Icons.arrow_drop_down),
+      onTap: onClicked,
+    );  
 }
-*/
