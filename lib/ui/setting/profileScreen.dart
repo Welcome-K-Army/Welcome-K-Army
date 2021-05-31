@@ -346,7 +346,7 @@ class _ProfileState extends State<ProfileScreen> {
       try {
         if (_image != null) {
           updateProgress('Uploading image, Please wait...');
-          profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.uid);
+          profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.userID);
         }
         // User tempUser=user;
         setState(() {
