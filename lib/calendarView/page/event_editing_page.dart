@@ -97,10 +97,29 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Widget buildDateTimePickers() => Column(children: [
         buildFrom(),
+        buildTo(),
       ]);
 
   Widget buildFrom() => buildHedaer(
         hedaer: "FROM",
+        child: Row(children: [
+          Expanded(
+            flex: 2,
+            child: buildDropdownField(
+              text: Utils.toDate(fromDate),
+              onClicked: () {},
+            ),
+          ),
+          Expanded(
+              child: buildDropdownField(
+            text: Utils.toDate(fromDate),
+            onClicked: () {},
+          ))
+        ]),
+      );
+
+  Widget buildTo() => buildHedaer(
+        hedaer: "To",
         child: Row(children: [
           Expanded(
             flex: 2,
