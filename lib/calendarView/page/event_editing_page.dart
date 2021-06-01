@@ -224,10 +224,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllDay: false,
       );
-      print(event);
+      print(event.description);
       // final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
-      await provider.addEvent(event);
+      await provider.addEvent(event.description);
       print("앙");
       /*
       if (isEditing) {
