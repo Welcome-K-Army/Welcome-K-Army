@@ -225,6 +225,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       // final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
       provider.addEvent(event);
+      print(event);
       /*
       if (isEditing) {
         provider.editEvent(event, widget.event);
