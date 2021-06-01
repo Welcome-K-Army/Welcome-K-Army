@@ -210,7 +210,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  Future saveFrom() async {
+  Future saveForm() async {
     final isValid = _formKey.currentState.validate();
 
     if (isValid) {
@@ -218,7 +218,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         title: titleController.text,
         from: fromDate,
         to: toDate,
-        isAllday: false,
+        isAllDay: false,
       );
       final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
@@ -227,7 +227,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         provider.editEvent(event, widget.event);
         Navigator.of(context).pop();
       } else {
-      provider.addEvent(event);
+        provider.addEvent(event);
       }
       Navigator.of(context).pop();
     }

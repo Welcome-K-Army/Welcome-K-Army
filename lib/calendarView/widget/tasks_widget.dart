@@ -5,6 +5,7 @@ import 'package:syncfusion_flutter_core/theme.dart';
 
 import '../model/event_data_source.dart';
 import '../page/event_editing_page.dart';
+import '../page/event_viewing_page.dart';
 import '../provider/event_provider.dart';
 
 class TasksWidget extends StatefulWidget {
@@ -16,7 +17,7 @@ class _TasksWidgetState extends State<TasksWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
-    final selectedEvents = provider.eventOfSelectedDate;
+    final selectedEvents = provider.eventsOfSelectedDate;
 
     if (selectedEvents.isEmpty) {
       return Center(
