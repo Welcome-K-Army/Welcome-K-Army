@@ -21,19 +21,20 @@ class EventEditingPage extends StatefulWidget {
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  final provider;
   DateTime fromDate;
   DateTime toDate;
 
   @override
   void initState() {
     super.initState();
-
+    provider = Provider.of<EventProvider>(context, listen: false);
     if (widget.event == null) {
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
     } else {
       final event = widget.event;
-      final provider = Provider.of<EventProvider>(context, listen: false);
+      
       titleController.text = event.title;
       fromDate = event.from;
       toDate = event.to;
