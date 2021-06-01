@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../utils.dart';
+import '../model/event.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;
@@ -51,11 +52,11 @@ class EventViewingPage extends StatelessWidget {
           title,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-      ),  
+      ),
       Expanded(
         flex: 2,
         child: Text(
-          date,
+          Utils.toDate(date),
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       )
@@ -63,18 +64,20 @@ class EventViewingPage extends StatelessWidget {
   }
 
   List<Widget> buildViewingActions(BuildContext context, Event event) {
-    IconButton(
-      icon: Icon(Icons.edit),
-      onPressed: () => Navigator.of(context).pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => EventEditingPage(event: event),
+    return <Widget>[
+      IconButton(
+        icon: Icon(Icons.edit),
+        onPressed: () => Navigator.of(context).pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EventEditingPage(event: event),
+          ),
         ),
       ),
-    ),
-    IconButton(
-      icon: Icon(Icons.delete),
-      onPressed: () {},
-    ),
+      IconButton(
+        icon: Icon(Icons.delete),
+        onPressed: () {},
+      ),
+    ];
   }
 }
