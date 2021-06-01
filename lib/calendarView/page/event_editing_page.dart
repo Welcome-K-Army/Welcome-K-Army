@@ -45,6 +45,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (widget.event == null) {
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
+    } else {
+      final event = widget.event;
+
+      titleController.text = event.title;
+      fromDate = event.from;
+      toDate = event.to;
     }
   }
 
@@ -96,7 +102,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
-        onFieldSubmitted: (_) {},
+        onFieldSubmitted: (_) => saveForm(),
         validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
       );
@@ -118,7 +124,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           ),
           Expanded(
               child: buildDropdownField(
-            text: Utils.toDate(fromDate),
+            text: Utils.toTime(fromDate),
             onClicked: () => pickFromDateTime(pickDate: false),
           ))
         ]),
@@ -136,7 +142,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           ),
           Expanded(
               child: buildDropdownField(
-            text: Utils.toDate(toDate),
+            text: Utils.toTime(toDate),
             onClicked: () => pickToDateTime(pickDate: false),
           ))
         ]),
@@ -229,9 +235,15 @@ class _EventEditingPageState extends State<EventEditingPage> {
         isAllday: false,
       );
       /*
+      final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen:)
-      provider.addEvent(event);
 
+      if (isEditing) {
+        provider.editEvent(event, widget.event);
+        Navigator.of(context).pop();
+      } else {
+      provider.addEvent(event);
+      }
       Navigator.of(context).pop();
       */
     }

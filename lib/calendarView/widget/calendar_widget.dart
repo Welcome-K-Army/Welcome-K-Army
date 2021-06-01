@@ -19,6 +19,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final events = Provider.of<EventProvider>(context).events;
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
@@ -44,10 +45,20 @@ class CalendarWidgetState extends State<CalendarWidget> {
         ]),
         body: SfCalendar(
           view: CalendarView.month,
+          dataSource: EventDataSource(events),
           initialSelectedDate: DateTime.now(),
           cellBorderColor: Colors.transparent,
           showDatePickerButton: true,
           allowedViews: _allowedViews,
+          onLongPress: (details) {
+            final provider = Provider.of<EventProvider>(context,  );
+
+            provider.setDate(details.date);
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => TasksWidget(),
+            );
+          }
         ));
   }
 }
