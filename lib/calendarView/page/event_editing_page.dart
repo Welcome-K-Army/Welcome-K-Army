@@ -52,7 +52,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
-        actions: buildEditingActions(),
+        actions: buildEditingActions(context),
       ),
       body: SingleChildScrollView(
           padding: EdgeInsets.all(12),
@@ -70,15 +70,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
     );
   }
 
-  List<Widget> buildEditingActions() => [
+  List<Widget> buildEditingActions(BuildContext context) => [
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
           onPressed: () async {
-            Navigator.pop(context);
-            await saveForm();
+            await saveForm(context);
           },
           icon: Icon(Icons.done),
           label: Text('SAVE'),
@@ -213,7 +212,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  Future saveForm() async {
+  Future saveForm(BuildContext context) async {
     final isValid = _formKey.currentState.validate();
 
     if (isValid) {
@@ -227,9 +226,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
       print(event.description);
       // final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
-            print("앙");
+            print(provider);
       provider.addEvent(event);
       print("앙");
+      Navigator.pop(context);
       /*
       if (isEditing) {
         provider.editEvent(event, widget.event);
