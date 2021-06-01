@@ -216,12 +216,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (isValid) {
       final event = Event(
         title: titleController.text,
+        description: 'Description',
         from: fromDate,
         to: toDate,
         isAllDay: false,
       );
       final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context, listen: true);
+      final provider = Provider.of<EventProvider>(context, listen: false);
 
       if (isEditing) {
         provider.editEvent(event, widget.event);
