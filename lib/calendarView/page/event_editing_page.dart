@@ -76,7 +76,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
-          onPressed:()async {saveForm()},
+          onPressed:saveForm,
           icon: Icon(Icons.done),
           label: Text('SAVE'),
         )
@@ -224,7 +224,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
       // final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
-      provider.addEvent(event);
+      await provider.addEvent(event);
       print("앙");
       /*
       if (isEditing) {
