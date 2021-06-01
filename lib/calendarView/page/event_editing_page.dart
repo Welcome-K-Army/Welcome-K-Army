@@ -76,10 +76,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
-          onPressed:() async {
-      Navigator.pop(context);
-            awaitsaveForm();
-            },
+          onPressed: () async {
+            Navigator.pop(context);
+            await saveForm();
+          },
           icon: Icon(Icons.done),
           label: Text('SAVE'),
         )
