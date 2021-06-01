@@ -233,7 +233,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         provider.addEvent(event);
       }
       */
-      Navigator.of(context).pop();
+      Navigator.pop(context);
     }
   }
 }
