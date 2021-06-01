@@ -61,7 +61,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                buildTitle(),
+                buildTitle(context),
                 SizedBox(height: 12),
                 buildDateTimePickers(),
               ],
@@ -84,13 +84,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
         )
       ];
 
-  Widget buildTitle() => TextFormField(
+  Widget buildTitle(BuildContext context) => TextFormField(
         style: TextStyle(fontSize: 24),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
-        onFieldSubmitted: (_) => saveForm(),
+        onFieldSubmitted: (_) => saveForm(context),
         validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
       );
