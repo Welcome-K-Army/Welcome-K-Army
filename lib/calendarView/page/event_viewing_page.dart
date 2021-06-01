@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'event_editing_page.dart';
 import '../utils.dart';
 import '../model/event.dart';
 
@@ -68,7 +69,6 @@ class EventViewingPage extends StatelessWidget {
       IconButton(
         icon: Icon(Icons.edit),
         onPressed: () => Navigator.of(context).pushReplacement(
-          context,
           MaterialPageRoute(
             builder: (context) => EventEditingPage(event: event),
           ),
