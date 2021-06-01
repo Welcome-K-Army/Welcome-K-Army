@@ -224,7 +224,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       // final isEditing = widget.event != null;
       final provider1 = Provider.of<EventProvider>(context, listen: false);
       print(provider1);
-      provide1.addEvent(event);
+      provider1.addEvent(event);
       Navigator.pop(context);
       print("앙");
       /*
