@@ -56,7 +56,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           showDatePickerButton: true,
           allowedViews: _allowedViews,
           onLongPress: (details) {
-            final provider = Provider.of<EventProvider>(context,  );
+            final provider = Provider.of<EventProvider>(context, listen: true);
 
             provider.setDate(details.date);
             showModalBottomSheet(
