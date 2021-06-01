@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../utils.dart';
 
 import '../model/event.dart';
+import '../provider/event_provider.dart';
 
-/*
-class EventEditingPage extends StatefulWidget {
-  @override
-  _EventEditingPageState createState() => _EventEditingPageState();
-}
-
-class _EventEditingPageState extends State<EventEditingPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
-  }
-}
-
-*/
 class EventEditingPage extends StatefulWidget {
   final Event event;
 

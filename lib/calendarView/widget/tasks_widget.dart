@@ -4,6 +4,7 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
 import '../model/event_data_source.dart';
+import '../page/event_editing_page.dart';
 import '../provider/event_provider.dart';
 
 class TasksWidget extends StatefulWidget {
@@ -15,7 +16,7 @@ class _TasksWidgetState extends State<TasksWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
-    final selectedEvents = provider.eventOfSelcetedDate;
+    final selectedEvents = provider.eventOfSelectedDate;
 
     if (selectedEvents.isEmpty) {
       return Center(
@@ -43,7 +44,7 @@ class _TasksWidgetState extends State<TasksWidget> {
         onTap: (details) {
           if (details.appointments == null) return;
 
-          final event = details.appointment.first; 
+          final event = details.appointments.first; 
 
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => EventViewingPage(event: event),
