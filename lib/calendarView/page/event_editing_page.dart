@@ -220,20 +220,20 @@ class _EventEditingPageState extends State<EventEditingPage> {
         isAllDay: false,
       );
       print(event.description);
-      // final isEditing = widget.event != null;
+      
+      final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context);
       provider.addEvent(event);
       print("좀 되라");
       Navigator.of(context).pop();
-      /*
+      
       if (isEditing) {
         provider.editEvent(event, widget.event);
         Navigator.of(context).pop();
       } else {
         provider.addEvent(event);
       }
-      */
-
+      Navigator.of(context).pop();
     }
   }
 }
