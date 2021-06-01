@@ -214,6 +214,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     final isValid = _formKey.currentState.validate();
 
     if (isValid) {
+      print(isValid);
       final event = Event(
         title: titleController.text,
         description: 'Description',
