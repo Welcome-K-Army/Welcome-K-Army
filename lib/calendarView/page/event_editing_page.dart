@@ -209,7 +209,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  void saveForm() async {
+  void saveForm()  {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
       final event = Event(
