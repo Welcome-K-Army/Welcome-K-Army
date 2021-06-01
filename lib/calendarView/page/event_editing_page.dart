@@ -222,11 +222,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
         isAllDay: false,
       );
       print(event.description);
-      Navigator.pop(context);
       // final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: true);
       print(provider);
       provider.addEvent(event);
+      Navigator.pop(context);
       print("앙");
       /*
       if (isEditing) {
