@@ -33,7 +33,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       toDate = DateTime.now().add(Duration(hours: 2));
     } else {
       final event = widget.event;
-
+      final provider = Provider.of<EventProvider>(context, listen: false);
       titleController.text = event.title;
       fromDate = event.from;
       toDate = event.to;
@@ -222,9 +222,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
       print(event.description);
       // final isEditing = widget.event != null;
-      final provider1 = Provider.of<EventProvider>(context, listen: false);
-      print(provider1);
-      provider1.addEvent(event);
+
+      print(provider);
+      provider.addEvent(event);
       Navigator.pop(context);
       print("앙");
       /*
