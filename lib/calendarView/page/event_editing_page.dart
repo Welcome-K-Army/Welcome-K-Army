@@ -234,9 +234,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllday: false,
       );
-      /*
       final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context, listen:)
+      final provider = Provider.of<EventProvider>(context, listen: true);
 
       if (isEditing) {
         provider.editEvent(event, widget.event);
@@ -245,7 +244,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
       provider.addEvent(event);
       }
       Navigator.of(context).pop();
-      */
     }
   }
 }

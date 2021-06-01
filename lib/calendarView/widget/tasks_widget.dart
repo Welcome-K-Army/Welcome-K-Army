@@ -3,6 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
+import '../model/event_data_source.dart';
+import '../provider/event_provider.dart';
+
 class TasksWidget extends StatefulWidget {
   @override
   _TasksWidgetState createState() => _TasksWidgetState();
@@ -29,7 +32,7 @@ class _TasksWidgetState extends State<TasksWidget> {
       ),
       child: SfCalendar(
         view: CalendarView.timelineDay,
-        dateSource: EventDataSource(provider.events),       
+        dataSource: EventDataSource(provider.events),       
         initialDisplayDate: provider.selectedDate,
         appointmentBuilder: appointmentBuilder,
         headerHeight: 0,
@@ -61,8 +64,8 @@ class _TasksWidgetState extends State<TasksWidget> {
       height: details.bounds.height,
       decoration: BoxDecoration(
         color: event.backgroundColor.withOpacity(0.5),
-        borderRadius.: BorderRadius.circular(12),
-      )
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Center(
         child: Text(
         event.title,
