@@ -55,6 +55,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           cellBorderColor: Colors.transparent,
           showDatePickerButton: true,
           allowedViews: _allowedViews,
+          /*
           onLongPress: (details) {
             final provider = Provider.of<EventProvider>(context, listen: false);
 
@@ -64,6 +65,8 @@ class CalendarWidgetState extends State<CalendarWidget> {
               builder: (context) => TasksWidget(),
             );
           }
+          */
+          
         ));
   }
 }
