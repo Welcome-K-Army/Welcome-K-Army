@@ -209,7 +209,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  void saveForm()  {
+  Future saveForm() async {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
       final event = Event(
@@ -221,7 +221,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
       print(event.description);
       // final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context);
+      provider = Provider.of<EventProvider>(context);
       print(provider);
       provider.addEvent(event);
       Navigator.pop(context);
