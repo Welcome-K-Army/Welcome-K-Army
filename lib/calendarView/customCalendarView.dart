@@ -23,7 +23,7 @@ class CustomCalendarViewState extends State<CustomCalendarView> {
   ];
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
+  Widget build(BuildContext context) => ChangeNotifierProvider<EventProvider>(
     create: (context) => EventProvider(),
     child: Scaffold(
       body: CalendarWidget(),
