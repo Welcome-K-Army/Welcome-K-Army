@@ -214,7 +214,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
     final isValid = _formKey.currentState.validate();
 
     if (isValid) {
-      print(isValid);
       final event = Event(
         title: titleController.text,
         description: 'Description',
@@ -222,8 +221,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllDay: false,
       );
-      final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context, listen: false);
+
+      // final isEditing = widget.event != null;
+      final provider = Provider.of<EventProvider>(context, listen: true);
       provider.addEvent(event);
       /*
       if (isEditing) {
@@ -234,6 +234,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       }
       */
       Navigator.of(context).pop();
+
     }
   }
 }
