@@ -212,7 +212,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Future saveForm() async {
     final isValid = _formKey.currentState.validate();
-    final provider = Provider.of<EventProvider>(context, listen: true);
+    final provider = await Provider.of<EventProvider>(context, listen: true);
     if (isValid) {
       final event = Event(
         title: titleController.text,
