@@ -24,9 +24,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EventProvider>(context);
-    final events = provider.events;
-    print(provider);
+    final events = Provider.of<EventProvider>(context).events;
     print(events);
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
@@ -37,7 +35,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChangeNotifierProvider.value(value: provider, child: EventEditingPage())),
+                        builder: (context) => EventEditingPage()),
                       );
                 }
               },
