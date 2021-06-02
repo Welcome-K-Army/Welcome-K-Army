@@ -18,7 +18,8 @@ class CalendarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final events = Provider.of<EventProvider>(context).events;
+    final provider = Provider.of<EventProvider>(context).events;
+    final events = provider.events;
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
@@ -51,7 +52,6 @@ class CalendarWidget extends StatelessWidget {
             showDatePickerButton: true,
             allowedViews: _allowedViews,
             onLongPress: (details) {
-              final provider = Provider.of<EventProvider>(context, listen: false);
               print(provider);
               provider.setDate(details.date);
               showModalBottomSheet(
@@ -60,6 +60,7 @@ class CalendarWidget extends StatelessWidget {
               );
             }),
             );
+  }
 
 }
 
