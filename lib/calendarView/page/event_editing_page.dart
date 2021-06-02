@@ -52,7 +52,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
-        actions: buildEditingActions(),
+        actions: buildEditingActions(provider),
       ),
       body: SingleChildScrollView(
           padding: EdgeInsets.all(12),
@@ -61,7 +61,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                buildTitle(),
+                buildTitle(provider),
                 SizedBox(height: 12),
                 buildDateTimePickers(),
               ],
@@ -70,25 +70,27 @@ class _EventEditingPageState extends State<EventEditingPage> {
     );
   }
 
-  List<Widget> buildEditingActions() => [
+  List<Widget> buildEditingActions(EventProvider provider) => [
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
-          onPressed: saveForm,
+          onPressed: () => async{
+            saveForm(provider)
+          },
           icon: Icon(Icons.done),
           label: Text('SAVE'),
         )
       ];
 
-  Widget buildTitle() => TextFormField(
+  Widget buildTitle(EventProvider provider) => TextFormField(
         style: TextStyle(fontSize: 24),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           hintText: 'Add Title',
         ),
-        onFieldSubmitted: (_) => saveForm(),
+        onFieldSubmitted: (_) => saveForm(provider),
         validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: titleController,
       );
@@ -210,7 +212,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  Future saveForm() async {
+  Future saveForm(EventProvider provider) async {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
       final event = Event(
@@ -223,10 +225,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
       print(context);
 
       final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context);
-      provider.addEvent(event);
-      print("좀 되라");
-      Navigator.of(context).pop();
 
       if (isEditing) {
         provider.editEvent(event, widget.event);
@@ -234,6 +232,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       } else {
         provider.addEvent(event);
       }
+      print("좀 되라");
       Navigator.of(context).pop();
     }
   }
