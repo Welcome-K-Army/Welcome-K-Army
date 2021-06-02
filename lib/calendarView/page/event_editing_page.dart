@@ -48,8 +48,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EventProvider>(context);
-    print(provider);
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),

@@ -65,6 +65,14 @@ class CalendarWidgetState extends State<CalendarWidget> {
                 context: context,
                 builder: (context) => TasksWidget(),
               );
-            }));
+            })
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add, color: Colors.white),
+          backgroundColor: Colors.red,
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(builder:(context) => EventEditingPage()),
+          )
+        )
+            );
   }
 }
