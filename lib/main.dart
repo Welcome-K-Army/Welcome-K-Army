@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'constants.dart';
 
 import './mainView/mainView.dart';
-import './calendarView/provider/event_provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => EventProvider()),
-  ], child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
