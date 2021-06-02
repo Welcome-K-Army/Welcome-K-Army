@@ -7,9 +7,7 @@ import 'widget/calendar_widget.dart';
 
 class CustomCalendarView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider<EventProvider>(
-      create: (context) => EventProvider(),
-      child: Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         body: CalendarWidget(),
-      ));
+      );
 }
