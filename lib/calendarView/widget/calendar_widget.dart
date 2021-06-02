@@ -25,7 +25,6 @@ class CalendarWidgetState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<EventProvider>(context).events;
-    print(events);
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
@@ -58,7 +57,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
           allowedViews: _allowedViews,
           onLongPress: (details) {
             final provider = Provider.of<EventProvider>(context, listen: false);
-
+            print(provider.events);
             provider.setDate(details.date);
             showModalBottomSheet(
               context: context,
