@@ -48,6 +48,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventProvider>(context);
+    print(provider);
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
@@ -220,7 +222,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         isAllDay: false,
       );
       print(context);
-      print(Provider.of<EventProvider>(context));
+      
       final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context);
       provider.addEvent(event);
