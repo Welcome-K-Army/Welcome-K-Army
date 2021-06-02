@@ -85,7 +85,7 @@ class EventViewingPage extends StatelessWidget {
           provider.deleteEvent(event);
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => CalendarWidget();
+              builder: (context) => CalendarWidget()
             )
           );
         },
