@@ -25,7 +25,6 @@ class CalendarWidgetState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<EventProvider>(context).events;
-    print(events);
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
@@ -66,13 +65,6 @@ class CalendarWidgetState extends State<CalendarWidget> {
                 builder: (context) => TasksWidget(),
               );
             }),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add, color: Colors.white),
-          backgroundColor: Colors.red,
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(builder:(context) => EventEditingPage()),
-          )
-        )
             );
   }
 }
