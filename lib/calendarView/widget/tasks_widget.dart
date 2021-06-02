@@ -34,24 +34,24 @@ class _TasksWidgetState extends State<TasksWidget> {
       ),
       child: SfCalendar(
         view: CalendarView.timelineDay,
-        dataSource: EventDataSource(provider.events),       
+        dataSource: EventDataSource(provider.events),
         initialDisplayDate: provider.selectedDate,
         appointmentBuilder: appointmentBuilder,
         headerHeight: 0,
-        todayHighlightColor: Colors.black, 
+        todayHighlightColor: Colors.black,
         selectionDecoration: BoxDecoration(
           color: Colors.transparent,
         ),
         onTap: (details) {
           if (details.appointments == null) return;
 
-          final event = details.appointments.first; 
+          final event = details.appointments.first;
 
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => EventViewingPage(event: event),
           ));
         },
-      ), 
+      ),
     );
   }
 
@@ -70,16 +70,16 @@ class _TasksWidgetState extends State<TasksWidget> {
       ),
       child: Center(
         child: Text(
-        event.title,
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+          event.title,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        ),
-      ), 
+      ),
     );
   }
 }
