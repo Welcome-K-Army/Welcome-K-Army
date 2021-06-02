@@ -8,7 +8,7 @@ import './calendarView/provider/event_provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotiferProvider(create: (context) => EventProvider()),
+    ChangeNotifierProvider(create: (context) => EventProvider()),
   ], child: MyApp()));
 }
 
