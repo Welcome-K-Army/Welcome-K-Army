@@ -18,7 +18,7 @@ class CalendarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EventProvider>(context).events;
+    final provider = Provider.of<EventProvider>(context);
     final events = provider.events;
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
