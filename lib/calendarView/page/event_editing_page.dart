@@ -48,6 +48,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
@@ -222,7 +223,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       print(event.description);
       
       final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context);
+      
       provider.addEvent(event);
       print("좀 되라");
       Navigator.of(context).pop();
