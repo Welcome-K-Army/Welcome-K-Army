@@ -76,7 +76,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
                     primary: Colors.transparent,
                     shadowColor: Colors.transparent,
                   ),
-                  onPressed: saveForm,
+                  onPressed: () async {
+                    saveForm(provider);
+                  },
                   icon: Icon(Icons.done),
                   label: Text('SAVE'),
                 ))
@@ -89,7 +91,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
               border: UnderlineInputBorder(),
               hintText: 'Add Title',
             ),
-            onFieldSubmitted: (_) => saveForm(),
+            onFieldSubmitted: (_) => saveForm(provider),
             validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
             controller: titleController,
           ));
