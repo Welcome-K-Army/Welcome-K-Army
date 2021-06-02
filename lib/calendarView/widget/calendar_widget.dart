@@ -25,6 +25,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<EventProvider>(context).events;
+    print(events);
     return Scaffold(
         appBar: AppBar(title: Text("일정"), actions: <Widget>[
           PopupMenuButton(
