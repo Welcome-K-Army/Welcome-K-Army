@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'event_editing_page.dart';
 import '../utils.dart';
 import '../model/event.dart';
+import '../provider/event_provider.dart';
+import '../widget/calendar_widget.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;
@@ -14,10 +16,12 @@ class EventViewingPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    final provider = Provider.of<EventProvider>(context);
+    return Scaffold(
         appBar: AppBar(
           leading: CloseButton(),
-          actions: buildViewingActions(context, event),
+          actions: buildViewingActions(context, event, provider),
         ),
         body: ListView(
           padding: EdgeInsets.all(32),
@@ -36,6 +40,7 @@ class EventViewingPage extends StatelessWidget {
           ],
         ),
       );
+  }
 
   Widget buildDateTime(Event event) {
     return Column(
@@ -64,7 +69,7 @@ class EventViewingPage extends StatelessWidget {
     ]);
   }
 
-  List<Widget> buildViewingActions(BuildContext context, Event event) {
+  List<Widget> buildViewingActions(BuildContext context, Event event, EventProvider provider) {
     return <Widget>[
       IconButton(
         icon: Icon(Icons.edit),
@@ -76,7 +81,14 @@ class EventViewingPage extends StatelessWidget {
       ),
       IconButton(
         icon: Icon(Icons.delete),
-        onPressed: () {},
+        onPressed: () {
+          provider.deleteEvent(event);
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => CalendarWidget();
+            )
+          );
+        },
       ),
     ];
   }
