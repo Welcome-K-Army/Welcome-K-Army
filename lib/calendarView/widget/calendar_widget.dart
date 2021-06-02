@@ -32,11 +32,10 @@ class CalendarWidgetState extends State<CalendarWidget> {
               onSelected: (value) {
                 if (value == 1) {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChangeNotifierProvider(
-                      create: (context) => EventProvider(),
-                      child:EventEditingPage()),
-                  );
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(create: (context) => EventProvider(), child: EventEditingPage()),
+                      ));
                 }
               },
               itemBuilder: (context) => [
@@ -51,20 +50,19 @@ class CalendarWidgetState extends State<CalendarWidget> {
                   ])
         ]),
         body: SfCalendar(
-          view: CalendarView.month,
-          dataSource: EventDataSource(events),
-          initialSelectedDate: DateTime.now(),
-          cellBorderColor: Colors.transparent,
-          showDatePickerButton: true,
-          allowedViews: _allowedViews,
-          onLongPress: (details) {
-            final provider = Provider.of<EventProvider>(context, listen: false);
-            provider.setDate(details.date);
-            showModalBottomSheet(
-              context: context,
-              builder: (context) => TasksWidget(),
-            );
-          }
-        ));
+            view: CalendarView.month,
+            dataSource: EventDataSource(events),
+            initialSelectedDate: DateTime.now(),
+            cellBorderColor: Colors.transparent,
+            showDatePickerButton: true,
+            allowedViews: _allowedViews,
+            onLongPress: (details) {
+              final provider = Provider.of<EventProvider>(context, listen: false);
+              provider.setDate(details.date);
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => TasksWidget(),
+              );
+            }));
   }
 }
