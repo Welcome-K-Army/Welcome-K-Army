@@ -48,6 +48,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
@@ -70,31 +71,27 @@ class _EventEditingPageState extends State<EventEditingPage> {
   }
 
   List<Widget> buildEditingActions() => [
-        Consumer<EventProvider>(
-            builder: (context, provider, child) => ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                  ),
-                  onPressed: () async {
-                    saveForm(provider);
-                  },
-                  icon: Icon(Icons.done),
-                  label: Text('SAVE'),
-                ))
+        ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.transparent,
+            shadowColor: Colors.transparent,
+          ),
+          onPressed: saveForm,
+          icon: Icon(Icons.done),
+          label: Text('SAVE'),
+        )
       ];
 
-  Widget buildTitle() => Consumer<EventProvider>(
-      builder: (context, provider, child) => TextFormField(
-            style: TextStyle(fontSize: 24),
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Add Title',
-            ),
-            onFieldSubmitted: (_) => saveForm(provider),
-            validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
-            controller: titleController,
-          ));
+  Widget buildTitle() => TextFormField(
+        style: TextStyle(fontSize: 24),
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(),
+          hintText: 'Add Title',
+        ),
+        onFieldSubmitted: (_) => saveForm(),
+        validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
+        controller: titleController,
+      );
 
   Widget buildDateTimePickers() => Column(children: [
         buildFrom(),
@@ -213,7 +210,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         ],
       );
 
-  Future saveForm(EventProvider provider) async {
+  Future saveForm() async {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
       final event = Event(
@@ -226,6 +223,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       print(context);
 
       final isEditing = widget.event != null;
+      final provider = Provider.of<EventProvider>(context);
       provider.addEvent(event);
       print("좀 되라");
       Navigator.of(context).pop();
