@@ -33,7 +33,9 @@ class CalendarWidgetState extends State<CalendarWidget> {
                 if (value == 1) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EventEditingPage()),
+                    MaterialPageRoute(builder: (context) => ChangeNotifierProvider(
+                      create: (context) => EventProvider(),
+                      child:EventEditingPage()),
                   );
                 }
               },
