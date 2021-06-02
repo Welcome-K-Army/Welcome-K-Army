@@ -53,7 +53,7 @@ class CalendarWidgetState extends State<CalendarWidget> {
             view: CalendarView.month,
             dataSource: EventDataSource(events),
             initialSelectedDate: DateTime.now(),
-            cellBorderColor: Colors.red,
+            cellBorderColor: Colors.transparent,
             showDatePickerButton: true,
             allowedViews: _allowedViews,
             onLongPress: (details) {

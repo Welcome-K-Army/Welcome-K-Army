@@ -13,7 +13,7 @@ class Event {
     this.description,
     this.from,
     this.to,
-    this.backgroundColor = Colors.lightGreen,
+    this.backgroundColor = Colors.red,
     this.isAllDay = false,
   });
 }
