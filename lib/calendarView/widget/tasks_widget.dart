@@ -17,6 +17,7 @@ class _TasksWidgetState extends State<TasksWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
+    print(provider.events);
     final selectedEvents = provider.eventsOfSelectedDate;
 
     if (selectedEvents.isEmpty) {
