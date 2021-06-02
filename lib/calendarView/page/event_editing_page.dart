@@ -32,7 +32,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       toDate = DateTime.now().add(Duration(hours: 2));
     } else {
       final event = widget.event;
-      
+
       titleController.text = event.title;
       fromDate = event.from;
       toDate = event.to;
@@ -48,7 +48,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
@@ -221,13 +220,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
         isAllDay: false,
       );
       print(event.description);
-      
+
       final isEditing = widget.event != null;
-      
+      final provider = Provider.of<EventProvider>(context);
       provider.addEvent(event);
       print("좀 되라");
       Navigator.of(context).pop();
-      
+
       if (isEditing) {
         provider.editEvent(event, widget.event);
         Navigator.of(context).pop();
