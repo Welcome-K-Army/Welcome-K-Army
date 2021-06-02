@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'constants.dart';
 
 import './mainView/mainView.dart';
-import './calendar/provider/event_provider.dart';
+import './calendarView/provider/event_provider.dart';
 
 void main() {
   runApp(MyApp());
