@@ -76,7 +76,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             primary: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
-          onPressed: () => async{
+          onPressed: () async{
             saveForm(provider)
           },
           icon: Icon(Icons.done),
