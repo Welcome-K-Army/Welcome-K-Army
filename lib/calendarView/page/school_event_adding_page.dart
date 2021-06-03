@@ -49,12 +49,12 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             border: UnderlineInputBorder(),
             hintText: 'Add School Name',
           ),
-          onFieldSubmitted: (_) {},
+          onFieldSubmitted: (_) => searchSubmitted(schoolNameController.text),
           validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
           controller: schoolNameController,
         ),
         IconButton(
-          icon: Icon(Icons.search),
+          icon: Icon(Icons.search, size: 24),
           onPressed: () => searchSubmitted(schoolNameController.text),
         )
       ]);
