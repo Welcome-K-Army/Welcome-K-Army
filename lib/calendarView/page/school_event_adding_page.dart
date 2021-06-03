@@ -93,16 +93,16 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       children: [
         Expanded(
             child: IconButton(
-          icon: Icon(Icons.add,
+          icon: Icon(Icons.add
               //IconData(57506),
-              size: 24),
+              ),
           onPressed: () {},
         )),
         Expanded(
             child: IconButton(
-          icon: Icon(Icons.add,
+          icon: Icon(Icons.add
               //IconData(58445),
-              size: 24),
+              ),
           onPressed: () {},
         )),
       ],
