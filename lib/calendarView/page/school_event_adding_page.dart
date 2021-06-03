@@ -6,7 +6,6 @@ class SchoolEventAddingPage extends StatefulWidget {
 }
 
 class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
-  final _formKey = GlobalKey<FormState>();
   final schoolNameController = TextEditingController();
 
   @override
@@ -27,14 +26,26 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       appBar: AppBar(
         leading: CloseButton(),
       ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: EdgeInsets.all(12),
-          children: <Widget>[
-            buildSearchForm(),
-          ],
-        ),
+      body: ListView(
+        padding: EdgeInsets.all(12),
+        children: <Widget>[
+          Row(children: [
+            TextFormField(
+              style: TextStyle(fontSize: 24),
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+                hintText: 'Add School Name',
+              ),
+              onFieldSubmitted: (_) => searchSubmitted(schoolNameController.text),
+              validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
+              controller: schoolNameController,
+            ),
+            IconButton(
+              icon: Icon(Icons.search, size: 24),
+              onPressed: () => searchSubmitted(schoolNameController.text),
+            )
+          ])
+        ],
       ),
     );
   }
