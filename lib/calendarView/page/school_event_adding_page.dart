@@ -41,7 +41,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         child: Column(
           children: <Widget>[
             //buildSearchForm(),
-            buildSchoolList(),
+            buildSchoolListView(),
           ],
         ),
       ),
@@ -73,9 +73,10 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         ],
       );
 
-  Widget buildSchoolList() => ListView(
+  Widget buildSchoolListView() => Container(
+          child: ListView(
         children: buildSchoolListTile(),
-      );
+      ));
 
   List<Widget> buildSchoolListTile() {
     final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
