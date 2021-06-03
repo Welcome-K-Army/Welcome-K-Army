@@ -10,6 +10,7 @@ class SchoolEventAddingPage extends StatefulWidget {
 
 class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   final schoolNameController = TextEditingController();
+  Future<String> futureSearchResults;
   final List<String> schoolList = [
     "육군사관학교",
     "해군사관학교",
@@ -73,9 +74,9 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         ],
       );
 
-  Future<Widget> buildSchoolListView() => FutureBuilder(
-    future: _searchTextSubmitted(),
-    builder: (context, AsyncSnapShot snapshot) {
+  FutureBuilder buildSchoolListView() => FutureBuilder(
+      future: futureSearchResults,
+      builder: (BuildContext context, AsyncSnapShot snapshot) {
         if (snapshot.hasData == false) {
           return Container();
         } else if (snapshot.hasError) {
@@ -124,13 +125,9 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   }
 
   void searchSubmitted(String text) {
-    print(text);
+    setState(() {
+      futureSearchResults = text;
+    });
     schoolNameController.clear();
-  }
-
-  Future<String> _searchTextSubmitted async {
-    await searchSubmitted();
-    final String searchText = schoolNameController.text;
-    return searchText;
   }
 }
