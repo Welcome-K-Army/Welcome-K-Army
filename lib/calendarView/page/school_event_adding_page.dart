@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../model/event.dart';
+import '../provider/event_provider.dart';
+
 class SchoolEventAddingPage extends StatefulWidget {
   @override
   _SchoolEventAddingPageState createState() => _SchoolEventAddingPageState();
@@ -7,7 +10,12 @@ class SchoolEventAddingPage extends StatefulWidget {
 
 class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   final schoolNameController = TextEditingController();
-  final List<String> schoolList = [];
+  final List<String> schoolList = [
+    "육군사관학교",
+    "해군사관학교",
+    "공군사관학교",
+    "간호사관학교"
+  ];
 
   @override
   void initState() {
@@ -67,8 +75,30 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
 
   List<Widget> buildSchoolListTile() {
     return List<Widget>.generate(schoolList.length, (index) {
-      return ListTile();
+      return ListTile(
+        title: schoolList[index],
+        leading: buildListTileIcons,
+      );
     });
+  }
+
+  Widget buildListTileIcons() {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+            child: IconButton(
+          icon: Icon(Icons.article_outlined, size: 24),
+          onPressed: () {},
+        )),
+        Expanded(
+            child: IconButton(
+          icon: Icon(Icons.notification_add_outlined, size: 24),
+          onPressed: () {},
+        )),
+      ],
+    );
   }
 
   void searchSubmitted(String text) {
