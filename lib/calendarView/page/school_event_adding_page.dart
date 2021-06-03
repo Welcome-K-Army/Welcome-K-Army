@@ -79,10 +79,13 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
 
   List<Widget> buildSchoolListTile() {
     final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
-      return ListTile(
-        title: Text(schoolList[index]),
-        trailing: buildListTileIcons(),
-      );
+      if (schoolList[index].contains(schoolNameController.text)) {
+        return ListTile(
+          title: Text(schoolList[index]),
+          trailing: buildListTileIcons(),
+        );
+      } else
+        return Container();
     });
     return schoolTiles;
   }
@@ -95,15 +98,15 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         IconButton(
           icon: Icon(
             //Icons.add
-              IconData(57506),
-              ),
+            IconData(57506),
+          ),
           onPressed: () {},
         ),
         IconButton(
           icon: Icon(
             //Icons.add
-              IconData(58445),
-              ),
+            IconData(58445),
+          ),
           onPressed: () {},
         ),
       ],
