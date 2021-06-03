@@ -40,7 +40,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         padding: EdgeInsets.all(12),
         child: Column(
           children: <Widget>[
-            buildSearchForm(),
+            //buildSearchForm(),
             buildSchoolList(),
           ],
         ),
@@ -78,7 +78,6 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       );
 
   List<Widget> buildSchoolListTile() {
-    print(schoolList.length);
     return List<Widget>.generate(schoolList.length, (index) {
       return ListTile(
         title: Text(schoolList[index]),
