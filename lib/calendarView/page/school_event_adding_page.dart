@@ -111,7 +111,11 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                   IconData(58445),
                 ),
                 onPressed: () {
-                  for (int i = 0; i < schoolEvents[index].events.length; i++) provider.addEvent(schoolEvents[index].events[i]);
+                  for (int i = 0; i < schoolEvents[index].events.length; i++) {
+                    print(i);
+                    print(schoolEvents[index].events[i]);
+                    provider.addEvent(schoolEvents[index].events[i]);
+                  }
                 },
               ),
             ],
