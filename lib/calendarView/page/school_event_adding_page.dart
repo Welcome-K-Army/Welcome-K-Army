@@ -81,14 +81,14 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     return List<Widget>.generate(schoolList.length, (index) {
       return ListTile(
         title: Text(schoolList[index]),
-        leading: Row(),
+        leading: buildListTileIcons(),
       );
     });
   }
 
   Widget buildListTileIcons() {
     return Row(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
@@ -96,13 +96,11 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
           icon: Icon(IconData(57506), size: 24),
           onPressed: () {},
         )),
-        /*
         Expanded(
             child: IconButton(
           icon: Icon(IconData(58445), size: 24),
           onPressed: () {},
         )),
-        */
       ],
     );
   }
