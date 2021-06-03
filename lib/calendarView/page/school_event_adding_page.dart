@@ -75,7 +75,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
 
   Widget buildSchoolListView() => Column(
         children: buildSchoolListTile(),
-      ));
+      );
 
   List<Widget> buildSchoolListTile() {
     final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
@@ -92,13 +92,13 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-            child: IconButton(
+        IconButton(
           icon: Icon(Icons.add
               //IconData(57506),
               ),
           onPressed: () {},
         ),
-            child: IconButton(
+        IconButton(
           icon: Icon(Icons.add
               //IconData(58445),
               ),
