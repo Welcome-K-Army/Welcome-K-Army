@@ -74,7 +74,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       );
 
   Widget buildSchoolListView() => Container(
-          child: ListView(
+          child: Column(
         children: buildSchoolListTile(),
       ));
 
