@@ -73,13 +73,23 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         ],
       );
 
-  Widget buildSchoolListView() => Column(
-        children: buildSchoolListTile(),
-      );
+  Future<Widget> buildSchoolListView() => FutureBuilder(
+    future: _searchTextSubmitted(),
+    builder: (context, AsyncSnapShot snapshot) {
+        if (snapshot.hasData == false) {
+          return Container();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return Column(
+            children: buildSchoolListTile(snapshot.data.toString()),
+          );
+        }
+      });
 
-  List<Widget> buildSchoolListTile() {
+  List<Widget> buildSchoolListTile(String text) {
     final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
-      if (schoolList[index].contains(schoolNameController.text)) {
+      if (schoolList[index].contains(text)) {
         return ListTile(
           title: Text(schoolList[index]),
           trailing: buildListTileIcons(),
@@ -116,5 +126,11 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   void searchSubmitted(String text) {
     print(text);
     schoolNameController.clear();
+  }
+
+  Future<String> _searchTextSubmitted async {
+    await searchSubmitted();
+    final String searchText = schoolNameController.text;
+    return searchText;
   }
 }
