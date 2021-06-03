@@ -35,13 +35,16 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       appBar: AppBar(
         leading: CloseButton(),
       ),
-      body: ListView(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(12),
+        child: Column()
         children: <Widget>[
           buildSearchForm(),
           buildSchoolList(),
         ],
       ),
+    ),
     );
   }
 
