@@ -8,7 +8,7 @@ class Event {
   final Color backgroundColor;
   final bool isAllDay;
 
-  Event({
+  const Event({
     this.title,
     this.description,
     this.from,
@@ -22,7 +22,7 @@ class SchoolEvent {
   final String name;
   final List<Event> events;
 
-  SchoolEvent({
+  const SchoolEvent({
     this.name,
     this.events,
   });
