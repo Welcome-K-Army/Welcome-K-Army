@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../model/event.dart';
 import '../provider/event_provider.dart';
@@ -18,17 +19,42 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     "간호사관학교"
   ];
 
-  final List<SchoolEvent> schoolEvents = List.generate(schoolList.length, (index) {
-    return SchoolEvent(name: schoolList[index], events: [
-      Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
-      Event(title: "2차시험", description: "면접, 신체검사, 체력측정", from: DateTime(2021, [7, 4])., to: DateTime(2021, [7, 4]).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
-      Event(title: "결과발표", description: "결과발표", from: DateTime(2021, [8, 4]), to: DateTime(2021, [8, 4]).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
-    ]);
-  });
+  final List<SchoolEvent> schoolEvents;
 
   @override
   void initState() {
     super.initState();
+    schoolEvents = List.generate(schoolList.length, (index) {
+      return SchoolEvent(name: schoolList[index], events: [
+        Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
+        Event(
+            title: "2차시험",
+            description: "면접, 신체검사, 체력측정",
+            from: DateTime(2021, [
+              7,
+              4
+            ]),
+            to: DateTime(2021, [
+              7,
+              4
+            ]).add(Duration(hours: 2)),
+            backgroundColor: Colors.red,
+            isAllDay: false),
+        Event(
+            title: "결과발표",
+            description: "결과발표",
+            from: DateTime(2021, [
+              8,
+              4
+            ]),
+            to: DateTime(2021, [
+              8,
+              4
+            ]).add(Duration(hours: 2)),
+            backgroundColor: Colors.red,
+            isAllDay: false),
+      ]);
+    });
   }
 
   @override
@@ -93,28 +119,27 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         return ListTile(
           title: Text(schoolList[index]),
           trailing: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        IconButton(
-          icon: Icon(
-            //Icons.add
-            IconData(57506),
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  //Icons.add
+                  IconData(57506),
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(
+                  //Icons.add
+                  IconData(58445),
+                ),
+                onPressed: () {
+                  for (int i = 0; i < schoolEvents[index].length; i++) provider.addEvent(schoolEvents[index].events[i]);
+                },
+              ),
+            ],
           ),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(
-            //Icons.add
-            IconData(58445),
-          ),
-          onPressed: () {
-            for (int i = 0; i < schoolEvents[index].length; i++) 
-            provider.addEvent(schoolEvents[index].events);
-          },
-        ),
-      ],
-    ),
         );
       } else
         return Container();
@@ -140,8 +165,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             IconData(58445),
           ),
           onPressed: () {
-            for (int i = 0; i < schoolEvents[index].length; i++) 
-            provider.addEvent(schoolEvents[index].events[i]);
+            for (int i = 0; i < schoolEvents[index].length; i++) provider.addEvent(schoolEvents[index].events[i]);
           },
         ),
       ],
