@@ -40,7 +40,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         padding: EdgeInsets.all(12),
         child: Column(
           children: <Widget>[
-            //buildSearchForm(),
+            buildSearchForm(),
             buildSchoolListView(),
           ],
         ),
@@ -93,14 +93,16 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         IconButton(
-          icon: Icon(Icons.add
-              //IconData(57506),
+          icon: Icon(
+            //Icons.add
+              IconData(57506),
               ),
           onPressed: () {},
         ),
         IconButton(
-          icon: Icon(Icons.add
-              //IconData(58445),
+          icon: Icon(
+            //Icons.add
+              IconData(58445),
               ),
           onPressed: () {},
         ),
