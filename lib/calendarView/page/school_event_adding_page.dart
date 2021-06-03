@@ -39,6 +39,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         padding: EdgeInsets.all(12),
         children: <Widget>[
           buildSearchForm(),
+          buildSchoolList(),
         ],
       ),
     );
