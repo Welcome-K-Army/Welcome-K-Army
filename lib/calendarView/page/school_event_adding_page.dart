@@ -74,7 +74,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         ],
       );
 
-  FutureBuilder buildSchoolListView() => Column(
+  Widget buildSchoolListView() => Column(
         children: buildSchoolListTile(searchResult),
       );
 
