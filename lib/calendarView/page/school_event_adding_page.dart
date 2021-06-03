@@ -34,7 +34,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 5
+                flex: 5,
                 child: TextFormField(
                   style: TextStyle(fontSize: 24),
                   decoration: InputDecoration(
