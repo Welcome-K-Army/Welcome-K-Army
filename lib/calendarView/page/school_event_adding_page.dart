@@ -26,9 +26,9 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     super.initState();
     schoolEvents = List.generate(schoolList.length, (index) {
       return SchoolEvent(name: schoolList[index], events: [
-        final Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
-        final Event(title: "2차시험", description: "면접, 신체검사, 체력측정", from: DateTime(2021, 7, 4), to: DateTime(2021, 7, 4).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
-        final Event(title: "결과발표", description: "결과발표", from: DateTime(2021, 8, 4), to: DateTime(2021, 8, 4).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
+        Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
+        Event(title: "2차시험", description: "면접, 신체검사, 체력측정", from: DateTime(2021, 7, 4), to: DateTime(2021, 7, 4).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
+        Event(title: "결과발표", description: "결과발표", from: DateTime(2021, 8, 4), to: DateTime(2021, 8, 4).add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false),
       ]);
     });
   }

@@ -8,7 +8,7 @@ class Event {
   final Color backgroundColor;
   final bool isAllDay;
 
-  const Event({
+  Event({
     this.title,
     this.description,
     this.from,
