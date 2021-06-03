@@ -19,7 +19,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     "간호사관학교"
   ];
 
-  final List<SchoolEvent> schoolEvents;
+  List<SchoolEvent> schoolEvents;
 
   @override
   void initState() {
@@ -111,7 +111,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                   IconData(58445),
                 ),
                 onPressed: () {
-                  for (int i = 0; i < schoolEvents[index].length; i++) provider.addEvent(schoolEvents[index].events[i]);
+                  for (int i = 0; i < schoolEvents[index].events.length; i++) provider.addEvent(schoolEvents[index].events[i]);
                 },
               ),
             ],
@@ -141,7 +141,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             IconData(58445),
           ),
           onPressed: () {
-            for (int i = 0; i < schoolEvents[index].length; i++) provider.addEvent(schoolEvents[index].events[i]);
+            
           },
         ),
       ],
