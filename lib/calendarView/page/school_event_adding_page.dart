@@ -29,22 +29,30 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       body: ListView(
         padding: EdgeInsets.all(12),
         children: <Widget>[
-          TextFormField(
-            style: TextStyle(fontSize: 24),
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(),
-              hintText: 'Add School Name',
-            ),
-            onFieldSubmitted: (_) => searchSubmitted(schoolNameController.text),
-            validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
-            controller: schoolNameController,
-          ),
-          /*
-            IconButton(
-              icon: Icon(Icons.search, size: 24),
-              onPressed: () => searchSubmitted(schoolNameController.text),
-            )
-            */
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 5
+                child: TextFormField(
+                  style: TextStyle(fontSize: 24),
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    hintText: 'Add School Name',
+                  ),
+                  onFieldSubmitted: (_) => searchSubmitted(schoolNameController.text),
+                  validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
+                  controller: schoolNameController,
+                ),
+              ),
+              Expanded(
+                  child: IconButton(
+                icon: Icon(Icons.search, size: 24),
+                onPressed: () => searchSubmitted(schoolNameController.text),
+              )),
+            ],
+          )
         ],
       ),
     );
