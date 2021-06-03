@@ -22,7 +22,7 @@ class SchoolEvent {
   final String name;
   final List<Event> events;
 
-  const SchoolEvent({
+  SchoolEvent({
     this.name,
     this.events,
   });
