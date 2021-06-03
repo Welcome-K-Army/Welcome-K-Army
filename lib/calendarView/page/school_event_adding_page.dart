@@ -38,13 +38,13 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(12),
-        child: Column()
-        children: <Widget>[
-          buildSearchForm(),
-          buildSchoolList(),
-        ],
+        child: Column(
+          children: <Widget>[
+            buildSearchForm(),
+            buildSchoolList(),
+          ],
+        ),
       ),
-    ),
     );
   }
 
