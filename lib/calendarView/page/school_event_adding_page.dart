@@ -109,7 +109,6 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                   provider.addEvent(event2);
                   provider.addEvent(event3);
                   }
-                },
               ),
             ],
           ),
