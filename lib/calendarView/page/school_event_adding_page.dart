@@ -115,6 +115,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                     print(i);
                     print(schoolEvents[index].events[i]);
                     provider.addEvent(schoolEvents[index].events[i]);
+                    print(provider.events[i]);
                   }
                 },
               ),
