@@ -76,8 +76,8 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   List<Widget> buildSchoolListTile() {
     return List<Widget>.generate(schoolList.length, (index) {
       return ListTile(
-        title: schoolList[index],
-        leading: buildListTileIcons,
+        title: Text(schoolList[index]),
+        leading: buildListTileIcons(),
       );
     });
   }
