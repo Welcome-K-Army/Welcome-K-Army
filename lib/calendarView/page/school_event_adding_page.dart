@@ -42,14 +42,25 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     );
   }
 
-  Widget buildSearchForm() => TextFormField(
-        style: TextStyle(fontSize: 24),
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          hintText: 'Add School Name',
+  Widget buildSearchForm() => Row(children: [
+        TextFormField(
+          style: TextStyle(fontSize: 24),
+          decoration: InputDecoration(
+            border: UnderlineInputBorder(),
+            hintText: 'Add School Name',
+          ),
+          onFieldSubmitted: (_) {},
+          validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
+          controller: schoolNameController,
         ),
-        onFieldSubmitted: (_) {},
-        validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
-        controller: schoolNameController,
-      );
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () => searchSubmitted(schoolNameController.text),
+        )
+      ]);
+
+  void searchSubmitted(String text) {
+    print(text);
+    schoolNameController.clear();
+  }
 }
