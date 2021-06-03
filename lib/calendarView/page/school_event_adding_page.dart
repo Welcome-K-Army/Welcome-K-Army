@@ -73,8 +73,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
         ],
       );
 
-  Widget buildSchoolListView() => Container(
-          child: Column(
+  Widget buildSchoolListView() => Column(
         children: buildSchoolListTile(),
       ));
 
@@ -82,7 +81,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
       return ListTile(
         title: Text(schoolList[index]),
-        leading: buildListTileIcons(),
+        trailing: buildListTileIcons(),
       );
     });
     return schoolTiles;
@@ -92,21 +91,19 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
+      children: <Widget>[
             child: IconButton(
           icon: Icon(Icons.add
               //IconData(57506),
               ),
           onPressed: () {},
-        )),
-        Expanded(
+        ),
             child: IconButton(
           icon: Icon(Icons.add
               //IconData(58445),
               ),
           onPressed: () {},
-        )),
+        ),
       ],
     );
   }
