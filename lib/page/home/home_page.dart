@@ -133,7 +133,6 @@ class HomePageState extends State<HomePage> {
                     ),
                     itemCount: menuList.length,
                     itemBuilder: (context, index) {
-                      print(menuList);
                       buildMenuIconBtn(menuList[index]);
                     },
                   )),
@@ -147,7 +146,7 @@ class HomePageState extends State<HomePage> {
         context,
         MaterialPageRoute(builder: (context) => menu.widget),
       ),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
         menu.icon,
         Text(menu.name),
       ]), // Column
