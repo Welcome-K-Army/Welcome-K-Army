@@ -27,16 +27,14 @@ class HomePageState extends State<HomePage> {
             child: Column(children: <Widget>[
               buildHeader(),
               buildNews(),
-              //NewsWidget(),
               Container(
                 height: 50,
               ),
               buildMenu(),
-              //MenuWidget(),
               Container(
                 height: 50,
               ),
-              // NoticeWidget(),
+              buildNotice(),
             ] // <Widget>[]
                 ) // Column
             ) // SingleChildScrollview
