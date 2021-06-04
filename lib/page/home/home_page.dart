@@ -133,6 +133,7 @@ class HomePageState extends State<HomePage> {
                     ),
                     itemCount: menuList.length,
                     itemBuilder: (context, index) {
+                      print(menuList.length);
                       buildMenuIconBtn(menuList[index]);
                     },
                   )),
