@@ -132,7 +132,7 @@ class HomePageState extends State<HomePage> {
                       mainAxisSpacing: 2,
                     ),
                     itemCount: menuList.length,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (BuildContext context, index) {
                       buildMenuIconBtn(menuList[index]);
                     },
                   )),
@@ -143,7 +143,7 @@ class HomePageState extends State<HomePage> {
     return InkWell(
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => menu.widget),
+        MaterialPageRoute(builder: (BuildContext context) => menu.widget),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
         menu.icon,
