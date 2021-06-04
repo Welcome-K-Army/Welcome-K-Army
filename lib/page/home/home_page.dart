@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import 'notice_list_page.dart';
+
 import '../../constants.dart';
 import '../../global.dart';
 
@@ -165,7 +167,7 @@ class HomePageState extends State<HomePage> {
                 press: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NoticeView()),
+                    MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
             ListWithTitleAndDay(headerTile: true, title: "Notice", contents: noticeList),

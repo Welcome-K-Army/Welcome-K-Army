@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../../global.dart';
 
+import '../../model/home/content.dart';
 import '../../model/home/person.dart';
 
 class ListWithTitleAndDay extends StatelessWidget {
