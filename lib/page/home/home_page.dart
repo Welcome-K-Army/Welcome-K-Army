@@ -132,7 +132,7 @@ class HomePageState extends State<HomePage> {
                       mainAxisSpacing: 2,
                     ),
                     itemCount: menuList.length,
-                    itemBuilder: (BuildContext context, index) {
+                    itemBuilder: (context, index) {
                       buildMenuIconBtn(menuList[index]);
                     },
                   )),
@@ -140,7 +140,8 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildMenuIconBtn(Menu menu) {
-    print(context);
+    print(menu.icon);
+    print(menu.name);
     return InkWell(
       onTap: () => Navigator.push(
         context,
