@@ -140,7 +140,6 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildMenuIconBtn(Menu menu) {
-    print(menu);
     return InkWell(
       onTap: () => Navigator.push(
         context,
