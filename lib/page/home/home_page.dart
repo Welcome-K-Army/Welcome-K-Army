@@ -117,7 +117,7 @@ class HomePageState extends State<HomePage> {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Column(children: <Widget>[
+            child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
               TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
               Card(
                   shape: RoundedRectangleBorder(
