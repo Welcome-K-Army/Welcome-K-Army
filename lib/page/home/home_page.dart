@@ -133,8 +133,7 @@ class HomePageState extends State<HomePage> {
                     ),
                     itemCount: menuList.length,
                     itemBuilder: (context, index) {
-                      print(menuList.length);
-                      buildMenuIconBtn(menuList[index]);
+                      return buildMenuIconBtn(menuList[index]);
                     },
                   )),
             ]))); // GridView
