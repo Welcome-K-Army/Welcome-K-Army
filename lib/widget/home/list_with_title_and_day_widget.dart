@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'package:intl/intl.dart';
-
 import '../../global.dart';
 
 import '../../model/home/content.dart';
 import '../../model/home/person.dart';
 
-class ListWithTitleAndDay extends StatelessWidget {
-  const ListWithTitleAndDay({
+class ListWithTitleAndDayWidget' extends StatelessWidget {
+  const ListWithTitleAndDayWidget'({
     Key key,
     this.headerTile,
     this.title,

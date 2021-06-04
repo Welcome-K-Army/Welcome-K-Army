@@ -1,8 +1,6 @@
-// Notice view
-
 import 'package:flutter/material.dart';
 
-import '../../widget/home/list_with_title_and_day.dart';
+import '../../widget/home/list_with_title_and_day_widget.dart';
 
 import '../../model/home/notice.dart';
 
@@ -15,7 +13,7 @@ class NoticeListPageState extends State<NoticeListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('k army notice')),
-      body: ListWithTitleAndDay(headerTile: false, title: "Notice", contents: noticeList),
+      body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", contents: noticeList),
     );
   }
 }

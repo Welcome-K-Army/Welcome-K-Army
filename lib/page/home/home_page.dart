@@ -120,7 +120,7 @@ class HomePageState extends State<HomePage> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              TitleWithMoreBtn(title: "Favorite", press: () {}),
+              TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
               Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -162,7 +162,7 @@ class HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            TitleWithMoreBtn(
+            TitleWithMoreBtnWidget(
                 title: "Notice",
                 press: () {
                   Navigator.push(
@@ -170,7 +170,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDay(headerTile: true, title: "Notice", contents: noticeList),
+            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", contents: noticeList),
           ], // Column children
         ), // Column
       ), // Padding
