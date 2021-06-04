@@ -5,21 +5,13 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'notice_list_page.dart';
 
 import '../../constants.dart';
-//import '../../global.dart';
+import '../../global.dart';
 
 import '../../model/home/menu.dart';
 import '../../model/home/notice.dart';
 
 import '../../widget/home/title_with_more_btn_widget.dart';
 import '../../widget/home/list_with_title_and_day_widget.dart';
-
-final List<Menu> menuList = [
-  new Menu(name: '공지사항', icon: Icon(Icons.star, size: 30), widget: NoticeListPage()),
-  new Menu(name: '지도검색', icon: Icon(Icons.location_pin, size: 30), widget: NoticeListPage()),
-  new Menu(name: '입시정보', icon: Icon(Icons.search, size: 30), widget: NoticeListPage()),
-  new Menu(name: '일정', icon: Icon(Icons.calendar_today, size: 30), widget: CalendarPage()),
-  new Menu(name: '입시분석', icon: Icon(Icons.pie_chart, size: 30), widget: NoticeListPage()),
-];
 
 class HomePage extends StatefulWidget {
   HomePageState createState() => new HomePageState();
@@ -141,6 +133,7 @@ class HomePageState extends State<HomePage> {
                     ),
                     itemCount: menuList.length,
                     itemBuilder: (context, index) {
+                      print(menuList);
                       buildMenuIconBtn(menuList[index]);
                     },
                   )),
