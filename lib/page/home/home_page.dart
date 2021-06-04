@@ -1,0 +1,177 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+
+import '../../constants.dart';
+import '../../global.dart';
+
+import '../../model/home/menu.dart';
+import '../../model/home/notice.dart';
+
+import '../../widget/home/title_with_more_btn_widget.dart';
+import '../../widget/home/list_with_title_and_day_widget.dart';
+
+class HomePage extends StatefulWidget {
+  HomePageState createState() => new HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(children: <Widget>[
+              buildHeader(),
+              buildNews(),
+              //NewsWidget(),
+              Container(
+                height: 50,
+              ),
+              buildMenu(),
+              //MenuWidget(),
+              Container(
+                height: 50,
+              ),
+              // NoticeWidget(),
+            ] // <Widget>[]
+                ) // Column
+            ) // SingleChildScrollview
+        ); // Container
+  } // Widget
+
+  Widget buildHeader() {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+        height: size.height * 0.2,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(
+                left: kDefaultPadding,
+                right: kDefaultPadding,
+                bottom: 36 + kDefaultPadding,
+              ),
+              height: size.height * 0.2 - 27,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(36),
+                  bottomRight: Radius.circular(36),
+                ), // BorderRadius.only
+              ), // BoxDecoration
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'wecome k army',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  Spacer(),
+                  Image.asset("assets/images/4.jpg")
+                ],
+              ), // Row
+            ), // Container
+          ],
+        )); // Container
+  }
+
+  Widget buildNews() {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(children: <Widget>[
+              TitleWithMoreBtnWidget(title: "News", press: () {}),
+              buildSlideBanner(),
+            ])));
+  }
+
+  Widget buildSlideBanner() {
+    return Container(
+      height: 200,
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        elevation: 4,
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Swiper(
+                autoplay: true,
+                scale: 0.8,
+                viewportFraction: 1,
+                pagination: SwiperPagination(),
+                itemCount: publicImgList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.asset(publicImgList[index]);
+                }) // Swiper
+            ),
+      ), // Padding
+    ); // Container
+  }
+
+  Widget buildMenu() {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(children: <Widget>[
+              TitleWithMoreBtn(title: "Favorite", press: () {}),
+              Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                    ),
+                    itemCount: menuList.length,
+                    itemBuilder: (context, index) {
+                      buildMenuIconBtn(menuList[index]);
+                    },
+                  )),
+            ]))); // GridView
+  }
+
+  Widget buildMenuIconBtn(Menu menu) {
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => menu.widget),
+      ),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+        menu.icon,
+        Text(menu.name),
+      ]), // Column
+    ); // ListTile
+  }
+
+  Widget buildNotice() {
+    return Container(
+      color: Color(0xFFEDF0F4),
+      //height: 360,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            TitleWithMoreBtn(
+                title: "Notice",
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NoticeView()),
+                  );
+                }),
+            ListWithTitleAndDay(headerTile: true, title: "Notice", contents: noticeList),
+          ], // Column children
+        ), // Column
+      ), // Padding
+    ); // Container
+  }
+} // Class

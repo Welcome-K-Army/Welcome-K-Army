@@ -3,28 +3,9 @@ import 'package:flutter/src/widgets/basic.dart';
 
 import 'package:intl/intl.dart';
 
-import './noticeView/person.dart';
+import '../../global.dart';
 
-int contentNumber = 0;
-
-class Content {
-  var date_yMd = DateFormat.yMd().format(new DateTime.now());
-  var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
-
-  int number;
-
-  Person person;
-
-  String title;
-  String content;
-  List<String> imgList;
-
-  Content({this.title, this.content, this.person, this.imgList}) {
-    this.number = contentNumber;
-
-    contentNumber++;
-  }
-}
+import '../../model/home/person.dart';
 
 class ListWithTitleAndDay extends StatelessWidget {
   const ListWithTitleAndDay({

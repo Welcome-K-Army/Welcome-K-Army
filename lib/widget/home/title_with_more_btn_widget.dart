@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class TitleWithCustomUnderLine extends StatelessWidget {
   const TitleWithCustomUnderLine({
@@ -40,8 +40,8 @@ class TitleWithCustomUnderLine extends StatelessWidget {
   }
 }
 
-class TitleWithMoreBtn extends StatelessWidget {
-  const TitleWithMoreBtn({
+class TitleWithMoreBtnWidget extends StatelessWidget {
+  const TitleWithMoreBtnWidget({
     Key key,
     this.title,
     this.press,
