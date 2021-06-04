@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'event_editing_page.dart';
-import '../utils.dart';
-import '../model/event.dart';
-import '../provider/event_provider.dart';
-import '../widget/calendar_widget.dart';
+import '../../utils.dart';
+import '../../model/calendar/event.dart';
+import '../../provider/event_provider.dart';
+import '../../widget/calendar/calendar_widget.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;

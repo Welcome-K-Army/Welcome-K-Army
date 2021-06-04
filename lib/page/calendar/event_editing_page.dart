@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../utils.dart';
 
-import '../model/event.dart';
-import '../provider/event_provider.dart';
+import '../../model/calendar/event.dart';
+import '../../provider/event_provider.dart';
 
 class EventEditingPage extends StatefulWidget {
   final Event event;

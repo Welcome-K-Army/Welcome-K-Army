@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/event.dart';
-import '../provider/event_provider.dart';
+import '../../model/calendar/event.dart';
+import '../../provider/event_provider.dart';
 
 class SchoolEventAddingPage extends StatefulWidget {
   @override
