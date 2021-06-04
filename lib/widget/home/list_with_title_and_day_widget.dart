@@ -6,8 +6,8 @@ import '../../global.dart';
 import '../../model/home/content.dart';
 import '../../model/home/person.dart';
 
-class ListWithTitleAndDayWidget' extends StatelessWidget {
-  const ListWithTitleAndDayWidget'({
+class ListWithTitleAndDayWidget extends StatelessWidget {
+  const ListWithTitleAndDayWidget({
     Key key,
     this.headerTile,
     this.title,
