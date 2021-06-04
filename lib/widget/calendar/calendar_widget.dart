@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'tasks_widget.dart';
-import '../model/event_data_source.dart';
-import '../page/event_editing_page.dart';
-import '../page/school_event_adding_page.dart';
-import '../provider/event_provider.dart';
+import '../../model/calendar/event_data_source.dart';
+import '../../page/calendar/event_editing_page.dart';
+import '../../page/calendar/school_event_adding_page.dart';
+import '../../provider/event_provider.dart';
 
 class CalendarWidget extends StatelessWidget {
   final List<CalendarView> _allowedViews = <CalendarView>[
