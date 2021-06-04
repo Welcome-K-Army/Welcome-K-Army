@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../utils.dart';
+import '../../utils.dart';
 
 import '../../model/calendar/event.dart';
 import '../../provider/event_provider.dart';
