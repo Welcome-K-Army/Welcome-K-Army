@@ -22,9 +22,8 @@ dependencies:
 
   flutter_swiper: ^1.1.6
   flutter_radar_chart: ^0.1.6
-  intl: ^0.16.1
-  syncfusion_flutter_calendar: ^18.4.49
-  flutter_switch: ^0.2.2
+  intl: ^0.17.0
+  syncfusion_flutter_calendar: ^19.1.66
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
