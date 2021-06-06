@@ -61,17 +61,6 @@ class _HomeState extends State<HomeScreen> {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: [
-                        // Text(userData.uid),
-                        // Text(userData.nickName),
-                        // Text(userData.email),
-                        // Text(userData.age.toString()),
-                        // Text(userData.gender),
-                      ],
-                    ),
-                  ),
                   HomePage(),
                   Container(),
                   // Container(),
