@@ -1,16 +1,10 @@
-import 'dart:math';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
-import 'package:Army/main.dart';
 import 'package:Army/model/user.dart';
-import 'package:Army/services/authenticate.dart';
-import 'package:Army/services/helper.dart';
-import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/setting/settingScreen.dart';
+
+import 'package:Army/page/home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -79,7 +73,7 @@ class _HomeState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-
+                  HomePage(),
                   Container(),
                   // Container(),
                   SettingScreen(user: user),
