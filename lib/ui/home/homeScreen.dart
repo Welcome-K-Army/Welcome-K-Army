@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
 import 'package:Army/ui/setting/settingScreen.dart';
-
 import 'package:Army/page/home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
