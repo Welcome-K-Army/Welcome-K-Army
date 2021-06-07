@@ -117,9 +117,9 @@ class MyHomePageState extends State<MyHomePage> {
   List<Widget> buildInformTile() {
     return List<Widget>.generate(informIconList.length - 1, (index) {
       return ListTile(
-        leading: buildTooltipWithIconButton(messageList[index], informList[index], informIconList[index]),
+        leading: buildCopyTooltipWithIconButton(messageList[index], informList[index], informIconList[index]),
         title: Text(informList[index]),
-        trailing: buildTooltipWithIconButton(messageList[3], informList[index], informIconList[3]),
+        trailing: buildCopyTooltipWithIconButton(messageList[3], informList[index], informIconList[3]),
       );
     });
   }
