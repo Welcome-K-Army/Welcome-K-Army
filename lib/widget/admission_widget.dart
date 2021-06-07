@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart;
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AdmissionWidget extends StatefulWidget {
   @override
@@ -7,12 +7,12 @@ class AdmissionWidget extends StatefulWidget {
 }
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
-  @override
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            child: SfPdfViewer.asset(
-                'assets/flutter-succinctly.pdf')));
+            child: SfPdfViewer.network(
+                'http://ebooks.syncfusion.com/downloads/flutter-succinctly/flutter-succinctly.pdf')));
   }
 }
   
