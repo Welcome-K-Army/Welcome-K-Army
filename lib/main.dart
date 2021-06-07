@@ -13,9 +13,10 @@ import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Army/page/home/home_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(create: (context) => EventProvider(), child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
