@@ -12,7 +12,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          child: OrdinalComboBarLineChartWidget.withSampleData();
+          child: OrdinalComboBarLineChartWidget.withSampleData()
         ),
       ),
     );
