@@ -135,13 +135,14 @@ class MyHomePageState extends State<MyHomePage> {
           leading: Tooltip(message: "전화번호 복사", child: IconButton(icon: Icon(informIconList[2]))),
           title: Text(informList[2]),
           trailing: IconButton(
-            icon: Tooltip(
-                message: "복사하기",
-                child: Icon(informIconList[3]),
+              icon: Tooltip(
+            message: "복사하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
                 onPressed: () {
                   Clipboard.setData(ClipboardData(text: informList[0]));
                 }),
-          )),
+          ))),
     ];
   }
 }
