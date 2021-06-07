@@ -4,7 +4,6 @@ import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:Army/ui/setting/profileScreen.dart';
 class OnBoardingScreen extends StatefulWidget {
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();

@@ -55,7 +55,7 @@ class _ProfileState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
     TextEditingController _emailController = TextEditingController(text: user.email);
 
