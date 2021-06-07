@@ -1,6 +1,6 @@
-import './content.dart';
+import 'content.dart';
 
-import '../../global.dart';
+import 'package:Army/global.dart';
 
 int noticeNumber = 0;
 

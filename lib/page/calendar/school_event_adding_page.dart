@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../model/calendar/event.dart';
-import '../../provider/event_provider.dart';
+import 'package:Army/model/calendar/event.dart';
+import 'package:Army/provider/event_provider.dart';
 
 class SchoolEventAddingPage extends StatefulWidget {
   @override
@@ -97,21 +97,18 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(
-                  //Icons.add
-                  IconData(58445),
-                ),
-                onPressed: () {
-                  
-                  final event1 = Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false);
-                  final event2 = Event(title: "2차시험", description: "면접, 신체검사, 체력측정", from: DateTime(2021, 7, 4), to: DateTime(2021, 7, 4).add(Duration(hours: 2)), backgroundColor: Colors.blue, isAllDay: false);
-                  final event3 = Event(title: "결과발표", description: "결과발표", from: DateTime(2021, 8, 4), to: DateTime(2021, 8, 4).add(Duration(hours: 2)), backgroundColor: Colors.green, isAllDay: false);
-                  provider.addEvent(event1);
-                  provider.addEvent(event2);
-                  provider.addEvent(event3);
-                  
-                  }
-              ),
+                  icon: Icon(
+                    //Icons.add
+                    IconData(58445),
+                  ),
+                  onPressed: () {
+                    final event1 = Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false);
+                    final event2 = Event(title: "2차시험", description: "면접, 신체검사, 체력측정", from: DateTime(2021, 7, 4), to: DateTime(2021, 7, 4).add(Duration(hours: 2)), backgroundColor: Colors.blue, isAllDay: false);
+                    final event3 = Event(title: "결과발표", description: "결과발표", from: DateTime(2021, 8, 4), to: DateTime(2021, 8, 4).add(Duration(hours: 2)), backgroundColor: Colors.green, isAllDay: false);
+                    provider.addEvent(event1);
+                    provider.addEvent(event2);
+                    provider.addEvent(event3);
+                  }),
             ],
           ),
         );

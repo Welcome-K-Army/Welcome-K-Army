@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-import './person.dart';
+import 'person.dart';
 
 int contentNumber = 0;
 

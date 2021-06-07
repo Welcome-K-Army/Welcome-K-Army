@@ -4,14 +4,14 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'notice_list_page.dart';
 
-import '../../constants.dart';
-import '../../global.dart';
+import 'package:Army/constants.dart';
+import 'package:Army/global.dart';
 
-import '../../model/home/menu.dart';
-import '../../model/home/notice.dart';
+import 'package:Army/model/home/menu.dart';
+import 'package:Army/model/home/notice.dart';
 
-import '../../widget/home/title_with_more_btn_widget.dart';
-import '../../widget/home/list_with_title_and_day_widget.dart';
+import 'package:Army/widget/home/title_with_more_btn_widget.dart';
+import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePageState createState() => new HomePageState();

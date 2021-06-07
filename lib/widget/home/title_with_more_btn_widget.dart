@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import '../../constants.dart';
+import 'package:Army/constants.dart';
 
 class TitleWithCustomUnderLine extends StatelessWidget {
   const TitleWithCustomUnderLine({
