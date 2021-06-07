@@ -140,6 +140,7 @@ class MyHomePageState extends State<MyHomePage> {
   Future<void> linkToSchoolHomePage() async {
     String url = informList[1];
     if (await canLaunch(url)) {
+      print("launch");
       await launch(url);
     } else {
       throw 'Could not launch $url';
