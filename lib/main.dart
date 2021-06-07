@@ -170,7 +170,7 @@ class MyHomePageState extends State<MyHomePage> {
             child: IconButton(
                 icon: Icon(informIconList[2]),
                 onPressed: () {
-                  launch(informList[2]);
+                  launch("tel://$informList[2]");
                 })),
         title: Text(informList[2]),
         trailing: Tooltip(
