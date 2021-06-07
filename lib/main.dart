@@ -139,11 +139,11 @@ class MyHomePageState extends State<MyHomePage> {
         leading: Tooltip(
             message: "웹사이트 열기",
             child: IconButton(
-                icon: Icon(informIconList[0]),
+                icon: Icon(informIconList[1]),
                 onPressed: () {
                   linkToSchoolHomePage();
                 })),
-        title: Text(informList[0]),
+        title: Text(informList[1]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
@@ -168,17 +168,17 @@ class MyHomePageState extends State<MyHomePage> {
         leading: Tooltip(
             message: "전화 걸기",
             child: IconButton(
-                icon: Icon(informIconList[0]),
+                icon: Icon(informIconList[2]),
                 onPressed: () {
-                  linkToSchoolHomePage();
+                  launch(informList[2]);
                 })),
-        title: Text(informList[0]),
+        title: Text(informList[2]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
-                  launch(informList[2]);
+                  Clipboard.setData(ClipboardData(text: informList[2]));
                 })));
   }
 }
