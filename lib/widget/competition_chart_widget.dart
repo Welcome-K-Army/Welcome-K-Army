@@ -8,10 +8,13 @@ class CompetitionChartWidget extends StatefulWidget {
 class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
+          height: size.height,
+          width: size.width,
           child: OrdinalComboBarLineChartWidget.withSampleData()
         ),
       ),
