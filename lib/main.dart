@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/competition_chart_widget.dart';
-import 'widgets/inform_widget.dart';
+import 'widget/competition_chart_widget.dart';
+import 'widget/inform_widget.dart';
 
 void main() => runApp(MyApp());
 
