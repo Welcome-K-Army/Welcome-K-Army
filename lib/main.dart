@@ -141,7 +141,7 @@ class MyHomePageState extends State<MyHomePage> {
             child: IconButton(
                 icon: Icon(informIconList[1]),
                 onPressed: () {
-                  linkToSchoolHomePage();
+                  _url_launcher(informList[1]);
                 })),
         title: Text(informList[1]),
         trailing: Tooltip(
@@ -153,16 +153,6 @@ class MyHomePageState extends State<MyHomePage> {
                 })));
   }
 
-  Future<void> linkToSchoolHomePage() async {
-    String url = informList[1];
-    if (await canLaunch(url)) {
-      print("launch");
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   Widget buildPhoneNumberTile() {
     return ListTile(
         leading: Tooltip(
@@ -170,7 +160,7 @@ class MyHomePageState extends State<MyHomePage> {
             child: IconButton(
                 icon: Icon(informIconList[2]),
                 onPressed: () {
-                  launch("tel:$informList[2]");
+                  _url_launch("tel:$informList[2]");
                 })),
         title: Text(informList[2]),
         trailing: Tooltip(
@@ -180,5 +170,14 @@ class MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Clipboard.setData(ClipboardData(text: informList[2]));
                 })));
+  }
+
+  Future<void> _url_launcher(String url) async {
+    if (await canLaunch(url)) {
+      print("launch");
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
