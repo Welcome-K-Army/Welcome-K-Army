@@ -12,6 +12,7 @@ import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
 import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:Army/page/home/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -141,7 +142,7 @@ class OnBoardingState extends State<OnBoarding> {
           pushReplacement(context, new AuthScreen());
         }
       } else {
-        pushReplacement(context, new AuthScreen());
+        pushReplacement(context, new Homepage());
       }
     } else {
       pushReplacement(context, new OnBoardingScreen());
