@@ -35,6 +35,6 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(body: Container(height: size.height, width: size.width, child: SfPdfViewer.network('http://ebooks.syncfusion.com/downloads/flutter-succinctly/flutter-succinctly.pdf')));
+    return Scaffold(body: Container(height: size.height, width: size.width, child: SfPdfViewer.network('http://ebooks.syncfusion.com/downloads/flutter-succinctly/flutter-succinctly.pdf', enableDoubleTapZooming: false)));
   }
 }
