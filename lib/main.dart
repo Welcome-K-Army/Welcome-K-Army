@@ -40,22 +40,10 @@ class MyHomePageState extends State<MyHomePage> {
     IconData(63084, fontFamily: 'MaterialIcons'),
   ];
 
-  void _iconShowDialog(PointerEvent details) {
-    setState(() {
-      iconDialog = true;
-    });
-  }
-
-  void _iconHideDialog(PointerEvent details) {
-    setState(() {
-      iconDialog = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
@@ -122,19 +110,21 @@ class MyHomePageState extends State<MyHomePage> {
   List<Widget> buildInformTile() {
     return <Widget>[
       ListTile(
-        leading: Tooltip(message: "주소 복사", child: IconButton(icon: Icon(informIconList[0]))),
-        title: Text(informList[0]),
-        trailing: IconButton(
-            icon: Icon(informIconList[3]),
-            onPressed: () {
-              Clipboard.setData(ClipboardData(text: informList[0]));
-            }),
-      ),
+          leading: Tooltip(message: "주소 복사", child: IconButton(icon: Icon(informIconList[0]))),
+          title: Text(informList[0]),
+          trailing: Tooltip(
+            message: "복사하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList[0]));
+                }),
+          )),
       ListTile(
         leading: Tooltip(message: "웹사이트 열기", child: IconButton(icon: Icon(informIconList[1]))),
         title: Text(informList[1]),
         trailing: Tooltip(
-            message: "ㅇ",
+            message: "복사하기",
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
@@ -142,14 +132,16 @@ class MyHomePageState extends State<MyHomePage> {
                 })),
       ),
       ListTile(
-        leading: Tooltip(message: "전화번호 복사", child: IconButton(icon: Icon(informIconList[2]))),
-        title: Text(informList[2]),
-        trailing: IconButton(
-            icon: Icon(informIconList[3]),
-            onPressed: () {
-              Clipboard.setData(ClipboardData(text: informList[0]));
-            }),
-      ),
+          leading: Tooltip(message: "전화번호 복사", child: IconButton(icon: Icon(informIconList[2]))),
+          title: Text(informList[2]),
+          trailing: IconButton(
+            icon: Tooltip(
+                message: "복사하기",
+                child: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList[0]));
+                }),
+          )),
     ];
   }
 }
