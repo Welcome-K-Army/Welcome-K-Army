@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:helloworld/lib/widgets/inform_widget.dart';
+import 'widgets/inform_widget.dart';
 
 void main() => runApp(MyApp());
 
