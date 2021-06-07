@@ -117,21 +117,20 @@ class MyHomePageState extends State<MyHomePage> {
   List<Widget> buildInformTile() {
     return List<Widget>.generate(informIconList.length - 1, (index) {
       return ListTile(
-        leading: buildTooltipWithIconButton(messageList[index], infromIconList[index]),
+        leading: buildTooltipWithIconButton(messageList[index], informIconList[index], informList[index]),
         title: Text(informList[index]),
-        trailing: buildTooltipWithIconButton(messageList[3], informIconList[3]),
-      )
+        trailing: buildTooltipWithIconButton(messageList[3], informIconList[3], informList[index]),
+      );
     });
   }
 
   Widget buildTooltipWithIconButton(String message, String copyText, IconData iconData) {
     return Tooltip(
-      message: message,
-      child: IconButton(
-        icon: Icon(iconData),
-        onPressed: copyToClipboard(copyText),
-      )
-    );
+        message: message,
+        child: IconButton(
+          icon: Icon(iconData),
+          onPressed: copyToClipboard(copyText),
+        ));
   }
 
   void copyToClipboard(String text) {
