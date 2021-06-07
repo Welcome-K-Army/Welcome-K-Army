@@ -124,16 +124,13 @@ class MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Widget buildTooltipWithIconButton(String message, String copyText, IconData iconData) {
+  Widget buildCopyTooltipWithIconButton(String message, String copyText, IconData iconData) {
     return Tooltip(
         message: message,
         child: IconButton(
-          icon: Icon(iconData),
-          onPressed: copyToClipboard(copyText),
-        ));
-  }
-
-  void copyToClipboard(String text) {
-    Clipboard.setData(ClipboardData(text: text));
+            icon: Icon(iconData),
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: copyText));
+            }));
   }
 }
