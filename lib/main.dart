@@ -137,7 +137,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> linkToSchoolHomePage() async {
-    const url = informList[1];
+    String url = informList[1];
     if (await canLaunch(url)) {
       await launch(url);
     } else {
