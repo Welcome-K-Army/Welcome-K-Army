@@ -38,7 +38,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   flutter_radar_chart: ^0.1.6
   intl: ^0.17.0
-  syncfusion_flutter_calendar: ^19.1.66
+  syncfusion_flutter_calendar: ^18.4.49
   
 dev_dependencies:
   flutter_test:
