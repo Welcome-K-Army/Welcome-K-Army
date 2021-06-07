@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/competition_chart_widget.dart';
 import 'widgets/inform_widget.dart';
 
 void main() => runApp(MyApp());
@@ -87,7 +88,7 @@ class MyHomePageState extends State<MyHomePage> {
         body: TabBarView(
           children: [
             InformWidget(),
-            Text('경쟁률'),
+            CompetitionChartWidget(),
             Text('입시정보'),
             Text('교육과정'),
           ],
