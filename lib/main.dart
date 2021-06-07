@@ -130,7 +130,18 @@ class MyHomePageState extends State<MyHomePage> {
         child: IconButton(
             icon: Icon(iconData),
             onPressed: () {
-              Clipboard.setData(ClipboardData(text: copyText));
+              if (message == "복사하기")
+                Clipboard.setData(ClipboardData(text: copyText));
+              else if (message == "웹사이트 열기") linkToSchoolHomePage();
             }));
+  }
+
+  Future<void> linkToSchoolHomePage() async {
+    const url = informList[1];
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
