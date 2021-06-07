@@ -33,6 +33,13 @@ class MyHomePageState extends State<MyHomePage> {
     "+82221970114"
   ];
 
+  List<String> messageList = [
+    "주소 복사",
+    "웹사이트 열기",
+    "전화 걸기",
+    "복사 하기"
+  ];
+
   List<IconData> informIconList = [
     Icons.location_on_outlined,
     Icons.web,
@@ -108,41 +115,26 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> buildInformTile() {
-    return <Widget>[
-      ListTile(
-          leading: Tooltip(message: "주소 복사", child: IconButton(icon: Icon(informIconList[0]))),
-          title: Text(informList[0]),
-          trailing: Tooltip(
-            message: "복사하기",
-            child: IconButton(
-                icon: Icon(informIconList[3]),
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[0]));
-                }),
-          )),
-      ListTile(
-        leading: Tooltip(message: "웹사이트 열기", child: IconButton(icon: Icon(informIconList[1]))),
-        title: Text(informList[1]),
-        trailing: Tooltip(
-            message: "복사하기",
-            child: IconButton(
-                icon: Icon(informIconList[3]),
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[0]));
-                })),
-      ),
-      ListTile(
-          leading: Tooltip(message: "전화번호 복사", child: IconButton(icon: Icon(informIconList[2]))),
-          title: Text(informList[2]),
-          trailing: IconButton(
-              icon: Tooltip(
-            message: "복사하기",
-            child: IconButton(
-                icon: Icon(informIconList[3]),
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[0]));
-                }),
-          ))),
-    ];
+    return List<Widget>.generate(informIconList.length - 1, (index) {
+      return ListTile(
+        leading: buildTooltipWithIconButton(messageList[index], infromIconList[index]),
+        title: Text(informList[index]),
+        trailing: buildTooltipWithIconButton(messageList[3], informIconList[3]),
+      )
+    });
+  }
+
+  Widget buildTooltipWithIconButton(String message, String copyText, IconData iconData) {
+    return Tooltip(
+      message: message,
+      child: IconButton(
+        icon: Icon(iconData),
+        onPressed: copyToClipboard(copyText),
+      )
+    );
+  }
+
+  void copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
   }
 }
