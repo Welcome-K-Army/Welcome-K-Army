@@ -109,7 +109,6 @@ class MyHomePageState extends State<MyHomePage> {
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
-            ),
           ],
         ),
       ),
@@ -118,49 +117,40 @@ class MyHomePageState extends State<MyHomePage> {
 
   Widget buildAddressTile() {
     return ListTile(
-      leading: Tooltip(
-        message: "주소 복사",
-        child: IconButton(
-          icon: Icon(infromIconList[0]),
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: informList[0]));
-          }
-        )
-      ),
-      title: Text(informList[0]),
-      trailing: Tooltip(
-        message: "복사 하기",
-        child: IconButton(
-          icon: Icon(informIconList[3]),
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: informList[0]));
-          }
-        )
-      )
-    )
+        leading: Tooltip(
+            message: "주소 복사",
+            child: IconButton(
+                icon: Icon(informIconList[0]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList[0]));
+                })),
+        title: Text(informList[0]),
+        trailing: Tooltip(
+            message: "복사 하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList[0]));
+                })));
   }
-   Widget buildUrlTile() {
+
+  Widget buildUrlTile() {
     return ListTile(
-      leading: Tooltip(
-        message: "웹사이트 열기",
-        child: IconButton(
-          icon: Icon(infromIconList[0]),
-          onPressed: () {
-            linkToSchoolHomePage();
-          }
-        )
-      ),
-      title: Text(informList[0]),
-      trailing: Tooltip(
-        message: "복사 하기",
-        child: IconButton(
-          icon: Icon(informIconList[3]),
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: informList[1]));
-          }
-        )
-      )
-    )
+        leading: Tooltip(
+            message: "웹사이트 열기",
+            child: IconButton(
+                icon: Icon(informIconList[0]),
+                onPressed: () {
+                  linkToSchoolHomePage();
+                })),
+        title: Text(informList[0]),
+        trailing: Tooltip(
+            message: "복사 하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList[1]));
+                })));
   }
 
   Future<void> linkToSchoolHomePage() async {
@@ -175,26 +165,20 @@ class MyHomePageState extends State<MyHomePage> {
 
   Widget buildPhoneNumberTile() {
     return ListTile(
-      leading: Tooltip(
-        message: "전화 걸기",
-        child: IconButton(
-          icon: Icon(infromIconList[0]),
-          onPressed: () {
-            linkToSchoolHomePage();
-          }
-        )
-      ),
-      title: Text(informList[0]),
-      trailing: Tooltip(
-        message: "복사 하기",
-        child: IconButton(
-          icon: Icon(informIconList[3]),
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: informList[2]));
-          }
-        )
-      )
-    )
+        leading: Tooltip(
+            message: "전화 걸기",
+            child: IconButton(
+                icon: Icon(informIconList[0]),
+                onPressed: () {
+                  linkToSchoolHomePage();
+                })),
+        title: Text(informList[0]),
+        trailing: Tooltip(
+            message: "복사 하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  launch(informList[2]);
+                })));
   }
-
 }
