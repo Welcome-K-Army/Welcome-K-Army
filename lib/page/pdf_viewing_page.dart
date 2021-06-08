@@ -164,6 +164,7 @@ class _PdfViewingPage extends State<PdfViewingPage> {
   void initState() {
     _showToolbar = false;
     _showScrollHead = true;
+    _textSearchKey.currentState._showToast = true;
     super.initState();
   }
 
