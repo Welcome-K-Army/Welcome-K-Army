@@ -180,7 +180,7 @@ class _PdfViewingPage extends State<PdfViewingPage> {
 
   /// Remove history entry for text search.
   void _handleHistoryEntryRemoved() {
-    _textSearchKey.currentState?.clearSearch();
+    _textSearchKey.currentState.clearSearch();
     setState(() {
       _showToolbar = false;
     });
