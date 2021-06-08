@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewingPage extends StatefulWidget {
@@ -10,11 +11,34 @@ class PdfViewingPageState extends State<PdfViewingPage> {
   String url = 'http://ebooks.syncfusion.com/downloads/flutter-succinctly/flutter-succinctly.pdf';
   PdfViewerController _pdfViewerController;
   PdfTextSearchResult _searchResult;
+  OverlayEntry _overlayEntry;
+
   @override
   void initState() {
     _pdfViewerController = PdfViewerController();
     _searchResult = PdfTextSearchResult();
     super.initState();
+  }
+
+  void _showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
+    final OverlayState _overlayState = Overlay.of(context);
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion.center.dy - 55,
+        left: details.globalSelectedRegion.bottomLeft.dx,
+        child: RaisedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText));
+            print('Text copied to clipboard: ' + details.selectedText.toString());
+            _pdfViewerController.clearSelection();
+          },
+          color: Colors.white,
+          elevation: 10,
+          child: Text('Copy', style: TextStyle(fontSize: 17)),
+        ),
+      ),
+    );
+    _overlayState.insert(_overlayEntry);
   }
   /*  
   // Load document from the Asset
@@ -58,6 +82,44 @@ class PdfViewingPageState extends State<PdfViewingPage> {
                 print('Total instance count: ${_searchResult.totalInstanceCount}');
               },
             ),
+            Visibility(
+              visible: _searchResult.hasResult,
+              child: IconButton(
+                icon: Icon(
+                  Icons.clear,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _searchResult.clear();
+                  });
+                },
+              ),
+            ),
+            Visibility(
+              visible: _searchResult.hasResult,
+              child: IconButton(
+                icon: Icon(
+                  Icons.keyboard_arrow_up,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _searchResult.previousInstance();
+                },
+              ),
+            ),
+            Visibility(
+              visible: _searchResult.hasResult,
+              child: IconButton(
+                icon: Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _searchResult.nextInstance();
+                },
+              ),
+            ),
           ],
         ),
         body: Container(
@@ -68,6 +130,14 @@ class PdfViewingPageState extends State<PdfViewingPage> {
               controller: _pdfViewerController,
               enableDoubleTapZooming: true,
               enableTextSelection: true,
+              onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
+                if (details.selectedText == null && _overlayEntry != null) {
+                  _overlayEntry.remove();
+                  _overlayEntry = null;
+                } else if (details.selectedText != null && _overlayEntry == null) {
+                  _showContextMenu(context, details);
+                }
+              },
             )));
   }
 }
