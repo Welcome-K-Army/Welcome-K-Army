@@ -36,4 +36,8 @@ class FireStoreUtils {
     var downloadUrl = await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
     return downloadUrl.toString();
   }
+
+
+
+  
 }

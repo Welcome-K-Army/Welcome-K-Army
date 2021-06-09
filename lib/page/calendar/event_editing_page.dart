@@ -222,17 +222,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
         to: toDate,
         isAllDay: false,
       );
-      print(context);
 
       final isEditing = widget.event != null;
 
       if (isEditing) {
         provider.editEvent(event, widget.event);
-        Navigator.of(context).pop();
       } else {
         provider.addEvent(event);
       }
-      print("좀 되라");
       Navigator.of(context).pop();
     }
   }
