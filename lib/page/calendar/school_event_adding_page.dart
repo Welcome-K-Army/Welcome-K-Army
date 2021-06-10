@@ -91,15 +91,15 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             children: <Widget>[
               IconButton(
                 icon: Icon(
-                  //Icons.add
-                  IconData(57506),
+                  Icons.add
+                  // IconData(57506),
                 ),
                 onPressed: () {},
               ),
               IconButton(
                   icon: Icon(
-                    //Icons.add
-                    IconData(58445),
+                    Icons.add
+                    // IconData(58445),
                   ),
                   onPressed: () {
                     final event1 = Event(title: "1차시험", description: "국어, 영어, 수학", from: DateTime.now(), to: DateTime.now().add(Duration(hours: 2)), backgroundColor: Colors.red, isAllDay: false);
