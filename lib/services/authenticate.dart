@@ -40,11 +40,15 @@ class FireStoreUtils {
     return downloadUrl.toString();
   }
 
-  Future<Event> getUserCalendarEvent(String eventid) async {
+  Future<List<Event>> getUserCalendarEvent(String eventid) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    DocumentSnapshot eventDocument = await firestore.collection(uid).doc("Event" + eventid).get();
-    if (eventDocument != null && eventDocument.exists) {
-      return Event.fromJson(eventDocument.data());
+    List<Event> events = [];
+    QuerySnapshot eventDocument = await firestore.collection(uid).get();
+    if (eventDocument != null && eventDocument.docs != null) {
+      for (var ev in eventDocument.docs) {
+        events.add(Event.fromJson(ev.data()));
+      }
+      return events;
     } else {
       return null;
     }
@@ -52,13 +56,13 @@ class FireStoreUtils {
 
   static Future<Event> updateUserCalendarEvent(String eventid, Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    return await firestore.collection(uid).doc("Event" + eventid).set(event.toJson()).then((document) {
+    return await firestore.collection(uid).add(event.toJson()).then((document) {
       return event;
     });
   }
 
   static Future<void> deleteUserCalendarEvent(String eventid) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    await firestore.collection(uid).doc("Event" + eventid).delete();
+    await firestore.collection(uid).doc(eventid).delete();
   }
 }
