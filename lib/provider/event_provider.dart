@@ -5,7 +5,7 @@ import 'package:Army/model/calendar/event.dart';
 import 'package:Army/services/authenticate.dart';
 
 class EventProvider extends ChangeNotifier {
-  final List<Event> _events = getUserCalendarEvent();
+  final List<Event> _events = FireStoreUtils.getUserCalendarEvent();
 
   List<Event> get events => _events;
 
