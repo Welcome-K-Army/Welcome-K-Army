@@ -12,7 +12,7 @@ class FilterScreen extends StatelessWidget {
   FilterData _filterData;
 
   bool _filter(School data){
-    if(_filterData.categories != null && _filterData.categories != data.catagory)
+    if(_filterData.categories != null && _filterData.categories != data.catagory && data.catagory != Categories.All)
       return false;
     if(_filterData.classes != null && _filterData.classes != data.classes)
       return false;

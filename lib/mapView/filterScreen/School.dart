@@ -3,7 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 enum Categories{
   Army, //육군
   Navy, //해군
-  AirForce  //공군
+  AirForce,  //공군
+  All
 }
 enum Types{
   Cadets, //사관
@@ -15,7 +16,8 @@ enum Ages{
   A_17_21,
   A_19_25,
   A_25_28,
-  A_28_31
+  A_28_31,
+  A_20_27
 }
 enum Classes{
   Officer,  // 장교
@@ -44,6 +46,7 @@ const typeMap = {
 const ageMap = {
   '17세 이상 21세 미만': Ages.A_17_21,
   '19세 이상 25세 미만': Ages.A_19_25,
+  '20세 이상 27세 미만': Ages.A_20_27,
   '25세 이상 28세 미만': Ages.A_25_28,
   '28세 이상 31세 미만': Ages.A_28_31
 };

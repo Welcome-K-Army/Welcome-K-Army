@@ -8,6 +8,7 @@ class DropDownButtonList extends StatelessWidget {
   List<String> _ages = [
     '17세 이상 21세 미만',
     '19세 이상 25세 미만',
+    '20세 이상 27세 미만',
     '25세 이상 28세 미만',
     '28세 이상 31세 미만'
   ];
