@@ -27,6 +27,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   @override
   void initState() {
     super.initState();
+
     if (widget.event == null) {
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
