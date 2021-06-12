@@ -40,7 +40,7 @@ class FireStoreUtils {
     return downloadUrl.toString();
   }
 
-  Future<List<Event>> getUserCalendarEvent() async {
+  Future<List> getUserCalendarEvent() async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     List<Event> events = [];
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
