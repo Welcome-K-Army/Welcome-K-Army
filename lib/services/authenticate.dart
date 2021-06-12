@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:Army/model/user.dart';
 import 'package:Army/constants.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:Army/model/calendar/event.dart';
 
 class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -37,7 +39,18 @@ class FireStoreUtils {
     return downloadUrl.toString();
   }
 
+  Future<Event> getUserCalendarEvent(String uid, String eventid) async {
+    DocumentSnapshot eventDocument = await firestore.collection(uid).doc("Event" + eventid).get();
+    if (eventDocument != null && eventDocument.exists) {
+      return Event.fromJson(eventDocument.data());
+    } else {
+      return null;
+    }
+  }
 
-
-  
+  static Future<Event> updateUserCalendarEvent(String uid, String eventid, Event event) async {
+    return await firestore.collection(uid).doc("Event" + eventid).set(event.toJson()).then((document) {
+      return event;
+    });
+  }
 }

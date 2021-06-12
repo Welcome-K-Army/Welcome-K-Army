@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Army/model/calendar/event.dart';
+import 'package:Army/services/authenticate.dart';
 
 class EventProvider extends ChangeNotifier {
   final List<Event> _events = [];
@@ -16,9 +17,9 @@ class EventProvider extends ChangeNotifier {
 
   List<Event> get eventsOfSelectedDate => _events;
 
-  void addEvent(Event event) {
+  void addEvent(Event event) async {
     _events.add(event);
-    
+    await FireStoreUtils.updateUserCalendarEvent("EventData", "123", event);
     notifyListeners();
   }
 
