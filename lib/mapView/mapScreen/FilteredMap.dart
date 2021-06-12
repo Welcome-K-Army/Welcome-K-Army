@@ -5,7 +5,7 @@ import '../filterScreen/School.dart';
 
 class FilteredMap extends StatefulWidget {
   final List<School> filteredData;
-
+  //
   FilteredMap(this.filteredData);
 
   @override
