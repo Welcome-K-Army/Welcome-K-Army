@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -39,7 +40,8 @@ class FireStoreUtils {
     return downloadUrl.toString();
   }
 
-  Future<Event> getUserCalendarEvent(String uid, String eventid) async {
+  Future<Event> getUserCalendarEvent(String eventid) async {
+    String uid = auth.FirebaseAuth.instance.currentUser.uid;
     DocumentSnapshot eventDocument = await firestore.collection(uid).doc("Event" + eventid).get();
     if (eventDocument != null && eventDocument.exists) {
       return Event.fromJson(eventDocument.data());
@@ -48,9 +50,14 @@ class FireStoreUtils {
     }
   }
 
-  static Future<Event> updateUserCalendarEvent(String uid, String eventid, Event event) async {
+  static Future<Event> updateUserCalendarEvent(String eventid, Event event) async {
+    String uid = auth.FirebaseAuth.instance.currentUser.uid;
     return await firestore.collection(uid).doc("Event" + eventid).set(event.toJson()).then((document) {
       return event;
     });
   }
+
+  Future<Event> deleteUserCalendarEvent(String eventid) async {
+    String uid = auth.FirebaseAuth.instance.currentUser.uid;
+    DocumentSnapshot eventDocument = await firestore.collection(uid).doc("Event" + eventid).delete();
 }
