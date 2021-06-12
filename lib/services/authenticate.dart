@@ -57,7 +57,7 @@ class FireStoreUtils {
     });
   }
 
-  Future<void> deleteUserCalendarEvent(String eventid) async {
+  static Future<void> deleteUserCalendarEvent(String eventid) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     await firestore.collection(uid).doc("Event" + eventid).delete();
   }
