@@ -23,7 +23,7 @@ class EventProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void editEvent(Event newEvent, Event oldEvent) async{
+  void editEvent(Event newEvent, Event oldEvent) async {
     final index = _events.indexOf(oldEvent);
     _events[index] = newEvent;
     await FireStoreUtils.updateUserCalendarEvent(_events.indexOf(newEvent).toString(), newEvent);
@@ -31,8 +31,8 @@ class EventProvider extends ChangeNotifier {
   }
 
   void deleteEvent(Event event) async {
-    _events.remove(event);
     await FireStoreUtils.deleteUserCalendarEvent(_events.indexOf(event).toString());
+    _events.remove(event);
     notifyListeners();
   }
 }
