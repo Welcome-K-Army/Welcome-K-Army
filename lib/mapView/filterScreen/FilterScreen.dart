@@ -29,6 +29,7 @@ class FilterScreen extends StatelessWidget {
       providers: [ChangeNotifierProvider(create: (context) => FilterData())],
       child: Scaffold(
         floatingActionButton: MyFloatingActionButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: Center(
           child: Consumer<FilterData>(
             builder: (context, filterData, child) {

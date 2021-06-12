@@ -22,13 +22,23 @@ class _MyFloatingActionButtonState extends State<MyFloatingActionButton> {
         ? FloatingActionButton(
             onPressed: () {
               var bottomSheetController = showBottomSheet(
-                  context: context, builder: (context) => MyBottomSheet());
+                  context: context, builder: (context) => MyBottomSheet()
+              );
               showFloatingActionButton(false);
               bottomSheetController.closed.then((value) async {
                 await Future.delayed(Duration(milliseconds: 200));
                 showFloatingActionButton(true);
               });
             },
+            // backgroundColor: Color(0x00000000),
+            backgroundColor: Colors.white,
+            child: Center(
+              child: Icon(
+                Icons.keyboard_arrow_up_outlined,
+                color: Colors.black87,
+                size: 30,
+              ),
+            ),
           )
         : Container();
   }

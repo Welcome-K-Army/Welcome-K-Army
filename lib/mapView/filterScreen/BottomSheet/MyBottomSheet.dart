@@ -9,8 +9,6 @@ class MyBottomSheet extends StatefulWidget {
 }
 
 class _MyBottomSheetState extends State<MyBottomSheet> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +18,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
         boxShadow: [
-          BoxShadow(blurRadius: 10, color: Colors.grey[300], spreadRadius: 5)
+          BoxShadow(blurRadius: 5, color: Colors.grey[500], spreadRadius: 3)
         ],
       ),
       child: Column(children: <Widget>[
