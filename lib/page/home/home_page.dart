@@ -142,9 +142,9 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildMenuIconBtn(Menu menu) {
+    final provider = Provider.of<EventProvider>(context);
     return InkWell(
       onTap: () {
-        final provider = Provider.of<EventProvider>(context);
         provider.readEvent();
         Navigator.push(
           context,
