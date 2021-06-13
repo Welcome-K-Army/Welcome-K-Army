@@ -40,7 +40,7 @@ class Event {
       description: parsedJson['description'] ?? '',
       from: parsedJson['from'] ?? '',
       to: parsedJson['to'] ?? '',
-      backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ,
+      backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red,
       isAllDay: parsedJson['isAllDay'] ?? false
     ); 
   }
