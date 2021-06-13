@@ -58,15 +58,15 @@ class FireStoreUtils {
     });
   }
 
-  static Future<Event> updateUserCalendarEvent(int index, Event event) async {
+  static Future<Event> updateUserCalendarEvent(Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    return await firestore.collection(uid).doc().set(event.toJson()).then((document) {
+    return await firestore.collection(uid).doc(event.eid).set(event.toJson()).then((document) {
       return event;
     });
   }
 
-  static Future<void> deleteUserCalendarEvent(int index) async {
+  static Future<void> deleteUserCalendarEvent(Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    await firestore.collection(uid).doc(eventsid[index]).delete();
+    await firestore.collection(uid).doc(event.eid).delete();
   }
 }
