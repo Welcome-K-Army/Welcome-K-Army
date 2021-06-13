@@ -23,15 +23,13 @@ class EventProvider extends ChangeNotifier {
   }
 
   void addEvent(Event event) async {
-    _events.add(event);
-    await FireStoreUtils.addUserCalendarEvent(event);
+    _events.add(await FireStoreUtils.addUserCalendarEvent(event));
     notifyListeners();
   }
 
   void editEvent(Event newEvent, Event oldEvent) async {
     final index = _events.indexOf(oldEvent);
-    _events[index] = newEvent;
-    await FireStoreUtils.updateUserCalendarEvent(newEvent);
+    _events[index] = await FireStoreUtils.updateUserCalendarEvent(newEvent, oldEvent);
     notifyListeners();
   }
 
