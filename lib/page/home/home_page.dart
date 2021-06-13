@@ -3,7 +3,9 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'notice_list_page.dart';
+import 'package:provider/provider.dart';
 
+import 'package:Army/provider/event_provider.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/global.dart';
 
@@ -141,10 +143,14 @@ class HomePageState extends State<HomePage> {
 
   Widget buildMenuIconBtn(Menu menu) {
     return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (BuildContext context) => menu.widget),
-      ),
+      onTap: () {
+        final provider = Provider.of<EventProvider>(context);
+        provider.readEvent();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => menu.widget),
+        );
+      },
       child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
         menu.icon,
         Text(menu.name),
