@@ -9,9 +9,13 @@ import 'package:Army/model/user.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/calendar/event.dart';
 
+List<String> eids = [];
+
 class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   Reference storage = FirebaseStorage.instance.ref();
+  List<Event> events = [];
+
   Future<User> getCurrentUser(String uid) async {
     DocumentSnapshot userDocument = await firestore.collection(USERS).doc(uid).get();
     if (userDocument != null && userDocument.exists) {
@@ -42,10 +46,12 @@ class FireStoreUtils {
   Future<List<Event>> getUserCalendarEvent() async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
-    List<Event> events = [];
+    events = [];
+    eids = [];
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
-        events.add(Event.fromJson(ev.data(), ev.id));
+        eids.add(ev.id);
+        events.add(Event.fromJson(ev.data()));
       }
     }
     return events;
@@ -58,15 +64,16 @@ class FireStoreUtils {
     });
   }
 
-  static Future<Event> updateUserCalendarEvent(Event event) async {
+  static Future<Event> updateUserCalendarEvent(int index, Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    return await firestore.collection(uid).doc(event.eid).set(event.toJson()).then((document) {
+
+    return await firestore.collection(uid).doc(eids[index]).set(event.toJson()).then((document) {
       return event;
     });
   }
 
-  static Future<void> deleteUserCalendarEvent(Event event) async {
+  static Future<void> deleteUserCalendarEvent(int index, Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
-    await firestore.collection(uid).doc(event.eid).delete();
+    await firestore.collection(uid).doc(eids[index]).delete();
   }
 }
