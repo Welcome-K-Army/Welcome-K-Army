@@ -37,6 +37,8 @@ class Event {
     this.isAllDay = false,
   });
 
+  set eid(String eventID) => this.eid = eventID;
+
   factory Event.fromJson(Map<String, dynamic> parsedJson) {
     return new Event(eid: '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate() ?? '', to: parsedJson['to'].toDate() ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }

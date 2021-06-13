@@ -47,7 +47,7 @@ class FireStoreUtils {
     events = [];
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
-        Event temp = Event.fromJson(ev.data())..eid = ev.id;
+        Event temp = Event.fromJson(ev.data())..eid(ev.id);
         events.add(temp);
       }
     }
