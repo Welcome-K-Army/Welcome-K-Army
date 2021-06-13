@@ -58,7 +58,6 @@ class CalendarWidget extends StatelessWidget {
           showDatePickerButton: true,
           allowedViews: _allowedViews,
           onLongPress: (details) {
-            print(provider);
             provider.setDate(details.date);
             showModalBottomSheet(
               context: context,

@@ -13,7 +13,6 @@ class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   Reference storage = FirebaseStorage.instance.ref();
 
-
   Future<User> getCurrentUser(String uid) async {
     DocumentSnapshot userDocument = await firestore.collection(USERS).doc(uid).get();
     if (userDocument != null && userDocument.exists) {
@@ -50,10 +49,8 @@ class FireStoreUtils {
         print(ev.data());
         events.add(Event.fromJson(ev.data()));
       }
-      return events;
-    } else {
-      return null;
     }
+    return events;
   }
 
   static Future<Event> addUserCalendarEvent(Event event) async {
@@ -62,6 +59,7 @@ class FireStoreUtils {
       return event;
     });
   }
+
   static Future<Event> updateUserCalendarEvent(String eventid, Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     return await firestore.collection(uid).add(event.toJson()).then((document) {
