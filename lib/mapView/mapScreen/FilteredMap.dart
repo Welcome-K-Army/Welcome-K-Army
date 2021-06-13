@@ -45,7 +45,7 @@ class FilteredMapState extends State<FilteredMap> {
         .map((school) => Marker(
             markerId: MarkerId(school.name),
             position: school.latlng,
-            infoWindow: InfoWindow(title: school.name)))
+            infoWindow: InfoWindow(title: school.name, snippets:school.address,)))
         .toSet();
   }
 }
