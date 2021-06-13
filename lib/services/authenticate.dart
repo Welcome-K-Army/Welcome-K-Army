@@ -46,7 +46,9 @@ class FireStoreUtils {
     List<Event> events = [];
     print("fuck");
     if (eventDocument != null && eventDocument.docs != null) {
+      print(eventDocument.docs.length);
       for (var ev in eventDocument.docs) {
+        print(ev.id);
         print(ev.data());
         events.add(Event.fromJson(ev.data()));
       }
