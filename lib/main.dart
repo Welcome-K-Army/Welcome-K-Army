@@ -15,7 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Army/page/home/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
-import 'package:Army/page/calendar/calendar_page.dart';
+import 'package:Army/page/home/home_page.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(create: (context) => EventProvider(), child: MyApp()));
@@ -142,10 +142,10 @@ class OnBoardingState extends State<OnBoarding> {
           MyAppState.currentUser = user;
           pushReplacement(context, new HomeScreen(user: user));
         } else {
-          pushReplacement(context, new CalendarPage());
+          pushReplacement(context, new HomePage());
         }
       } else {
-        pushReplacement(context, new CalendarPage());
+        pushReplacement(context, new HomePage());
       }
     } else {
       pushReplacement(context, new OnBoardingScreen());
