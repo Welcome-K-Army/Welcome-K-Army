@@ -19,7 +19,7 @@ extension HexColor on Color {
 }
 
 class Event {
-  final String eid;
+  String eid;
   final String title;
   final String description;
   final DateTime from;
