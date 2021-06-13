@@ -37,13 +37,13 @@ class Event {
     this.isAllDay = false,
   });
 
-  factory Event.fromJson(Map<String, dynamic> parsedJson) {
-    return new Event(eid: parsedJson['eid'] ?? '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate() ?? '', to: parsedJson['to'].toDate() ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
+  factory Event.fromJson(Map<String, dynamic> parsedJson, String eventid) {
+    return new Event(eid: eventid, title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate() ?? '', to: parsedJson['to'].toDate() ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'eid':this.eid,
+      'eid': this.eid,
       'title': this.title,
       'description': this.description,
       'from': this.from,
