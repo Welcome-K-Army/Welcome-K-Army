@@ -47,7 +47,9 @@ class FireStoreUtils {
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
         print(ev.data());
+        print(Event.fromJson(ev.data()));
         events.add(Event.fromJson(ev.data()));
+        print(events);
       }
     }
     return events;
