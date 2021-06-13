@@ -56,6 +56,12 @@ class FireStoreUtils {
     }
   }
 
+  static Future<Event> addUserCalendarEvent(Event event) async {
+    String uid = auth.FirebaseAuth.instance.currentUser.uid;
+    return await firestore.collection(uid).add(event.toJson()).then((document) {
+      return event;
+    });
+  }
   static Future<Event> updateUserCalendarEvent(String eventid, Event event) async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     return await firestore.collection(uid).add(event.toJson()).then((document) {
