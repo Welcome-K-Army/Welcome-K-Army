@@ -44,12 +44,8 @@ class FireStoreUtils {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
     List<Event> events = [];
-    print("fuck");
     if (eventDocument != null && eventDocument.docs != null) {
-      print(eventDocument.docs.length);
-      print(eventDocument.docs);
       for (var ev in eventDocument.docs) {
-        print(ev.id);
         print(ev.data());
         // events.add(Event.fromJson(ev.data()));
       }
