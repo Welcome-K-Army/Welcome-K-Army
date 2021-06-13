@@ -7,7 +7,7 @@ List<School> fillData() {
       idx: 1,
       name: "육군사관학교",
       address:"서울특별시 노원구 공릉2동 화랑로 574",
-      number:"+82221970114";
+      number:"+82221970114",
       latlng: LatLng(37.623787, 127.098831),
       category: Categories.Army,
       type: Types.Cadets,
@@ -57,7 +57,7 @@ List<School> fillData() {
     idx: 6,
     name: "육군학생군사학교",
     address:"충청북도 괴산군 괴산읍 문무로 177",
-    number:"+82438346043"
+    number:"+82438346043",
     latlng: LatLng(36.821519, 127.805987),
     category: Categories.Army,
     type: Types.CadetCandidate,
