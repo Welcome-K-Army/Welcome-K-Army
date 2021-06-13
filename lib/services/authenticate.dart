@@ -47,6 +47,7 @@ class FireStoreUtils {
     print("fuck");
     if (eventDocument != null && eventDocument.docs != null) {
       print(eventDocument.docs.length);
+      print(eventDocument.docs);
       for (var ev in eventDocument.docs) {
         print(ev.id);
         print(ev.data());
