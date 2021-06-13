@@ -19,6 +19,7 @@ extension HexColor on Color {
 }
 
 class Event {
+  final String eid;
   final String title;
   final String description;
   final DateTime from;
@@ -27,6 +28,7 @@ class Event {
   final bool isAllDay;
 
   const Event({
+    this.eid,
     this.title,
     this.description,
     this.from,
@@ -36,11 +38,12 @@ class Event {
   });
 
   factory Event.fromJson(Map<String, dynamic> parsedJson) {
-    return new Event(title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate() ?? '', to: parsedJson['to'].toDate() ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
+    return new Event(eid: '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate() ?? '', to: parsedJson['to'].toDate() ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'eid': this.eid,
       'title': this.title,
       'description': this.description,
       'from': this.from,
