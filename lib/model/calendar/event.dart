@@ -34,9 +34,9 @@ class Event {
     this.backgroundColor = Colors.red,
     this.isAllDay = false,
   });
-
+ // HexColor.fromHex(parsedJson['backgroundColor']) ?? 
   factory Event.fromJson(Map<String, dynamic> parsedJson) {
-    return new Event(title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'] ?? '', to: parsedJson['to'] ?? '', backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
+    return new Event(title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'] ?? '', to: parsedJson['to'] ?? '', backgroundColor: Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }
 
   Map<String, dynamic> toJson() {
