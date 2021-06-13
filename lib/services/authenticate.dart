@@ -51,7 +51,7 @@ class FireStoreUtils {
       for (var ev in eventDocument.docs) {
         print(ev.id);
         print(ev.data());
-        events.add(Event.fromJson(ev.data()));
+        // events.add(Event.fromJson(ev.data()));
       }
     }
     return events;
