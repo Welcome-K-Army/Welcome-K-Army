@@ -47,8 +47,7 @@ class FireStoreUtils {
     events = [];
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
-        Event temp = Event.fromJson(ev.data());
-        temp.eid = ev.id;
+        Event temp = Event.fromJson(ev.data())..eid = ev.id;
         events.add(temp);
       }
     }
@@ -59,7 +58,7 @@ class FireStoreUtils {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     return await firestore.collection(uid).add(event.toJson()).then((document) {
       document.set({
-        eid: document.id
+        'eid': document.id
       });
       return event;
     });
