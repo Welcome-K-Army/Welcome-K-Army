@@ -12,7 +12,6 @@ import 'package:Army/model/calendar/event.dart';
 class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   Reference storage = FirebaseStorage.instance.ref();
-  List<Event> events = [];
 
   Future<User> getCurrentUser(String uid) async {
     DocumentSnapshot userDocument = await firestore.collection(USERS).doc(uid).get();
@@ -44,11 +43,10 @@ class FireStoreUtils {
   Future<List<Event>> getUserCalendarEvent() async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
-    events = [];
+    List<Event> events = [];
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
-        Event temp = Event.fromJson(ev.data())..eid = ev.id;
-        events.add(temp);
+        events.add(Event.fromJson(ev.data()));
       }
     }
     return events;
