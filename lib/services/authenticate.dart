@@ -50,7 +50,7 @@ class FireStoreUtils {
         events.add(Event.fromJson(ev.data()));
       }
     }
-    print(events.asMap());
+    print(events);
     return events;
   }
 
