@@ -56,7 +56,7 @@ class FilteredMapState extends State<FilteredMap> {
             textCapitalization:TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
             onChanged:(value) => applicationBloc.searchPlaces(value),//값확인하는 클래스 생성
-            onTap()=>applicationBloc.clear_value(), //해당 객체 선택하면 detailview 보여주는 함수생성
+            onTap:()=>applicationBloc.clear_value(), 
 
           ),//TextFiled
 
