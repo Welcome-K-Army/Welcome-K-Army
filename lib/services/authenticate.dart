@@ -44,12 +44,13 @@ class FireStoreUtils {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
     List<Event> events = [];
+    print("getUserCalendarEvent");
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
         events.add(Event.fromJson(ev.data()));
       }
     }
-    print("getUserCalendarEvent");
+
     //print(events.asMap());
     return events;
   }
