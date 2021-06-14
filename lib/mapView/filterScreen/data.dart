@@ -2,11 +2,6 @@ import 'School.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
-for i in range(lists.length){
-  if value contains(lists[i].name){
-    prelist.add(value)
-  }
-
 List<School> fillData() {
   List<School> lists = [];
   lists.add(new School(
