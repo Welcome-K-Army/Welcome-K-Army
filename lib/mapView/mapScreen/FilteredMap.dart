@@ -37,7 +37,7 @@ class FilteredMapState extends State<FilteredMap> {
 
   @override
   void dispose(){
-    final applicationBloc=Provider.of<Applicationbloc>(context,listen:flase);
+    final applicationBloc=Provider.of<Applicationbloc>(context,listen:false);
     applicationBloc.dispose();
     _textcontroller.dispose();
     super.dispose();
@@ -51,7 +51,7 @@ class FilteredMapState extends State<FilteredMap> {
       body: ListView(padding:const EdgeInsets.all(8),children:[
         Padding (
           padding :const EdgeInsets.all(8),
-          child:Textfield(
+          child:TextField(
             controller:_textcontroller,
             textCapitalization:TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),

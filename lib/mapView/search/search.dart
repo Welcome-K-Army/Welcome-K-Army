@@ -37,6 +37,7 @@ class Applicationbloc with ChangeNotifier{
 
   clear_value(){
     searchResults=null;
+    notifyListeners();
   }
 
 
