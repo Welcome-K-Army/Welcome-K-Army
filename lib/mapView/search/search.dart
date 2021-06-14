@@ -39,4 +39,10 @@ class Applicationbloc with ChangeNotifier{
     searchResults=null;
   }
 
+  @override
+  void dispose() {
+    selected_value.close();
+    super.dispose();
+  }
+
 }
