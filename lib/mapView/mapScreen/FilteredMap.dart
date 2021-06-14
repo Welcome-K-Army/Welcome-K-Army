@@ -51,7 +51,7 @@ class FilteredMapState extends State<FilteredMap> {
       body: ListView(padding:const EdgeInsets.all(8),children:[
         Padding (
           padding :const EdgeInsets.all(8),
-          child:TextFiled(
+          child:Textfield(
             controller:_textcontroller,
             textCapitalization:TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),

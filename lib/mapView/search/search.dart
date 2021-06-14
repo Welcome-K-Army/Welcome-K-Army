@@ -21,9 +21,9 @@ class Applicationbloc with ChangeNotifier{
   }
 
   check_value(String value) async{
-    for (int i=0:i<datalist.length;i++){
+    for (int i=0 ; i<datalist.length ; i++){
       if(value==datalist[i].name){
-        searchResults.add(datalist[i])
+        searchResults.add(datalist[i]);
       }//if
     }//for
     notifyListeners();
@@ -39,10 +39,5 @@ class Applicationbloc with ChangeNotifier{
     searchResults=null;
   }
 
-  @override
-  void dispose() {
-    selected_value.close();
-    super.dispose();
-  }
 
 }
