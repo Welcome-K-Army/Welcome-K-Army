@@ -49,6 +49,8 @@ class FireStoreUtils {
         events.add(Event.fromJson(ev.data()));
       }
     }
+    print("getUserCalendarEvent");
+    print(events.asMap);
     return events;
   }
 

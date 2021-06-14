@@ -19,6 +19,8 @@ class EventProvider extends ChangeNotifier {
 
   void readEvent() async {
     _events = await FireStoreUtils().getUserCalendarEvent();
+    print("readEvent");
+    print(_events.asMap);
     notifyListeners();
   }
 
