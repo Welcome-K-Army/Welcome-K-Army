@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../filterScreen/School.dart';
+import 'package:provider/provider.dart';
 
 import "../search/search.dart";
 
@@ -29,7 +30,7 @@ class FilteredMapState extends State<FilteredMap> {
 
   @override
   void initState(){
-    super.initState(),
+    super.initState();
     final applicationBloc=Provider.of<Applicationbloc>(context,listen:false);
 
   }
