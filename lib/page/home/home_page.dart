@@ -145,6 +145,7 @@ class HomePageState extends State<HomePage> {
     final provider = Provider.of<EventProvider>(context);
     return InkWell(
       onTap: () {
+        print("onTap");
         provider.readEvent();
         Navigator.push(
           context,
