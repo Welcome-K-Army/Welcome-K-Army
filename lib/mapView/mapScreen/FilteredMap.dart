@@ -28,6 +28,21 @@ class FilteredMapState extends State<FilteredMap> {
       CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
 
   @override
+  void initState(){
+    super.initState(),
+    final applicationBloc=Provider.of<Applicationbloc>(context,listen:false);
+
+  }
+
+  @override
+  void dispose(){
+    final applicationBloc=Provider.of<Applicationbloc>(context,listen:flase);
+    applicationBloc.dispose();
+    _textcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<Applicationbloc>(context);
 
@@ -78,21 +93,13 @@ class FilteredMapState extends State<FilteredMap> {
                 }),
           ),
 
-        ])
+        ]),
 
 
-      ])
-    );
+      ]),
+    );//Scaffold
   }
 
-    GoogleMap(
-      mapType: MapType.normal,
-      markers: _createMarkers(),
-      initialCameraPosition: initialPosition,
-      onMapCreated: (GoogleMapController controller) {
-        _controller.complete(controller);
-      },
-    );
 
   // Future<void> _goToTheLake() async {
   //   final GoogleMapController controller = await _controller.future;
