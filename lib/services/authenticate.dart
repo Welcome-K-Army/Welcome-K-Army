@@ -50,7 +50,7 @@ class FireStoreUtils {
       }
     }
     print("getUserCalendarEvent");
-    print(events.asMap);
+    print(events.asMap());
     return events;
   }
 
