@@ -21,7 +21,7 @@ class Applicationbloc with ChangeNotifier{
   }
 
   check_value(String value) async{
-    for (int i=0 ; i<datalist.length ; i++){
+    await for (int i=0 ; i<=datalist.length ; i++){
       if(value==datalist[i].name){
         searchResults.add(datalist[i]);
       }//if
@@ -30,7 +30,6 @@ class Applicationbloc with ChangeNotifier{
   }//check_value
 
   selected_value() async{
-    searchResults = null;
     notifyListeners();
 
   }
