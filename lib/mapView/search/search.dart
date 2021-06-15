@@ -16,7 +16,7 @@ class Applicationbloc with ChangeNotifier {
 
   searchPlaces(String searchTerm) async {
     if((await check_value(searchTerm))!=null){
-      searchResults.add(check_value(searchTerm))
+      searchResults.add(check_value(searchTerm));
     } //해당 밸류 검색해서 확인하는 함수
     notifyListeners();
   }
