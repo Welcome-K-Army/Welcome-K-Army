@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import "../search/search.dart";
 
 class FilteredMap extends StatefulWidget {
+  FilteredMap({Key key}) : super(key: key);
   final List<School> filteredData;
   //
   FilteredMap(this.filteredData);
