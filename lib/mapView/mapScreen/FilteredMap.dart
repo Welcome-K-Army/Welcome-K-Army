@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import "../search/search.dart";
 
 class FilteredMap extends StatefulWidget {
-
   final List<School> filteredData;
   //
   FilteredMap(this.filteredData);
@@ -19,26 +18,24 @@ class FilteredMap extends StatefulWidget {
 class FilteredMapState extends State<FilteredMap> {
   Completer<GoogleMapController> _controller = Completer();
 
-  final _textcontroller =TextEditingController();
+  final _textcontroller = TextEditingController();
 
   // static final CameraPosition _kGooglePlex = CameraPosition(
   //   target: LatLng(37.42796133580664, -122.085749655962),
   //   zoom: 14.4746,
   // );
 
-  static final CameraPosition initialPosition =
-      CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
+  static final CameraPosition initialPosition = CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    final applicationBloc=Provider.of<Applicationbloc>(context,listen:false);
-
+    final applicationBloc = Provider.of<Applicationbloc>(context, listen: false);
   }
 
   @override
-  void dispose(){
-    final applicationBloc=Provider.of<Applicationbloc>(context,listen:false);
+  void dispose() {
+    final applicationBloc = Provider.of<Applicationbloc>(context, listen: false);
     applicationBloc.dispose();
     _textcontroller.dispose();
     super.dispose();
@@ -49,59 +46,55 @@ class FilteredMapState extends State<FilteredMap> {
     final applicationBloc = Provider.of<Applicationbloc>(context);
 
     return Scaffold(
-      body: ListView(padding:const EdgeInsets.all(8),children:[
-        Padding (
-          padding :const EdgeInsets.all(8),
-          child:TextField(
-            controller:_textcontroller,
-            textCapitalization:TextCapitalization.words,
+      body: ListView(padding: const EdgeInsets.all(8), children: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: TextField(
+            controller: _textcontroller,
+            textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
-            onChanged:(value) => applicationBloc.searchPlaces(value),//값확인하는 클래스 생성
-            onTap:()=>applicationBloc.clear_value(), 
-
-          ),//TextFiled
-
-        ),//Padding
-        Stack(children:[
-          Container(height:600,
-            child:GoogleMap(
-                mapType: MapType.normal,
-                markers: _createMarkers(),
-                initialCameraPosition: initialPosition,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                },
-              ),//GoogleMap
-           ),//Container
-        if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
+            onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
+            onTap: () => applicationBloc.clear_value(),
+            
+          ), //TextFiled
+        ), //Padding
+        Stack(children: [
           Container(
             height: 600,
-            width: double.infinity,
-            decoration: BoxDecoration(color: Colors.black.withOpacity(.6), backgroundBlendMode: BlendMode.darken),
-          ),
-        if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
-          Container(
-            height: 600,
-            child: ListView.builder(
-                itemCount: applicationBloc.searchResults.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(applicationBloc.searchResults[index].name, style: TextStyle(color: Colors.white)), //Text
-                    onTap: () {
-                      // applicationBloc.selected_place(applicationBloc.prelistview[index].number);
-                    //applicationBloc.setSelectedLocation(applicationBloc.searchResults[index].placeId);
-                    },
-                  );
-                }),
-          ),
-
+            child: GoogleMap(
+              mapType: MapType.normal,
+              markers: _createMarkers(),
+              initialCameraPosition: initialPosition,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+            ), //GoogleMap
+          ), //Container
+          if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
+            Container(
+              height: 600,
+              width: double.infinity,
+              decoration: BoxDecoration(color: Colors.black.withOpacity(.6), backgroundBlendMode: BlendMode.darken),
+            ),
+          if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
+            Container(
+              height: 600,
+              child: ListView.builder(
+                  itemCount: applicationBloc.searchResults.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(applicationBloc.searchResults[index].name, style: TextStyle(color: Colors.white)), //Text
+                      onTap: () {
+                        // applicationBloc.selected_place(applicationBloc.prelistview[index].number);
+                        //applicationBloc.setSelectedLocation(applicationBloc.searchResults[index].placeId);
+                      },
+                    );
+                  }),
+            ),
         ]),
-
-
       ]),
-    );//Scaffold
+    ); //Scaffold
   }
-
 
   // Future<void> _goToTheLake() async {
   //   final GoogleMapController controller = await _controller.future;
@@ -113,7 +106,10 @@ class FilteredMapState extends State<FilteredMap> {
         .map((school) => Marker(
             markerId: MarkerId(school.name),
             position: school.latlng,
-            infoWindow: InfoWindow(title: school.name, snippet:school.address,)))
+            infoWindow: InfoWindow(
+              title: school.name,
+              snippet: school.address,
+            )))
         .toSet();
   }
 }
