@@ -63,6 +63,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: CloseButton(),
@@ -78,7 +79,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 buildTitle(provider),
                 SizedBox(height: 12),
                 buildDateTimePickers(),
-                buildColor(),
+                buildColor(size),
                 buildDescription(provider),
               ],
             ),
@@ -240,12 +241,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
-  Widget buildColor() => buildHeader(
+  Widget buildColor(Size size) => buildHeader(
       header: "Color",
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
-            height: 70,
+            height: 100,
+            width: size.width,
             child: Row(
               children: buildColorCircles(),
             )),
