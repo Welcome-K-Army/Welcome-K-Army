@@ -246,6 +246,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
+          height: 150,
             child: Row(
               children: buildColorCircles(),
             )),
@@ -253,6 +254,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
+      print(eventColorCheckValues[index]);
       return InkWell(
         onTap: () {
           setState(() {
