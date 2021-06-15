@@ -17,6 +17,7 @@ class Applicationbloc with ChangeNotifier {
   searchPlaces(String searchTerm) async {
     if((await check_value(searchTerm))!=null){
       searchResults.add(check_value(searchTerm));
+      print(searchResults);
     } //해당 밸류 검색해서 확인하는 함수
     notifyListeners();
   }
@@ -29,7 +30,6 @@ class Applicationbloc with ChangeNotifier {
         return null;
       }
     } //for
-    notifyListeners();
   } //check_value
 
   selected_value() async {
