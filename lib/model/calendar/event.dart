@@ -5,7 +5,7 @@ extension HexColor on Color {
   static Color fromHex(String hexString) {
     final buffer = StringBuffer();
     if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
-    buffer.write(hexString.replaceFirst('#', '0x'));
+    buffer.write(hexString.replaceFirst('#', ''));
     print(int.parse(buffer.toString(), radix: 16));
     return Color(int.parse(buffer.toString(), radix: 16));
   }
@@ -38,7 +38,7 @@ class Event {
   });
 
   factory Event.fromJson(Map<String, dynamic> parsedJson) {
-    return new Event(eid: parsedJson['eid'] ?? '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDateTime(), to: parsedJson['to'].toDateTime(), backgroundColor: /*HexColor.fromHex(parsedJson['backgroundColor']) ??*/ Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
+    return new Event(eid: parsedJson['eid'] ?? '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDate(), to: parsedJson['to'].toDate(), backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }
 
   Map<String, dynamic> toJson() {
