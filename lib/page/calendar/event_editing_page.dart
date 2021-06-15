@@ -27,6 +27,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   DateTime fromDate;
   DateTime toDate;
   Color eventColor;
+  List<bool> eventColorCheckValues;
 
   @override
   void initState() {
@@ -42,7 +43,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
       descriptionController.text = event.description;
       fromDate = event.from;
       toDate = event.to;
-      eventColor = eventColors[0];
+      eventColor = event.backgroundColor;
+      for (int i = 0; i < eventColors.length; i++) {
+        if (eventColor == eventColors[i])
+          eventColorCheckValues[i] = true;
+        else
+          eventColorCheckValues[i] = false;
+      }
     }
   }
 
@@ -246,17 +253,36 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
-      return RoundCheckBox(
+      return Inkwell(
         onTap: (selected) {
           setState(() {
             eventColor = eventColors[index];
+            eventColorCheckValues[index] = true;
+            for (var i = 0; i < eventColorCheckValues.length; i++) {
+              if (i == index)
+                continue;
+              else
+                eventColorCheckValues[i] = false;
+            }
           });
         },
-        checkedWidget: Icon(Icons.check, color: Colors.white),
-        checkedColor: eventColors[index],
-        uncheckedColor: eventColors[index],
-        animationDuration: Duration(
-          seconds: 1,
+        child: Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            shpae: BoxShape.circle,
+            color: eventColors[index],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: eventColorCheckValues[index]
+                ? Icon(
+                    Icons.check,
+                    size: 30.0,
+                    color: Colors.white,
+                  )
+                : Container(),
+          ),
         ),
       );
     });
