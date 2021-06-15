@@ -246,8 +246,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
-            height: 100,
-            width: size.width,
             child: Row(
               children: buildColorCircles(),
             )),
