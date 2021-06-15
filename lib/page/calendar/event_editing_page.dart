@@ -44,7 +44,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
       fromDate = event.from;
       toDate = event.to;
       eventColor = event.backgroundColor;
-      for (int i = 0; i < eventColors.length; i++) eventColorCheckValues 
+      for (int i = 0; i < eventColors.length; i++) {
+        if (eventColor == eventColors[i])
+          eventColorCheckValues[i] = true;
+        else
+          eventColorCheckValues[i] = false;
+      }
     }
   }
 
@@ -249,9 +254,16 @@ class _EventEditingPageState extends State<EventEditingPage> {
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
       return InkWell(
-        onTap: (selected) {
+        onTap: () {
           setState(() {
             eventColor = eventColors[index];
+            eventColorCheckValues[index] = true;
+            for (int i = 0; i < eventColors.length; i++) {
+              if (i == index)
+                continue;
+              else
+                eventColorCheckValues[i] = false;
+            }
           });
         },
         child: Container(
@@ -263,7 +275,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: _value
+            child: eventColorCheckValues[index]
                 ? Icon(
                     Icons.check,
                     size: 30.0,
