@@ -71,6 +71,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 buildTitle(provider),
                 SizedBox(height: 12),
                 buildDateTimePickers(),
+                buildColor(),
                 buildDescription(provider),
               ],
             ),
@@ -236,9 +237,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
       header: "Color",
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          children: buildColorCircles(),
-        ),
+        child: Container(
+            height: 70,
+            child: Row(
+              children: buildColorCircles(),
+            )),
       ));
 
   List<Widget> buildColorCircles() {
