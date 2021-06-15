@@ -1,11 +1,11 @@
-
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'mapView/mapScreen/MapSample.dart'; // Api 사용 예시
 import 'package:provider/provider.dart';
 import 'mapView/filterScreen/FilterScreen.dart'; // 학교 정보 필터링 예시
 
-import "search/search.dart";
+import 'search/search.dart';
 
 void main() => runApp(ChangeNotifierProvider(create: (context) => Applicationbloc(), child: MyApp()));
 
