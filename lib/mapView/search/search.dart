@@ -12,9 +12,12 @@ class Applicationbloc with ChangeNotifier {
   List<School> datalist = fillData(); //하드코딩된 값을 리턴
 
   List<School> searchResults;
+ 
 
   searchPlaces(String searchTerm) async {
-    searchResults.add(await check_value(searchTerm)); //해당 밸류 검색해서 확인하는 함수
+    if((await check_value(searchTerm))!=null){
+      searchResults.add(check_value(searchTerm))
+    } //해당 밸류 검색해서 확인하는 함수
     notifyListeners();
   }
 
