@@ -66,7 +66,7 @@ List<School> fillData() {
     classes: Classes.Officer));
   lists.add(new School(
     idx: 7,
-    name: "test"
+    name: "test",
     address:"충청북도 괴산군 괴산읍 문무로 177",
     number:"+1234156",
     latlng: LatLng(30.821519, 125.805987),
