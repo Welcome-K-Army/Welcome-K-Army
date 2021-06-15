@@ -40,7 +40,7 @@ class Event {
   set seteid(String eventID) => this.eid = eventID;
 
   factory Event.fromJson(Map<String, dynamic> parsedJson) {
-    return new Event(eid: parsedJson['eid'] ?? '', title: parsedJson['title'] ?? '', description: parsedJson['description'] ?? '', from: parsedJson['from'].toDateTime(), to: parsedJson['to'].toDateTime(), backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
+    return new Event(eid: parsedJson['eid'] ?? '', title: parsedJson['title'] ?? '', description: /*parsedJson['description'] ??*/ null, from: /*parsedJson['from'].toDateTime()*/ null, to: parsedJson['to'].toDateTime(), backgroundColor: HexColor.fromHex(parsedJson['backgroundColor']) ?? Colors.red, isAllDay: parsedJson['isAllDay'] ?? false);
   }
 
   Map<String, dynamic> toJson() {
