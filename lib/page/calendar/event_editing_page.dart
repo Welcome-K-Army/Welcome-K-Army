@@ -237,9 +237,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: [
-            buildColorCircles(),
-          ],
+          children: buildColorCircles(),
         ),
       ));
 
@@ -255,7 +253,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         checkedColor: eventColors[index],
         uncheckedColor: eventColors[index],
         animationDuration: Duration(
-          seconds: 0.5,
+          seconds: 1,
         ),
       );
     });
