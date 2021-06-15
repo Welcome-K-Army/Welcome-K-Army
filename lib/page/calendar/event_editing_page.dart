@@ -69,21 +69,21 @@ class _EventEditingPageState extends State<EventEditingPage> {
         leading: CloseButton(),
         actions: buildEditingActions(provider),
       ),
-      body: ListView(padding: EdgeInsets.all(12), children: [
-        Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              buildTitle(provider),
-              SizedBox(height: 12),
-              buildDateTimePickers(),
-              buildColor(size),
-              buildDescription(provider),
-            ],
-          ),
-        )
-      ]),
+      body: SingleChildScrollView(
+          padding: EdgeInsets.all(12),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                buildTitle(provider),
+                SizedBox(height: 12),
+                buildDateTimePickers(),
+                buildColor(size),
+                buildDescription(provider),
+              ],
+            ),
+          )),
     );
   }
 
@@ -243,13 +243,14 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
-      child: SingleChildScrollView(
+      child: ListView(
         scrollDirection: Axis.horizontal,
-        child: Container(
-            height: 150,
-            child: Row(
-              children: buildColorCircles(),
-            )),
+        shrinkWrap: true,
+        children: [
+          Row(
+            children: buildColorCircles(),
+          )
+        ],
       ));
 
   List<Widget> buildColorCircles() {
