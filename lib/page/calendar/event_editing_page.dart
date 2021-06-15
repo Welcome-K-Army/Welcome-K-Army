@@ -21,6 +21,7 @@ class EventEditingPage extends StatefulWidget {
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
   DateTime fromDate;
   DateTime toDate;
 
@@ -35,6 +36,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       final event = widget.event;
 
       titleController.text = event.title;
+      descriptionController.text = event.description;
       fromDate = event.from;
       toDate = event.to;
     }
@@ -43,7 +45,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   @override
   void dispose() {
     titleController.dispose();
-
+    descriptionController.dispose();
     super.dispose();
   }
 
@@ -65,6 +67,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 buildTitle(provider),
                 SizedBox(height: 12),
                 buildDateTimePickers(),
+                buildDescription(provider),
               ],
             ),
           )),
@@ -212,6 +215,19 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child,
         ],
       );
+
+  Widget buildDescription(EventProvider provider) => buildHeader(
+      header: "Description",
+      child: TextFormField(
+        style: TextStyle(fontSize: 24),
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(),
+          hintText: 'Add Description',
+        ),
+        onFieldSubmitted: (_) => saveForm(provider),
+        validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
+        controller: descriptionController,
+      ));
 
   Future saveForm(EventProvider provider) async {
     final isValid = _formKey.currentState.validate();
