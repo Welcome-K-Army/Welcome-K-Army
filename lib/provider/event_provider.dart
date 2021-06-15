@@ -18,8 +18,8 @@ class EventProvider extends ChangeNotifier {
   List<Event> get eventsOfSelectedDate => _events;
 
   void readEvent() async {
-    _events = await FireStoreUtils().getUserCalendarEvent();
     print("readEvent");
+    _events = await FireStoreUtils().getUserCalendarEvent();
     print(_events);
     notifyListeners();
   }
