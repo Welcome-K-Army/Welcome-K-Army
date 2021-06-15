@@ -50,7 +50,7 @@ class PdfViewingPageState extends State<PdfViewingPage> {
   }
   */
 
-  /*
+/*
   // Load document from the File
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class PdfViewingPageState extends State<PdfViewingPage> {
   }
   */
 
-  /*
+/*
   // Load document from the Memory
   @override
   Widget build(BuildContext context) {
@@ -164,7 +164,6 @@ class _PdfViewingPage extends State<PdfViewingPage> {
   void initState() {
     _showToolbar = false;
     _showScrollHead = true;
-    _textSearchKey.currentState._showToast = true;
     super.initState();
   }
 
@@ -210,11 +209,11 @@ class _PdfViewingPage extends State<PdfViewingPage> {
                     }
                     if (toolbarItem.toString() == 'noResultFound') {
                       setState(() {
-                        _textSearchKey.currentState._showToast = true;
+                        _textSearchKey.currentState.setShowToast(true);
                       });
                       await Future.delayed(Duration(seconds: 1));
                       setState(() {
-                        _textSearchKey.currentState._showToast = false;
+                        _textSearchKey.currentState.setShowToast(false);
                       });
                     }
                   },
@@ -349,6 +348,9 @@ class SearchToolbarState extends State<SearchToolbar> {
   void clearSearch() {
     _pdfTextSearchResult.clear();
   }
+
+  void set setShowToast(bool toastState) => this._showToast = toastState;
+  bool get getShowToast => this._showToast;
 
   ///Display the Alert dialog to search from the beginning
   void _showSearchAlertDialog(BuildContext context) {
