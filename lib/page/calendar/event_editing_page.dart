@@ -233,7 +233,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
-  Widget buildColor(EventProvider provider) => buildHeader(
+  Widget buildColor() => buildHeader(
       header: "Color",
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
