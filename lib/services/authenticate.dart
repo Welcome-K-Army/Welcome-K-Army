@@ -46,7 +46,8 @@ class FireStoreUtils {
     List<Event> events = [];
     if (eventDocument != null && eventDocument.docs != null) {
       for (var ev in eventDocument.docs) {
-        events.add(Event.fromJson(ev.data()));
+        print(ev.data());
+        // events.add(Event.fromJson(ev.data()));
       }
     }
     print("getUserCalendarEvent");

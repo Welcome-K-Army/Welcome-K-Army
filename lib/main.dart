@@ -15,7 +15,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Army/page/home/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
-import 'package:Army/page/home/home_page.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(create: (context) => EventProvider(), child: MyApp()));
