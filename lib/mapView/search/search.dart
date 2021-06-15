@@ -15,16 +15,17 @@ class Applicationbloc with ChangeNotifier{
   List<School> searchResults;
 
   searchPlaces(String searchTerm) async{
-    searchResults=await check_value(searchTerm);//해당 밸류 검색해서 확인하는 함수
+    searchResults.add(await check_value(searchTerm));//해당 밸류 검색해서 확인하는 함수
     notifyListeners();
-
   }
 
   check_value(String value) async{
-    await for (int i=0 ; i<=datalist.length ; i++){
+    for (int i=0 ; i<=datalist.length ; i++){
       if(value==datalist[i].name){
-        searchResults.add(datalist[i]);
-      }//if
+        return datalist[i];
+      }else{
+        return null;
+      }
     }//for
     notifyListeners();
   }//check_value
