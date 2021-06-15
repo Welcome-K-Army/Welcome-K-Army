@@ -64,6 +64,16 @@ List<School> fillData() {
     type: Types.CadetCandidate,
     age: Ages.A_20_27,
     classes: Classes.Officer));
+  lists.add(new School(
+    idx: 6,
+    name: "test",
+    address:"충청북도 괴산군 괴산읍 문무로 177",
+    number:"+82438346043",
+    latlng: LatLng(30.821519, 125.805987),
+    category: Categories.Army,
+    type: Types.CadetCandidate,
+    age: Ages.A_20_27,
+    classes: Classes.Officer));
 
   return lists;
 }
