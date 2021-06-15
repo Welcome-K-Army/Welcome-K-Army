@@ -83,7 +83,7 @@ class EventViewingPage extends StatelessWidget {
         icon: Icon(Icons.delete),
         onPressed: () {
           provider.deleteEvent(event);
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => CalendarWidget()));
+          Navigator.of(context).pop();
         },
       ),
     ];
