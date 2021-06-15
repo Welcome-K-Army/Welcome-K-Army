@@ -69,21 +69,21 @@ class _EventEditingPageState extends State<EventEditingPage> {
         leading: CloseButton(),
         actions: buildEditingActions(provider),
       ),
-      body: SingleChildScrollView(
-          padding: EdgeInsets.all(12),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                buildTitle(provider),
-                SizedBox(height: 12),
-                buildDateTimePickers(),
-                buildColor(size),
-                buildDescription(provider),
-              ],
-            ),
-          )),
+      body: ListView(padding: EdgeInsets.all(12), children: [
+        Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              buildTitle(provider),
+              SizedBox(height: 12),
+              buildDateTimePickers(),
+              buildColor(size),
+              buildDescription(provider),
+            ],
+          ),
+        )
+      ]),
     );
   }
 
@@ -246,7 +246,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
-          height: 150,
+            height: 150,
             child: Row(
               children: buildColorCircles(),
             )),
@@ -269,8 +269,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
           });
         },
         child: Container(
-          height: 50,
-          width: 50,
+          height: 60,
+          width: 60,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: eventColors[index],
