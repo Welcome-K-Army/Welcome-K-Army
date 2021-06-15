@@ -225,7 +225,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
           hintText: 'Add Description',
         ),
         onFieldSubmitted: (_) => saveForm(provider),
-        validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
         controller: descriptionController,
       ));
 
@@ -234,7 +233,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (isValid) {
       final event = Event(
         title: titleController.text,
-        description: 'Description',
+        description: descriptionController.text,
         from: fromDate,
         to: toDate,
         isAllDay: false,
