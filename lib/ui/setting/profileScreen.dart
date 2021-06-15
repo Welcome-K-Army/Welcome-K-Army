@@ -10,6 +10,7 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';
+import '/lib/constants.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
@@ -55,7 +56,7 @@ class _ProfileState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     TextEditingController _emailController = TextEditingController(text: user.email);
 
@@ -298,34 +299,27 @@ class _ProfileState extends State<ProfileScreen> {
                 SizedBox(
                   height: 40,
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  OutlinedButton(
-                    onPressed: () async {
-                      Navigator.pop(context);
-                    },
-                    child: Text("Cancel",
+                Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(25.0),
+                  color: Color(COLOR_PRIMARY),
+                  child: MaterialButton(
+                      minWidth: size.width / 1.2,
+                      padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+                      child: Text(
+                        "Save",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 17,
-                          letterSpacing: 2,
-                          color: Colors.black,
-                        )), //Text
-                    style: OutlinedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                  ), //OutlineButton
-
-                  ElevatedButton(
-                    onPressed: () async {
-                      _saveProfile();
-                      Navigator.pop(context);
-                    },
-                    child: Text("Save",
-                        style: TextStyle(
-                          fontSize: 17,
-                          letterSpacing: 2,
+                          fontSize: 20.0,
                           color: Colors.white,
-                        )),
-                    style: ElevatedButton.styleFrom(primary: Colors.green, padding: EdgeInsets.symmetric(horizontal: 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                  ) //ElevatedButton
-                ]),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: () async {
+                        _saveProfile();
+                        Navigator.pop(context);
+                      }),
+                )
               ],
             ) //ListView
 
