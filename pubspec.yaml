@@ -39,6 +39,8 @@ dependencies:
   flutter_radar_chart: ^0.1.6
   intl: ^0.17.0
   syncfusion_flutter_calendar: ^19.1.66
+  roundcheckbox: ^2.0.1
+  
   
 dev_dependencies:
   flutter_test:

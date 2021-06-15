@@ -8,6 +8,16 @@ import 'package:Army/page/home/notice_list_page.dart';
 
 int contentNumber = 0;
 
+final List<Color> eventColors = [
+  Colors.red,
+  Colors.orange,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.indigo,
+  Colors.deepPurple
+];
+
 final List<Menu> menuList = [
   new Menu(name: '공지사항', icon: Icon(Icons.star, size: 30), widget: NoticeListPage()),
   new Menu(name: '지도검색', icon: Icon(Icons.location_pin, size: 30), widget: NoticeListPage()),

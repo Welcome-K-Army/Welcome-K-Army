@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
 
 import 'package:Army/utils.dart';
+import 'package:Army/global.dart';
 
 import 'package:Army/model/calendar/event.dart';
 import 'package:Army/provider/event_provider.dart';
@@ -24,6 +26,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   final descriptionController = TextEditingController();
   DateTime fromDate;
   DateTime toDate;
+  Color eventColor;
 
   @override
   void initState() {
@@ -39,6 +42,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       descriptionController.text = event.description;
       fromDate = event.from;
       toDate = event.to;
+      eventColor = eventColors[0];
     }
   }
 
@@ -228,6 +232,35 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
+  Widget buildColor(EventProvider provider) => buildHeader(
+      header: "Color",
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            buildColorCircles(),
+          ],
+        ),
+      ));
+
+  List<Widget> buildColorCircles() {
+    return List<Widget>.generate(eventColors.length, (index) {
+      return RoundCheckBox(
+        onTap: (selected) {
+          setState(() {
+            eventColor = eventColors[index];
+          });
+        },
+        checkedWidget: Icon(Icons.check, color: Colors.white),
+        checkedColor: eventColors[index],
+        uncheckedColor: eventColors[index],
+        animationDuration: Duration(
+          seconds: 0.5,
+        ),
+      );
+    });
+  }
+
   Future saveForm(EventProvider provider) async {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
@@ -236,6 +269,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         description: descriptionController.text,
         from: fromDate,
         to: toDate,
+        backgroundColor: eventColor,
         isAllDay: false,
       );
 
