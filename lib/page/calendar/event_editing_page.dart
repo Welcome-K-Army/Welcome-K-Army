@@ -281,8 +281,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         });
       },
       child: Container(
-        height: 30,
-        width: 30,
+        height: 5,
+        width: 5,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: eventColors[index],
