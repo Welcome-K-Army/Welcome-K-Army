@@ -15,6 +15,7 @@ class Applicationbloc with ChangeNotifier {
  
 
   searchPlaces(String searchTerm) async {
+    
     if((await check_value(searchTerm))!=null){
       searchResults.add(check_value(searchTerm));
       print(searchResults);

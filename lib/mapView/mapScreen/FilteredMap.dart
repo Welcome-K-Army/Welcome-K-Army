@@ -18,7 +18,7 @@ class FilteredMap extends StatefulWidget {
 class FilteredMapState extends State<FilteredMap> {
   Completer<GoogleMapController> _controller = Completer();
 
-  final _textcontroller = TextEditingController();
+  // final _textcontroller = TextEditingController();
 
   // static final CameraPosition _kGooglePlex = CameraPosition(
   //   target: LatLng(37.42796133580664, -122.085749655962),
@@ -26,20 +26,6 @@ class FilteredMapState extends State<FilteredMap> {
   // );
 
   static final CameraPosition initialPosition = CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
-
-  @override
-  void initState() {
-    super.initState();
-    final applicationBloc = Provider.of<Applicationbloc>(context, listen: false);
-  }
-
-  @override
-  void dispose() {
-    final applicationBloc = Provider.of<Applicationbloc>(context, listen: false);
-    applicationBloc.dispose();
-    _textcontroller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +36,6 @@ class FilteredMapState extends State<FilteredMap> {
         Padding(
           padding: const EdgeInsets.all(8),
           child: TextField(
-            controller: _textcontroller,
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
             
