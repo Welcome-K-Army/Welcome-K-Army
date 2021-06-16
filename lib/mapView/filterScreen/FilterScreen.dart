@@ -11,22 +11,20 @@ class FilterScreen extends StatelessWidget {
   final List<School> schoolList = fillData();
   FilterData _filterData;
 
-  bool _filter(School data){
-    if(_filterData.categories != null && _filterData.categories != data.catagory && data.catagory != Categories.All)
-      return false;
-    if(_filterData.classes != null && _filterData.classes != data.classes)
-      return false;
-    if(_filterData.types != null && _filterData.types != data.type)
-      return false;
-    if(_filterData.ages != null && _filterData.ages != data.age)
-      return false;
+  bool _filter(School data) {
+    if (_filterData.categories != null && _filterData.categories != data.catagory && data.catagory != Categories.All) return false;
+    if (_filterData.classes != null && _filterData.classes != data.classes) return false;
+    if (_filterData.types != null && _filterData.types != data.type) return false;
+    if (_filterData.ages != null && _filterData.ages != data.age) return false;
     return true;
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => FilterData())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => FilterData())
+      ],
       child: Scaffold(
         floatingActionButton: MyFloatingActionButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
