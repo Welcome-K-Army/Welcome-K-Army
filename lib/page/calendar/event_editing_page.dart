@@ -30,12 +30,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Color eventColor;
   List eventColors = [
     Colors.red,
-    Colors.pink,
-    Colors.orange,
+    // Colors.pink,
+    // Colors.orange,
     Colors.yellow,
     Colors.green,
     Colors.blue,
-    Colors.purple,
+    // Colors.purple,
   ];
   List<bool> eventColorCheckValues = [];
 
