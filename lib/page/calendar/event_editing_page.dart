@@ -281,8 +281,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         });
       },
       child: Container(
-        height: 5,
-        width: 5,
+        height: 12,
+        width: 12,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: eventColors[index],
@@ -292,7 +292,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child: eventColorCheckValues[index]
               ? Icon(
                   Icons.check,
-                  size: 30.0,
+                  size: 10,
                   color: Colors.white,
                 )
               : Container(),
