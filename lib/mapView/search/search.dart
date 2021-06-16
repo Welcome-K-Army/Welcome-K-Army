@@ -12,7 +12,17 @@ class Applicationbloc with ChangeNotifier {
   List<School> datalist = fillData(); //하드코딩된 값을 리턴
 
   List<School> searchResults;
+
  
+
+
+  searchPlaces(String searchTerm) async {   
+    if((await check_value(searchTerm))!=null){
+      searchResults.add(check_value(searchTerm));
+      print(searchResults);
+    }
+    notifyListeners();
+  }
 
   check_value(String value) async {
     for (int i = 0; i <= datalist.length; i++) {
@@ -23,16 +33,6 @@ class Applicationbloc with ChangeNotifier {
       }
     } //for
   } //check_value
-
-  searchPlaces(String searchTerm) async {
-    
-    if((await check_value(searchTerm))!=null){
-      searchResults.add(check_value(searchTerm));
-      print(searchResults);
-    }
-    notifyListeners();
-  }
-
 
   selected_value() async {
     notifyListeners();
