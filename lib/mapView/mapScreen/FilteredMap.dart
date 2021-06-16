@@ -5,7 +5,7 @@ import '../filterScreen/School.dart';
 import 'package:provider/provider.dart';
 
 import "../search/search.dart";
-import "../detailView/detail_main.dart";
+import "detailView/detail_main.dart";
 
 class FilteredMap extends StatefulWidget {
   final List<School> filteredData;
@@ -98,7 +98,7 @@ class FilteredMapState extends State<FilteredMap> {
               snippet: school.address,
             ),
             onTap:(){
-              MyHomePage(),
+              MyHomePage();
             }
             ))
         .toSet();
