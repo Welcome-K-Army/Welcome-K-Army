@@ -28,7 +28,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   DateTime fromDate;
   DateTime toDate;
   Color eventColor;
-  List eventColors = [
+  List<Color> eventColors = [
     Colors.red,
     // Colors.pink,
     // Colors.orange,
