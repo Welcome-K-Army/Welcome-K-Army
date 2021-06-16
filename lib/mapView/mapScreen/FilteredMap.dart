@@ -98,7 +98,9 @@ class FilteredMapState extends State<FilteredMap> {
               snippet: school.address,
             ),
             onTap:(){
-              DetailView();
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DetailView()),
+                );
             },
             ).toSet();//Marker)
         
