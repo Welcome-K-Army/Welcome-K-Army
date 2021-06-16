@@ -79,21 +79,21 @@ class _EventEditingPageState extends State<EventEditingPage> {
         leading: CloseButton(),
         actions: buildEditingActions(provider),
       ),
-      body: SingleChildScrollView(
-          padding: EdgeInsets.all(12),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                buildTitle(provider),
-                SizedBox(height: 12),
-                buildDateTimePickers(),
-                buildColor(size),
-                buildDescription(provider),
-              ],
-            ),
-          )),
+      body: ListView(padding: EdgeInsets.all(12), children: [
+        Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              buildTitle(provider),
+              SizedBox(height: 12),
+              buildDateTimePickers(),
+              buildColor(size),
+              buildDescription(provider),
+            ],
+          ),
+        )
+      ]),
     );
   }
 
