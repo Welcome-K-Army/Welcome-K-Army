@@ -46,7 +46,7 @@ class _TasksWidgetState extends State<TasksWidget> {
         ),
         onTap: (details) {
           if (details.appointments == null) return;
-
+          print(details.appointments);
           final event = details.appointments.first;
 
           Navigator.of(context).push(MaterialPageRoute(
@@ -62,7 +62,7 @@ class _TasksWidgetState extends State<TasksWidget> {
     CalendarAppointmentDetails details,
   ) {
     final event = details.appointments.first;
-
+    
     return Container(
       width: details.bounds.width,
       height: details.bounds.height,
