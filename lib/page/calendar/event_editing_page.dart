@@ -55,12 +55,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
       toDate = event.to;
       eventColor = event.backgroundColor;
       for (int i = 0; i < eventColors.length; i++) {
-        if (eventColor == eventColors[i]['primary value'])
+        if (eventColor.value == eventColors[i].value)
           eventColorCheckValues.add(true);
-        else{
-          print(eventColor);
-        print(eventColors[i]);
-        eventColorCheckValues.add(false);
+        else {
+          print(eventColor.value);
+          print(eventColors[i].value);
+          eventColorCheckValues.add(false);
         }
       }
     }
