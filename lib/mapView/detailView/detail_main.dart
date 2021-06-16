@@ -17,10 +17,11 @@ class DetailViewState extends State<DetailView> {
 
 
   bool iconDialog = false;
+
   List<String> informList = [
-    arguments.name,
-    arguments.address,
-    arguments.number,
+    arguments[0],
+    arguments[1],
+    arguments[2],
   ];
 
   List<String> messageList = [
