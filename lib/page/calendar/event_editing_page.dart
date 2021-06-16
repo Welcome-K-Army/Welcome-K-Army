@@ -57,8 +57,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
       for (int i = 0; i < eventColors.length; i++) {
         if (eventColor == eventColors[i])
           eventColorCheckValues.add(true);
-        else
-          eventColorCheckValues.add(false);
+        else{
+          print(eventColor);
+        print(eventColors[i]);
+        eventColorCheckValues.add(false);
+        }
       }
     }
   }
