@@ -70,7 +70,7 @@ class DetailViewState extends State<DetailView> {
           children: [
             InformWidget(),
             CompetitionChartWidget(),
-            AdmissionWidget(),
+            CompetitionChartWidget(),
             Text('교육과정'),
           ],
         ),
