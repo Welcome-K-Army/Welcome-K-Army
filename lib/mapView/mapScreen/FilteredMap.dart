@@ -101,7 +101,7 @@ class FilteredMapState extends State<FilteredMap> {
                 final result=await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailView(argument:argument)),
-                )
+                );
 
               },
             ))

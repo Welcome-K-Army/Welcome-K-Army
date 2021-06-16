@@ -4,11 +4,6 @@ import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
-class Arguments{
-  String name;
-  String address;
-  String number;
-}
 
 class DetailView extends StatefulWidget {
   DetailViewState createState() => DetailViewState();
@@ -16,7 +11,8 @@ class DetailView extends StatefulWidget {
 
 class DetailViewState extends State<DetailView> {
   final Arguments arguments;
-  DetailView({@required this.arguments})
+
+  DetailView({@required this.arguments});
 
 
   bool iconDialog = false;
@@ -89,4 +85,10 @@ class DetailViewState extends State<DetailView> {
       ),
     ); // Column
   }
+}
+
+class Arguments{
+  String name;
+  String address;
+  String number;
 }
