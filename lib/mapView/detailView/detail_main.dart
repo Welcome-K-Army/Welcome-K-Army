@@ -4,19 +4,15 @@ import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
-
 class DetailView extends StatefulWidget {
-    
   final Arguments arguments;
 
+  DetailView({@required this.arguments});
 
-  
   DetailViewState createState() => DetailViewState();
 }
 
 class DetailViewState extends State<DetailView> {
-
-  DetailView({@required this.arguments});
   bool iconDialog = false;
 
   List<String> informList = [
@@ -88,9 +84,9 @@ class DetailViewState extends State<DetailView> {
   }
 }
 
-class Arguments{
+class Arguments {
   String name;
   String address;
   String number;
-  Arguments(this.name,this.address,this.number);
+  Arguments(this.name, this.address, this.number);
 }
