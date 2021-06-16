@@ -80,7 +80,7 @@ class FilteredMapState extends State<FilteredMap> {
         ]),
       ]),
       routes : {
-        DetailView.routeName : (context) => DetailView()
+        DetailView.routeName : (context) => DetailView(),
       }
     ); //Scaffold
   }
