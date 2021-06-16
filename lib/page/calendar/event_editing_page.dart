@@ -241,9 +241,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
-  Widget buildColor(Size size) => buildHeader(
-      header: "Color",
-      child: InkWell(
+  Widget buildColor(Size size) => buildHeader(header: "Color", child: Container() /*InkWell(
         onTap: () {
           setState(() {
             eventColor = eventColors[0];
@@ -268,7 +266,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 : Container(),
           ),
         ),
-      ));
+      )*/
+      );
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
