@@ -88,7 +88,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
               buildTitle(provider),
               SizedBox(height: 12),
               buildDateTimePickers(),
+              SizedBox(height: 12),
               buildColor(size),
+              SizedBox(height: 12),
               buildDescription(provider),
             ],
           ),
@@ -243,8 +245,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
       header: "Description",
       child: TextFormField(
         style: TextStyle(fontSize: 24),
+        expands: true,
         decoration: InputDecoration(
-          border: UnderlineInputBorder(),
+          border: OutlineInputBorder(),
           hintText: 'Add Description',
         ),
         onFieldSubmitted: (_) => saveForm(provider),
