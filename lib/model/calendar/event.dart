@@ -32,7 +32,7 @@ class Event {
     this.description,
     this.from,
     this.to,
-    this.backgroundColor = Colors.red,
+    this.backgroundColor,
     this.isAllDay = false,
   });
 
