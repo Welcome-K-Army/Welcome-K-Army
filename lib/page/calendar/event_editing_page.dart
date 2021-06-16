@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 
 import 'package:Army/utils.dart';
@@ -27,6 +28,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
   DateTime fromDate;
   DateTime toDate;
   Color eventColor;
+  List<Color> eventColors = [
+    Colors.red,
+    Colors.blue,
+    Colors.green
+  ];
   List<bool> eventColorCheckValues;
 
   @override
@@ -44,14 +50,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
       fromDate = event.from;
       toDate = event.to;
       eventColor = event.backgroundColor;
-      /*
       for (int i = 0; i < eventColors.length; i++) {
         if (eventColor == eventColors[i])
           eventColorCheckValues[i] = true;
         else
           eventColorCheckValues[i] = false;
       }
-      */
     }
   }
 
