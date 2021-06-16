@@ -245,7 +245,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
       header: "Description",
       child: TextFormField(
         style: TextStyle(fontSize: 24),
-        expands: true,
+        minLines: 6,
+        maxLines: null,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           hintText: 'Add Description',
