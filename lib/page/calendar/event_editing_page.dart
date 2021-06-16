@@ -247,9 +247,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         children: [
+          /*
           Row(
             children: buildColorCircles(),
           )
+          */
         ],
       ));
 
