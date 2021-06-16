@@ -14,15 +14,6 @@ class Applicationbloc with ChangeNotifier {
   List<School> searchResults;
  
 
-  searchPlaces(String searchTerm) async {
-    
-    if((await check_value(searchTerm))!=null){
-      searchResults.add(check_value(searchTerm));
-      print(searchResults);
-    } //해당 밸류 검색해서 확인하는 함수
-    notifyListeners();
-  }
-
   check_value(String value) async {
     for (int i = 0; i <= datalist.length; i++) {
       if (value == datalist[i].name) {
@@ -32,6 +23,16 @@ class Applicationbloc with ChangeNotifier {
       }
     } //for
   } //check_value
+
+  searchPlaces(String searchTerm) async {
+    
+    if((await check_value(searchTerm))!=null){
+      searchResults.add(check_value(searchTerm));
+      print(searchResults);
+    }
+    notifyListeners();
+  }
+
 
   selected_value() async {
     notifyListeners();
