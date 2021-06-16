@@ -102,7 +102,7 @@ class FilteredMapState extends State<FilteredMap> {
                   MaterialPageRoute(builder: (context) => DetailView()),
                 );
             },
-            ).toSet();//Marker)
+            )).toSet();//Marker)
         
   }
 }
