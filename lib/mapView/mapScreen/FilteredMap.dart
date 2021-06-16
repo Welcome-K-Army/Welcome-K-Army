@@ -97,10 +97,10 @@ class FilteredMapState extends State<FilteredMap> {
                 snippet: school.address,
               ),
               onTap: () async{
-                final argument=Arguments(school.name,school.address,school.number)
+                final arguments=Arguments(school.name,school.address,school.number)
                 final result=await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context)=>DetailView(argument:argument)),
+                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
                 );
 
               },
