@@ -17,6 +17,8 @@ class DetailView extends StatefulWidget {
 }
 
 class DetailViewState extends State<DetailView> {
+
+  static const routeName = "/detail_main.dart";
   final Arguments school = ModalRoute.of(context).settings.arguments;
 
   bool iconDialog = false;
