@@ -254,7 +254,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
       child: GridView.builder(
-        // shrinkWrap: true,
+        shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 7,
           crossAxisSpacing: 2,
