@@ -30,8 +30,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Color eventColor;
   List eventColors = [
     Colors.red,
+    Colors.pink,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
     Colors.blue,
-    Colors.green
+    Colors.purple,
   ];
   List<bool> eventColorCheckValues = [];
 
@@ -251,7 +255,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
-      print(eventColorCheckValues[index]);
       return InkWell(
         onTap: () {
           setState(() {
