@@ -33,7 +33,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     Colors.blue,
     Colors.green
   ];
-  List<bool> eventColorCheckValues=[true,false,false];
+  List<bool> eventColorCheckValues = [];
 
   @override
   void initState() {
@@ -50,12 +50,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
       fromDate = event.from;
       toDate = event.to;
       eventColor = event.backgroundColor;
-      // for (int i = 0; i < eventColors.length; i++) {
-      //   if (eventColor == eventColors[i])
-      //     eventColorCheckValues[i] = true;
-      //   else
-      //     eventColorCheckValues[i] = false;
-      // }
+      for (int i = 0; i < eventColors.length; i++) {
+        if (eventColor == eventColors[i])
+          eventColorCheckValues.add(true);
+        else
+          eventColorCheckValues.add(false);
+      }
     }
   }
 
