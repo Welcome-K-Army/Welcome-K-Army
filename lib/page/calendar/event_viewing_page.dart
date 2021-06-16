@@ -73,7 +73,8 @@ class EventViewingPage extends StatelessWidget {
     return <Widget>[
       IconButton(
         icon: Icon(Icons.edit),
-        onPressed: () => Navigator.of(context).pushReplacement(
+        onPressed: () => Navigator.push(
+          context,
           MaterialPageRoute(
             builder: (context) => EventEditingPage(event: event),
           ),
