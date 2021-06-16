@@ -10,6 +10,7 @@ class DetailView extends StatefulWidget {
 }
 
 class DetailViewState extends State<DetailView> {
+  
   final Arguments arguments;
 
   DetailView({@required this.arguments});
@@ -91,4 +92,5 @@ class Arguments{
   String name;
   String address;
   String number;
+  Arguments(this.name,this.address,this.number);
 }
