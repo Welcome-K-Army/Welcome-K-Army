@@ -218,8 +218,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
       if (timeOfDay == null) return null;
 
       final date = DateTime(initialDate.year, initialDate.month, initialDate.day);
-      final time = Duration(hours: initialDate.hour, minutes: initialDate.minute);
-      print(timeOfDay);
+      final time = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
+      print(time);
       return date.add(time);
     }
   }
