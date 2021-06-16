@@ -39,10 +39,9 @@ class FilteredMapState extends State<FilteredMap> {
           child: TextField(
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
-            
+
             onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
             onTap: () => applicationBloc.clear_value(),
-            
           ), //TextFiled
         ), //Padding
         Stack(children: [
@@ -91,18 +90,19 @@ class FilteredMapState extends State<FilteredMap> {
   Set<Marker> _createMarkers() {
     return widget.filteredData
         .map((school) => Marker(
-            markerId: MarkerId(school.name),
-            position: school.latlng,
-            infoWindow: InfoWindow(
-              title: school.name,
-              snippet: school.address,
-            ),
-            onTap:(){
-                Navigator.push(context,
+              markerId: MarkerId(school.name),
+              position: school.latlng,
+              infoWindow: InfoWindow(
+                title: school.name,
+                snippet: school.address,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
                   MaterialPageRoute(builder: (context) => DetailView()),
                 );
-            },
-            )).toSet();//Marker)
-        
+              },
+            ))
+        .toSet(); //Marker)
   }
 }
