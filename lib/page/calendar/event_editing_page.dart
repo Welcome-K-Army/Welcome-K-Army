@@ -83,7 +83,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         Form(
           key: _formKey,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            //mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               buildTitle(provider),
               SizedBox(height: 12),
