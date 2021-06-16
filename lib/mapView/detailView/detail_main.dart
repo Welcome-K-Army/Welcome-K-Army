@@ -39,8 +39,6 @@ class DetailViewState extends State<DetailView> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return DefaultTabController(
       length: 4,
       child: Scaffold(
