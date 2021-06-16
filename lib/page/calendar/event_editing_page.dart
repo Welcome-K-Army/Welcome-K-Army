@@ -266,7 +266,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         },
       ));
 
-  List<Widget> buildColorCircle(int index) {
+  Widget buildColorCircle(int index) {
     return InkWell(
       onTap: () {
         setState(() {
