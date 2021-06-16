@@ -50,12 +50,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
       fromDate = event.from;
       toDate = event.to;
       eventColor = event.backgroundColor;
-      for (int i = 0; i < eventColors.length; i++) {
-        if (eventColor == eventColors[i])
-          eventColorCheckValues[i] = true;
-        else
-          eventColorCheckValues[i] = false;
-      }
+      // for (int i = 0; i < eventColors.length; i++) {
+      //   if (eventColor == eventColors[i])
+      //     eventColorCheckValues[i] = true;
+      //   else
+      //     eventColorCheckValues[i] = false;
+      // }
     }
   }
 
@@ -247,33 +247,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
-  Widget buildColor(Size size) => buildHeader(header: "Color", child: Container() /*InkWell(
-        onTap: () {
-          setState(() {
-            eventColor = eventColors[0];
-            eventColorCheckValues[0] = true;
-          });
-        },
-        child: Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: eventColors[0],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: eventColorCheckValues[0]
-                ? Icon(
-                    Icons.check,
-                    size: 30.0,
-                    color: Colors.white,
-                  )
-                : Container(),
-          ),
-        ),
-      )*/
-      );
+  Widget buildColor(Size size) => buildHeader(header: "Color", child: Row(children: buildColorCircles()));
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
