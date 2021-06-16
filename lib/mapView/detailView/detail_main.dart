@@ -4,11 +4,11 @@ import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePageState createState() => MyHomePageState();
+class DetailView extends StatefulWidget {
+  DetailViewState createState() => DetailViewState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
   List<String> informList = [
     "서울특별시 노원구 공릉2동 화랑로 574",

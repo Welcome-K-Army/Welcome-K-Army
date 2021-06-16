@@ -98,9 +98,9 @@ class FilteredMapState extends State<FilteredMap> {
               snippet: school.address,
             ),
             onTap:(){
-              MyHomePage();
+              DetailView();
             }
-            ))
+            )//Marker)
         .toSet();
   }
 }
