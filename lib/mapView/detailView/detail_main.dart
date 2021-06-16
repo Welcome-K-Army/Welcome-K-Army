@@ -5,11 +5,9 @@ import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
 class Arguments{
-  final String name;
-  final String address;
-  final String number;
-
-  Arguments(this.name, this.address, this.number);
+  String name;
+  String address;
+  String number;
 }
 
 class DetailView extends StatefulWidget {
@@ -17,15 +15,15 @@ class DetailView extends StatefulWidget {
 }
 
 class DetailViewState extends State<DetailView> {
+  final Arguments arguments;
+  DetailView({@required this.arguments})
 
-  static const routeName = "/detail_main.dart";
-  final Arguments school = ModalRoute.of(context).settings.arguments;
 
   bool iconDialog = false;
   List<String> informList = [
-    school.name,
-    school.address,
-    school.number,
+    arguments.name,
+    arguments.address,
+    arguments.number,
   ];
 
   List<String> messageList = [

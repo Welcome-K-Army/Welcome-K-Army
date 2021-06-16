@@ -32,7 +32,7 @@ class FilteredMapState extends State<FilteredMap> {
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<Applicationbloc>(context);
 
-    return MaterialApp(
+    return Scaffold(
       body: ListView(padding: const EdgeInsets.all(8), children: [
         Padding(
           padding: const EdgeInsets.all(8),
@@ -79,9 +79,6 @@ class FilteredMapState extends State<FilteredMap> {
             ),
         ]),
       ]),
-      routes : {
-        DetailView.routeName : (context) => DetailView(),
-      }
     ); //Scaffold
   }
 
@@ -99,17 +96,13 @@ class FilteredMapState extends State<FilteredMap> {
                 title: school.name,
                 snippet: school.address,
               ),
-              onTap: () {
-                Navigator.pushNamed(
+              onTap: () async{
+                final argument=Arguments(school.name,school.address,school.number)
+                final result=await Navigator.push(
                   context,
-                  DetailView.routeName,
-                  arguments: Argurments{
-                    school.name,
-                    school.address,
-                    school.number,
+                  MaterialPageRoute(builder: (context)=>DetailView(argument:argument)),
+                )
 
-                  }
-                );
               },
             ))
         .toSet(); //Marker)
