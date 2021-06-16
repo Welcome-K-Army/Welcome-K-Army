@@ -30,12 +30,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Color eventColor;
   List<Color> eventColors = [
     Colors.red,
-    // Colors.pink,
-    // Colors.orange,
+    Colors.pink,
+    Colors.orange,
     Colors.yellow,
     Colors.green,
     Colors.blue,
-    // Colors.purple,
+    Colors.purple,
   ];
   List<bool> eventColorCheckValues = [];
 
@@ -255,7 +255,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       header: "Color",
       child: SingleChildScrollView(
         padding: EdgeInsets.all(12),
-        child: Column(mainAxisSize: MainAxisSize.min, children: buildColorCircles()),
+        child: Row(mainAxisSize: MainAxisSize.min, children: buildColorCircles()),
       ));
 
   List<Widget> buildColorCircles() {
