@@ -4,16 +4,26 @@ import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
+class Arguments{
+  final String name;
+  final String address;
+  final String number;
+
+  Arguments(this.name, this.address, this.number);
+}
+
 class DetailView extends StatefulWidget {
   DetailViewState createState() => DetailViewState();
 }
 
 class DetailViewState extends State<DetailView> {
+  final Arguments school = ModalRoute.of(context).settings.arguments;
+
   bool iconDialog = false;
   List<String> informList = [
     school.name,
-    "http://www.kma.ac.kr/",
-    "+82221970114"
+    school.address,
+    school.number,
   ];
 
   List<String> messageList = [
@@ -32,7 +42,7 @@ class DetailViewState extends State<DetailView> {
 
   @override
   Widget build(BuildContext context) {
-    final school=ModalRoute.of(context).settings.arguments
+    
 
     return DefaultTabController(
       length: 4,

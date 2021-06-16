@@ -79,6 +79,9 @@ class FilteredMapState extends State<FilteredMap> {
             ),
         ]),
       ]),
+      routes : {
+        DetailView.routeName : (context) => DetailView()
+      }
     ); //Scaffold
   }
 
@@ -97,9 +100,15 @@ class FilteredMapState extends State<FilteredMap> {
                 snippet: school.address,
               ),
               onTap: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailView(school)),
+                  DetailView.routeName,
+                  arguments: Argurments{
+                    school.name,
+                    school.address,
+                    school.number,
+
+                  }
                 );
               },
             ))
