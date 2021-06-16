@@ -9,19 +9,20 @@ class DetailView extends StatefulWidget {
     
   final Arguments arguments;
 
-  DetailView({@required this.arguments});
+
+  
   DetailViewState createState() => DetailViewState();
 }
 
 class DetailViewState extends State<DetailView> {
 
-
+  DetailView({@required this.arguments});
   bool iconDialog = false;
 
   List<String> informList = [
-    arguments[0],
-    arguments[1],
-    arguments[2],
+    arguments.name,
+    arguments.address,
+    arguments.number,
   ];
 
   List<String> messageList = [
