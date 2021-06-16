@@ -248,7 +248,34 @@ class _EventEditingPageState extends State<EventEditingPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         // scrollDirection: Axis.horizontal,
         // shrinkWrap: true,
-        children: buildColorCircles(),
+        children: [
+          InkWell(
+            onTap: () {
+              setState(() {
+                eventColor = eventColors[0];
+                eventColorCheckValues[0] = true;
+              });
+            },
+            child: Container(
+              height: 60,
+              width: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: eventColors[0],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: eventColorCheckValues[0]
+                    ? Icon(
+                        Icons.check,
+                        size: 30.0,
+                        color: Colors.white,
+                      )
+                    : Container(),
+              ),
+            ),
+          )
+        ], //buildColorCircles(),
       ));
 
   List<Widget> buildColorCircles() {
