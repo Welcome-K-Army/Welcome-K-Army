@@ -244,6 +244,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
       child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         // scrollDirection: Axis.horizontal,
         // shrinkWrap: true,
         children: buildColorCircles(),
