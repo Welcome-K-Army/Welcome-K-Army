@@ -92,7 +92,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
               buildDescription(provider),
             ],
           ),
-        )
+        ),
       ]),
     );
   }
@@ -253,47 +253,52 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
-      child: SingleChildScrollView(
-        padding: EdgeInsets.all(12),
-        child: Row(mainAxisSize: MainAxisSize.min, children: buildColorCircles()),
+      child: GridView.builder(
+        shrinkWrap: true,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 2,
+          mainAxisSpacing: 2,
+        ),
+        itemCount: eventColors.length,
+        itemBuilder: (context, index) {
+          return buildColorCircle(index);
+        },
       ));
 
-  List<Widget> buildColorCircles() {
-    return List<Widget>.generate(eventColors.length, (index) {
-      print(eventColorCheckValues);
-      return InkWell(
-        onTap: () {
-          setState(() {
-            eventColor = eventColors[index];
-            eventColorCheckValues[index] = true;
-            for (int i = 0; i < eventColors.length; i++) {
-              if (i == index)
-                continue;
-              else
-                eventColorCheckValues[i] = false;
-            }
-          });
-        },
-        child: Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: eventColors[index],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: eventColorCheckValues[index]
-                ? Icon(
-                    Icons.check,
-                    size: 30.0,
-                    color: Colors.white,
-                  )
-                : Container(),
-          ),
+  List<Widget> buildColorCircle(int index) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          eventColor = eventColors[index];
+          eventColorCheckValues[index] = true;
+          for (int i = 0; i < eventColors.length; i++) {
+            if (i == index)
+              continue;
+            else
+              eventColorCheckValues[i] = false;
+          }
+        });
+      },
+      child: Container(
+        height: 30,
+        width: 30,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: eventColors[index],
         ),
-      );
-    });
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: eventColorCheckValues[index]
+              ? Icon(
+                  Icons.check,
+                  size: 30.0,
+                  color: Colors.white,
+                )
+              : Container(),
+        ),
+      ),
+    );
   }
 
   Future saveForm(EventProvider provider) async {
