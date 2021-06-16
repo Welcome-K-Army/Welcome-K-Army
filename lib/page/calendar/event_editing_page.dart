@@ -243,15 +243,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
+      child: Row(
+        // scrollDirection: Axis.horizontal,
+        // shrinkWrap: true,
         children: [
-          /*
-          Row(
-            children: buildColorCircles(),
-          )
-          */
+          buildColorCircles(),
         ],
       ));
 
