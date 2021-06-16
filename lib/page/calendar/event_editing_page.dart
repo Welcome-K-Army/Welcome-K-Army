@@ -254,9 +254,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Widget buildColor(Size size) => buildHeader(
       header: "Color",
       child: GridView.builder(
-        shrinkWrap: true,
+        // shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
+          crossAxisCount: 7,
           crossAxisSpacing: 2,
           mainAxisSpacing: 2,
         ),
@@ -281,8 +281,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
         });
       },
       child: Container(
-        height: 12,
-        width: 12,
+        height: 17,
+        width: 17,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: eventColors[index],
@@ -292,7 +292,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           child: eventColorCheckValues[index]
               ? Icon(
                   Icons.check,
-                  size: 10,
+                  size: 15,
                   color: Colors.white,
                 )
               : Container(),
