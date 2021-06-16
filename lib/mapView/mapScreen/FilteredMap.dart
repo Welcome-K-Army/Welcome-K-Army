@@ -32,7 +32,7 @@ class FilteredMapState extends State<FilteredMap> {
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<Applicationbloc>(context);
 
-    return Scaffold(
+    return MaterialApp(
       body: ListView(padding: const EdgeInsets.all(8), children: [
         Padding(
           padding: const EdgeInsets.all(8),
