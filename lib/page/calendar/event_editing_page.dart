@@ -33,7 +33,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     Colors.blue,
     Colors.green
   ];
-  List<bool> eventColorCheckValues;
+  List<bool> eventColorCheckValues=[true,false,false];
 
   @override
   void initState() {
