@@ -99,7 +99,7 @@ class FilteredMapState extends State<FilteredMap> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailView(school:school)),
+                  MaterialPageRoute(builder: (context) => DetailView(school)),
                 );
               },
             ))
