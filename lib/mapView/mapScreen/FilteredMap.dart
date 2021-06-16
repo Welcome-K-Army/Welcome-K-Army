@@ -99,8 +99,8 @@ class FilteredMapState extends State<FilteredMap> {
             ),
             onTap:(){
               DetailView();
-            }
-            )//Marker)
-        .toSet();
+            },
+            ).toSet();//Marker)
+        
   }
 }
