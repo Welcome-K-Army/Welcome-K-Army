@@ -11,7 +11,7 @@ class DetailView extends StatefulWidget {
 class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
   List<String> informList = [
-    "서울특별시 노원구 공릉2동 화랑로 574",
+    school.name,
     "http://www.kma.ac.kr/",
     "+82221970114"
   ];
@@ -32,6 +32,8 @@ class DetailViewState extends State<DetailView> {
 
   @override
   Widget build(BuildContext context) {
+    final school=ModalRoute.of(context).settings.arguments
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
