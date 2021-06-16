@@ -6,14 +6,14 @@ import 'widget/inform_widget.dart';
 
 
 class DetailView extends StatefulWidget {
+    
+  final Arguments arguments;
+
+  DetailView({@required this.arguments});
   DetailViewState createState() => DetailViewState();
 }
 
 class DetailViewState extends State<DetailView> {
-  
-  final Arguments arguments;
-
-  DetailView({@required this.arguments});
 
 
   bool iconDialog = false;
