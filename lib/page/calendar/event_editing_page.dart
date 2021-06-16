@@ -57,11 +57,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
       for (int i = 0; i < eventColors.length; i++) {
         if (eventColor.value == eventColors[i].value)
           eventColorCheckValues.add(true);
-        else {
-          print(eventColor.value);
-          print(eventColors[i].value);
+        else
           eventColorCheckValues.add(false);
-        }
       }
     }
   }
@@ -254,7 +251,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
         controller: descriptionController,
       ));
 
-  Widget buildColor(Size size) => buildHeader(header: "Color", child: Row(children: buildColorCircles()));
+  Widget buildColor(Size size) => buildHeader(
+      header: "Color",
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(12),
+        child: Column(mainAxisSize: MainAxisSize.min, children: buildColorCircles()),
+      ));
 
   List<Widget> buildColorCircles() {
     return List<Widget>.generate(eventColors.length, (index) {
