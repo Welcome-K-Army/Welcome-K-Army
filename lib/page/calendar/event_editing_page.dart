@@ -219,7 +219,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
       final date = DateTime(initialDate.year, initialDate.month, initialDate.day);
       final time = Duration(hours: initialDate.hour, minutes: initialDate.minute);
-
+      print(time);
       return date.add(time);
     }
   }
