@@ -7,16 +7,12 @@ class InformWidget extends StatefulWidget {
   final String address; 
   final String number;  // receives the value
 
-  Screen2({ Key key, this.name,this.address,this.number }): super(key: key);
+  InformWidget({ Key key, this.name,this.address,this.number }): super(key: key);
   InformWidgetState createState() => InformWidgetState();
 }
 
 class InformWidgetState extends State<InformWidget> {
-      List<String> informList = [
-        widget.name,
-        widget.address,
-        widget.number,
-      ];
+
   List<String> messageList = [
     "주소 복사",
     "웹사이트 열기",
@@ -33,7 +29,11 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
-
+      List<String> informList = [
+        widget.name,
+        widget.address,
+        widget.number,
+      ];
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
