@@ -24,11 +24,11 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
-      List<String> informList = [
-        widget.arguments.name,
-        widget.arguments.address,
-        widget.arguments.number,
-      ];
+      // List<String> informList = [
+      //   widget.arguments.name,
+      //   widget.arguments.address,
+      //   widget.arguments.number,
+      // ];
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
