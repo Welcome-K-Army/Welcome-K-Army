@@ -3,15 +3,25 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InformWidget extends StatefulWidget {
-  final String name;
-  final String address; 
-  final String number;  // receives the value
+  final String current_name;
+  final String current_address; 
+  final String current_number;  // receives the value
 
-  InformWidget({ Key key, this.name,this.address,this.number }): super(key: key);
+  InformWidget(String name,String address,String number){
+    current_name=this.name,
+    current_address=this.addres,
+    current_number=this.number 
+  }
+
   InformWidgetState createState() => InformWidgetState();
 }
 
 class InformWidgetState extends State<InformWidget> {
+      List<String> informList = [
+        current_name,
+        current_address,
+        current_number,
+      ];
 
   List<String> messageList = [
     "주소 복사",
@@ -29,11 +39,6 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
-      List<String> informList = [
-        widget.name,
-        widget.address,
-        widget.number,
-      ];
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
