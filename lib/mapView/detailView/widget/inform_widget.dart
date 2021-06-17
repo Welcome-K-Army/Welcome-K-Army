@@ -7,11 +7,6 @@ class InformWidget extends StatefulWidget {
 }
 
 class InformWidgetState extends State<InformWidget> {
-  List<String> informList = [
-    arguments.name,
-    arguments.address,
-    arguments.number,
-  ];
 
   List<String> messageList = [
     "주소 복사",
@@ -29,6 +24,11 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
+      List<String> informList = [
+        widget.arguments.name,
+        widget.arguments.address,
+        widget.arguments.number,
+      ];
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
