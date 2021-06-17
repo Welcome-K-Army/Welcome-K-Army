@@ -7,8 +7,7 @@ import 'widget/inform_widget.dart';
 class DetailView extends StatefulWidget {
   final Arguments arguments;
 
-  DetailView({@required this.arguments});
-
+  DetailView({Key? key,@required this.arguments}): super(key: key);
   DetailViewState createState() => DetailViewState();
 }
 
