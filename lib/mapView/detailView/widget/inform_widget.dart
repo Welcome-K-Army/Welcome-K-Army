@@ -53,6 +53,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildAddressTile() {
+     List<String> informList = [
+        widget.name,
+        widget.address,
+        widget.number,
+      ];
     return ListTile(
         leading: Tooltip(
             message: "주소 복사",
@@ -72,6 +77,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildUrlTile() {
+     List<String> informList = [
+        widget.name,
+        widget.address,
+        widget.number,
+      ];
     return ListTile(
         leading: Tooltip(
             message: "웹사이트 열기",
@@ -91,6 +101,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildPhoneNumberTile() {
+     List<String> informList = [
+        widget.name,
+        widget.address,
+        widget.number,
+      ];
     return ListTile(
         leading: Tooltip(
             message: "전화 걸기",
