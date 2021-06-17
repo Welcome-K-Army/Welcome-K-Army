@@ -15,11 +15,6 @@ class DetailView extends StatefulWidget {
 class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
 
-  List<String> informList = [
-    widget.arguments.name,
-    widget.arguments.address,
-    widget.arguments.number,
-  ];
 
   List<String> messageList = [
     "주소 복사",
@@ -37,6 +32,11 @@ class DetailViewState extends State<DetailView> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> informList = [
+      widget.arguments.name,
+      widget.arguments.address,
+      widget.arguments.number,
+    ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
