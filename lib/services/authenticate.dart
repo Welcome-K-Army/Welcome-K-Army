@@ -56,6 +56,7 @@ class FireStoreUtils {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     print(uid);
     print(event.title);
+    print(event.toJson());
     print(event.description);
     return await firestore.collection(uid).add(event.toJson()).then((document) {
       event.eid = document.id;
