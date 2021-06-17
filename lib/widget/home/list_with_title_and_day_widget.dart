@@ -18,15 +18,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
   final List<Content> contents;
   final bool infinite;
   final int maxLines;
-
-  @override
-  void initState() {
-    super.initState();
-    if (infinite) maxLines = contents.length;
-  }
-
+  
   @override
   Widget build(BuildContext context) {
+    if (infinite) maxLines = contents.length;
     return Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
