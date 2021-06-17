@@ -41,8 +41,6 @@ class Event {
   }
 
   Map<String, dynamic> toJson() {
-    print(this.backgroundColor);
-    print(this.backgroundColor.toHex());
     return {
       'eid': this.eid,
       'title': this.title,

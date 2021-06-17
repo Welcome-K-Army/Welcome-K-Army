@@ -45,6 +45,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
     if (widget.event == null) {
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
+      eventColor = eventColors[0];
       for (int i = 0; i < eventColors.length; i++) {
         if (i == 0)
           eventColorCheckValues.add(true);
