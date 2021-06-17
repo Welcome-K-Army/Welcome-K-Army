@@ -47,7 +47,7 @@ class Event {
       'description': this.description,
       //'from': this.from,
       //'to': this.to,
-      //'backgroundColor': this.backgroundColor.toHex(),
+      'backgroundColor': this.backgroundColor.toHex(),
       'isAllDay': this.isAllDay,
     };
   }
