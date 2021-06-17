@@ -16,9 +16,9 @@ class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
 
   List<String> informList = [
-    arguments.name,
-    arguments.address,
-    arguments.number,
+    widget.arguments.name,
+    widget.arguments.address,
+    widget.arguments.number,
   ];
 
   List<String> messageList = [

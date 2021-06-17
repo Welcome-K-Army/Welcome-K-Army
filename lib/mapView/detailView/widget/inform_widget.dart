@@ -8,9 +8,9 @@ class InformWidget extends StatefulWidget {
 
 class InformWidgetState extends State<InformWidget> {
   List<String> informList = [
-    "서울특별시 노원구 공릉2동 화랑로 574",
-    "http://www.kma.ac.kr/",
-    "+82221970114"
+    arguments.name,
+    arguments.address,
+    arguments.number,
   ];
 
   List<String> messageList = [
