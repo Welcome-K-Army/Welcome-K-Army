@@ -219,7 +219,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
       final date = DateTime(initialDate.year, initialDate.month, initialDate.day);
       final time = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
-      print(time);
       return date.add(time);
     }
   }
@@ -323,7 +322,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
       final isEditing = widget.event != null;
-
+      print(isEditing);
       if (isEditing) {
         provider.editEvent(event, widget.event);
       } else {
