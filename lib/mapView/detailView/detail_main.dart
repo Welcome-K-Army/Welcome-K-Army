@@ -6,9 +6,8 @@ import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
 
 class DetailView extends StatefulWidget {
-  final Arguments arguments;
 
-  DetailView({ Key? key, required this.arguments}): super(key: key);
+  DetailView({@required this.arguments});
   DetailViewState createState() => DetailViewState();
 }
 
