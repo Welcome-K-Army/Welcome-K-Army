@@ -7,7 +7,7 @@ class InformWidget extends StatefulWidget {
   final String current_address; 
   final String current_number;  // receives the value
 
-  InformWidget(String name,String address,String number){
+  InformWidget(String current_name,String current_address,String current_number){
     current_name=this.current_name;
     current_address=this.current_address;
     current_number=this.current_number;
