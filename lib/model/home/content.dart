@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 // import 'package:Army/model/user.dart';
-import 'package:Army/home/person.dart';
+import 'package:Army/model/home/person.dart';
 
 int contentNumber = 0;
 
