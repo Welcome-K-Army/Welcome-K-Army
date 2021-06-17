@@ -45,9 +45,9 @@ class Event {
       'eid': this.eid,
       'title': this.title,
       'description': this.description,
-      'from': this.from,
-      'to': this.to,
-      'backgroundColor': this.backgroundColor.toHex(),
+      //'from': this.from,
+      //'to': this.to,
+      //'backgroundColor': this.backgroundColor.toHex(),
       'isAllDay': this.isAllDay,
     };
   }
