@@ -17,8 +17,8 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
   final String title;
   final List<Content> contents;
   final bool infinite;
-  final int maxLines;
-  
+  int maxLines;
+
   @override
   Widget build(BuildContext context) {
     if (infinite) maxLines = contents.length;
