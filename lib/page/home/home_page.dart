@@ -174,7 +174,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", contents: noticeList),
+            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", contents: noticeList, infinite: false, maxLines: 3),
           ], // Column children
         ), // Column
       ), // Padding

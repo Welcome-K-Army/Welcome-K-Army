@@ -9,11 +9,21 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
     this.headerTile,
     this.title,
     this.contents,
+    this.infinite,
+    this.maxLines
   }) : super(key: key);
 
   final bool headerTile;
   final String title;
   final List<Content> contents;
+  final bool infinite;
+  final int maxLines;
+
+  @override
+  void initState() {
+    super.initState();
+    if (infinite) maxLines = contents.length;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +35,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: contents.length + 1,
+            itemCount: maxLines,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
-              return ListTileWithTitleAndDay(content: contents[index - 1]);
+              return ListTileWithTitleAndDay(content: contents[(-contents.length)+index]);
             },
             separatorBuilder: (context, index) {
               if (index == 0) return SizedBox.shrink();

@@ -13,7 +13,7 @@ class NoticeListPageState extends State<NoticeListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('k army notice')),
-      body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", contents: noticeList),
+      body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", contents: noticeList, infinite: true, maxLines: 0),
     );
   }
 }
