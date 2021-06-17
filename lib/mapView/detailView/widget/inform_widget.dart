@@ -8,9 +8,9 @@ class InformWidget extends StatefulWidget {
   final String current_number;  // receives the value
 
   InformWidget(String name,String address,String number){
-    current_name=this.name,
-    current_address=this.addres,
-    current_number=this.number 
+    current_name=this.name;
+    current_address=this.addres;
+    current_number=this.number;
   }
 
   InformWidgetState createState() => InformWidgetState();
@@ -58,11 +58,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildAddressTile() {
-     List<String> informList = [
-        widget.name,
-        widget.address,
-        widget.number,
-      ];
+    //  List<String> informList = [
+    //     widget.name,
+    //     widget.address,
+    //     widget.number,
+    //   ];
     return ListTile(
         leading: Tooltip(
             message: "주소 복사",
@@ -82,11 +82,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildUrlTile() {
-     List<String> informList = [
-        widget.name,
-        widget.address,
-        widget.number,
-      ];
+    //  List<String> informList = [
+    //     widget.name,
+    //     widget.address,
+    //     widget.number,
+    //   ];
     return ListTile(
         leading: Tooltip(
             message: "웹사이트 열기",
@@ -106,11 +106,11 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildPhoneNumberTile() {
-     List<String> informList = [
-        widget.name,
-        widget.address,
-        widget.number,
-      ];
+    //  List<String> informList = [
+    //     widget.name,
+    //     widget.address,
+    //     widget.number,
+    //   ];
     return ListTile(
         leading: Tooltip(
             message: "전화 걸기",
