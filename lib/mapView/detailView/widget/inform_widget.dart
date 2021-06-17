@@ -3,14 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InformWidget extends StatefulWidget {
+  final String name;
+  final String address; 
+  final String number;  // receives the value
+
+  Screen2({ Key key, this.name,this.address,this.number }): super(key: key);
   InformWidgetState createState() => InformWidgetState();
 }
 
 class InformWidgetState extends State<InformWidget> {
       List<String> informList = [
-        "asd",
-        "aseqw",
-        "aqeqw",
+        widget.name,
+        widget.address,
+        widget.number,
       ];
   List<String> messageList = [
     "주소 복사",
