@@ -14,6 +14,9 @@ class DetailView extends StatefulWidget {
 
 class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
+  String current_name;
+  String current_address;
+  String current_number;
 
 
   List<String> messageList = [
@@ -73,7 +76,7 @@ class DetailViewState extends State<DetailView> {
         ),
         body: TabBarView(
           children: [
-            InformWidget(String current_name=informList[0], String current_address=informList[1], String current_number=informList[2]),
+            InformWidget(current_name=informList[0],current_address=informList[1],current_number=informList[2]),
             CompetitionChartWidget(),
             CompetitionChartWidget(),
             Text('교육과정'),
