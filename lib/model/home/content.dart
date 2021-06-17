@@ -1,6 +1,5 @@
 import 'package:intl/intl.dart';
-
-import 'package:Army/model/home/person.dart';
+import 'package:Army/model/user.dart';
 
 int contentNumber = 0;
 
@@ -10,13 +9,13 @@ class Content {
 
   int number;
 
-  Person person;
+  User writer;
 
   String title;
   String content;
   List<String> imgList;
 
-  Content({this.title, this.content, this.person, this.imgList}) {
+  Content({this.title, this.content, this.writer, this.imgList}) {
     this.number = contentNumber;
 
     contentNumber++;
