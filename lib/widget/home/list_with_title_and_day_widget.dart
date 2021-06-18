@@ -23,7 +23,7 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: infinite ? contents.length : maxLines,
+            itemCount: infinite ? contents.length+1 : maxLines+1,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
               return ListTileWithTitleAndDay(content: contents[contents.length - (index + 1)]);
