@@ -14,7 +14,7 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(contents);
+    print(contents.length);
     return Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
