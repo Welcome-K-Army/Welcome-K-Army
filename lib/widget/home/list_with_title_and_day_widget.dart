@@ -23,10 +23,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: infinite ? contents.length+1 : maxLines+1,
+            itemCount: infinite ? contents.length + 1 : maxLines + 1,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
-              return ListTileWithTitleAndDay(content: contents[contents.length+1 - (index + 1)]);
+              return ListTileWithTitleAndDay(content: contents[contents.length + 1 - (index + 1)]);
             },
             separatorBuilder: (context, index) {
               if (index == 0) return SizedBox.shrink();
@@ -104,7 +104,9 @@ class ListContentView extends StatelessWidget {
             title: Text(content.person.name),
             subtitle: Text(content.date_yMMMd),
           ),
+          SizedBox(size: 12),
           Text(content.content),
+          SizedBox(size: 12),
           Container(
             height: 60,
             child: ListView.builder(
