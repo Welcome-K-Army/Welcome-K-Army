@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
+import 'package:photo_view/photo_view.dart';
 
 import 'package:Army/model/home/content.dart';
 
@@ -116,11 +117,14 @@ class ListContentView extends StatelessWidget {
                 itemCount: content.imgList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    height: 50,
-                    child: Image.asset(content.imgList[index]),
-                  ); // Container
+    child: PhotoView(
+      imageProvider: AssetImage(content.imgList[index]),
+    )
+  );
                 }), // ListView
           )
         ]));
   }
+}
+
 }
