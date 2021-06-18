@@ -117,14 +117,11 @@ class ListContentView extends StatelessWidget {
                 itemCount: content.imgList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-    child: PhotoView(
-      imageProvider: AssetImage(content.imgList[index]),
-    )
-  );
+                      child: PhotoView(
+                    imageProvider: AssetImage(content.imgList[index]),
+                  ));
                 }), // ListView
           )
         ]));
   }
-}
-
 }
