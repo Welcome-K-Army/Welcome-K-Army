@@ -34,10 +34,10 @@ class OnBoardingState extends State<OnBoarding> {
           MyAppState.currentUser = user;
           pushReplacement(context, new HomeScreen(user: user));
         } else {
-          pushReplacement(context, new AuthScreen());
+          pushReplacement(context, new Homepage());
         }
       } else {
-        pushReplacement(context, new AuthScreen());
+        pushReplacement(context, new Homepage());
       }
     } else {
       pushReplacement(context, new OnBoardingScreen());
