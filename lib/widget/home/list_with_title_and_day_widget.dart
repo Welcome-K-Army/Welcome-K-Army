@@ -14,7 +14,6 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (infinite) maxLines = contents.length;
     return Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
