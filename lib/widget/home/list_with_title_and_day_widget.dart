@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:Army/model/home/content.dart';
 
 class ListWithTitleAndDayWidget extends StatelessWidget {
-  const ListWithTitleAndDayWidget({Key key, this.headerTile, this.title, this.contents, this.infinite, this.maxLines}) : super(key: key);
+  ListWithTitleAndDayWidget({Key key, this.headerTile, this.title, this.contents, this.infinite, this.maxLines}) : super(key: key);
 
   final bool headerTile;
   final String title;
