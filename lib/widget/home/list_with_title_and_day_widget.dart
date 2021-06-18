@@ -105,9 +105,9 @@ class ListContentView extends StatelessWidget {
             title: Text(content.person.name),
             subtitle: Text(content.date_yMMMd),
           ),
-          SizedBox(size: 12),
+          SizedBox(height: 12),
           Text(content.content),
-          SizedBox(size: 12),
+          SizedBox(height: 12),
           Container(
             height: 60,
             child: ListView.builder(
