@@ -9,7 +9,10 @@
 .history
 .svn/
 
-# IntelliJ related
+android/apikey.properties
+android/app/src/main/res/values/secrets.xml
+
+# IntelliJ relateds
 *.iml
 *.ipr
 *.iws
