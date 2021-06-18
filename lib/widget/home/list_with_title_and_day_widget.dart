@@ -4,13 +4,13 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:Army/model/home/content.dart';
 
 class ListWithTitleAndDayWidget extends StatelessWidget {
-  ListWithTitleAndDayWidget({Key key, this.headerTile, this.title, this.contents, this.infinite, this.maxLines}) : super(key: key);
+  const ListWithTitleAndDayWidget({Key key, this.headerTile, this.title, this.contents, this.infinite, this.maxLines}) : super(key: key);
 
   final bool headerTile;
   final String title;
   final List<Content> contents;
   final bool infinite;
-  int maxLines;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: maxLines,
+            itemCount: infinite ? contents.length : maxLines,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
               return ListTileWithTitleAndDay(content: contents[(-contents.length) + index]);
