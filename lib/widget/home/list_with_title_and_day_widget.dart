@@ -14,6 +14,7 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(contents);
     return Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -25,7 +26,7 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
             itemCount: infinite ? contents.length : maxLines,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
-              return ListTileWithTitleAndDay(content: contents[index]);
+              return ListTileWithTitleAndDay(content: contents[contents.length - (index + 1)]);
             },
             separatorBuilder: (context, index) {
               if (index == 0) return SizedBox.shrink();
