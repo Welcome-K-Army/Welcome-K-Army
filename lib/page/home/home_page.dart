@@ -39,14 +39,14 @@ class HomePageState extends State<HomePage> {
               buildNotice(),
             ] // <Widget>[]
                 ) // Column
-            ) // SingleChildScrollview
+            )
         ); // Container
   } // Widget
 
   Widget buildHeader() {
-    Size size = MediaQuery.of(context).size;
+    double _height = MediaQuery.of(context).size.height + 150.0;
     return Container(
-        height: size.height * 0.2,
+        height: _height * 0.2,
         child: Stack(
           children: <Widget>[
             Container(
@@ -54,8 +54,9 @@ class HomePageState extends State<HomePage> {
                 left: kDefaultPadding,
                 right: kDefaultPadding,
                 bottom: 36 + kDefaultPadding,
+                top: MediaQuery.of(context).padding.top + 20.0
               ),
-              height: size.height * 0.2 - 27,
+              height: _height * 0.2 - 27,
               decoration: BoxDecoration(
                 color: kPrimaryColor,
                 borderRadius: BorderRadius.only(
@@ -66,8 +67,9 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'wecome k army',
-                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                    'Hi Minjun!',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Image.asset("assets/images/4.jpg")

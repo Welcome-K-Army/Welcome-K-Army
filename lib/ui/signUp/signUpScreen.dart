@@ -10,6 +10,7 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 
 enum Gender { MAN, WOMEN }
@@ -38,6 +39,7 @@ class _SignUpState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final node = FocusScope.of(context);
 
     // if (Platform.isAndroid) {
     //   retrieveLostData();
@@ -93,45 +95,29 @@ class _SignUpState extends State<SignUpScreen> {
       }
     }
 
-    final logo = Image.asset(
-      "lib/image/Loading.gif",
-      height: size.height / 4,
-    );
-    // final logo = Expanded(
-    //   child: Padding(
-    //     padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-    //     child: FittedBox(
-    //       fit: BoxFit.contain,
-    //       child: CircleAvatar(
-    //         minRadius: 40,
-    //         backgroundImage: AssetImage("lib/image/Loading.gif"),
-    //       ), //CircleAvatar
-    //     ), //FittedBox
-    //   ), //Padding
-    // ); //Expanded
-
     final nicknameField = TextFormField(
       controller: _nicknameController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
       validator: validateName,
       textInputAction: TextInputAction.next,
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-      cursorColor: Colors.white,
+      onEditingComplete: () => node.nextFocus(),
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width: 2
           ),
         ),
-        hintText: "K Amry",
-        labelText: "Nickname",
+        hintText: "35사단 멋쟁이",
+        labelText: "닉네임",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ),
     );
@@ -139,26 +125,27 @@ class _SignUpState extends State<SignUpScreen> {
     final emailField = TextFormField(
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+      onEditingComplete: () => node.nextFocus(),
       validator: validateEmail,
       controller: _emailController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width:2
           ),
         ),
         hintText: "something@example.com",
-        labelText: "Email",
+        labelText: "이메일",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ),
     );
@@ -173,7 +160,7 @@ class _SignUpState extends State<SignUpScreen> {
             child: Radio(
               value: Gender.MAN,
               groupValue: _userGender,
-              activeColor: Colors.white,
+              activeColor: Color(COLOR_PRIMARY),
               onChanged: (value) {
                 setState(() {
                   _userGender = value;
@@ -190,9 +177,9 @@ class _SignUpState extends State<SignUpScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                "Male",
+                "남성",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -203,7 +190,7 @@ class _SignUpState extends State<SignUpScreen> {
             child: Radio(
               value: Gender.WOMEN,
               groupValue: _userGender,
-              activeColor: Colors.white,
+              activeColor: Color(COLOR_PRIMARY),
               onChanged: (value) {
                 setState(() {
                   _userGender = value;
@@ -220,9 +207,9 @@ class _SignUpState extends State<SignUpScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                "Female",
+                "여성",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -238,16 +225,21 @@ class _SignUpState extends State<SignUpScreen> {
         isExpanded: true,
         iconSize: 24,
         elevation: 16,
+        underline: Container(
+          decoration: BoxDecoration(
+              border: Border.all(width:0.5, color: Colors.black38)
+          )
+        ),
         hint: Text(
-          "- years old",
+          "나이 설정",
           textAlign: TextAlign.left,
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black38,
           ),
         ),
-        dropdownColor: Color(0xff0c9869),
+        dropdownColor: Colors.white,
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
         value: _userAge,
         onChanged: (val) => setState(() => _userAge = val),
@@ -257,10 +249,10 @@ class _SignUpState extends State<SignUpScreen> {
               value: age,
               child: SizedBox(
                 child: Text(
-                  age.toString() + " years old",
+                  age.toString() + "살",
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black87,
                   ),
                 ),
               ),
@@ -273,25 +265,26 @@ class _SignUpState extends State<SignUpScreen> {
       obscureText: true,
       controller: _passwordController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       textInputAction: TextInputAction.next,
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+      onEditingComplete: () => node.nextFocus(),
       validator: validatePassword,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width:2
           ),
         ),
-        hintText: "password",
-        labelText: "Password",
+        hintText: "비밀번호",
+        labelText: "비밀번호",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ),
     );
@@ -299,27 +292,25 @@ class _SignUpState extends State<SignUpScreen> {
     final repasswordField = TextFormField(
       obscureText: true,
       textInputAction: TextInputAction.done,
-      onFieldSubmitted: (_) {
-        _sendToServer();
-      },
       validator: (val) => validateConfirmPassword(_passwordController.text, val),
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width:2
           ),
         ),
-        hintText: "password",
-        labelText: "Re-enter Password",
+        hintText: "비밀번호 재입력",
+        labelText: "비밀번호 재입력",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ),
     );
@@ -331,95 +322,66 @@ class _SignUpState extends State<SignUpScreen> {
         children: <Widget>[
           nicknameField,
           emailField,
-          genderField,
-          ageField,
+          Padding(padding: const EdgeInsets.symmetric(vertical: 15)),
           passwordField,
           repasswordField,
+          Padding(padding: const EdgeInsets.symmetric(vertical: 15)),
+          ageField,
+          genderField,
         ],
       ),
     );
     final registerButton = Material(
-      elevation: 5.0,
+      elevation: 15.0,
       borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
+      color: Color(COLOR_PRIMARY),
       child: MaterialButton(
           minWidth: size.width / 1.2,
           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
           child: Text(
-            "Register",
+            "회원가입",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.0,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+              color: Colors.white
             ),
           ),
           onPressed: () {
             _sendToServer();
           }),
     );
-    final bottom = Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        registerButton,
-        Padding(
-          padding: EdgeInsets.all(8.0),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              "Already have an account?",
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    color: Colors.white,
-                  ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                // Navigator.of(context).pushNamed(AppRoutes.authLogin);
-              },
-              child: Text(
-                "Login",
-                style: Theme.of(context).textTheme.subtitle1.copyWith(
-                      color: Colors.white,
-                      decoration: TextDecoration.underline,
-                    ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
+
 
     final formUI = Container(
-      height: size.height * 1.4,
+      height: 750,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          logo,
           Padding(
             padding: const EdgeInsets.only(left: 8, top: 8, right: 8, bottom: 8),
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: <Widget>[
-                CircleAvatar(
-                  radius: 65,
-                  backgroundColor: Colors.grey.shade400,
-                  child: ClipOval(
-                    child: SizedBox(
-                      width: 170,
-                      height: 170,
-                      child: _image == null
-                          ? Image.asset(
-                              'lib/image/Loading.gif',
-                              fit: BoxFit.cover,
-                            )
-                          : Image.file(
-                              _image,
-                              fit: BoxFit.cover,
-                            ),
+                Container(
+                  child:CircleAvatar(
+                    radius: 100,
+                    backgroundColor: Colors.white,
+                    child: ClipOval(
+                      child: SizedBox(
+                        width: 190,
+                        height: 190,
+                        child: _image == null
+                            ? Icon(Icons.flutter_dash, size: 190, color: Colors.black38,)
+                            : Image.file(
+                          _image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(color:Color(COLOR_PRIMARY), width: 4)
                   ),
                 ),
                 Positioned(
@@ -431,16 +393,13 @@ class _SignUpState extends State<SignUpScreen> {
             ),
           ),
           fields,
-          Padding(
-            padding: EdgeInsets.only(bottom: 30),
-            child: bottom,
-          ),
+          registerButton
         ],
       ),
     );
 ///////////////////////////////////////////////     return 문     ////////////////////////////////////////////////
     return Scaffold(
-      backgroundColor: Color(COLOR_PRIMARY),
+      backgroundColor: Colors.lightGreen[50],
       body: Form(
         key: _key,
         autovalidateMode: _validate,

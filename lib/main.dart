@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
 import 'package:Army/provider/noticeProvider.dart';
@@ -40,6 +41,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+
     // Show error message if initialization failed
     if (_error) {
       return InitializeErrorPage();
@@ -54,8 +56,20 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         ),
       );
     }
-
-    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: false, color: Color(COLOR_PRIMARY), home: OnBoarding());
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+      child: MaterialApp(
+          theme: ThemeData(
+            accentColor: Color(COLOR_PRIMARY),
+            bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0)),
+          ),
+          debugShowCheckedModeBanner: false,
+          color: Color(COLOR_PRIMARY),
+          home: OnBoarding()
+      )
+    );
   }
 
   // Define an async function to initialize FlutterFire
