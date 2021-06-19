@@ -24,6 +24,7 @@ class _HomeState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // print(this.user.toJson());
     return Scaffold(
       floatingActionButton: null,
       // backgroundColor: Colors.black87,
@@ -59,7 +60,7 @@ class _HomeState extends State<HomeScreen> {
               body: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: <Widget>[
-                  HomePage(),
+                  HomePage(user: user),
                   FilterScreen(),
                   SettingScreen(user: user),
                 ],

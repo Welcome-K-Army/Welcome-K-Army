@@ -1,3 +1,4 @@
+import 'package:Army/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -16,10 +17,15 @@ import 'package:Army/widget/home/title_with_more_btn_widget.dart';
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
 
 class HomePage extends StatefulWidget {
-  HomePageState createState() => new HomePageState();
+  final User user;
+  HomePage({Key key, @required this.user}) : super(key: key);
+  HomePageState createState() => new HomePageState(user);
 }
 
 class HomePageState extends State<HomePage> {
+  final User user;
+  HomePageState(this.user);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,7 +73,7 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    '반갑습니다 민준님!',
+                    '반갑습니다 '+user.nickName+'님!',
                     style: Theme.of(context).textTheme.headline5?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
