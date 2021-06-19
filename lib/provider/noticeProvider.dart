@@ -8,7 +8,6 @@ class NoticeProvider extends ChangeNotifier {
 
   void readNotice() async {
     _notices = await FireStoreUtils().getNoticeList();
-    print(_notices);
     notifyListeners();
   }
 
