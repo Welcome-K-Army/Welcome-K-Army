@@ -10,7 +10,6 @@ import 'package:Army/constants.dart';
 import 'package:Army/global.dart';
 
 import 'package:Army/model/home/menu.dart';
-import 'package:Army/model/home/notice.dart';
 import 'package:Army/provider/noticeProvider.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
@@ -91,6 +90,8 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
+    final noticeProvider=Provider.of<NoticeProvider>(context);
+    noticeProvider.readNotice();
     return Container(
       height: 200,
       child: Card(
@@ -101,17 +102,16 @@ class HomePageState extends State<HomePage> {
         elevation: 4,
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: Consumer(builder: (context, noticeProvider, child) {
+          child: 
             Swiper(
                 autoplay: true,
                 scale: 0.8,
                 viewportFraction: 1,
                 pagination: SwiperPagination(),
-                itemCount: noticeProvider.notices.imageList.length, //notice imagelist length
+                itemCount: noticeProvider.notices[0].imageList.length, //notice imagelist length
                 itemBuilder: (BuildContext context, int index) {
-                  return Image.asset(noticeProvider.notices.imageList[index]);
-                }); // Swiper
-          }),
+                  return Image.asset(noticeProvider.notices[0].imageList[index]);
+                }), // Swiper
         ),
       ), // Padding
     ); // Container
