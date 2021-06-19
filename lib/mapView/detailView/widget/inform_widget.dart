@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class InformWidget extends StatefulWidget {
   final List<String> informList;
 
-  InformWidget({this.informList});
+  InformWidget({Key key,this.informList}):super(key:key);
   
 
   InformWidgetState createState() => InformWidgetState();
