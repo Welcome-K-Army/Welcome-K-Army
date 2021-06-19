@@ -8,21 +8,11 @@ import '../constants.dart';
 String validateName(String value) {
 
   if (value.length == 0) {
-    return "Name is required";
+    return "닉네임을 입력해주세요.";
   }
   return null;
 }
 
-String validateMobile(String value) {
-  String pattern = r'(^[0-9]*$)';
-  RegExp regExp = new RegExp(pattern);
-  if (value.length == 0) {
-    return "Mobile phone number is required";
-  } else if (!regExp.hasMatch(value)) {
-    return "Mobile phone number must contain only digits";
-  }
-  return null;
-}
 
 String validatePassword(String value) {
   if (value.length < 6)
@@ -36,7 +26,7 @@ String validateEmail(String value) {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value))
-    return '유효한 이메일을 입력해주세요';
+    return '유효한 이메일을 입력해주세요.';
   else
     return null;
 }
@@ -86,7 +76,7 @@ hideProgress() async {
 showAlertDialog(BuildContext context, String title, String content) {
   // set up the AlertDialog
   Widget okButton = FlatButton(
-    child: Text("OK"),
+    child: Text("확인"),
     onPressed: () {
       Navigator.pop(context);
     },

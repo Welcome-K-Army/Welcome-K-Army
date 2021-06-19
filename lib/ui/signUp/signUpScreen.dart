@@ -35,7 +35,7 @@ class _SignUpState extends State<SignUpScreen> {
   }
 
   int _userAge;
-  List<int> ageList = List<int>.generate(60, (int index) => index + 15); //15~75
+  List<int> ageList = List<int>.generate(25, (int index) => index + 15); //15~40
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -234,7 +234,9 @@ class _SignUpState extends State<SignUpScreen> {
           "나이 설정",
           textAlign: TextAlign.left,
           style: TextStyle(
-            color: Colors.black38,
+            color: Colors.black87,
+            fontSize: 14,
+
           ),
         ),
         dropdownColor: Colors.white,
@@ -353,7 +355,7 @@ class _SignUpState extends State<SignUpScreen> {
 
 
     final formUI = Container(
-      height: 750,
+      height: size.height*1.3,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
@@ -387,7 +389,7 @@ class _SignUpState extends State<SignUpScreen> {
                 Positioned(
                   left: 80,
                   right: 0,
-                  child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+                  child: FloatingActionButton(backgroundColor: Color(COLOR_PRIMARY), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
                 )
               ],
             ),
@@ -427,12 +429,12 @@ class _SignUpState extends State<SignUpScreen> {
   _onCameraClick() {
     final action = CupertinoActionSheet(
       message: Text(
-        "Add profile picture",
+        "사진을 추가해주세요.",
         style: TextStyle(fontSize: 15.0),
       ),
       actions: <Widget>[
         CupertinoActionSheetAction(
-          child: Text("Choose from gallery"),
+          child: Text("갤러리에서 고르기" ,style: TextStyle(fontSize: 17.0, color: Color(COLOR_PRIMARY))),
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
@@ -444,7 +446,7 @@ class _SignUpState extends State<SignUpScreen> {
           },
         ),
         CupertinoActionSheetAction(
-          child: Text("Take a picture"),
+          child: Text("카메라로 찍기", style: TextStyle(fontSize: 17, color: Color(COLOR_PRIMARY))),
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
@@ -457,7 +459,7 @@ class _SignUpState extends State<SignUpScreen> {
         )
       ],
       cancelButton: CupertinoActionSheetAction(
-        child: Text("Cancel"),
+        child: Text("취소", style: TextStyle(color: Color(COLOR_PRIMARY))),
         onPressed: () {
           Navigator.pop(context);
         },

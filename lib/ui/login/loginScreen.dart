@@ -1,3 +1,4 @@
+import 'package:Army/ui/signUp/signUpScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
@@ -55,31 +56,31 @@ class _LoginScreen extends State<LoginScreen> {
         switch ((exception).code) {
           case "invalid-email":
             showAlertDialog(
-                context, 'Couldn\'t Authenticate', 'malformedEmail');
+                context, '로그인할 수 없습니다.', '잘못된 이메일 형식입니다.');
             break;
           case "wrong-password":
             showAlertDialog(
-                context, 'Couldn\'t Authenticate', 'Wrong password');
+                context, '로그인할 수 없습니다.', '비밀번호가 일치하지 않습니다.');
             break;
           case "user-not-found":
-            showAlertDialog(context, 'Couldn\'t Authenticate',
-                'No user corresponds to this email');
+            showAlertDialog(context, '로그인할 수 없습니다.',
+                '이메일이 존재하지 않습니다.\n회원가입을 진행해주세요.');
             break;
           case "user-disabled":
             showAlertDialog(
-                context, 'Couldn\'t Authenticate', 'This user is disabled');
+                context, '로그인할 수 없습니다.', '이 계정은 정지되었습니다. 관리자에게 문의해주시기 바랍니다.');
             break;
           case 'too-many-requests':
-            showAlertDialog(context, 'Couldn\'t Authenticate',
-                'Too many requests, Please try again later.');
+            showAlertDialog(context, '로그인할 수 없습니다.',
+                '너무 많이 시도하셨습니다. 다시 시도해주시길 바랍니다.');
             break;
         }
         print(exception.toString());
         return null;
       } catch (e) {
         hideProgress();
-        showAlertDialog(context, 'Couldn\'t Authenticate',
-            'Login failed. Please try again.');
+        showAlertDialog(context, '로그인할 수 없습니다.',
+            '로그인할 수 없습니다. 잠시 뒤 다시 시도해주세요.');
         print(e.toString());
         return null;
       }
@@ -121,6 +122,8 @@ class _LoginScreen extends State<LoginScreen> {
                 width: size.width / 1.1,
                 height: size.height / 3,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.all(5),
@@ -185,7 +188,7 @@ class _LoginScreen extends State<LoginScreen> {
                                           email: _emailControllerField.text);
                                   final snackBar = SnackBar(
                                     content: Text(
-                                        "Check your email for password reset."),
+                                        "이메일을 확인해주세요."),
                                   );
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackBar);
@@ -248,10 +251,11 @@ class _LoginScreen extends State<LoginScreen> {
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2),
         ),
-        hintText: "password",
+        hintText: "비밀번호",
         labelText: "비밀번호",
         labelStyle: TextStyle(
           color: Colors.black87,
+
         ),
         hintStyle: TextStyle(
           color: Colors.black38,
@@ -274,8 +278,12 @@ class _LoginScreen extends State<LoginScreen> {
           children: <Widget>[
             MaterialButton(
                 child: Text(
-                  "비밀번호 찾기",
-                  style: TextStyle(color: Colors.black, fontSize: 13),
+                  "비밀번호찾기",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                    decoration: TextDecoration.underline
+                  ),
                 ),
                 onPressed: () {
                   showSendEmailDialog(context);
@@ -283,10 +291,10 @@ class _LoginScreen extends State<LoginScreen> {
             MaterialButton(
                 child: Text(
                   "회원가입",
-                  style: TextStyle(color: Colors.black, fontSize: 13),
+                  style: TextStyle(color: Colors.black, fontSize: 13, decoration: TextDecoration.underline),
                 ),
                 onPressed: () {
-                  print("please implement register");
+                  pushReplacement(context,SignUpScreen());
                 }),
           ],
         )

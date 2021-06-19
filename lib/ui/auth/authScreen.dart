@@ -56,7 +56,9 @@ class AuthScreen extends StatelessWidget {
                       color: Color(COLOR_PRIMARY),
                       size: 65,
                     ),
-                    Text("켠김에 별까지")
+                    Text("켠김에 별까지", style:TextStyle(
+                      color: Colors.black87
+                    ))
                   ])),
                Material(
                  elevation: 15.0,

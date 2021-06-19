@@ -87,7 +87,7 @@ class _ProfileState extends State<ProfileScreen> {
           Positioned(
             left: 80,
             right: 0,
-            child: FloatingActionButton(backgroundColor: Color(COLOR_ACCENT), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+            child: FloatingActionButton(backgroundColor: Color(COLOR_PRIMARY), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
           )
         ],
       ),
@@ -357,12 +357,12 @@ class _ProfileState extends State<ProfileScreen> {
   _onCameraClick() {
     final action = CupertinoActionSheet(
       message: Text(
-        "Add profile picture",
+        "사진을 추가해주세요.",
         style: TextStyle(fontSize: 15.0),
       ),
       actions: <Widget>[
         CupertinoActionSheetAction(
-          child: Text("Choose from gallery"),
+          child: Text("갤러리에서 고르기" ,style: TextStyle(fontSize: 17.0, color: Color(COLOR_PRIMARY))),
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
@@ -374,7 +374,7 @@ class _ProfileState extends State<ProfileScreen> {
           },
         ),
         CupertinoActionSheetAction(
-          child: Text("Take a picture"),
+          child: Text("카메라로 찍기", style: TextStyle(fontSize: 17, color: Color(COLOR_PRIMARY))),
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
@@ -387,7 +387,7 @@ class _ProfileState extends State<ProfileScreen> {
         )
       ],
       cancelButton: CupertinoActionSheetAction(
-        child: Text("Cancel"),
+        child: Text("취소", style: TextStyle(color: Color(COLOR_PRIMARY))),
         onPressed: () {
           Navigator.pop(context);
         },
