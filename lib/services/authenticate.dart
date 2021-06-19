@@ -19,8 +19,9 @@ class FireStoreUtils {
     List<Notice> notices = [];
     if (noticeDocument != null && noticeDocument.docs != null) {
       for (var no in noticeDocument.docs) {
-        print(no.data());
+        
         notices.add(Notice.fromJson(no.data()));
+        print(no.data());
       }
     }
     print(notices);
