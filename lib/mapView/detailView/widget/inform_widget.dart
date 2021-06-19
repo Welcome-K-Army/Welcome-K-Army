@@ -17,6 +17,9 @@ class InformWidget extends StatefulWidget {
   // ];
 class InformWidgetState extends State<InformWidget> {
 
+
+  List<String> informList_ = informList
+
   List<String> messageList = [
     "주소 복사",
     "웹사이트 열기",
@@ -63,15 +66,15 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[0]),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[0]));
+                  Clipboard.setData(ClipboardData(text: informList_[0]));
                 })),
-        title: Text(informList[0]),
+        title: Text(informList_[0]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[0]));
+                  Clipboard.setData(ClipboardData(text: informList_[0]));
                 })));
   }
 
@@ -87,15 +90,15 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[1]),
                 onPressed: () {
-                  _url_launcher(informList[1]);
+                  _url_launcher(informList_[1]);
                 })),
-        title: Text(informList[1]),
+        title: Text(informList_[1]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[1]));
+                  Clipboard.setData(ClipboardData(text: informList_[1]));
                 })));
   }
 
@@ -111,15 +114,15 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[2]),
                 onPressed: () {
-                  _url_launcher("tel:$informList[2]");
+                  _url_launcher("tel:$informList_[2]");
                 })),
-        title: Text(informList[2]),
+        title: Text(informList_[2]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList[2]));
+                  Clipboard.setData(ClipboardData(text: informList_[2]));
                 })));
   }
 
