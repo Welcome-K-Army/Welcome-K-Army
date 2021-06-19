@@ -33,8 +33,8 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> informList_ = widget.informList;
     return Container(
+          List<String> informList_ = widget.informList;
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
