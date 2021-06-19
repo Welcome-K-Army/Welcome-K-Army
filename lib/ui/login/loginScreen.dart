@@ -92,9 +92,10 @@ class _LoginScreen extends State<LoginScreen> {
             TextEditingController _emailControllerField = TextEditingController();
             return Dialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              elevation: 0,
+              elevation: 3,
               backgroundColor: Colors.transparent,
               child: Container(
+                padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.white,
@@ -106,7 +107,12 @@ class _LoginScreen extends State<LoginScreen> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.all(5),
-                      child: Text("Insert Reset Email:"),
+                      child: Text("회원가입한 이메일을 입력해주세요.",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                      ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(5),
@@ -115,20 +121,25 @@ class _LoginScreen extends State<LoginScreen> {
                         autovalidateMode: _forgotvalidate,
                         child: TextFormField(
                           controller: _emailControllerField,
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          cursorColor: Colors.black,
                           decoration: InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.black,
+                                  color: Color(COLOR_PRIMARY),
+                                  width:2
                               ),
                             ),
                             hintText: "something@example.com",
-                            labelText: "Email",
-                            labelStyle: TextStyle(
-                              color: Colors.black,
-                            ),
-                            hintStyle: TextStyle(
-                              color: Colors.black,
-                            ),
+                            labelText: "이메일",
+                              labelStyle: TextStyle(
+                                color: Colors.black87,
+                              ),
+                              hintStyle: TextStyle(
+                                color: Colors.black38,
+                              )
                           ),
                           validator: validateEmail,
                           keyboardType: TextInputType.emailAddress,
@@ -136,19 +147,18 @@ class _LoginScreen extends State<LoginScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                      padding: EdgeInsets.fromLTRB(10, 25, 10, 10),
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
                         color: Color(0xff0c9869),
                         child: MaterialButton(
                             minWidth: size.width / 2,
-                            padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 25.0),
+                            padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
                             child: Text(
-                              "Send Reset Email",
-                              textAlign: TextAlign.center,
+                              "이메일 보내기",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 16.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -202,22 +212,23 @@ class _LoginScreen extends State<LoginScreen> {
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width:2
           ),
         ),
-        labelText: "Email",
+        labelText: "이메일",
         hintText: "something@example.com",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ), //InputDecoration
       textInputAction: TextInputAction.next,
@@ -229,22 +240,23 @@ class _LoginScreen extends State<LoginScreen> {
       obscureText: true,
       controller: _passwordController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Color(COLOR_PRIMARY),
+            width: 2
           ),
         ),
         hintText: "password",
-        labelText: "Password",
+        labelText: "비밀번호",
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black87,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black38,
         ),
       ),
       textInputAction: TextInputAction.done,
@@ -264,11 +276,19 @@ class _LoginScreen extends State<LoginScreen> {
           children: <Widget>[
             MaterialButton(
                 child: Text(
-                  "Forgot Password",
-                  style: Theme.of(context).textTheme.caption.copyWith(color: Colors.white),
+                  "비밀번호 찾기",
+                  style: TextStyle(color:Colors.black, fontSize: 13),
                 ),
                 onPressed: () {
                   showSendEmailDialog(context);
+                }),
+            MaterialButton(
+                child: Text(
+                  "회원가입",
+                  style: TextStyle(color:Colors.black, fontSize: 13),
+                ),
+                onPressed: () {
+                  print("please implement register");
                 }),
           ],
         )
@@ -289,17 +309,16 @@ class _LoginScreen extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
+      color: Color(COLOR_PRIMARY),
       child: MaterialButton(
         minWidth: size.width / 1.2,
         padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
         child: Text(
-          "Login",
+          "로그인",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         onPressed: () async {
@@ -316,34 +335,11 @@ class _LoginScreen extends State<LoginScreen> {
         Padding(
           padding: EdgeInsets.all(8.0),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              "Not a member?",
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    color: Colors.white,
-                  ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                // Navigator.of(context).pushReplacementNamed(AppRoutes.authRegister);
-              },
-              child: Text(
-                "Sign Up",
-                style: Theme.of(context).textTheme.subtitle1.copyWith(
-                      color: Colors.white,
-                      decoration: TextDecoration.underline,
-                    ),
-              ),
-            ),
-          ],
-        ),
       ],
     );
 
     return Scaffold(
-      backgroundColor: Color(COLOR_PRIMARY),
+      backgroundColor: Colors.lightGreen[50],
       body: Form(
         key: _key,
         autovalidateMode: _validate,
@@ -354,7 +350,16 @@ class _LoginScreen extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                logo,
+                Material(
+                  elevation: 15.0,
+                  borderRadius: BorderRadius.circular(300),
+                  color:Colors.white,
+                  child: Icon(
+                    Icons.account_circle,
+                    color: Color(COLOR_PRIMARY),
+                    size: 250,
+                  ),
+                ),
                 fields,
                 Padding(
                   padding: EdgeInsets.only(bottom: 70),
