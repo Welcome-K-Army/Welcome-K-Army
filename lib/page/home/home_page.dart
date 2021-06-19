@@ -100,17 +100,19 @@ class HomePageState extends State<HomePage> {
         ),
         elevation: 4,
         child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Swiper(
+          padding: EdgeInsets.all(10),
+          child: Consumer(builder: (context, noticeProvider, child) {
+            Swiper(
                 autoplay: true,
                 scale: 0.8,
                 viewportFraction: 1,
                 pagination: SwiperPagination(),
-                itemCount: noticeList.imageList.length, //notice imagelist length
+                itemCount: noticeProvider.notices.imageList.length, //notice imagelist length
                 itemBuilder: (BuildContext context, int index) {
-                  return Image.asset(noticeList.imageList[index]);
-                }) // Swiper
-            ),
+                  return Image.asset(noticeProvider.notices.imageList[index]);
+                }); // Swiper
+          }),
+        ),
       ), // Padding
     ); // Container
   }

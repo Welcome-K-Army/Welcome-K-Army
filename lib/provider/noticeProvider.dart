@@ -7,7 +7,7 @@ class NoticeProvider extends ChangeNotifier {
   List<Notice> get notices => _notices;
 
   void readNotice() async {
-    _notices = await FireStoreUtils().getNoticeList();
+    _notices = await FireStoreUtils.getNoticeList();
     notifyListeners();
   }
 
