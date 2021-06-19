@@ -21,7 +21,6 @@ class FireStoreUtils {
       for (var no in noticeDocument.docs) {
         
         notices.add(Notice.fromJson(no.data()));
-        print(no.data());
       }
     }
     print(notices);
