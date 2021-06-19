@@ -8,7 +8,7 @@ import 'widget/inform_widget.dart';
 class DetailView extends StatefulWidget {
   Arguments arguments;
   DetailView({Key key, @required this.arguments}) : super(key: key);
- 
+
   DetailViewState createState() => DetailViewState();
 }
 
@@ -91,5 +91,5 @@ class Arguments {
   String number;
   String web_address;
   String image;
-  Arguments(this.name, this.address, this.number, this.web_address,this.image);
+  Arguments(this.name, this.address, this.number, this.web_address, this.image);
 }
