@@ -25,7 +25,9 @@ class FilterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => FilterData())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => FilterData())
+      ],
       child: Scaffold(
         floatingActionButton: MyFloatingActionButton(),
         floatingActionButtonLocation:

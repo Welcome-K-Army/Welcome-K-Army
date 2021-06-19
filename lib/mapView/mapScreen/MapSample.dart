@@ -16,9 +16,7 @@ class MapSampleState extends State<MapSample> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      target: LatLng(36.503364, 127.929206),
-      zoom: 6);
+  static final CameraPosition _kLake = CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 6);
 
   @override
   Widget build(BuildContext context) {

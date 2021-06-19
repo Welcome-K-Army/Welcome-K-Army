@@ -1,5 +1,6 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 enum Categories{
   Army, //육군
   Navy, //해군
@@ -53,6 +54,10 @@ const ageMap = {
 
 class School{
   String name;
+  String address;
+  String number;
+  String web_address;
+  String image;
   int idx;
   LatLng latlng;
   Categories catagory;
@@ -60,8 +65,12 @@ class School{
   Ages age;
   Classes classes;
 
-  School({String name, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes}){
+  School({String name,String address,String number,String web_address,String image, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes}){
     this.name = name;
+    this.address=address;
+    this.number=number;
+    this.web_address = web_address;
+    this.image=image;
     this.idx = idx;
     this.catagory = category;
     this.latlng = latlng;
