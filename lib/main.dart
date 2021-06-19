@@ -14,7 +14,15 @@ import 'package:Army/page/error/initialize_error_page.dart';
 import 'package:Army/page/onboarding_page.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (context) => EventProvider(), child: ChangeNotifierProvider(create: (context) => NoticeProvider(), child: MyApp())));
+  runApp(
+    // ChangeNotifierProvider(
+    //   create: (context) => EventProvider(), 
+    //   child: ChangeNotifierProvider(
+        create: (context) => NoticeProvider(), 
+        child: MyApp()
+      )
+    // )
+  );
 }
 
 class MyApp extends StatefulWidget {
