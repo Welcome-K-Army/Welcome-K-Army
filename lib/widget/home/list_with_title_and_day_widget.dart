@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
-import 'package:Army/model/home/content.dart';
+import 'package:Army/model/home/notice.dart';
 
 class ListWithTitleAndDayWidget extends StatelessWidget {
   const ListWithTitleAndDayWidget({
     Key key,
     this.headerTile,
     this.title,
-    this.contents,
+    this.notices,
   }) : super(key: key);
 
   final bool headerTile;
   final String title;
-  final List<Content> contents;
+  final List<Notice> notices;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +46,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
 class ListTileWithTitleAndDay extends StatelessWidget {
   const ListTileWithTitleAndDay({
     Key key,
-    this.content,
+    this.notice,
   }) : super(key: key);
 
-  final Content content;
+  final Notice notice;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class ListTileWithTitleAndDay extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ListContentView(content: content)),
+            MaterialPageRoute(builder: (context) => ListContentView(notice: notice)),
           );
         }); // ListTile
   }
@@ -92,9 +92,9 @@ class HeaderTile extends StatelessWidget {
 }
 
 class ListContentView extends StatelessWidget {
-  const ListContentView({Key key, this.content}) : super(key: key);
+  const ListContentView({Key key, this.notice}) : super(key: key);
 
-  final Content content;
+  final Notice notice;
 
   @override
   Widget build(BuildContext context) {
@@ -103,21 +103,21 @@ class ListContentView extends StatelessWidget {
         body: ListView(children: <Widget>[
           ListTile(
             leading: Icon(Icons.person, size: 40),
-            title: Text(content.person.name),
-            subtitle: Text(content.date_yMMMd),
+            title: Text(notice.userNickname),
+            subtitle: Text(notice.date_yMMMd),
           ),
-          Text(content.content),
+          Text(notice.contents),
           Container(
             height: 60,
             child: ListView.builder(
                 // 높이 설정 안 됌 -> 수정하기
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: content.imgList.length,
+                itemCount: notice.imageList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: 50,
-                    child: Image.asset(content.imgList[index]),
+                    child: Image.asset(notice.imageList[index]),
                   ); // Container
                 }), // ListView
           )
