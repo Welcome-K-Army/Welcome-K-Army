@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InformWidget extends StatefulWidget {
-  final String current_name_;
-  final String current_address_;
-  final String current_number_; // receives the value
+  final String current_name;
+  final String current_address;
+  final String current_number; // receives the value
 
   InformWidget(String current_name, String current_address, String current_number) {
-    current_name_ = this.current_name;
-    current_address_ = this.current_address;
-    current_number_ = this.current_number;
+    String current_name_ = this.current_name;
+    String current_address_ = this.current_address;
+    String current_number_ = this.current_number;
   }
 
   InformWidgetState createState() => InformWidgetState();
