@@ -90,6 +90,6 @@ class Arguments {
   String address;
   String number;
   String web_address;
-  Image image;
+  String image;
   Arguments(this.name, this.address, this.number, this.web_address,this.image);
 }
