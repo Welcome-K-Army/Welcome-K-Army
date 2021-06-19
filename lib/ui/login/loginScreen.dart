@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
@@ -23,17 +22,25 @@ class _LoginScreen extends State<LoginScreen> {
   GlobalKey<FormState> _key = new GlobalKey();
   GlobalKey<FormState> _forgotkey = new GlobalKey();
   TextEditingController _emailController = TextEditingController(); //email 컨트롤러
-  TextEditingController _passwordController = TextEditingController(); //password 컨트롤러
+  TextEditingController _passwordController =
+      TextEditingController(); //password 컨트롤러
   AutovalidateMode _validate = AutovalidateMode.disabled;
   AutovalidateMode _forgotvalidate = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     Future<User> loginWithUserNameAndPassword() async {
       try {
-        auth.UserCredential result = await auth.FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
-        DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).get();
+        auth.UserCredential result = await auth.FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text);
+        DocumentSnapshot documentSnapshot = await FireStoreUtils.firestore
+            .collection(USERS)
+            .doc(result.user.uid)
+            .get();
         User user;
         if (documentSnapshot != null && documentSnapshot.exists) {
           user = User.fromJson(documentSnapshot.data());
@@ -47,26 +54,32 @@ class _LoginScreen extends State<LoginScreen> {
         hideProgress();
         switch ((exception).code) {
           case "invalid-email":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'malformedEmail');
+            showAlertDialog(
+                context, 'Couldn\'t Authenticate', 'malformedEmail');
             break;
           case "wrong-password":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Wrong password');
+            showAlertDialog(
+                context, 'Couldn\'t Authenticate', 'Wrong password');
             break;
           case "user-not-found":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'No user corresponds to this email');
+            showAlertDialog(context, 'Couldn\'t Authenticate',
+                'No user corresponds to this email');
             break;
           case "user-disabled":
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'This user is disabled');
+            showAlertDialog(
+                context, 'Couldn\'t Authenticate', 'This user is disabled');
             break;
           case 'too-many-requests':
-            showAlertDialog(context, 'Couldn\'t Authenticate', 'Too many requests, Please try again later.');
+            showAlertDialog(context, 'Couldn\'t Authenticate',
+                'Too many requests, Please try again later.');
             break;
         }
         print(exception.toString());
         return null;
       } catch (e) {
         hideProgress();
-        showAlertDialog(context, 'Couldn\'t Authenticate', 'Login failed. Please try again.');
+        showAlertDialog(context, 'Couldn\'t Authenticate',
+            'Login failed. Please try again.');
         print(e.toString());
         return null;
       }
@@ -75,13 +88,15 @@ class _LoginScreen extends State<LoginScreen> {
     login() async {
       if (_key.currentState.validate()) {
         // _key.currentState.save();
-        showProgress(context, 'Logging in, please wait...', false);
+        showProgress(context, '로그인중입니다...', false);
         User user = await loginWithUserNameAndPassword();
-        if (user != null) pushAndRemoveUntil(context, HomeScreen(user: user), false);
-      } else {
-        setState(() {
-          _validate = AutovalidateMode.onUserInteraction;
-        });
+        if (user != null)
+          pushAndRemoveUntil(context, HomeScreen(user: user), false);
+        else {
+          setState(() {
+            _validate = AutovalidateMode.onUserInteraction;
+          });
+        }
       }
     }
 
@@ -89,9 +104,11 @@ class _LoginScreen extends State<LoginScreen> {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            TextEditingController _emailControllerField = TextEditingController();
+            TextEditingController _emailControllerField =
+                TextEditingController();
             return Dialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
               elevation: 3,
               backgroundColor: Colors.transparent,
               child: Container(
@@ -107,11 +124,10 @@ class _LoginScreen extends State<LoginScreen> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.all(5),
-                      child: Text("회원가입한 이메일을 입력해주세요.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold
-                      ),
+                      child: Text(
+                        "회원가입한 이메일을 입력해주세요.",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
@@ -126,21 +142,18 @@ class _LoginScreen extends State<LoginScreen> {
                           ),
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color(COLOR_PRIMARY),
-                                  width:2
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(COLOR_PRIMARY), width: 2),
                               ),
-                            ),
-                            hintText: "something@example.com",
-                            labelText: "이메일",
+                              hintText: "something@example.com",
+                              labelText: "이메일",
                               labelStyle: TextStyle(
                                 color: Colors.black87,
                               ),
                               hintStyle: TextStyle(
                                 color: Colors.black38,
-                              )
-                          ),
+                              )),
                           validator: validateEmail,
                           keyboardType: TextInputType.emailAddress,
                         ),
@@ -154,7 +167,8 @@ class _LoginScreen extends State<LoginScreen> {
                         color: Color(0xff0c9869),
                         child: MaterialButton(
                             minWidth: size.width / 2,
-                            padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+                            padding:
+                                EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
                             child: Text(
                               "이메일 보내기",
                               style: TextStyle(
@@ -166,18 +180,23 @@ class _LoginScreen extends State<LoginScreen> {
                             onPressed: () async {
                               if (_forgotkey.currentState.validate()) {
                                 try {
-                                  auth.FirebaseAuth.instance.sendPasswordResetEmail(email: _emailControllerField.text);
+                                  auth.FirebaseAuth.instance
+                                      .sendPasswordResetEmail(
+                                          email: _emailControllerField.text);
                                   final snackBar = SnackBar(
-                                    content: Text("Check your email for password reset."),
+                                    content: Text(
+                                        "Check your email for password reset."),
                                   );
-                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                   Navigator.of(context).pop();
                                 } catch (e) {
                                   print(e);
                                 }
                               } else {
                                 setState(() {
-                                  _forgotvalidate = AutovalidateMode.onUserInteraction;
+                                  _forgotvalidate =
+                                      AutovalidateMode.onUserInteraction;
                                 });
                               }
                             }),
@@ -190,23 +209,7 @@ class _LoginScreen extends State<LoginScreen> {
           });
     }
 
-    //상단부 이미지
-    final logo = Image.asset(
-      "lib/image/Loading.gif",
-      height: size.height / 4,
-    );
-    // final logo = Expanded(
-    //   child: Padding(
-    //     padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-    //     child: FittedBox(
-    //       fit: BoxFit.contain,
-    //       child: CircleAvatar(
-    //         minRadius: 40,
-    //         backgroundImage: AssetImage("lib/image/Loading.gif"),
-    //       ), //CircleAvatar
-    //     ), //FittedBox
-    //   ), //Padding
-    // ); //Expanded
+    final node = FocusScope.of(context);
 
     final emailField = TextFormField(
       controller: _emailController,
@@ -217,10 +220,7 @@ class _LoginScreen extends State<LoginScreen> {
       cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(COLOR_PRIMARY),
-            width:2
-          ),
+          borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2),
         ),
         labelText: "이메일",
         hintText: "something@example.com",
@@ -230,10 +230,11 @@ class _LoginScreen extends State<LoginScreen> {
         hintStyle: TextStyle(
           color: Colors.black38,
         ),
-      ), //InputDecoration
+      ),
+      //InputDecoration
       textInputAction: TextInputAction.next,
       validator: validateEmail,
-      onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+      onEditingComplete: () => node.nextFocus(),
     ); //TextFormField 이메일
 
     final passwordField = TextFormField(
@@ -245,10 +246,7 @@ class _LoginScreen extends State<LoginScreen> {
       cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(COLOR_PRIMARY),
-            width: 2
-          ),
+          borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 2),
         ),
         hintText: "password",
         labelText: "비밀번호",
@@ -277,7 +275,7 @@ class _LoginScreen extends State<LoginScreen> {
             MaterialButton(
                 child: Text(
                   "비밀번호 찾기",
-                  style: TextStyle(color:Colors.black, fontSize: 13),
+                  style: TextStyle(color: Colors.black, fontSize: 13),
                 ),
                 onPressed: () {
                   showSendEmailDialog(context);
@@ -285,7 +283,7 @@ class _LoginScreen extends State<LoginScreen> {
             MaterialButton(
                 child: Text(
                   "회원가입",
-                  style: TextStyle(color:Colors.black, fontSize: 13),
+                  style: TextStyle(color: Colors.black, fontSize: 13),
                 ),
                 onPressed: () {
                   print("please implement register");
@@ -353,7 +351,7 @@ class _LoginScreen extends State<LoginScreen> {
                 Material(
                   elevation: 15.0,
                   borderRadius: BorderRadius.circular(300),
-                  color:Colors.white,
+                  color: Colors.white,
                   child: Icon(
                     Icons.account_circle,
                     color: Color(COLOR_PRIMARY),
