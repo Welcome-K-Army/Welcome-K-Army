@@ -162,6 +162,7 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildNotice() {
+    final noticeProvider = Provider.of<NoticeProvider>(context);
     return Container(
       color: Color(0xFFEDF0F4),
       //height: 360,
@@ -177,10 +178,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            Consumer<NoticeProivder>(builder: (context, noticeProvider, child) {
-              noticeProvider.readNotice();
-              ListWithTitleAndDayWidget(headerTile: true, title: "Notice", notices: noticeProvider.noticeList);
-            }),
+            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", notices: noticeProvider.notices),
           ], // Column children
         ), // Column
       ), // Padding

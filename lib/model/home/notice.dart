@@ -15,12 +15,12 @@ class Notice {
   String contents;
   List<String> imageList;
 
-  Notice({this.title, this.contents, this.userNickname, this.imageList}) {
+  Notice({this.number=0,this.title, this.contents, this.userNickname, this.imageList}) {
     this.number = noticeNumber;
     noticeNumber++;
   }
 
   factory Notice.fromJson(Map<String, dynamic> parsedJson) {
-    return new Notice(number: parsedJson['number'] ?? '', title: parsedJson['title'] ?? '', contents: parsedJson['contents'] ?? '', imageList: parsedJson['imageList'], userNickname: parsedJson['userNickname']);
+    return new Notice(number: parsedJson['number'] as int ?? 0, title: parsedJson['title'] ?? '', contents: parsedJson['notice'] ?? '', imageList: parsedJson['imageUrlList'], userNickname: parsedJson['userNickname']);
   }
 }
