@@ -21,6 +21,7 @@ class Notice {
   }
 
   factory Notice.fromJson(Map<String, dynamic> parsedJson) {
+    print(parsedJson['imageUrlList']);
     return new Notice(
       title: parsedJson['title'] ?? '', 
       contents: parsedJson['notice'] ?? '', 
