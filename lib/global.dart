@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:Army/model/home/menu.dart';
-import 'package:Army/model/home/person.dart';
 
 import 'package:Army/page/calendar/calendar_page.dart';
-import 'package:Army/page/home/notice_list_page.dart';
 
 int contentNumber = 0;
 

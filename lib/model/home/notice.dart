@@ -1,6 +1,5 @@
 import 'package:intl/intl.dart';
 // import 'package:Army/model/user.dart';
-import 'package:Army/model/home/person.dart';
 
 int noticeNumber = 0;
 
@@ -16,7 +15,7 @@ class Notice {
   String contents;
   List<String> imageList;
 
-  Content({this.title, this.contents, this.userNickname, this.imageList}) {
+  Notice({this.title, this.contents, this.userNickname, this.imageList}) {
     this.number = noticeNumber;
     noticeNumber++;
   }

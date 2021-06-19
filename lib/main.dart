@@ -9,6 +9,7 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
+import 'package:Army/provider/noticeProvider.dart';
 import 'package:Army/page/error/initialize_error_page.dart';
 import 'package:Army/page/onboarding_page.dart';
 
