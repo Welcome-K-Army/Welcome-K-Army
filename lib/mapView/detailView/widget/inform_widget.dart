@@ -41,7 +41,7 @@ class InformWidgetState extends State<InformWidget> {
           children: <Widget>[
             Image.asset("lib/image/1.jpg"),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
-            ListTile(title: Text("육군사관학교"), subtitle: Text("육군, 사관학교")),
+            ListTile(title: informList_[0]),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             buildAddressTile(),
             buildUrlTile(),
@@ -60,27 +60,7 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[0]),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList_[0]));
-                })),
-        title: Text(informList_[0]),
-        trailing: Tooltip(
-            message: "복사 하기",
-            child: IconButton(
-                icon: Icon(informIconList[3]),
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList_[0]));
-                })));
-  }
-
-  Widget buildUrlTile() {
-    List<String> informList_ = widget.informList;
-    return ListTile(
-        leading: Tooltip(
-            message: "웹사이트 열기",
-            child: IconButton(
-                icon: Icon(informIconList[1]),
-                onPressed: () {
-                  _url_launcher(informList_[1]);
+                  Clipboard.setData(ClipboardData(text: informList_[1]));
                 })),
         title: Text(informList_[1]),
         trailing: Tooltip(
@@ -92,7 +72,28 @@ class InformWidgetState extends State<InformWidget> {
                 })));
   }
 
+  Widget buildUrlTile() {
+    List<String> informList_ = widget.informList;
+    return ListTile(
+        leading: Tooltip(
+            message: "웹사이트 열기",
+            child: IconButton(
+                icon: Icon(informIconList[1]),
+                onPressed: () {
+                  _url_launcher(informList_[3]);
+                })),
+        title: Text(informList_[3]),
+        trailing: Tooltip(
+            message: "복사 하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList_[3]));
+                })));
+  }
+
   Widget buildPhoneNumberTile() {
+    
     List<String> informList_ = widget.informList;
     return ListTile(
         leading: Tooltip(

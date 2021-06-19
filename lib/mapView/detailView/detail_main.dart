@@ -14,10 +14,6 @@ class DetailView extends StatefulWidget {
 
 class DetailViewState extends State<DetailView> {
   bool iconDialog = false;
-  String current_name;
-  String current_address;
-  String current_number;
-
 
   List<String> messageList = [
     "주소 복사",
@@ -39,6 +35,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.name,
       widget.arguments.address,
       widget.arguments.number,
+      widget.arguments.web_address,
     ];
     return DefaultTabController(
       length: 4,
@@ -91,5 +88,6 @@ class Arguments {
   String name;
   String address;
   String number;
-  Arguments(this.name, this.address, this.number);
+  String web_address;
+  Arguments(this.name, this.address, this.number, this.web_address);
 }
