@@ -15,14 +15,14 @@ import 'package:Army/page/onboarding_page.dart';
 
 void main() {
   runApp(
-    // ChangeNotifierProvider(
-    //   create: (context) => EventProvider(), 
-      // child: 
+    ChangeNotifierProvider(
+      create: (context) => EventProvider(), 
+      child: 
       ChangeNotifierProvider(
         create: (context) => NoticeProvider(), 
         child: MyApp()
       )
-    // )
+    
   );
 }
 
