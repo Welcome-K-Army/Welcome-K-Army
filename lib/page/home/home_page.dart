@@ -90,8 +90,6 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
-    final noticeProvider=Provider.of<NoticeProvider>(context);
-    noticeProvider.readNotice();
     return Container(
       height: 200,
       child: Card(
@@ -102,16 +100,15 @@ class HomePageState extends State<HomePage> {
         elevation: 4,
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: 
-            Swiper(
-                autoplay: true,
-                scale: 0.8,
-                viewportFraction: 1,
-                pagination: SwiperPagination(),
-                itemCount: noticeProvider.notices[0].imageList.length, //notice imagelist length
-                itemBuilder: (BuildContext context, int index) {
-                  return Image.asset(noticeProvider.notices[0].imageList[index]);
-                }), // Swiper
+          child: Swiper(
+              autoplay: true,
+              scale: 0.8,
+              viewportFraction: 1,
+              pagination: SwiperPagination(),
+              itemCount: publicImgList.length, //notice imagelist length
+              itemBuilder: (BuildContext context, int index) {
+                return Image.asset(publicImgList[index]);
+              }), // Swiper
         ),
       ), // Padding
     ); // Container
