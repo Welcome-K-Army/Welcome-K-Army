@@ -59,7 +59,8 @@ class ListTileWithTitleAndDay extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ListContentView(notice: notice)),
+            MaterialPageRoute(
+                builder: (context) => ListContentView(notice: notice)),
           );
         }); // ListTile
   }
@@ -109,17 +110,21 @@ class ListContentView extends StatelessWidget {
           Text(notice.contents),
           Container(
             height: 60,
-            child: ListView.builder(
-                // 높이 설정 안 됌 -> 수정하기
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: notice.imageList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 50,
-                    child: Image.network(notice.imageList[index]),
-                  ); // Container
-                }), // ListView
+            child: notice.imageList.length > 0
+                ? ListView.builder(
+                    // 높이 설정 안 됌 -> 수정하기
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: notice.imageList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: notice.imageList[index] != null
+                            ? Image.network(notice.imageList[index])
+                            : Container(),
+                      ); // Container
+                    })
+                : Container(), // ListView
           )
         ]));
   }
