@@ -18,7 +18,7 @@ class InformWidget extends StatefulWidget {
 class InformWidgetState extends State<InformWidget> {
 
 
-  List<String> informList_ = informList;
+  List<String> informList_ = widget.informList;
 
   List<String> messageList = [
     "주소 복사",
