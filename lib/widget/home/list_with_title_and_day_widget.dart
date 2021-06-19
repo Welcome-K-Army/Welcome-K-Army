@@ -117,7 +117,7 @@ class ListContentView extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: 50,
-                    child: Image.asset(notice.imageList[index]),
+                    child: Image.network(notice.imageList[index]),
                   ); // Container
                 }), // ListView
           )

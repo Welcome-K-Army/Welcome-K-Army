@@ -13,7 +13,7 @@ class Notice {
 
   String title;
   String contents;
-  List<String> imageList;
+  List imageList;
 
   Notice({this.title, this.contents, this.userNickname, this.imageList}) {
     this.number = noticeNumber;
