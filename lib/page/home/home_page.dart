@@ -67,12 +67,12 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'Hi Minjun!',
+                    '반갑습니다 민준님!',
                     style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: Colors.white, fontWeight: FontWeight.w600),
                   ),
                   Spacer(),
-                  Image.asset("assets/images/4.jpg")
+                  Icon(Icons.flutter_dash_sharp, color: Colors.lightGreen[50],size: 100)
                 ],
               ), // Row
             ), // Container
@@ -86,7 +86,7 @@ class HomePageState extends State<HomePage> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              TitleWithMoreBtnWidget(title: "News", press: () {}),
+              TitleWithMoreBtnWidget(title: "뉴스", press: () {}),
               buildSlideBanner(),
             ])));
   }
@@ -173,7 +173,7 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             TitleWithMoreBtnWidget(
-                title: "Notice",
+                title: "공지",
                 press: () {
                   Navigator.push(
                     context,

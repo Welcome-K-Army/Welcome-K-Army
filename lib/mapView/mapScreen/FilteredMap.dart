@@ -28,8 +28,9 @@ class FilteredMapState extends State<FilteredMap> {
   @override
   void initState() {
     _controller.future.whenComplete(() {
-      setState(()=>_isMapLoaded = true);
-      Future.delayed(const Duration(milliseconds: 1500), () => setState(() => _isAnimationEnd = true));
+      setState(() => _isMapLoaded = true);
+      Future.delayed(const Duration(milliseconds: 1500),
+          () => setState(() => _isAnimationEnd = true));
     });
     super.initState();
   }
@@ -85,7 +86,7 @@ class FilteredMapState extends State<FilteredMap> {
 //         ]),
 //       ]),
 //     ); //Scaffold
-    
+
     return Stack(
       children: <Widget>[
         GoogleMap(
@@ -98,42 +99,42 @@ class FilteredMapState extends State<FilteredMap> {
         Visibility(
             visible: !_isAnimationEnd,
             child: SizedBox.expand(
-              child: AnimatedOpacity(
-                opacity: !(_isMapLoaded) ? 1.0 : 0.0,
-                duration: Duration(milliseconds: 1500),
-                child: Container(
-                  color: Colors.white,
-                  child: Center(child: CircularProgressIndicator()),
-                ),
-              )
-            )
-        )
+                child: AnimatedOpacity(
+              opacity: !(_isMapLoaded) ? 1.0 : 0.0,
+              duration: Duration(milliseconds: 1500),
+              child: Container(
+                color: Colors.white,
+                child: Center(child: CircularProgressIndicator()),
+              ),
+            )))
       ],
     );
   }
-  // Future<void> _goToTheLake() async {
-  //   final GoogleMapController controller = await _controller.future;
-  //   controller.animateCamera(CameraUpdate.newCameraPosition(initialPosition));
-  // }
+
+  Future<void> _cameraMove(LatLng pos) async {
+    final GoogleMapController controller = await _controller.future;
+    CameraPosition targetPos = CameraPosition(target: pos, zoom: 12);
+    controller.animateCamera(CameraUpdate.newCameraPosition(targetPos));
+  }
 
   Set<Marker> _createMarkers() {
     return widget.filteredData
         .map((school) => Marker(
-              markerId: MarkerId(school.name),
-              position: school.latlng,
-              infoWindow: InfoWindow(
+            markerId: MarkerId(school.name),
+            position: school.latlng,
+            onTap: ()=>_cameraMove(school.latlng),
+            infoWindow: InfoWindow(
                 title: school.name,
                 snippet: school.address,
-              ),
-              onTap: () async{
-                final arguments=Arguments(school.name,school.address,school.number,school.web_address,school.image);
-                final result=await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
-                );
-
-              },
-            ))
+                onTap: () async {
+                  final arguments = Arguments(school.name, school.address,
+                      school.number, school.web_address, school.image);
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailView(arguments: arguments)),
+                  );
+                })))
         .toSet(); //Marker)
   }
 }

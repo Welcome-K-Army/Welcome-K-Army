@@ -39,10 +39,10 @@ class _HomeState extends State<HomeScreen> {
               bottomNavigationBar: TabBar(
                 tabs: <Widget>[
                   Tab(
-                    icon: Icon(Icons.video_library),
+                    icon: Icon(Icons.home),
                   ),
                   Tab(
-                    icon: Icon(Icons.insert_drive_file),
+                    icon: Icon(Icons.search),
                   ),
                   Tab(
                     icon: Icon(Icons.account_circle),
