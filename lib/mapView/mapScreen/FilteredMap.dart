@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../filterScreen/School.dart';
 
 class FilteredMap extends StatefulWidget {
@@ -14,24 +15,45 @@ class FilteredMap extends StatefulWidget {
 
 class FilteredMapState extends State<FilteredMap> {
   Completer<GoogleMapController> _controller = Completer();
-
-  // static final CameraPosition _kGooglePlex = CameraPosition(
-  //   target: LatLng(37.42796133580664, -122.085749655962),
-  //   zoom: 14.4746,
-  // );
-
+  bool _isMapLoaded = false;
+  bool _isAnimationEnd = false;
   static final CameraPosition initialPosition =
       CameraPosition(target: LatLng(36.503364, 127.929206), zoom: 7);
 
   @override
+  void initState() {
+    _controller.future.whenComplete(() {
+      setState(()=>_isMapLoaded = true);
+      Future.delayed(const Duration(milliseconds: 1500), () => setState(() => _isAnimationEnd = true));
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GoogleMap(
-      mapType: MapType.normal,
-      markers: _createMarkers(),
-      initialCameraPosition: initialPosition,
-      onMapCreated: (GoogleMapController controller) {
-        _controller.complete(controller);
-      },
+    return Stack(
+      children: <Widget>[
+        GoogleMap(
+            mapType: MapType.normal,
+            markers: _createMarkers(),
+            initialCameraPosition: initialPosition,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            }),
+        Visibility(
+            visible: !_isAnimationEnd,
+            child: SizedBox.expand(
+              child: AnimatedOpacity(
+                opacity: !(_isMapLoaded) ? 1.0 : 0.0,
+                duration: Duration(milliseconds: 1500),
+                child: Container(
+                  color: Colors.white,
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+              )
+            )
+        )
+      ],
     );
   }
 

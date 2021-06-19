@@ -1,3 +1,4 @@
+import 'package:Army/mapView/filterScreen/FilterScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
@@ -25,6 +26,7 @@ class _HomeState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: null,
+      // backgroundColor: Colors.black87,
       body: DefaultTabController(
         length: 3,
         child: Stack(
@@ -34,37 +36,32 @@ class _HomeState extends State<HomeScreen> {
               width: double.infinity,
             ),
             Scaffold(
-              bottomNavigationBar: Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: TabBar(
-                  tabs: <Widget>[
-                    Tab(
-                      icon: Icon(Icons.video_library),
-                    ),
-                    Tab(
-                      icon: Icon(Icons.insert_drive_file),
-                    ),
-                    Tab(
-                      icon: Icon(Icons.account_circle),
-                    ),
-                  ],
-                  labelColor: Color(COLOR_PRIMARY),
-                  indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(color: Color(COLOR_PRIMARY), width: 4.0),
-                    insets: EdgeInsets.only(bottom: 44),
+              bottomNavigationBar: TabBar(
+                tabs: <Widget>[
+                  Tab(
+                    icon: Icon(Icons.video_library),
                   ),
-                  unselectedLabelColor: Colors.grey,
+                  Tab(
+                    icon: Icon(Icons.insert_drive_file),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.account_circle),
+                  ),
+                ],
+                labelColor: Color(COLOR_PRIMARY),
+                indicator: UnderlineTabIndicator(
+                  borderSide:
+                      BorderSide(color: Color(COLOR_PRIMARY), width: 2.0),
+                  insets: EdgeInsets.only(bottom: 44),
                 ),
+                unselectedLabelColor: Colors.grey,
               ),
               body: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: <Widget>[
                   HomePage(),
-                  Container(),
-                  // Container(),
+                  FilterScreen(),
                   SettingScreen(user: user),
-                  //VideoScreen(),
-                  //AricleScreen(),
-                  //ProfileScreen(),
                 ],
               ),
             ),
