@@ -8,7 +8,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+  //dd
     // final logo = Image.asset(
     //   "lib/image/Loading.gif",
     //   height: size.height / 4,
