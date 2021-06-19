@@ -163,6 +163,7 @@ class HomePageState extends State<HomePage> {
 
   Widget buildNotice() {
     final noticeProvider = Provider.of<NoticeProvider>(context);
+    noticeProvider.readNotice();
     return Container(
       color: Color(0xFFEDF0F4),
       //height: 360,
