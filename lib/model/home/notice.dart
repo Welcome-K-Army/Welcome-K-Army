@@ -25,7 +25,7 @@ class Notice {
     return new Notice(
       title: parsedJson['title'] ?? '', 
       contents: parsedJson['notice'] ?? '', 
-      // imageList: parsedJson['imageUrlList'], 
+      imageList: parsedJson['imageUrlList'], 
       userNickname: parsedJson['userNickname']);
   }
 }

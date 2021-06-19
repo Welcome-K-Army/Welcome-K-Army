@@ -23,7 +23,6 @@ class FireStoreUtils {
         notices.add(Notice.fromJson(no.data()));
       }
     }
-    print(notices);
     return notices;
   }
 
