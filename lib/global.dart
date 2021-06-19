@@ -33,8 +33,8 @@ final List<String> publicImgList = [
 ];
 
 final List<Person> personList = [
-  new Person(name: '장성호'),
-  new Person(name: '나부겸'),
-  new Person(name: '신민석'),
-  new Person(name: '김민준'),
+  new Person('장성호'),
+  new Person('나부겸'),
+  new Person('신민석'),
+  new Person('김민준'),
 ];

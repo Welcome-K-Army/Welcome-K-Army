@@ -7,17 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
-import 'package:Army/services/helper.dart';
-import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
-import 'package:Army/ui/auth/authScreen.dart';
-import 'package:Army/ui/home/homeScreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
-import 'package:Army/page/home/home_page.dart';
+import 'package:Army/page/error/initialize_error_page.dart';
+import 'package:Army/page/onboarding_page.dart';
+
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (context) => EventProvider(), child: MyApp()));
+  runApp(ChangeNotifierProvider(
+      create: (context) => EventProvider(), child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -32,6 +30,30 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   // Set default `_initialized` and `_error` state to false
   bool _initialized = false;
   bool _error = false;
+
+  @override
+  Widget build(BuildContext context) {
+    // Show error message if initialization failed
+    if (_error) {
+      return InitializeErrorPage();
+    }
+
+    // Show a loader until FlutterFire is initialized
+    if (!_initialized) {
+      return Container(
+        color: Colors.white,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    return MaterialApp(
+        theme: ThemeData(accentColor: Color(COLOR_PRIMARY)),
+        debugShowCheckedModeBanner: false,
+        color: Color(COLOR_PRIMARY),
+        home: OnBoarding());
+  }
 
   // Define an async function to initialize FlutterFire
   void initializeFlutterFire() async {
@@ -50,47 +72,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // Show error message if initialization failed
-    if (_error) {
-      return MaterialApp(
-          home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Center(
-              child: Column(
-            children: [
-              Icon(
-                Icons.error_outline,
-                color: Colors.red,
-                size: 25,
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Failed to initialise firebase!',
-                style: TextStyle(color: Colors.red, fontSize: 25),
-              ),
-            ],
-          )),
-        ),
-      ));
-    }
-
-    // Show a loader until FlutterFire is initialized
-    if (!_initialized) {
-      return Container(
-        color: Colors.white,
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
-
-    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: false, color: Color(COLOR_PRIMARY), home: OnBoarding());
-  }
-
-  @override
-  void initState() {
+  void initState (){
     initializeFlutterFire();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
@@ -121,51 +103,3 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 }
 
-class OnBoarding extends StatefulWidget {
-  @override
-  State createState() {
-    return OnBoardingState();
-  }
-}
-
-class OnBoardingState extends State<OnBoarding> {
-  Future hasFinishedOnBoarding() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool finishedOnBoarding = (prefs.getBool(FINISHED_ON_BOARDING) ?? false);
-
-    if (finishedOnBoarding) {
-      auth.User firebaseUser = auth.FirebaseAuth.instance.currentUser;
-      if (firebaseUser != null) {
-        User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
-        if (user != null) {
-          MyAppState.currentUser = user;
-          pushReplacement(context, new HomeScreen(user: user));
-        } else {
-          pushReplacement(context, new HomePage());
-        }
-      } else {
-        pushReplacement(context, new HomePage());
-      }
-    } else {
-      pushReplacement(context, new OnBoardingScreen());
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    hasFinishedOnBoarding();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(COLOR_PRIMARY),
-      body: Center(
-        child: CircularProgressIndicator(
-          backgroundColor: Colors.white,
-        ),
-      ),
-    );
-  }
-}
