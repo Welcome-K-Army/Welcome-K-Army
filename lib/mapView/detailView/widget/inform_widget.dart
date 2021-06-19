@@ -12,13 +12,12 @@ class InformWidget extends StatefulWidget {
 
   InformWidgetState createState() => InformWidgetState();
 }
-
-class InformWidgetState extends State<InformWidget> {
   List<String> informList = [
-    widget.current_name,
-    widget.current_address,
-    widget.current_number,
+    current_name,
+    current_address,
+    current_number,
   ];
+class InformWidgetState extends State<InformWidget> {
 
   List<String> messageList = [
     "주소 복사",
