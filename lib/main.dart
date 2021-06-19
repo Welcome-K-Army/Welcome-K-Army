@@ -22,7 +22,7 @@ void main() {
         create: (context) => NoticeProvider(), 
         child: MyApp()
       )
-    
+    )
   );
 }
 
