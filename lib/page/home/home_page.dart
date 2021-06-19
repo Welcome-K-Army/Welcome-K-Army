@@ -36,7 +36,7 @@ class HomePageState extends State<HomePage> {
               Container(
                 height: 50,
               ),
-              // buildNotice(),
+              buildNotice(),
             ] // <Widget>[]
                 ) // Column
             ) // SingleChildScrollview
