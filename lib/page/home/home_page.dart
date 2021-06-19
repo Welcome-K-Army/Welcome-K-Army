@@ -11,6 +11,7 @@ import 'package:Army/global.dart';
 
 import 'package:Army/model/home/menu.dart';
 import 'package:Army/model/home/notice.dart';
+import 'package:Army/provider/noticeProvider.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
@@ -67,8 +68,7 @@ class HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text(
                     'wecome k army',
-                    style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Image.asset("assets/images/4.jpg")
@@ -106,9 +106,9 @@ class HomePageState extends State<HomePage> {
                 scale: 0.8,
                 viewportFraction: 1,
                 pagination: SwiperPagination(),
-                itemCount: publicImgList.length,
+                itemCount: noticeList.imageList.length, //notice imagelist length
                 itemBuilder: (BuildContext context, int index) {
-                  return Image.asset(publicImgList[index]);
+                  return Image.asset(noticeList.imageList[index]);
                 }) // Swiper
             ),
       ), // Padding
@@ -120,29 +120,26 @@ class HomePageState extends State<HomePage> {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
-                  Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      elevation: 4,
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 2,
-                          mainAxisSpacing: 2,
-                        ),
-                        itemCount: menuList.length,
-                        itemBuilder: (context, index) {
-                          return buildMenuIconBtn(menuList[index]);
-                        },
-                      )),
-                ]))); // GridView
+            child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
+              Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                    ),
+                    itemCount: menuList.length,
+                    itemBuilder: (context, index) {
+                      return buildMenuIconBtn(menuList[index]);
+                    },
+                  )),
+            ]))); // GridView
   }
 
   Widget buildMenuIconBtn(Menu menu) {
@@ -155,13 +152,10 @@ class HomePageState extends State<HomePage> {
           MaterialPageRoute(builder: (BuildContext context) => menu.widget),
         );
       },
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            menu.icon,
-            Text(menu.name),
-          ]), // Column
+      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+        menu.icon,
+        Text(menu.name),
+      ]), // Column
     ); // ListTile
   }
 
@@ -181,8 +175,11 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDayWidget(
-                headerTile: true, title: "Notice", contents: noticeList),
+            Consumer <
+                NoticeProivder(builder: (context, noticeProvider, child) {
+                  noticeProvider.readNotice();
+                  ListWithTitleAndDayWidget(headerTile: true, title: "Notice", contents: noticeProvider.noticeList);
+                }),
           ], // Column children
         ), // Column
       ), // Padding

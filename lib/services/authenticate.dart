@@ -6,12 +6,24 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:Army/model/user.dart';
-import 'package:Army/constants.dart';
 import 'package:Army/model/calendar/event.dart';
+import 'package:Army/model/home/notice.dart';
+import 'package:Army/constants.dart';
 
 class FireStoreUtils {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   Reference storage = FirebaseStorage.instance.ref();
+
+  Future<List<Notice>> getNoticeList() {
+    QuerySnapshot noticeDocument = await firestore.collection('NoticeData').get();
+    List<Notice> notices = [];
+    if (noticeDocument != null && noticeDocument.docs != null) {
+      for (var no in noticeDocument.docs) {
+        notices.add(Notice.fromJson(no.data()));
+      }
+    }
+    return notices;
+  }
 
   Future<User> getCurrentUser(String uid) async {
     DocumentSnapshot userDocument = await firestore.collection(USERS).doc(uid).get();
