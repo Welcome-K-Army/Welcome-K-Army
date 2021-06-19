@@ -109,17 +109,17 @@ class ListContentView extends StatelessWidget {
           Text(notice.contents),
           Container(
             height: 60,
-            child: ListView.builder(
-                // 높이 설정 안 됌 -> 수정하기
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: notice.imageList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 50,
-                    child: Image.asset(notice.imageList[index]),
-                  ); // Container
-                }), // ListView
+            // child: ListView.builder(
+            //     // 높이 설정 안 됌 -> 수정하기
+            //     shrinkWrap: true,
+            //     scrollDirection: Axis.horizontal,
+            //     itemCount: notice.imageList.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Container(
+            //         height: 50,
+            //         child: Image.asset(notice.imageList[index]),
+            //       ); // Container
+            //     }), // ListView
           )
         ]));
   }
