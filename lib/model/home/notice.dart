@@ -19,4 +19,8 @@ class Notice {
     this.number = noticeNumber;
     noticeNumber++;
   }
+
+  factory Notice.fromJson(Map<String, dynamic> parsedJson) {
+    return new Notice(number: parsedJson['number'] ?? '', title: parsedJson['title'] ?? '', contents: parsedJson['contents'] ?? '', imageList: parsedJson['imageList'], userNickname: parsedJson['userNickname']);
+  }
 }

@@ -177,11 +177,10 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            Consumer <
-                NoticeProivder(builder: (context, noticeProvider, child) {
-                  noticeProvider.readNotice();
-                  ListWithTitleAndDayWidget(headerTile: true, title: "Notice", contents: noticeProvider.noticeList);
-                }),
+            Consumer<NoticeProivder>(builder: (context, noticeProvider, child) {
+              noticeProvider.readNotice();
+              ListWithTitleAndDayWidget(headerTile: true, title: "Notice", notices: noticeProvider.noticeList);
+            }),
           ], // Column children
         ), // Column
       ), // Padding
