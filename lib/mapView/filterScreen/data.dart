@@ -1,6 +1,7 @@
 import 'School.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 List<School> fillData() {
   List<School> lists = [];
