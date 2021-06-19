@@ -10,12 +10,20 @@ import 'package:Army/services/authenticate.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
+import 'package:Army/provider/noticeProvider.dart';
 import 'package:Army/page/error/initialize_error_page.dart';
 import 'package:Army/page/onboarding_page.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => EventProvider(), child: MyApp()));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => EventProvider(), 
+      child: ChangeNotifierProvider(
+        create: (context) => NoticeProvider(), 
+        child: MyApp()
+      )
+    )
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -48,7 +56,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         ),
       );
     }
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -83,7 +90,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    // SystemChrome.setEnabledSystemUIOverlays ([SystemUiOverlay.bottom]);
     initializeFlutterFire();
     WidgetsBinding.instance.addObserver(this);
     super.initState();

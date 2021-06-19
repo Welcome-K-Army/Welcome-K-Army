@@ -10,7 +10,7 @@ import 'package:Army/constants.dart';
 import 'package:Army/global.dart';
 
 import 'package:Army/model/home/menu.dart';
-import 'package:Army/model/home/notice.dart';
+import 'package:Army/provider/noticeProvider.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
@@ -101,17 +101,17 @@ class HomePageState extends State<HomePage> {
         ),
         elevation: 4,
         child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Swiper(
-                autoplay: true,
-                scale: 0.8,
-                viewportFraction: 1,
-                pagination: SwiperPagination(),
-                itemCount: publicImgList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Image.asset(publicImgList[index]);
-                }) // Swiper
-            ),
+          padding: EdgeInsets.all(10),
+          child: Swiper(
+              autoplay: true,
+              scale: 0.8,
+              viewportFraction: 1,
+              pagination: SwiperPagination(),
+              itemCount: publicImgList.length, //notice imagelist length
+              itemBuilder: (BuildContext context, int index) {
+                return Image.asset(publicImgList[index]);
+              }), // Swiper
+        ),
       ), // Padding
     ); // Container
   }
@@ -121,52 +121,50 @@ class HomePageState extends State<HomePage> {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
-                  Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      elevation: 4,
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 2,
-                          mainAxisSpacing: 2,
-                        ),
-                        itemCount: menuList.length,
-                        itemBuilder: (context, index) {
-                          return buildMenuIconBtn(menuList[index]);
-                        },
-                      )),
-                ]))); // GridView
+            child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
+              Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                    ),
+                    itemCount: menuList.length,
+                    itemBuilder: (context, index) {
+                      return buildMenuIconBtn(menuList[index]);
+                    },
+                  )),
+            ]))); // GridView
   }
 
   Widget buildMenuIconBtn(Menu menu) {
     final provider = Provider.of<EventProvider>(context);
+    final noticeProvider = Provider.of<NoticeProvider>(context);
     return InkWell(
       onTap: () {
         provider.readEvent();
+        noticeProvider.readNotice();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (BuildContext context) => menu.widget),
         );
       },
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            menu.icon,
-            Text(menu.name),
-          ]), // Column
+      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+        menu.icon,
+        Text(menu.name),
+      ]), // Column
     ); // ListTile
   }
 
   Widget buildNotice() {
+    final noticeProvider = Provider.of<NoticeProvider>(context);
+    noticeProvider.readNotice();
     return Container(
       color: Color(0xFFEDF0F4),
       //height: 360,
@@ -182,8 +180,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDayWidget(
-                headerTile: true, title: "Notice", contents: noticeList),
+            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", notices: noticeProvider.notices),
           ], // Column children
         ), // Column
       ), // Padding

@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:Army/utils.dart';
-import 'package:Army/global.dart';
 
 import 'package:Army/model/calendar/event.dart';
 import 'package:Army/provider/event_provider.dart';
