@@ -53,6 +53,7 @@ List<School> fillData() {
     type: Types.Cadets,
     age: Ages.A_19_25,
     classes: Classes.Officer));
+
   lists.add(new School(
       idx: 5,
       name: "국군간호사관학교",
