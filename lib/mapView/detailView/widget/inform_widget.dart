@@ -3,20 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InformWidget extends StatefulWidget {
-  final String current_name;
-  final String current_address;
-  final String current_number; // receives the value
+  final List<String> informList;
 
-  InformWidget({this.current_name,this.current_address,this.current_number});
+  InformWidget({this.informList});
   
 
   InformWidgetState createState() => InformWidgetState();
 }
-  List<String> informList = [
-    current_name,
-    current_address,
-    current_number,
-  ];
+  // List<String> informList = [
+  //   current_name,
+  //   current_address,
+  //   current_number,
+  // ];
 class InformWidgetState extends State<InformWidget> {
 
   List<String> messageList = [

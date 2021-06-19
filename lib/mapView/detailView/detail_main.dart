@@ -76,7 +76,7 @@ class DetailViewState extends State<DetailView> {
         ),
         body: TabBarView(
           children: [
-            InformWidget(informList[0],informList[1],informList[2]),
+            InformWidget(informList),
             CompetitionChartWidget(),
             CompetitionChartWidget(),
             Text('교육과정'),
