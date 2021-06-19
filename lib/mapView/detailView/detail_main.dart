@@ -36,6 +36,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.address,
       widget.arguments.number,
       widget.arguments.web_address,
+      widget.arguments.image,
     ];
     return DefaultTabController(
       length: 4,
@@ -89,5 +90,6 @@ class Arguments {
   String address;
   String number;
   String web_address;
-  Arguments(this.name, this.address, this.number, this.web_address);
+  Image image;
+  Arguments(this.name, this.address, this.number, this.web_address,this.image);
 }
