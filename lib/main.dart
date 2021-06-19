@@ -17,8 +17,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => EventProvider(), 
-      child: 
-      ChangeNotifierProvider(
+      child: ChangeNotifierProvider(
         create: (context) => NoticeProvider(), 
         child: MyApp()
       )
