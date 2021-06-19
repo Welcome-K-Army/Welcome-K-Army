@@ -143,9 +143,11 @@ class HomePageState extends State<HomePage> {
 
   Widget buildMenuIconBtn(Menu menu) {
     final provider = Provider.of<EventProvider>(context);
+    final noticeProvider = Provider.of<NoticeProvider>(context);
     return InkWell(
       onTap: () {
         provider.readEvent();
+        noticeProvider.readNotice();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (BuildContext context) => menu.widget),
@@ -160,7 +162,6 @@ class HomePageState extends State<HomePage> {
 
   Widget buildNotice() {
     final noticeProvider = Provider.of<NoticeProvider>(context);
-    noticeProvider.readNotice();
     return Container(
       color: Color(0xFFEDF0F4),
       //height: 360,
