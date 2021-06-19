@@ -67,7 +67,7 @@ class School{
     this.name = name;
     this.address=address;
     this.number=number;
-    this.web_address=web_address;
+    this.web_address = web_address;
     this.idx = idx;
     this.catagory = category;
     this.latlng = latlng;
