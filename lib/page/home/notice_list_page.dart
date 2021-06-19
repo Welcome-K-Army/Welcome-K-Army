@@ -15,6 +15,7 @@ class NoticeListPageState extends State<NoticeListPage> {
   Widget build(BuildContext context) {
     final noticeProvider = Provider.of<NoticeProvider>(context);
     noticeProvider.readNotice();
+    print(noticeProvider.notices)
     return Scaffold(
       appBar: AppBar(title: Text('k army notice')),
       body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", notices: noticeProvider.notices),
