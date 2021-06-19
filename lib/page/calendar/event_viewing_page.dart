@@ -5,7 +5,6 @@ import 'event_editing_page.dart';
 import 'package:Army/utils.dart';
 import 'package:Army/model/calendar/event.dart';
 import 'package:Army/provider/event_provider.dart';
-import 'package:Army/widget/calendar/calendar_widget.dart';
 
 class EventViewingPage extends StatelessWidget {
   final Event event;

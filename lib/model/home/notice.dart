@@ -1,11 +1,30 @@
-import 'content.dart';
-
-import 'package:Army/global.dart';
+import 'package:intl/intl.dart';
+// import 'package:Army/model/user.dart';
 
 int noticeNumber = 0;
 
-final List<Content> noticeList = [
-  new Content(title: "Intro", content: 'Hello World', person: personList[0], imgList: publicImgList),
-  new Content(title: 'App Info', content: 'Welcome K Army', person: personList[1], imgList: publicImgList),
-  new Content(title: 'Outtro', content: 'Good Bye', person: personList[2], imgList: publicImgList),
-];
+class Notice {
+  var date_yMd = DateFormat.yMd().format(new DateTime.now());
+  var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
+
+  int number;
+
+  String userNickname;
+
+  String title;
+  String contents;
+  List imageList;
+
+  Notice({this.title, this.contents, this.userNickname, this.imageList}) {
+    this.number = noticeNumber;
+    noticeNumber++;
+  }
+
+  factory Notice.fromJson(Map<String, dynamic> parsedJson) {
+    return new Notice(
+      title: parsedJson['title'] ?? '', 
+      contents: parsedJson['notice'] ?? '', 
+      imageList: parsedJson['imageUrlList'], 
+      userNickname: parsedJson['userNickname']);
+  }
+}

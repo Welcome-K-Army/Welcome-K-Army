@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,13 +9,20 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/authenticate.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';
+import 'package:Army/provider/noticeProvider.dart';
 import 'package:Army/page/error/initialize_error_page.dart';
 import 'package:Army/page/onboarding_page.dart';
 
-
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => EventProvider(), child: MyApp()));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => EventProvider(), 
+      child: ChangeNotifierProvider(
+        create: (context) => NoticeProvider(), 
+        child: MyApp()
+      )
+    )
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -49,11 +55,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
       );
     }
 
-    return MaterialApp(
-        theme: ThemeData(accentColor: Color(COLOR_PRIMARY)),
-        debugShowCheckedModeBanner: false,
-        color: Color(COLOR_PRIMARY),
-        home: OnBoarding());
+    return MaterialApp(theme: ThemeData(accentColor: Color(COLOR_PRIMARY)), debugShowCheckedModeBanner: false, color: Color(COLOR_PRIMARY), home: OnBoarding());
   }
 
   // Define an async function to initialize FlutterFire
@@ -73,7 +75,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   @override
-  void initState (){
+  void initState() {
     initializeFlutterFire();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
@@ -103,7 +105,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
     }
   }
 }
-
 
 // import 'dart:async';
 //
