@@ -24,9 +24,6 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),
-      ),
       floatingActionButton: null,
       body: DefaultTabController(
         length: 3,
