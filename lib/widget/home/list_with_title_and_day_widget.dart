@@ -25,10 +25,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: contents.length + 1,
+            itemCount: notices.length + 1,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
-              return ListTileWithTitleAndDay(content: contents[index - 1]);
+              return ListTileWithTitleAndDay(notice: notices[index - 1]);
             },
             separatorBuilder: (context, index) {
               if (index == 0) return SizedBox.shrink();
@@ -54,8 +54,8 @@ class ListTileWithTitleAndDay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: Text(content.title),
-        subtitle: Text(content.date_yMd),
+        title: Text(notice.title),
+        subtitle: Text(notice.date_yMd),
         onTap: () {
           Navigator.push(
             context,
