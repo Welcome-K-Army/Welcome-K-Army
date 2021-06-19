@@ -17,9 +17,6 @@ class InformWidget extends StatefulWidget {
   // ];
 class InformWidgetState extends State<InformWidget> {
 
-
-  List<String> informList_ = widget.informList;
-
   List<String> messageList = [
     "주소 복사",
     "웹사이트 열기",
@@ -36,6 +33,7 @@ class InformWidgetState extends State<InformWidget> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> informList_ = widget.informList;
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -55,11 +53,7 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildAddressTile() {
-    //  List<String> informList = [
-    //     widget.name,
-    //     widget.address,
-    //     widget.number,
-    //   ];
+    List<String> informList_ = widget.informList;
     return ListTile(
         leading: Tooltip(
             message: "주소 복사",
@@ -79,11 +73,7 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildUrlTile() {
-    //  List<String> informList = [
-    //     widget.name,
-    //     widget.address,
-    //     widget.number,
-    //   ];
+    List<String> informList_ = widget.informList;
     return ListTile(
         leading: Tooltip(
             message: "웹사이트 열기",
@@ -103,11 +93,7 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildPhoneNumberTile() {
-    //  List<String> informList = [
-    //     widget.name,
-    //     widget.address,
-    //     widget.number,
-    //   ];
+    List<String> informList_ = widget.informList;
     return ListTile(
         leading: Tooltip(
             message: "전화 걸기",
