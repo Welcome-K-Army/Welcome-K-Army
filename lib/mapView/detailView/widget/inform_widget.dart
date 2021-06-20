@@ -41,9 +41,7 @@ class InformWidgetState extends State<InformWidget> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
-            DecorationImage(
-              image:Image.network(informList_[4]),
-              fit: BoxFit.fill),
+            Image.network(informList_[4],
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             ListTile(title: Text(informList_[0])),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
