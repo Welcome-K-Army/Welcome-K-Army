@@ -75,15 +75,15 @@ class InformWidgetState extends State<InformWidget> {
                   Clipboard.setData(ClipboardData(text: informList_[1]));
                 })));
   }
-  Widget displayCircleImage(String picUrl, double size, hasBorder) =>
-    CachedNetworkImage(
-        imageBuilder: (context, imageProvider) =>
-            _getCircularImageProvider(imageProvider, size, false),
-        imageUrl: picUrl,
-        placeholder: (context, url) =>
-            _getPlaceholderOrErrorImage(size, hasBorder),
-        errorWidget: (context, url, error) =>
-            _getPlaceholderOrErrorImage(size, hasBorder));
+  // Widget displayCircleImage(String picUrl, double size, hasBorder) =>
+  //   CachedNetworkImage(
+  //       imageBuilder: (context, imageProvider) =>
+  //           _getCircularImageProvider(imageProvider, size, false),
+  //       imageUrl: picUrl,
+  //       placeholder: (context, url) =>
+  //           _getPlaceholderOrErrorImage(size, hasBorder),
+  //       errorWidget: (context, url, error) =>
+  //           _getPlaceholderOrErrorImage(size, hasBorder));
 
   Widget buildUrlTile() {
     List<String> informList_ = widget.informList;
