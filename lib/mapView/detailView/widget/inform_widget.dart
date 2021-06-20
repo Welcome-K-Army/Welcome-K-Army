@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class InformWidget extends StatefulWidget {
   final List<String> informList;
