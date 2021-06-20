@@ -44,7 +44,7 @@ class InformWidgetState extends State<InformWidget> {
             // displayCircleImage(informList_[4], 125, false),
             Image.network(informList_[4]),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
-            Center(ListTile(title: Text(informList_[0]))),
+            ListTile(title: Text(informList_[0])),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             buildAddressTile(),
             buildUrlTile(),
