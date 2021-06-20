@@ -42,7 +42,7 @@ class InformWidgetState extends State<InformWidget> {
         child: Column(
           children: <Widget>[
             // displayCircleImage(informList_[4], 125, false),
-            Image.network(informList_[4]),
+            Image.asset(informList_[4]),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             ListTile(title: Text(informList_[0])),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
