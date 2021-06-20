@@ -14,7 +14,7 @@ class TitleWithCustomUnderLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 24,
+      height: 28,
       child: Stack(
         children: <Widget>[
           Padding(
@@ -31,7 +31,9 @@ class TitleWithCustomUnderLine extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(right: kDefaultPadding / 4),
               height: 7,
-              color: kPrimaryColor.withOpacity(0.2),
+
+              decoration: BoxDecoration(color: kPrimaryColor.withOpacity(0.2),borderRadius: BorderRadius.circular(10))
+
             ), // Container
           ), // Positioned
         ], // <Widget> []
@@ -54,20 +56,23 @@ class TitleWithMoreBtnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        TitleWithCustomUnderLine(text: title),
+        Padding(padding: EdgeInsets.symmetric(horizontal: 5), child: TitleWithCustomUnderLine(text: title),),
         Spacer(),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ), // RoundedRectangleBorder
-            color: kPrimaryColor,
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: TextButton(
             onPressed: press,
-            child: Text(
-              "더보기",
-              style: TextStyle(color: Colors.white),
-            ), // Text
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color:Color(COLOR_PRIMARY),
+              ),
+              child:Text(
+                "더보기",
+                style: TextStyle(color: Colors.white, fontSize: 13),
+              ),
+            ),
           ), // FlatButton
         ),
       ], // <Widget>[]

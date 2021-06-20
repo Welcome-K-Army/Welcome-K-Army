@@ -35,18 +35,14 @@ class HomePageState extends State<HomePage> {
             child: Column(children: <Widget>[
               buildHeader(),
               buildNews(),
-              Container(
-                height: 50,
-              ),
-              buildMenu(),
-              Container(
-                height: 50,
+              SizedBox(
+                height: 10,
               ),
               buildNotice(),
-            ] // <Widget>[]
-                ) // Column
-            )
-        ); // Container
+              SizedBox(
+                height: 20,
+              ),
+            ])));
   } // Widget
 
   Widget buildHeader() {
@@ -57,11 +53,10 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                left: kDefaultPadding,
-                right: kDefaultPadding,
-                bottom: 36 + kDefaultPadding,
-                top: MediaQuery.of(context).padding.top + 20.0
-              ),
+                  left: kDefaultPadding,
+                  right: kDefaultPadding,
+                  bottom: 36 + kDefaultPadding,
+                  top: MediaQuery.of(context).padding.top + 20.0),
               height: _height * 0.2 - 27,
               decoration: BoxDecoration(
                 color: kPrimaryColor,
@@ -73,12 +68,12 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    '반갑습니다 '+user.nickName+'님!',
+                    '반갑습니다 ' + user.nickName + '님!',
                     style: Theme.of(context).textTheme.headline5?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
                   Spacer(),
-                  Icon(Icons.favorite, color: Colors.lightGreen[50],size: 100)
+                  Icon(Icons.favorite, color: Colors.lightGreen[50], size: 100)
                 ],
               ), // Row
             ), // Container
@@ -110,9 +105,14 @@ class HomePageState extends State<HomePage> {
           padding: EdgeInsets.all(10),
           child: Swiper(
               autoplay: true,
+
               scale: 0.8,
               viewportFraction: 1,
-              pagination: SwiperPagination(),
+              pagination: new SwiperPagination(
+                alignment: Alignment.bottomCenter,
+                builder: new DotSwiperPaginationBuilder(
+                    color: Colors.white, activeColor: Color(COLOR_PRIMARY)),
+              ),
               itemCount: publicImgList.length, //notice imagelist length
               itemBuilder: (BuildContext context, int index) {
                 return Image.asset(publicImgList[index]);
@@ -127,26 +127,29 @@ class HomePageState extends State<HomePage> {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
-              Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 4,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 2,
-                    ),
-                    itemCount: menuList.length,
-                    itemBuilder: (context, index) {
-                      return buildMenuIconBtn(menuList[index]);
-                    },
-                  )),
-            ]))); // GridView
+            child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
+                  Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      elevation: 4,
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 2,
+                          mainAxisSpacing: 2,
+                        ),
+                        itemCount: menuList.length,
+                        itemBuilder: (context, index) {
+                          return buildMenuIconBtn(menuList[index]);
+                        },
+                      )),
+                ]))); // GridView
   }
 
   Widget buildMenuIconBtn(Menu menu) {
@@ -161,10 +164,13 @@ class HomePageState extends State<HomePage> {
           MaterialPageRoute(builder: (BuildContext context) => menu.widget),
         );
       },
-      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-        menu.icon,
-        Text(menu.name),
-      ]), // Column
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            menu.icon,
+            Text(menu.name),
+          ]), // Column
     ); // ListTile
   }
 
@@ -186,7 +192,12 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDayWidget(headerTile: true, title: "Notice", notices: noticeProvider.notices, infinite: false, maxLines: 3),
+            ListWithTitleAndDayWidget(
+                headerTile: true,
+                title: "Notice",
+                notices: noticeProvider.notices,
+                infinite: false,
+                maxLines: 3),
           ], // Column children
         ), // Column
       ), // Padding
