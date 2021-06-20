@@ -35,7 +35,7 @@ class InformWidgetState extends State<InformWidget> {
   Widget build(BuildContext context) {
     List<String> informList_ = widget.informList;
     return Container(
-      backgroundColor: Colors.lightGreen[50],
+      // backgroundColor: Colors.lightGreen[50],
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
