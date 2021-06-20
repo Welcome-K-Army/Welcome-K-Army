@@ -83,7 +83,7 @@ class _ProfileState extends State<ProfileScreen> {
                   ),
                 )
               : user.profilePictureURL.isEmpty
-              ? Icon(Icons.flutter_dash, size: 125,):displayCircleImage(user.profilePictureURL,
+              ? Icon(Icons.favorite, size: 125,):displayCircleImage(user.profilePictureURL,
               125,
               false
           ),

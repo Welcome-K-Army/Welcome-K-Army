@@ -43,7 +43,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   child: user.profilePictureURL.isEmpty
                       ? Icon(
-                    Icons.flutter_dash,
+                    Icons.favorite,
                     size: 125,
                   )
                       : displayCircleImage(user.profilePictureURL, 125, false),

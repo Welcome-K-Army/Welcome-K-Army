@@ -52,7 +52,7 @@ class AuthScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 50, top: 15),
                   child: Column(children: [
                     Icon(
-                      Icons.flutter_dash,
+                      Icons.favorite,
                       color: Color(COLOR_PRIMARY),
                       size: 65,
                     ),

@@ -136,7 +136,7 @@ Widget _getPlaceholderOrErrorImage(double size, hasBorder) => Container(
         ),
       ),
       child: ClipOval(
-          child: Icon(Icons.flutter_dash,size:size),
+          child: Icon(Icons.favorite,size:size),
       ),
     );
 

@@ -78,7 +78,7 @@ class HomePageState extends State<HomePage> {
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
                   Spacer(),
-                  Icon(Icons.flutter_dash_sharp, color: Colors.lightGreen[50],size: 100)
+                  Icon(Icons.favorite, color: Colors.lightGreen[50],size: 100)
                 ],
               ), // Row
             ), // Container

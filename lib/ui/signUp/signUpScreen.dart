@@ -373,7 +373,7 @@ class _SignUpState extends State<SignUpScreen> {
                         width: 190,
                         height: 190,
                         child: _image == null
-                            ? Icon(Icons.flutter_dash, size: 190, color: Colors.black38,)
+                            ? Icon(Icons.favorite, size: 190, color: Colors.black38,)
                             : Image.file(
                           _image,
                           fit: BoxFit.cover,
