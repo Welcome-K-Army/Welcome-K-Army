@@ -1,3 +1,4 @@
+import 'package:Army/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,49 +10,85 @@ import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/setting/profileScreen.dart';
 
-
 class SettingScreen extends StatelessWidget {
   final User user;
   SettingScreen({Key key, @required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 50),
-        const SizedBox(height: 25),
-        Settings(
-          //계정 수정 네비게이터
-          icon: Icon(Icons.account_circle),
-          text: "My Account",
-          press: () {
-            push(context,ProfileScreen(user:user));
-          },
-        ),
-        Settings(
-            //관심 직책 네비게이터
-            icon: Icon(Icons.library_books),
-            text: "관심직책",
-            press: () {}),
-        Settings(
+
+    return Container(
+        color: Color(0xFFEDF0F4),
+      child: Column(
+        children: [
+          SizedBox(height: 40),
+          Stack(
+            children: [
+              Padding(padding: const EdgeInsets.fromLTRB(50,60,50,0),
+                child: Card(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                    elevation: 10,
+                    child:Container(
+                      width: double.infinity,
+                      height: 150,
+                    )
+                ),),
+              Align(
+                child:Container(
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(COLOR_PRIMARY), width: 3),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: user.profilePictureURL.isEmpty
+                      ? Icon(
+                    Icons.flutter_dash,
+                    size: 125,
+                  )
+                      : displayCircleImage(user.profilePictureURL, 125, false),
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: 10),
+          Settings(
+            //계정 수정 네비게이터
+            icon: Icon(
+              Icons.account_circle,
+              color: Color(COLOR_PRIMARY),
+            ),
+            text: "계정 정보",
+            press: () {
+              push(context, ProfileScreen(user: user));
+            },
+          ),
+          Settings(
             //도움말 네비게이터
-            icon: Icon(Icons.help_outline),
-            text: "help",
-            press: () {}),
-        Settings(
+              icon: Icon(
+                Icons.help_outline,
+                color: Color(COLOR_PRIMARY),
+              ),
+              text: "도움말",
+              press: () {}),
+          Settings(
             //로그아웃 네비게이터
-            icon: Icon(Icons.logout),
-            text: "Logout",
-            press: () async {
-              user.active = false;
-              user.lastOnlineTimestamp = Timestamp.now();
-              FireStoreUtils.updateCurrentUser(user);
-              await auth.FirebaseAuth.instance.signOut();
-              MyAppState.currentUser = null;
-              pushAndRemoveUntil(context, AuthScreen(), false);
-            }),
-      ],
-    ); //Column;
+              icon: Icon(
+                Icons.logout,
+                color: Color(COLOR_PRIMARY),
+              ),
+              text: "로그아웃",
+              press: () async {
+                user.active = false;
+                user.lastOnlineTimestamp = Timestamp.now();
+                FireStoreUtils.updateCurrentUser(user);
+                await auth.FirebaseAuth.instance.signOut();
+                MyAppState.currentUser = null;
+                pushAndRemoveUntil(context, AuthScreen(), false);
+              }),
+        ],
+      ),
+    );
   }
 }
 
@@ -72,26 +109,31 @@ class Settings extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-        elevation: 5,
-        child: FlatButton(
-          padding: EdgeInsets.all(20),
-          color: Color(0xFFF5F6F9),
-          onPressed: press,
-          child: Row(
-            children: [
-              icon,
-              SizedBox(width: 20),
-              Expanded(
-                child: Text(
-                  text,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ), //Text
-              ), //Expanded
-              Icon(Icons.east)
-            ],
-          ), //Row
-        ), //FlatButton
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        elevation: 10,
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: TextButton(
+            onPressed: press,
+            child: Row(
+              children: [
+                icon,
+                SizedBox(width: 15),
+                Expanded(
+                  child: Text(
+                    text,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ), //Text
+                ), //Expanded
+                Icon(
+                  Icons.east,
+                  color: Color(COLOR_PRIMARY),
+                )
+              ],
+            ), //Row
+          ),
+        ),
       ), //Card
     ); //Padding;
   }

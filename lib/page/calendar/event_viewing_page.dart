@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants.dart';
 import 'event_editing_page.dart';
 import 'package:Army/utils.dart';
 import 'package:Army/model/calendar/event.dart';
@@ -19,6 +20,10 @@ class EventViewingPage extends StatelessWidget {
     final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),)),
+        backgroundColor: Color(COLOR_PRIMARY),
         leading: CloseButton(),
         actions: buildViewingActions(context, event, provider),
       ),

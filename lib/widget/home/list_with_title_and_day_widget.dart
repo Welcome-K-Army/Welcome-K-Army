@@ -9,14 +9,22 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
     this.headerTile,
     this.title,
     this.notices,
+    this.infinite,
+    this.maxLines
   }) : super(key: key);
 
   final bool headerTile;
   final String title;
   final List<Notice> notices;
+  final bool infinite;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
+    int max = 0;
+
+    if (notices.length < maxLines) max = notices.length;
+    else max = maxLines;
     return Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -25,10 +33,10 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
         elevation: 4,
         child: ListView.separated(
             shrinkWrap: true,
-            itemCount: notices.length + 1,
+            itemCount: infinite ? notices.length + 1 : max + 1,
             itemBuilder: (context, index) {
               if (index == 0) return HeaderTile(title: title);
-              return ListTileWithTitleAndDay(notice: notices[index - 1]);
+              return ListTileWithTitleAndDay(notice: notices[notices.length - index]);
             },
             separatorBuilder: (context, index) {
               if (index == 0) return SizedBox.shrink();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+
 import 'package:syncfusion_flutter_core/theme.dart';
 
 import 'package:Army/model/calendar/event_data_source.dart';
@@ -24,7 +25,7 @@ class _TasksWidgetState extends State<TasksWidget> {
     if (selectedEvents.isEmpty) {
       return Center(
         child: Text(
-          'No Events found!',
+          '일정이 없습니다!',
           style: TextStyle(color: Colors.black, fontSize: 24),
         ),
       );
@@ -35,6 +36,7 @@ class _TasksWidgetState extends State<TasksWidget> {
         timeTextStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
       child: SfCalendar(
+
         view: CalendarView.timelineDay,
         dataSource: EventDataSource(provider.events),
         initialDisplayDate: provider.selectedDate,

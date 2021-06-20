@@ -10,6 +10,7 @@ import 'package:Army/services/authenticate.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';
+
 enum Gender { MAN, WOMEN }
 File _image;
 
@@ -56,8 +57,6 @@ class _ProfileState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    TextEditingController _emailController = TextEditingController(text: user.email);
-
     final imageField = Padding(
       padding: const EdgeInsets.only(left: 8.0, top: 8, right: 8, bottom: 8),
       child: Stack(
@@ -83,11 +82,19 @@ class _ProfileState extends State<ProfileScreen> {
                     ),
                   ),
                 )
-              : displayCircleImage(user.profilePictureURL.isEmpty ? "lib/image/Loading.gif" : user.profilePictureURL, 125, false),
+              : user.profilePictureURL.isEmpty
+              ? Icon(Icons.flutter_dash, size: 125,):displayCircleImage(user.profilePictureURL,
+              125,
+              false
+          ),
           Positioned(
             left: 80,
             right: 0,
-            child: FloatingActionButton(backgroundColor: Color(COLOR_PRIMARY), child: Icon(Icons.camera_alt), mini: true, onPressed: _onCameraClick),
+            child: FloatingActionButton(
+                backgroundColor: Color(COLOR_PRIMARY),
+                child: Icon(Icons.camera_alt),
+                mini: true,
+                onPressed: _onCameraClick),
           )
         ],
       ),
@@ -98,7 +105,7 @@ class _ProfileState extends State<ProfileScreen> {
         Padding(
           padding: EdgeInsets.only(top: 13),
           child: Text(
-            'Profile Name',
+            '닉네임',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -106,8 +113,10 @@ class _ProfileState extends State<ProfileScreen> {
           style: TextStyle(color: Colors.black),
           controller: _nicknameController,
           decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black)),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black)),
           ),
           validator: validateName,
           keyboardType: TextInputType.emailAddress,
@@ -123,32 +132,30 @@ class _ProfileState extends State<ProfileScreen> {
         Padding(
           padding: EdgeInsets.only(top: 13),
           child: Text(
-            'Email',
+            '이메일',
             style: TextStyle(color: Colors.black),
           ),
         ),
-        TextFormField(
-          controller: _emailController,
-          style: TextStyle(color: Colors.black),
-          decoration: InputDecoration(
-            hintText: 'Email Address',
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        Padding(
+          padding: EdgeInsets.only(top: 13),
+          child: Text(
+            user.email,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+            ),
           ),
-          validator: validateEmail,
-          keyboardType: TextInputType.emailAddress,
-          textInputAction: TextInputAction.next,
-          onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-        ),
+        )
       ],
     );
+
     final genderField = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.only(top: 13),
           child: Text(
-            'Gender',
+            '성별',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -162,7 +169,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Radio(
                   value: Gender.MAN,
                   groupValue: _userGender,
-                  activeColor: Colors.black,
+                  activeColor: Color(COLOR_PRIMARY),
                   onChanged: (value) {
                     setState(() {
                       _userGender = value;
@@ -179,7 +186,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    "Male",
+                    "남성",
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -192,7 +199,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Radio(
                   value: Gender.WOMEN,
                   groupValue: _userGender,
-                  activeColor: Colors.black,
+                  activeColor: Color(COLOR_PRIMARY),
                   onChanged: (value) {
                     setState(() {
                       _userGender = value;
@@ -209,7 +216,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    "Female",
+                    "여성",
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -228,7 +235,7 @@ class _ProfileState extends State<ProfileScreen> {
         Padding(
           padding: EdgeInsets.only(top: 13),
           child: Text(
-            'Age',
+            '나이',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -240,7 +247,7 @@ class _ProfileState extends State<ProfileScreen> {
             iconSize: 24,
             elevation: 16,
             hint: Text(
-              "$_userAge years old",
+              "$_userAge 살",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,
@@ -258,7 +265,7 @@ class _ProfileState extends State<ProfileScreen> {
                   value: age,
                   child: SizedBox(
                     child: Text(
-                      age.toString() + " years old",
+                      age.toString() + " 살",
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         color: Colors.black,
@@ -274,12 +281,15 @@ class _ProfileState extends State<ProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(20),
+        )),
+        backgroundColor: Color(COLOR_PRIMARY),
         title: Text(
-          'Profile',
-          style: TextStyle(color: Colors.black),
+          '사용자 정보',
         ),
         iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
         centerTitle: true,
       ),
       body: Container(
@@ -290,34 +300,36 @@ class _ProfileState extends State<ProfileScreen> {
             child: Column(
               children: [
                 imageField,
-                nickNameField,
-                emailField,
-                genderField,
-                ageField,
-                SizedBox(
-                  height: 40,
-                ),
-                Material(
-                  elevation: 5.0,
-                  borderRadius: BorderRadius.circular(25.0),
-                  color: Color(COLOR_PRIMARY),
-                  child: MaterialButton(
-                      minWidth: size.width / 1.2,
-                      padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-                      child: Text(
-                        "Save",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  nickNameField,
+                  emailField,
+                  genderField,
+                  ageField,
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(25.0),
+                    color: Color(COLOR_PRIMARY),
+                    child: MaterialButton(
+                        minWidth: size.width / 1.2,
+                        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+                        child: Text(
+                          "저장",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      onPressed: () async {
-                        _saveProfile();
-                        Navigator.pop(context);
-                      }),
-                )
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          _saveProfile();
+
+                        }),
+                  )
+                ])
               ],
             ) //ListView
 
@@ -328,12 +340,13 @@ class _ProfileState extends State<ProfileScreen> {
 
   _saveProfile() async {
     if (_key.currentState.validate()) {
-      showProgress(context, 'Saving Profile data, Please wait...', false);
+      showProgress(context, '프로필을 저장중입니다...', false);
       var profilePicUrl = '';
       try {
         if (_image != null) {
-          updateProgress('Uploading image, Please wait...');
-          profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, user.userID);
+          updateProgress('이미지를 업로드중입니다...');
+          profilePicUrl = await FireStoreUtils()
+              .uploadUserImageToFireStorage(_image, user.userID);
           user.profilePictureURL = profilePicUrl;
         }
         user.nickName = _nicknameController.text;
@@ -362,11 +375,13 @@ class _ProfileState extends State<ProfileScreen> {
       ),
       actions: <Widget>[
         CupertinoActionSheetAction(
-          child: Text("갤러리에서 고르기" ,style: TextStyle(fontSize: 17.0, color: Color(COLOR_PRIMARY))),
+          child: Text("갤러리에서 고르기",
+              style: TextStyle(fontSize: 17.0, color: Color(COLOR_PRIMARY))),
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile image = await _imagePicker.getImage(source: ImageSource.gallery);
+            PickedFile image =
+                await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null)
               setState(() {
                 _image = File(image.path);
@@ -374,11 +389,13 @@ class _ProfileState extends State<ProfileScreen> {
           },
         ),
         CupertinoActionSheetAction(
-          child: Text("카메라로 찍기", style: TextStyle(fontSize: 17, color: Color(COLOR_PRIMARY))),
+          child: Text("카메라로 찍기",
+              style: TextStyle(fontSize: 17, color: Color(COLOR_PRIMARY))),
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile image = await _imagePicker.getImage(source: ImageSource.camera);
+            PickedFile image =
+                await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null)
               setState(() {
                 _image = File(image.path);

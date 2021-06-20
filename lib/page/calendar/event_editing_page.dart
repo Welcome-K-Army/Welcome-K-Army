@@ -7,6 +7,8 @@ import 'package:Army/utils.dart';
 import 'package:Army/model/calendar/event.dart';
 import 'package:Army/provider/event_provider.dart';
 
+import '../../constants.dart';
+
 class EventEditingPage extends StatefulWidget {
   final Event event;
 
@@ -80,6 +82,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),)),
+        backgroundColor: Color(COLOR_PRIMARY),
         leading: CloseButton(),
         actions: buildEditingActions(provider),
       ),
@@ -113,7 +119,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             saveForm(provider);
           },
           icon: Icon(Icons.done),
-          label: Text('SAVE'),
+          label: Text('저장'),
         )
       ];
 
@@ -121,10 +127,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
         style: TextStyle(fontSize: 24),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: 'Add Title',
+          hintText: '제목',
         ),
         onFieldSubmitted: (_) => saveForm(provider),
-        validator: (title) => title != null && title.isEmpty ? 'Title cannot be empty' : null,
+        validator: (title) => title != null && title.isEmpty ? '제목은 비어있을 수 없습니다.' : null,
         controller: titleController,
       );
 
@@ -134,7 +140,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ]);
 
   Widget buildFrom() => buildHeader(
-        header: "FROM",
+        header: "시작시간",
         child: Row(children: [
           Expanded(
             flex: 2,
@@ -152,7 +158,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildTo() => buildHeader(
-        header: "To",
+        header: "종료시간",
         child: Row(children: [
           Expanded(
             flex: 2,
@@ -245,21 +251,21 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildDescription(EventProvider provider) => buildHeader(
-      header: "Description",
+      header: "설명",
       child: TextFormField(
         style: TextStyle(fontSize: 24),
         minLines: 6,
         maxLines: null,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Add Description',
+          hintText: '설명 추가',
         ),
         onFieldSubmitted: (_) => saveForm(provider),
         controller: descriptionController,
       ));
 
   Widget buildColor(Size size) => buildHeader(
-      header: "Color",
+      header: "색깔",
       child: GridView.builder(
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

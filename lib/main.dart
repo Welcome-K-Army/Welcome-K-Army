@@ -14,13 +14,15 @@ import 'package:Army/provider/event_provider.dart';
 import 'package:Army/provider/noticeProvider.dart';
 import 'package:Army/page/error/initialize_error_page.dart';
 import 'package:Army/page/onboarding_page.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => EventProvider(), 
+      create: (context) => EventProvider(),
       child: ChangeNotifierProvider(
-        create: (context) => NoticeProvider(), 
+        create: (context) => NoticeProvider(),
         child: MyApp()
       )
     )
@@ -62,6 +64,16 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         statusBarColor: Colors.transparent,
       ),
       child: MaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            // ... app-specific localization delegate[s] here
+            SfGlobalLocalizations.delegate
+          ],
+          supportedLocales: [
+            const Locale('ko')
+            // ... other locales the app supports
+          ],
+          locale: const Locale('ko'),
           theme: ThemeData(
             accentColor: Color(COLOR_PRIMARY),
             bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0)),

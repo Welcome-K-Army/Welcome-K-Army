@@ -1,3 +1,4 @@
+import 'package:Army/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,12 @@ class CalendarWidget extends StatelessWidget {
     final provider = Provider.of<EventProvider>(context);
     final events = provider.events;
     return Scaffold(
-      appBar: AppBar(title: Text("일정"), actions: <Widget>[
+      appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),)),
+          backgroundColor: Color(COLOR_PRIMARY),
+          title: Text("일정"), actions: <Widget>[
         PopupMenuButton(
             icon: Icon(Icons.add),
             onSelected: (value) {
@@ -35,7 +41,8 @@ class CalendarWidget extends StatelessWidget {
               if (value == 2) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SchoolEventAddingPage()),
+                  MaterialPageRoute(
+                      builder: (context) => SchoolEventAddingPage()),
                 );
               }
             },
@@ -50,20 +57,23 @@ class CalendarWidget extends StatelessWidget {
                   )
                 ])
       ]),
-      body: SfCalendar(
-          view: CalendarView.month,
-          dataSource: EventDataSource(events),
-          initialSelectedDate: DateTime.now(),
-          cellBorderColor: Colors.transparent,
-          showDatePickerButton: true,
-          allowedViews: _allowedViews,
-          onLongPress: (details) {
-            provider.setDate(details.date);
-            showModalBottomSheet(
-              context: context,
-              builder: (context) => TasksWidget(),
-            );
-          }),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child:  SfCalendar(
+            view: CalendarView.month,
+            dataSource: EventDataSource(events),
+            initialSelectedDate: DateTime.now(),
+            cellBorderColor: Colors.transparent,
+            showDatePickerButton: true,
+            allowedViews: _allowedViews,
+            onLongPress: (details) {
+              provider.setDate(details.date);
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => TasksWidget(),
+              );
+            }),
+      )
     );
   }
 }
