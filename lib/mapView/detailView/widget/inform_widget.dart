@@ -27,6 +27,7 @@ class InformWidgetState extends State<InformWidget> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
+    Icons.book,
     IconData(63084, fontFamily: 'MaterialIcons'),
   ];
 
@@ -49,10 +50,30 @@ class InformWidgetState extends State<InformWidget> {
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
+            pdfurl(),
           ],
         ),
       ),
     );
+  }
+  Widget pdfurl() {
+    List<String> informList_ = widget.informList;
+    return ListTile(
+        leading: Tooltip(
+            message: "모집요강 바로가기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList_[1]));
+                })),
+        title: Text(informList_[1]),
+        trailing: Tooltip(
+            message: "복사 하기",
+            child: IconButton(
+                icon: Icon(informIconList[3]),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: informList_[1]));
+                })));
   }
 
   Widget buildAddressTile() {
