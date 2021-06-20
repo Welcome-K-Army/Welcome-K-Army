@@ -63,7 +63,7 @@ class DetailViewState extends State<DetailView> {
               ),
               Tab(
                 icon: Icon(Icons.search, size: 20),
-                text: 'Search',
+                text: 'pdf',
               ),
               Tab(
                 icon: Icon(Icons.people, size: 20),
