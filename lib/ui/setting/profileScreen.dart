@@ -82,12 +82,11 @@ class _ProfileState extends State<ProfileScreen> {
                     ),
                   ),
                 )
-              : displayCircleImage(
-                  user.profilePictureURL.isEmpty
-                      ? "lib/image/Loading.gif"
-                      : user.profilePictureURL,
-                  125,
-                  false),
+              : user.profilePictureURL.isEmpty
+              ? Icon(Icons.flutter_dash, size: 125,):displayCircleImage(user.profilePictureURL,
+              125,
+              false
+          ),
           Positioned(
             left: 80,
             right: 0,
@@ -170,7 +169,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Radio(
                   value: Gender.MAN,
                   groupValue: _userGender,
-                  activeColor: Colors.black,
+                  activeColor: Color(COLOR_PRIMARY),
                   onChanged: (value) {
                     setState(() {
                       _userGender = value;
@@ -200,7 +199,7 @@ class _ProfileState extends State<ProfileScreen> {
                 child: Radio(
                   value: Gender.WOMEN,
                   groupValue: _userGender,
-                  activeColor: Colors.black,
+                  activeColor: Color(COLOR_PRIMARY),
                   onChanged: (value) {
                     setState(() {
                       _userGender = value;
@@ -325,8 +324,9 @@ class _ProfileState extends State<ProfileScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          _saveProfile();
                           Navigator.pop(context);
+                          _saveProfile();
+
                         }),
                   )
                 ])
@@ -340,11 +340,11 @@ class _ProfileState extends State<ProfileScreen> {
 
   _saveProfile() async {
     if (_key.currentState.validate()) {
-      showProgress(context, 'Saving Profile data, Please wait...', false);
+      showProgress(context, '프로필을 저장중입니다...', false);
       var profilePicUrl = '';
       try {
         if (_image != null) {
-          updateProgress('Uploading image, Please wait...');
+          updateProgress('이미지를 업로드중입니다...');
           profilePicUrl = await FireStoreUtils()
               .uploadUserImageToFireStorage(_image, user.userID);
           user.profilePictureURL = profilePicUrl;

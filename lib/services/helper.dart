@@ -136,12 +136,8 @@ Widget _getPlaceholderOrErrorImage(double size, hasBorder) => Container(
         ),
       ),
       child: ClipOval(
-          child: Image.asset(
-        "lib/image/Loading.gif",
-        fit: BoxFit.cover,
-        height: size,
-        width: size,
-      )),
+          child: Icon(Icons.flutter_dash,size:size),
+      ),
     );
 
 Widget _getCircularImageProvider(
