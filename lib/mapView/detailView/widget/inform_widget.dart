@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class InformWidget extends StatefulWidget {
   final List<String> informList;
@@ -42,7 +41,6 @@ class InformWidgetState extends State<InformWidget> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
-            displayCircleImage(informList_[4],125, false),
             Image.network(informList_[4]),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             ListTile(title: Text(informList_[0])),
