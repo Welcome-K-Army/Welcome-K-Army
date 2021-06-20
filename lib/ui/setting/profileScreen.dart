@@ -287,10 +287,10 @@ class _ProfileState extends State<ProfileScreen> {
         )),
         backgroundColor: Color(COLOR_PRIMARY),
         title: Text(
-          '사용자 정보',
+          '계정 정보',
+          style:TextStyle(fontSize: 20)
         ),
-        iconTheme: IconThemeData(color: Colors.black),
-        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(36, 20, 36, 20),

@@ -21,7 +21,7 @@ class SettingScreen extends StatelessWidget {
         color: Color(0xFFEDF0F4),
       child: Column(
         children: [
-          SizedBox(height: 40),
+          SizedBox(height: 60),
           Stack(
             children: [
               Padding(padding: const EdgeInsets.fromLTRB(50,60,50,0),
@@ -32,13 +32,29 @@ class SettingScreen extends StatelessWidget {
                     child:Container(
                       width: double.infinity,
                       height: 150,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 75
+                          ),
+                          Text(user.nickName,style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold
+                          ),),
+                          SizedBox(height: 2,),
+                          Text(user.email,style: TextStyle(
+                              fontSize: 15,
+                            color: Colors.black54
+                          ),)
+                        ],
+                      ),
                     )
                 ),),
               Align(
                 child:Container(
                   padding: EdgeInsets.all(0),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(COLOR_PRIMARY), width: 3),
+                    border: Border.all(color: Color(COLOR_PRIMARY), width: 4),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: user.profilePictureURL.isEmpty
@@ -51,7 +67,7 @@ class SettingScreen extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Settings(
             //계정 수정 네비게이터
             icon: Icon(
@@ -107,7 +123,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
       child: Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),

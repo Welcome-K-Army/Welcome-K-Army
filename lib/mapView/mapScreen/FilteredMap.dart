@@ -28,7 +28,9 @@ class FilteredMapState extends State<FilteredMap> {
   @override
   void initState() {
     _controller.future.whenComplete(() {
-      setState(() => _isMapLoaded = true);
+      if(this.mounted){
+        setState(() => _isMapLoaded = true);
+      }
       Future.delayed(const Duration(milliseconds: 1500),
           () => setState(() => _isAnimationEnd = true));
     });
