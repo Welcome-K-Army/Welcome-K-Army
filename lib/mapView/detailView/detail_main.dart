@@ -37,7 +37,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.number,
       widget.arguments.web_address,
       widget.arguments.image,
-      widget.argumnets.pdfurl,
+      widget.arguments.pdfurl,
     ];
     return DefaultTabController(
       length: 4,
