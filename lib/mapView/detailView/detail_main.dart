@@ -37,6 +37,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.number,
       widget.arguments.web_address,
       widget.arguments.image,
+      widget.argumnets.pdfurl,
     ];
     return DefaultTabController(
       length: 4,
@@ -75,7 +76,7 @@ class DetailViewState extends State<DetailView> {
         body: TabBarView(
           children: [
             InformWidget(informList),
-            AdmissionWidget(informList),
+            AdmissionWidget(informList[5]),
             CompetitionChartWidget(),
             Text('교육과정'),
           ],

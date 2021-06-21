@@ -3,9 +3,9 @@ import '../page/pdf_viewing_page.dart';
 
 
 class AdmissionWidget extends StatefulWidget {
-  final List<String> informList;
+  String pdfurl;
 
-  AdmissionWidget(this.informList, {Key key}) : super(key: key);
+  AdmissionWidget(this.pdfurl, {Key key}) : super(key: key);
 
   @override
   AdmissionWidgetState createState() => AdmissionWidgetState();
@@ -23,7 +23,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
             child: IconButton(
                 icon: Icon(Icons.add),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(informList_[5])));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfurl)));
                 })));
   }
 }
