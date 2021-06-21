@@ -5,6 +5,9 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 /// Represents the Homepage for Navigation
 class PdfViewingPage extends StatefulWidget {
+  final String pdfurl;
+
+  PdfViewingPage(this.pdfurl, {Key key}) : super(key: key);
   @override
   _PdfViewingPage createState() => _PdfViewingPage();
 }
@@ -47,6 +50,7 @@ class _PdfViewingPage extends State<PdfViewingPage> {
 
   @override
   Widget build(BuildContext context) {
+    String pdfurl_ = widget.pdfurl;
     return Scaffold(
       appBar: _showToolbar
           ? AppBar(
@@ -106,7 +110,7 @@ class _PdfViewingPage extends State<PdfViewingPage> {
       body: Stack(
         children: [
           SfPdfViewer.network(
-            'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+            pdfurl_,
             controller: _pdfViewerController,
             canShowScrollHead: _showScrollHead,
           ),

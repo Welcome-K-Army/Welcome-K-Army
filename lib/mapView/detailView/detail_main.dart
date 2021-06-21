@@ -75,7 +75,7 @@ class DetailViewState extends State<DetailView> {
         body: TabBarView(
           children: [
             InformWidget(informList),
-            AdmissionWidget(),
+            AdmissionWidget(informList),
             CompetitionChartWidget(),
             Text('교육과정'),
           ],
@@ -91,5 +91,6 @@ class Arguments {
   String number;
   String web_address;
   String image;
-  Arguments(this.name, this.address, this.number, this.web_address, this.image);
+  String pdfurl;
+  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl);
 }

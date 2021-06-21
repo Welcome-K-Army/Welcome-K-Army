@@ -4,6 +4,10 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class PdfViewingWidget extends StatefulWidget {
+  final List<String> informList;
+
+  InformWidget(this.informList, {Key key}) : super(key: key);
+  
   @override
   PdfViewingWidgetState createState() => PdfViewingWidgetState();
 }
