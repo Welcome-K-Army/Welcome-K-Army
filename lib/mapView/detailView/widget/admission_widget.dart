@@ -14,7 +14,7 @@ class AdmissionWidget extends StatefulWidget {
 class AdmissionWidgetState extends State<AdmissionWidget> {
   @override
   Widget build(BuildContext context) {
-    List<String> pdfurl_ = widget.pdfurl;
+    String pdfurl_ = widget.pdfurl;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: Container(
