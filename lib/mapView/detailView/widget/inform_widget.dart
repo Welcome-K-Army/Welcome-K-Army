@@ -27,7 +27,7 @@ class InformWidgetState extends State<InformWidget> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
-    Icons.book,
+    // Icons.book,
     IconData(63084, fontFamily: 'MaterialIcons'),
   ];
 
@@ -50,7 +50,7 @@ class InformWidgetState extends State<InformWidget> {
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
-            pdfurl(),
+            // pdfurl(),
           ],
         ),
       ),
