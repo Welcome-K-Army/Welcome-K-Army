@@ -5,7 +5,7 @@ class PdfItems {
   List<String> items;
   List<String> itemsTitle;
 
-  PdfItem({this.items, this.itemsTitle});
+  PdfItems({this.items, this.itemsTitle});
 
   /*
   factory PdfItems.fromUrl(Map<String, dynamic) parsedJson {

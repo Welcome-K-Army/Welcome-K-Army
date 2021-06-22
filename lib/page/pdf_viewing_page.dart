@@ -6,6 +6,9 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 /// Represents the Homepage for Navigation
 class PdfViewingPage extends StatefulWidget {
   String pdfItem;
+
+  PdfViewingPage({this.pdfItem});
+
   @override
   _PdfViewingPage createState() => _PdfViewingPage(pdfItem: pdfItem);
 }
