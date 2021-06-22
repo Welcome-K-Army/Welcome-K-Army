@@ -1,4 +1,7 @@
 import 'package:intl/intl.dart';
+
+import 'package:Army/model/home/gallery_item.dart';
+import 'package:Army/services/helper.dart';
 // import 'package:Army/model/user.dart';
 
 int noticeNumber = 0;
@@ -13,7 +16,7 @@ class Notice {
 
   String title;
   String contents;
-  List imageList;
+  List<GalleryItem> imageList;
 
   Notice({this.title, this.contents, this.userNickname, this.imageList}) {
     this.number = noticeNumber;
@@ -21,10 +24,6 @@ class Notice {
   }
 
   factory Notice.fromJson(Map<String, dynamic> parsedJson) {
-    return new Notice(
-      title: parsedJson['title'] ?? '', 
-      contents: parsedJson['notice'] ?? '', 
-      imageList: parsedJson['imageUrlList'], 
-      userNickname: parsedJson['userNickname']);
+    return new Notice(title: parsedJson['title'] ?? '', contents: parsedJson['notice'] ?? '', imageList: parsedGalleryItem(parsedJson['imageUrlList']), userNickname: parsedJson['userNickname']);
   }
 }

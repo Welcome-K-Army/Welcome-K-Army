@@ -15,7 +15,7 @@ class NoticeListPageState extends State<NoticeListPage> {
     final noticeProvider = Provider.of<NoticeProvider>(context);
     noticeProvider.readNotice();
     return Scaffold(
-      appBar: AppBar(title: Text('k army notice')),
+      appBar: AppBar(title: Text('공지')),
       body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", notices: noticeProvider.notices, infinite: true, maxLines: 0),
     );
   }
