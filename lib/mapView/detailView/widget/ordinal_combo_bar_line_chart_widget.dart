@@ -12,7 +12,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  // OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+  OrdinalComboBarLineChartWidget(this.competition_Data, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
     
