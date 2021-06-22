@@ -40,6 +40,14 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.pdfurl,
       widget.arguments.web_address_detail,
     ];
+
+    List<int> competition_data=[
+      widget.arguments.one,
+      widget.arguments.two,
+      widget.arguments.three,
+      widget.arguments.four,
+      
+    ]
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -78,7 +86,7 @@ class DetailViewState extends State<DetailView> {
           children: [
             InformWidget(informList),
             AdmissionWidget(informList[5]),
-            CompetitionChartWidget(),
+            CompetitionChartWidget(competition_data),
             Text('교육과정'),
           ],
         ),
@@ -95,5 +103,10 @@ class Arguments {
   String image;
   String pdfurl;
   String web_address_detail;
-  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl,this.web_address_detail);
+  List<int> one;
+  List<int> two;
+  List<int> three;
+  List<int> four;
+
+  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl,this.web_address_detail,this.one,this.two,this.three,this.four);
 }
