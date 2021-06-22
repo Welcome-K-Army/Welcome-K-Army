@@ -20,7 +20,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
-      animate: false,
+      // animate: false,
     );
   }
 
@@ -45,24 +45,24 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   /// Create series list with multiple series
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
-      new OrdinalSales('2018', competition_Data[0]),
-      new OrdinalSales('2019', competition_Data[1]),
-      new OrdinalSales('2020', competition_Data[2]),
-      new OrdinalSales('2021', competition_Data[3]),
+      new OrdinalSales('2018', competition_Data_[0]),
+      new OrdinalSales('2019', competition_Data_[1]),
+      new OrdinalSales('2020', competition_Data_[2]),
+      new OrdinalSales('2021', competition_Data_[3]),
     ];
 
     final tableSalesData = [
-      new OrdinalSales('2018', competition_Data[0]),
-      new OrdinalSales('2019', competition_Data[1]),
-      new OrdinalSales('2020', competition_Data[2]),
-      new OrdinalSales('2021', competition_Data[3]),
+      new OrdinalSales('2018', competition_Data_[0]),
+      new OrdinalSales('2019', competition_Data_[1]),
+      new OrdinalSales('2020', competition_Data_[2]),
+      new OrdinalSales('2021', competition_Data_[3]),
     ];
 
     final mobileSalesData = [
-      new OrdinalSales('2018', competition_Data[0]),
-      new OrdinalSales('2019', competition_Data[1]),
-      new OrdinalSales('2020', competition_Data[2]),
-      new OrdinalSales('2021', competition_Data[3]),
+      new OrdinalSales('2018', competition_Data_[0]),
+      new OrdinalSales('2019', competition_Data_[1]),
+      new OrdinalSales('2020', competition_Data_[2]),
+      new OrdinalSales('2021', competition_Data_[3]),
     ];
 
     return [
