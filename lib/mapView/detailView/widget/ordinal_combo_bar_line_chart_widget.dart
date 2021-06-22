@@ -5,15 +5,17 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
+  List<int> competition_Data;
+
+  OrdinalComboBarLineChartWidget(this.competition_Data, {Key key}) : super(key: key);
+  
   final List<charts.Series> seriesList;
   final bool animate;
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
-  // final List<int> competition_data;
-
-  // OrdinalComboBarLineChartWidget(this.competition_data, {Key key}) : super(key: key);
+    
 
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
@@ -42,24 +44,24 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   /// Create series list with multiple series
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
-      new OrdinalSales('2014', 5),
-      new OrdinalSales('2015', 25),
-      new OrdinalSales('2016', 100),
-      new OrdinalSales('2017', 75),
+      new OrdinalSales('2018', competition_Data[0]),
+      new OrdinalSales('2019', competition_Data[1]),
+      new OrdinalSales('2020', competition_Data[2]),
+      new OrdinalSales('2021', competition_Data[3]),
     ];
 
     final tableSalesData = [
-      new OrdinalSales('2014', 5),
-      new OrdinalSales('2015', 25),
-      new OrdinalSales('2016', 100),
-      new OrdinalSales('2017', 75),
+      new OrdinalSales('2018', competition_Data[0]),
+      new OrdinalSales('2019', competition_Data[1]),
+      new OrdinalSales('2020', competition_Data[2]),
+      new OrdinalSales('2021', competition_Data[3]),
     ];
 
     final mobileSalesData = [
-      new OrdinalSales('2014', 10),
-      new OrdinalSales('2015', 50),
-      new OrdinalSales('2016', 200),
-      new OrdinalSales('2017', 150),
+      new OrdinalSales('2018', competition_Data[0]),
+      new OrdinalSales('2019', competition_Data[1]),
+      new OrdinalSales('2020', competition_Data[2]),
+      new OrdinalSales('2021', competition_Data[3]),
     ];
 
     return [
