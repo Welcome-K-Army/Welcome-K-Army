@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class OrdinalComboBarLineChartWidget extends StatelessWidget {
-  final List<int> competition_data;
-
-  OrdinalComboBarLineChartWidget(this.competition_data, {Key key}) : super(key: key);
 
   final List<charts.Series> seriesList;
   final bool animate;
@@ -14,8 +11,12 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
+  final List<int> competition_data;
+
+  OrdinalComboBarLineChartWidget(this.competition_data, {Key key}) : super(key: key);
+
     return new OrdinalComboBarLineChartWidget(
-      _createSampleData(),
+      _createSampleData(competition_data),
       // Disable animations for image tests.
       animate: false,
     );
