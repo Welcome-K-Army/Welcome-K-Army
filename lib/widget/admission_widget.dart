@@ -1,4 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../model/pdf_items.dart';
 import '../page/pdf_viewing_page.dart';
@@ -52,6 +56,16 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                                   icon: Icon(Icons.search),
                                   onPressed: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
+                                  }),
+                              IconButton(
+                                  icon: Icon(Icons.copy),
+                                  onPressed: () {
+                                    //Get external storage directory
+                                    final directory = await getExternalStorageDirectory();
+                                    final path = directory.path;
+                                    File file = File('$path/Output.pdf');
+                                    await file.writeAsBytes(bytes, flush: true);
+                                    OpenFile.open('$path/Output.pdf');
                                   })
                             ],
                           ));
