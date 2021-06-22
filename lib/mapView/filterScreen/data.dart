@@ -19,10 +19,10 @@ List<School> fillData() {
         type: Types.Cadets, 
         age: Ages.A_17_21, 
         classes: Classes.Officer,
-        <int>one:[50,100],
-        <int>two:[30,40],
-        <int>three:[70,80],
-        <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
         ));
   lists.add(
     new School(
@@ -39,10 +39,10 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-      <int>one:[50,100],
-      <int>two:[30,40],
-      <int>three:[70,80],
-     <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
       ));
   lists.add(
     new School(
@@ -59,10 +59,10 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-    <int>one:[50,100],
-    <int>two:[30,40],
-    <int>three:[70,80],
-    <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
     ));
   lists.add(
     new School(idx: 4, 
@@ -78,10 +78,10 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_19_25, 
     classes: Classes.Officer,
-    <int>one:[50,100],
-    <int>two:[30,40],
-    <int>three:[70,80],
-    <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
     ));
   lists.add(
     new School(idx: 5, 
@@ -97,10 +97,10 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_17_21, 
     classes: Classes.Officer,
-    <int>one:[50,100],
-    <int>two:[30,40],
-    <int>three:[70,80],
-    <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
     ));
   lists.add(
     new School(idx: 6, 
@@ -116,10 +116,10 @@ List<School> fillData() {
     type: Types.CadetCandidate, 
     age: Ages.A_20_27, 
     classes: Classes.Officer,
-    <int>one:[50,100],
-    <int>two:[30,40],
-    <int>three:[70,80],
-    <int>four:[10,30],
+        one:50,
+        two:100,
+        three:200,
+        four:10,
     ));
 
   return lists;
