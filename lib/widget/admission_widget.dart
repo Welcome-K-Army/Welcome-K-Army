@@ -30,34 +30,43 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: EdgeInsets.all(10),
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 4,
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: pdfItems.itemsTitle.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                    title: Text(pdfItems.itemsTitle[index]),
-                    trailing: Wrap(
-                      spacing: 12, // space between two icons
-                      children: <Widget>[
-                        IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
-                            })
-                      ],
-                    ));
-              }),
-        ),
-      ), // Padding
-    ));
+            padding: EdgeInsets.all(10),
+            child: Card(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              elevation: 4,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: pdfItems.itemsTitle.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                          title: Text(pdfItems.itemsTitle[index]),
+                          trailing: Wrap(
+                            spacing: 12, // space between two icons
+                            children: <Widget>[
+                              IconButton(
+                                  icon: Icon(Icons.search),
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
+                                  })
+                            ],
+                          ));
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider(
+                        color: Colors.black12,
+                        height: 10,
+                        thickness: 5,
+                        indent: 20,
+                        endIndent: 20,
+                      );
+                    }),
+              ), // Padding
+            )));
   }
 }
