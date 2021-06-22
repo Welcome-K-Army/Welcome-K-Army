@@ -24,7 +24,7 @@ class InformWidgetState extends State<InformWidget> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
-    IconData(63084, fontFamily: 'MaterialIcons'),
+    Icons.copy,
   ];
 
   @override

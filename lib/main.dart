@@ -48,7 +48,7 @@ class MyHomePageState extends State<MyHomePage> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
-    IconData(63084, fontFamily: 'MaterialIcons'),
+    Icons.people,
   ];
 
   @override
