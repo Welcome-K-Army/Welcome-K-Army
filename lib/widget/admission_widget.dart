@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -58,15 +59,9 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                                   }),
                               IconButton(
-                                  icon: Icon(Icons.copy),
-                                  onPressed: () async {
-                                    //Get external storage directory
-                                    final directory = await getExternalStorageDirectory();
-                                    final path = directory.path;
-                                    File file = File('$path/Output.pdf');
-                                    await file.writeAsBytes(bytes, flush: true);
-                                    OpenFile.open('$path/Output.pdf');
-                                  })
+                                icon: Icon(Icons.copy),
+                                onPressed: _createPDF,
+                              )
                             ],
                           ));
                     },
@@ -81,5 +76,24 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                     }),
               ), // Padding
             )));
+  }
+
+  Future<void> _createPDF() async {
+    //Create a new PDF document
+    PdfDocument document = PdfDocument();
+
+    //Add a new page and draw text
+    document.pages.add().graphics.drawString('Hello World!', PdfStandardFont(PdfFontFamily.helvetica, 20), brush: PdfSolidBrush(PdfColor(0, 0, 0)), bounds: Rect.fromLTWH(0, 0, 500, 50));
+
+    //Save the document
+    List<int> bytes = document.save();
+    final directory = await getExternalStorageDirectory();
+    final path = directory.path;
+    File file = File('$path/Output.pdf');
+    await file.writeAsBytes(bytes, flush: true);
+    OpenFile.open('$path/Output.pdf');
+
+    //Dispose the document
+    document.dispose();
   }
 }

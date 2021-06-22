@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
-import 'widget/downloader.dart';
 import 'widget/inform_widget.dart';
 
 void main() => runApp(MyApp());
