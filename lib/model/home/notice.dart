@@ -7,8 +7,8 @@ import 'package:Army/services/helper.dart';
 int noticeNumber = 0;
 
 class Notice {
-  var date_yMd = DateFormat.yMd().format(new DateTime.now());
-  var date_yMMMd = DateFormat.yMMMd().format(new DateTime.now());
+  var date_yMd = DateFormat.yMd('ko-kr').format(new DateTime.now());
+  var date_yMMMd = DateFormat.yMMMd('ko-kr').format(new DateTime.now());
 
   int number;
 

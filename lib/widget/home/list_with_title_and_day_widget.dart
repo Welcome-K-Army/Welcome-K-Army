@@ -1,3 +1,4 @@
+import 'package:Army/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Army/model/home/notice.dart';
@@ -29,31 +30,45 @@ class ListWithTitleAndDayWidget extends StatelessWidget {
     else
       max = maxLines;
     return Card(
-        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
         elevation: 4,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          HeaderTile(title: title),
-          SizedBox.shrink(),
-          ListView.separated(
-              shrinkWrap: true,
-              itemCount: infinite ? notices.length : max,
-              itemBuilder: (context, index) {
-                return ListTileWithTitleAndDay(
-                    notice: notices[notices.length - (index + 1)]);
-              },
-              separatorBuilder: (context, index) {
-                return const Divider(
-                  color: Colors.black12,
-                  height: 10,
-                  thickness: 5,
-                  indent: 20,
-                  endIndent: 20,
-                );
-              })
-        ])); // ListView
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: 10,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(10),
+                        topLeft: Radius.circular(10))),
+              ),
+            ),
+            MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: infinite ? notices.length : max,
+                    itemBuilder: (context, index) {
+                      return ListTileWithTitleAndDay(
+                          notice: notices[notices.length - (index + 1)]);
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider(
+                        color: Colors.black12,
+                        height: 10,
+                        thickness: 2,
+                        indent: 20,
+                        endIndent: 20,
+                      );
+                    }))
+          ],
+        )); // ListView
   }
 }
 
@@ -67,9 +82,24 @@ class ListTileWithTitleAndDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String fixedContent = notice.contents;
+    if (fixedContent.length > 30) {
+      fixedContent = fixedContent.substring(0, 30);
+      fixedContent += "...";
+    }
+
     return ListTile(
-        title: Text(notice.title),
-        subtitle: Text(notice.date_yMd),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(notice.title),
+            Text(
+              notice.date_yMd,
+              style: TextStyle(fontSize: 14, color: Colors.black54),
+            )
+          ],
+        ),
+        subtitle: Text(fixedContent),
         onTap: () {
           Navigator.push(
             context,
@@ -77,35 +107,6 @@ class ListTileWithTitleAndDay extends StatelessWidget {
                 builder: (context) => ListContentView(notice: notice)),
           );
         }); // ListTile
-  }
-}
-
-class HeaderTile extends StatelessWidget {
-  const HeaderTile({
-    Key key,
-    this.title,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(10, 0, 25, 0),
-      child: SizedBox(
-        height: 40.0,
-        child: Card(
-            color: Colors.blue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(5.0),
-              child: Text(title),
-            )),
-      ),
-    ); // SizedBox
-    // Return Container
   }
 }
 
@@ -117,33 +118,71 @@ class ListContentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: ListView(children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.person, size: 40),
-            title: Text(notice.userNickname),
-            subtitle: Text(notice.date_yMMMd),
-          ),
-          Text(notice.contents),
-          Container(
-            height: 60,
-            child: notice.imageList.length > 0
-                ? notice.imageList[0] != null
-                    ? buildGallery(context)
-                    : Container()
-                : Container(), // ListView
-          )
-        ]));
+        appBar: AppBar(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          )),
+          backgroundColor: Color(COLOR_PRIMARY),
+          title: Padding(
+              padding: EdgeInsets.only(bottom: 4),
+              child: Text(
+                notice.title,
+                style: TextStyle(fontSize: 18),
+              )),
+        ),
+        body: Padding(padding:EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+            child:
+            ListView(children: <Widget>[
+              SizedBox(width: double.infinity,height: 5,),
+              // Card(
+              //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+              //     elevation: 5,
+              //     child:
+                  ListTile(
+                leading: Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.black12,
+                  ),
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                  ),
+                ),
+                title: Text(notice.userNickname,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text(notice.date_yMMMd),
+              ),
+              // ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                decoration: BoxDecoration(
+
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    notice.imageList.length > 0 && notice.imageList[0] != null? Container(
+                      padding: EdgeInsets.symmetric(vertical: 10
+                      ),
+                      child: buildGallery(context)
+                    ): Container(),
+                    Text(notice.contents)
+                  ],
+                )
+              )
+              ,
+
+            ]),
+        ));
   }
 
   Widget buildGallery(BuildContext context) {
-  print(notice.imageList.length);
-  print(notice.imageList[0]);
     return Center(
       child: Container(
-        height: 100,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
+        child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: List<Widget>.generate(notice.imageList.length, (index) {
               return GalleryItemThumbnail(

@@ -56,6 +56,7 @@ class SettingScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(COLOR_PRIMARY), width: 4),
                     borderRadius: BorderRadius.circular(100),
+                    color: Colors.white
                   ),
                   child: user.profilePictureURL.isEmpty
                       ? Icon(

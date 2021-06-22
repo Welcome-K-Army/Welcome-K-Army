@@ -32,6 +32,9 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),)),
         backgroundColor: Color(COLOR_PRIMARY),
         leading: BackButton(),
         title: Padding(

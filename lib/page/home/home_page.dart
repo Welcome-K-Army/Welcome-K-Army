@@ -193,11 +193,11 @@ class HomePageState extends State<HomePage> {
                   );
                 }),
             ListWithTitleAndDayWidget(
-                headerTile: true,
+                headerTile: false,
                 title: "Notice",
                 notices: noticeProvider.notices,
                 infinite: false,
-                maxLines: 3),
+                maxLines: 4),
           ], // Column children
         ), // Column
       ), // Padding

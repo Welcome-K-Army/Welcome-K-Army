@@ -1,3 +1,4 @@
+import 'package:Army/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
@@ -15,8 +16,25 @@ class NoticeListPageState extends State<NoticeListPage> {
     final noticeProvider = Provider.of<NoticeProvider>(context);
     noticeProvider.readNotice();
     return Scaffold(
-      appBar: AppBar(title: Text('공지')),
-      body: ListWithTitleAndDayWidget(headerTile: false, title: "Notice", notices: noticeProvider.notices, infinite: true, maxLines: 0),
+      appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(20),
+        )),
+        backgroundColor: Color(COLOR_PRIMARY),
+        title: Padding(
+            padding: EdgeInsets.only(bottom: 4),
+            child: Text(
+              "공지",
+              style: TextStyle(fontSize: 18),
+            )),
+      ),
+      body: ListWithTitleAndDayWidget(
+          headerTile: false,
+          title: "Notices",
+          notices: noticeProvider.notices,
+          infinite: true,
+          maxLines: 0),
     );
   }
 }
