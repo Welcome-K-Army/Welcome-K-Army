@@ -7,12 +7,12 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
   List<int> competition_Data;
 
-  OrdinalComboBarLineChartWidget(this.competition_Data, {Key key},{this.animate}) : super(key: key);
+  OrdinalComboBarLineChartWidget(this.competition_Data, {Key key}) : super(key: key);
   
   final List<charts.Series> seriesList;
   final bool animate;
 
-  // OrdinalComboBarLineChartWidget(this.competition_Data, {this.animate});
+  // OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
     
@@ -27,8 +27,9 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new charts.OrdinalComboChart(seriesList,
-        animate: animate,
+    final competition_Data_=widget.competition_Data;
+    return new charts.OrdinalComboChart(competition_Data_,
+        // animate: animate,
         // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(
             groupingType: charts.BarGroupingType.grouped),
