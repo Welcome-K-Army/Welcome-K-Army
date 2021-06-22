@@ -20,7 +20,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
-      // animate: false,
+      animate: false,
     );
   }
 
@@ -28,7 +28,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new charts.OrdinalComboChart(seriesList,
-        // animate: animate,
+        animate: animate,
         // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(
             groupingType: charts.BarGroupingType.grouped),
