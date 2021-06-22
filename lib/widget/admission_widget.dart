@@ -26,7 +26,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    print(pdfItems.items);
     return Scaffold(
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
