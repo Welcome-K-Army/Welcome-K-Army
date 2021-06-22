@@ -38,6 +38,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.web_address,
       widget.arguments.image,
       widget.arguments.pdfurl,
+      widget.arguments.web_address_detail,
     ];
     return DefaultTabController(
       length: 4,
@@ -59,16 +60,16 @@ class DetailViewState extends State<DetailView> {
                 text: 'Home',
               ),
               Tab(
-                icon: Icon(Icons.search, size: 20),
-                text: 'Search',
-              ),
-              Tab(
-                icon: Icon(Icons.search, size: 20),
-                text: 'pdf',
-              ),
-              Tab(
                 icon: Icon(Icons.people, size: 20),
-                text: 'My',
+                text: '모집요강',
+              ),
+              Tab(
+                icon: Icon(Icons.search, size: 20),
+                text: '세부시행계획',
+              ),
+              Tab(
+                icon: Icon(Icons.book, size: 20),
+                text: "교육과정",
               ),
             ],
           ),
@@ -93,5 +94,6 @@ class Arguments {
   String web_address;
   String image;
   String pdfurl;
-  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl);
+  String web_address_detail;
+  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl,this.web_address_detail);
 }

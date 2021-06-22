@@ -59,6 +59,7 @@ class School{
   String web_address;
   String image;
   String pdfurl;
+  String web_address_detail;
   int idx;
   LatLng latlng;
   Categories catagory;
@@ -66,13 +67,14 @@ class School{
   Ages age;
   Classes classes;
 
-  School({String name,String address,String number,String web_address,String image,String pdfurl, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes}){
+  School({String name,String address,String number,String web_address,String image,String pdfurl,String web_address_detail, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes}){
     this.name = name;
     this.address=address;
     this.number=number;
     this.web_address = web_address;
     this.image=image;
     this.pdfurl=pdfurl;
+    this.web_address_detail=web_address_detail;
     this.idx = idx;
     this.catagory = category;
     this.latlng = latlng;
