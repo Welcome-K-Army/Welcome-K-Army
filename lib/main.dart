@@ -90,8 +90,7 @@ class MyHomePageState extends State<MyHomePage> {
         body: TabBarView(
           children: [
             InformWidget(),
-            //CompetitionChartWidget(),
-            Downloader(),
+            CompetitionChartWidget(),
             AdmissionWidget(),
             Text('교육과정'),
           ],
