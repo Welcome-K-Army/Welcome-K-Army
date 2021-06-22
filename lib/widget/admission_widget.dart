@@ -59,7 +59,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                                   }),
                               IconButton(
                                   icon: Icon(Icons.copy),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     //Get external storage directory
                                     final directory = await getExternalStorageDirectory();
                                     final path = directory.path;
