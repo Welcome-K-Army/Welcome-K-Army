@@ -59,7 +59,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                                   }),
                               IconButton(
-                                icon: Icon(Icons.download),
+                                icon: Icon(Icons.copy),
                                 onPressed: _createPDF,
                               )
                             ],
