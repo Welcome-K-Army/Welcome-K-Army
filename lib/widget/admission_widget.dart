@@ -30,7 +30,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
     return Scaffold(
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
-          itemCount: pdfItems.items.length,
+          itemCount: pdfItems.itemsTitle.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text(pdfItems.itemsTitle[index]),
