@@ -29,7 +29,9 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Card(
+        body: Padding(
+      padding: EdgeInsets.all(10),
+      child: Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -56,6 +58,6 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
               }),
         ),
       ), // Padding
-    );
+    ));
   }
 }
