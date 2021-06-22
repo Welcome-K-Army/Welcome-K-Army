@@ -12,7 +12,7 @@ class CompetitionChartWidget extends StatefulWidget {
 class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   @override
   Widget build(BuildContext context) {
-    List<String> competition_data_ = widget.competition_data;
+    List<int> competition_data_ = widget.competition_data;
     Size size = MediaQuery.of(context).size;
     return Container(
       child: SingleChildScrollView(
