@@ -28,15 +28,18 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: ListView.generate(pdfItems.items.length, (index) {
-        return ListTile(
-            title: Text(pdfItems.itemsTitle[index]),
-            trailing: IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItems.items[index])));
-                }));
-      }),
+      body: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: pdfItems.items.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+                title: Text(pdfItems.itemsTitle[index]),
+                trailing: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItems.items[index])));
+                    }));
+          }),
     );
   }
 }

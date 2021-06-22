@@ -6,9 +6,10 @@ class PdfItems {
   List<String> itemsTitle;
 
   PdfItem({this.items, this.itemsTitle});
-  
+
+  /*
   factory PdfItems.fromUrl(Map<String, dynamic) parsedJson {
     return new PdfItems(items: parsedJson['items'] ?? "", itemsTitle: parsedJson['itemsTitle'] ?? "");
   }
-
+  */
 }
