@@ -6,24 +6,25 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 /// Represents the Homepage for Navigation
 class PdfViewingPage extends StatefulWidget {
   String pdfItem;
-
-  PdfViewingPage({this.pdfItem});
+  String title;
+  PdfViewingPage({this.pdfItem, this.title});
 
   @override
-  _PdfViewingPage createState() => _PdfViewingPage(pdfItem: pdfItem);
+  _PdfViewingPage createState() => _PdfViewingPage(pdfItem: pdfItem, title: title);
 }
 
 class _PdfViewingPage extends State<PdfViewingPage> {
   final PdfViewerController _pdfViewerController = PdfViewerController();
   final GlobalKey<SearchToolbarState> _textSearchKey = GlobalKey();
   String pdfItem;
+  String title;
   bool _showToolbar;
   bool _showScrollHead;
 
   /// Ensure the entry history of Text search.
   LocalHistoryEntry _historyEntry;
 
-  _PdfViewingPage({this.pdfItem});
+  _PdfViewingPage({this.pdfItem, this.title});
 
   @override
   void initState() {
@@ -89,8 +90,14 @@ class _PdfViewingPage extends State<PdfViewingPage> {
             )
           : AppBar(
               title: Text(
-                'Syncfusion Flutter PDF Viewer',
+                title,
                 style: TextStyle(color: Colors.black87),
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
               actions: [
                 IconButton(

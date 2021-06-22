@@ -41,7 +41,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                     IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index])));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                         })
                   ],
                 )
