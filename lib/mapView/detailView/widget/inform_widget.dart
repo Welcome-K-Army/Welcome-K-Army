@@ -49,34 +49,34 @@ class InformWidgetState extends State<InformWidget> {
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
-            page_detail(),
+            // page_detail(),
           ],
         ),
       ),
     );
   }
 
-  Widget page_detail() {
-    List<String> informList_ = widget.informList;
-    return ListTile(
-        leading: Tooltip(
-            message: "세부계획바로가기",
-            child: IconButton(
-                icon: Icons.book,
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList_[6]));
-                })),
-        title: Text(informList_[6]),
-        trailing: Tooltip(
-            message: "복사 하기",
-            child: IconButton(
-                icon: Icon(
-                  Icons.book,
-                ),
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList_[6]));
-                })));
-  }
+  // Widget page_detail() {
+  //   List<String> informList_ = widget.informList;
+  //   return ListTile(
+  //       leading: Tooltip(
+  //           message: "세부계획바로가기",
+  //           child: IconButton(
+  //               icon: Icons.book,
+  //               onPressed: () {
+  //                 Clipboard.setData(ClipboardData(text: informList_[6]));
+  //               })),
+  //       title: Text(informList_[6]),
+  //       trailing: Tooltip(
+  //           message: "복사 하기",
+  //           child: IconButton(
+  //               icon: Icon(
+  //                 Icons.book,
+  //               ),
+  //               onPressed: () {
+  //                 Clipboard.setData(ClipboardData(text: informList_[6]));
+  //               })));
+  // }
 
   Widget buildAddressTile() {
     List<String> informList_ = widget.informList;
