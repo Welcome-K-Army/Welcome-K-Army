@@ -11,12 +11,12 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
-  final List<int> competition_data;
+  // final List<int> competition_data;
 
-  OrdinalComboBarLineChartWidget(this.competition_data, {Key key}) : super(key: key);
+  // OrdinalComboBarLineChartWidget(this.competition_data, {Key key}) : super(key: key);
 
     return new OrdinalComboBarLineChartWidget(
-      _createSampleData(competition_data),
+      _createSampleData(),
       // Disable animations for image tests.
       animate: false,
     );
