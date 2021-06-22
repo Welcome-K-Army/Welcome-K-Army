@@ -33,7 +33,8 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
           itemCount: pdfItems.items.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-                title: Text(pdfItems.itemsTitle[index]),
+              title: Text(pdfItems.itemsTitle[index]),
+              /*
                 trailing: Wrap(
                   spacing: 12, // space between two icons
                   children: <Widget>[
@@ -43,7 +44,9 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index])));
                         })
                   ],
-                ));
+                )
+                */
+            );
           }),
     );
   }
