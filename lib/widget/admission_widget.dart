@@ -35,7 +35,6 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text(pdfItems.itemsTitle[index]),
-              /*
                 trailing: Wrap(
                   spacing: 12, // space between two icons
                   children: <Widget>[
@@ -46,7 +45,6 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                         })
                   ],
                 )
-                */
             );
           }),
     );
