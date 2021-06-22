@@ -93,6 +93,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
     await file.writeAsBytes(bytes, flush: true);
     OpenFile.open('$path/Output.pdf');
 
+    print('hello');
     //Dispose the document
     document.dispose();
   }
