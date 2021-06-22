@@ -47,7 +47,7 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.three,
       widget.arguments.four,
       
-    ]
+    ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
