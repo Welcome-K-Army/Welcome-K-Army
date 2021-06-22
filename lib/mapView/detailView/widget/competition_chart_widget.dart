@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'ordinal_combo_bar_line_chart_widget.dart';
 
 class CompetitionChartWidget extends StatefulWidget {
-
-  final CompetitionChartWidget<String> competition_data;
+  List<int> competition_data;
 
   CompetitionChartWidget(this.competition_data, {Key key}) : super(key: key);
 
@@ -18,11 +17,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Container(
-          height: size.height,
-          width: size.width,
-          child: OrdinalComboBarLineChartWidget.withSampleData(widget.competition_data_)
-        ),
+        child: Container(height: size.height, width: size.width, child: OrdinalComboBarLineChartWidget.withSampleData(widget.competition_data_)),
       ),
     );
   }
