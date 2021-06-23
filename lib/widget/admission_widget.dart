@@ -65,9 +65,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             },
                             child: Thumbnail(
                               dataResolver: () async {
-                                Uint8List _documentBytes;
-                                _documentBytes = getPdfBytes(pdfItems.items[index]);
-                                return _documentBytes;
+                                return getPdfBytes(pdfItems.items[index]);
                               },
                               mimeType: 'application/pdf',
                               widgetSize: 50,
