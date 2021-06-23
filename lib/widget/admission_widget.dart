@@ -37,6 +37,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
     for (int index = 0; index < items.length; index++) getPdfBytes(items[index]);
+    print(_documentBytes);
     super.initState();
   }
 
