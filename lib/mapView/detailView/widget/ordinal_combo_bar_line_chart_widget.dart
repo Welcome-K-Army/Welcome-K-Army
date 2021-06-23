@@ -12,21 +12,22 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData(){
-    return new OrdinalComboBarLineChartWidget(
-      _createSampleData(),
-      // Disable animations for image tests.
-      animate: false,
-    );
-  }
   @override
   _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
 }
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
 
+
   @override
   Widget build(BuildContext context) {
+      factory OrdinalComboBarLineChartWidget.withSampleData(){
+    return new OrdinalComboBarLineChartWidget(
+      _createSampleData(),
+      // Disable animations for image tests.
+      animate: false,
+    );
+  }
     return new charts.OrdinalComboChart(seriesList,
         animate: animate,
         // Configure the default renderer as a bar renderer.
