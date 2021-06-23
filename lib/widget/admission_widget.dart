@@ -18,7 +18,6 @@ class AdmissionWidget extends StatefulWidget {
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
   PdfItems pdfItems;
-  List<Uint8List> _documentBytes;
 
   ///Get the PDF document as bytes.
   Future<Uint8List> getPdfBytes(String url) async {
@@ -38,8 +37,6 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
-    for (int index = 0; index < items.length; index++) _documentBytes.add(await getPdfBytes(items[index]));
-    print(_documentBytes);
     super.initState();
   }
 
@@ -68,7 +65,9 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             },
                             child: Thumbnail(
                               dataResolver: () async {
-                                return _documentBytes[index];
+                                Uint8List _documentBytes;
+                                _documentBytes = getPdfBytes(pdfItems.items[index]);
+                                return _documentBytes;
                               },
                               mimeType: 'application/pdf',
                               widgetSize: 50,
