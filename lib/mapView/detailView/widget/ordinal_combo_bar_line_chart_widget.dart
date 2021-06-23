@@ -6,22 +6,26 @@ import 'package:charts_flutter/flutter.dart' as charts;
 class OrdinalComboBarLineChartWidget extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
+  final List<int> competition_data;
 
-  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate},this.competition_data,{Key key}) : super(key: key);
 
-  factory OrdinalComboBarLineChartWidget.withSampleData() {
+  factory OrdinalComboBarLineChartWidget{
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
       animate: false,
+      competition_data,
     );
   }
 
 
   @override
   Widget build(BuildContext context) {
+    final competition_data_=widget.competition_data;
+
     return new charts.OrdinalComboChart(seriesList,
-        animate: animate,
+        animate: animate,competition_data_,
         // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(
             groupingType: charts.BarGroupingType.grouped),
