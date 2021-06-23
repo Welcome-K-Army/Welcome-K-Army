@@ -10,8 +10,8 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   
   final List<charts.Series> seriesList;
   final bool animate;
-  OrdinalComboBarLineChartWidget({Key? key, required this.competition_data_},{this.animate}) : super(key: key);
-  // OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+  // OrdinalComboBarLineChartWidget({Key? key, required this.competition_data_},{this.animate}) : super(key: key);
+  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData() {
     
@@ -26,8 +26,8 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<int> competition_Data_=widget.competition_data_;
-    return new charts.OrdinalComboChart(competition_Data_,
+    // final List<int> competition_Data_=widget.competition_data_;
+    return new charts.OrdinalComboChart(seriesList,
         animate: animate,
         // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(
@@ -44,24 +44,24 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   /// Create series list with multiple series
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
-      new OrdinalSales('2018', competition_data_[0]),
-      new OrdinalSales('2019', competition_data_[1]),
-      new OrdinalSales('2020', competition_data_[2]),
-      new OrdinalSales('2021', competition_data_[3]),
+      new OrdinalSales('2018', 100),
+      new OrdinalSales('2019', 50),
+      new OrdinalSales('2020', 200),
+      new OrdinalSales('2021', 10),
     ];
 
     final tableSalesData = [
-      new OrdinalSales('2018', competition_data_[0]),
-      new OrdinalSales('2019', competition_data_[1]),
-      new OrdinalSales('2020', competition_data_[2]),
-      new OrdinalSales('2021', competition_data_[3]),
+      new OrdinalSales('2018', 100),
+      new OrdinalSales('2019', 50),
+      new OrdinalSales('2020', 200),
+      new OrdinalSales('2021', 10),
     ];
 
     final mobileSalesData = [
-      new OrdinalSales('2018', competition_data_[0]),
-      new OrdinalSales('2019', competition_data_[1]),
-      new OrdinalSales('2020', competition_data_[2]),
-      new OrdinalSales('2021', competition_data_[3]),
+      new OrdinalSales('2018', 100),
+      new OrdinalSales('2019', 50),
+      new OrdinalSales('2020', 200),
+      new OrdinalSales('2021', 10),
     ];
 
     return [
