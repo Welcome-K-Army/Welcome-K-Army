@@ -21,8 +21,10 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   List<Uint8List> _documentBytes;
 
   ///Get the PDF document as bytes.
-  void getPdfBytes(String url) async {
-    _documentBytes.add((await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List());
+  Uint8List getPdfBytes(String url) async {
+    Uint8List _documentBytes;
+    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
+    return _documentBytes;
   }
 
   @override
@@ -36,7 +38,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
-    for (int index = 0; index < items.length; index++) getPdfBytes(items[index]);
+    for (int index = 0; index < items.length; index++) _documentBytes.add(getPdfBytes(items[index]));
     print(_documentBytes);
     super.initState();
   }
