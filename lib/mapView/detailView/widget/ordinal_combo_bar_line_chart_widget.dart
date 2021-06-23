@@ -39,8 +39,7 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
               // ID used to link series to this renderer.
               customRendererId: 'customLine')
         ]);
-  }
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+    static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2014', 5),
       new OrdinalSales('2015', 25),
@@ -84,6 +83,7 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
         // Configure our custom line renderer for this series.
         ..setAttribute(charts.rendererIdKey, 'customLine'),
     ];
+  }
   }
 }
 
