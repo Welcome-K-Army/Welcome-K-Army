@@ -21,7 +21,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   List<Uint8List> _documentBytes;
 
   ///Get the PDF document as bytes.
-  Uint8List getPdfBytes(String url) async {
+  Future<Uint8List> getPdfBytes(String url) async {
     Uint8List _documentBytes;
     _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
     return _documentBytes;
