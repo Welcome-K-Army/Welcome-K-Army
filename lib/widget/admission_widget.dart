@@ -38,7 +38,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
-    for (int index = 0; index < items.length; index++) _documentBytes.add(getPdfBytes(items[index]));
+    for (int index = 0; index < items.length; index++) _documentBytes.add(await getPdfBytes(items[index]));
     print(_documentBytes);
     super.initState();
   }
