@@ -18,9 +18,6 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
 
-
-  @override
-  Widget build(BuildContext context) {
       factory OrdinalComboBarLineChartWidget.withSampleData(){
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
@@ -28,6 +25,8 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
       animate: false,
     );
   }
+  @override
+  Widget build(BuildContext context) {
     return new charts.OrdinalComboChart(seriesList,
         animate: animate,
         // Configure the default renderer as a bar renderer.
