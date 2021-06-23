@@ -25,7 +25,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
   }
 
   /// Create series list with multiple series
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+  List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2018', 100),
       new OrdinalSales('2019', 50),
