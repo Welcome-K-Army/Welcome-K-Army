@@ -62,16 +62,21 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                     itemCount: pdfItems.itemsTitle.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                          leading: Thumbnail(
-                            dataResolver: () async {
-                              Uint8List _documentBytes;
-                              _documentBytes = await getPdfBytes(pdfItems.items[index]);
-                              print("after");
-                              print(_documentBytes);
-                              return _documentBytes;
+                          leading: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                             },
-                            mimeType: 'application/pdf',
-                            widgetSize: 50,
+                            child: Thumbnail(
+                              dataResolver: () async {
+                                Uint8List _documentBytes;
+                                _documentBytes = await getPdfBytes(pdfItems.items[index]);
+                                print("after");
+                                print(_documentBytes);
+                                return _documentBytes;
+                              },
+                              mimeType: 'application/pdf',
+                              widgetSize: 50,
+                            ),
                           ),
                           title: Text(pdfItems.itemsTitle[index]),
                           trailing: Wrap(
