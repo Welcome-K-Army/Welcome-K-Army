@@ -71,7 +71,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                               return _documentBytes;
                             },
                             mimeType: 'application/pdf',
-                            widgetSize: 300,
+                            widgetSize: 150,
                           ),
                           title: Text(pdfItems.itemsTitle[index]),
                           trailing: Wrap(
