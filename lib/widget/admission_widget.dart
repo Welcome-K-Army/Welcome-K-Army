@@ -78,7 +78,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                               widgetSize: 50,
                             ),
                           ),
-                          title: Text(pdfItems.itemsTitle[index]),
+                          title: Text(pdfItems.itemsTitle[index], overflow: TextOverflow.ellipsis),
                           trailing: Wrap(
                             spacing: 12, // space between two icons
                             children: <Widget>[
