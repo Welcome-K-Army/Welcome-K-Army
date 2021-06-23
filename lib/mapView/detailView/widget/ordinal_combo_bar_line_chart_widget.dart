@@ -3,29 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class OrdinalComboBarLineChartWidget extends StatelessWidget {
+
+class OrdinalComboBarLineChartWidget extends StatefulWidget {
+  //생성자
   final List<charts.Series> seriesList;
   final bool animate;
   final List<int> competition_data;
 
-  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate},this.competition_data,{Key key}) : super(key: key);
+  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+  @override
+  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
+}
 
-  factory OrdinalComboBarLineChartWidget{
+class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
+
+  factory OrdinalComboBarLineChartWidget.withSampleData{
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
       animate: false,
-      competition_data,
     );
   }
-
-
   @override
   Widget build(BuildContext context) {
-    final competition_data_=widget.competition_data;
-
     return new charts.OrdinalComboChart(seriesList,
-        animate: animate,competition_data_,
+        animate: animate,
         // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(
             groupingType: charts.BarGroupingType.grouped),
@@ -37,8 +39,6 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
               customRendererId: 'customLine')
         ]);
   }
-
-  /// Create series list with multiple series
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2014', 5),
@@ -85,6 +85,87 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
     ];
   }
 }
+
+// class OrdinalComboBarLineChartWidget extends StatelessWidget {
+//   final List<charts.Series> seriesList;
+//   final bool animate;
+//   final List<int> competition_data;
+
+//   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+
+//   factory OrdinalComboBarLineChartWidget{
+//     return new OrdinalComboBarLineChartWidget(
+//       _createSampleData(),
+//       // Disable animations for image tests.
+//       animate: false,
+//     );
+//   }
+
+
+//   @override
+//   Widget build(BuildContext context) {
+
+//     return new charts.OrdinalComboChart(seriesList,
+//         animate: animate,
+//         // Configure the default renderer as a bar renderer.
+//         defaultRenderer: new charts.BarRendererConfig(
+//             groupingType: charts.BarGroupingType.grouped),
+//         // Custom renderer configuration for the line series. This will be used for
+//         // any series that does not define a rendererIdKey.
+//         customSeriesRenderers: [
+//           new charts.LineRendererConfig(
+//               // ID used to link series to this renderer.
+//               customRendererId: 'customLine')
+//         ]);
+//   }
+
+//   /// Create series list with multiple series
+//   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+//     final desktopSalesData = [
+//       new OrdinalSales('2014', 5),
+//       new OrdinalSales('2015', 25),
+//       new OrdinalSales('2016', 100),
+//       new OrdinalSales('2017', 75),
+//     ];
+
+//     final tableSalesData = [
+//       new OrdinalSales('2014', 5),
+//       new OrdinalSales('2015', 25),
+//       new OrdinalSales('2016', 100),
+//       new OrdinalSales('2017', 75),
+//     ];
+
+//     final mobileSalesData = [
+//       new OrdinalSales('2014', 10),
+//       new OrdinalSales('2015', 50),
+//       new OrdinalSales('2016', 200),
+//       new OrdinalSales('2017', 150),
+//     ];
+
+//     return [
+//       new charts.Series<OrdinalSales, String>(
+//           id: 'Desktop',
+//           colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//           domainFn: (OrdinalSales sales, _) => sales.year,
+//           measureFn: (OrdinalSales sales, _) => sales.sales,
+//           data: desktopSalesData),
+//       new charts.Series<OrdinalSales, String>(
+//           id: 'Tablet',
+//           colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+//           domainFn: (OrdinalSales sales, _) => sales.year,
+//           measureFn: (OrdinalSales sales, _) => sales.sales,
+//           data: tableSalesData),
+//       new charts.Series<OrdinalSales, String>(
+//           id: 'Mobile ',
+//           colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+//           domainFn: (OrdinalSales sales, _) => sales.year,
+//           measureFn: (OrdinalSales sales, _) => sales.sales,
+//           data: mobileSalesData)
+//         // Configure our custom line renderer for this series.
+//         ..setAttribute(charts.rendererIdKey, 'customLine'),
+//     ];
+//   }
+// }
 
 /// Sample ordinal data type.
 class OrdinalSales {
