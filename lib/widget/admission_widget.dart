@@ -23,6 +23,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   Future<Uint8List> getPdfBytes(String uri) async {
     Uint8List _documentBytes;
     _documentBytes = (await http.readBytes(Uri.parse(uri)));
+    print(_documentBytes);
     return _documentBytes;
   }
 
@@ -63,6 +64,8 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             dataResolver: () async {
                               Uint8List _documentBytes;
                               _documentBytes = await getPdfBytes(pdfItems.items[index]);
+                              print("after");
+                              print(_documentBytes);
                               return _documentBytes;
                             },
                             mimeType: 'application/pdf',
