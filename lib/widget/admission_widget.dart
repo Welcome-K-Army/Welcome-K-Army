@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:thumbnailer/thumbnailer.dart';
 
 import '../model/pdf_items.dart';
 import '../page/pdf_viewing_page.dart';
@@ -15,6 +16,13 @@ class AdmissionWidget extends StatefulWidget {
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
   PdfItems pdfItems;
+
+  ///Get the PDF document as bytes.
+  Future<Uint8List> getPdfBytes(String uri) async {
+    Uint8List _documentBytes;
+    _documentBytes = (await http.readBytes(Uri.parse(uri)));
+    return _documentBytes;
+  }
 
   @override
   void initState() {
@@ -49,6 +57,15 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                     itemCount: pdfItems.itemsTitle.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
+                          leading: Thumbnail(
+                            dataResolver: () async {
+                              Uint8List _documentBytes;
+                              _documentBytes = await getPdfBytes(pdfItems.items[index]);
+                              return _documentBytes;
+                            },
+                            mimeType: 'application/pdf',
+                            widgetSize: 100,
+                          ),
                           title: Text(pdfItems.itemsTitle[index]),
                           trailing: Wrap(
                             spacing: 12, // space between two icons
@@ -60,7 +77,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                                   }),
                               IconButton(
                                 icon: Icon(Icons.copy),
-                                onPressed: _createPDF,
+                                onPressed: () {},
                               )
                             ],
                           ));
@@ -76,25 +93,5 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                     }),
               ), // Padding
             )));
-  }
-
-  Future<void> _createPDF() async {
-    //Create a new PDF document
-    PdfDocument document = PdfDocument();
-
-    //Add a new page and draw text
-    document.pages.add().graphics.drawString('Hello World!', PdfStandardFont(PdfFontFamily.helvetica, 20), brush: PdfSolidBrush(PdfColor(0, 0, 0)), bounds: Rect.fromLTWH(0, 0, 500, 50));
-
-    //Save the document
-    List<int> bytes = document.save();
-    final directory = await getExternalStorageDirectory();
-    final path = directory.path;
-    File file = File('$path/Output.pdf');
-    await file.writeAsBytes(bytes, flush: true);
-    OpenFile.open('$path/Output.pdf');
-
-    print('hello');
-    //Dispose the document
-    document.dispose();
   }
 }
