@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
@@ -19,14 +18,11 @@ class AdmissionWidget extends StatefulWidget {
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
   PdfItems pdfItems;
+  List<Uint8List> _documentBytes;
 
   ///Get the PDF document as bytes.
-  Future<Uint8List> getPdfBytes(String url) async {
-    Uint8List _documentBytes;
-    print("before");
+  void getPdfBytes(String url) async {
     _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
-    print(_documentBytes);
-    return _documentBytes;
   }
 
   @override
@@ -40,6 +36,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
+    for (int index = 0; index < items.length; index++) _documentBytes[index] = getPdfBytes(items[index]);
     super.initState();
   }
 
@@ -68,11 +65,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             },
                             child: Thumbnail(
                               dataResolver: () async {
-                                Uint8List _documentBytes;
-                                _documentBytes = await getPdfBytes(pdfItems.items[index]);
-                                print("after");
-                                print(_documentBytes);
-                                return _documentBytes;
+                                return _documentBytes[index];
                               },
                               mimeType: 'application/pdf',
                               widgetSize: 50,
