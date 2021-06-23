@@ -25,21 +25,6 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 }
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
-
-  @override
-  Widget build(BuildContext context) {
-    return new charts.OrdinalComboChart(seriesList,
-        animate: animate,
-        // Configure the default renderer as a bar renderer.
-        defaultRenderer: new charts.BarRendererConfig(
-            groupingType: charts.BarGroupingType.grouped),
-        // Custom renderer configuration for the line series. This will be used for
-        // any series that does not define a rendererIdKey.
-        customSeriesRenderers: [
-          new charts.LineRendererConfig(
-              // ID used to link series to this renderer.
-              customRendererId: 'customLine')
-        ]);
     static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2014', 5),
@@ -85,6 +70,20 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
         ..setAttribute(charts.rendererIdKey, 'customLine'),
     ];
   }
+  @override
+  Widget build(BuildContext context) {
+    return new charts.OrdinalComboChart(seriesList,
+        animate: animate,
+        // Configure the default renderer as a bar renderer.
+        defaultRenderer: new charts.BarRendererConfig(
+            groupingType: charts.BarGroupingType.grouped),
+        // Custom renderer configuration for the line series. This will be used for
+        // any series that does not define a rendererIdKey.
+        customSeriesRenderers: [
+          new charts.LineRendererConfig(
+              // ID used to link series to this renderer.
+              customRendererId: 'customLine')
+        ]);
   }
 }
 
