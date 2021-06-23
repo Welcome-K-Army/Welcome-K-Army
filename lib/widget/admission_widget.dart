@@ -22,6 +22,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   ///Get the PDF document as bytes.
   Future<Uint8List> getPdfBytes(String uri) async {
     Uint8List _documentBytes;
+    print("before");
     _documentBytes = (await http.readBytes(Uri.parse(uri)));
     print(_documentBytes);
     return _documentBytes;
