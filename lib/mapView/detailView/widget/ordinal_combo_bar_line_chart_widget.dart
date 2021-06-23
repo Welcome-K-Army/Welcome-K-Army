@@ -20,11 +20,6 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
       animate: false,
     );
   }
-  @override
-  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
-}
-
-class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
     static List<charts.Series<OrdinalSales, String>> _createSampleData() {
     final desktopSalesData = [
       new OrdinalSales('2014', 5),
@@ -70,6 +65,11 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
         ..setAttribute(charts.rendererIdKey, 'customLine'),
     ];
   }
+  @override
+  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
+}
+
+class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
   @override
   Widget build(BuildContext context) {
     return new charts.OrdinalComboChart(seriesList,
