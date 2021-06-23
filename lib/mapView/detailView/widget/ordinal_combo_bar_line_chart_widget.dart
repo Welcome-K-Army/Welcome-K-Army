@@ -5,39 +5,23 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
-  List<int> competition_data_;
-    
-  final List<charts.Series> seriesList;
-  final bool animate;
+
   // OrdinalComboBarLineChartWidget({Key? key, required this.competition_data_},{this.animate}) : super(key: key);
-  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
-
-  factory OrdinalComboBarLineChartWidget.withSampleData() {
-
-      
-    return new OrdinalComboBarLineChartWidget(
-      _createSampleData(),
-      // Disable animations for image tests.
-      animate: false,
-    );
-  }
-
 
   @override
   Widget build(BuildContext context) {
-    // final List<int> competition_Data_=widget.competition_data_;
-    return new charts.OrdinalComboChart(seriesList,
-        animate: animate,
-        // Configure the default renderer as a bar renderer.
-        defaultRenderer: new charts.BarRendererConfig(
-            groupingType: charts.BarGroupingType.grouped),
-        // Custom renderer configuration for the line series. This will be used for
-        // any series that does not define a rendererIdKey.
-        customSeriesRenderers: [
-          new charts.LineRendererConfig(
-              // ID used to link series to this renderer.
-              customRendererId: 'customLine')
-        ]);
+    List<charts.Series> seriesList = _createSampleData();
+    return MaterialApp(
+        home: Container(
+            height: 205.0,
+            width: 350.0,
+            child: charts.OrdinalComboChart(seriesList,
+                animate: false,
+                defaultRenderer: charts.LineRendererConfig(
+                    areaOpacity: 0.8, includeArea: true),
+                customSeriesRenderers: [
+                  new charts.LineRendererConfig(customRendererId: 'LineOne'),
+                ])));
   }
 
   /// Create series list with multiple series
