@@ -17,7 +17,7 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
 
-  factory OrdinalComboBarLineChartWidget.withSampleData{
+  factory OrdinalComboBarLineChartWidget.withSampleData(){
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
