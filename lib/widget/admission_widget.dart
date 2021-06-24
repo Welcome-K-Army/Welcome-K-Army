@@ -46,51 +46,50 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
         body: Padding(
       padding: EdgeInsets.all(10),
       child: ListView.separated(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(8),
-        itemCount: pdfItems.itemsTitle.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-              leading: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
-                },
-                child: Thumbnail(
-                  dataResolver: () async {
-                    return getPdfBytes(pdfItems.items[index]);
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(8),
+          itemCount: pdfItems.itemsTitle.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+                leading: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                   },
-                  mimeType: 'application/pdf',
-                  widgetSize: 50,
+                  child: Thumbnail(
+                    dataResolver: () async {
+                      return getPdfBytes(pdfItems.items[index]);
+                    },
+                    mimeType: 'application/pdf',
+                    widgetSize: 50,
+                  ),
                 ),
-              ),
-              title: Text(pdfItems.itemsTitle[index], overflow: TextOverflow.ellipsis),
-              trailing: Wrap(
-                spacing: 12, // space between two icons
-                children: <Widget>[
-                  IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
-                      }),
-                  IconButton(
-                    icon: Icon(Icons.copy),
-                    onPressed: () {},
-                  )
-                ],
-              ));
-        },
-        /*
+                title: Text(pdfItems.itemsTitle[index], overflow: TextOverflow.ellipsis),
+                trailing: Wrap(
+                  spacing: 12, // space between two icons
+                  children: <Widget>[
+                    IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
+                        }),
+                    IconButton(
+                      icon: Icon(Icons.copy),
+                      onPressed: () {},
+                    )
+                  ],
+                ));
+          },
           separatorBuilder: (context, index) {
-            return const Divider(
+            return Container(height: 5, width: 0);
+            /*const Divider(
               color: Colors.black12,
               height: 10,
               thickness: 5,
               indent: 20,
               endIndent: 20,
             );
-          }
-          */
-      ),
+            */
+          }),
     ));
   }
 }
