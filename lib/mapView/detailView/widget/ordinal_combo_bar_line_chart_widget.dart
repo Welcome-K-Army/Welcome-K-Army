@@ -10,7 +10,7 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
-  factory OrdinalComboBarLineChartWidget{
+  factory OrdinalComboBarLineChartWidget.withSampleData(){
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
