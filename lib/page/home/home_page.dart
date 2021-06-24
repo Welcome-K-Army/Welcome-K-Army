@@ -19,7 +19,7 @@ import 'package:Army/global.dart';
 import 'package:Army/model/home/menu.dart';
 import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/provider/noticeProvider.dart';
-import 'package:Army/page/home/notice_list_page.dart';
+import 'package:Army/page/home/news_list_page.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
 import 'package:Army/widget/home/pdf_viewing_widget.dart';
