@@ -31,7 +31,7 @@ class _SearhBarState extends State<SearhBar> {
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
-            onChange:(value){
+            onChanged:(value){
               setState((){
                 _searchResult=value;
                 data_filtered=dataSet.where((data)=>data.name.contains(_searchResult).toList();

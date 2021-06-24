@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../filterScreen/School.dart';
 import 'package:provider/provider.dart';
 
-import "../search/search.dart";
 import "../detailView/detail_main.dart";
 
 class FilteredMap extends StatefulWidget {
@@ -34,16 +33,16 @@ class FilteredMapState extends State<FilteredMap> {
 
     return Scaffold(
       body: ListView(padding: const EdgeInsets.all(8), children: [
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: TextField(
-            textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
+        // Padding(
+        //   padding: const EdgeInsets.all(8),
+        //   child: TextField(
+        //     textCapitalization: TextCapitalization.words,
+        //     decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
-            onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
-            onTap: () => applicationBloc.clear_value(),
-          ), //TextFiled
-        ), //Padding
+        //     onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
+        //     onTap: () => applicationBloc.clear_value(),
+        //   ), //TextFiled
+        // ), //Padding
         Stack(children: [
           Container(
             height: 600,
@@ -56,28 +55,28 @@ class FilteredMapState extends State<FilteredMap> {
               },
             ), //GoogleMap
           ), //Container
-          if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
-            Container(
-              height: 600,
-              width: double.infinity,
-              decoration: BoxDecoration(color: Colors.black.withOpacity(.6), backgroundBlendMode: BlendMode.darken),
-            ),
-          if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
-            Container(
-              height: 600,
-              child: ListView.builder(
-                  itemCount: applicationBloc.searchResults.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(applicationBloc.searchResults[index].name, style: TextStyle(color: Colors.white)), //Text
-                      onTap: () {
-                        // applicationBloc.selected_place(applicationBloc.prelistview[index].number);
-                        //applicationBloc.setSelectedLocation(applicationBloc.searchResults[index].placeId);
-                      },
-                    );
-                  }),
-            ),
-        ]),
+        //   if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
+        //     Container(
+        //       height: 600,
+        //       width: double.infinity,
+        //       decoration: BoxDecoration(color: Colors.black.withOpacity(.6), backgroundBlendMode: BlendMode.darken),
+        //     ),
+        //   if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
+        //     Container(
+        //       height: 600,
+        //       child: ListView.builder(
+        //           itemCount: applicationBloc.searchResults.length,
+        //           itemBuilder: (context, index) {
+        //             return ListTile(
+        //               title: Text(applicationBloc.searchResults[index].name, style: TextStyle(color: Colors.white)), //Text
+        //               onTap: () {
+        //                 // applicationBloc.selected_place(applicationBloc.prelistview[index].number);
+        //                 //applicationBloc.setSelectedLocation(applicationBloc.searchResults[index].placeId);
+        //               },
+        //             );
+        //           }),
+        //     ),
+        // ]),
       ]),
     ); //Scaffold
   }

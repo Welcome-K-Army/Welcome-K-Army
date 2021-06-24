@@ -5,7 +5,6 @@ import 'mapView/mapScreen/MapSample.dart'; // Api 사용 예시
 import 'package:provider/provider.dart';
 import 'mapView/filterScreen/FilterScreen.dart'; // 학교 정보 필터링 예시
 
-import 'mapView/search/search.dart';
 
 void main() => runApp(ChangeNotifierProvider(create: (context) => Applicationbloc(), child: MyApp()));
 
