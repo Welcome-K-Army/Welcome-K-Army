@@ -10,7 +10,7 @@ class _SearhBarState extends State<SearhBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.all(5),
+        // margin: EdgeInsets.all(5),
         child:Padding(
           padding: const EdgeInsets.all(8),
           child: TextField(
