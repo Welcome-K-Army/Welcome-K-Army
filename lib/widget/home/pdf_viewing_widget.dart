@@ -11,7 +11,7 @@ class PdfViewingWidget extends StatefulWidget {
   PdfViewingWidget({this.pdfItem});
 
   @override
-  _PdfViewingWidget createState() => _PdfViewingWidget(pdfItem: pdfItem, title: title);
+  _PdfViewingWidget createState() => _PdfViewingWidget(pdfItem: pdfItem);
 }
 
 class _PdfViewingWidget extends State<PdfViewingWidget> {
