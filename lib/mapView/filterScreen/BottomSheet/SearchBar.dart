@@ -29,7 +29,7 @@ class _SearhBarState extends State<SearhBar> {
         child:Padding(
           padding: const EdgeInsets.all(4),
           child: TextField(
-            controller:controller
+            controller:controller,
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
@@ -38,7 +38,7 @@ class _SearhBarState extends State<SearhBar> {
                 _searchResult=value;
                 data_filtered=dataSet.where((data)=>data.name.contains(_searchResult)).toList();
 
-              })
+              });
             }
           ), //TextFiled
         )); //Padding );

@@ -29,7 +29,7 @@ class FilteredMapState extends State<FilteredMap> {
 
   @override
   Widget build(BuildContext context) {
-    final applicationBloc = Provider.of<Applicationbloc>(context);
+
 
     return Scaffold(
       body: ListView(padding: const EdgeInsets.all(8), children: [
