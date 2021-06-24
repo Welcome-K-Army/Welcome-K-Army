@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
-import "../detailView/detail_main.dart";
+
+
+import 'package:testt/detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
@@ -44,14 +46,14 @@ class _SearhBarState extends State<SearhBar> {
                 } //for
                 final arguments=Arguments(value.name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
                 value.two,value.three,value.four);
-                final result=await Navigator.push(
+                final result= Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
                 );
 
               });
             },
-            onTap: () async{
+            onTap: () {
               setState((){
                 
                 controller.clear();
