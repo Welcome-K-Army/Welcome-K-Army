@@ -1,16 +1,13 @@
-/// Example of an ordinal combo chart with two series rendered as bars, and a
-/// third rendered as a line.
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class OrdinalComboBarLineChartWidget extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
-  final List<int> competition_data;
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData(){
+  factory OrdinalComboBarLineChartWidget.withSampleData() {
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(),
       // Disable animations for image tests.
@@ -21,7 +18,6 @@ class OrdinalComboBarLineChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return new charts.OrdinalComboChart(seriesList,
         animate: animate,
         // Configure the default renderer as a bar renderer.
