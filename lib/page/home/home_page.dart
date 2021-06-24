@@ -128,14 +128,14 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
-    return Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
-      Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 4,
-        child: Padding(
+    return Card(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      elevation: 4,
+      child: Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
+        Padding(
           padding: EdgeInsets.all(10),
           child: Swiper(
               autoplay: true,
@@ -166,9 +166,9 @@ class HomePageState extends State<HomePage> {
                       ]),
                     ));
               }), // Swiper
-        ),
-      )
-    ]);
+        )
+      ]),
+    );
   }
 
   Widget buildMenu() {
