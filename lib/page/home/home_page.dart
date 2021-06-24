@@ -146,20 +146,18 @@ class HomePageState extends State<HomePage> {
               return Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Card(
-                      child: Column(children: <Widget>[
+                      child: Wrap(children: <Widget>[
                     InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
                         },
-                        child: Container(
-                            height: 165.0,
-                            child: Thumbnail(
-                              dataResolver: () async {
-                                return getPdfBytes(pdfItems[index].itemUrl);
-                              },
-                              mimeType: 'application/pdf',
-                              widgetSize: 200.0 - 40.0,
-                            ))),
+                        child: Thumbnail(
+                          dataResolver: () async {
+                            return getPdfBytes(pdfItems[index].itemUrl);
+                          },
+                          mimeType: 'application/pdf',
+                          widgetSize: 200.0 - 40.0,
+                        )),
                     Text(pdfItems[index].title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                   ])));
             }), // Swiper
