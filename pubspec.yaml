@@ -45,7 +45,7 @@ dependencies:
   syncfusion_flutter_calendar: ^19.1.66
   syncfusion_localizations: ^19.1.66
   roundcheckbox: ^2.0.1
-
+  thumbnailer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

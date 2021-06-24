@@ -17,11 +17,11 @@ import 'package:Army/constants.dart';
 import 'package:Army/global.dart';
 
 import 'package:Army/model/home/menu.dart';
-import 'package:Army/model/pdf_item.dart';
+import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/provider/noticeProvider.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
-import 'package:Army/widget/pdf_viewing_widget.dart';
+import 'package:Army/widget/home/pdf_viewing_widget.dart';
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
 
 class HomePage extends StatefulWidget {
