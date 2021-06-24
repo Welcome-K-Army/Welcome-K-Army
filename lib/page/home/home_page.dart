@@ -52,7 +52,9 @@ class HomePageState extends State<HomePage> {
       '2022학년도(82기)육군사관생도모집요강',
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
-    for (int index = 0; index < items.length; index++) pdfItems.add(PdfItem(item: items[index], title: itemsTitle[index]));
+    for (int index = 0; index < items.length; index++) {
+      pdfItems.add(PdfItem(item: items[index]?, title: itemsTitle[index]?)?);
+    }
     super.initState();
   }
 
