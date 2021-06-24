@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
-import '/detailView/detail_main.dart';
+import 'lib/mapView/detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
@@ -34,7 +34,7 @@ class _SearhBarState extends State<SearhBar> {
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
-            onChanged:async(value){
+            onChanged:(value)async{
               setState((){
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
