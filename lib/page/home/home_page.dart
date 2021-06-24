@@ -150,7 +150,7 @@ class HomePageState extends State<HomePage> {
                           },
                           child: Thumbnail(
                             dataResolver: () async {
-                              return getPdfBytes(pdfItems[index].item);
+                              return getPdfBytes(pdfItems[index].itemUrl);
                             },
                             mimeType: 'application/pdf',
                             widgetSize: 200.0 - 20.0,

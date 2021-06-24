@@ -61,7 +61,7 @@ class NewsListPageState extends State<NewsListPage> {
                       },
                       child: Thumbnail(
                         dataResolver: () async {
-                          return getPdfBytes(pdfItems[index].item);
+                          return getPdfBytes(pdfItems[index].itemUrl);
                         },
                         mimeType: 'application/pdf',
                         widgetSize: size.width - 20,
