@@ -24,9 +24,8 @@ dependencies:
   google_maps_flutter: 2.0.3
   provider: ^5.0.0
   cupertino_icons: ^0.1.2
-#  syncfusion_flutter_pdf: ^19.1.66-beta
-#  syncfusion_flutter_pdfviewer: ^19.1.66-beta
-#  flutter_pdfview: ^1.1.0
+  syncfusion_flutter_pdf: ^19.1.66-beta
+  syncfusion_flutter_pdfviewer: ^19.1.66-beta
   path_provider: ^2.0.2
   url_launcher: ^6.0.6
   charts_flutter: ^0.10.0
