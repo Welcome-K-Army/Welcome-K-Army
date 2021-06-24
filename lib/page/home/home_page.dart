@@ -147,7 +147,7 @@ class HomePageState extends State<HomePage> {
                 return Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Card(
-                      child: Column(children: [
+                      child: Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
                         /*
                     InkWell(
                         onTap: () {
