@@ -9,7 +9,9 @@ class SearhBar extends StatefulWidget {
 class _SearhBarState extends State<SearhBar> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+        margin: EdgeInsets.all(5),
+        child:Padding(
           padding: const EdgeInsets.all(8),
           child: TextField(
             textCapitalization: TextCapitalization.words,
@@ -18,6 +20,6 @@ class _SearhBarState extends State<SearhBar> {
             // onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
             // onTap: () => applicationBloc.clear_value(),
           ), //TextFiled
-        ); //Padding
+        ); //Padding );
   }
 }
