@@ -57,7 +57,7 @@ class NewsListPageState extends State<NewsListPage> {
                     child: Column(children: <Widget>[
                   InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems[index].item, title: pdfItems[index].title)));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems[index])));
                       },
                       child: Thumbnail(
                         dataResolver: () async {
