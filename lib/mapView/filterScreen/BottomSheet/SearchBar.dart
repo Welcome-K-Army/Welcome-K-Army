@@ -51,7 +51,7 @@ class _SearhBarState extends State<SearhBar> {
 
               });
             },
-            onPressed:(){
+            onTap: () async{
               setState((){
                 
                 controller.clear();
@@ -59,6 +59,6 @@ class _SearhBarState extends State<SearhBar> {
               });
             }
           ), //TextFiled
-        )); //Padding );
+        )); 
   }
 }
