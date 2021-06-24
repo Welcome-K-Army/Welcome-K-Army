@@ -20,6 +20,6 @@ class _SearhBarState extends State<SearhBar> {
             // onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
             // onTap: () => applicationBloc.clear_value(),
           ), //TextFiled
-        ); //Padding );
+        )); //Padding );
   }
 }
