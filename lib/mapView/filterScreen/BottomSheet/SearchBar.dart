@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
+import '../detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SearhBarState extends State<SearhBar> {
   TextEditingController controller = TextEditingController();
   List<School> dataSet=fillData();
   List<School> data_filtered=[];
-  String _searchResult;
+  // String _searchResult;
   
   @override
   void initState(){
@@ -35,10 +36,27 @@ class _SearhBarState extends State<SearhBar> {
 
             onChanged:(value){
               setState((){
-                _searchResult=value;
-                data_filtered=dataSet.where((data)=>data.name.contains(_searchResult)).toList();
+                // _searchResult=value;
+                for (int i = 0; i <= dataSet.length; i++) {
+                  if (value == dataSet[i].name) {
+                    data_filtered.add( dataSet[i])
+                  }
+                } //for
+                final arguments=Arguments(value.name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
+                value.two,value.three,value.four);
+                final result=await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
+                );
 
               });
+            }
+            onPressed:(){
+              setState((){
+                
+                controller.clear();
+                data_filtered=[];
+              })
             }
           ), //TextFiled
         )); //Padding );
