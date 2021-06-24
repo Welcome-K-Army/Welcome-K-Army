@@ -27,7 +27,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   final List<dynamic> _imageList = [
     Icons.favorite,
-    Icons.manage_search,
+    Icons.add,
     Icons.calendar_today_outlined,
     Icons.auto_awesome
   ];
