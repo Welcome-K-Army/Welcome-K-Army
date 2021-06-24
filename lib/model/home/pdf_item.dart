@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../page/pdf_viewing_page.dart';
 
 class PdfItem {
   String item;

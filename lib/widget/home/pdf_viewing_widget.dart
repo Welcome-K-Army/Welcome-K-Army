@@ -90,7 +90,7 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
             )
           : AppBar(
               title: Text(
-                title,
+                pdfItem.title,
                 style: TextStyle(color: Colors.black87),
               ),
               leading: IconButton(
