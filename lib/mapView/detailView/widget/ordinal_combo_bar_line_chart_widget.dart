@@ -50,10 +50,15 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
   }
 
   @override
-  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
+  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState(seriesList,animate);
 }
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
+  final List<charts.Series> seriesList;
+  final bool animate;
+  // final List<int> competition_data;
+
+  OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
   @override
   Widget build(BuildContext context) {
     return  charts.OrdinalComboChart(seriesList,
