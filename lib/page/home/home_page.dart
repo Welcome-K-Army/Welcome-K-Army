@@ -34,6 +34,14 @@ class HomePageState extends State<HomePage> {
   final User user;
   HomePageState(this.user);
   List<PdfItem> pdfItems;
+  List<String> items = [
+    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
+    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
+  ];
+  List<String> itemsTitle = [
+    '2022학년도(82기)육군사관생도모집요강',
+    '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
+  ];
 
   ///Get the PDF document as bytes.
   Future<Uint8List> getPdfBytes(String url) async {
@@ -44,16 +52,8 @@ class HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    List<String> items = [
-      'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-      'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-    ];
-    List<String> itemsTitle = [
-      '2022학년도(82기)육군사관생도모집요강',
-      '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
-    ];
     for (int index = 0; index < items.length; index++) {
-      pdfItems.add(PdfItem(item: items[index]?, title: itemsTitle[index]?)?);
+      pdfItems.add(PdfItem(item: items[index], title: itemsTitle[index]));
     }
     super.initState();
   }
