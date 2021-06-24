@@ -24,7 +24,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
       ),
       child: Column(children: <Widget>[
         TitleText("상세검색"),
-        // SearchBar(),
+        SearchBar(),
         DropDownButtonList(),
         BottomSheetButton(),
       ]),
