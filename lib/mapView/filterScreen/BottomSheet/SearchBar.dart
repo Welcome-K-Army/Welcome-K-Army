@@ -4,8 +4,7 @@ import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
 
-
-import 'package:testt/detailView/detail_main.dart';
+import 'package:helloworld/detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
