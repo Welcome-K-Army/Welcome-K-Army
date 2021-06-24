@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:syncfusion_flutter_pdf/pdf.dart';
-import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:thumbnailer/thumbnailer.dart';
 
@@ -42,7 +41,7 @@ class NewsListPageState extends State<NewsListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(contgext).size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.all(10),
@@ -57,7 +56,7 @@ class NewsListPageState extends State<NewsListPage> {
                     child: Column(children: <Widget>[
                   InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems[index])));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
                       },
                       child: Thumbnail(
                         dataResolver: () async {
