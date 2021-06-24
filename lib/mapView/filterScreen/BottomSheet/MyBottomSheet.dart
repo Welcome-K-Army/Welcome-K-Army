@@ -3,6 +3,7 @@ import 'BottomSheetButton.dart';
 import 'DropDownButtonList.dart';
 import 'TitleText.dart';
 import 'searchButton.dart';
+import 'SearchBar.dart';
 
 class MyBottomSheet extends StatefulWidget {
   @override
