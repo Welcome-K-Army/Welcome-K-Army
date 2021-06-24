@@ -10,9 +10,9 @@ class _SearhBarState extends State<SearhBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        // margin: EdgeInsets.all(5),
+        margin: EdgeInsets.all(3),
         child:Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(4),
           child: TextField(
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
