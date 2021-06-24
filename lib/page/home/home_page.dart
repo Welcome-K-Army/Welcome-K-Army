@@ -146,7 +146,7 @@ class HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Card(
+
                       child: Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
                         /*
                     InkWell(
@@ -164,7 +164,7 @@ class HomePageState extends State<HomePage> {
 
                         Text(pdfItems[index].title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                       ]),
-                    ));
+                    );
               }), // Swiper
         )
       ]),
