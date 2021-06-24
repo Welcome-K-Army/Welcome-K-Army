@@ -147,6 +147,7 @@ class HomePageState extends State<HomePage> {
                   padding: EdgeInsets.all(10.0),
                   child: Card(
                       child: Column(children: [
+                        /*
                     InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
@@ -158,6 +159,7 @@ class HomePageState extends State<HomePage> {
                           mimeType: 'application/pdf',
                           widgetSize: 200.0 - 40.0,
                         )),
+                        */
                     Wrap(
                       direction: Axis.vertical,
                       alignment: WrapAlignment.start,
