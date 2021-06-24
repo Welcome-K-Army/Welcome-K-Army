@@ -19,6 +19,7 @@ import 'package:Army/global.dart';
 import 'package:Army/model/home/menu.dart';
 import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/provider/noticeProvider.dart';
+import 'package:Army/page/home/notice_list_page.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
 import 'package:Army/widget/home/pdf_viewing_widget.dart';
@@ -117,7 +118,11 @@ class HomePageState extends State<HomePage> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              TitleWithMoreBtnWidget(title: "뉴스", press: () {}),
+              TitleWithMoreBtnWidget(
+                  title: "뉴스",
+                  press: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NoticeListPage()));
+                  }),
               buildSlideBanner(),
             ])));
   }
@@ -153,7 +158,7 @@ class HomePageState extends State<HomePage> {
                               return getPdfBytes(pdfItems[index].itemUrl);
                             },
                             mimeType: 'application/pdf',
-                            widgetSize: 200.0 - 20.0,
+                            widgetSize: 200.0 - 40.0,
                           )),
                       Text(pdfItems[index].title, style: TextStyle(fontWeight: FontWeight.bold)),
                     ])));
