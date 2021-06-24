@@ -59,6 +59,7 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
   // final List<int> competition_data;
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
+  
   @override
   Widget build(BuildContext context) {
     return  charts.OrdinalComboChart(seriesList,
