@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../search_controller.dart';
+import '../School.dart';
+import '../data.dart';
+
 
 class SearhBar extends StatefulWidget {
   @override
@@ -7,6 +11,16 @@ class SearhBar extends StatefulWidget {
 }
 
 class _SearhBarState extends State<SearhBar> {
+
+  TextEditingController controller = TextEditingController();
+  List<School> dataSet=fillData();
+  List<School> data_filtered=[];
+  
+  @override
+  void initState(){
+    super.initState();
+    data_filtered=dataSet;
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,8 +31,13 @@ class _SearhBarState extends State<SearhBar> {
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
-            // onChanged: (value) => applicationBloc.searchPlaces(value), //값확인하는 클래스 생성
-            // onTap: () => applicationBloc.clear_value(),
+            onChange:(value){
+              setState((){
+                _searchResult=value;
+                data_filtered=dataSet.where((data)=>data.name.contains(_searchResult).toList();
+
+              })
+            }
           ), //TextFiled
         )); //Padding );
   }
