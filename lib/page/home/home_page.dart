@@ -144,14 +144,14 @@ class HomePageState extends State<HomePage> {
                         child: Column(children: <Widget>[
                       InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems[index].item, title: pdfItems[index].title)));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
                           },
                           child: Thumbnail(
                             dataResolver: () async {
                               return getPdfBytes(pdfItems[index].item);
                             },
                             mimeType: 'application/pdf',
-                            widgetSize: 200 - 20,
+                            widgetSize: 200.0 - 20.0,
                           )),
                       Text(pdfItems[index].title, style: TextStyle(fontWeight: FontWeight.bold)),
                     ])));
