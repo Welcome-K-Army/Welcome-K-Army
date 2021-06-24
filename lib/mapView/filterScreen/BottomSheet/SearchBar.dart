@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
-import '../detailView/detail_main.dart';
+import '/detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
@@ -34,12 +34,12 @@ class _SearhBarState extends State<SearhBar> {
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 
-            onChanged:(value){
+            onChanged:async(value){
               setState((){
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
-                    data_filtered.add( dataSet[i])
+                    data_filtered.add( dataSet[i]);
                   }
                 } //for
                 final arguments=Arguments(value.name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
@@ -50,13 +50,13 @@ class _SearhBarState extends State<SearhBar> {
                 );
 
               });
-            }
+            },
             onPressed:(){
               setState((){
                 
                 controller.clear();
                 data_filtered=[];
-              })
+              });
             }
           ), //TextFiled
         )); //Padding );
