@@ -120,7 +120,7 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
       body: Stack(
         children: [
           SfPdfViewer.network(
-            pdfItem.item,
+            pdfItem.itemUrl,
             controller: _pdfViewerController,
             canShowScrollHead: _showScrollHead,
           ),

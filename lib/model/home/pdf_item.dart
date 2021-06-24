@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PdfItem {
-  String item;
+  String itemUrl;
   String title;
 
-  PdfItem({this.item, this.title});
+  PdfItem({this.itemUrl, this.title});
 
   /*
   factory PdfItem.fromUrl(Map<String, dynamic) parsedJson {

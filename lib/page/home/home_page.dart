@@ -33,7 +33,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final User user;
   HomePageState(this.user);
-  List<PdfItem> pdfItems;
+  List<PdfItem> pdfItems = [];
   List<String> items = [
     'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
     'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
@@ -53,7 +53,7 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     for (int index = 0; index < items.length; index++) {
-      pdfItems.add(PdfItem(item: items[index], title: itemsTitle[index]));
+      pdfItems.add(PdfItem(itemUrl: items[index], title: itemsTitle[index]));
     }
     super.initState();
   }
