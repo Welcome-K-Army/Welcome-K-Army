@@ -147,7 +147,6 @@ class HomePageState extends State<HomePage> {
                 return Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
-                    /*
                     InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
@@ -159,9 +158,8 @@ class HomePageState extends State<HomePage> {
                           mimeType: 'application/pdf',
                           widgetSize: 200.0 - 40.0,
                         )),
-                        */
 
-                    Text(pdfItems[index]?.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
+                    //Text(pdfItems[index]?.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                   ]),
                 );
               }), // Swiper
