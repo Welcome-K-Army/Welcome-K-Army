@@ -128,24 +128,25 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      elevation: 4,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Swiper(
-            autoplay: true,
-            scale: 0.8,
-            viewportFraction: 1,
-            pagination: SwiperPagination(),
-            itemCount: pdfItems.length, //notice imagelist length
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Card(
+    return Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
+      Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        elevation: 4,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Swiper(
+              autoplay: true,
+              scale: 0.8,
+              viewportFraction: 1,
+              pagination: SwiperPagination(),
+              itemCount: pdfItems.length, //notice imagelist length
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Card(
                       child: Column(children: [
                         /*
                     InkWell(
@@ -160,17 +161,14 @@ class HomePageState extends State<HomePage> {
                           widgetSize: 200.0 - 40.0,
                         )),
                         */
-                    Wrap(
-                      direction: Axis.vertical,
-                      alignment: WrapAlignment.start,
-                      children: <Widget>[
-                        Text(pdfItems[index].title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold))
-                      ],
-                    )
-                  ])));
-            }), // Swiper
-      ),
-    );
+
+                        Text(pdfItems[index].title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
+                      ]),
+                    ));
+              }), // Swiper
+        ),
+      )
+    ]);
   }
 
   Widget buildMenu() {
