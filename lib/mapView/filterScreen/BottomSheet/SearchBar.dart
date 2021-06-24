@@ -15,6 +15,7 @@ class _SearhBarState extends State<SearhBar> {
   TextEditingController controller = TextEditingController();
   List<School> dataSet=fillData();
   List<School> data_filtered=[];
+  String _searchResult;
   
   @override
   void initState(){
@@ -28,6 +29,7 @@ class _SearhBarState extends State<SearhBar> {
         child:Padding(
           padding: const EdgeInsets.all(4),
           child: TextField(
+            controller:controller
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
 

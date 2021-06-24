@@ -56,7 +56,7 @@ class FilteredMapState extends State<FilteredMap> {
             ), //GoogleMap
           ), //Container
         //   
-        ]))]); //Scaffold
+        ])])); //Scaffold
   }
 
   // Future<void> _goToTheLake() async {

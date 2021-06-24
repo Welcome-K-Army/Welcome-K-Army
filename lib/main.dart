@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'mapView/filterScreen/FilterScreen.dart'; // 학교 정보 필터링 예시
 
 
-void main() => runApp(ChangeNotifierProvider(create: (context) => Applicationbloc(), child: MyApp()));
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
