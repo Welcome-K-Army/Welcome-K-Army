@@ -44,7 +44,7 @@ class _SearhBarState extends State<SearhBar> {
                     data_filtered.add( dataSet[i]);
                   }
                 } //for
-                final arguments=Arguments(value.name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
+                final arguments=Arguments(dataSet[i].name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
                 value.two,value.three,value.four);
                 final result= Navigator.push(
                   context,
