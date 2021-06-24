@@ -128,8 +128,9 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
-    return Container(
-        height: 200,
+    return Wrap(
+        spacing: 8.0, // gap between adjacent chips
+        runSpacing: 4.0, // gap between lines
         child: Card(
           color: Colors.white,
           shape: RoundedRectangleBorder(
