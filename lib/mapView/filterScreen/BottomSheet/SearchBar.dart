@@ -34,7 +34,7 @@ class _SearhBarState extends State<SearhBar> {
             onChanged:(value){
               setState((){
                 _searchResult=value;
-                data_filtered=dataSet.where((data)=>data.name.contains(_searchResult).toList();
+                data_filtered=dataSet.where((data)=>data.name.contains(_searchResult)).toList();
 
               })
             }

@@ -55,30 +55,8 @@ class FilteredMapState extends State<FilteredMap> {
               },
             ), //GoogleMap
           ), //Container
-        //   if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
-        //     Container(
-        //       height: 600,
-        //       width: double.infinity,
-        //       decoration: BoxDecoration(color: Colors.black.withOpacity(.6), backgroundBlendMode: BlendMode.darken),
-        //     ),
-        //   if (applicationBloc.searchResults != null && applicationBloc.searchResults.length != 0)
-        //     Container(
-        //       height: 600,
-        //       child: ListView.builder(
-        //           itemCount: applicationBloc.searchResults.length,
-        //           itemBuilder: (context, index) {
-        //             return ListTile(
-        //               title: Text(applicationBloc.searchResults[index].name, style: TextStyle(color: Colors.white)), //Text
-        //               onTap: () {
-        //                 // applicationBloc.selected_place(applicationBloc.prelistview[index].number);
-        //                 //applicationBloc.setSelectedLocation(applicationBloc.searchResults[index].placeId);
-        //               },
-        //             );
-        //           }),
-        //     ),
-        // ]),
-      ]),
-    ); //Scaffold
+        //   
+        ]))]); //Scaffold
   }
 
   // Future<void> _goToTheLake() async {
