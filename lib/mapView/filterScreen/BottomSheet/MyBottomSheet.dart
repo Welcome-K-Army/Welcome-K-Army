@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'BottomSheetButton.dart';
 import 'DropDownButtonList.dart';
 import 'TitleText.dart';
+import 'searchButton.dart';
 
 class MyBottomSheet extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
       ),
       child: Column(children: <Widget>[
         TitleText("상세검색"),
+        // SearchBar(),
         DropDownButtonList(),
         BottomSheetButton(),
       ]),

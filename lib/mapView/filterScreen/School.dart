@@ -58,24 +58,36 @@ class School{
   String number;
   String web_address;
   String image;
+  String pdfurl;
+  String web_address_detail;
   int idx;
   LatLng latlng;
   Categories catagory;
   Types type;
   Ages age;
   Classes classes;
+  List<int> one;
+  List<int>two;
+  List<int>three;
+  List<int> four;
 
-  School({String name,String address,String number,String web_address,String image, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes}){
+  School({String name,String address,String number,String web_address,String image,String pdfurl,String web_address_detail, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes,List<int> one,List<int> two,List<int> three,List<int> four}){
     this.name = name;
     this.address=address;
     this.number=number;
     this.web_address = web_address;
     this.image=image;
+    this.pdfurl=pdfurl;
+    this.web_address_detail=web_address_detail;
     this.idx = idx;
     this.catagory = category;
     this.latlng = latlng;
     this.type = type;
     this.age = age;
     this.classes = classes;
+    this.one=one;
+    this.two=two;
+    this.three=three;
+    this.four=four;
   }
 }

@@ -9,11 +9,9 @@ import "../filterScreen/data.dart";
 //   }
 
 class Applicationbloc with ChangeNotifier {
-  List<School> datalist = fillData(); //하드코딩된 값을 리턴
+  List<School> datalist = fillData(); 
 
   List<School> searchResults;
-
- 
 
 
   searchPlaces(String searchTerm) async {   

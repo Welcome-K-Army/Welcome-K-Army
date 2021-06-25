@@ -5,18 +5,17 @@ import 'package:url_launcher/url_launcher.dart';
 class InformWidget extends StatefulWidget {
   final List<String> informList;
 
-  InformWidget(this.informList,{Key key}):super(key:key);
-  
+  InformWidget(this.informList, {Key key}) : super(key: key);
 
   InformWidgetState createState() => InformWidgetState();
 }
-  // List<String> informList = [
-  //   current_name,
-  //   current_address,
-  //   current_number,
-  // ];
-class InformWidgetState extends State<InformWidget> {
 
+// List<String> informList = [
+//   current_name,
+//   current_address,
+//   current_number,
+// ];
+class InformWidgetState extends State<InformWidget> {
   List<String> messageList = [
     "주소 복사",
     "웹사이트 열기",
@@ -35,22 +34,49 @@ class InformWidgetState extends State<InformWidget> {
   Widget build(BuildContext context) {
     List<String> informList_ = widget.informList;
     return Container(
+      decoration: new BoxDecoration(
+        color: Colors.lightGreen[50],
+      ),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
-            Image.network(informList_[4]),
+            // displayCircleImage(informList_[4], 125, false),
+            Image.asset(informList_[4]),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             ListTile(title: Text(informList_[0])),
             Divider(color: Color(0xFFD6D6D6), thickness: 1),
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
+            // page_detail(),
           ],
         ),
       ),
     );
   }
+
+  // Widget page_detail() {
+  //   List<String> informList_ = widget.informList;
+  //   return ListTile(
+  //       leading: Tooltip(
+  //           message: "세부계획바로가기",
+  //           child: IconButton(
+  //               icon: Icons.book,
+  //               onPressed: () {
+  //                 Clipboard.setData(ClipboardData(text: informList_[6]));
+  //               })),
+  //       title: Text(informList_[6]),
+  //       trailing: Tooltip(
+  //           message: "복사 하기",
+  //           child: IconButton(
+  //               icon: Icon(
+  //                 Icons.book,
+  //               ),
+  //               onPressed: () {
+  //                 Clipboard.setData(ClipboardData(text: informList_[6]));
+  //               })));
+  // }
 
   Widget buildAddressTile() {
     List<String> informList_ = widget.informList;
@@ -71,6 +97,15 @@ class InformWidgetState extends State<InformWidget> {
                   Clipboard.setData(ClipboardData(text: informList_[1]));
                 })));
   }
+  // Widget displayCircleImage(String picUrl, double size, hasBorder) =>
+  //   CachedNetworkImage(
+  //       imageBuilder: (context, imageProvider) =>
+  //           _getCircularImageProvider(imageProvider, size, false),
+  //       imageUrl: picUrl,
+  //       placeholder: (context, url) =>
+  //           _getPlaceholderOrErrorImage(size, hasBorder),
+  //       errorWidget: (context, url, error) =>
+  //           _getPlaceholderOrErrorImage(size, hasBorder));
 
   Widget buildUrlTile() {
     List<String> informList_ = widget.informList;
@@ -93,7 +128,6 @@ class InformWidgetState extends State<InformWidget> {
   }
 
   Widget buildPhoneNumberTile() {
-    
     List<String> informList_ = widget.informList;
     return ListTile(
         leading: Tooltip(
