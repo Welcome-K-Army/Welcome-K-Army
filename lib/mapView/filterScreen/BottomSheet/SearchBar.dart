@@ -38,14 +38,14 @@ class _SearhBarState extends State<SearhBar> {
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
-                    data_filtered.add(dataSet[i]);
-                    
+                    data_filtered.add(dataSet[i]);                    
                   }
                 } //for                          
               });
-            },),),
-            children: <Widget>[
-              IconButton(
+            },),
+            child:Column(
+              children:<Widget>[
+                IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
                           setState(()async{
@@ -59,7 +59,11 @@ class _SearhBarState extends State<SearhBar> {
                             data_filtered=[];
                         });
                         }
-                    ),]
+                    ),
+              ]
+            )),
+            
+              
 
 
            //TextFiled
