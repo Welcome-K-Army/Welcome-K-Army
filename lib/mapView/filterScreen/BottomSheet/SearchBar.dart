@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
 import '../data.dart';
-
-import 'package:helloworld/detailView/detail_main.dart';
+import '../../detailView/detail_main.dart';
 
 
 class SearhBar extends StatefulWidget {
