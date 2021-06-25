@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987811993361",
+    "project_id": "login-project-afa09",
+    "storage_bucket": "login-project-afa09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987811993361:android:83fdf140b25f1c03fc1eb0",
+        "android_client_info": {
+          "package_name": "com.welcome.army"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987811993361-delgu547dq7e6le43sof8383s3u4u3s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBHONRvFxTEacQJCzJu4GM6b0tTSrTreU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987811993361-delgu547dq7e6le43sof8383s3u4u3s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

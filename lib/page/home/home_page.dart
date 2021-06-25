@@ -1,0 +1,206 @@
+import 'package:Army/model/user.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+
+import 'notice_list_page.dart';
+import 'package:provider/provider.dart';
+
+import 'package:Army/provider/event_provider.dart';
+import 'package:Army/constants.dart';
+import 'package:Army/global.dart';
+
+import 'package:Army/model/home/menu.dart';
+import 'package:Army/provider/noticeProvider.dart';
+
+import 'package:Army/widget/home/title_with_more_btn_widget.dart';
+import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
+
+class HomePage extends StatefulWidget {
+  final User user;
+  HomePage({Key key, @required this.user}) : super(key: key);
+  HomePageState createState() => new HomePageState(user);
+}
+
+class HomePageState extends State<HomePage> {
+  final User user;
+  HomePageState(this.user);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(children: <Widget>[
+              buildHeader(),
+              buildNews(),
+              SizedBox(
+                height: 10,
+              ),
+              buildNotice(),
+              SizedBox(
+                height: 20,
+              ),
+            ])));
+  } // Widget
+
+  Widget buildHeader() {
+    double _height = MediaQuery.of(context).size.height + 150.0;
+    return Container(
+        height: _height * 0.2,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(
+                  left: kDefaultPadding,
+                  right: kDefaultPadding,
+                  bottom: 36 + kDefaultPadding,
+                  top: MediaQuery.of(context).padding.top + 20.0),
+              height: _height * 0.2 - 27,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(36),
+                  bottomRight: Radius.circular(36),
+                ), // BorderRadius.only
+              ), // BoxDecoration
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    '반갑습니다 ' + user.nickName + '님!',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.w600),
+                  ),
+                  Spacer(),
+                  Icon(Icons.favorite, color: Colors.lightGreen[50], size: 100)
+                ],
+              ), // Row
+            ), // Container
+          ],
+        )); // Container
+  }
+
+  Widget buildNews() {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(children: <Widget>[
+              TitleWithMoreBtnWidget(title: "뉴스", press: () {}),
+              buildSlideBanner(),
+            ])));
+  }
+
+  Widget buildSlideBanner() {
+    return Container(
+      height: 200,
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        elevation: 4,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Swiper(
+              autoplay: true,
+
+              scale: 0.8,
+              viewportFraction: 1,
+              pagination: new SwiperPagination(
+                alignment: Alignment.bottomCenter,
+                builder: new DotSwiperPaginationBuilder(
+                    color: Colors.white, activeColor: Color(COLOR_PRIMARY)),
+              ),
+              itemCount: publicImgList.length, //notice imagelist length
+              itemBuilder: (BuildContext context, int index) {
+                return Image.asset(publicImgList[index]);
+              }), // Swiper
+        ),
+      ), // Padding
+    ); // Container
+  }
+
+  Widget buildMenu() {
+    return Container(
+        color: Color(0xFFEDF0F4),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
+                  Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      elevation: 4,
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 2,
+                          mainAxisSpacing: 2,
+                        ),
+                        itemCount: menuList.length,
+                        itemBuilder: (context, index) {
+                          return buildMenuIconBtn(menuList[index]);
+                        },
+                      )),
+                ]))); // GridView
+  }
+
+  Widget buildMenuIconBtn(Menu menu) {
+    final provider = Provider.of<EventProvider>(context);
+    final noticeProvider = Provider.of<NoticeProvider>(context);
+    return InkWell(
+      onTap: () {
+        provider.readEvent();
+        noticeProvider.readNotice();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => menu.widget),
+        );
+      },
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            menu.icon,
+            Text(menu.name),
+          ]), // Column
+    ); // ListTile
+  }
+
+  Widget buildNotice() {
+    final noticeProvider = Provider.of<NoticeProvider>(context);
+    noticeProvider.readNotice();
+    return Container(
+      color: Color(0xFFEDF0F4),
+      //height: 360,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            TitleWithMoreBtnWidget(
+                title: "공지",
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NoticeListPage()),
+                  );
+                }),
+            ListWithTitleAndDayWidget(
+                headerTile: false,
+                title: "Notice",
+                notices: noticeProvider.notices,
+                infinite: false,
+                maxLines: 4),
+          ], // Column children
+        ), // Column
+      ), // Padding
+    ); // Container
+  }
+} // Class
