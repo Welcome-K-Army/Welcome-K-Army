@@ -121,6 +121,26 @@ List<School> fillData() {
         three:200,
         four:10,
     ));
+  lists.add(
+    new School(
+      idx: 7, 
+      name: "test",
+       address: "서울특별시 노원구 공릉2동 화랑로 574",
+        number: "+82221970114", 
+        web_address: "https://www.kma.ac.kr:461/", 
+        image: "lib/assets/image/army.png",
+        pdfurl:"https://www.kma.ac.kr:461/sites/kma/2022%ED%95%99%EB%85%84%EB%8F%84(82%EA%B8%B0)%EC%9C%A1%EA%B5%B0%EC%82%AC%EA%B4%80%EC%83%9D%EB%8F%84%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf",
+        web_address_detail:"https://www.kma.ac.kr:461/kma/2093/subview.do",
+        latlng: LatLng(37.623787, 127.098831), 
+        category: Categories.Army, 
+        type: Types.Cadets, 
+        age: Ages.A_17_21, 
+        classes: Classes.Officer,
+        one:50,
+        two:100,
+        three:200,
+        four:10,
+        ));
 
   return lists;
 }

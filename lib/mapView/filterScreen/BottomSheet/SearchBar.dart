@@ -48,8 +48,8 @@ class _SearhBarState extends State<SearhBar> {
 
               });
             },
-            onTap: ()async {
-              setState((){
+            onTap: () {
+              setState(()async{
                 final result= await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
