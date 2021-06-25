@@ -145,7 +145,7 @@ class HomePageState extends State<HomePage> {
                   pagination: SwiperPagination(),
                   itemCount: pdfItems.length, //notice imagelist length
                   itemBuilder: (BuildContext context, int index) {
-                    return Wrap(direction: Axis.vertical, spacing: 10, runSpacing: 40, children: [
+                    return Wrap(direction: Axis.vertical, alignment: WrapAlignment.center, spacing: 10, runSpacing: 40, children: [
                       InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
