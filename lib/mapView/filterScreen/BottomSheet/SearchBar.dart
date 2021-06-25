@@ -40,10 +40,11 @@ class _SearhBarState extends State<SearhBar> {
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
                     data_filtered.add( dataSet[i]);
+                    final arguments=Arguments(dataSet[i].name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
+                value.two,value.three,value.four);
                   }
                 } //for
-                final arguments=Arguments(dataSet[i].name,value.address,value.number,value.web_address,value.image,value.pdfurl,value.web_address_detail,value.one,
-                value.two,value.three,value.four);
+                
                 final result= Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
