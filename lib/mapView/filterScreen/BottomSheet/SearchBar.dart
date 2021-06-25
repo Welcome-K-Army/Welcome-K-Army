@@ -43,15 +43,15 @@ class _SearhBarState extends State<SearhBar> {
                     final result_data=Arguments(dataSet[i].name,dataSet[i].address,dataSet[i].number,dataSet[i].web_address,dataSet[i].image,dataSet[i].pdfurl,dataSet[i].web_address_detail,dataSet[i].one,
                 dataSet[i].two,dataSet[i].three,dataSet[i].four);
                           onTap: () {
-                      setState(()async{
-                        final result= await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=>DetailView(arguments:result_data)),
-                        );  
-                        controller.clear();
-                        data_filtered=[];
-                      });
-                    }
+                          setState(()async{
+                            final result= await Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context)=>DetailView(arguments:result_data)),
+                            );  
+                            controller.clear();
+                            data_filtered=[];
+                          });
+                    };
                   }
                 } //for                          
               });
