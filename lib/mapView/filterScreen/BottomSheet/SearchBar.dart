@@ -61,12 +61,15 @@ class _SearhBarState extends State<SearhBar> {
                         }
                     ),
               ]
-            )),
+            ),//Column
+          ),
             
               
 
 
-           //TextFiled
-        ),); 
+           
+        ),//Padding
+      );
+         //Container
   }
 }
