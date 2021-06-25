@@ -50,7 +50,7 @@ class _SearhBarState extends State<SearhBar> {
                             );  
                             controller.clear();
                             data_filtered=[];
-                          });
+                        });
                     };
                   }
                 } //for                          
