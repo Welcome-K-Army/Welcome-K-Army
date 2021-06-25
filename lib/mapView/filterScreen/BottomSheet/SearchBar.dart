@@ -45,16 +45,16 @@ class _SearhBarState extends State<SearhBar> {
                   }
                 } //for
                 
-                final result= Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
-                );
+              
 
               });
             },
             onTap: () {
               setState((){
-                
+                final result= Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
+                );  
                 controller.clear();
                 data_filtered=[];
               });
