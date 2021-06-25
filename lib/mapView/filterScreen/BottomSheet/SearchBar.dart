@@ -47,8 +47,7 @@ class _SearhBarState extends State<SearhBar> {
                           
 
               });
-            },
-            onTap: () {
+                  onTap: () {
               setState(()async{
                 final result= await Navigator.push(
                   context,
@@ -58,6 +57,8 @@ class _SearhBarState extends State<SearhBar> {
                 data_filtered=[];
               });
             }
+            },
+
           ), //TextFiled
         )); 
   }
