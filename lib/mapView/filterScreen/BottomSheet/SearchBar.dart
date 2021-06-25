@@ -30,21 +30,21 @@ class _SearhBarState extends State<SearhBar> {
         child:Padding(
           padding: const EdgeInsets.all(4),
           child: TextField(
-            controller:controller,
-            textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(hintText: 'Search Location',
-            onChanged:(value)async{              
-              setState((){
-                // _searchResult=value;
-                for (int i = 0; i <= dataSet.length; i++) {
-                  if (value == dataSet[i].name) {
-                    data_filtered.add(dataSet[i]);                    
-                  }
-                } //for                          
-              });
-            },),
-            
-             child:Container(
+              controller:controller,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration(hintText: 'Search Location',
+              onChanged:(value)async{              
+                setState((){
+                  // _searchResult=value;
+                  for (int i = 0; i <= dataSet.length; i++) {
+                    if (value == dataSet[i].name) {
+                      data_filtered.add(dataSet[i]);                    
+                    }
+                  } //for                          
+                });
+              },
+              ),),),
+             child: Column(children: <Widget>[
                 IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
@@ -59,17 +59,10 @@ class _SearhBarState extends State<SearhBar> {
                             data_filtered=[];
                         });
                         }
-                    ),
-             ),
-            //Column
-          ),
+                    ),],),
             
-              
-
-
-           
-        ),//Padding
-      );
-         //Container
+            //Column
+                                      
+      );         //Container
   }
 }
