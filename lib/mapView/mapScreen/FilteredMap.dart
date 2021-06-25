@@ -28,7 +28,7 @@ class FilteredMapState extends State<FilteredMap> {
   @override
   void initState() {
     _controller.future.whenComplete(() {
-      if(this.mounted){
+      if (this.mounted) {
         setState(() => _isMapLoaded = true);
       }
       Future.delayed(const Duration(milliseconds: 1500),
@@ -122,22 +122,33 @@ class FilteredMapState extends State<FilteredMap> {
   Set<Marker> _createMarkers() {
     return widget.filteredData
         .map((school) => Marker(
-            markerId: MarkerId(school.name),
-            position: school.latlng,
-            onTap: ()=>_cameraMove(school.latlng),
-            infoWindow: InfoWindow(
+              markerId: MarkerId(school.name),
+              position: school.latlng,
+              onTap: () => _cameraMove(school.latlng),
+              infoWindow: InfoWindow(
                 title: school.name,
                 snippet: school.address,
+                onTap: () async {
+                  final arguments = Arguments(
+                      school.name,
+                      school.address,
+                      school.number,
+                      school.web_address,
+                      school.image,
+                      school.pdfurl,
+                      school.web_address_detail,
+                      school.one,
+                      school.two,
+                      school.three,
+                      school.four);
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailView(arguments: arguments)),
+                  );
+                },
               ),
-              onTap: () async{
-                final arguments=Arguments(school.name,school.address,school.number,school.web_address,school.image,school.pdfurl,school.web_address_detail,school.one,
-                school.two,school.three,school.four);
-                final result=await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
-                );
-
-              },
-            )).toSet(); //Marker)
+            ))
+        .toSet(); //Marker)
   }
 }

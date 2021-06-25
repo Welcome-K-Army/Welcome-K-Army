@@ -8,7 +8,7 @@ class PdfViewingWidget extends StatefulWidget {
   final List<String> informList;
 
   PdfViewingWidget(this.informList, {Key key}) : super(key: key);
-  
+
   @override
   PdfViewingWidgetState createState() => PdfViewingWidgetState();
 }
@@ -46,7 +46,7 @@ class PdfViewingWidgetState extends State<PdfViewingWidget> {
     );
     _overlayState.insert(_overlayEntry);
   }
-  /*  
+  /*
   // Load document from the Asset
   @override
   Widget build(BuildContext context) {
