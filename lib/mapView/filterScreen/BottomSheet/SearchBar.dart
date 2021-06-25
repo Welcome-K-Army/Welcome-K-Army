@@ -33,8 +33,7 @@ class _SearhBarState extends State<SearhBar> {
             controller:controller,
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(hintText: 'Search Location',
-            onChanged:(value)async{
-              
+            onChanged:(value)async{              
               setState((){
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
@@ -45,7 +44,7 @@ class _SearhBarState extends State<SearhBar> {
               });
             },),
             
-              children:<Widget>[
+             child:Container(
                 IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
@@ -61,7 +60,7 @@ class _SearhBarState extends State<SearhBar> {
                         });
                         }
                     ),
-              ]
+             ),
             //Column
           ),
             
