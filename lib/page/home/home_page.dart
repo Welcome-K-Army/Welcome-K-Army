@@ -129,7 +129,7 @@ class HomePageState extends State<HomePage> {
 
   Widget buildSlideBanner() {
     return Container(
-        height: 300,
+        height: 260,
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -145,18 +145,17 @@ class HomePageState extends State<HomePage> {
                   pagination: SwiperPagination(),
                   itemCount: pdfItems.length, //notice imagelist length
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(children: [
+                    return Wrap(direction: Axis.vertical, spacing: 10, runSpacing: 40, children: [
                       InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
                           },
                           child: Thumbnail(
-                            dataResolver: () async {
-                              return getPdfBytes(pdfItems[index].itemUrl);
-                            },
-                            mimeType: 'application/pdf',
-                            widgetSize: 200.0
-                          )),
+                              dataResolver: () async {
+                                return getPdfBytes(pdfItems[index].itemUrl);
+                              },
+                              mimeType: 'application/pdf',
+                              widgetSize: 200.0)),
                       Text(pdfItems[index]?.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                     ]);
                   }), // Swiper
