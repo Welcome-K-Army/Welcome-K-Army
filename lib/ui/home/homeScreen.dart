@@ -1,4 +1,5 @@
 import 'package:Army/mapView/filterScreen/FilterScreen.dart';
+import 'package:Army/page/calendar/calendar_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
@@ -29,7 +30,7 @@ class _HomeState extends State<HomeScreen> {
       floatingActionButton: null,
       // backgroundColor: Colors.black87,
       body: DefaultTabController(
-        length: 3,
+        length: 4,
         child: Stack(
           children: <Widget>[
             Container(
@@ -41,6 +42,9 @@ class _HomeState extends State<HomeScreen> {
                 tabs: <Widget>[
                   Tab(
                     icon: Icon(Icons.home),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.calendar_today),
                   ),
                   Tab(
                     icon: Icon(Icons.search),
@@ -61,6 +65,7 @@ class _HomeState extends State<HomeScreen> {
                 physics: NeverScrollableScrollPhysics(),
                 children: <Widget>[
                   HomePage(user: user),
+                  CalendarPage(),
                   FilterScreen(),
                   SettingScreen(user: user),
                 ],

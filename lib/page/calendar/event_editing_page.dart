@@ -124,7 +124,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ];
 
   Widget buildTitle(EventProvider provider) => TextFormField(
-        style: TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: 16),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           hintText: '제목',
@@ -253,7 +253,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
   Widget buildDescription(EventProvider provider) => buildHeader(
       header: "설명",
       child: TextFormField(
-        style: TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: 16),
         minLines: 6,
         maxLines: null,
         decoration: InputDecoration(

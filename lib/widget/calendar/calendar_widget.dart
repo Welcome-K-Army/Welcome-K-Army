@@ -26,11 +26,11 @@ class CalendarWidget extends StatelessWidget {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),)),
-          backgroundColor: Color(COLOR_PRIMARY),
-          title: Text("일정"), actions: <Widget>[
+            bottom: Radius.circular(0),)),
+          backgroundColor: Colors.white,
+          title: Padding(padding:const EdgeInsets.only(left: 5) ,child:Text("일정", style:TextStyle(color:Colors.black87, fontWeight: FontWeight.bold)),) , actions: <Widget>[
         PopupMenuButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.add, color:Colors.black87),
             onSelected: (value) {
               if (value == 1) {
                 Navigator.push(

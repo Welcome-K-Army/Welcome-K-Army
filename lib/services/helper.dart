@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-import '../constants.dart';
+import 'package:Army/model/home/gallery_item.dart';
 
 String validateName(String value) {
 
@@ -96,6 +96,13 @@ showAlertDialog(BuildContext context, String title, String content) {
       return alert;
     },
   );
+}
+
+List<GalleryItem> parsedGalleryItem(List imageUrlList) {
+  if (imageUrlList.first == null) return [];
+  return List.generate(imageUrlList.length, (index) {
+    return GalleryItem(id: "tag $index", resource: imageUrlList[index]);
+  });
 }
 
 pushReplacement(BuildContext context, Widget destination) {
