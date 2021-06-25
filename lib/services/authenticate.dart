@@ -52,6 +52,10 @@ class FireStoreUtils {
     return downloadUrl.toString();
   }
 
+
+  Future<dynamic> getJsonFile(String filename){
+
+  }
   Future<List<Event>> getUserCalendarEvent() async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
