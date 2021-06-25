@@ -32,7 +32,7 @@ class _SearhBarState extends State<SearhBar> {
           child: TextField(
             controller:controller,
             textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search)),
+
 
             onChanged:(value)async{
               setState((){
@@ -56,6 +56,7 @@ class _SearhBarState extends State<SearhBar> {
                 } //for                          
               });
             },
+            decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search),),
               
 
           ), //TextFiled
