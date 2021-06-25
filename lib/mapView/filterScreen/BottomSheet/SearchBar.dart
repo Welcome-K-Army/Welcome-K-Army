@@ -40,24 +40,24 @@ class _SearhBarState extends State<SearhBar> {
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
                     data_filtered.add( dataSet[i]);
-                    final arguments=Arguments(dataSet[i].name,dataSet[i].address,dataSet[i].number,dataSet[i].web_address,dataSet[i].image,dataSet[i].pdfurl,dataSet[i].web_address_detail,dataSet[i].one,
+                    final result_data=Arguments(dataSet[i].name,dataSet[i].address,dataSet[i].number,dataSet[i].web_address,dataSet[i].image,dataSet[i].pdfurl,dataSet[i].web_address_detail,dataSet[i].one,
                 dataSet[i].two,dataSet[i].three,dataSet[i].four);
                   }
                 } //for
                           
 
               });
-                  onTap: () {
+            },
+              onTap: () {
               setState(()async{
                 final result= await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
+                  MaterialPageRoute(builder: (context)=>DetailView(arguments:result_data)),
                 );  
                 controller.clear();
                 data_filtered=[];
               });
             }
-            },
 
           ), //TextFiled
         )); 
