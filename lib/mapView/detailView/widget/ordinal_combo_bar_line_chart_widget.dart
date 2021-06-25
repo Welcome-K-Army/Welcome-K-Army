@@ -11,33 +11,33 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList, {this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData() {
+  factory OrdinalComboBarLineChartWidget.withSampleData(data) {
     return new OrdinalComboBarLineChartWidget(
-      _createSampleData(),
+      _createSampleData(data),
       // Disable animations for image tests.
       animate: false,
     );
   }
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+  static List<charts.Series<OrdinalSales, String>> _createSampleData(data) {
     final desktopSalesData = [
-      new OrdinalSales('2014', 5),
-      new OrdinalSales('2015', 25),
-      new OrdinalSales('2016', 100),
-      new OrdinalSales('2017', 75),
+      new OrdinalSales('2018', 10),
+      new OrdinalSales('2019', 20),
+      new OrdinalSales('2020', 60),
+      new OrdinalSales('2021', 70),
     ];
 
     final tableSalesData = [
-      new OrdinalSales('2014', 5),
-      new OrdinalSales('2015', 25),
-      new OrdinalSales('2016', 100),
-      new OrdinalSales('2017', 75),
+      new OrdinalSales('2018', 10),
+      new OrdinalSales('2019', 20),
+      new OrdinalSales('2020', 60),
+      new OrdinalSales('2021', 70),
     ];
 
     final mobileSalesData = [
-      new OrdinalSales('2014', 10),
-      new OrdinalSales('2015', 50),
-      new OrdinalSales('2016', 200),
-      new OrdinalSales('2017', 150),
+      new OrdinalSales('2018', 10),
+      new OrdinalSales('2019', 20),
+      new OrdinalSales('2020', 60),
+      new OrdinalSales('2021', 70),
     ];
 
     return [
@@ -50,10 +50,16 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
   }
 
   @override
-  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState();
+  _OrdinalComboBarLineChartWidgetState createState() => _OrdinalComboBarLineChartWidgetState(seriesList, animate);
 }
 
 class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChartWidget> {
+
+  final List<charts.Series> seriesList;
+  final bool animate;
+
+  _OrdinalComboBarLineChartWidgetState(this.seriesList, this.animate);
+
   @override
   Widget build(BuildContext context) {
     return new charts.OrdinalComboChart(seriesList,

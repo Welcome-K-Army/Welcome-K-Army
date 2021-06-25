@@ -66,12 +66,12 @@ class School{
   Types type;
   Ages age;
   Classes classes;
-  int one;
-  int two;
-  int three;
-  int four;
+  List<int> one;
+  List<int>two;
+  List<int>three;
+  List<int> four;
 
-  School({String name,String address,String number,String web_address,String image,String pdfurl,String web_address_detail, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes,int one,int two,int three,int four}){
+  School({String name,String address,String number,String web_address,String image,String pdfurl,String web_address_detail, int idx, LatLng latlng, Categories category, Types type, Ages age, Classes classes,List<int> one,List<int> two,List<int> three,List<int> four}){
     this.name = name;
     this.address=address;
     this.number=number;
