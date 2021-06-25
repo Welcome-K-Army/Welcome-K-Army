@@ -155,9 +155,9 @@ class HomePageState extends State<HomePage> {
                               return getPdfBytes(pdfItems[index].itemUrl);
                             },
                             mimeType: 'application/pdf',
-                            widgetSize: 200.0 - 40.0,
+                            widgetSize: 200.0
                           )),
-                      Text(pdfItems[index]?.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(pdfItems[index]?.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                     ]);
                   }), // Swiper
             )));
