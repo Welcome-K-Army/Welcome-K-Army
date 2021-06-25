@@ -32,18 +32,25 @@ class _SearhBarState extends State<SearhBar> {
           child: TextField(
             controller:controller,
             textCapitalization: TextCapitalization.words,
-
-
             onChanged:(value)async{
               setState((){
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
-                    data_filtered.add( dataSet[i]);
-                    final result_data=Arguments(dataSet[i].name,dataSet[i].address,dataSet[i].number,dataSet[i].web_address,dataSet[i].image,dataSet[i].pdfurl,dataSet[i].web_address_detail,dataSet[i].one,
-                dataSet[i].two,dataSet[i].three,dataSet[i].four);
-                          onTap: () {
+                    data_filtered.add(dataSet[i]);
+                    
+                  }
+                } //for                          
+              });
+            },
+
+
+            
+                          
+            decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search),onTap: () {
                           setState(()async{
+                            final result_data=Arguments(data_filtered.name,data_filtered.address,data_filtered.number,data_filtered.web_address,data_filtered.image,data_filtered.pdfurl,data_filtered.web_address_detail,data_filtered.one,
+                              data_filtered.two,data_filtered.three,data_filtered.four);
                             final result= await Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context)=>DetailView(arguments:result_data)),
@@ -51,12 +58,7 @@ class _SearhBarState extends State<SearhBar> {
                             controller.clear();
                             data_filtered=[];
                         });
-                    };
-                  }
-                } //for                          
-              });
-            },
-            decoration: InputDecoration(hintText: 'Search Location', suffixIcon: Icon(Icons.search),),
+                    };),
               
 
           ), //TextFiled
