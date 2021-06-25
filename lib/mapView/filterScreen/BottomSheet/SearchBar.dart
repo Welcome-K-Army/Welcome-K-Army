@@ -44,7 +44,8 @@ class _SearhBarState extends State<SearhBar> {
                 } //for                          
               });
             },),),
-            child:IconButton(
+            children: <Widget>[
+              IconButton(
                         icon: Icon(Icons.search),
                         onPressed: () {
                           setState(()async{
@@ -58,7 +59,7 @@ class _SearhBarState extends State<SearhBar> {
                             data_filtered=[];
                         });
                         }
-                    ),
+                    ),]
 
 
            //TextFiled
