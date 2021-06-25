@@ -32,22 +32,14 @@ class _SearhBarState extends State<SearhBar> {
           child: TextField(
             controller:controller,
             textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(hintText: 'Search Location'),
+            decoration: InputDecoration(hintText: 'Search Location',icon: Icon(Icons.search)),
             onChanged:(value)async{              
               setState((){
                 // _searchResult=value;
                 for (int i = 0; i <= dataSet.length; i++) {
                   if (value == dataSet[i].name) {
-                    data_filtered.add(dataSet[i]);                    
-                  }
-                } //for                          
-              });
-            },),
-            
-             
-                IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () {
+                    data_filtered.add(dataSet[i]);
+                    onPressed: () {
                           setState(()async{
                             final result_data=Arguments(data_filtered.name,data_filtered.address,data_filtered.number,data_filtered.web_address,data_filtered.image,data_filtered.pdfurl,data_filtered.web_address_detail,data_filtered.one,
                               data_filtered.two,data_filtered.three,data_filtered.four);
@@ -58,18 +50,14 @@ class _SearhBarState extends State<SearhBar> {
                             controller.clear();
                             data_filtered=[];
                         });
-                        }
-                    ),
+                      }                    
+                  }
+                } //for                          
+              });
+            },),
+
              ),
-            //Column
-          ),
-            
-              
+          );
 
-
-           
-        ),//Padding
-      );
-         //Container
   }
 }
