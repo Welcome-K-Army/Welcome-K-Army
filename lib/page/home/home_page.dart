@@ -131,13 +131,12 @@ class HomePageState extends State<HomePage> {
     return Container(
         height: 300,
         child: Card(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          elevation: 4,
-          child: Wrap(direction: Axis.vertical, alignment: WrapAlignment.start, children: <Widget>[
-            Padding(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 4,
+            child: Padding(
               padding: EdgeInsets.all(10),
               child: Swiper(
                   autoplay: true,
@@ -161,9 +160,7 @@ class HomePageState extends State<HomePage> {
                       Text(pdfItems[index]?.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold)),
                     ]);
                   }), // Swiper
-            )
-          ]),
-        ));
+            )));
   }
 
   Widget buildMenu() {
