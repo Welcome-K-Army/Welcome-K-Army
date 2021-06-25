@@ -44,14 +44,13 @@ class _SearhBarState extends State<SearhBar> {
                 dataSet[i].two,dataSet[i].three,dataSet[i].four);
                   }
                 } //for
-                
-              
+                          
 
               });
             },
-            onTap: () {
+            onTap: ()async {
               setState((){
-                final result= Navigator.push(
+                final result= await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailView(arguments:arguments)),
                 );  
