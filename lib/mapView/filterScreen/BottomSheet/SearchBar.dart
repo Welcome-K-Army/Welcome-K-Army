@@ -15,6 +15,7 @@ class _SearhBarState extends State<SearhBar> {
   TextEditingController controller = TextEditingController();
   List<School> dataSet = fillData();
   List<School> data_filtered = [];
+  List<School>result_data=[];
   // String _searchResult;
 
   @override
