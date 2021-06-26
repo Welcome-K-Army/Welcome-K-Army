@@ -32,7 +32,8 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     data=loadAsset();
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
-        filter_data.add((data[1][i]),(data[4][i]),(data[5][i])).toList());
+        filter_data.add(((data[1][i]),(data[4][i]),(data[5][i])).toList());
+        
       }
     }
     return filter_data;
