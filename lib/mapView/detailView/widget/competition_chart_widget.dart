@@ -48,11 +48,11 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 
   filter_competiton(current_name){
     List<List<dynamic>> data;
-    
+    var mymap=<String,String>{};
     data=loadAsset();
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
-        var mymap=makeMap({
+          mymap=makeMap({
           [data[4].toString(),data[5].toString()]:data[2][i].toString()
         });
       }
