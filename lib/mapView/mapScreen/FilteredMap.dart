@@ -5,7 +5,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../filterScreen/School.dart';
 import 'package:provider/provider.dart';
 
-import "../search/search.dart";
 import "../detailView/detail_main.dart";
 
 class FilteredMap extends StatefulWidget {
@@ -32,7 +31,8 @@ class FilteredMapState extends State<FilteredMap> {
         setState(() => _isMapLoaded = true);
       }
       Future.delayed(const Duration(milliseconds: 1500),
-          () => setState(() => _isAnimationEnd = true));
+          () => setState(() => _isAnimationEnd = true)
+      );
     });
     super.initState();
   }

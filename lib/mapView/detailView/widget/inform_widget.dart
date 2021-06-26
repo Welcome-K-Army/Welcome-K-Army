@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InformWidget extends StatefulWidget {
@@ -10,11 +11,6 @@ class InformWidget extends StatefulWidget {
   InformWidgetState createState() => InformWidgetState();
 }
 
-// List<String> informList = [
-//   current_name,
-//   current_address,
-//   current_number,
-// ];
 class InformWidgetState extends State<InformWidget> {
   List<String> messageList = [
     "주소 복사",
@@ -27,8 +23,26 @@ class InformWidgetState extends State<InformWidget> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
-    IconData(63084, fontFamily: 'MaterialIcons'),
+    Icons.copy
   ];
+
+  FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  void showCopyToast(){
+    fToast.showToast(
+      child: Container(padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20), decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+          child: Text("복사되었습니다.", style: TextStyle(color: Colors.white),)) ,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +108,7 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
+                  showCopyToast();
                   Clipboard.setData(ClipboardData(text: informList_[1]));
                 })));
   }
@@ -123,27 +138,27 @@ class InformWidgetState extends State<InformWidget> {
             child: IconButton(
                 icon: Icon(informIconList[3]),
                 onPressed: () {
+                  showCopyToast();
                   Clipboard.setData(ClipboardData(text: informList_[3]));
                 })));
   }
 
   Widget buildPhoneNumberTile() {
-    List<String> informList_ = widget.informList;
+    List<String> informList = widget.informList;
     return ListTile(
-        leading: Tooltip(
-            message: "전화 걸기",
-            child: IconButton(
+        leading: IconButton(
                 icon: Icon(informIconList[2]),
                 onPressed: () {
-                  _url_launcher("tel:$informList_[2]");
-                })),
-        title: Text(informList_[2]),
+                  _url_launcher("tel:" + informList[2]);
+                }),
+        title: Text(informList[2]),
         trailing: Tooltip(
             message: "복사 하기",
             child: IconButton(
-                icon: Icon(informIconList[3]),
+                icon: Icon(Icons.copy),
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: informList_[2]));
+                  showCopyToast();
+                  Clipboard.setData(ClipboardData(text: informList[2]));
                 })));
   }
 

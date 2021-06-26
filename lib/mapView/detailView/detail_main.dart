@@ -1,6 +1,8 @@
+import 'package:Army/mapView/detailView/page/CurricumlumPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../constants.dart';
 import 'widget/admission_widget.dart';
 import 'widget/competition_chart_widget.dart';
 import 'widget/inform_widget.dart';
@@ -46,12 +48,15 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.two,
       widget.arguments.three,
       widget.arguments.four,
-      
     ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20),)),
+          backgroundColor: Color(COLOR_PRIMARY),
           bottom: TabBar(
             //indicator는 현재 선택된 Tab에 대한 정보, 추후 디자인 수정 요망
             indicatorSize: TabBarIndicatorSize.label,
@@ -60,12 +65,12 @@ class DetailViewState extends State<DetailView> {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.black38,
             labelStyle: TextStyle(
-              fontSize: 14,
+              fontSize: 13,
             ),
             tabs: [
               Tab(
                 icon: Icon(Icons.home, size: 20),
-                text: 'Home',
+                text: '홈',
               ),
               Tab(
                 icon: Icon(Icons.people, size: 20),
@@ -73,7 +78,7 @@ class DetailViewState extends State<DetailView> {
               ),
               Tab(
                 icon: Icon(Icons.search, size: 20),
-                text: '세부시행계획',
+                text: '경쟁률',
               ),
               Tab(
                 icon: Icon(Icons.book, size: 20),
@@ -85,9 +90,11 @@ class DetailViewState extends State<DetailView> {
         body: TabBarView(
           children: [
             InformWidget(informList),
-            AdmissionWidget(informList[5]),
-            CompetitionChartWidget(competition_data),
-            Text('교육과정'),
+            //AdmissionWidget(informList[5]),
+            AdmissionWidget(),
+            CompetitionChartWidget(competition_data,informList),
+            // CompetitionChartWidget(),
+            CurriculumPage(schoolName:widget.arguments.name)
           ],
         ),
       ),

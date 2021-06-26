@@ -1,19 +1,28 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:Army/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter/services.dart';
 
 import 'notice_list_page.dart';
 import 'package:provider/provider.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:thumbnailer/thumbnailer.dart';
 
 import 'package:Army/provider/event_provider.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/global.dart';
 
 import 'package:Army/model/home/menu.dart';
+import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/provider/noticeProvider.dart';
+import 'package:Army/page/home/news_list_page.dart';
 
 import 'package:Army/widget/home/title_with_more_btn_widget.dart';
+import 'package:Army/widget/home/pdf_viewing_widget.dart';
 import 'package:Army/widget/home/list_with_title_and_day_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,6 +34,32 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final User user;
   HomePageState(this.user);
+  List<PdfItem> pdfItems = [];
+  List<String> items = [
+    'https://firebasestorage.googleapis.com/v0/b/login-project-afa09.appspot.com/o/pdf%2F2022%ED%95%99%EB%85%84%EB%8F%84(82%EA%B8%B0)%EC%9C%A1%EA%B5%B0%EC%82%AC%EA%B4%80%EC%83%9D%EB%8F%84%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf?alt=media&token=b0d42ed4-0949-4c14-a41f-758bc966762a',
+    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
+  ];
+  List<String> itemsTitle = [
+    '2022학년도(82기)육군사관생도모집요강',
+    '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
+  ];
+  List<Future<Uint8List>> _documentList = [];
+
+  ///Get the PDF document as bytes.
+  Future<Uint8List> getPdfBytes(String url) async {
+    Uint8List _documentBytes;
+    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
+    return _documentBytes;
+  }
+
+  @override
+  void initState() {
+    for (int index = 0; index < items.length; index++) {
+      pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
+      _documentList.add(getPdfBytes(items[index]));
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,39 +122,52 @@ class HomePageState extends State<HomePage> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              TitleWithMoreBtnWidget(title: "뉴스", press: () {}),
+              TitleWithMoreBtnWidget(title: "뉴스", press: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NewsListPage()),
+              );}),
               buildSlideBanner(),
             ])));
   }
 
   Widget buildSlideBanner() {
     return Container(
-      height: 200,
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 4,
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Swiper(
-              autoplay: true,
-
-              scale: 0.8,
-              viewportFraction: 1,
-              pagination: new SwiperPagination(
-                alignment: Alignment.bottomCenter,
-                builder: new DotSwiperPaginationBuilder(
-                    color: Colors.white, activeColor: Color(COLOR_PRIMARY)),
-              ),
-              itemCount: publicImgList.length, //notice imagelist length
-              itemBuilder: (BuildContext context, int index) {
-                return Image.asset(publicImgList[index]);
-              }), // Swiper
-        ),
-      ), // Padding
-    ); // Container
+        height: 270,
+        child: Card(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 4,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Swiper(
+                  autoplay: false,
+                  scale: 0.8,
+                  viewportFraction: 1,
+                  pagination: new SwiperPagination(
+                    alignment: Alignment.bottomCenter,
+                    builder: new DotSwiperPaginationBuilder(
+                        color: Colors.grey, activeColor: Color(COLOR_PRIMARY)),
+                  ),
+                  itemCount: pdfItems.length, //notice imagelist length
+                  itemBuilder: (BuildContext context, int index) {
+                    return Wrap(direction: Axis.vertical, spacing: 10, runSpacing: 40, children: [
+                      Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Center(
+                              child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
+                                  },
+                                  child: Thumbnail(
+                                      dataResolver:()=> _documentList[index],
+                                      mimeType: 'application/pdf',
+                                      widgetSize: 200.0)))),
+                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 10), child: Text(pdfItems[index]?.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold))),
+                    ]);
+                  }), // Swiper
+            )));
   }
 
   Widget buildMenu() {
