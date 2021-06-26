@@ -34,16 +34,30 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 //         }
 //       }
 // }
+
+  Map<String,int>makeMap(Map<List<int>, String> map){
+    var newMap=<String,int>{};
+    for (var entry in map.entries) {
+      var keyList = entry.key;
+      for (var key in keyList) {
+        newMap[key] = entry.value;
+      }
+  }
+  return newMap;
+  }
+
   filter_competiton(current_name){
     List<List<dynamic>> data;
-    List<List<int>>  filter_data;
+    
     data=loadAsset();
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
-        filter_data.add([data[1],data[4],data[5]]);
+        var mymap=makeMap({
+          [data[4],data[5]]:data[2][i].toString()
+        });
       }
     }
-    return filter_data;
+    return mymap;
   }
 
   @override
