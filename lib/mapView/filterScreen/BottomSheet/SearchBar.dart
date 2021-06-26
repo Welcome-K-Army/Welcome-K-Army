@@ -31,6 +31,7 @@ class _SearhBarState extends State<SearhBar> {
         padding: const EdgeInsets.all(4),
         child: TextField(
           textCapitalization: TextCapitalization.words,
+          controller:controller,
           decoration: InputDecoration(hintText: 'Search Location', icon: Icon(Icons.search)),
           onChanged: (value) async {
             setState(() {
