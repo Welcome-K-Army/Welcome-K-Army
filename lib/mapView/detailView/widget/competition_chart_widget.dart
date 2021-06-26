@@ -35,8 +35,8 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 //       }
 // }
 
-  Map<String,int>makeMap(Map<List<int>, String> map){
-    var newMap=<String,int>{};
+  Map<String,String>makeMap(Map<List<String>, String> map){
+    var newMap=<String,String>{};
     for (var entry in map.entries) {
       var keyList = entry.key;
       for (var key in keyList) {
@@ -53,7 +53,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
         var mymap=makeMap({
-          [data[4],data[5]]:data[2][i].toString()
+          [data[4].toString(),data[5].toString()]:data[2][i].toString()
         });
       }
     }
