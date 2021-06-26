@@ -51,7 +51,7 @@ class _SearhBarState extends State<SearhBar> {
                   context,
                   MaterialPageRoute(builder: (context) => DetailView(arguments: arguments)),
                 );
-                // controller.clear();
+                // controller.clear
                 // data_filtered = '';
               },
             );
