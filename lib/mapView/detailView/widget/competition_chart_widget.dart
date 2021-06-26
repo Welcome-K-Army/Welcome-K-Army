@@ -26,7 +26,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 
   filter_competiton(current_name) {
     List<List<dynamic>> data;
-    List<List<String>> filter_data = [];
+    List<List<dynamic>> filter_data = [];
 
     data = loadAsset();
     for (int i = 1; i < data.length; i++) {

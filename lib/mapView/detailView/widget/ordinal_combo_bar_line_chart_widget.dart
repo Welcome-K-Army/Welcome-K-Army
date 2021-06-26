@@ -24,17 +24,17 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
 
     final manData = [
-      new OrdinalSales(competiton, 10),
-      new OrdinalSales('2019', 20),
-      new OrdinalSales('2020', 60),
-      new OrdinalSales('2021', 70),
+      new OrdinalSales(competiton[0][0], competiton[1][0].toInt()),
+      new OrdinalSales(competiton[0][1], competiton[1][1].toInt()),
+      new OrdinalSales(competiton[0][2], competiton[1][2].toInt()),
+       new OrdinalSales(competiton[0][3], competiton[1][3].toInt()),
     ];
 
     final womanData = [
-      new OrdinalSales('2018', 5),
-      new OrdinalSales('2019', 1),
-      new OrdinalSales('2020', 5),
-      new OrdinalSales('2021', 70),
+      new OrdinalSales(competiton[0][0], competiton[2][0].toInt()),
+      new OrdinalSales(competiton[0][1], competiton[2][1].toInt()),
+      new OrdinalSales(competiton[0][2], competiton[2][2].toInt()),
+       new OrdinalSales(competiton[0][3], competiton[2][3].toInt()),
     ];
 
     return [
