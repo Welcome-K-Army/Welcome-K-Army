@@ -35,7 +35,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
         filter_data.add((data[1][i],data[4][i],data[5][i]).toList());
       }
     }
-    return mymap;
+    return filter_data;
   }
 
   @override
