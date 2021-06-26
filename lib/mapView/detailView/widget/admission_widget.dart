@@ -22,7 +22,9 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
   ///Get the PDF document as bytes.
   Future<Uint8List> getPdfBytes(String url) async {
     Uint8List _documentBytes;
-    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
+    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
+        .buffer
+        .asUint8List();
     return _documentBytes;
   }
 
@@ -36,63 +38,50 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(82기)육군사관생도모집요강',
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
-    for(int index = 0; index < items.length; index++) pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
+    for (int index = 0; index < items.length; index++)
+      pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
     super.initState();
+  }
+
+  void viewPdf(BuildContext context, index) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) =>
+            PdfViewingWidget(pdfItem: pdfItems[index])));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
-          padding: EdgeInsets.all(10),
-          child: ListView.separated(
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(8),
-              itemCount: pdfItems.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                    leading: Container(
-                    width: 55,
-                    height: 55,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
-                      },
-                      child: Thumbnail(
-                        dataResolver: () async {
-                          return getPdfBytes(pdfItems[index].url);
-                        },
-                        mimeType: 'application/pdf',
-                        widgetSize: 170,
-                      ),
-                    )),
-                    title: Text(pdfItems[index].title, overflow: TextOverflow.ellipsis),
-                    trailing: Wrap(
-                      spacing: 12, // space between two icons
-                      children: <Widget>[
-                        IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
-                            }),
-                        IconButton(
-                          icon: Icon(Icons.copy),
+    return Padding(
+        padding: EdgeInsets.all(10),
+        child: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            elevation: 10,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(8),
+                  itemCount: pdfItems.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                        onTap: () => viewPdf(context, index),
+                        title: Text(pdfItems[index].title,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 15)),
+                        trailing: IconButton(
+                          icon: Icon(Icons.download),
                           onPressed: () {},
-                        )
-                      ],
-                    ));
-              },
-              separatorBuilder: (context, index) {
-                return Container(height: 5, width: 0);
-                /*const Divider(
-              color: Colors.black12,
-              height: 10,
-              thickness: 5,
-              indent: 20,
-              endIndent: 20,
-            );
-            */
-              }),
-        ));
+                        ));
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Divider(
+                      color: Colors.black38,
+                      thickness: 2,
+                      indent: 10,
+                      endIndent: 10,
+                    );
+                  }),
+            )));
   }
 }

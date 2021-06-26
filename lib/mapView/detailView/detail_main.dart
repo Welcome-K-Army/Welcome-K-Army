@@ -28,7 +28,6 @@ class DetailViewState extends State<DetailView> {
     Icons.location_on_outlined,
     Icons.web,
     Icons.phone,
-    IconData(63084, fontFamily: 'MaterialIcons'),
   ];
 
   @override
@@ -57,7 +56,9 @@ class DetailViewState extends State<DetailView> {
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(20),)),
           backgroundColor: Color(COLOR_PRIMARY),
-          bottom: TabBar(
+          leadingWidth: 0,
+          leading:Container(),
+          title: TabBar(
             //indicator는 현재 선택된 Tab에 대한 정보, 추후 디자인 수정 요망
             indicatorSize: TabBarIndicatorSize.label,
             indicatorColor: Colors.red,
@@ -65,7 +66,7 @@ class DetailViewState extends State<DetailView> {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.black38,
             labelStyle: TextStyle(
-              fontSize: 13,
+              fontSize: 12,
             ),
             tabs: [
               Tab(

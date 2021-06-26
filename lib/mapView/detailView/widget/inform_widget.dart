@@ -12,12 +12,7 @@ class InformWidget extends StatefulWidget {
 }
 
 class InformWidgetState extends State<InformWidget> {
-  List<String> messageList = [
-    "주소 복사",
-    "웹사이트 열기",
-    "전화 걸기",
-    "복사 하기"
-  ];
+  List<String> messageList = ["주소 복사", "웹사이트 열기", "전화 걸기", "복사 하기"];
 
   List<IconData> informIconList = [
     Icons.location_on_outlined,
@@ -35,10 +30,16 @@ class InformWidgetState extends State<InformWidget> {
     fToast.init(context);
   }
 
-  void showCopyToast(){
+  void showCopyToast() {
     fToast.showToast(
-      child: Container(padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20), decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-          child: Text("복사되었습니다.", style: TextStyle(color: Colors.white),)) ,
+      child: Container(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          decoration: BoxDecoration(
+              color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+          child: Text(
+            "복사되었습니다.",
+            style: TextStyle(color: Colors.white),
+          )),
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds: 2),
     );
@@ -49,17 +50,31 @@ class InformWidgetState extends State<InformWidget> {
     List<String> informList_ = widget.informList;
     return Container(
       decoration: new BoxDecoration(
-        color: Colors.lightGreen[50],
+        color: Colors.white,
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           children: <Widget>[
             // displayCircleImage(informList_[4], 125, false),
-            Image.asset(informList_[4]),
-            Divider(color: Color(0xFFD6D6D6), thickness: 1),
-            ListTile(title: Text(informList_[0])),
-            Divider(color: Color(0xFFD6D6D6), thickness: 1),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Card(
+                elevation: 12,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(padding:EdgeInsets.all(20), child:Image.asset(informList_[4])),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Text(informList_[0],style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+              ),),
+            ),
+            Divider(color: Colors.black38, indent: 10, endIndent: 10, thickness: 1),
             buildAddressTile(),
             buildUrlTile(),
             buildPhoneNumberTile(),
@@ -147,10 +162,10 @@ class InformWidgetState extends State<InformWidget> {
     List<String> informList = widget.informList;
     return ListTile(
         leading: IconButton(
-                icon: Icon(informIconList[2]),
-                onPressed: () {
-                  _url_launcher("tel:" + informList[2]);
-                }),
+            icon: Icon(informIconList[2]),
+            onPressed: () {
+              _url_launcher("tel:" + informList[2]);
+            }),
         title: Text(informList[2]),
         trailing: Tooltip(
             message: "복사 하기",

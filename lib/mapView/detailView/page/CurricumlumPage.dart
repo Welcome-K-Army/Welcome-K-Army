@@ -14,7 +14,7 @@ class CurriculumPageState extends State<CurriculumPage> {
   bool isLoaded = false;
 
   void loadData(String schoolName) async {
-    data = await StorageUtils().loadCsv("curriculums/test.csv");
+    data = await StorageUtils().loadCsv("curriculums/"+schoolName+".csv");
     for (int i = 1; i < data.length; i++) {
       if (!idxList.contains(data[i][0].toString().trim())) {
         idxList.add(data[i][0].toString().trim());
