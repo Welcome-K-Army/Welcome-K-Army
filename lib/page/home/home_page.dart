@@ -129,7 +129,7 @@ class HomePageState extends State<HomePage> {
 
   Widget buildSlideBanner() {
     return Container(
-        height: 260,
+        height: 270,
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
