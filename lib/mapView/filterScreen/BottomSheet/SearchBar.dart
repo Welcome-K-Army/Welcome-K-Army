@@ -29,7 +29,6 @@ class _SearhBarState extends State<SearhBar> {
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: TextField(
-          controller: controller,
           textCapitalization: TextCapitalization.words,
           decoration: InputDecoration(hintText: 'Search Location', icon: Icon(Icons.search)),
           onChanged: (value) async {
@@ -42,7 +41,7 @@ class _SearhBarState extends State<SearhBar> {
               } //for
             });
           },
-          onPressed: (data_filtered) {
+          onTap: () {
             setState(
               () async {
                 final result_data = Arguments(data_filtered.name, data_filtered.address, data_filtered.number, data_filtered.web_address, data_filtered.image, data_filtered.pdfurl, data_filtered.web_address_detail, data_filtered.one, data_filtered.two, data_filtered.three, data_filtered.four);
