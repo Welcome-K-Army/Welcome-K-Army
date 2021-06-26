@@ -34,12 +34,12 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 //       }
 // }
   filter_competiton(current_name){
-    List<List<dynamic>> data = [];
-    List<List<int>>  filter_data=[];
+    List<List<dynamic>> data;
+    List<List<int>>  filter_data;
     data=loadAsset();
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
-        filter_data.add(data[1],data[4],data[5])
+        filter_data.add(data[1],data[4],data[5]);
       }
     }
     return filter_data;
