@@ -14,14 +14,13 @@ class SearhBar extends StatefulWidget {
 class _SearhBarState extends State<SearhBar> {
   TextEditingController controller = TextEditingController();
   List<School> dataSet = fillData();
-  List<School> data_filtered = [];
-  List<School> result_data=[];
+  School data_filtered;
+  List<School> result_data = [];
   // String _searchResult;
 
   @override
   void initState() {
     super.initState();
-    data_filtered = dataSet;
   }
 
   @override
@@ -32,21 +31,21 @@ class _SearhBarState extends State<SearhBar> {
         padding: const EdgeInsets.all(4),
         child: TextField(
           textCapitalization: TextCapitalization.words,
-          controller:controller,
+          controller: controller,
           decoration: InputDecoration(hintText: 'Search Location', icon: Icon(Icons.search)),
           onChanged: (value) async {
             setState(() {
               // _searchResult=value;
               for (int i = 0; i <= dataSet.length; i++) {
                 if (value == dataSet[i].name) {
-                  data_filtered.add(dataSet[i]);
+                  data_filtered=dataSet[i];
                 }
               } //for
             });
           },
           onTap: () {
-            setState(()
-                async {
+            setState(
+              () async {
                 final arguments = Arguments(data_filtered.name, data_filtered.address, data_filtered.number, data_filtered.web_address, data_filtered.image, data_filtered.pdfurl, data_filtered.web_address_detail, data_filtered.one, data_filtered.two, data_filtered.three, data_filtered.four);
                 final result = await Navigator.push(
                   context,
