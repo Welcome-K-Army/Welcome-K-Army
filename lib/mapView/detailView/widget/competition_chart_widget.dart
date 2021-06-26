@@ -10,7 +10,7 @@ class CompetitionChartWidget extends StatefulWidget {
   List<List<int>> competition_data;
   List<String> school_data;
 
-  CompetitionChartWidget(this.competition_data,this.school_data ,{Key key}) : super(key: key);
+  CompetitionChartWidget(this.competition_data, this.school_data, {Key key}) : super(key: key);
 
   CompetitionChartWidgetState createState() => CompetitionChartWidgetState();
 }
@@ -18,22 +18,24 @@ class CompetitionChartWidget extends StatefulWidget {
 class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   List<List<dynamic>> data = [];
   loadAsset() async {
-      final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
-      data = myData;
-      return data;
-      setState(() {});
+    final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
+    data = myData;
+    return data;
+    setState(() {});
   }
 
-
-  filter_competiton(current_name){
+  filter_competiton(current_name) {
     List<List<dynamic>> data;
-    List<List<String>> filter_data=[];
+    List<List<String>> filter_data = [];
 
-    data=loadAsset();
-    for(int i=0;i<data.length;i++){
-      if(data[2][i]==current_name){
-        filter_data.add([data[1][i],data[4][i],data[5][i]);
-        
+    data = loadAsset();
+    for (int i = 1; i < data.length; i++) {
+      if (data[2][i] == current_name) {
+        filter_data.add([
+          data[1][i],
+          data[4][i],
+          data[5][i]
+        ]);
       }
     }
     return filter_data;
@@ -47,16 +49,15 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final school_name=widget.school_data[0];
-    
+    final school_name = widget.school_data[0];
+
     // List<List<int>> competition_data = widget.competition_data;
     // List<String>school_data_=widget.school_data;
     Size size = MediaQuery.of(context).size;
 
     return Container(
       child: SingleChildScrollView(
-        child:
-        Column(children: [
+        child: Column(children: [
           Table(
             columnWidths: {
               0: FixedColumnWidth(size.width * 0.1),
@@ -84,11 +85,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
               }).toList());
             }).toList(),
           ),
-          Container(
-              height: size.height,
-              width: size.width,
-              child: OrdinalComboBarLineChartWidget.withSampleData(
-                  filter_competiton(school_name))),
+          Container(height: size.height, width: size.width, child: OrdinalComboBarLineChartWidget.withSampleData(filter_competiton(school_name))),
         ]),
       ),
     );
