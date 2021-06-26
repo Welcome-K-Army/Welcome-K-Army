@@ -12,7 +12,7 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList,{this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData(competiton) {
+  factory OrdinalComboBarLineChartWidget.withSampleData(competiton) {//mymap==competiton
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(competiton),
       animate: false,
@@ -24,7 +24,7 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
 
     final manData = [
-      new OrdinalSales('2018', 10),
+      new OrdinalSales(competiton, 10),
       new OrdinalSales('2019', 20),
       new OrdinalSales('2020', 60),
       new OrdinalSales('2021', 70),

@@ -24,37 +24,15 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
       setState(() {});
   }
 
-//   check_name(current_name) async{
-//     List<List<dynamic>> data = [];
-//     List<List<int>> results;
-//     data=loadAsset();
-//       for(int j=0;j<data[2][j];j++){
-//         if(current_name==data[2][j]){
-//
-//         }
-//       }
-// }
-
-  Map<String,String>makeMap(Map<List<String>, String> map){
-    var newMap=<String,String>{};
-    for (var entry in map.entries) {
-      var keyList = entry.key;
-      for (var key in keyList) {
-        newMap[key] = entry.value;
-      }
-  }
-  return newMap;
-  }
 
   filter_competiton(current_name){
     List<List<dynamic>> data;
-    var mymap=<String,String>{};
+    List<List<int>> filter_data=[];
+
     data=loadAsset();
     for(int i=0;i<data.length;i++){
       if(data[2][i]==current_name){
-          mymap=makeMap({
-          [data[4].toString(),data[5].toString()]:data[2][i].toString()
-        });
+        filter_data.add((data[1][i],data[4][i],data[5][i]).toList());
       }
     }
     return mymap;
