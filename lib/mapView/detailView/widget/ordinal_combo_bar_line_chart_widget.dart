@@ -12,15 +12,15 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList,{this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData(data,competiton) {
+  factory OrdinalComboBarLineChartWidget.withSampleData(competiton) {
     return new OrdinalComboBarLineChartWidget(
-      _createSampleData(data),
+      _createSampleData(competiton),
       animate: false,
     );
   }
 
 
-  static List<charts.Series<OrdinalSales, String>> _createSampleData(data) {
+  static List<charts.Series<OrdinalSales, String>> _createSampleData(competiton) {
 
 
     final manData = [

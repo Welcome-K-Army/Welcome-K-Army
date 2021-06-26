@@ -34,7 +34,15 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 //       }
 // }
   filter_competiton(current_name){
-
+    List<List<dynamic>> data = [];
+    List<List<int>>  filter_data=[];
+    data=loadAsset();
+    for(int i=0;i<data.length;i++){
+      if(data[2][i]==current_name){
+        filter_data.add(data[1],data[4],data[5])
+      }
+    }
+    return filter_data;
   }
 
   @override
@@ -46,6 +54,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   @override
   Widget build(BuildContext context) {
     final school_name=widget.school_data[0];
+    
     // List<List<int>> competition_data = widget.competition_data;
     // List<String>school_data_=widget.school_data;
     Size size = MediaQuery.of(context).size;
@@ -85,7 +94,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
               height: size.height,
               width: size.width,
               child: OrdinalComboBarLineChartWidget.withSampleData(
-                  widget.competition_data,school_name)),
+                  filter_competiton(school_name))),
         ]),
       ),
     );
