@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:core';
 import 'package:flutter/material.dart';
 import '../search_controller.dart';
 import '../School.dart';
