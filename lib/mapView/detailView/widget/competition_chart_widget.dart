@@ -32,9 +32,9 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     for (int i = 1; i < data.length; i++) {
       if (data[2][i] == current_name) {
         filter_data.addAll([
-          data[1][i], //name
-          data[4][i], //man
-          data[5][i]
+          data[1][i].toString(), //name
+          data[4][i].toString(), //man
+          data[5][i].toString()
         ]);
       }
     }
