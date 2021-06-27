@@ -24,11 +24,11 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     setState(() {});
   }
 
-  filter_competiton(current_name) {
+  filter_competiton async(current_name) {
     List<List<dynamic>> data;
     List<List<String>> filter_data = [];
 
-    data = loadAsset();
+    data = async loadAsset();
     for (int i = 1; i < data.length; i++) {
       if (data[2][i] == current_name) {
         filter_data.add([
