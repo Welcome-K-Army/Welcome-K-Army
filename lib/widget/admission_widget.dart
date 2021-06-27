@@ -74,7 +74,17 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                         }),
                     IconButton(
                       icon: Icon(Icons.copy),
-                      onPressed: () {},
+                      onPressed: () {
+                        Directory appDocDir = await getApplicationDocumentsDirectory();
+                        String appDocPath = appDocDir.path;
+
+                        final taskId = await FlutterDownloader.enqueue(
+                          url: 'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
+                          savedDir: appDocPath,
+                          showNotification: true, // show download progress in status bar (for Android)
+                          openFileFromNotification: true, // click on notification to open downloaded file (for Android)
+                        );
+                      },
                     )
                   ],
                 ));
