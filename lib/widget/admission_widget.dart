@@ -75,7 +75,20 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                         }),
-                    DownloadWidget(platform: platform, pdfItem: pdfItems),
+                    ErrorWidget.builder = (FlutterErrorDetails details) {
+                      bool inDebug = false;
+                      assert(() {
+                        inDebug = true;
+                        return true;
+                      }());
+                      // In debug mode, use the normal error widget which shows
+                      // the error message:
+                      if (inDebug) {
+                        return ErrorWidget(details.exception);
+                      }
+                      // In release builds, show a yellow-on-blue message instead:
+                      return DownloadWidget(platform: platform, pdfItem: pdfItems);
+                    }
                   ],
                 ));
           },
