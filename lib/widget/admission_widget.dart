@@ -10,6 +10,7 @@ import 'package:thumbnailer/thumbnailer.dart';
 
 import '../model/pdf_items.dart';
 import '../page/pdf_viewing_page.dart';
+import '../widget/download_widget.dart';
 
 class AdmissionWidget extends StatefulWidget {
   @override
@@ -28,6 +29,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
 
   @override
   void initState() {
+    super.initState();
     List<String> items = [
       'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
       'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
@@ -37,11 +39,12 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
       '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
     ];
     pdfItems = PdfItems(items: items, itemsTitle: itemsTitle);
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final platform = Theme.of(context).platform;
+
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.all(10),
@@ -72,20 +75,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingPage(pdfItem: pdfItems.items[index], title: pdfItems.itemsTitle[index])));
                         }),
-                    IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Directory appDocDir = await getApplicationDocumentsDirectory();
-                        String appDocPath = appDocDir.path;
-
-                        final taskId = await FlutterDownloader.enqueue(
-                          url: 'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-                          savedDir: appDocPath,
-                          showNotification: true, // show download progress in status bar (for Android)
-                          openFileFromNotification: true, // click on notification to open downloaded file (for Android)
-                        );
-                      },
-                    )
+                    DownloadWidget(platform: platform, pdfItem: pdfItems),
                   ],
                 ));
           },
