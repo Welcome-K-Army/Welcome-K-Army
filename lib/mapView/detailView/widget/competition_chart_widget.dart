@@ -16,7 +16,7 @@ class CompetitionChartWidget extends StatefulWidget {
 }
 
 class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
-  List<List<dynamic>> data = [];
+  List<List<String>> data = [];
   loadAsset() async {
     final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
     data = myData;
@@ -25,7 +25,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   }
 
   filter_competiton(current_name) async {
-    List<List<dynamic>> data;
+    List<List<String>> data;
     List<List<String>> filter_data = [];
 
     data = await loadAsset();
