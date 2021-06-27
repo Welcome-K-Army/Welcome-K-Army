@@ -31,11 +31,11 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     data = await loadAsset();
     for (int i = 1; i < data.length; i++) {
       if (data[2][i] == current_name) {
-        filter_data.add([
+        filter_data.addAll(
           data[1][i], //name
           data[4][i], //man
           data[5][i]
-        ]);
+        );
       }
     }
     return filter_data;
