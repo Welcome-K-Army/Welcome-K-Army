@@ -13,6 +13,7 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
   OrdinalComboBarLineChartWidget(this.seriesList,{this.animate});
 
   factory OrdinalComboBarLineChartWidget.withSampleData(competiton) {
+
     return new OrdinalComboBarLineChartWidget(
       _createSampleData(competiton),
       animate: false,
@@ -24,17 +25,17 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
 
     final manData = [
-      new OrdinalSales(competiton[0][0], int.parse(competiton[0][1])),
-      new OrdinalSales(competiton[1][0], int.parse(competiton[1][1])),
-      new OrdinalSales(competiton[2][0], int.parse(competiton[2][1])),
-      new OrdinalSales(competiton[3][0], int.parse(competiton[3][1])),
+      new OrdinalSales(competiton[0][0], double.parse(competiton[0][1])),
+      new OrdinalSales(competiton[1][0], double.parse(competiton[1][1])),
+      new OrdinalSales(competiton[2][0], double.parse(competiton[2][1])),
+      new OrdinalSales(competiton[3][0], double.parse(competiton[3][1])),
     ];
 
     final womanData = [
-      new OrdinalSales(competiton[0][0], int.parse(competiton[0][2])),
-      new OrdinalSales(competiton[1][0], int.parse(competiton[1][2])),
-      new OrdinalSales(competiton[2][0], int.parse(competiton[2][2])),
-      new OrdinalSales(competiton[3][0], int.parse(competiton[3][2])),
+      new OrdinalSales(competiton[0][0], double.parse(competiton[0][2])),
+      new OrdinalSales(competiton[1][0], double.parse(competiton[1][2])),
+      new OrdinalSales(competiton[2][0], double.parse(competiton[2][2])),
+      new OrdinalSales(competiton[3][0], double.parse(competiton[3][2])),
     ];
 
     return [
@@ -58,15 +59,12 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
 
   @override
   Widget build(BuildContext context) {
+
     return new charts.OrdinalComboChart(seriesList,
         animate: animate,
-        // Configure the default renderer as a bar renderer.
         defaultRenderer: new charts.BarRendererConfig(groupingType: charts.BarGroupingType.grouped),
-        // Custom renderer configuration for the line series. This will be used for
-        // any series that does not define a rendererIdKey.
         customSeriesRenderers: [
           new charts.LineRendererConfig(
-              // ID used to link series to this renderer.
               customRendererId: 'customLine')
         ]);
   }
@@ -75,7 +73,7 @@ class _OrdinalComboBarLineChartWidgetState extends State<OrdinalComboBarLineChar
 /// Sample ordinal data type.
 class OrdinalSales {
   final String year;
-  final int sales;
+  final double sales;
 
   OrdinalSales(this.year, this.sales);
 }

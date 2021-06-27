@@ -60,7 +60,7 @@ class HomePageState extends State<HomePage> {
 
   Future loadPdf(String url) async {
     final pdfThumbnail = await getPdfThumbnails(url);
-    print(pdfThumbnail);
+    // print(pdfThumbnail);
     pdf = pdfThumbnail;
     return pdf;
   }
