@@ -12,29 +12,29 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   OrdinalComboBarLineChartWidget(this.seriesList,{this.animate});
 
-  factory OrdinalComboBarLineChartWidget.withSampleData(data,competiton) {
+  factory OrdinalComboBarLineChartWidget.withSampleData(competiton) {
     return new OrdinalComboBarLineChartWidget(
-      _createSampleData(data),
+      _createSampleData(competiton),
       animate: false,
     );
   }
 
 
-  static List<charts.Series<OrdinalSales, String>> _createSampleData(data) {
+  static List<charts.Series<OrdinalSales, String>> _createSampleData(competiton) {
 
 
     final manData = [
-      new OrdinalSales('2018', 10),
-      new OrdinalSales('2019', 20),
-      new OrdinalSales('2020', 60),
-      new OrdinalSales('2021', 70),
+      new OrdinalSales(competiton[0][0], int.parse(competiton[0][1])),
+      new OrdinalSales(competiton[1][0], int.parse(competiton[1][1])),
+      new OrdinalSales(competiton[2][0], int.parse(competiton[2][1])),
+      new OrdinalSales(competiton[3][0], int.parse(competiton[3][1])),
     ];
 
     final womanData = [
-      new OrdinalSales('2018', 5),
-      new OrdinalSales('2019', 1),
-      new OrdinalSales('2020', 5),
-      new OrdinalSales('2021', 70),
+      new OrdinalSales(competiton[0][0], int.parse(competiton[0][2])),
+      new OrdinalSales(competiton[1][0], int.parse(competiton[1][2])),
+      new OrdinalSales(competiton[2][0], int.parse(competiton[2][2])),
+      new OrdinalSales(competiton[3][0], int.parse(competiton[3][2])),
     ];
 
     return [

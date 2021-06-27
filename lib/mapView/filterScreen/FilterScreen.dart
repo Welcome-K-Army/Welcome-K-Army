@@ -8,6 +8,7 @@ import 'data.dart';
 
 class FilterScreen extends StatelessWidget {
   final List<School> schoolList = fillData();
+
   FilterData _filterData;
 
   bool _filter(School data) {

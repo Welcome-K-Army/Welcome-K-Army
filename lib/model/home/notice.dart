@@ -7,8 +7,8 @@ import 'package:Army/services/helper.dart';
 int noticeNumber = 0;
 
 class Notice {
-  var date_yMd = DateFormat.yMd('ko-kr').format(new DateTime.now());
-  var date_yMMMd = DateFormat.yMMMd('ko-kr').format(new DateTime.now());
+  String date_yMd ; //DateFormat.yMd('ko-kr').format(new DateTime.now());
+  String date_yMMMd ; //DateFormat.yMMMd('ko-kr').format(new DateTime.now());
 
   int number;
 
@@ -18,12 +18,12 @@ class Notice {
   String contents;
   List<GalleryItem> imageList;
 
-  Notice({this.title, this.contents, this.userNickname, this.imageList}) {
+  Notice({this.title, this.contents, this.userNickname, this.imageList,this.date_yMd,this.date_yMMMd}) {
     this.number = noticeNumber;
     noticeNumber++;
   }
 
   factory Notice.fromJson(Map<String, dynamic> parsedJson) {
-    return new Notice(title: parsedJson['title'] ?? '', contents: parsedJson['notice'] ?? '', imageList: parsedGalleryItem(parsedJson['imageUrlList']), userNickname: parsedJson['userNickname']);
+    return new Notice(title: parsedJson['title'] ?? '', contents: parsedJson['notice'] ?? '', imageList: parsedGalleryItem(parsedJson['imageUrlList']), userNickname: parsedJson['userNickname'],date_yMd: parsedJson['date_yMd'],date_yMMMd: parsedJson['date_yMMMd']);
   }
 }

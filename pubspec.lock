@@ -393,7 +393,7 @@ packages:
     source: hosted
     version: "1.3.0"
   native_pdf_renderer:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: native_pdf_renderer
       url: "https://pub.dartlang.org"
@@ -650,7 +650,7 @@ packages:
     source: hosted
     version: "19.1.69"
   syncfusion_flutter_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"

@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../filterScreen/School.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter/services.dart';
 import "../detailView/detail_main.dart";
 
 class FilteredMap extends StatefulWidget {
@@ -18,6 +18,8 @@ class FilteredMap extends StatefulWidget {
 
 class FilteredMapState extends State<FilteredMap> {
   Completer<GoogleMapController> _controller = Completer();
+
+
 
   bool _isMapLoaded = false;
   bool _isAnimationEnd = false;
@@ -113,18 +115,20 @@ class FilteredMapState extends State<FilteredMap> {
     );
   }
 
-  Future<void> _cameraMove(LatLng pos) async {
+
+  Future<void> cameraMove(LatLng pos) async {
     final GoogleMapController controller = await _controller.future;
     CameraPosition targetPos = CameraPosition(target: pos, zoom: 12);
     controller.animateCamera(CameraUpdate.newCameraPosition(targetPos));
   }
+
 
   Set<Marker> _createMarkers() {
     return widget.filteredData
         .map((school) => Marker(
               markerId: MarkerId(school.name),
               position: school.latlng,
-              onTap: () => _cameraMove(school.latlng),
+              onTap: () => cameraMove(school.latlng),
               infoWindow: InfoWindow(
                 title: school.name,
                 snippet: school.address,

@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 
 import 'notice_list_page.dart';
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:native_pdf_renderer/native_pdf_renderer.dart';
 import 'package:thumbnailer/thumbnailer.dart';
 
 import 'package:Army/provider/event_provider.dart';
@@ -34,29 +34,50 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final User user;
   HomePageState(this.user);
+  PdfPageImage pdf;
+  List<PdfPageImage> pdfList = [];
   List<PdfItem> pdfItems = [];
   List<String> items = [
-    'https://firebasestorage.googleapis.com/v0/b/login-project-afa09.appspot.com/o/pdf%2F2022%ED%95%99%EB%85%84%EB%8F%84(82%EA%B8%B0)%EC%9C%A1%EA%B5%B0%EC%82%AC%EA%B4%80%EC%83%9D%EB%8F%84%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf?alt=media&token=b0d42ed4-0949-4c14-a41f-758bc966762a',
+    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
     'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
   ];
   List<String> itemsTitle = [
     '2022학년도(82기)육군사관생도모집요강',
     '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
   ];
-  List<Future<Uint8List>> _documentList = [];
 
   ///Get the PDF document as bytes.
-  Future<Uint8List> getPdfBytes(String url) async {
-    Uint8List _documentBytes;
-    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url)).buffer.asUint8List();
-    return _documentBytes;
+  Future<PdfPageImage> getPdfThumbnails(String url) async {
+    final _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
+        .buffer
+        .asUint8List();
+    final document = await PdfDocument.openData(_documentBytes);
+    final page = await document.getPage(1);
+    final pageImage = await page.render(width: page.width, height: 400);
+    await page.close();
+    return pageImage;
+  }
+
+  Future loadPdf(String url) async {
+    final pdfThumbnail = await getPdfThumbnails(url);
+    print(pdfThumbnail);
+    pdf = pdfThumbnail;
+    return pdf;
+  }
+
+  loadPdfsList() {
+    for (int index = 0; index < items.length; index++) {
+      loadPdf(items[index]).then((value) {
+        pdfList.add(value);
+      });
+    }
   }
 
   @override
   void initState() {
     for (int index = 0; index < items.length; index++) {
       pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
-      _documentList.add(getPdfBytes(items[index]));
+      loadPdfsList();
     }
     super.initState();
   }
@@ -122,17 +143,21 @@ class HomePageState extends State<HomePage> {
         child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
-              TitleWithMoreBtnWidget(title: "뉴스", press: () {Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NewsListPage()),
-              );}),
+              TitleWithMoreBtnWidget(
+                  title: "뉴스",
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NewsListPage()),
+                    );
+                  }),
               buildSlideBanner(),
             ])));
   }
 
   Widget buildSlideBanner() {
     return Container(
-        height: 270,
+        height: 350,
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -152,20 +177,33 @@ class HomePageState extends State<HomePage> {
                   ),
                   itemCount: pdfItems.length, //notice imagelist length
                   itemBuilder: (BuildContext context, int index) {
-                    return Wrap(direction: Axis.vertical, spacing: 10, runSpacing: 40, children: [
-                      Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Center(
-                              child: InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
-                                  },
-                                  child: Thumbnail(
-                                      dataResolver:()=> _documentList[index],
-                                      mimeType: 'application/pdf',
-                                      widgetSize: 200.0)))),
-                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 10), child: Text(pdfItems[index]?.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold))),
-                    ]);
+                    return !pdfList.isEmpty
+                        ? Column(children: [
+                            Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Center(
+                                    child: InkWell(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          PdfViewingWidget(
+                                                              pdfItem: pdfItems[
+                                                                  index])));
+                                        },
+                                        child: Image(
+                                            image: MemoryImage(
+                                                pdfList[index].bytes))))),
+                            Padding(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                child: Text(pdfItems[index]?.title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold))),
+                          ])
+                        : Center(child:CircularProgressIndicator());
                   }), // Swiper
             )));
   }

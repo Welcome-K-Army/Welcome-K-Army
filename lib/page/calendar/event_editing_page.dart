@@ -47,8 +47,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
       for (int i = 0; i < eventColors.length; i++) {
-        if (i == 0)
+        if (i == 0) {
           eventColorCheckValues.add(true);
+          eventColor = eventColors[i];
+        }
         else
           eventColorCheckValues.add(false);
       }
@@ -61,8 +63,9 @@ class _EventEditingPageState extends State<EventEditingPage> {
       toDate = event.to;
       eventColor = event.backgroundColor;
       for (int i = 0; i < eventColors.length; i++) {
-        if (eventColor.value == eventColors[i].value)
+        if (eventColor.value == eventColors[i].value) {
           eventColorCheckValues.add(true);
+        }
         else
           eventColorCheckValues.add(false);
       }

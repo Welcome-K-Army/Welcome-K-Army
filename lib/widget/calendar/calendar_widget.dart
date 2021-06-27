@@ -69,8 +69,9 @@ class CalendarWidget extends StatelessWidget {
             onLongPress: (details) {
               provider.setDate(details.date);
               showModalBottomSheet(
+                backgroundColor: Colors.white,
                 context: context,
-                builder: (context) => TasksWidget(),
+                builder: (context) => TasksWidget(clickedDate: details.date),
               );
             }),
       )

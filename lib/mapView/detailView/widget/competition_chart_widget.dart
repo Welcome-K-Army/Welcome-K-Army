@@ -19,22 +19,25 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   loadAsset() async {
       final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
       data = myData;
+      print(data);
       return data;
       setState(() {});
   }
 
-//   check_name(current_name) async{
-//     List<List<dynamic>> data = [];
-//     List<List<int>> results;
-//     data=loadAsset();
-//       for(int j=0;j<data[2][j];j++){
-//         if(current_name==data[2][j]){
-//
-//         }
-//       }
-// }
-  filter_competiton(current_name){
-
+  filter_competiton(current_name) {
+    List<List<dynamic>> filter_data = [];
+    print(data.length);
+    for (int i = 1; i < data.length; i++) {
+      if (data[i][2] == current_name) {
+        filter_data.add([
+          data[i][1].toString(), //year
+          data[i][4].toString(), //man
+          data[i][5].toString(),
+        ]);
+      }
+    }
+    print(filter_data);
+    return filter_data;
   }
 
   @override
@@ -85,7 +88,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
               height: size.height,
               width: size.width,
               child: OrdinalComboBarLineChartWidget.withSampleData(
-                  widget.competition_data,school_name)),
+                  filter_competiton(school_name))),
         ]),
       ),
     );

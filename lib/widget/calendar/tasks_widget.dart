@@ -1,34 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-
 import 'package:syncfusion_flutter_core/theme.dart';
 
 import 'package:Army/model/calendar/event_data_source.dart';
-
-
-
 import 'package:Army/page/calendar/event_viewing_page.dart';
 import 'package:Army/provider/event_provider.dart';
 
 class TasksWidget extends StatefulWidget {
+  final DateTime clickedDate;
+  TasksWidget({this.clickedDate});
   @override
-  _TasksWidgetState createState() => _TasksWidgetState();
+  _TasksWidgetState createState() =>
+      _TasksWidgetState(clickedDate: clickedDate);
 }
 
 class _TasksWidgetState extends State<TasksWidget> {
+  final DateTime clickedDate;
+  _TasksWidgetState({this.clickedDate});
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
     final selectedEvents = provider.eventsOfSelectedDate;
 
     if (selectedEvents.isEmpty) {
-      return Center(
-        child: Text(
-          '일정이 없습니다!',
-          style: TextStyle(color: Colors.black, fontSize: 24),
-        ),
-      );
+      return Stack(children: [
+        Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Text(
+                DateFormat.d('ko').format(clickedDate).replaceAll("일", "") +
+                    "  " +
+                    DateFormat.EEEE('ko').format(clickedDate),
+                style: TextStyle(fontSize: 15))),
+        Container(
+            height: 64.0,
+            child: Divider(
+              color: Colors.black12,
+              height: 10,
+              thickness: 1,
+            )),
+        Center(
+          child: Text(
+            '일정이 없습니다!',
+            style: TextStyle(color: Colors.black, fontSize: 24),
+          ),
+        )
+      ]);
     }
 
     return SfCalendarTheme(
@@ -36,7 +55,6 @@ class _TasksWidgetState extends State<TasksWidget> {
         timeTextStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
       child: SfCalendar(
-
         view: CalendarView.timelineDay,
         dataSource: EventDataSource(provider.events),
         initialDisplayDate: provider.selectedDate,
@@ -64,7 +82,7 @@ class _TasksWidgetState extends State<TasksWidget> {
     CalendarAppointmentDetails details,
   ) {
     final event = details.appointments.first;
-    
+
     return Container(
       width: details.bounds.width,
       height: details.bounds.height,

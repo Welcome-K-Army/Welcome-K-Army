@@ -1,22 +1,32 @@
 import 'dart:async';
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../School.dart';
 import '../data.dart';
 import '../../detailView/detail_main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:Army/mapView/mapScreen/FilteredMap.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+
 
 class SearhBar extends StatefulWidget {
+
+
+
   @override
   _SearhBarState createState() => _SearhBarState();
 }
 
 class _SearhBarState extends State<SearhBar> {
+  Completer<GoogleMapController> mapController = Completer();
   TextEditingController controller = TextEditingController();
   List<School> dataSet = fillData();
   School data_filtered = null;
   List<School> result_data = [];
   FToast fToast;
+
   // String _searchResult;
 
   @override
@@ -24,6 +34,12 @@ class _SearhBarState extends State<SearhBar> {
     super.initState();
     fToast = FToast();
     fToast.init(context);
+  }
+
+  Future<void> cameraMove(LatLng pos) async{
+   final GoogleMapController mapCameraController=await mapController.future;
+    CameraPosition targetPos = CameraPosition(target: pos, zoom: 12);
+  mapCameraController.animateCamera(CameraUpdate.newCameraPosition(targetPos));
   }
 
   void showErrorToast() {
@@ -41,33 +57,24 @@ class _SearhBarState extends State<SearhBar> {
     );
   }
 
+
   void submit() async {
     if (data_filtered == null) {
       showErrorToast();
       return;
     }
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => DetailView(
-              arguments: Arguments(
-                  data_filtered.name,
-                  data_filtered.address,
-                  data_filtered.number,
-                  data_filtered.web_address,
-                  data_filtered.image,
-                  data_filtered.pdfurl,
-                  data_filtered.web_address_detail,
-                  data_filtered.one,
-                  data_filtered.two,
-                  data_filtered.three,
-                  data_filtered.four))),
-    );
+    await cameraMove(data_filtered.latlng);
     data_filtered = null;
   }
 
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Padding(

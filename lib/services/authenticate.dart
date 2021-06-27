@@ -15,7 +15,7 @@ class FireStoreUtils {
   Reference storage = FirebaseStorage.instance.ref();
 
   Future<List<Notice>> getNoticeList() async {
-    QuerySnapshot noticeDocument = await firestore.collection('NoticeData').get();
+    QuerySnapshot noticeDocument = await firestore.collection('NoticeData').orderBy("date_yMd").get();
     List<Notice> notices = [];
     if (noticeDocument != null && noticeDocument.docs != null) {
       for (var no in noticeDocument.docs) {

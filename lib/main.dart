@@ -18,6 +18,7 @@ import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => EventProvider(),
