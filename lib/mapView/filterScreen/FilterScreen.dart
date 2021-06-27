@@ -5,6 +5,7 @@ import 'MyFloatingButton.dart';
 import '../mapScreen/FilteredMap.dart';
 import 'School.dart';
 import 'data.dart';
+import 'BottomSheet/MapController.dart';
 
 class FilterScreen extends StatelessWidget {
   final List<School> schoolList = fillData();
@@ -27,7 +28,8 @@ class FilterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => FilterData())
+        ChangeNotifierProvider(create: (context) => FilterData()),
+        ChangeNotifierProvider(create: (context) => MapController())
       ],
       child: Scaffold(
         floatingActionButton: MyFloatingActionButton(),

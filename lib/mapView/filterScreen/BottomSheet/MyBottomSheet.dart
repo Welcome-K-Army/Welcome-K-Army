@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'BottomSheetButton.dart';
 import 'DropDownButtonList.dart';
+import 'MapController.dart';
 import 'TitleText.dart';
 import 'SearchBar.dart';
 
@@ -10,7 +12,6 @@ class MyBottomSheet extends StatefulWidget {
 }
 
 class _MyBottomSheetState extends State<MyBottomSheet> {
-
   @override
   Widget build(BuildContext context) {
     // final size=MediaQuery.of(context).size;
@@ -26,7 +27,9 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
       ),
       child: Column(children: <Widget>[
         TitleText("상세검색"),
-        SearhBar(),
+        Consumer<MapController>(builder: (context, controller, child) {
+          return SearhBar(controller.controller);
+        }),
         DropDownButtonList(),
         BottomSheetButton(),
       ]),

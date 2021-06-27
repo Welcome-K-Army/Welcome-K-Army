@@ -86,8 +86,34 @@ class SettingScreen extends StatelessWidget {
                 Icons.help_outline,
                 color: Color(COLOR_PRIMARY),
               ),
-              text: "도움말",
-              press: () {}),
+              text: "앱정보",
+              press: () => showAboutDialog(
+                context: context,
+                applicationVersion: '1.1.0',
+                applicationIcon: Icon(Icons.flutter_dash),
+                applicationName: "켠김에 별까지",
+                children:[
+                  // ListTile(leading: Icon(Icons.flutter_dash), title: Text("1kl1"), subtitle: Text("Developer"),)
+                  Text("병장 장성호 - Director & Developer", style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14
+                  ),),
+                  Text("상병 나부겸 - Backend Developer", style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14
+                  ),),
+                  Text("일병 신민석 - App Developer", style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14
+                  ),),
+                  Text("일병 김민준 - UI/UX Designer & Developer", style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14
+                  ),),
+
+
+                ]
+              )),
           Settings(
             //로그아웃 네비게이터
               icon: Icon(

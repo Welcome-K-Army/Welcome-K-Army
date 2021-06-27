@@ -82,11 +82,6 @@ class ListTileWithTitleAndDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String fixedContent = notice.contents;
-    if (fixedContent.length > 30) {
-      fixedContent = fixedContent.substring(0, 30);
-      fixedContent += "...";
-    }
 
     return ListTile(
         title: Row(
@@ -99,7 +94,7 @@ class ListTileWithTitleAndDay extends StatelessWidget {
             )
           ],
         ),
-        subtitle: Text(fixedContent),
+        subtitle: Text(notice.contents, overflow: TextOverflow.ellipsis),
         onTap: () {
           Navigator.push(
             context,
@@ -114,6 +109,13 @@ class ListContentView extends StatelessWidget {
   const ListContentView({Key key, this.notice}) : super(key: key);
 
   final Notice notice;
+
+  String processString(String str){
+    List<String> tmpList = str.split('\\');
+    String result = "";
+    tmpList.forEach((e) => result = result + e + "\n");
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +171,10 @@ class ListContentView extends StatelessWidget {
                       ),
                       child: buildGallery(context)
                     ): Container(),
-                    Text(notice.contents)
+                    Padding(
+                      padding:EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(processString(notice.contents)),
+                    )
                   ],
                 )
               )

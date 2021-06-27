@@ -29,12 +29,17 @@ class NoticeListPageState extends State<NoticeListPage> {
               style: TextStyle(fontSize: 18),
             )),
       ),
-      body: ListWithTitleAndDayWidget(
-          headerTile: false,
-          title: "Notices",
-          notices: noticeProvider.notices,
-          infinite: true,
-          maxLines: 0),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: ListWithTitleAndDayWidget(
+              headerTile: false,
+              title: "Notices",
+              notices: noticeProvider.notices,
+              infinite: true,
+              maxLines: 0),
+        ),
+      )
     );
   }
 }

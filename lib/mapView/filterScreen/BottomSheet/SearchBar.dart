@@ -13,14 +13,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class SearhBar extends StatefulWidget {
 
-
+  final GoogleMapController mapController;
+  SearhBar(this.mapController);
 
   @override
   _SearhBarState createState() => _SearhBarState();
 }
 
 class _SearhBarState extends State<SearhBar> {
-  Completer<GoogleMapController> mapController = Completer();
   TextEditingController controller = TextEditingController();
   List<School> dataSet = fillData();
   School data_filtered = null;
@@ -37,9 +37,8 @@ class _SearhBarState extends State<SearhBar> {
   }
 
   Future<void> cameraMove(LatLng pos) async{
-   final GoogleMapController mapCameraController=await mapController.future;
     CameraPosition targetPos = CameraPosition(target: pos, zoom: 12);
-  mapCameraController.animateCamera(CameraUpdate.newCameraPosition(targetPos));
+    widget.mapController.animateCamera(CameraUpdate.newCameraPosition(targetPos));
   }
 
   void showErrorToast() {

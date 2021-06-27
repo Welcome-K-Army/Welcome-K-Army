@@ -17,11 +17,22 @@ class CompetitionChartWidget extends StatefulWidget {
 
 class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   List<List<dynamic>> data = [];
+  bool isExist = false;
+
   loadAsset() async {
     final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
     data = myData;
     setState(() {});
     return data;
+  }
+
+  checkExist(name){
+    for (int i = 1; i < data.length; i++) {
+      if (data[i][2] == name) {
+        isExist = true;
+        return;
+      }
+    }
   }
 
   filter_competiton(current_name) {
@@ -38,7 +49,6 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
         ]);
       }
     }
-    print(filter_data);
     return filter_data;
   }
 
@@ -54,17 +64,16 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
     // List<List<int>> competition_data = widget.competition_data;
     // List<String>school_data_=widget.school_data;
     Size size = MediaQuery.of(context).size;
-
+    checkExist(school_name);
     return Container(
-      child: SingleChildScrollView(
         child: Container(
             height: size.height,
             width: size.width,
             child: data.length == 0
                 ? Center(child: CircularProgressIndicator())
-                : OrdinalComboBarLineChartWidget.withSampleData(
+                : !isExist ? Container() : OrdinalComboBarLineChartWidget.withSampleData(
                     filter_competiton(school_name))),
-      ),
+
     );
   }
 }
