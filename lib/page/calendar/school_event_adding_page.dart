@@ -43,8 +43,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   List<dynamic> dataList = [];
 
   loadAsset(String school) async {
-    final myData =
-        await StorageUtils().loadCsv("curriculums/" + school + " 일정.csv");
+    final myData = await StorageUtils().loadCsv("curriculums/" + school + " 일정.csv");
     data = myData;
     dataList.add(data);
     setState(() {});
@@ -97,12 +96,19 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     events = [];
     schoolEvents = [];
   }
+
   @override
   void initState() {
     super.initState();
     for (int i = 0; i < schoolList.length; i++) {
       loadAsset(schoolList[i]);
-      checkThemes.add([false, false, false, false, false]);
+      checkThemes.add([
+        false,
+        false,
+        false,
+        false,
+        false
+      ]);
     }
   }
 
@@ -158,11 +164,8 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                   border: UnderlineInputBorder(),
                   hintText: '검색',
                 ),
-                onFieldSubmitted: (_) =>
-                    searchSubmitted(schoolNameController.text),
-                validator: (title) => title != null && title.isEmpty
-                    ? 'School Name cannot be empty'
-                    : null,
+                onFieldSubmitted: (_) => searchSubmitted(schoolNameController.text),
+                validator: (title) => title != null && title.isEmpty ? 'School Name cannot be empty' : null,
                 controller: schoolNameController,
               ),
             ),
@@ -179,8 +182,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       );
 
   List<Widget> buildSchoolListTile(String text, EventProvider provider) {
-    final List<Widget> schoolTiles =
-        List<Widget>.generate(schoolList.length, (index) {
+    final List<Widget> schoolTiles = List<Widget>.generate(schoolList.length, (index) {
       if (schoolList[index].contains(text)) {
         return ListTile(
           title: Text(schoolList[index]),
@@ -203,37 +205,37 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                       barrierDismissible: false,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: new Text("권한 없음"),
-                          content: SingleChildScrollView(
-                              child: Column(
-                                  children: List<Widget>.generate(themes.length,
-                                      (j) {
-                            return Row(children: [
-                              Checkbox(
-                                  value: checkThemes[index][j],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      checkThemes[index][j] = value;
-                                    });
-                                  }),
-                              Text(themes[j]),
-                            ]);
-                          }))),
+                          title: new Text("일정추가"),
+                          content: StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                            return SingleChildScrollView(
+                                child: Column(
+                                    children: List<Widget>.generate(themes.length, (j) {
+                              return Row(children: [
+                                Checkbox(
+                                    value: checkThemes[index][j],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        checkThemes[index][j] = value;
+                                      });
+                                    }),
+                                Text(themes[j]),
+                              ]);
+                            })));
+                          }),
                           actions: <Widget>[
                             new FlatButton(
                               child: new Text("확인"),
                               onPressed: () {
-                                for(int i = 0; i < checkThemes[index].length; i++) {
+                                for (int i = 0; i < checkThemes[index].length; i++) {
                                   if (checkThemes[index][i]) {
-                                  for (int j = 0;
-                                  j < schoolEvents[i].events.length;
-                                  j++) {
-                                    print(schoolEvents[i].events.length);
-                                    print(schoolEvents[i].events[j]);
-                                  }
+                                    for (int j = 0; j < schoolEvents[i].events.length; j++) {
+                                      print(schoolEvents[i].events.length);
+                                      print(schoolEvents[i].events[j]);
+                                      provider.addEvent(schoolEvents[i].events[j]);
+                                    }
                                   }
                                 }
-                                    //provider.addEvent(schoolEvents[i].events[j]);
+                                //provider.addEvent(schoolEvents[i].events[j]);
 
                                 dispose_event();
                                 Navigator.pop(context);
