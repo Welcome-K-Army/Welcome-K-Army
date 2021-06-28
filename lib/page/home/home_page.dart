@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:Army/model/user.dart';
+import 'package:Army/services/firebaseUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -37,16 +38,33 @@ class HomePageState extends State<HomePage> {
   PdfPageImage pdf;
   List<PdfPageImage> pdfList = [];
   List<PdfItem> pdfItems = [];
-  List<String> items = [
-    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-    'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-  ];
+  String temp;
+  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
+  List<String> items = [];
   List<String> itemsTitle = [
-    '2022학년도(82기)육군사관생도모집요강',
-    '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
+    "육사신보 제629호",
+    "해사학보 제312호",
+    "공사신문 제357호",
+    "국간사학보 제127호",
+    "충성대신문 제188호"
   ];
 
   ///Get the PDF document as bytes.
+  loadUrl(String school, String title) async {
+    String urlTemp = "pdf/news/해군사관학교/해사학보 제312호.pdf";
+    print(urlTemp);
+    final url = await FireStoreUtils().getFileUrl(urlTemp);
+    print(url);
+    temp = url;
+  }
+
+  loadUrlList() {
+    for (int index = 0; index < schools.length; index++) {
+      loadUrl(schools[index], itemsTitle[index]);
+              items.add(temp);
+    }
+  }
+
   Future<PdfPageImage> getPdfThumbnails(String url) async {
     final _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
         .buffer
@@ -75,9 +93,10 @@ class HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    loadUrl("해군사관학교","해사학보 제312호");
+    loadPdfsList();
     for (int index = 0; index < items.length; index++) {
       pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
-      loadPdfsList();
     }
     super.initState();
   }
@@ -203,7 +222,7 @@ class HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold))),
                           ])
-                        : Center(child:CircularProgressIndicator());
+                        : Center(child: CircularProgressIndicator());
                   }), // Swiper
             )));
   }

@@ -1,5 +1,5 @@
 
-import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/firebaseUtil.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
 import 'package:Army/ui/auth/authScreen.dart';

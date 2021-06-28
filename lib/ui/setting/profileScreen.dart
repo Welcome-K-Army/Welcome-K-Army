@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:Army/model/user.dart';
-import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/firebaseUtil.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/main.dart';

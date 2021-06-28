@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:Army/main.dart';
 import 'package:Army/model/user.dart';
-import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/firebaseUtil.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
 import 'package:Army/ui/setting/profileScreen.dart';

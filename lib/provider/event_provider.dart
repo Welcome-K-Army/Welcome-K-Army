@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Army/model/calendar/event.dart';
-import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/firebaseUtil.dart';
 
 class EventProvider extends ChangeNotifier {
   List<Event> _events = [];

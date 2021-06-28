@@ -1,9 +1,11 @@
 import 'package:Army/constants.dart';
+import 'package:Army/storage/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:Army/model/calendar/event.dart';
 import 'package:Army/provider/event_provider.dart';
+import 'package:Army/storage/storage.dart';
 
 class SchoolEventAddingPage extends StatefulWidget {
   @override
@@ -13,11 +15,95 @@ class SchoolEventAddingPage extends StatefulWidget {
 class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   final schoolNameController = TextEditingController();
   String searchResult = "";
-  final List<String> schoolList = ["육군사관학교", "해군사관학교", "공군사관학교", "간호사관학교"];
+  final List<String> schoolList = [
+    "육군사관학교",
+    "해군사관학교",
+    "공군사관학교",
+    "국군간호사관학교",
+    "육군학군사관(ROTC)",
+    "해군학군사관(ROTC)",
+    "공군학군사관(ROTC)"
+  ];
 
+  final List<Color> eventColors = [
+    Colors.red,
+    Colors.pink,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.purple,
+  ];
+
+  List<String> themes = [];
+  List<List<bool>> checkThemes = [];
+  List<Event> events = [];
+  List<SchoolEvent> schoolEvents = [];
+  List<List<dynamic>> data = [];
+  List<dynamic> dataList = [];
+
+  loadAsset(String school) async {
+    final myData =
+        await StorageUtils().loadCsv("curriculums/" + school + " 일정.csv");
+    data = myData;
+    dataList.add(data);
+    setState(() {});
+    return data;
+  }
+
+  filter_event(int index) {
+    List<List<dynamic>> data = dataList[index];
+    int count = 0;
+    if (data.length == 0) return null;
+
+    for (int i = 1; i < data.length; i++) {
+      if (themes.isEmpty) {
+        themes.add(data[i][0]);
+      }
+      if (themes.last != data[i][0]) {
+        final schoolEvent = SchoolEvent(name: data[i - 1][0], events: events);
+        schoolEvents.add(schoolEvent);
+        print(themes);
+        print(schoolEvent.events);
+        print(schoolEvent);
+        print(schoolEvents);
+        print(count);
+        count = count + 1;
+        themes.add(data[i][0]);
+        events = [];
+      }
+      final event = Event(
+        title: data[i][1],
+        to: DateTime.parse(data[i][2]),
+        from: DateTime.parse(data[i][3]),
+        description: data[i][4],
+        backgroundColor: eventColors[i % eventColors.length],
+        isAllDay: false,
+      );
+      events.add(event);
+    }
+    if (schoolEvents.isEmpty) {
+      final schoolEvent = SchoolEvent(name: data[1][0], events: events);
+      schoolEvents.add(schoolEvent);
+    } else {
+      final schoolEvent = SchoolEvent(name: data.last[0], events: events);
+      schoolEvents.add(schoolEvent);
+      print(data.last[0]);
+    }
+  }
+
+  dispose_event() {
+    themes = [];
+    events = [];
+    schoolEvents = [];
+  }
   @override
   void initState() {
     super.initState();
+    for (int i = 0; i < schoolList.length; i++) {
+      loadAsset(schoolList[i]);
+      checkThemes.add([false, false, false, false, false]);
+    }
   }
 
   @override
@@ -34,7 +120,8 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),)),
+          bottom: Radius.circular(20),
+        )),
         backgroundColor: Color(COLOR_PRIMARY),
         leading: BackButton(),
         title: Padding(
@@ -110,30 +197,59 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                       // IconData(58445),
                       ),
                   onPressed: () {
-                    final event1 = Event(
-                        title: "1차시험",
-                        description: "국어, 영어, 수학",
-                        from: DateTime.now(),
-                        to: DateTime.now().add(Duration(hours: 2)),
-                        backgroundColor: Colors.red,
-                        isAllDay: false);
-                    final event2 = Event(
-                        title: "2차시험",
-                        description: "면접, 신체검사, 체력측정",
-                        from: DateTime(2021, 7, 4),
-                        to: DateTime(2021, 7, 4).add(Duration(hours: 2)),
-                        backgroundColor: Colors.blue,
-                        isAllDay: false);
-                    final event3 = Event(
-                        title: "결과발표",
-                        description: "결과발표",
-                        from: DateTime(2021, 8, 4),
-                        to: DateTime(2021, 8, 4).add(Duration(hours: 2)),
-                        backgroundColor: Colors.green,
-                        isAllDay: false);
-                    provider.addEvent(event1);
-                    provider.addEvent(event2);
-                    provider.addEvent(event3);
+                    filter_event(index);
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: new Text("권한 없음"),
+                          content: SingleChildScrollView(
+                              child: Column(
+                                  children: List<Widget>.generate(themes.length,
+                                      (j) {
+                            return Row(children: [
+                              Checkbox(
+                                  value: checkThemes[index][j],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      checkThemes[index][j] = value;
+                                    });
+                                  }),
+                              Text(themes[j]),
+                            ]);
+                          }))),
+                          actions: <Widget>[
+                            new FlatButton(
+                              child: new Text("확인"),
+                              onPressed: () {
+                                for(int i = 0; i < checkThemes[index].length; i++) {
+                                  if (checkThemes[index][i]) {
+                                  for (int j = 0;
+                                  j < schoolEvents[i].events.length;
+                                  j++) {
+                                    print(schoolEvents[i].events.length);
+                                    print(schoolEvents[i].events[j]);
+                                  }
+                                  }
+                                }
+                                    //provider.addEvent(schoolEvents[i].events[j]);
+
+                                dispose_event();
+                                Navigator.pop(context);
+                              },
+                            ),
+                            new FlatButton(
+                              child: new Text("닫기"),
+                              onPressed: () {
+                                dispose_event();
+                                Navigator.pop(context);
+                              },
+                            )
+                          ],
+                        );
+                      },
+                    );
                   }),
             ],
           ),

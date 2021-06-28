@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/model/user.dart';
-import 'package:Army/services/authenticate.dart';
+import 'package:Army/services/firebaseUtil.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:Army/provider/event_provider.dart';

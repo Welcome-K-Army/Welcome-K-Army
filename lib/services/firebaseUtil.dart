@@ -51,7 +51,21 @@ class FireStoreUtils {
     var downloadUrl = await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
     return downloadUrl.toString();
   }
+  Future<String> getFileUrl(String filepath) async {
+    var url=await storage.child("$filepath").getDownloadURL();
+    return url;
+  }
 
+  Future<List<String>> getFileUrlList(String filepath) async {
+    List<String> url=[];
+    await storage.child("$filepath").listAll().then((res) {
+      res.items.forEach((element) {
+        element.getDownloadURL().then((value) => url.add(value));
+      });
+      print(url);
+    });
+    return url;
+  }
   Future<List<Event>> getUserCalendarEvent() async {
     String uid = auth.FirebaseAuth.instance.currentUser.uid;
     QuerySnapshot eventDocument = await firestore.collection(uid).get();
