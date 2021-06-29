@@ -57,6 +57,12 @@ class NewsListPageState extends State<NewsListPage> {
   }
 
   @override
+  void dispose(){
+    loadUrlList();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
