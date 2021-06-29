@@ -52,15 +52,15 @@ class NewsListPageState extends State<NewsListPage> {
   void initState() {
     school = schools[0];
     loadUrlList();
-    setState(() {});
+    if (this.mounted) {
+        setState(() {
+         //Your code
+        });
+}
     super.initState();
   }
 
-  @override
-  void dispose(){
-    
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
