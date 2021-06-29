@@ -1,4 +1,5 @@
 import 'package:Army/mapView/detailView/page/CurricumlumPage.dart';
+import 'package:Army/mapView/detailView/page/RotcPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
@@ -77,6 +78,11 @@ class DetailViewState extends State<DetailView> {
                 icon: Icon(Icons.people, size: 20),
                 text: '모집요강',
               ),
+              widget.arguments.name == "육군학생군사학교" ?
+              Tab(
+                icon: Icon(Icons.school, size: 20),
+                text: '학군단 정보',
+              ):
               Tab(
                 icon: Icon(Icons.search, size: 20),
                 text: '경쟁률',
@@ -91,10 +97,10 @@ class DetailViewState extends State<DetailView> {
         body: TabBarView(
           children: [
             InformWidget(informList),
-            //AdmissionWidget(informList[5]),
             AdmissionWidget(),
+            widget.arguments.name == "육군학생군사학교" ?
+                RotcPage():
             CompetitionChartWidget(competition_data,informList),
-            // CompetitionChartWidget(),
             CurriculumPage(schoolName:widget.arguments.name)
           ],
         ),
@@ -102,6 +108,7 @@ class DetailViewState extends State<DetailView> {
     ); // Column
   }
 }
+
 
 class Arguments {
   String name;

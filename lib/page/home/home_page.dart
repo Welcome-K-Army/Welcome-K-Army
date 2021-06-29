@@ -6,12 +6,9 @@ import 'package:Army/services/firebaseUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter/services.dart';
 
 import 'notice_list_page.dart';
 import 'package:provider/provider.dart';
-import 'package:native_pdf_renderer/native_pdf_renderer.dart';
-import 'package:thumbnailer/thumbnailer.dart';
 
 import 'package:Army/provider/event_provider.dart';
 import 'package:Army/constants.dart';
@@ -35,13 +32,10 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final User user;
   HomePageState(this.user);
-  PdfPageImage pdf;
-  List<PdfPageImage> pdfList = [];
   List<PdfItem> pdfItems = [];
-  String temp;
+  List<String> schoolNewsItems = [];
   List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
-  List<String> items = [];
-  List<String> itemsTitle = [
+  List<String> schoolNewsItemTitleList = [
     "육사신보 제629호",
     "해사학보 제312호",
     "공사신문 제357호",
@@ -50,54 +44,26 @@ class HomePageState extends State<HomePage> {
   ];
 
   ///Get the PDF document as bytes.
-  loadUrl(String school, String title) async {
-    String urlTemp = "pdf/news/해군사관학교/해사학보 제312호.pdf";
-    print(urlTemp);
-    final url = await FireStoreUtils().getFileUrl(urlTemp);
+  Future loadUrl(String schools, String title, String path, String filetype) async {
+    final url = await FireStoreUtils().getFileUrl("$path/news/$schools/$title.$filetype");
     print(url);
-    temp = url;
+    return url;
   }
 
   loadUrlList() {
     for (int index = 0; index < schools.length; index++) {
-      loadUrl(schools[index], itemsTitle[index]);
-              items.add(temp);
-    }
-  }
-
-  Future<PdfPageImage> getPdfThumbnails(String url) async {
-    final _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
-        .buffer
-        .asUint8List();
-    final document = await PdfDocument.openData(_documentBytes);
-    final page = await document.getPage(1);
-    final pageImage = await page.render(width: page.width, height: 400);
-    await page.close();
-    return pageImage;
-  }
-
-  Future loadPdf(String url) async {
-    final pdfThumbnail = await getPdfThumbnails(url);
-    // print(pdfThumbnail);
-    pdf = pdfThumbnail;
-    return pdf;
-  }
-
-  loadPdfsList() {
-    for (int index = 0; index < items.length; index++) {
-      loadPdf(items[index]).then((value) {
-        pdfList.add(value);
+      loadUrl(schools[index], schoolNewsItemTitleList[index], 'images', 'png').then((pngUrl){
+        schoolNewsItems.add(pngUrl);
+      });
+      loadUrl(schools[index], schoolNewsItemTitleList[index], 'pdf', 'pdf').then((pdfUrl) {
+        pdfItems.add(PdfItem(url: pdfUrl, title: schoolNewsItemTitleList[index]));
       });
     }
   }
 
   @override
   void initState() {
-    loadUrl("해군사관학교","해사학보 제312호");
-    loadPdfsList();
-    for (int index = 0; index < items.length; index++) {
-      pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
-    }
+    loadUrlList();
     super.initState();
   }
 
@@ -176,7 +142,7 @@ class HomePageState extends State<HomePage> {
 
   Widget buildSlideBanner() {
     return Container(
-        height: 350,
+      height: 400,
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -196,8 +162,9 @@ class HomePageState extends State<HomePage> {
                   ),
                   itemCount: pdfItems.length, //notice imagelist length
                   itemBuilder: (BuildContext context, int index) {
-                    return !pdfList.isEmpty
-                        ? Column(children: [
+                    return schoolNewsItems.isNotEmpty
+                        ? Column(
+                        children: [
                             Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Center(
@@ -211,9 +178,7 @@ class HomePageState extends State<HomePage> {
                                                               pdfItem: pdfItems[
                                                                   index])));
                                         },
-                                        child: Image(
-                                            image: MemoryImage(
-                                                pdfList[index].bytes))))),
+                                        child: Image.network(schoolNewsItems[index], height:300)))),
                             Padding(
                                 padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                                 child: Text(pdfItems[index]?.title,
@@ -224,7 +189,8 @@ class HomePageState extends State<HomePage> {
                           ])
                         : Center(child: CircularProgressIndicator());
                   }), // Swiper
-            )));
+            ))
+    );
   }
 
   Widget buildMenu() {

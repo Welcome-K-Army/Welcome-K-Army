@@ -73,7 +73,13 @@ class CurriculumPageState extends State<CurriculumPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(row[1]),
-                              Text(row[2])
+                              SingleChildScrollView(
+                                child: Container(
+                                  alignment: Alignment.centerRight,
+                                  width: 200,
+                                  child: Text(row[2]),
+                                ),
+                              )
                             ],
                           ),
                         ))
@@ -92,15 +98,18 @@ class CurriculumPageState extends State<CurriculumPage> {
   Widget build(BuildContext context) {
     return !isLoaded
         ? Center(
-            child: CircularProgressIndicator(),
-          )
+      child: CircularProgressIndicator(),
+    )
         : SingleChildScrollView(
-            child: Column(
-                children: idxList.map((indexName) {
-              return buildCard(indexName);
-            }).toList()
-                // children: data.map((line) => Text(line.toString())).toList(),
-                ),
-          );
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          child: Column(
+              children: idxList.map((indexName) {
+                return buildCard(indexName);
+              }).toList()
+            // children: data.map((line) => Text(line.toString())).toList(),
+          ),
+        )
+    );
   }
 }
