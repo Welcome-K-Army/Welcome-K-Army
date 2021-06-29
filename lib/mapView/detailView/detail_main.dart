@@ -113,10 +113,6 @@ class Arguments {
   String image;
   String pdfurl;
   String web_address_detail;
-  List<int> one;
-  List<int> two;
-  List<int> three;
-  List<int>four;
 
-  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl,this.web_address_detail,this.one,this.two,this.three,this.four);
+  Arguments(this.name, this.address, this.number, this.web_address, this.image,this.pdfurl,this.web_address_detail);
 }
