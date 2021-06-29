@@ -31,6 +31,7 @@ class DetailViewState extends State<DetailView> {
     Icons.phone,
   ];
 
+
   @override
   Widget build(BuildContext context) {
     List<String> informList = [

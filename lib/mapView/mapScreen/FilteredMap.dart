@@ -48,6 +48,13 @@ class FilteredMapState extends State<FilteredMap> {
   }
 
   @override
+  void dispose(){
+    _isAnimationEnd=false;
+    super.dispose();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
 
 
