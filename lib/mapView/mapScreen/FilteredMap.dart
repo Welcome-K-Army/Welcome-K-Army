@@ -90,7 +90,7 @@ class FilteredMapState extends State<FilteredMap> {
                 title: school.name,
                 snippet: school.address,
                 onTap: () async {
-                  final arguments = Arguments(school.name, school.address, school.number, school.web_address, school.image, school.pdfurl, school.web_address_detail, school.one, school.two, school.three, school.four);
+                  final arguments = Arguments(school.name, school.address, school.number, school.web_address, school.image, school.pdfurl, school.web_address_detail);
                   final result = await Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => DetailView(arguments: arguments)),

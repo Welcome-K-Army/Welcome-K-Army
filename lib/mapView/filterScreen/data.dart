@@ -19,10 +19,6 @@ List<School> fillData() {
         type: Types.Cadets, 
         age: Ages.A_17_21, 
         classes: Classes.Officer,
-        one:[50,10],
-        two:[50,10],
-        three:[50,10],
-        four:[50,10],
         ));
   lists.add(
     new School(
@@ -39,10 +35,7 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
+
       ));
   lists.add(
     new School(
@@ -59,10 +52,6 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 4, 
@@ -78,10 +67,6 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_19_25, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 5, 
@@ -97,10 +82,6 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_17_21, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 6, 
@@ -116,10 +97,6 @@ List<School> fillData() {
     type: Types.CadetCandidate, 
     age: Ages.A_20_27, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
       new School(idx: 7,
@@ -135,10 +112,6 @@ List<School> fillData() {
         type: Types.CadetCandidate,
         age: Ages.A_20_27,
         classes: Classes.Officer,
-        one:[50,10],
-        two:[50,10],
-        three:[50,10],
-        four:[50,10],
       ));
   return lists;
 }
