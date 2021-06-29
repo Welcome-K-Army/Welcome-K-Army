@@ -6,10 +6,10 @@ import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class CompetitionChartWidget extends StatefulWidget {
-  List<List<int>> competition_data;
+
   List<String> school_data;
 
-  CompetitionChartWidget(this.competition_data, this.school_data, {Key key})
+  CompetitionChartWidget( this.school_data, {Key key})
       : super(key: key);
 
   CompetitionChartWidgetState createState() => CompetitionChartWidgetState();

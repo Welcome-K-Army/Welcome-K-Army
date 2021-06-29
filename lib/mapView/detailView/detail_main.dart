@@ -44,12 +44,6 @@ class DetailViewState extends State<DetailView> {
       widget.arguments.web_address_detail,
     ];
 
-    List<List<int>> competition_data=[
-      widget.arguments.one,
-      widget.arguments.two,
-      widget.arguments.three,
-      widget.arguments.four,
-    ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -101,7 +95,7 @@ class DetailViewState extends State<DetailView> {
             AdmissionWidget(),
             widget.arguments.name == "육군학생군사학교" ?
                 RotcPage():
-            CompetitionChartWidget(competition_data,informList),
+            CompetitionChartWidget(informList),
             CurriculumPage(schoolName:widget.arguments.name)
           ],
         ),
