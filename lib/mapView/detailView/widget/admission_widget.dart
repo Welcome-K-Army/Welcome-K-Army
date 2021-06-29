@@ -70,7 +70,7 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontSize: 15)),
                         trailing: IconButton(
-                          icon: Icon(Icons.download),
+                          icon: Icon(Icons.search),
                           onPressed: () {},
                         ));
                   },
