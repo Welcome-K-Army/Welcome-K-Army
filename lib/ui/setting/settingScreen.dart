@@ -90,7 +90,7 @@ class SettingScreen extends StatelessWidget {
               press: () => showAboutDialog(
                 context: context,
                 applicationVersion: '1.1.0',
-                applicationIcon: Icon(Icons.flutter_dash),
+                applicationIcon: Icon(Icons.search),
                 applicationName: "켠김에 별까지",
                 children:[
                   // ListTile(leading: Icon(Icons.flutter_dash), title: Text("1kl1"), subtitle: Text("Developer"),)
