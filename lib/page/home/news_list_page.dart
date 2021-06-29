@@ -58,7 +58,7 @@ class NewsListPageState extends State<NewsListPage> {
 
   @override
   void dispose(){
-    loadUrlList();
+    
     super.dispose();
   }
 

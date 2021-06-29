@@ -34,7 +34,13 @@ class HomePageState extends State<HomePage> {
   HomePageState(this.user);
   List<PdfItem> pdfItems = [];
   List<String> schoolNewsItems = [];
-  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
+  List<String> schools = [
+    "육군사관학교",
+    "해군사관학교",
+    "공군사관학교",
+    "국군간호사관학교",
+    "육군3사관학교"
+  ];
   List<String> schoolNewsItemTitleList = [
     "육사신보 제629호",
     "해사학보 제312호",
@@ -52,7 +58,7 @@ class HomePageState extends State<HomePage> {
 
   loadUrlList() {
     for (int index = 0; index < schools.length; index++) {
-      loadUrl(schools[index], schoolNewsItemTitleList[index], 'images', 'png').then((pngUrl){
+      loadUrl(schools[index], schoolNewsItemTitleList[index], 'images', 'png').then((pngUrl) {
         schoolNewsItems.add(pngUrl);
       });
       loadUrl(schools[index], schoolNewsItemTitleList[index], 'pdf', 'pdf').then((pdfUrl) {
@@ -93,11 +99,7 @@ class HomePageState extends State<HomePage> {
         child: Stack(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(
-                  left: kDefaultPadding,
-                  right: kDefaultPadding,
-                  bottom: 36 + kDefaultPadding,
-                  top: MediaQuery.of(context).padding.top + 20.0),
+              padding: EdgeInsets.only(left: kDefaultPadding, right: kDefaultPadding, bottom: 36 + kDefaultPadding, top: MediaQuery.of(context).padding.top + 20.0),
               height: _height * 0.2 - 27,
               decoration: BoxDecoration(
                 color: kPrimaryColor,
@@ -110,8 +112,7 @@ class HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text(
                     '반갑습니다 ' + user.nickName + '님!',
-                    style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
                   ),
                   Spacer(),
                   Icon(Icons.favorite, color: Colors.lightGreen[50], size: 100)
@@ -142,7 +143,7 @@ class HomePageState extends State<HomePage> {
 
   Widget buildSlideBanner() {
     return Container(
-      height: 400,
+        height: 400,
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -157,40 +158,25 @@ class HomePageState extends State<HomePage> {
                   viewportFraction: 1,
                   pagination: new SwiperPagination(
                     alignment: Alignment.bottomCenter,
-                    builder: new DotSwiperPaginationBuilder(
-                        color: Colors.grey, activeColor: Color(COLOR_PRIMARY)),
+                    builder: new DotSwiperPaginationBuilder(color: Colors.grey, activeColor: Color(COLOR_PRIMARY)),
                   ),
                   itemCount: pdfItems.length, //notice imagelist length
                   itemBuilder: (BuildContext context, int index) {
-                    return schoolNewsItems.isNotEmpty
-                        ? Column(
-                        children: [
+                    return schoolNewsItems[index] != null
+                        ? Column(children: [
                             Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Center(
                                     child: InkWell(
                                         onTap: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          PdfViewingWidget(
-                                                              pdfItem: pdfItems[
-                                                                  index])));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => PdfViewingWidget(pdfItem: pdfItems[index])));
                                         },
-                                        child: Image.network(schoolNewsItems[index], height:300)))),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                child: Text(pdfItems[index]?.title,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))),
+                                        child: Image.network(schoolNewsItems[index], height: 300)))),
+                            Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 10), child: Text(pdfItems[index]?.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold))),
                           ])
                         : Center(child: CircularProgressIndicator());
                   }), // Swiper
-            ))
-    );
+            )));
   }
 
   Widget buildMenu() {
@@ -198,29 +184,26 @@ class HomePageState extends State<HomePage> {
         color: Color(0xFFEDF0F4),
         child: Padding(
             padding: EdgeInsets.all(10),
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
-                  Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      elevation: 4,
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 2,
-                          mainAxisSpacing: 2,
-                        ),
-                        itemCount: menuList.length,
-                        itemBuilder: (context, index) {
-                          return buildMenuIconBtn(menuList[index]);
-                        },
-                      )),
-                ]))); // GridView
+            child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              TitleWithMoreBtnWidget(title: "Favorite", press: () {}),
+              Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                    ),
+                    itemCount: menuList.length,
+                    itemBuilder: (context, index) {
+                      return buildMenuIconBtn(menuList[index]);
+                    },
+                  )),
+            ]))); // GridView
   }
 
   Widget buildMenuIconBtn(Menu menu) {
@@ -235,13 +218,10 @@ class HomePageState extends State<HomePage> {
           MaterialPageRoute(builder: (BuildContext context) => menu.widget),
         );
       },
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            menu.icon,
-            Text(menu.name),
-          ]), // Column
+      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+        menu.icon,
+        Text(menu.name),
+      ]), // Column
     ); // ListTile
   }
 
@@ -263,12 +243,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NoticeListPage()),
                   );
                 }),
-            ListWithTitleAndDayWidget(
-                headerTile: false,
-                title: "Notice",
-                notices: noticeProvider.notices,
-                infinite: false,
-                maxLines: 4),
+            ListWithTitleAndDayWidget(headerTile: false, title: "Notice", notices: noticeProvider.notices, infinite: false, maxLines: 4),
           ], // Column children
         ), // Column
       ), // Padding
