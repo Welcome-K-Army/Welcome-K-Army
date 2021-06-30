@@ -1,45 +1,61 @@
-import 'dart:io';
-import 'dart:typed_data';
+import 'package:Army/global.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:syncfusion_flutter_pdf/pdf.dart';
-import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:thumbnailer/thumbnailer.dart';
 
 import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/widget/home/pdf_viewing_widget.dart';
+import 'package:Army/services/firebaseUtil.dart';
 
 class AdmissionWidget extends StatefulWidget {
+  String name;
+  AdmissionWidget(this.name);
+
   @override
-  AdmissionWidgetState createState() => AdmissionWidgetState();
+  AdmissionWidgetState createState() => AdmissionWidgetState(name);
 }
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
+  String name;
+  bool loading = true;
+  AdmissionWidgetState(this.name);
   List<PdfItem> pdfItems = [];
+  List<String> schoolAdmissionItems = [];
+  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
+  List<List<String>> schoolAdmissionItemTitleList = [
+    ["2022년도 육군사관학교 모집요강"],
+    ["2022학년도 해군사관학교 모집요강"],
+    ["2022년도 공군사관학교 모집요강"],
+    ["2022년도 국군간호사관학교 모집요강"],
+    ["2022년도 육군3사관학교 모집요강", "2023년도 육군3사관학교 모집요강"]
+  ];
 
   ///Get the PDF document as bytes.
-  Future<Uint8List> getPdfBytes(String url) async {
-    Uint8List _documentBytes;
-    _documentBytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
-        .buffer
-        .asUint8List();
-    return _documentBytes;
+  Future loadUrl(String title, String path, String filetype) async {
+    String temp = "$path/admission/$title.$filetype";
+    final url = await FireStoreUtils().getFileUrl("$path/admission/$title.$filetype");
+    return url;
+  }
+
+  loadUrlList() {
+    int index = schools.indexOf(name);
+    for (int i = 0; i < schoolAdmissionItemTitleList[index].length; i++) {
+      loadUrl(schoolAdmissionItemTitleList[index][i], 'images', 'png')
+          .then((pngUrl) {
+        loadUrl(schoolAdmissionItemTitleList[index][i], 'pdf', 'pdf')
+            .then((pdfUrl) {
+          schoolAdmissionItems.add(pngUrl);
+          pdfItems.add(PdfItem(url: pdfUrl, title: schoolAdmissionItemTitleList[index][i]));
+          if (i == schoolAdmissionItemTitleList[index].length - 1)
+            setState(() {
+              loading = false;
+            });
+        });
+      });
+    }
   }
 
   @override
   void initState() {
-    List<String> items = [
-      'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-      'https://s23.q4cdn.com/202968100/files/doc_downloads/test.pdf',
-    ];
-    List<String> itemsTitle = [
-      '2022학년도(82기)육군사관생도모집요강',
-      '2022학년도(제82기) 육군사관생도 선발시험 세부시행계획'
-    ];
-    for (int index = 0; index < items.length; index++)
-      pdfItems.add(PdfItem(url: items[index], title: itemsTitle[index]));
+    loadUrlList();
     super.initState();
   }
 
@@ -51,37 +67,45 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(10),
-        child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            elevation: 10,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-              child: ListView.separated(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  itemCount: pdfItems.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                        onTap: () => viewPdf(context, index),
-                        title: Text(pdfItems[index].title,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 15)),
-                        trailing: IconButton(
-                          icon: Icon(Icons.download),
-                          onPressed: () {},
-                        ));
-                  },
-                  separatorBuilder: (context, index) {
-                    return const Divider(
-                      color: Colors.black38,
-                      thickness: 2,
-                      indent: 10,
-                      endIndent: 10,
-                    );
-                  }),
-            )));
+    return Container(
+        child: loading
+        ? Center(child: CircularProgressIndicator())
+        : ListView.separated(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(8),
+        itemCount: pdfItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Column(children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      PdfViewingWidget(pdfItem: pdfItems[index])));
+                            },
+                            child: Image.network(schoolAdmissionItems[index], height:300))),
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        child: Text(pdfItems[index].title,
+                            style: TextStyle(fontWeight: FontWeight.bold))),
+                  ])));
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Colors.black12,
+            height: 10,
+            thickness: 1,
+            indent: 15,
+            endIndent: 15,
+          );
+        })
+    );
   }
 }

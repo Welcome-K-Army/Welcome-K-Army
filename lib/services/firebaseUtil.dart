@@ -83,8 +83,6 @@ class FireStoreUtils {
     return await firestore.collection(uid).add(event.toJson()).then((document) {
       event.eid = document.id;
       document.set(event.toJson());
-      print(event.title);
-      print(event.description);
       return event;
     });
   }

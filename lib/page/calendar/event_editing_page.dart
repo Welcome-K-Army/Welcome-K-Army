@@ -29,13 +29,13 @@ class _EventEditingPageState extends State<EventEditingPage> {
   DateTime toDate;
   Color eventColor;
   List<Color> eventColors = [
-    Colors.red,
-    Colors.pink,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.purple,
+    Color(0xFFB81D1D),
+    Color(0xFF5C9C4B),
+    Color(0xFF51A3A7),
+    Color(0xFF7E5DAD),
+    Color(0xFF556AA8),
+    Color(0xFFC1674E),
+    Color(0xFF939C08)
   ];
   List<bool> eventColorCheckValues = [];
 

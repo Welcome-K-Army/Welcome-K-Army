@@ -23,7 +23,6 @@ class OrdinalComboBarLineChartWidget extends StatefulWidget {
 
   static List<charts.Series<OrdinalSales, String>> _createSampleData(competiton) {
 
-
     final manData = [
       new OrdinalSales(competiton[0][0], double.parse(competiton[0][1])),
       new OrdinalSales(competiton[1][0], double.parse(competiton[1][1])),

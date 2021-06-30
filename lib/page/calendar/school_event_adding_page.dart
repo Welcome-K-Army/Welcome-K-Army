@@ -26,13 +26,19 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   ];
 
   final List<Color> eventColors = [
-    Colors.red,
-    Colors.pink,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.purple,
+    Color(0xFFB81D1D),
+    Color(0xFF7FD969),
+    Color(0xFF51A3A7),
+    Color(0xFF7E5DAD),
+    Color(0xFF556AA8),
+    Color(0xFFC1674E),
+    Color(0xFFC2A40C)
+    // Colors.pink,
+    // Colors.orange,
+    // Colors.yellow,
+    // Colors.green,
+    // Colors.blue,
+    // Colors.purple,
   ];
 
   List<String> themes = [];
@@ -63,19 +69,14 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
       if (themes.last != data[i][0]) {
         final schoolEvent = SchoolEvent(name: data[i - 1][0], events: events);
         schoolEvents.add(schoolEvent);
-        print(themes);
-        print(schoolEvent.events);
-        print(schoolEvent);
-        print(schoolEvents);
-        print(count);
         count = count + 1;
         themes.add(data[i][0]);
         events = [];
       }
       final event = Event(
         title: data[i][1],
-        to: DateTime.parse(data[i][2]),
-        from: DateTime.parse(data[i][3]),
+        from: DateTime.parse(data[i][2]),
+        to: DateTime.parse(data[i][3]),
         description: data[i][4],
         backgroundColor: eventColors[i % eventColors.length],
         isAllDay: false,
@@ -88,7 +89,6 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     } else {
       final schoolEvent = SchoolEvent(name: data.last[0], events: events);
       schoolEvents.add(schoolEvent);
-      print(data.last[0]);
     }
   }
 
@@ -97,6 +97,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     events = [];
     schoolEvents = [];
   }
+
   @override
   void initState() {
     super.initState();
@@ -204,37 +205,40 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: new Text("권한 없음"),
-                          content: SingleChildScrollView(
-                              child: Column(
-                                  children: List<Widget>.generate(themes.length,
-                                      (j) {
-                            return Row(children: [
-                              Checkbox(
-                                  value: checkThemes[index][j],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      checkThemes[index][j] = value;
-                                    });
-                                  }),
-                              Text(themes[j]),
-                            ]);
-                          }))),
+                          content: StatefulBuilder(builder:
+                              (BuildContext context, StateSetter setState) {
+                            return SingleChildScrollView(
+                                child: Column(
+                                    children: List<Widget>.generate(
+                                        themes.length, (j) {
+                              return Row(children: [
+                                Checkbox(
+                                    value: checkThemes[index][j],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        checkThemes[index][j] = value;
+                                      });
+                                    }),
+                                Text(themes[j]),
+                              ]);
+                            })));
+                          }),
                           actions: <Widget>[
                             new FlatButton(
                               child: new Text("확인"),
                               onPressed: () {
-                                for(int i = 0; i < checkThemes[index].length; i++) {
+                                for (int i = 0;
+                                    i < checkThemes[index].length;
+                                    i++) {
                                   if (checkThemes[index][i]) {
-                                  for (int j = 0;
-                                  j < schoolEvents[i].events.length;
-                                  j++) {
-                                    print(schoolEvents[i].events.length);
-                                    print(schoolEvents[i].events[j]);
-                                  }
+                                    for (int j = 0;
+                                        j < schoolEvents[i].events.length;
+                                        j++) {
+                                      provider
+                                          .addEvent(schoolEvents[i].events[j]);
+                                    }
                                   }
                                 }
-                                    //provider.addEvent(schoolEvents[i].events[j]);
-
                                 dispose_event();
                                 Navigator.pop(context);
                               },

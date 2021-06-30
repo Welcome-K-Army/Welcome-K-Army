@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/auth/authScreen.dart';
+import 'package:Army/assets/custom_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class OnBoardingScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   ];
 
   final List<dynamic> _imageList = [
-    Icons.favorite,
+    CustomIcons.go2star,
     Icons.manage_search,
     Icons.calendar_today_outlined,
     Icons.auto_awesome

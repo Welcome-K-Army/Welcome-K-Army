@@ -3,25 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/login/loginScreen.dart';
 import 'package:Army/ui/signUp/signUpScreen.dart';
+import 'package:Army/assets/custom_icons.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // final logo = Image.asset(
-    //   "lib/image/Loading.gif",
-    //   height: size.height / 4,
-    // );
     return Scaffold(
       backgroundColor: Colors.lightGreen[50],
       body: Container(
-        decoration: BoxDecoration(
-          // image: DecorationImage(
-          //   image: AssetImage("assets/images/bulb.jpg"),
-          //   fit: BoxFit.cover,
-          // ),
-        ),
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Column(
@@ -51,13 +42,11 @@ class AuthScreen extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.only(bottom: 50, top: 15),
                   child: Column(children: [
-                    Icon(
-                      Icons.favorite,
-                      color: Color(COLOR_PRIMARY),
-                      size: 65,
-                    ),
+                      //Image.asset("lib/assets/go2star.png", width: 100, height: 100),
+                    Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY), size: 65),
                     Text("켠김에 별까지", style:TextStyle(
-                      color: Colors.black87
+                      color: Color(COLOR_PRIMARY),
+                        fontWeight: FontWeight.w600
                     ))
                   ])),
                Material(

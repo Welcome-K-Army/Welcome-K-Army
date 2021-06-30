@@ -16,8 +16,16 @@ class NewsListPage extends StatefulWidget {
 
 class NewsListPageState extends State<NewsListPage> {
   String school;
+  Color _selectedColor = Colors.white;
+  bool loading = true;
   List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
-  List<List<String>> schoolNewsItems = [[],[],[],[],[]];
+  List<List<String>> schoolNewsItems = [
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null]
+  ];
   List<List<String>> schoolNewsItemTitleList = [
     ["육사신보 제625호","육사신보 제626호","육사신보 제627호","육사신보 제628호","육사신보 제629호"],
     ["해사학보 제308호","해사학보 제309호","해사학보 제310호","해사학보 제311호","해사학보 제312호"],
@@ -25,7 +33,13 @@ class NewsListPageState extends State<NewsListPage> {
     ["국간사학보 제123호","국간사학보 제124호","국간사학보 제125호","국간사학보 제126호","국간사학보 제127호"],
     ["충성대신문 제184호","충성대신문 제185호","충성대신문 제186호","충성대신문 제187호","충성대신문 제188호"]
   ];
-  List<List<PdfItem>> pdfItems = [[],[],[],[],[]];
+  List<List<PdfItem>> pdfItems = [
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null]
+  ];
   ///Get the PDF document as bytes.
   Future loadUrl(String schools, String title, String path, String filetype) async {
     final url = await FireStoreUtils().getFileUrl("$path/news/$schools/$title.$filetype");
@@ -38,21 +52,25 @@ class NewsListPageState extends State<NewsListPage> {
       for (int j = 0; j < schoolNewsItemTitleList[i].length; j++) {
         loadUrl(schools[i], schoolNewsItemTitleList[i][j], 'images', 'png')
             .then((pngUrl) {
-          schoolNewsItems[i].add(pngUrl);
-        });
-        loadUrl(schools[i], schoolNewsItemTitleList[i][j], 'pdf', 'pdf')
-            .then((pdfUrl) {
-          pdfItems[i].add(
-              PdfItem(url: pdfUrl, title: schoolNewsItemTitleList[i][j]));
+          loadUrl(schools[i], schoolNewsItemTitleList[i][j], 'pdf', 'pdf')
+              .then((pdfUrl) {
+            schoolNewsItems[i][j] = pngUrl;
+            pdfItems[i][j] =
+                PdfItem(url: pdfUrl, title: schoolNewsItemTitleList[i][j]);
+            if (i == schools.length - 1 && j == schoolNewsItemTitleList[i].length-1)
+              setState(() {
+                loading = false;
+              });
+          });
         });
       }
     }
   }
+
   @override
   void initState() {
     school = schools[0];
     loadUrlList();
-    setState(() {});
     super.initState();
   }
 
@@ -67,25 +85,34 @@ class NewsListPageState extends State<NewsListPage> {
           )),
           backgroundColor: Color(COLOR_PRIMARY),
           title: buildDropdownBtn()),
-      body: buildNewsCard(school, size),
+      body: loading ? Center(child: CircularProgressIndicator()) : buildNewsCard(school, size),
     );
   }
 
   Widget buildDropdownBtn() {
-    return DropdownButtonHideUnderline(
+    return InkWell(
+      onTap: ( ) {
+        setState(() {_selectedColor = Colors.black;});
+      },
+        child: DropdownButtonHideUnderline(
         child: DropdownButton(
+          style: TextStyle(
+            color: _selectedColor,
+          ),
       isExpanded: true,
+      iconEnabledColor: Colors.white,
       iconSize: 24,
       elevation: 16,
       underline: Container(
           decoration: BoxDecoration(
               border: Border.all(width: 0.5, color: Colors.black38))),
       dropdownColor: Colors.white,
-      style: TextStyle(
-        color: Colors.black,
-      ),
+
       value: school,
-      onChanged: (val) => setState(() => school = val), // 이 부분에 네트워크 pdf 연결코드 넣기
+      onChanged: (val) => setState(() {school = val;
+      _selectedColor = Colors.white;
+      }
+      ), // 이 부분에 네트워크 pdf 연결코드 넣기
       items: [
         for (var sch in schools)
           DropdownMenuItem(
@@ -94,26 +121,32 @@ class NewsListPageState extends State<NewsListPage> {
               child: Text(
                 sch.toString(),
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.black87,
-                ),
+                // style: TextStyle(
+                //   color: Colors.white,
+                // ),
               ),
             ),
           ),
       ],
-    )); // Container
+    ))); // Container
   }
 
   Widget buildNewsCard(String school, Size size) {
     int index = schools.indexOf(school);
+    int length = pdfItems[index].length;
     return ListView.separated(
         shrinkWrap: true,
         padding: const EdgeInsets.all(8),
-        itemCount: pdfItems[index].length,
+        itemCount: length,
         itemBuilder: (BuildContext context, int j) {
           return Padding(
               padding: EdgeInsets.all(10.0),
               child: Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 4,
                   child: Column(children: <Widget>[
                 Padding(
                     padding: EdgeInsets.all(10.0),
@@ -121,12 +154,12 @@ class NewsListPageState extends State<NewsListPage> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  PdfViewingWidget(pdfItem: pdfItems[index][j])));
+                                  PdfViewingWidget(pdfItem: pdfItems[index][length-(j+1)])));
                         },
-                      child: Image.network(schoolNewsItems[index][j], height:300))),
+                      child: Image.network(schoolNewsItems[index][length-(j+1)], height:300))),
                 Padding(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: Text(pdfItems[index][j].title,
+                    child: Text(pdfItems[index][length-(j+1)].title,
                         style: TextStyle(fontWeight: FontWeight.bold))),
               ])));
         },

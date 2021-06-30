@@ -24,13 +24,14 @@ class CalendarWidget extends StatelessWidget {
     final events = provider.events;
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 75,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(0),)),
-          backgroundColor: Colors.white,
-          title: Padding(padding:const EdgeInsets.only(left: 5) ,child:Text("일정", style:TextStyle(color:Colors.black87, fontWeight: FontWeight.bold)),) , actions: <Widget>[
+            bottom: Radius.circular(36),)),
+          backgroundColor: kPrimaryColor,
+          title: Padding(padding:const EdgeInsets.only(left: 5) ,child:Text("일정", style:TextStyle(color:Colors.white)),) , actions: <Widget>[
         PopupMenuButton(
-            icon: Icon(Icons.add, color:Colors.black87),
+            icon: Icon(Icons.add, color:Colors.white),
             onSelected: (value) {
               if (value == 1) {
                 Navigator.push(
@@ -61,6 +62,9 @@ class CalendarWidget extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child:  SfCalendar(
             view: CalendarView.month,
+            monthViewSettings: MonthViewSettings(
+              appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
+            ),
             dataSource: EventDataSource(events),
             initialSelectedDate: DateTime.now(),
             cellBorderColor: Colors.transparent,

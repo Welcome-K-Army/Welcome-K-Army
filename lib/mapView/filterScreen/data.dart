@@ -19,10 +19,6 @@ List<School> fillData() {
         type: Types.Cadets, 
         age: Ages.A_17_21, 
         classes: Classes.Officer,
-        one:[50,10],
-        two:[50,10],
-        three:[50,10],
-        four:[50,10],
         ));
   lists.add(
     new School(
@@ -39,10 +35,6 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
       ));
   lists.add(
     new School(
@@ -59,10 +51,6 @@ List<School> fillData() {
       type: Types.Cadets, 
       age: Ages.A_17_21, 
       classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 4, 
@@ -78,10 +66,6 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_19_25, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 5, 
@@ -97,10 +81,6 @@ List<School> fillData() {
     type: Types.Cadets, 
     age: Ages.A_17_21, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
   lists.add(
     new School(idx: 6, 
@@ -116,29 +96,7 @@ List<School> fillData() {
     type: Types.CadetCandidate, 
     age: Ages.A_20_27, 
     classes: Classes.Officer,
-      one:[50,10],
-      two:[50,10],
-      three:[50,10],
-      four:[50,10],
     ));
-  lists.add(
-      new School(idx: 7,
-        name: "test",
-        address: "충청북도 괴산군 괴산읍 문무로 177",
-        number: "+82438346043",
-        web_address: "https://www.armyofficer.mil.kr" ,
-        image:"lib/assets/image/rotc.png",
-        pdfurl:"https://www.kma.ac.kr:461/sites/kma/2022%ED%95%99%EB%85%84%EB%8F%84(82%EA%B8%B0)%EC%9C%A1%EA%B5%B0%EC%82%AC%EA%B4%80%EC%83%9D%EB%8F%84%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf",
-        web_address_detail:"https://www.kma.ac.kr:461/kma/2093/subview.do",
-        latlng: LatLng(36.821519, 127.805987),
-        category: Categories.Army,
-        type: Types.CadetCandidate,
-        age: Ages.A_20_27,
-        classes: Classes.Officer,
-        one:[50,10],
-        two:[50,10],
-        three:[50,10],
-        four:[50,10],
-      ));
+
   return lists;
 }
