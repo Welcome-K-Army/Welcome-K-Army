@@ -22,7 +22,12 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
   loadAsset() async {
     final myData = await StorageUtils().loadCsv("20200930_각군학교경쟁률.csv");
     data = myData;
-    setState(() {});
+    if (this.mounted) {
+        setState(() {
+         //Your code
+        });
+}
+
     return data;
   }
 
@@ -54,6 +59,7 @@ class CompetitionChartWidgetState extends State<CompetitionChartWidget> {
 
   @override
   void initState() {
+    
     loadAsset();
     super.initState();
   }
