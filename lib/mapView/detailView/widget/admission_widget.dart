@@ -1,9 +1,11 @@
 import 'package:Army/global.dart';
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/widget/home/pdf_viewing_widget.dart';
 import 'package:Army/services/firebaseUtil.dart';
+import 'package:provider/provider.dart';
 
 class AdmissionWidget extends StatefulWidget {
   String name;
@@ -15,69 +17,32 @@ class AdmissionWidget extends StatefulWidget {
 
 class AdmissionWidgetState extends State<AdmissionWidget> {
   String name;
-  bool loading = true;
   AdmissionWidgetState(this.name);
-  List<PdfItem> pdfItems = [];
-  List<String> schoolAdmissionItems = [];
-  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
-  List<List<String>> schoolAdmissionItemTitleList = [
-    ["2022년도 육군사관학교 모집요강"],
-    ["2022학년도 해군사관학교 모집요강"],
-    ["2022년도 공군사관학교 모집요강"],
-    ["2022년도 국군간호사관학교 모집요강"],
-    ["2022년도 육군3사관학교 모집요강", "2023년도 육군3사관학교 모집요강"]
-  ];
-
-  ///Get the PDF document as bytes.
-  Future loadUrl(String title, String path, String filetype) async {
-    String temp = "$path/admission/$title.$filetype";
-    final url = await FireStoreUtils().getFileUrl("$path/admission/$title.$filetype");
-    return url;
-  }
-
-  loadUrlList() {
-    int index = schools.indexOf(name);
-    for (int i = 0; i < schoolAdmissionItemTitleList[index].length; i++) {
-      loadUrl(schoolAdmissionItemTitleList[index][i], 'images', 'png')
-          .then((pngUrl) {
-        loadUrl(schoolAdmissionItemTitleList[index][i], 'pdf', 'pdf')
-            .then((pdfUrl) {
-          schoolAdmissionItems.add(pngUrl);
-          pdfItems.add(PdfItem(url: pdfUrl, title: schoolAdmissionItemTitleList[index][i]));
-          if (i == schoolAdmissionItemTitleList[index].length - 1)
-            setState(() {
-              loading = false;
-            });
-        });
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    loadUrlList();
-    super.initState();
-  }
 
   void viewPdf(BuildContext context, index) {
+    final pdfProvider=Provider.of<PdfProvider>(context);
+    int i = pdfProvider.schools.indexOf(name);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) =>
-            PdfViewingWidget(pdfItem: pdfItems[index])));
+            PdfViewingWidget(pdfItem: pdfProvider.schoolAdmissionPdfItems[i][index])));
   }
 
   @override
   Widget build(BuildContext context) {
+    final pdfProvider=Provider.of<PdfProvider>(context);
+    int i = pdfProvider.schoolAdmission.indexOf(name);
+    print(pdfProvider.schoolAdmissionPdfItems[i].asMap());
     return Container(
-        child: loading
-        ? Center(child: CircularProgressIndicator())
-        : ListView.separated(
+        child:  ListView.separated(
         shrinkWrap: true,
         padding: const EdgeInsets.all(8),
-        itemCount: pdfItems.length,
+        itemCount: pdfProvider.schoolAdmissionPdfItems[i].length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
               padding: EdgeInsets.all(10.0),
-              child: Card(
+              child: pdfProvider.admissionLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
@@ -88,12 +53,12 @@ class AdmissionWidgetState extends State<AdmissionWidget> {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      PdfViewingWidget(pdfItem: pdfItems[index])));
+                                      PdfViewingWidget(pdfItem: pdfProvider.schoolAdmissionPdfItems[i][index])));
                             },
-                            child: Image.network(schoolAdmissionItems[index], height:300))),
+                            child: Image.network(pdfProvider.schoolAdmissionItems[i][index], height:300))),
                     Padding(
                         padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child: Text(pdfItems[index].title,
+                        child: Text(pdfProvider.schoolAdmissionPdfItems[i][index].title,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                   ])));
         },

@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +25,9 @@ void main() {
       create: (context) => EventProvider(),
       child: ChangeNotifierProvider(
         create: (context) => NoticeProvider(),
-        child: MyApp()
+        child: ChangeNotifierProvider(
+            create: (context) => PdfProvider(),
+            child:MyApp())
       )
     )
   );
@@ -46,6 +49,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
 
+
     // Show error message if initialization failed
     if (_error) {
       return InitializeErrorPage();
@@ -60,6 +64,8 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         ),
       );
     }
+    final pdfProvider=Provider.of<PdfProvider>(context);
+    pdfProvider.loadUrlList();
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -76,7 +82,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
           ],
           locale: const Locale('ko'),
           theme: ThemeData(
-            accentColor: Color(COLOR_PRIMARY),
+              accentColor: Color(COLOR_PRIMARY),
             bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0)),
           ),
           debugShowCheckedModeBanner: false,
@@ -134,25 +140,4 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 }
 
-// import 'dart:async';
-//
-// import 'package:flutter/material.dart';
-// import 'mapView/mapScreen/MapSample.dart'; // Api 사용 예시
-// import 'mapView/filterScreen/FilterScreen.dart'; // 학교 정보 필터링 예시
-//
-// void main() => runApp(MyApp());
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Filtering demo',
-//       home: FilterScreen(),
-//       theme: ThemeData(
-//         bottomSheetTheme:
-//             BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0)),
-//       ),
-//     );
-//   }
-// }
 

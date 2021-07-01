@@ -1,3 +1,4 @@
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:Army/ui/signUp/signUpScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
@@ -11,6 +12,7 @@ import 'package:Army/model/user.dart';
 import 'package:Army/services/firebaseUtil.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -91,8 +93,11 @@ class _LoginScreen extends State<LoginScreen> {
         // _key.currentState.save();
         showProgress(context, '로그인중입니다...', false);
         User user = await loginWithUserNameAndPassword();
-        if (user != null)
+        if (user != null) {
+          final pdfProvider=Provider.of<PdfProvider>(context);
+          pdfProvider.loadUrlList();
           pushAndRemoveUntil(context, HomeScreen(user: user), false);
+        }
         else {
           setState(() {
             _validate = AutovalidateMode.onUserInteraction;

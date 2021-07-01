@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:Army/assets/custom_icons.dart';
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +14,7 @@ import 'package:Army/services/helper.dart';
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 enum Gender { MAN, WOMEN }
 File _image;
@@ -57,6 +60,8 @@ class _SignUpState extends State<SignUpScreen> {
           }
           User user = User(email: _emailController.text, nickName: _nicknameController.text, age: _userAge, gender: userGender(), userID: result.user.uid, active: true, profilePictureURL: profilePicUrl);
           await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).set(user.toJson());
+          final pdfProvider=Provider.of<PdfProvider>(context);
+          pdfProvider.loadUrlList();
           hideProgress();
           MyAppState.currentUser = user;
           pushAndRemoveUntil(context, HomeScreen(user: user), false);
@@ -373,7 +378,7 @@ class _SignUpState extends State<SignUpScreen> {
                         width: 190,
                         height: 190,
                         child: _image == null
-                            ? Icon(Icons.favorite, size: 190, color: Colors.black38,)
+                            ? Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY), size: 190)
                             : Image.file(
                           _image,
                           fit: BoxFit.cover,

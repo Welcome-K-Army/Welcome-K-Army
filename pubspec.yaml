@@ -50,6 +50,7 @@ dependencies:
   open_file: ^3.2.1
   fluttertoast: ^8.0.7
   native_pdf_renderer: ^3.1.0
+  collection: any
 
 dev_dependencies:
   flutter_test:

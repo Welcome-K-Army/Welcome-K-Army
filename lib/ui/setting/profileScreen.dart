@@ -1,3 +1,4 @@
+import 'package:Army/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -83,7 +84,7 @@ class _ProfileState extends State<ProfileScreen> {
                   ),
                 )
               : user.profilePictureURL.isEmpty
-              ? Icon(Icons.favorite, size: 125,):displayCircleImage(user.profilePictureURL,
+              ? Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY), size: 125):displayCircleImage(user.profilePictureURL,
               125,
               false
           ),

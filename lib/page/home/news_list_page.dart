@@ -1,13 +1,11 @@
 import 'dart:typed_data';
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:thumbnailer/thumbnailer.dart';
+import 'package:provider/provider.dart';
 
 import 'package:Army/constants.dart';
-import 'package:Army/model/home/pdf_item.dart';
 import 'package:Army/widget/home/pdf_viewing_widget.dart';
-import 'package:Army/services/firebaseUtil.dart';
+import 'package:Army/widget/home/dropdown_widget.dart';
 
 class NewsListPage extends StatefulWidget {
   @override
@@ -15,68 +13,12 @@ class NewsListPage extends StatefulWidget {
 }
 
 class NewsListPageState extends State<NewsListPage> {
-  String school;
-  Color _selectedColor = Colors.white;
-  bool loading = true;
-  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
-  List<List<String>> schoolNewsItems = [
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null]
-  ];
-  List<List<String>> schoolNewsItemTitleList = [
-    ["육사신보 제625호","육사신보 제626호","육사신보 제627호","육사신보 제628호","육사신보 제629호"],
-    ["해사학보 제308호","해사학보 제309호","해사학보 제310호","해사학보 제311호","해사학보 제312호"],
-    ["공사신문 제353호","공사신문 제354호","공사신문 제355호","공사신문 제356호","공사신문 제357호"],
-    ["국간사학보 제123호","국간사학보 제124호","국간사학보 제125호","국간사학보 제126호","국간사학보 제127호"],
-    ["충성대신문 제184호","충성대신문 제185호","충성대신문 제186호","충성대신문 제187호","충성대신문 제188호"]
-  ];
-  List<List<PdfItem>> pdfItems = [
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null]
-  ];
-  ///Get the PDF document as bytes.
-  Future loadUrl(String schools, String title, String path, String filetype) async {
-    final url = await FireStoreUtils().getFileUrl("$path/news/$schools/$title.$filetype");
-    print(url);
-    return url;
-  }
-
-  loadUrlList() {
-    for (int i = 0; i < schools.length; i++) {
-      for (int j = 0; j < schoolNewsItemTitleList[i].length; j++) {
-        loadUrl(schools[i], schoolNewsItemTitleList[i][j], 'images', 'png')
-            .then((pngUrl) {
-          loadUrl(schools[i], schoolNewsItemTitleList[i][j], 'pdf', 'pdf')
-              .then((pdfUrl) {
-            schoolNewsItems[i][j] = pngUrl;
-            pdfItems[i][j] =
-                PdfItem(url: pdfUrl, title: schoolNewsItemTitleList[i][j]);
-            if (i == schools.length - 1 && j == schoolNewsItemTitleList[i].length-1)
-              setState(() {
-                loading = false;
-              });
-          });
-        });
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    school = schools[0];
-    loadUrlList();
-    super.initState();
-  }
-
+  String school = "육군사관학교";
+  double height = 100;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final pdfProvider = Provider.of<PdfProvider>(context);
     return Scaffold(
       appBar: AppBar(
           shape: RoundedRectangleBorder(
@@ -84,84 +26,102 @@ class NewsListPageState extends State<NewsListPage> {
             bottom: Radius.circular(20),
           )),
           backgroundColor: Color(COLOR_PRIMARY),
-          title: buildDropdownBtn()),
-      body: loading ? Center(child: CircularProgressIndicator()) : buildNewsCard(school, size),
+          title: Center(child: Text("학교 뉴스")),
+          leading: Container(),
+          leadingWidth: 0),
+      body: pdfProvider.newsLoading
+          ? Center(child: CircularProgressIndicator())
+          : buildNewsCard(school, size, context),
     );
   }
 
-  Widget buildDropdownBtn() {
-    return InkWell(
-      onTap: ( ) {
-        setState(() {_selectedColor = Colors.black;});
-      },
-        child: DropdownButtonHideUnderline(
-        child: DropdownButton(
-          style: TextStyle(
-            color: _selectedColor,
-          ),
-      isExpanded: true,
-      iconEnabledColor: Colors.white,
-      iconSize: 24,
-      elevation: 16,
-      underline: Container(
-          decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: Colors.black38))),
-      dropdownColor: Colors.white,
+  Widget buildDropdownBtn(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final pdfProvider = Provider.of<PdfProvider>(context);
 
-      value: school,
-      onChanged: (val) => setState(() {school = val;
-      _selectedColor = Colors.white;
-      }
-      ), // 이 부분에 네트워크 pdf 연결코드 넣기
-      items: [
-        for (var sch in schools)
-          DropdownMenuItem(
-            value: sch,
-            child: SizedBox(
-              child: Text(
-                sch.toString(),
-                textAlign: TextAlign.left,
-                // style: TextStyle(
-                //   color: Colors.white,
-                // ),
-              ),
-            ),
+    return Padding(
+        padding: EdgeInsets.all(10.0),
+        child: DropdownWidget<String>(
+          child: Text(
+              school,
           ),
-      ],
-    ))); // Container
+          onChange: (String value, int index) {
+            setState(() {
+              school = value;
+            });
+          },
+          dropdownButtonStyle: DropdownButtonStyle(
+            width: size.width - 36.0,
+            height: 40,
+            elevation: 3,
+            backgroundColor: Colors.white,
+            primaryColor: Colors.black87,
+          ),
+          dropdownStyle: DropdownStyle(
+              borderRadius: BorderRadius.circular(8),
+              elevation: 3,
+              padding: EdgeInsets.all(5),
+              color: Colors.white),
+          items: pdfProvider.schools
+              .asMap()
+              .entries
+              .map(
+                (item) => DropdownItem<String>(
+                  value: item.value,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: Text(item.value)),
+                  ),
+                ),
+              )
+              .toList(),
+        ));
   }
 
-  Widget buildNewsCard(String school, Size size) {
-    int index = schools.indexOf(school);
-    int length = pdfItems[index].length;
+  Widget buildNewsCard(String school, Size size, BuildContext context) {
+    final pdfProvider = Provider.of<PdfProvider>(context);
+    int index = pdfProvider.schools.indexOf(school);
+    int length = pdfProvider.schoolNewsPdfItems[index].length + 1;
     return ListView.separated(
         shrinkWrap: true,
         padding: const EdgeInsets.all(8),
         itemCount: length,
         itemBuilder: (BuildContext context, int j) {
-          return Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 4,
-                  child: Column(children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  PdfViewingWidget(pdfItem: pdfItems[index][length-(j+1)])));
-                        },
-                      child: Image.network(schoolNewsItems[index][length-(j+1)], height:300))),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: Text(pdfItems[index][length-(j+1)].title,
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-              ])));
+          if (j == 0)
+            return buildDropdownBtn(context);
+          else
+            return Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Card(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    elevation: 4,
+                    child: Column(children: <Widget>[
+                      Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        PdfViewingWidget(
+                                            pdfItem: pdfProvider
+                                                    .schoolNewsPdfItems[index]
+                                                [length - (j+1)])));
+                              },
+                              child: Image.network(
+                                  pdfProvider.schoolNewsItems[index]
+                                      [length - (j+1)],
+                                  height: 300))),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          child: Text(
+                              pdfProvider
+                                  .schoolNewsPdfItems[index][length - (j+1)]
+                                  .title,
+                              style: TextStyle(fontWeight: FontWeight.bold))),
+                    ])));
         },
         separatorBuilder: (context, index) {
           return const Divider(

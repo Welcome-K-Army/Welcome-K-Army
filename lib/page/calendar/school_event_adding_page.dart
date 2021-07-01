@@ -1,4 +1,6 @@
+
 import 'package:Army/constants.dart';
+import 'package:Army/page/calendar/school_event_list_page.dart';
 import 'package:Army/storage/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -119,19 +121,14 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
     final provider = Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(20),
-        )),
-        backgroundColor: Color(COLOR_PRIMARY),
-        leading: BackButton(),
-        title: Padding(
-            padding: EdgeInsets.only(bottom: 4),
-            child: Text(
-              "학교 일정 추가",
-              style: TextStyle(fontSize: 18),
-            )),
-      ),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20),
+              )),
+          backgroundColor: Color(COLOR_PRIMARY),
+          title: Center(child: Text("학교 일정 추가")),
+          leading: Container(),
+          leadingWidth: 0),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(12),
@@ -190,8 +187,14 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.picture_as_pdf),
-                onPressed: () {},
+                icon: Icon(Icons.event_available_rounded),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SchoolEventListPage(schoolName: schoolList[index])),
+                  );
+                },
               ),
               IconButton(
                   icon: Icon(Icons.add
@@ -204,7 +207,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                       barrierDismissible: false,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: new Text("권한 없음"),
+                          title: new Text(schoolList[index]),
                           content: StatefulBuilder(builder:
                               (BuildContext context, StateSetter setState) {
                             return SingleChildScrollView(

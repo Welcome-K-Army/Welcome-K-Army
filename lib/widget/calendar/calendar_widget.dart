@@ -21,7 +21,7 @@ class CalendarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventProvider>(context);
-    final events = provider.events;
+    final events = provider?.events;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 75,

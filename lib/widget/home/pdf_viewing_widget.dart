@@ -5,6 +5,8 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import 'package:Army/model/home/pdf_item.dart';
 
+import '../../constants.dart';
+
 /// Represents the Homepage for Navigation
 class PdfViewingWidget extends StatefulWidget {
   final PdfItem pdfItem;
@@ -58,6 +60,11 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
     return Scaffold(
       appBar: _showToolbar
           ? AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            )),
+
         flexibleSpace: SafeArea(
           child: SearchToolbar(
             key: _textSearchKey,
@@ -86,12 +93,16 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
           ),
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFAFAFA),
+        backgroundColor: Color(COLOR_PRIMARY),
       )
           : AppBar(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20),
+              )),
         title: Text(
           pdfItem.title,
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -103,7 +114,7 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
           IconButton(
             icon: Icon(
               Icons.search,
-              color: Colors.black87,
+              color: Colors.white
             ),
             onPressed: () {
               setState(() {
@@ -115,7 +126,7 @@ class _PdfViewingWidget extends State<PdfViewingWidget> {
           ),
         ],
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFAFAFA),
+          backgroundColor: Color(COLOR_PRIMARY),
       ),
       body: Stack(
         children: [

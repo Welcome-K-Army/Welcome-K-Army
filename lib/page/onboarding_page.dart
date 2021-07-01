@@ -1,4 +1,5 @@
 
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:Army/services/firebaseUtil.dart';
 import 'package:Army/services/helper.dart';
 import 'package:Army/ui/onBoarding/onBoardingScreen.dart';
@@ -25,9 +26,9 @@ class OnBoardingState extends State<OnBoarding> {
   Future hasFinishedOnBoarding() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool finishedOnBoarding = (prefs.getBool(FINISHED_ON_BOARDING) ?? false);
-
     if (finishedOnBoarding) {
       auth.User firebaseUser = auth.FirebaseAuth.instance.currentUser;
+
       if (firebaseUser != null) {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {

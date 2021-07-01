@@ -1,11 +1,10 @@
-import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:Army/model/user.dart';
+import 'package:Army/provider/pdf_provider.dart';
 import 'package:Army/services/firebaseUtil.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'notice_list_page.dart';
 import 'package:provider/provider.dart';
@@ -32,49 +31,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   final User user;
-  bool loading = true;
+
   HomePageState(this.user);
-  List<PdfItem> pdfItems = [null, null, null, null, null];
-  List<String> schoolNewsItems = [null, null, null, null, null];
-  List<String> schools = ["육군사관학교", "해군사관학교", "공군사관학교", "국군간호사관학교", "육군3사관학교"];
-  List<String> schoolNewsItemTitleList = [
-    "육사신보 제629호",
-    "해사학보 제312호",
-    "공사신문 제357호",
-    "국간사학보 제127호",
-    "충성대신문 제188호"
-  ];
-
-  ///Get the PDF document as bytes.
-  Future loadUrl(
-      String schools, String title, String path, String filetype) async {
-    final url = await FireStoreUtils()
-        .getFileUrl("$path/news/$schools/$title.$filetype");
-    print(url);
-    Future.delayed(Duration(milliseconds: 5));
-    return url;
-  }
-
-  loadUrlList() {
-    for (int index = 0; index < schools.length; index++) {
-      loadUrl(schools[index], schoolNewsItemTitleList[index], 'images', 'png')
-          .then((pngUrl) {
-        loadUrl(schools[index], schoolNewsItemTitleList[index], 'pdf', 'pdf')
-            .then((pdfUrl) {
-          schoolNewsItems[index] = pngUrl;
-          pdfItems[index] = PdfItem(url: pdfUrl, title: schoolNewsItemTitleList[index]);
-          if (index == schools.length - 1)
-            setState(() {
-              loading = false;
-            });
-        });
-      });
-    }
-  }
 
   @override
   void initState() {
-    loadUrlList();
     super.initState();
   }
 
@@ -105,9 +66,9 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                  left: kDefaultPadding+20,
-                  right: kDefaultPadding+20,
-                  bottom: 30 + kDefaultPadding,
+                  left: kDefaultPadding + 20,
+                  right: kDefaultPadding + 20,
+                  bottom: kDefaultPadding,
                   top: MediaQuery.of(context).padding.top + 14.0),
               height: _height * 0.2 - 28,
               decoration: BoxDecoration(
@@ -119,19 +80,25 @@ class HomePageState extends State<HomePage> {
               ), // BoxDecoration
               child: Row(
                 children: <Widget>[
-                  // Text(
-                  //   '반갑습니다 ' + user.nickName + '님!',
-                  //   style: Theme.of(context).textTheme.headline5?.copyWith(
-                  //       color: Colors.white, fontWeight: FontWeight.w600),
-                  // ),
-                  // Spacer(),
-                  Icon(CustomIcons.go2star, color: Colors.lightGreen[50], size: 65),
-                  Spacer(),
                   Text(
-                    '반갑습니다 \n' + user.nickName + ' 님!',
+                    '안녕하세요\n' + user.nickName + ' 님!',
                     style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20.0),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.0),
                   ),
+                  Spacer(),
+                  Column(children: [
+                    Icon(CustomIcons.go2star,
+                        color: Colors.lightGreen[50], size: 65),
+                    Text(
+                      "켠김에 별까지",
+                      style: Theme.of(context).textTheme.headline5?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10.0),
+                    ),
+                  ]),
                   //Image.asset("lib/assets/go2star.png", width: 100, height: 100),
                   // Icon(Icons.favorite, color: Colors.lightGreen[50], size: 100)
                 ],
@@ -160,6 +127,7 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget buildSlideBanner() {
+    final pdfProvider = Provider.of<PdfProvider>(context);
     return Container(
         height: 400,
         child: Card(
@@ -168,53 +136,53 @@ class HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.circular(15.0),
             ),
             elevation: 4,
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: loading
-                  ? Center(child: CircularProgressIndicator())
-                  : Swiper(
-                      autoplay: false,
-                      scale: 0.8,
-                      viewportFraction: 1,
-                      pagination: new SwiperPagination(
-                        alignment: Alignment.bottomCenter,
-                        builder: new DotSwiperPaginationBuilder(
-                            color: Colors.grey,
-                            activeColor: Color(COLOR_PRIMARY)),
-                      ),
-                      itemCount: pdfItems.length, //notice imagelist length
-                      itemBuilder: (BuildContext context, int index) {
-                        return schoolNewsItems[index] != null && pdfItems[index] != null
-                            ? Column(children: [
-                                Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Center(
-                                        child: schoolNewsItems[index] != null
-                                            ? InkWell(
-                                                onTap: () {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              PdfViewingWidget(
-                                                                  pdfItem: pdfItems[
-                                                                      index])));
-                                                },
-                                                child: Image.network(
-                                                    schoolNewsItems[index],
-                                                    height: 300))
-                                            : CircularProgressIndicator())),
-                                Padding(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                    child: Text(pdfItems[index].title,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold))),
-                              ])
-                            : Center(child: CircularProgressIndicator());
-                      }), // Swiper
-            )));
+            child: pdfProvider.newsLoading
+                ? Center(child: CircularProgressIndicator())
+                : Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Swiper(
+                        autoplay: false,
+                        scale: 0.8,
+                        viewportFraction: 1,
+                        pagination: new SwiperPagination(
+                          alignment: Alignment.bottomCenter,
+                          builder: new DotSwiperPaginationBuilder(
+                              color: Colors.grey,
+                              activeColor: Color(COLOR_PRIMARY)),
+                        ),
+                        itemCount: pdfProvider.schoolNewsPdfItems.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(children: [
+                            Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Center(
+                                    child: InkWell(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      PdfViewingWidget(
+                                                          pdfItem: pdfProvider
+                                                                  .schoolNewsPdfItems[
+                                                              index][4])));
+                                        },
+                                        child: Image.network(
+                                            pdfProvider.schoolNewsItems[index]
+                                                [4],
+                                            height: 300)))),
+                            Padding(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                child: Text(
+                                    pdfProvider
+                                        .schoolNewsPdfItems[index][4].title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold))),
+                          ]);
+                        }), // Swiper
+                  )));
   }
 
   Widget buildMenu() {

@@ -16,19 +16,15 @@ class NoticeListPageState extends State<NoticeListPage> {
     final noticeProvider = Provider.of<NoticeProvider>(context);
     noticeProvider.readNotice();
     return Scaffold(
-      appBar: AppBar(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(20),
-        )),
-        backgroundColor: Color(COLOR_PRIMARY),
-        title: Padding(
-            padding: EdgeInsets.only(bottom: 4),
-            child: Text(
-              "공지",
-              style: TextStyle(fontSize: 18),
-            )),
-      ),
+        appBar: AppBar(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                )),
+            backgroundColor: Color(COLOR_PRIMARY),
+            title: Center(child: Text("공지사항")),
+            leading: Container(),
+            leadingWidth: 0),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(10),

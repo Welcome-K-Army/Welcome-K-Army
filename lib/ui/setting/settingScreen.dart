@@ -1,3 +1,4 @@
+import 'package:Army/assets/custom_icons.dart';
 import 'package:Army/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -59,10 +60,7 @@ class SettingScreen extends StatelessWidget {
                     color: Colors.white
                   ),
                   child: user.profilePictureURL.isEmpty
-                      ? Icon(
-                    Icons.favorite,
-                    size: 125,
-                  )
+                      ? Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY), size: 125)
                       : displayCircleImage(user.profilePictureURL, 125, false),
                 ),
               )
@@ -72,7 +70,7 @@ class SettingScreen extends StatelessWidget {
           Settings(
             //계정 수정 네비게이터
             icon: Icon(
-              Icons.account_circle,
+              Icons.account_circle_outlined,
               color: Color(COLOR_PRIMARY),
             ),
             text: "계정 정보",
@@ -83,14 +81,14 @@ class SettingScreen extends StatelessWidget {
           Settings(
             //도움말 네비게이터
               icon: Icon(
-                Icons.help_outline,
+                Icons.info_outline,
                 color: Color(COLOR_PRIMARY),
               ),
               text: "앱정보",
               press: () => showAboutDialog(
                 context: context,
                 applicationVersion: '1.1.0',
-                applicationIcon: Icon(Icons.flutter_dash),
+                applicationIcon: Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY), size: 65),
                 applicationName: "켠김에 별까지",
                 children:[
                   // ListTile(leading: Icon(Icons.flutter_dash), title: Text("1kl1"), subtitle: Text("Developer"),)
