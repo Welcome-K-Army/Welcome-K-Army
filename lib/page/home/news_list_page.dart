@@ -50,6 +50,7 @@ class NewsListPageState extends State<NewsListPage> {
               school = value;
             });
           },
+
           dropdownButtonStyle: DropdownButtonStyle(
             width: size.width - 36.0,
             height: 40,

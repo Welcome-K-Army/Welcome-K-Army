@@ -1,3 +1,5 @@
+import 'package:Army/assets/custom_icons.dart';
+import 'package:Army/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -143,7 +145,7 @@ Widget _getPlaceholderOrErrorImage(double size, hasBorder) => Container(
         ),
       ),
       child: ClipOval(
-          child: Icon(Icons.favorite,size:size),
+          child: Icon(CustomIcons.go2star, color: Color(COLOR_PRIMARY),size:size),
       ),
     );
 

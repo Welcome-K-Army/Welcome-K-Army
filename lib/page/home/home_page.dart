@@ -141,7 +141,7 @@ class HomePageState extends State<HomePage> {
                 : Padding(
                     padding: EdgeInsets.all(10),
                     child: Swiper(
-                        autoplay: false,
+                        autoplay: true,
                         scale: 0.8,
                         viewportFraction: 1,
                         pagination: new SwiperPagination(

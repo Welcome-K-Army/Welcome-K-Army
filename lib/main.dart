@@ -21,15 +21,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() {
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => EventProvider(),
-      child: ChangeNotifierProvider(
-        create: (context) => NoticeProvider(),
-        child: ChangeNotifierProvider(
-            create: (context) => PdfProvider(),
-            child:MyApp())
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => EventProvider()),
+            ChangeNotifierProvider(create: (context) => NoticeProvider()),
+            ChangeNotifierProvider(create: (context) => PdfProvider()),
+          ],
+          child:MyApp()
       )
-    )
   );
 }
 
@@ -64,8 +63,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         ),
       );
     }
-    final pdfProvider=Provider.of<PdfProvider>(context);
-    pdfProvider.loadUrlList();
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,

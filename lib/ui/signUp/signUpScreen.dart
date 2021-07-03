@@ -50,40 +50,40 @@ class _SignUpState extends State<SignUpScreen> {
 
     _sendToServer() async {
       if (_key.currentState.validate()) {
-        showProgress(context, 'Creating new account, Please wait...', false);
+        showProgress(context, '회원가입 중입니다...', false);
         var profilePicUrl = '';
         try {
           auth.UserCredential result = await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text.trim(), password: _passwordController.text.trim());
           if (_image != null) {
-            updateProgress('Uploading image, Please wait...');
+            updateProgress('이미지를 업로드 중입니다...');
             profilePicUrl = await FireStoreUtils().uploadUserImageToFireStorage(_image, result.user.uid);
           }
           User user = User(email: _emailController.text, nickName: _nicknameController.text, age: _userAge, gender: userGender(), userID: result.user.uid, active: true, profilePictureURL: profilePicUrl);
           await FireStoreUtils.firestore.collection(USERS).doc(result.user.uid).set(user.toJson());
-          final pdfProvider=Provider.of<PdfProvider>(context);
+          final pdfProvider=Provider.of<PdfProvider>(context,listen: false);
           pdfProvider.loadUrlList();
           hideProgress();
           MyAppState.currentUser = user;
-          pushAndRemoveUntil(context, HomeScreen(user: user), false);
+          pushAndRemoveUntil(context, HomeScreen(user: user),false);
         } on auth.FirebaseAuthException catch (error) {
           hideProgress();
           String message = 'Couldn\'t sign up';
           switch (error.code) {
             case 'email-already-in-use':
-              message = 'Email address already in use';
+              message = '이메일이 이미 사용중입니다.';
               break;
             case 'invalid-email':
               message = 'validEmail';
               break;
             case 'operation-not-allowed':
-              message = 'Email/password accounts are not enabled';
+              message = 'E';
               break;
             case 'weak-password':
-              message = 'password is too weak.';
+              message = '비밀번호를 더 길게 설정해주세요';
               break;
             case 'too-many-requests':
-              message = 'Too many requests, '
-                  'Please try again later.';
+              message = '너무 많은 요청입니다.'
+                  '나중에 다시 시도해주세요.';
               break;
           }
           showAlertDialog(context, 'Failed', message);
@@ -91,7 +91,7 @@ class _SignUpState extends State<SignUpScreen> {
         } catch (e) {
           print('_SignUpState._sendToServer $e');
           hideProgress();
-          showAlertDialog(context, 'Failed', 'Couldn\'t sign up');
+          showAlertDialog(context, '실패', '회원가입에 실패했습니다.');
         }
       } else {
         setState(() {

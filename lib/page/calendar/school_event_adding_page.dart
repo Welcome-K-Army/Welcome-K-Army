@@ -3,6 +3,7 @@ import 'package:Army/constants.dart';
 import 'package:Army/page/calendar/school_event_list_page.dart';
 import 'package:Army/storage/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import 'package:Army/model/calendar/event.dart';
@@ -49,6 +50,7 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
   List<SchoolEvent> schoolEvents = [];
   List<List<dynamic>> data = [];
   List<dynamic> dataList = [];
+  FToast fToast;
 
   loadAsset(String school) async {
     final myData =
@@ -102,7 +104,10 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
 
   @override
   void initState() {
+
     super.initState();
+    fToast = FToast();
+    fToast.init(context);
     for (int i = 0; i < schoolList.length; i++) {
       loadAsset(schoolList[i]);
       checkThemes.add([false, false, false, false, false]);
@@ -244,6 +249,19 @@ class _SchoolEventAddingPageState extends State<SchoolEventAddingPage> {
                                 }
                                 dispose_event();
                                 Navigator.pop(context);
+                                Navigator.pop(context);
+                                fToast.showToast(
+                                  child: Container(
+                                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+                                      child: Text(
+                                        "추가되었습니다.",
+                                        style: TextStyle(color: Colors.white),
+                                      )),
+                                  gravity: ToastGravity.BOTTOM,
+                                  toastDuration: Duration(seconds: 2),
+                                );
                               },
                             ),
                             new FlatButton(

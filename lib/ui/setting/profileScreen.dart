@@ -293,7 +293,9 @@ class _ProfileState extends State<ProfileScreen> {
         ),
         iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+          child: Container(
         padding: EdgeInsets.fromLTRB(36, 20, 36, 20),
         child: Form(
             key: _key,
@@ -335,7 +337,7 @@ class _ProfileState extends State<ProfileScreen> {
             ) //ListView
 
             ), //Form
-      ), //Container
+      )), //Container
     ); //Scafolld
   }
 

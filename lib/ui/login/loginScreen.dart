@@ -94,7 +94,7 @@ class _LoginScreen extends State<LoginScreen> {
         showProgress(context, '로그인중입니다...', false);
         User user = await loginWithUserNameAndPassword();
         if (user != null) {
-          final pdfProvider=Provider.of<PdfProvider>(context);
+          final pdfProvider=Provider.of<PdfProvider>(context,listen: false);
           pdfProvider.loadUrlList();
           pushAndRemoveUntil(context, HomeScreen(user: user), false);
         }

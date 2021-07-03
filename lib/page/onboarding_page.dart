@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:Army/ui/home/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:Army/constants.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Army/page/home/home_page.dart';
 import 'package:Army/model/user.dart';
@@ -32,6 +33,8 @@ class OnBoardingState extends State<OnBoarding> {
       if (firebaseUser != null) {
         User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
         if (user != null) {
+          final pdfProvider=Provider.of<PdfProvider>(context,listen: false);
+          pdfProvider.loadUrlList();
           MyAppState.currentUser = user;
           pushReplacement(context, new HomeScreen(user: user));
         } else {
